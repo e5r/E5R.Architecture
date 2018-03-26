@@ -9,8 +9,8 @@ configuration: Release
 clone_depth: 1
 
 artifacts:
-  - path: 'src\**\*.nupkg'
-    name: NuGetPackages
+  - path: '**\E5R.Architecture.*.nupkg'
+    name: E5RArchitecture
 
 init:
   - ps: 'git config --global core.autocrlf true'
@@ -19,8 +19,8 @@ before_build:
   - ps: 'dotnet --info'
 
 build_script:
-  - ps: 'dotnet build -c ${ENV:CONFIGURATION} --version-suffix alpha-ci-${ENV:APPVEYOR_BUILD_NUMBER}'
-  - ps: 'dotnet pack --no-build -c ${ENV:CONFIGURATION} --version-suffix alpha-ci-${ENV:APPVEYOR_BUILD_NUMBER}'
+  - ps: 'dotnet build .\E5R.Architecture.Packages.sln -c ${ENV:CONFIGURATION} --version-suffix alpha-ci-${ENV:APPVEYOR_BUILD_NUMBER}'
+  - ps: 'dotnet pack .\E5R.Architecture.Packages.sln --no-build -c ${ENV:CONFIGURATION} --version-suffix alpha-ci-${ENV:APPVEYOR_BUILD_NUMBER}'
 
 test_script :
   - ps: 'dotnet test .\test\E5R.Architecture.Core.Test'
@@ -30,13 +30,13 @@ deploy:
     api_key:
       secure: L2C2Jcwls+oHt30Vh3pw72SitjtPKB9qsYjiI2FYhhC831yb6I9j3OSpHoOccWpu
     skip_symbols: true
-    artifact: NuGetPackages
+    artifact: E5RArchitecture
 
   - provider: GitHub
     tag: v0.1.0-alpha
     release: 0.1.0-alpha
     description: 'CI Release v$(appveyor_build_version) from AppVeyor'
-    artifact: NuGetPackages
+    artifact: E5RArchitecture
     draft: true
     prerelease: true
     force_update: true
