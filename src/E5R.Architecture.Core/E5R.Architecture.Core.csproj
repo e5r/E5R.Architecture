@@ -1,0 +1,16 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netstandard1.0</TargetFramework>
+    <RootNamespace>E5R.Architecture.Core</RootNamespace>
+    <AssemblyName>E5R.Architecture.Core</AssemblyName>
+    <Authors>Erlimar Silva Campos</Authors>
+    <VersionPrefix>0.1.0</VersionPrefix>
+    <Company>E5R Development Team</Company>
+    <Product>E5R.Architecture</Product>
+    <RepositoryUrl>https://github.com/e5r/E5R.Architecture</RepositoryUrl>
+    <PackageProjectUrl>https://github.com/e5r/E5R.Architecture</PackageProjectUrl>
+    <Description>Componentes da arquitetura de software E5R para .NET Standard 1.0</Description>
+  </PropertyGroup>
+
+</Project>
