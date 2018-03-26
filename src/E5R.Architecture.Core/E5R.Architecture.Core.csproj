@@ -10,7 +10,7 @@
     <Product>E5R.Architecture</Product>
     <RepositoryUrl>https://github.com/e5r/E5R.Architecture</RepositoryUrl>
     <PackageProjectUrl>https://github.com/e5r/E5R.Architecture</PackageProjectUrl>
-    <Description>Componentes da arquitetura de software E5R para .NET Standard 1.0</Description>
+    <Description>Componente principal, base para todos os outros da arquitetura de software E5R para .NET Standard 1.0</Description>
   </PropertyGroup>
 
 </Project>
