@@ -9,8 +9,8 @@ configuration: Release
 clone_depth: 1
 
 artifacts:
-  - path: '**\*.nupkg'
-    name: NuGet
+  - path: 'src\**\*.nupkg'
+    name: NuGetPackages
 
 init:
   - ps: 'git config --global core.autocrlf true'
@@ -30,12 +30,12 @@ deploy:
     api_key:
       secure: L2C2Jcwls+oHt30Vh3pw72SitjtPKB9qsYjiI2FYhhC831yb6I9j3OSpHoOccWpu
     skip_symbols: true
-    artifact: '**\*.nupkg'
+    artifact: NuGetPackages
 
   - provider: GitHub
-    release: v$(appveyor_build_version)
+    release: v0.1.0-alpha
     description: 'CI Release v$(appveyor_build_version)'
-    artifact: '**\*.nupkg'
+    artifact: NuGetPackages
     draft: true
     prerelease: true
     on:
