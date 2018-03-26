@@ -33,7 +33,7 @@ deploy:
     artifact: NuGetPackages
 
   - provider: GitHub
-    release: v$(appveyor_build_version)
+    release: v0.1.0-alpha
     description: 'CI Release v$(appveyor_build_version)'
     artifact: NuGetPackages
     draft: true
