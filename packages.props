@@ -8,7 +8,7 @@
     <RootNamespace>E5R.Architecture</RootNamespace>
     <Product>E5R.Architecture</Product>
     <Company>E5R Development Team</Company>
-    <Authors>Erlimar Silva Campos, E5R Development Team</Authors>
+    <Authors>erlimar</Authors>
     <Copyright>Copyright (c) E5R Development Team 2018</Copyright>
     <RepositoryUrl>https://github.com/e5r/E5R.Architecture</RepositoryUrl>
     <RepositoryType>git</RepositoryType>
