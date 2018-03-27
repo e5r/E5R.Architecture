@@ -31,13 +31,18 @@ before_build:
 
 build_script:
   - ps: 'dotnet build .\E5R.Architecture.Packages.sln -c ${ENV:CONFIGURATION} --version-suffix ${ENV:BUILD_VERSION_SUFFIX}'
-  - ps: 'dotnet pack .\E5R.Architecture.Packages.sln --no-build -c ${ENV:CONFIGURATION} --version-suffix ${ENV:BUILD_VERSION_SUFFIX}'
 
 test_script :
   - ps: 'opencover.console -register:user -target:"dotnet.exe" -targetargs:"test .\test\E5R.Architecture.Core.Test" -output:".\E5R.Architecture.Core.Test.Coverage.xml" -oldstyle'
 
 after_test:
-  - ps: 'codecov -f .\E5R.Architecture.Core.Test.Coverage.xml -t ${ENV:CODECOV_UPLOAD_TOKEN}'
+  - ps: '"CODECOV_UPLOAD_TOKEN: ${ENV:CODECOV_UPLOAD_TOKEN}" | writ-host'
+  - ps: '"BUILD_LABEL: ${ENV:BUILD_LABEL}" | writ-host'
+  - ps: '"BUILD_VERSION_SUFFIX: ${ENV:BUILD_VERSION_SUFFIX}" | writ-host'
+  - ps: '"BUILD_VERSION: ${ENV:BUILD_VERSION}" | writ-host'
+  - ps: '"APPVEYOR_BUILD_NUMBER: ${ENV:APPVEYOR_BUILD_NUMBER}" | writ-host'
+  - ps: '"APPVEYOR_BUILD_VERSION: ${ENV:APPVEYOR_BUILD_VERSION}" | writ-host'
+  - ps: 'codecov -f .\E5R.Architecture.Core.Test.Coverage.xml -t "${ENV:CODECOV_UPLOAD_TOKEN}"'
 
 deploy:
   - provider: NuGet
