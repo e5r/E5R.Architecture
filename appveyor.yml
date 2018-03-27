@@ -30,7 +30,6 @@ install:
 
 before_build:
   - ps: 'dotnet --info'
-  - ps: 'choco --version'
 
 build_script:
   - ps: 'dotnet build .\E5R.Architecture.Packages.sln -c ${ENV:CONFIGURATION} --version-suffix ${ENV:BUILD_VERSION_SUFFIX}'
