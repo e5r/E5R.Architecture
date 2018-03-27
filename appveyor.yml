@@ -27,8 +27,8 @@ install:
       $ENV:BUILD_VERSION_SUFFIX = "${BUILD_LABEL}-${BUILD_NUMBER}";
       $BUILD_VERSION = (Select-Xml -Path ".\packages.props" -XPath "/Project/PropertyGroup/VersionPrefix" | Select-Object -ExpandProperty Node).InnerText;
       Update-AppveyorBuild -Version "${BUILD_VERSION}-${ENV:BUILD_VERSION_SUFFIX}";
-      cinst opencover.portable;
-      cinst codecov;
+      cinst opencover.portable --force;
+      cinst codecov --force;
 
 before_build:
   - ps: 'dotnet --info'
