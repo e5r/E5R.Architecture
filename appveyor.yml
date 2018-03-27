@@ -38,7 +38,7 @@ test_script :
 after_test:
   - ps: '"CODECOV_UPLOAD_TOKEN: ${ENV:CODECOV_UPLOAD_TOKEN}" | write-host'
   - ps: '"BUILD_LABEL: ${ENV:BUILD_LABEL}" | write-host'
-  - ps: '"BUILD_VERSION_SUFFIX: ${ENV:BUILD_VERSION_SUFFIX}" | writ-host'
+  - ps: '"BUILD_VERSION_SUFFIX: ${ENV:BUILD_VERSION_SUFFIX}" | write-host'
   - ps: '"BUILD_VERSION: ${ENV:BUILD_VERSION}" | write-host'
   - ps: '"APPVEYOR_BUILD_NUMBER: ${ENV:APPVEYOR_BUILD_NUMBER}" | write-host'
   - ps: '"APPVEYOR_BUILD_VERSION: ${ENV:APPVEYOR_BUILD_VERSION}" | write-host'
