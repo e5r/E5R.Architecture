@@ -9,8 +9,8 @@ configuration: Release
 clone_depth: 1
 
 artifacts:
-  - path: '**\E5R.Architecture.*.nupkg'
-    name: E5RArchitecture
+  - path: 'dist\E5R.Architecture.*.nupkg'
+    name: E5RArchitecturePackages
 
 init:
   - ps: 'git config --global core.autocrlf true'
@@ -30,13 +30,13 @@ deploy:
     api_key:
       secure: L2C2Jcwls+oHt30Vh3pw72SitjtPKB9qsYjiI2FYhhC831yb6I9j3OSpHoOccWpu
     skip_symbols: true
-    artifact: E5RArchitecture
+    artifact: E5RArchitecturePackages
 
   - provider: GitHub
     tag: v0.1.0-alpha
     release: 0.1.0-alpha
     description: 'CI Release v$(appveyor_build_version) from AppVeyor'
-    artifact: E5RArchitecture
+    artifact: E5RArchitecturePackages
     draft: true
     prerelease: true
     force_update: true

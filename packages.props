@@ -1,0 +1,33 @@
+<Project>
+
+  <PropertyGroup>
+    <TargetFrameworks>netstandard2.0;netstandard1.6;netstandard1.0;net46;net45</TargetFrameworks>
+    <VersionPrefix>0.1.0</VersionPrefix>
+    <FileVersion>$(VersionPrefix).0</FileVersion>
+    <AssemblyVersion>$(VersionPrefix).0</AssemblyVersion>
+    <RootNamespace>E5R.Architecture</RootNamespace>
+    <Product>E5R.Architecture</Product>
+    <Company>E5R Development Team</Company>
+    <Authors>Erlimar Silva Campos, E5R Development Team</Authors>
+    <Copyright>Copyright (c) E5R Development Team 2018</Copyright>
+    <RepositoryUrl>https://github.com/e5r/E5R.Architecture</RepositoryUrl>
+    <RepositoryType>git</RepositoryType>
+    <PackageProjectUrl>https://github.com/e5r/E5R.Architecture</PackageProjectUrl>
+    <PackageLicenseUrl>https://github.com/e5r/E5R.Architecture/blob/master/LICENSE</PackageLicenseUrl>
+    <PackageIconUrl>https://avatars3.githubusercontent.com/u/8513737</PackageIconUrl>
+    <PackageReleaseNotes>Componentes da arquitetura de software E5R Development team para .NET Standard 1.0, .NET 4.0, 4.5 e 4.6.</PackageReleaseNotes>
+    <PackageTags>E5R Development Team Architecture</PackageTags>
+  </PropertyGroup>
+
+  <PropertyGroup Condition=" '$(Configuration)' == 'Release' ">
+    <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
+    <OutputPath>$(SolutionDir)dist</OutputPath>
+  </PropertyGroup>
+
+  <PropertyGroup Condition=" '$(Configuration)' == 'Debug' ">
+    <DebugType>Full</DebugType>
+    <GeneratePackageOnBuild>false</GeneratePackageOnBuild>
+    <TargetFramework>netstandard1.0</TargetFramework>
+  </PropertyGroup>
+
+</Project>
