@@ -19,7 +19,7 @@ init:
 
 install:
   - ps: '$ENV:BUILD_LABEL = "alpha-ci"'
-  - ps: '$ENV:BUILD_VERSION_SUFFIX = "${ENV:BUILD_LABEL}-${ENV:APPVEYOR_BUILD_NUMBER}'
+  - ps: '$ENV:BUILD_VERSION_SUFFIX = "${ENV:BUILD_LABEL}-${ENV:APPVEYOR_BUILD_NUMBER}"'
   - ps: '$ENV:BUILD_VERSION = (Select-Xml -Path ".\packages.props" -XPath "/Project/PropertyGroup/VersionPrefix" | Select-Object -ExpandProperty Node).InnerText'
   - ps: 'Update-AppveyorBuild -Version "${ENV:BUILD_VERSION}-${ENV:BUILD_VERSION_SUFFIX}"'
   - ps: 'choco install opencover.portable'
