@@ -1,42 +1,57 @@
 # Copyright (c) E5R Development Team. All rights reserved.
 # Licensed under the Apache License, Version 2.0. More license information in LICENSE.txt.
 
-version: '0.1.0-alpha-ci-{build}'
 image: Visual Studio 2017
-
-platform: x64
 configuration: Release
+platform: Any CPU
 clone_depth: 1
 
+environment:
+  CODECOV_TOKEN:
+    secure: GOUHfNAquS/rtP4gxA131uc6WZhGoHIsp66q7ECbzuvRJCNwKSfsFQRPeu2M6k6l
+
 artifacts:
-  - path: '**\E5R.Architecture.*.nupkg'
-    name: E5RArchitecture
+  - path: 'artifacts\E5R.Architecture.*.nupkg'
+    name: E5RArchitecturePackages
+
+cache:
+  - '%ProgramData%\chocolatey\lib -> appveyor.yml'
 
 init:
   - ps: 'git config --global core.autocrlf true'
+
+install:
+  - ps: '$ENV:BUILD_LABEL = "alpha-ci"'
+  - ps: '$ENV:BUILD_VERSION_SUFFIX = "${ENV:BUILD_LABEL}-${ENV:APPVEYOR_BUILD_NUMBER}"'
+  - ps: '$ENV:BUILD_VERSION = (Select-Xml -Path ".\packages.props" -XPath "/Project/PropertyGroup/VersionPrefix" | Select-Object -ExpandProperty Node).InnerText'
+  - ps: 'Update-AppveyorBuild -Version "${ENV:BUILD_VERSION}-${ENV:BUILD_VERSION_SUFFIX}"'
+  - ps: 'choco install opencover.portable'
+  - ps: 'choco install codecov'
 
 before_build:
   - ps: 'dotnet --info'
 
 build_script:
-  - ps: 'dotnet build .\E5R.Architecture.Packages.sln -c ${ENV:CONFIGURATION} --version-suffix alpha-ci-${ENV:APPVEYOR_BUILD_NUMBER}'
-  - ps: 'dotnet pack .\E5R.Architecture.Packages.sln --no-build -c ${ENV:CONFIGURATION} --version-suffix alpha-ci-${ENV:APPVEYOR_BUILD_NUMBER}'
+  - ps: 'dotnet build .\E5R.Architecture.Packages.sln -c ${ENV:CONFIGURATION} --version-suffix ${ENV:BUILD_VERSION_SUFFIX}'
 
 test_script :
-  - ps: 'dotnet test .\test\E5R.Architecture.Core.Test'
+  - ps: 'opencover.console -register:user -target:"dotnet.exe" -targetargs:"test .\test\E5R.Architecture.Core.Test" -output:".\E5R.Architecture.Core.Test.Coverage.xml" -oldstyle'
+
+after_test:
+  - ps: 'codecov -f .\E5R.Architecture.Core.Test.Coverage.xml'
 
 deploy:
   - provider: NuGet
     api_key:
       secure: L2C2Jcwls+oHt30Vh3pw72SitjtPKB9qsYjiI2FYhhC831yb6I9j3OSpHoOccWpu
     skip_symbols: true
-    artifact: E5RArchitecture
+    artifact: E5RArchitecturePackages
 
   - provider: GitHub
-    tag: v0.1.0-alpha
-    release: 0.1.0-alpha
-    description: 'CI Release v$(appveyor_build_version) from AppVeyor'
-    artifact: E5RArchitecture
+    tag: v0.1.0-alpha     # todo: Usar versão dinâmica
+    release: 0.1.0-alpha  # todo: Usar versão dinâmica
+    description: 'CI Release v$(appveyor_build_version) from AppVeyor' # todo: Usar versão dinâmica
+    artifact: E5RArchitecturePackages
     draft: true
     prerelease: true
     force_update: true

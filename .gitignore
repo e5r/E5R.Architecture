@@ -23,6 +23,7 @@ bld/
 [Bb]in/
 [Oo]bj/
 [Ll]og/
+[Dd]ist/
 
 # Visual Studio 2015 cache/options directory
 .vs/
@@ -116,6 +117,9 @@ _TeamCity*
 # Visual Studio code coverage results
 *.coverage
 *.coveragexml
+
+# OpenCover
+*.Coverage.xml
 
 # NCrunch
 _NCrunch_*

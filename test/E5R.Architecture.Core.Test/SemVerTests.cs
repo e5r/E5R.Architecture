@@ -3,7 +3,7 @@ using Xunit;
 
 namespace E5R.Architecture.Core.Test
 {
-    public class UnitTest1
+    public class SemVerTests
     {
         [Theory]
         [InlineData(0,0,0, null, "0.0.0")]
