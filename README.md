@@ -14,5 +14,6 @@ Branch  | Status | Teste | Cobertura
 Pacote  | NuGet | NuGet RC
 ------- | :---- | :------- 
 E5R.Architecture.Core | [![NuGet](https://img.shields.io/nuget/v/E5R.Architecture.Core.png?style=flat-square)](https://www.nuget.org/packages/E5R.Architecture.Core) | [![NuGet RC](https://img.shields.io/nuget/vpre/E5R.Architecture.Core.png?style=flat-square)](https://www.nuget.org/packages/E5R.Architecture.Core)
+E5R.Architecture.Data | [![NuGet](https://img.shields.io/nuget/v/E5R.Architecture.Data.png?style=flat-square)](https://www.nuget.org/packages/E5R.Architecture.Data) | [![NuGet RC](https://img.shields.io/nuget/vpre/E5R.Architecture.Data.png?style=flat-square)](https://www.nuget.org/packages/E5R.Architecture.Data)
 
 Acompanhe as novidades em [NEWS.md](NEWS.md)
