@@ -1,0 +1,11 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <Import Project="..\..\packages.props" />
+
+  <PropertyGroup>
+    <AssemblyName>E5R.Architecture.Data</AssemblyName>
+    <PackageId>E5R.Architecture.Data</PackageId>
+    <Description>Componente de dados, parte da arquitetura de software E5R Development Team</Description>
+  </PropertyGroup>
+
+</Project>
