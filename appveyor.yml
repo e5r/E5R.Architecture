@@ -15,6 +15,7 @@ artifacts:
     name: E5RArchitecturePackages
 
 cache:
+  - '%ProgramData%\chocolatey\bin -> appveyor.yml'
   - '%ProgramData%\chocolatey\lib -> appveyor.yml'
 
 init:
@@ -27,8 +28,14 @@ install:
       $ENV:BUILD_VERSION_SUFFIX = "${BUILD_LABEL}-${BUILD_NUMBER}";
       $BUILD_VERSION = (Select-Xml -Path ".\packages.props" -XPath "/Project/PropertyGroup/VersionPrefix" | Select-Object -ExpandProperty Node).InnerText;
       Update-AppveyorBuild -Version "${BUILD_VERSION}-${ENV:BUILD_VERSION_SUFFIX}";
-      cinst opencover.portable --force;
-      cinst codecov --force;
+      if(!(test-path ${env:ProgramData}\chocolatey\bin\opencover.console.exe))
+      {
+        cinst opencover.portable;
+      }
+      if(!(test-path ${env:ProgramData}\chocolatey\bin\codecov.exe))
+      {
+        cinst codecov;
+      }
 
 before_build:
   - ps: 'dotnet --info'
