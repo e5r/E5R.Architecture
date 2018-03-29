@@ -7,6 +7,17 @@ namespace E5R.Architecture.Core.Tests.Formatters
 
     public class FormattedCPFTests
     {
+        [Fact]
+        public void Must_Format_An_Literal_Unformatted_CPF_String()
+        {
+            string exptected = "123.456.789-01";
+            string calculated = (FormattedCPF)"12345678901";
+
+            Assert.Equal(exptected, calculated);
+            Assert.Equal(exptected, (FormattedCPF)"12345678901");
+            Assert.Equal(exptected, (string)(FormattedCPF)"12345678901");
+        }
+
         [Theory]
         [InlineData("1", "000.000.000-01")]
         [InlineData("12", "000.000.000-12")]
