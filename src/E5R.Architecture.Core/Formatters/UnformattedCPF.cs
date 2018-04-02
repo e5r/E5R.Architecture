@@ -3,15 +3,15 @@ using System.Linq;
 
 namespace E5R.Architecture.Core.Formatters
 {
-    public class UnformattedCPF
+    public class UnformattedCpf
     {
         private string _value;
 
         /// <summary>
         /// Unformat Brazilian CPF string
         /// </summary>
-        /// <param name="formatted"></param>
-        public UnformattedCPF(string value)
+        /// <param name="value">Value of formatted CPF</param>
+        private UnformattedCpf(string value)
         {
             value = value
                 ?? throw new ArgumentNullException(nameof(value));
@@ -25,26 +25,26 @@ namespace E5R.Architecture.Core.Formatters
                 ?.Replace(".", string.Empty)
                 ?.Replace("-", string.Empty);
 
-            if(string.IsNullOrEmpty(_value) || _value.Length > 11 || _value.Any(c => !char.IsNumber(c)))
+            if(string.IsNullOrEmpty(_value) || _value.Length > 11 || _value.ToCharArray().Any(c => !char.IsNumber(c)))
             {
                 throw new FormatException("Invalid formatted CPF string value");
             }
         }
 
         /// <summary>
-        /// Conversion from <see cref="string" /> to <see cref="UnformattedCPF" />
+        /// Conversion from <see cref="string" /> to <see cref="UnformattedCpf" />
         /// </summary>
         /// <param name="formatted">Formatted CPF string</param>
-        public static explicit operator UnformattedCPF(string formatted)
+        public static explicit operator UnformattedCpf(string formatted)
         {
-            return new UnformattedCPF(formatted);
+            return new UnformattedCpf(formatted);
         }
 
         /// <summary>
-        /// Conversion from <see cref="UnformattedCPF" /> to <see cref="string" />
+        /// Conversion from <see cref="UnformattedCpf" /> to <see cref="string" />
         /// </summary>
         /// <param name="unformatter">CPF unformatter</param>
-        public static implicit operator string(UnformattedCPF unformatter)
+        public static implicit operator string(UnformattedCpf unformatter)
         {
             return unformatter._value;
         }

@@ -1,21 +1,20 @@
 using System;
+using  E5R.Architecture.Core.Formatters;
 using Xunit;
 
-namespace E5R.Architecture.Core.Tests.Formatters
+namespace E5R.Architecture.Core.Test.Formatters
 {
-    using Core.Formatters;
-
-    public class UnformattedCPFTests
+    public class UnformattedCpfTests
     {
         [Fact]
         public void Must_Unformat_An_Literal_Formatted_CPF_String()
         {
-            string exptected = "12345678901";
-            string calculated = (UnformattedCPF)"123.456.789-01";
+            const string expected = "12345678901";
+            string calculated = (UnformattedCpf)"123.456.789-01";
 
-            Assert.Equal(exptected, calculated);
-            Assert.Equal(exptected, (UnformattedCPF)"123.456.789-01");
-            Assert.Equal(exptected, (string)(UnformattedCPF)"123.456.789-01");
+            Assert.Equal(expected, calculated);
+            Assert.Equal(expected, (UnformattedCpf)"123.456.789-01");
+            Assert.Equal(expected, (string)(UnformattedCpf)"123.456.789-01");
         }
 
         [Theory]
@@ -34,11 +33,11 @@ namespace E5R.Architecture.Core.Tests.Formatters
         [InlineData("00000000000", "000.000.000-00")]
         public void Must_Unformat_An_Formatted_CPF_String(string unformatted, string formatted)
         {
-            string calculated = (UnformattedCPF)formatted;
+            string calculated = (UnformattedCpf)formatted;
 
             Assert.Equal(unformatted, calculated);
-            Assert.Equal(unformatted, (UnformattedCPF)formatted);
-            Assert.Equal(unformatted, (string)(UnformattedCPF)formatted);
+            Assert.Equal(unformatted, (UnformattedCpf)formatted);
+            Assert.Equal(unformatted, (string)(UnformattedCpf)formatted);
         }
 
         [Theory]
@@ -49,7 +48,7 @@ namespace E5R.Architecture.Core.Tests.Formatters
         [InlineData("012-5678900#")]
         public void Only_Number_Dot_And_Dash_Is_Accepted_On_String(string value)
         {
-            Assert.Throws<FormatException>(() => { string calculated = (UnformattedCPF)value; });
+            Assert.Throws<FormatException>(() => { string calculated = (UnformattedCpf)value; });
         }
 
         [Theory]
@@ -57,7 +56,7 @@ namespace E5R.Architecture.Core.Tests.Formatters
         public void Max_11Numeric_Chars(string value)
         {
             Assert.Throws<FormatException>(() => {
-                string calculated = (UnformattedCPF)value;
+                string calculated = (UnformattedCpf)value;
             });
         }
     }

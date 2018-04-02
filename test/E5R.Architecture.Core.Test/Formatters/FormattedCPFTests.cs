@@ -1,21 +1,20 @@
 using System;
+using E5R.Architecture.Core.Formatters;
 using Xunit;
 
-namespace E5R.Architecture.Core.Tests.Formatters
+namespace E5R.Architecture.Core.Test.Formatters
 {
-    using Core.Formatters;
-
-    public class FormattedCPFTests
+    public class FormattedCpfTests
     {
         [Fact]
         public void Must_Format_An_Literal_Unformatted_CPF_String()
         {
-            string exptected = "123.456.789-01";
-            string calculated = (FormattedCPF)"12345678901";
+            const string expected = "123.456.789-01";
+            string calculated = (FormattedCpf)"12345678901";
 
-            Assert.Equal(exptected, calculated);
-            Assert.Equal(exptected, (FormattedCPF)"12345678901");
-            Assert.Equal(exptected, (string)(FormattedCPF)"12345678901");
+            Assert.Equal(expected, calculated);
+            Assert.Equal(expected, (FormattedCpf)"12345678901");
+            Assert.Equal(expected, (string)(FormattedCpf)"12345678901");
         }
 
         [Theory]
@@ -34,11 +33,11 @@ namespace E5R.Architecture.Core.Tests.Formatters
         [InlineData("00000000000", "000.000.000-00")]
         public void Must_Format_An_Unformatted_CPF_String(string unformatted, string formatted)
         {
-            string calculated = (FormattedCPF)unformatted;
+            string calculated = (FormattedCpf)unformatted;
 
             Assert.Equal(formatted, calculated);
-            Assert.Equal(formatted, (FormattedCPF)unformatted);
-            Assert.Equal(formatted, (string)(FormattedCPF)unformatted);
+            Assert.Equal(formatted, (FormattedCpf)unformatted);
+            Assert.Equal(formatted, (string)(FormattedCpf)unformatted);
         }
 
         [Theory]
@@ -47,7 +46,7 @@ namespace E5R.Architecture.Core.Tests.Formatters
         [InlineData("01235678900#")]
         public void Only_Number_Is_Accepted_On_String(string value)
         {
-            Assert.Throws<FormatException>(() => { string calculated = (FormattedCPF)value; });
+            Assert.Throws<FormatException>(() => { string calculated = (FormattedCpf)value; });
         }
 
         [Theory]
@@ -55,7 +54,7 @@ namespace E5R.Architecture.Core.Tests.Formatters
         public void Max_11Chars(string value)
         {
             Assert.Throws<FormatException>(() => {
-                string calculated = (FormattedCPF)value;
+                string calculated = (FormattedCpf)value;
             });
         }
     }
