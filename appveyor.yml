@@ -46,9 +46,11 @@ build_script:
 
 test_script :
   - ps: 'opencover.console -register:user -target:"dotnet.exe" -targetargs:"test .\test\E5R.Architecture.Core.Test" -output:".\E5R.Architecture.Core.Test.Coverage.xml" -oldstyle'
+  - ps: 'opencover.console -register:user -target:"dotnet.exe" -targetargs:"test .\test\E5R.Architecture.Data.Test" -output:".\E5R.Architecture.Data.Test.Coverage.xml" -oldstyle'
 
 after_test:
   - ps: 'codecov -f .\E5R.Architecture.Core.Test.Coverage.xml'
+  - ps: 'codecov -f .\E5R.Architecture.Data.Test.Coverage.xml'
 
 deploy:
   - provider: NuGet

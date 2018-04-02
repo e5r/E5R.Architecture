@@ -14,12 +14,12 @@
     <PackageProjectUrl>https://github.com/e5r/E5R.Architecture</PackageProjectUrl>
     <PackageLicenseUrl>https://github.com/e5r/E5R.Architecture/blob/master/LICENSE</PackageLicenseUrl>
     <PackageIconUrl>https://avatars3.githubusercontent.com/u/8513737</PackageIconUrl>
-    <PackageReleaseNotes>Componentes da arquitetura de software E5R Development Team para .NET Standard >= 1.1 e .NET >= 4.0</PackageReleaseNotes>
+    <PackageReleaseNotes>Componentes da arquitetura de software E5R Development Team para .NET Standard >= 1.0 e .NET >= 4.0</PackageReleaseNotes>
     <PackageTags>E5R Development Team Architecture</PackageTags>
   </PropertyGroup>
 
   <PropertyGroup Condition=" '$(Configuration)' == 'Release' ">
-    <TargetFrameworks>netcoreapp1.1;netstandard2.0;netstandard1.1;netstandard2.0;net46;net45</TargetFrameworks>
+    <TargetFrameworks>netcoreapp1.0;netstandard2.0;netstandard1.0;netstandard2.0;net46;net45</TargetFrameworks>
     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
     <OutputPath>$(SolutionDir)artifacts</OutputPath>
   </PropertyGroup>
@@ -27,7 +27,7 @@
   <PropertyGroup Condition=" '$(Configuration)' == 'Debug' ">
     <DebugType>Full</DebugType>
     <GeneratePackageOnBuild>false</GeneratePackageOnBuild>
-    <TargetFrameworks>netcoreapp1.1;netstandard1.1</TargetFrameworks>
+    <TargetFrameworks>netcoreapp1.0;netstandard1.0</TargetFrameworks>
   </PropertyGroup>
 
 </Project>
