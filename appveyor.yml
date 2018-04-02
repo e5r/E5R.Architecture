@@ -4,6 +4,7 @@
 image: Visual Studio 2017
 configuration: Release
 platform: Any CPU
+
 clone_depth: 1
 
 environment:
@@ -15,6 +16,7 @@ artifacts:
     name: E5RArchitecturePackages
 
 cache:
+  - '%ProgramData%\chocolatey\bin -> appveyor.yml'
   - '%ProgramData%\chocolatey\lib -> appveyor.yml'
 
 init:
@@ -27,8 +29,14 @@ install:
       $ENV:BUILD_VERSION_SUFFIX = "${BUILD_LABEL}-${BUILD_NUMBER}";
       $BUILD_VERSION = (Select-Xml -Path ".\packages.props" -XPath "/Project/PropertyGroup/VersionPrefix" | Select-Object -ExpandProperty Node).InnerText;
       Update-AppveyorBuild -Version "${BUILD_VERSION}-${ENV:BUILD_VERSION_SUFFIX}";
-      cinst opencover.portable --force;
-      cinst codecov --force;
+      if(!(test-path ${env:ProgramData}\chocolatey\bin\opencover.console.exe))
+      {
+        cinst opencover.portable;
+      }
+      if(!(test-path ${env:ProgramData}\chocolatey\bin\codecov.exe))
+      {
+        cinst codecov;
+      }
 
 before_build:
   - ps: 'dotnet --info'
@@ -38,9 +46,11 @@ build_script:
 
 test_script :
   - ps: 'opencover.console -register:user -target:"dotnet.exe" -targetargs:"test .\test\E5R.Architecture.Core.Test" -output:".\E5R.Architecture.Core.Test.Coverage.xml" -oldstyle'
+  - ps: 'opencover.console -register:user -target:"dotnet.exe" -targetargs:"test .\test\E5R.Architecture.Data.Test" -output:".\E5R.Architecture.Data.Test.Coverage.xml" -oldstyle'
 
 after_test:
   - ps: 'codecov -f .\E5R.Architecture.Core.Test.Coverage.xml'
+  - ps: 'codecov -f .\E5R.Architecture.Data.Test.Coverage.xml'
 
 deploy:
   - provider: NuGet
