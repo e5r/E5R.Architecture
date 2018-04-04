@@ -9,5 +9,8 @@
         where TModel : DataModel<TIdentifier>
         where TIdentifier : struct
     {
+        public int OffsetBegin { get; set; }
+        public int OffsetEnd { get; set; }
+        public int OffsetCount { get; set; }
     }
 }
