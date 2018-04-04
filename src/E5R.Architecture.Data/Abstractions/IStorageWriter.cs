@@ -1,11 +1,11 @@
 ﻿namespace E5R.Architecture.Data.Abstractions
 {
-    public interface IWritingStorage<TModel, TIdentifier> : IStorage<TModel, TIdentifier>
+    public interface IStorageWriter<TModel, in TIdentifier>
         where TModel : DataModel<TIdentifier>
         where TIdentifier : struct
     {
-        TModel Create(TModel model);
-        TModel Replace(TModel model);
+        TModel Create(TModel data);
+        TModel Replace(TModel data);
         void Remove(TIdentifier id);
     }
 }
