@@ -1,13 +1,9 @@
 ﻿namespace E5R.Architecture.Data
 {
     /// <summary>
-    /// Is a #order-by
+    /// Data sorter for data model without identifier
     /// </summary>
-    /// <typeparam name="TModel">Model type</typeparam>
-    /// <typeparam name="TIdentifier">Identifier type of model</typeparam>
-    public class DataSorter<TModel, TIdentifier>
-        where TModel : DataModel<TIdentifier>
-        where TIdentifier : struct
+    public class DataSorter : DataSorter<DataModel, VoidIdentifier>
     {
     }
 }

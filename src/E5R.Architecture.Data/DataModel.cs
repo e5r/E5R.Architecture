@@ -1,18 +1,12 @@
-﻿using System;
-
-namespace E5R.Architecture.Data
+﻿namespace E5R.Architecture.Data
 {
     /// <summary>
-    /// Is a #entity
+    /// Data model (Entity) representation without identifier
     /// </summary>
-    /// <typeparam name="TIdentifier">Identifier type of model</typeparam>
-    public class DataModel<TIdentifier> where TIdentifier : struct
+    public class DataModel : DataModel<VoidIdentifier>
     {
-        private readonly TIdentifier? _identifier;
-
-        public DataModel(TIdentifier? identifier)
+        public DataModel() : base(null)
         {
-            _identifier = identifier;
         }
     }
 }
