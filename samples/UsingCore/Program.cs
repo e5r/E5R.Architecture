@@ -3,9 +3,9 @@ using E5R.Architecture.Core;
 
 namespace UsingCore
 {
-    class Program
+    internal static class Program
     {
-        static void Main(string[] args)
+        private static void Main(string[] args)
         {
             var version = new SemVer
             {
