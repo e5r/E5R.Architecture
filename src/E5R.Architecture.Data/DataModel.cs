@@ -5,8 +5,5 @@
     /// </summary>
     public class DataModel : DataModel<VoidIdentifier>
     {
-        public DataModel() : base(null)
-        {
-        }
     }
 }
