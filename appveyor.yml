@@ -24,6 +24,13 @@ init:
 
 install:
   - ps: >-
+      "APPVEYOR_BUILD_NUMBER = ${ENV:APPVEYOR_BUILD_NUMBER}" | write-host;
+      "APPVEYOR_PULL_REQUEST_NUMBER = ${ENV:APPVEYOR_PULL_REQUEST_NUMBER}" | write-host;
+      "APPVEYOR_REPO_BRANCH = ${ENV:APPVEYOR_REPO_BRANCH}" | write-host;
+      "APPVEYOR_REPO_TAG = ${ENV:APPVEYOR_REPO_TAG}" | write-host;
+      "APPVEYOR_REPO_TAG_NAME = ${ENV:APPVEYOR_REPO_TAG_NAME}" | write-host;
+      "APPVEYOR_REPO_COMMIT = ${ENV:APPVEYOR_REPO_COMMIT}" | write-host;
+      
       $BUILD_LABEL = "alpha";
       $BUILD_NUMBER = "{0:00000}" -f [int]::parse("${ENV:APPVEYOR_BUILD_NUMBER}");
       $ENV:BUILD_VERSION_SUFFIX = "${BUILD_LABEL}-${BUILD_NUMBER}";
@@ -49,8 +56,8 @@ test_script :
   - ps: 'opencover.console -register:user -target:"dotnet.exe" -targetargs:"test .\test\E5R.Architecture.Data.Test" -output:".\E5R.Architecture.Data.Test.Coverage.xml" -oldstyle'
 
 after_test:
-  - ps: 'codecov -f .\E5R.Architecture.Core.Test.Coverage.xml'
-  - ps: 'codecov -f .\E5R.Architecture.Data.Test.Coverage.xml'
+  - ps: 'codecov -f .\E5R.Architecture.Core.Test.Coverage.xml --build "${ENV:APPVEYOR_BUILD_NUMBER}" --branch "${ENV:APPVEYOR_REPO_BRANCH}" --sha "${ENV:APPVEYOR_REPO_COMMIT}"'
+  - ps: 'codecov -f .\E5R.Architecture.Data.Test.Coverage.xml --build "${ENV:APPVEYOR_BUILD_NUMBER}" --branch "${ENV:APPVEYOR_REPO_BRANCH}" --sha "${ENV:APPVEYOR_REPO_COMMIT}"'
 
 deploy:
   - provider: NuGet
