@@ -1,7 +1,7 @@
 ﻿namespace E5R.Architecture.Data
 {
     /// <summary>
-    /// Data sorter for data model with identifier
+    /// Data sorter (OrderBy) for data model with identifier
     /// </summary>
     /// <typeparam name="TModel">Data model type</typeparam>
     /// <typeparam name="TIdentifier">Data model identifier</typeparam>
