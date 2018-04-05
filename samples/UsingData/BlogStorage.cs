@@ -5,8 +5,7 @@ using E5R.Architecture.Data.Abstractions;
 
 namespace UsingData
 {
-    // TODO: Criar IStorage's void
-    public class BlogStorage : IStorageWriter<BlogDataModel, VoidIdentifier>
+    public class BlogStorage : IStorageWriter<BlogDataModel>
     {
         private readonly IUnitOfWork _uow;
 
