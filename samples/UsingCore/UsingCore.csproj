@@ -6,7 +6,7 @@
     </PropertyGroup>
 
     <ItemGroup>
-        <PackageReference Include="E5R.Architecture.Core" Version="0.1.0-alpha-00070"/>
+        <ProjectReference Include="..\..\src\E5R.Architecture.Core\E5R.Architecture.Core.csproj"/>
     </ItemGroup>
 
 </Project>

@@ -4,6 +4,6 @@
     <TargetFramework>netcoreapp1.0</TargetFramework>
   </PropertyGroup>
   <ItemGroup>
-    <PackageReference Include="E5R.Architecture.Data" Version="0.1.0-alpha-00070" />
+    <ProjectReference Include="..\..\src\E5R.Architecture.Data\E5R.Architecture.Data.csproj"/>
   </ItemGroup>
 </Project>
