@@ -290,3 +290,7 @@ __pycache__/
 *.btm.cs
 *.odx.cs
 *.xsd.cs
+
+
+# Project files
+E5R.Architecture.Samples.UsingData.json

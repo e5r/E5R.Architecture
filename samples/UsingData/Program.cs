@@ -1,7 +1,5 @@
 ﻿using System;
-using System.Linq;
-using E5R.Architecture.Data;
-using E5R.Architecture.Data.Abstractions;
+using E5R.Architecture.Core;
 
 namespace UsingData
 {
@@ -11,7 +9,8 @@ namespace UsingData
     {
         private static void Main(string[] args)
         {
-            var uow = new MemoryUnitOfWork();
+            var fs = new DefaultFileSystem();
+            var uow = new MemoryUnitOfWork(fs);
             var storage = new BlogStorage(uow);
 
             WriteLine("Creating a blogs...");
@@ -58,6 +57,8 @@ namespace UsingData
             {
                 WriteLine($"  - {blog.BlogUrl} -> {blog.BlogTitle}");
             }
+
+            uow.SaveWork();
         }
     }
 }
