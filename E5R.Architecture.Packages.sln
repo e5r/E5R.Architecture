@@ -25,6 +25,7 @@ ProjectSection(SolutionItems) = preProject
 	NEWS.md = NEWS.md
 	packages.props = packages.props
 	README.md = README.md
+	.editorconfig = .editorconfig
 EndProjectSection
 EndProject
 Global

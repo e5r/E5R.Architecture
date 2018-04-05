@@ -15,6 +15,19 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "E5R.Architecture.Data", "sr
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "E5R.Architecture.Core", "src\E5R.Architecture.Core\E5R.Architecture.Core.csproj", "{F4D2B266-9F0F-44AB-B6BE-72969F97C635}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "_files", "_files", "{D31C870B-4BF0-4751-AF2F-0028B2F99973}"
+ProjectSection(SolutionItems) = preProject
+	.gitignore = .gitignore
+	appveyor.yml = appveyor.yml
+	codecov.yml = codecov.yml
+	global.json = global.json
+	LICENSE = LICENSE
+	NEWS.md = NEWS.md
+	packages.props = packages.props
+	README.md = README.md
+	.editorconfig = .editorconfig
+EndProjectSection
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
