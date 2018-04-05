@@ -6,4 +6,7 @@
     <RootNamespace>$(RootPkgNamespace).Data</RootNamespace>
     <Description>Componente de dados, parte da arquitetura de software E5R Development Team</Description>
   </PropertyGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\E5R.Architecture.Core\E5R.Architecture.Core.csproj"/>
+  </ItemGroup>
 </Project>
