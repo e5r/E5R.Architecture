@@ -29,8 +29,8 @@ namespace UsingData
         {
             string dbFilePath = Path.Combine(fs.GetCurrentDirectory(), DatabaseFileName);
 
-            FileStream file = fs.OpenFile(dbFilePath, FileMode.Truncate);
-            string dataString = JsonConvert.SerializeObject(session.Get<MemoryDatabase>().Blog);
+            FileStream file = fs.OpenFile(dbFilePath, fs.FileExists(dbFilePath) ? FileMode.Truncate : FileMode.CreateNew);
+            string dataString = JsonConvert.SerializeObject(session.Get<MemoryDatabase>().Blog, Formatting.Indented);
 
             using (StreamWriter writer = new StreamWriter(file, Encoding.UTF8))
             {
