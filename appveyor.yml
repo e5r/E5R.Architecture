@@ -49,15 +49,19 @@ before_build:
   - ps: 'dotnet --info'
 
 build_script:
-  - ps: 'dotnet build .\E5R.Architecture.Packages.sln -c ${ENV:CONFIGURATION} --version-suffix ${ENV:BUILD_VERSION_SUFFIX}'
+  - ps: 'dotnet build .\E5R.Architecture.sln -c ${ENV:CONFIGURATION} --version-suffix ${ENV:BUILD_VERSION_SUFFIX}'
 
 test_script :
   - ps: 'opencover.console -register:user -target:"dotnet.exe" -targetargs:"test .\test\E5R.Architecture.Core.Test" -output:".\E5R.Architecture.Core.Test.Coverage.xml" -oldstyle'
   - ps: 'opencover.console -register:user -target:"dotnet.exe" -targetargs:"test .\test\E5R.Architecture.Data.Test" -output:".\E5R.Architecture.Data.Test.Coverage.xml" -oldstyle'
+  - ps: 'opencover.console -register:user -target:"dotnet.exe" -targetargs:"test .\test\E5R.Architecture.Data.Dapper.Test" -output:".\E5R.Architecture.Data.Dapper.Test.Coverage.xml" -oldstyle'
+  - ps: 'opencover.console -register:user -target:"dotnet.exe" -targetargs:"test .\test\E5R.Architecture.Data.EF.Test" -output:".\E5R.Architecture.Data.EF.Test.Coverage.xml" -oldstyle'
 
 after_test:
   - ps: 'codecov -f .\E5R.Architecture.Core.Test.Coverage.xml --build "${ENV:APPVEYOR_BUILD_NUMBER}" --branch "${ENV:APPVEYOR_REPO_BRANCH}" --sha "${ENV:APPVEYOR_REPO_COMMIT}"'
   - ps: 'codecov -f .\E5R.Architecture.Data.Test.Coverage.xml --build "${ENV:APPVEYOR_BUILD_NUMBER}" --branch "${ENV:APPVEYOR_REPO_BRANCH}" --sha "${ENV:APPVEYOR_REPO_COMMIT}"'
+  - ps: 'codecov -f .\E5R.Architecture.Data.Dapper.Test.Coverage.xml --build "${ENV:APPVEYOR_BUILD_NUMBER}" --branch "${ENV:APPVEYOR_REPO_BRANCH}" --sha "${ENV:APPVEYOR_REPO_COMMIT}"'
+  - ps: 'codecov -f .\E5R.Architecture.Data.EF.Test.Coverage.xml --build "${ENV:APPVEYOR_BUILD_NUMBER}" --branch "${ENV:APPVEYOR_REPO_BRANCH}" --sha "${ENV:APPVEYOR_REPO_COMMIT}"'
 
 deploy:
   - provider: NuGet
