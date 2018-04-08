@@ -15,5 +15,7 @@ Pacote  | NuGet | NuGet RC
 ------- | :---- | :------- 
 E5R.Architecture.Core | [![NuGet](https://img.shields.io/nuget/v/E5R.Architecture.Core.png?style=flat-square)](https://www.nuget.org/packages/E5R.Architecture.Core) | [![NuGet RC](https://img.shields.io/nuget/vpre/E5R.Architecture.Core.png?style=flat-square)](https://www.nuget.org/packages/E5R.Architecture.Core)
 E5R.Architecture.Data | [![NuGet](https://img.shields.io/nuget/v/E5R.Architecture.Data.png?style=flat-square)](https://www.nuget.org/packages/E5R.Architecture.Data) | [![NuGet RC](https://img.shields.io/nuget/vpre/E5R.Architecture.Data.png?style=flat-square)](https://www.nuget.org/packages/E5R.Architecture.Data)
+E5R.Architecture.Data.Dapper | [![NuGet](https://img.shields.io/nuget/v/E5R.Architecture.Data.Dapper.png?style=flat-square)](https://www.nuget.org/packages/E5R.Architecture.Data.Dapper) | [![NuGet RC](https://img.shields.io/nuget/vpre/E5R.Architecture.Data.Dapper.png?style=flat-square)](https://www.nuget.org/packages/E5R.Architecture.Data.Dapper)
+E5R.Architecture.Data.EF | [![NuGet](https://img.shields.io/nuget/v/E5R.Architecture.Data.EF.png?style=flat-square)](https://www.nuget.org/packages/E5R.Architecture.Data.EF) | [![NuGet RC](https://img.shields.io/nuget/vpre/E5R.Architecture.Data.EF.png?style=flat-square)](https://www.nuget.org/packages/E5R.Architecture.Data.EF)
 
 Acompanhe as novidades em [NEWS.md](NEWS.md)
