@@ -10,6 +10,6 @@
     <DotNetCliToolReference Include="dotnet-xunit" Version="2.3.1" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\..\src\E5R.Architecture.Data.EF\E5R.Architecture.Data.EF.csproj" />
+    <ProjectReference Include="..\..\src\E5R.Architecture.Data.EntityFrameworkCore\E5R.Architecture.Data.EntityFrameworkCore.csproj" />
   </ItemGroup>
 </Project>

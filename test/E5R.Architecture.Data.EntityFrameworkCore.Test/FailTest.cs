@@ -1,7 +1,7 @@
 ﻿using System;
 using Xunit;
 
-namespace E5R.Architecture.Data.EF.Test
+namespace E5R.Architecture.Data.EntityFrameworkCore.Test
 {
     public class FailTest
     {

@@ -1,10 +1,9 @@
 ﻿using System;
 using E5R.Architecture.Data.Abstractions;
 using Microsoft.EntityFrameworkCore;
-using Microsoft.EntityFrameworkCore.Internal;
 using Microsoft.EntityFrameworkCore.Storage;
 
-namespace E5R.Architecture.Data.EF
+namespace E5R.Architecture.Data.EntityFrameworkCore
 {
     public class UnitOfWork<TContext> : IUnitOfWork
         where TContext : DbContext
