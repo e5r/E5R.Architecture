@@ -7,47 +7,39 @@ namespace UsingData
 {
     public class BlogStorage : IStorageWriter<BlogDataModel>
     {
-        private readonly IUnitOfWork _uow;
-
-        public BlogStorage(IUnitOfWork uow)
-        {
-            _uow = uow;
-        }
+        private MemoryDatabase _db;
 
         public BlogDataModel Create(BlogDataModel blog)
         {
             // TODO: Implementar validação no Storage genérico
 
-            var db = _uow.Session.Get<MemoryDatabase>();
-
-            if (db.Blog.Any(w => w.BlogUrl == blog.BlogUrl))
+            if (_db.Blog.Any(w => w.BlogUrl == blog.BlogUrl))
             {
                 throw new Exception($"Blog '{blog.BlogUrl}' already exists!");
             }
 
-            db.Blog.Add(blog);
+            _db.Blog.Add(blog);
 
-            return db.Blog.SingleOrDefault(w => w.BlogUrl == blog.BlogUrl);
+            return _db.Blog.SingleOrDefault(w => w.BlogUrl == blog.BlogUrl);
         }
 
         public BlogDataModel Replace(BlogDataModel blog)
         {
             // TODO: Implementar validação no Storage genérico
 
-            var db = _uow.Session.Get<MemoryDatabase>();
-            var originalBlog = db.Blog.SingleOrDefault(w => w.BlogUrl == blog.BlogUrl);
+            var originalBlog = _db.Blog.SingleOrDefault(w => w.BlogUrl == blog.BlogUrl);
 
             if (originalBlog == null)
             {
                 throw new Exception($"Blog '{blog.BlogUrl}' not found!");
             }
 
-            var blogIdx = db.Blog.IndexOf(originalBlog);
+            var blogIdx = _db.Blog.IndexOf(originalBlog);
 
-            db.Blog.RemoveAt(blogIdx);
-            db.Blog.Add(blog);
+            _db.Blog.RemoveAt(blogIdx);
+            _db.Blog.Add(blog);
 
-            return db.Blog.SingleOrDefault(w => w.BlogUrl == blog.BlogUrl);
+            return _db.Blog.SingleOrDefault(w => w.BlogUrl == blog.BlogUrl);
         }
 
         public void Remove(VoidIdentifier id)
@@ -59,17 +51,21 @@ namespace UsingData
         {
             // TODO: Implementar validação no Storage genérico
 
-            var db = _uow.Session.Get<MemoryDatabase>();
-            var originalBlog = db.Blog.SingleOrDefault(w => w.BlogUrl == blogUrl);
+            var originalBlog = _db.Blog.SingleOrDefault(w => w.BlogUrl == blogUrl);
 
             if (originalBlog == null)
             {
                 throw new Exception($"Blog '{blogUrl}' not found!");
             }
 
-            var blogIdx = db.Blog.IndexOf(originalBlog);
+            var blogIdx = _db.Blog.IndexOf(originalBlog);
 
-            db.Blog.RemoveAt(blogIdx);
+            _db.Blog.RemoveAt(blogIdx);
+        }
+
+        public void ConfigureSession(UnderlyingSession session)
+        {
+            _db = session.Get<MemoryDatabase>();
         }
     }
 }

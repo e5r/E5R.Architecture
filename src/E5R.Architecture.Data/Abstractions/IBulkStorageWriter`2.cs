@@ -2,7 +2,7 @@
 
 namespace E5R.Architecture.Data.Abstractions
 {
-    public interface IBulkStorageWriter<TModel, TIdentifier>
+    public interface IBulkStorageWriter<TModel, TIdentifier> : IStorageBase
         where TModel : DataModel<TIdentifier>
         where TIdentifier : struct
     {
