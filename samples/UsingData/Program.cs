@@ -7,7 +7,7 @@ namespace UsingData
 
     internal static class Program
     {
-        private static void Main(string[] args)
+        private static void Main()
         {
             var fs = new DefaultFileSystem();
             var uow = new MemoryUnitOfWork(fs);
