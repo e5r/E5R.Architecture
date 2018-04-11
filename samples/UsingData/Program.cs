@@ -12,7 +12,7 @@ namespace UsingData
             var fs = new DefaultFileSystem();
             var uow = new MemoryUnitOfWork(fs);
             var storage = new BlogStorage();
-            var module = new BlogDataModule(uow, storage);
+            var module = new BlogModule(uow, storage);
             var error = false;
 
             try
