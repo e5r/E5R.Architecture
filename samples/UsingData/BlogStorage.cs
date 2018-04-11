@@ -5,7 +5,7 @@ using E5R.Architecture.Data.Abstractions;
 
 namespace UsingData
 {
-    public class BlogStorage : IStorageWriter<BlogDataModel>
+    public class BlogStorage : IStorageWriter<BlogStorage, BlogDataModel>
     {
         private MemoryDatabase _db;
 
@@ -63,9 +63,11 @@ namespace UsingData
             _db.Blog.RemoveAt(blogIdx);
         }
 
-        public void ConfigureSession(UnderlyingSession session)
+        public BlogStorage ConfigureSession(UnderlyingSession session)
         {
             _db = session.Get<MemoryDatabase>();
+
+            return this;
         }
     }
 }

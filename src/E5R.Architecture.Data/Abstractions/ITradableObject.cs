@@ -8,8 +8,9 @@
     /// transação negociál. Portanto, depende de um objeto de sessão,
     /// assim, deve ser capaz de ser configurado para isso.
     /// </remarks>
-    public interface ITradableObject
+    public interface ITradableObject<out TFluentResult>
+        where TFluentResult : class
     {
-        void ConfigureSession(UnderlyingSession session);
+        TFluentResult ConfigureSession(UnderlyingSession session);
     }
 }

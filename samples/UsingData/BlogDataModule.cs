@@ -3,18 +3,11 @@ using E5R.Architecture.Data.Abstractions;
 
 namespace UsingData
 {
-    public class BlogDataModule : ITradableObject
+    public class BlogDataModule
     {
         public BlogDataModule(IUnitOfWork uow, BlogStorage storage)
         {
-            Blog = storage;
-
-            ConfigureSession(uow.Session);
-        }
-
-        public void ConfigureSession(UnderlyingSession session)
-        {
-            Blog.ConfigureSession(session);
+            Blog = storage.ConfigureSession(uow.Session);
         }
 
         public BlogStorage Blog { get; }

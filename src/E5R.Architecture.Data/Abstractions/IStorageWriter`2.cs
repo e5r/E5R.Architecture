@@ -1,11 +1,8 @@
 ﻿namespace E5R.Architecture.Data.Abstractions
 {
-    public interface IStorageWriter<TModel, in TIdentifier> : ITradableObject
-        where TModel : DataModel<TIdentifier>
-        where TIdentifier : struct
+    public interface IStorageWriter<out TImpl, TModel> : IStorageWriter<TImpl, TModel, VoidIdentifier>
+        where TImpl : class
+        where TModel : DataModel<VoidIdentifier>
     {
-        TModel Create(TModel data);
-        TModel Replace(TModel data);
-        void Remove(TIdentifier id);
     }
 }

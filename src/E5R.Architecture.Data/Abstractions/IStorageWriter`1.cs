@@ -1,7 +1,7 @@
 ﻿namespace E5R.Architecture.Data.Abstractions
 {
-    public interface IStorageWriter<TModel> : IStorageWriter<TModel, VoidIdentifier>
-        where TModel : DataModel<VoidIdentifier>
+    public interface IStorageWriter<out TImpl> : IStorageWriter<TImpl, DataModel, VoidIdentifier>
+        where TImpl : class
     {
     }
 }

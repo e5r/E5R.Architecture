@@ -1,7 +1,8 @@
 ﻿namespace E5R.Architecture.Data.Abstractions
 {
-    public interface IBulkStorageWriter<TModel> : IBulkStorageWriter<TModel, VoidIdentifier>
-        where TModel : DataModel<VoidIdentifier>
+    public interface
+        IBulkStorageWriter<out TImpl> : IBulkStorageWriter<TImpl, DataModel, VoidIdentifier>
+        where TImpl : class
     {
     }
 }

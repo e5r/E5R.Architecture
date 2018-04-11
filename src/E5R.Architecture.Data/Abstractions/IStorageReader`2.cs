@@ -1,16 +1,9 @@
-﻿using System.Collections.Generic;
-
-namespace E5R.Architecture.Data.Abstractions
+﻿namespace E5R.Architecture.Data.Abstractions
 {
-    public interface IStorageReader<TModel, TIdentifier> : ITradableObject
-        where TModel : DataModel<TIdentifier>
-        where TIdentifier : struct
+    public interface
+        IStorageReader<out TImpl, TModel> : IStorageReader<TImpl, TModel, VoidIdentifier>
+        where TImpl : class
+        where TModel : DataModel<VoidIdentifier>
     {
-        TModel Find(TIdentifier id);
-        IEnumerable<TModel> Get(DataLimiter<TModel, TIdentifier> limiter);
-        IEnumerable<TModel> Search(DataReducer<TModel, TIdentifier> reducer);
-
-        IEnumerable<TModel> LimitedSearch(DataReducer<TModel, TIdentifier> reducer,
-            DataLimiter<TModel, TIdentifier> limiter);
     }
 }
