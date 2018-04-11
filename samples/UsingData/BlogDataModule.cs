@@ -3,22 +3,20 @@ using E5R.Architecture.Data.Abstractions;
 
 namespace UsingData
 {
-    public class BlogDataModule : DataModule
+    public class BlogDataModule : ITradableObject
     {
         public BlogDataModule(IUnitOfWork uow, BlogStorage storage)
         {
             Blog = storage;
-            
-            // TODO: Quando usamos base no construtor, ConfigureSession é chamado
-            // antes de Blog ser instanciado
-            base(uow);
+
+            ConfigureSession(uow.Session);
         }
 
-        protected override void ConfigureSession(UnderlyingSession session)
+        public void ConfigureSession(UnderlyingSession session)
         {
             Blog.ConfigureSession(session);
         }
-        
+
         public BlogStorage Blog { get; }
     }
 }

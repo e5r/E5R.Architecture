@@ -2,7 +2,7 @@
 
 namespace E5R.Architecture.Data.Abstractions
 {
-    public interface IStorageReader<TModel, TIdentifier> : IStorageBase
+    public interface IStorageReader<TModel, TIdentifier> : ITradableObject
         where TModel : DataModel<TIdentifier>
         where TIdentifier : struct
     {

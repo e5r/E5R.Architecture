@@ -1,6 +1,6 @@
 ﻿namespace E5R.Architecture.Data.Abstractions
 {
-    public interface IStorageWriter<TModel, in TIdentifier> : IStorageBase
+    public interface IStorageWriter<TModel, in TIdentifier> : ITradableObject
         where TModel : DataModel<TIdentifier>
         where TIdentifier : struct
     {
