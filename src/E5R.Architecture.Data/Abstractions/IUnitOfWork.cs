@@ -5,7 +5,7 @@ namespace E5R.Architecture.Data.Abstractions
     /// <summary>
     /// Unit of Work
     /// </summary>
-    public interface IUnitOfWork
+    public interface IUnitOfWork : IDisposable
     {
         /// <summary>
         /// Saves the pending work

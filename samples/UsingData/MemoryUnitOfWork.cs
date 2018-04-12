@@ -1,4 +1,5 @@
-﻿using E5R.Architecture.Core.Abstractions;
+﻿using System;
+using E5R.Architecture.Core.Abstractions;
 using E5R.Architecture.Data;
 using E5R.Architecture.Data.Abstractions;
 
@@ -10,6 +11,7 @@ namespace UsingData
     {
         private readonly IFileSystem _fs;
         private UnderlyingSession _session;
+        private bool _disposed = false;
 
         public MemoryUnitOfWork(IFileSystem fs)
         {
@@ -24,5 +26,21 @@ namespace UsingData
 
         public UnderlyingSession Session
             => _session ?? (_session = CreateSession(_fs));
+
+        public void Dispose()
+        {
+            Dispose(true);
+            GC.SuppressFinalize(this);
+        }
+
+        protected virtual void Dispose(bool disposing)
+        {
+            if (!_disposed && disposing)
+            {
+                _session = null;
+            }
+
+            _disposed = true;
+        }
     }
 }
