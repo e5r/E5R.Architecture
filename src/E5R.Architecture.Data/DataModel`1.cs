@@ -8,15 +8,15 @@ namespace E5R.Architecture.Data
     /// <typeparam name="TIdentifier">Identifier type of model</typeparam>
     public class DataModel<TIdentifier> where TIdentifier : struct
     {
-        public DataModel() : this(null)
+        public DataModel()
         {
         }
 
-        protected DataModel(TIdentifier? identifier)
+        public DataModel(TIdentifier identifier)
         {
             Identifier = identifier;
         }
 
-        protected TIdentifier? Identifier { get; set; }
+        public TIdentifier Identifier { get; private set; }
     }
 }
