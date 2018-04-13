@@ -1,22 +1,19 @@
 ﻿using System;
+using System.Linq.Expressions;
 
 namespace E5R.Architecture.Data
 {
     /// <summary>
-    /// Data model (Entity) representation with identifier
+    /// Data model (Entity) representation with identifier criteria
     /// </summary>
-    /// <typeparam name="TIdentifier">Identifier type of model</typeparam>
-    public class DataModel<TIdentifier> where TIdentifier : struct
+    /// <typeparam name="T">Type of model</typeparam>
+    public abstract class DataModel<T>
+        where T : class
     {
-        public DataModel()
-        {
-        }
-
-        public DataModel(TIdentifier identifier)
-        {
-            Identifier = identifier;
-        }
-
-        public TIdentifier Identifier { get; private set; }
+        /// <summary>
+        /// Reducer that ensure the return of a single object.
+        /// </summary>
+        /// <returns>Reduce expression</returns>
+        public abstract Expression<Func<T, bool>> GetIdenifierCriteria();
     }
 }

@@ -5,16 +5,13 @@ using Microsoft.EntityFrameworkCore;
 
 namespace E5R.Architecture.Data.EntityFrameworkCore
 {
-    public class
-        StorageReader<TModel, TIdentifier> : IStorageReader<StorageReader<TModel, TIdentifier>,
-            TModel, TIdentifier>
-        where TModel : DataModel<TIdentifier>
-        where TIdentifier : struct
+    public class StorageReader<TModel> : IStorageReader<StorageReader<TModel>, TModel>
+        where TModel : DataModel<TModel>
     {
         private DbContext _context;
         private IQueryable<TModel> _query;
 
-        public StorageReader<TModel, TIdentifier> ConfigureSession(UnderlyingSession session)
+        public StorageReader<TModel> ConfigureSession(UnderlyingSession session)
         {
             Checker.NotNullArgument(session, nameof(session));
 
@@ -24,23 +21,23 @@ namespace E5R.Architecture.Data.EntityFrameworkCore
             return this;
         }
 
-        public TModel Find(TIdentifier id)
+        public TModel Find(TModel data)
         {
-            return _query.SingleOrDefault(w => w.Identifier.Equals(id));
+            return _query.SingleOrDefault(data.GetIdenifierCriteria());
         }
 
-        public IEnumerable<TModel> Get(DataLimiter<TModel, TIdentifier> limiter)
-        {
-            throw new System.NotImplementedException();
-        }
-
-        public IEnumerable<TModel> Search(DataReducer<TModel, TIdentifier> reducer)
+        public IEnumerable<TModel> Get(DataLimiter<TModel> limiter)
         {
             throw new System.NotImplementedException();
         }
 
-        public IEnumerable<TModel> LimitedSearch(DataReducer<TModel, TIdentifier> reducer,
-            DataLimiter<TModel, TIdentifier> limiter)
+        public IEnumerable<TModel> Search(DataReducer<TModel> reducer)
+        {
+            throw new System.NotImplementedException();
+        }
+
+        public IEnumerable<TModel> LimitedSearch(DataReducer<TModel> reducer,
+            DataLimiter<TModel> limiter)
         {
             throw new System.NotImplementedException();
         }

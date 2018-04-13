@@ -9,6 +9,13 @@ namespace UsingData
     {
         private MemoryDatabase _db;
 
+        public BlogStorage ConfigureSession(UnderlyingSession session)
+        {
+            _db = session.Get<MemoryDatabase>();
+
+            return this;
+        }
+
         public BlogDataModel Create(BlogDataModel blog)
         {
             // TODO: Implementar validação no Storage genérico
@@ -42,32 +49,20 @@ namespace UsingData
             return _db.Blog.SingleOrDefault(w => w.BlogUrl == blog.BlogUrl);
         }
 
-        public void Remove(VoidIdentifier id)
-        {
-            throw new NotImplementedException();
-        }
-
-        public void RemoveByUrl(string blogUrl)
+        public void Remove(BlogDataModel blog)
         {
             // TODO: Implementar validação no Storage genérico
 
-            var originalBlog = _db.Blog.SingleOrDefault(w => w.BlogUrl == blogUrl);
+            var originalBlog = _db.Blog.SingleOrDefault(blog.GetIdenifierCriteria().Compile());
 
             if (originalBlog == null)
             {
-                throw new Exception($"Blog '{blogUrl}' not found!");
+                throw new Exception($"Blog '{blog.BlogUrl}' not found!");
             }
 
             var blogIdx = _db.Blog.IndexOf(originalBlog);
 
             _db.Blog.RemoveAt(blogIdx);
-        }
-
-        public BlogStorage ConfigureSession(UnderlyingSession session)
-        {
-            _db = session.Get<MemoryDatabase>();
-
-            return this;
         }
     }
 }

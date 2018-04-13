@@ -1,9 +1,8 @@
 ﻿namespace E5R.Architecture.Data
 {
     /// <inheritdoc />
-    public class DataLimiter<TModel, TIdentifier> : DataSorter<TModel, TIdentifier>
-        where TModel : DataModel<TIdentifier>
-        where TIdentifier : struct
+    public class DataLimiter<TModel> : DataSorter<TModel>
+        where TModel : DataModel<TModel>
     {
         public int OffsetBegin { get; set; }
         public int OffsetEnd { get; set; }

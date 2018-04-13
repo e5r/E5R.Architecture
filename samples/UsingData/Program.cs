@@ -54,7 +54,10 @@ namespace UsingData
 
                 WriteLine();
                 WriteLine("Removing a blog...");
-                module.Blog.RemoveByUrl("https://blog.jetbrains.com/dotnet");
+                module.Blog.Remove(new BlogDataModel
+                {
+                    BlogUrl = "https://blog.jetbrains.com/dotnet"
+                });
 
                 WriteLine($"  - Total of existing blogs: {db.Blog.Count}");
                 foreach (var blog in db.Blog)

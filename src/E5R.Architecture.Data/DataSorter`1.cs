@@ -8,19 +8,16 @@ namespace E5R.Architecture.Data
     /// Data sorter (OrderBy) for data model with identifier
     /// </summary>
     /// <typeparam name="TModel">Data model type</typeparam>
-    /// <typeparam name="TIdentifier">Data model identifier</typeparam>
-    public class DataSorter<TModel, TIdentifier>
-        where TModel : DataModel<TIdentifier>
-        where TIdentifier : struct
+    public class DataSorter<TModel>
+        where TModel : DataModel<TModel>
     {
         /// <summary>
         /// Get a sorter expression (OrderBy)
         /// </summary>
         /// <returns>List of sorter expression</returns>
-        /// <exception cref="NotImplementedException">If not implemented</exception>
-        protected virtual IEnumerable<Expression<Func<TModel, object>>> GetSorter()
+        public virtual Expression<Func<TModel, object>> GetSorter()
         {
-            throw new NotImplementedException();
+            throw new MissingMethodException();
         }
     }
 }

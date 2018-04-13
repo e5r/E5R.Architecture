@@ -8,19 +8,16 @@ namespace E5R.Architecture.Data
     /// Data reducer (Where) for data model with identifier
     /// </summary>
     /// <typeparam name="TModel">Model type</typeparam>
-    /// <typeparam name="TIdentifier">Identifier type of model</typeparam>
-    public class DataReducer<TModel, TIdentifier>
-        where TModel : DataModel<TIdentifier>
-        where TIdentifier : struct
+    public class DataReducer<TModel>
+        where TModel : DataModel<TModel>
     {
         /// <summary>
         /// Get a reducer expression (Where)
         /// </summary>
         /// <returns>List of reducer expression</returns>
-        /// <exception cref="NotImplementedException">If not implemented</exception>
-        protected virtual IEnumerable<Expression<Func<TModel, object>>> GetReducer()
+        public virtual IEnumerable<Expression<Func<TModel, bool>>> GetReducer()
         {
-            throw new NotImplementedException();
+            throw new MissingMethodException();
         }
     }
 }
