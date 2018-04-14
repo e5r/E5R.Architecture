@@ -9,7 +9,7 @@ namespace UsingData
     {
         private MemoryDatabase _db;
 
-        public BlogStorage ConfigureSession(UnderlyingSession session)
+        public BlogStorage Configure(UnderlyingSession session)
         {
             _db = session.Get<MemoryDatabase>();
 

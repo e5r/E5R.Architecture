@@ -1,14 +1,15 @@
-﻿using E5R.Architecture.Data.Abstractions;
+﻿using E5R.Architecture.Data;
+using E5R.Architecture.Data.Abstractions;
 
 namespace UsingData
 {
-    public class BlogModule
+    public class BlogModule : DataModule<BlogStorage>
     {
         public BlogModule(IUnitOfWork uow, BlogStorage storage)
         {
-            Blog = storage.ConfigureSession(uow.Session);
+            Storage1 = storage.Configure(uow.Session);
         }
 
-        public BlogStorage Blog { get; }
+        public BlogStorage Blog => Storage1;
     }
 }
