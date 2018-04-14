@@ -2,7 +2,8 @@
 
 namespace E5R.Architecture.Data.Abstractions
 {
-    public interface IBulkStorageWriter<out TImpl, TModel> : ITradableObject<TImpl>
+    public interface IBulkStorageWriter<out TImpl, TModel> : IStorageSignature,
+        ITradableObject<TImpl>
         where TImpl : class
         where TModel : DataModel<TModel>
     {
