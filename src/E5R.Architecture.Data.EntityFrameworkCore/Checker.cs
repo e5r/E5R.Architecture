@@ -3,7 +3,7 @@ using Microsoft.EntityFrameworkCore;
 
 namespace E5R.Architecture.Data.EntityFrameworkCore
 {
-    internal class Checker
+    internal class Checker : Core.Checker
     {
         public static void NotNullContext(DbContext context)
         {
@@ -12,15 +12,6 @@ namespace E5R.Architecture.Data.EntityFrameworkCore
                 // TODO: Implementar internacionalização
                 throw new NullReferenceException(
                     $"The context is null. The session has not been configured.");
-            }
-        }
-
-        public static void NotNullArgument(object argObj, string argName)
-        {
-            if (argObj == null)
-            {
-                // TODO: Implementar internacionalização
-                throw new ArgumentNullException(argName);
             }
         }
     }

@@ -11,7 +11,7 @@ namespace E5R.Architecture.Data.EntityFrameworkCore
         private DbContext _context;
         private IQueryable<TModel> _query;
 
-        public StorageReader<TModel> ConfigureSession(UnderlyingSession session)
+        public StorageReader<TModel> Configure(UnderlyingSession session)
         {
             Checker.NotNullArgument(session, nameof(session));
 
