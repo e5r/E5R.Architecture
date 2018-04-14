@@ -1,4 +1,6 @@
-﻿namespace E5R.Architecture.Data
+﻿using E5R.Architecture.Data.Abstractions;
+
+namespace E5R.Architecture.Data
 {
     /// <inheritdoc />
     public class DataLimiter<TModel> : DataSorter<TModel>

@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Linq.Expressions;
 
-namespace E5R.Architecture.Data
+namespace E5R.Architecture.Data.Abstractions
 {
     /// <summary>
     /// Data model (Entity) representation with identifier criteria
