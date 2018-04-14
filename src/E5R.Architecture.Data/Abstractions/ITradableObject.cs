@@ -11,6 +11,6 @@
     public interface ITradableObject<out TFluentResult>
         where TFluentResult : class
     {
-        TFluentResult ConfigureSession(UnderlyingSession session);
+        TFluentResult Configure(UnderlyingSession session);
     }
 }
