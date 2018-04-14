@@ -56,12 +56,14 @@ test_script :
   - ps: 'opencover.console -register:user -target:"dotnet.exe" -targetargs:"test .\test\E5R.Architecture.Data.Test" -output:".\E5R.Architecture.Data.Test.Coverage.xml" -oldstyle'
   - ps: 'opencover.console -register:user -target:"dotnet.exe" -targetargs:"test .\test\E5R.Architecture.Data.Dapper.Test" -output:".\E5R.Architecture.Data.Dapper.Test.Coverage.xml" -oldstyle'
   - ps: 'opencover.console -register:user -target:"dotnet.exe" -targetargs:"test .\test\E5R.Architecture.Data.EntityFrameworkCore.Test" -output:".\E5R.Architecture.Data.EntityFrameworkCore.Test.Coverage.xml" -oldstyle'
+  - ps: 'opencover.console -register:user -target:"dotnet.exe" -targetargs:"test .\test\E5R.Architecture.Business.Test" -output:".\E5R.Architecture.Business.Test.Coverage.xml" -oldstyle'
 
 after_test:
   - ps: 'codecov -f .\E5R.Architecture.Core.Test.Coverage.xml --build "${ENV:APPVEYOR_BUILD_NUMBER}" --branch "${ENV:APPVEYOR_REPO_BRANCH}" --sha "${ENV:APPVEYOR_REPO_COMMIT}"'
   - ps: 'codecov -f .\E5R.Architecture.Data.Test.Coverage.xml --build "${ENV:APPVEYOR_BUILD_NUMBER}" --branch "${ENV:APPVEYOR_REPO_BRANCH}" --sha "${ENV:APPVEYOR_REPO_COMMIT}"'
   - ps: 'codecov -f .\E5R.Architecture.Data.Dapper.Test.Coverage.xml --build "${ENV:APPVEYOR_BUILD_NUMBER}" --branch "${ENV:APPVEYOR_REPO_BRANCH}" --sha "${ENV:APPVEYOR_REPO_COMMIT}"'
   - ps: 'codecov -f .\E5R.Architecture.Data.EntityFrameworkCore.Test.Coverage.xml --build "${ENV:APPVEYOR_BUILD_NUMBER}" --branch "${ENV:APPVEYOR_REPO_BRANCH}" --sha "${ENV:APPVEYOR_REPO_COMMIT}"'
+  - ps: 'codecov -f .\E5R.Architecture.Business.Test.Coverage.xml --build "${ENV:APPVEYOR_BUILD_NUMBER}" --branch "${ENV:APPVEYOR_REPO_BRANCH}" --sha "${ENV:APPVEYOR_REPO_COMMIT}"'
 
 deploy:
   - provider: NuGet
