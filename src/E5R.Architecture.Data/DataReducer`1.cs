@@ -12,6 +12,8 @@ namespace E5R.Architecture.Data
     public class DataReducer<TModel>
         where TModel : DataModel<TModel>
     {
+        // TODO: Mudar para classe abstrata?
+        
         /// <summary>
         /// Get a reducer expression (Where)
         /// </summary>

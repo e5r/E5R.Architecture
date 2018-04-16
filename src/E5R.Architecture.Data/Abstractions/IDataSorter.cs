@@ -1,24 +1,24 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Linq.Expressions;
-using E5R.Architecture.Data.Abstractions;
 
-namespace E5R.Architecture.Data
+namespace E5R.Architecture.Data.Abstractions
 {
     /// <summary>
     /// Data sorter (OrderBy) for data model with identifier
     /// </summary>
     /// <typeparam name="TModel">Data model type</typeparam>
-    public class DataSorter<TModel>
+    public interface IDataSorter<TModel>
         where TModel : DataModel<TModel>
     {
+        /// <summary>
+        /// Descending order
+        /// </summary>
+        bool Descending { get; }
+
         /// <summary>
         /// Get a sorter expression (OrderBy)
         /// </summary>
         /// <returns>List of sorter expression</returns>
-        public virtual Expression<Func<TModel, object>> GetSorter()
-        {
-            throw new MissingMethodException();
-        }
+        Expression<Func<TModel, object>> GetSorter();
     }
 }
