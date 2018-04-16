@@ -12,5 +12,14 @@ namespace E5R.Architecture.Core
                 throw new ArgumentNullException(argName);
             }
         }
+
+        public static void NotNullObject(object @object, string objName)
+        {
+            if (@object == null)
+            {
+                // TODO: Implementar internacionalização
+                throw new NullReferenceException($"Object {objName} can not be null.");
+            }
+        }
     }
 }
