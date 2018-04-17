@@ -5,10 +5,10 @@ namespace E5R.Architecture.Data.EntityFrameworkCore.Test
 {
     public class FailTest
     {
-        [Fact]
-        public void Fail()
-        {
-            throw new NotImplementedException();
-        }
+//        [Fact]
+//        public void Fail()
+//        {
+//            throw new NotImplementedException();
+//        }
     }
 }
