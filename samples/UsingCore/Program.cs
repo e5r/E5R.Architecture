@@ -1,11 +1,12 @@
-﻿using System;
-using E5R.Architecture.Core;
+﻿using E5R.Architecture.Core;
 
 namespace UsingCore
 {
+    using static System.Console;
+
     internal static class Program
     {
-        private static void Main(string[] args)
+        private static void Main()
         {
             var version = new SemVer
             {
@@ -14,7 +15,7 @@ namespace UsingCore
                 Label = "alpha"
             };
 
-            Console.WriteLine($"Hello World v{version}!");
+            WriteLine($"Hello World v{version}!");
         }
     }
 }
