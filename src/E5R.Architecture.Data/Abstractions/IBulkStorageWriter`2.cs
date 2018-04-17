@@ -9,7 +9,7 @@ namespace E5R.Architecture.Data.Abstractions
     {
         IEnumerable<TModel> BulkCreate(IEnumerable<TModel> data);
         IEnumerable<TModel> BulkReplace(IEnumerable<TModel> data);
-        void BulkRemove(TModel data);
+        void BulkRemove(IEnumerable<TModel> data);
         void BulkRemoveFromSearch(DataReducer<TModel> reducer);
     }
 }
