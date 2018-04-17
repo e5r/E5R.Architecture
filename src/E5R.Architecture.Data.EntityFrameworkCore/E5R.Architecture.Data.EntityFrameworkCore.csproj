@@ -1,0 +1,15 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+  <Import Project="..\..\packages.props" />
+  <PropertyGroup>
+    <AssemblyName>E5R.Architecture.Data.EntityFrameworkCore</AssemblyName>
+    <PackageId>E5R.Architecture.Data.EntityFrameworkCore</PackageId>
+    <RootNamespace>$(RootPkgNamespace).Data.EntityFrameworkCore</RootNamespace>
+    <Description>Componente de dados específico para Entity Framework Core, parte da arquitetura de software E5R Development Team</Description>
+  </PropertyGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\E5R.Architecture.Data\E5R.Architecture.Data.csproj" />
+  </ItemGroup>
+  <ItemGroup>
+    <PackageReference Include="Microsoft.EntityFrameworkCore" Version="1.1.5" />
+  </ItemGroup>
+</Project>

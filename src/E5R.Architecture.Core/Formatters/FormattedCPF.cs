@@ -13,14 +13,15 @@ namespace E5R.Architecture.Core.Formatters
         private FormattedCpf(string value)
         {
             value = value
-                ?? throw new ArgumentNullException(nameof(value));
+                    ?? throw new ArgumentNullException(nameof(value));
 
             EnsureLongValue(value);
         }
 
         private void EnsureLongValue(string value)
         {
-            if(string.IsNullOrEmpty(value) || value.Length > 11 || !long.TryParse(value, out _value))
+            if (string.IsNullOrEmpty(value) || value.Length > 11 ||
+                !long.TryParse(value, out _value))
             {
                 throw new FormatException("Invalid unformatted CPF string value");
             }
