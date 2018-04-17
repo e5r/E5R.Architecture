@@ -7,25 +7,17 @@ using Microsoft.EntityFrameworkCore;
 
 namespace E5R.Architecture.Data.EntityFrameworkCore
 {
-    public class StorageReader<TModel> : IStorageReader<StorageReader<TModel>, TModel>
+    public class StorageReader<TModel> : TradableStorage<StorageReader<TModel>>,
+        IStorageReader<StorageReader<TModel>, TModel>
         where TModel : DataModel<TModel>
     {
-        protected IQueryable<TModel> Reader { get; private set; }
+        protected IQueryable<TModel> Read { get; private set; }
 
-        public StorageReader<TModel> Configure(UnderlyingSession session)
+        public override StorageReader<TModel> Configure(UnderlyingSession session)
         {
-            Checker.NotNullArgument(session, nameof(session));
+            base.Configure(session);
 
-            var context = session.Get<DbContext>();
-
-            if (context == null)
-            {
-                // TODO: Implementar internacionalização
-                throw new NullReferenceException(
-                    $"The context is null. The session has not been configured.");
-            }
-
-            Reader = context.Set<TModel>().AsNoTracking();
+            Read = Context.Set<TModel>().AsNoTracking();
 
             return this;
         }
@@ -34,7 +26,7 @@ namespace E5R.Architecture.Data.EntityFrameworkCore
         {
             Checker.NotNullArgument(data, nameof(data));
 
-            return Reader.SingleOrDefault(data.GetIdenifierCriteria());
+            return Read.SingleOrDefault(data.GetIdenifierCriteria());
         }
 
 
@@ -42,7 +34,7 @@ namespace E5R.Architecture.Data.EntityFrameworkCore
         {
             Checker.NotNullArgument(limiter, nameof(limiter));
 
-            return QueryLimitResult(limiter, Reader);
+            return QueryLimitResult(limiter, Read);
         }
 
         public IEnumerable<TModel> Search(DataReducer<TModel> reducer)
@@ -73,7 +65,7 @@ namespace E5R.Architecture.Data.EntityFrameworkCore
 
             Checker.NotNullObject(reducerList, $"reducer.{nameof(reducer.GetReducer)}()");
 
-            return reducerList.Aggregate(Reader, (q, w) => q.Where(w));
+            return reducerList.Aggregate(Read, (q, w) => q.Where(w));
         }
 
         private DataLimiterResult<TModel> QueryLimitResult(DataLimiter<TModel> limiter,
