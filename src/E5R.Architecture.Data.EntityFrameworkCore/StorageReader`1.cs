@@ -10,23 +10,22 @@ namespace E5R.Architecture.Data.EntityFrameworkCore
     public class StorageReader<TModel> : IStorageReader<StorageReader<TModel>, TModel>
         where TModel : DataModel<TModel>
     {
-        private DbContext _context;
-        private IQueryable<TModel> _query;
+        protected IQueryable<TModel> Reader { get; private set; }
 
         public StorageReader<TModel> Configure(UnderlyingSession session)
         {
             Checker.NotNullArgument(session, nameof(session));
 
-            _context = session.Get<DbContext>();
+            var context = session.Get<DbContext>();
 
-            if (_context == null)
+            if (context == null)
             {
                 // TODO: Implementar internacionalização
                 throw new NullReferenceException(
                     $"The context is null. The session has not been configured.");
             }
 
-            _query = _context.Set<TModel>().AsNoTracking();
+            Reader = context.Set<TModel>().AsNoTracking();
 
             return this;
         }
@@ -35,7 +34,7 @@ namespace E5R.Architecture.Data.EntityFrameworkCore
         {
             Checker.NotNullArgument(data, nameof(data));
 
-            return _query.SingleOrDefault(data.GetIdenifierCriteria());
+            return Reader.SingleOrDefault(data.GetIdenifierCriteria());
         }
 
 
@@ -43,7 +42,7 @@ namespace E5R.Architecture.Data.EntityFrameworkCore
         {
             Checker.NotNullArgument(limiter, nameof(limiter));
 
-            return QueryLimitResult(limiter, _query);
+            return QueryLimitResult(limiter, Reader);
         }
 
         public IEnumerable<TModel> Search(DataReducer<TModel> reducer)
@@ -74,7 +73,7 @@ namespace E5R.Architecture.Data.EntityFrameworkCore
 
             Checker.NotNullObject(reducerList, $"reducer.{nameof(reducer.GetReducer)}()");
 
-            return reducerList.Aggregate(_query, (q, w) => q.Where(w));
+            return reducerList.Aggregate(Reader, (q, w) => q.Where(w));
         }
 
         private DataLimiterResult<TModel> QueryLimitResult(DataLimiter<TModel> limiter,
