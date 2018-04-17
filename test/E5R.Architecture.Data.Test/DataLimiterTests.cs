@@ -40,9 +40,7 @@ namespace E5R.Architecture.Data.Test
         class EmptyDataLimiter : DataLimiter<ObjectDataModelMock>
         {
             public override Expression<Func<ObjectDataModelMock, object>> GetSorter()
-            {
-                throw new NotImplementedException();
-            }
+                => null;
         }
 
         #endregion

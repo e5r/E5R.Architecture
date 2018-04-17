@@ -25,9 +25,7 @@ namespace E5R.Architecture.Data.Test
         class EmptyDataReducer : DataReducer<ObjectDataModelMock>
         {
             public override IEnumerable<Expression<Func<ObjectDataModelMock, bool>>> GetReducer()
-            {
-                throw new NotImplementedException();
-            }
+                => null;
         }
 
         #endregion
