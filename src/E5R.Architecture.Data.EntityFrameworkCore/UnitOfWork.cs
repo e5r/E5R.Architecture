@@ -1,4 +1,5 @@
 ﻿using System;
+using E5R.Architecture.Core;
 using Microsoft.EntityFrameworkCore;
 
 namespace E5R.Architecture.Data.EntityFrameworkCore
@@ -16,7 +17,9 @@ namespace E5R.Architecture.Data.EntityFrameworkCore
 
         public UnitOfWork(TContext context)
         {
-            _context = context ?? throw new ArgumentNullException(nameof(context));
+            Checker.NotNullArgument(context, nameof(context));
+
+            _context = context;
         }
 
         public void SaveWork()
