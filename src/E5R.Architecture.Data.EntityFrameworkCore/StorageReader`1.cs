@@ -108,11 +108,9 @@ namespace E5R.Architecture.Data.EntityFrameworkCore
                 : origin.OrderByDescending(sorter);
 
             var count = ordered.Count();
-            var result = _query
+            var result = ordered
                 .Skip(limiter.OffsetBegin)
                 .Take(limiter.OffsetEnd - limiter.OffsetBegin);
-
-            result = result.Skip(limiter.OffsetBegin);
 
             return new DataLimiterResult<TModel>(result, count);
         }
