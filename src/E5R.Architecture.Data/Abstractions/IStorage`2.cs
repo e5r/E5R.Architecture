@@ -1,7 +1,6 @@
 ﻿namespace E5R.Architecture.Data.Abstractions
 {
     public interface IStorage<out TImpl, TModel> :
-        IStorageSignature,
         IStorageReader<TImpl, TModel>,
         IStorageWriter<TImpl, TModel>,
         IBulkStorageWriter<TImpl, TModel>

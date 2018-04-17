@@ -1,56 +1,30 @@
-﻿using E5R.Architecture.Core;
-using E5R.Architecture.Data.Abstractions;
-using Microsoft.EntityFrameworkCore;
-
-namespace E5R.Architecture.Data.EntityFrameworkCore
+﻿namespace E5R.Architecture.Data.EntityFrameworkCore
 {
-    public class StorageWriter<TModel> : TradableStorage<StorageWriter<TModel>>,
-        IStorageWriter<StorageWriter<TModel>, TModel>
+    using Abstractions;
+
+    public class StorageWriter<TModel> : IStorageWriter<StorageWriter<TModel>, TModel>
         where TModel : DataModel<TModel>
     {
-        protected WriterDelegate Write { get; private set; }
+        private readonly FullStorage<TModel> _base;
 
-        public override StorageWriter<TModel> Configure(UnderlyingSession session)
+        public StorageWriter()
         {
-            base.Configure(session);
+            _base = new FullStorage<TModel>();
+        }
 
-            Write = Context.ChangeTracker.TrackGraph;
+        protected WriterDelegate Write => _base.Write;
+
+        public StorageWriter<TModel> Configure(UnderlyingSession session)
+        {
+            _base.Configure(session);
 
             return this;
         }
 
-        public TModel Create(TModel data)
-        {
-            Checker.NotNullArgument(data, nameof(data));
-            
-            // TODO: Implementar validação
+        public TModel Create(TModel data) => _base.Create(data);
 
-            Write(data, node => node.Entry.State = EntityState.Added);
-            Context.SaveChanges();
+        public TModel Replace(TModel data) => _base.Replace(data);
 
-            return data;
-        }
-
-        public TModel Replace(TModel data)
-        {
-            Checker.NotNullArgument(data, nameof(data));
-            
-            // TODO: Implementar validação
-
-            Write(data, node => node.Entry.State = EntityState.Modified);
-            Context.SaveChanges();
-
-            return data;
-        }
-
-        public void Remove(TModel data)
-        {
-            Checker.NotNullArgument(data, nameof(data));
-            
-            // TODO: Implementar validação
-
-            Write(data, node => node.Entry.State = EntityState.Deleted);
-            Context.SaveChanges();
-        }
+        public void Remove(TModel data) => _base.Remove(data);
     }
 }

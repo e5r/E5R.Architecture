@@ -1,8 +1,8 @@
-﻿using E5R.Architecture.Core;
-using E5R.Architecture.Data.Abstractions;
-
-namespace E5R.Architecture.Business
+﻿namespace E5R.Architecture.Business
 {
+    using Core;
+    using Data.Abstractions;
+
     /// <summary>
     /// Business object
     /// </summary>

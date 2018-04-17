@@ -1,9 +1,10 @@
 ﻿using System;
-using E5R.Architecture.Data.Abstractions;
 using Microsoft.EntityFrameworkCore;
 
 namespace E5R.Architecture.Data.EntityFrameworkCore
 {
+    using Abstractions;
+
     public class UnitOfWork<TContext> : IUnitOfWork
         where TContext : DbContext
     {

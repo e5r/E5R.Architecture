@@ -1,10 +1,11 @@
 ﻿using System;
-using E5R.Architecture.Core;
-using E5R.Architecture.Data.Abstractions;
 using Microsoft.EntityFrameworkCore;
 
 namespace E5R.Architecture.Data.EntityFrameworkCore
 {
+    using Core;
+    using Abstractions;
+
     public class TradableStorage<TFluentResult> : ITradableObject<TFluentResult>
         where TFluentResult : class
     {

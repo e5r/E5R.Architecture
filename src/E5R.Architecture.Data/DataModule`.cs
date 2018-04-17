@@ -1,7 +1,7 @@
-﻿using E5R.Architecture.Data.Abstractions;
-
-namespace E5R.Architecture.Data
+﻿namespace E5R.Architecture.Data
 {
+    using Abstractions;
+
     /// <summary>
     /// Data module with single storage unit
     /// </summary>

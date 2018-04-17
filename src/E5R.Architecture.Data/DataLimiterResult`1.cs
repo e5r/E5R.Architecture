@@ -1,8 +1,9 @@
 ﻿using System.Collections.Generic;
-using E5R.Architecture.Data.Abstractions;
 
 namespace E5R.Architecture.Data
 {
+    using Abstractions;
+
     /// <summary>
     /// Result of a search with <see cref="DataLimiter{TModel}"/>
     /// </summary>
