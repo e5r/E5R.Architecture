@@ -1,5 +1,5 @@
 # E5R.Architecture
-Componentes da arquitetura de software E5R Development Team para .NET Standard >= 1.3, .NET >= 4.5.
+Componentes da arquitetura de software E5R Development Team para .NET Standard >= 1.3, .NET >= 4.5.1.
 
 
 ## Construção
