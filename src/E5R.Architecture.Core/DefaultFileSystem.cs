@@ -1,5 +1,6 @@
 ﻿using System;
 using System.IO;
+using System.Reflection;
 
 namespace E5R.Architecture.Core
 {
@@ -38,7 +39,11 @@ namespace E5R.Architecture.Core
 
         public string GetBaseDirectory()
         {
+#if NET451 || NET46
+            return AppDomain.CurrentDomain.BaseDirectory;
+#else
             return AppContext.BaseDirectory;
+#endif
         }
 
         public FileStream OpenFile(string path, FileMode mode)
