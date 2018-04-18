@@ -1,12 +1,9 @@
-<Project Sdk="Microsoft.NET.Sdk">
-
-    <Import Project="..\..\packages.props"/>
-
-    <PropertyGroup>
-        <AssemblyName>E5R.Architecture.Core</AssemblyName>
-        <PackageId>E5R.Architecture.Core</PackageId>
-        <RootNamespace>$(RootPkgNamespace).Core</RootNamespace>
-        <Description>Componente principal, base para todos os outros da arquitetura de software E5R Development Team</Description>
-    </PropertyGroup>
-
+﻿<Project Sdk="Microsoft.NET.Sdk">
+  <Import Project="..\..\packages.props" />
+  <PropertyGroup>
+    <AssemblyName>E5R.Architecture.Core</AssemblyName>
+    <PackageId>E5R.Architecture.Core</PackageId>
+    <RootNamespace>$(RootPkgNamespace).Core</RootNamespace>
+    <Description>Componente principal, base para todos os outros da arquitetura de software E5R Development Team</Description>
+  </PropertyGroup>
 </Project>

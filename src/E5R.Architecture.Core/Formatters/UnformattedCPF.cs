@@ -14,7 +14,7 @@ namespace E5R.Architecture.Core.Formatters
         private UnformattedCpf(string value)
         {
             value = value
-                ?? throw new ArgumentNullException(nameof(value));
+                    ?? throw new ArgumentNullException(nameof(value));
 
             EnsureValue(value);
         }
@@ -25,7 +25,8 @@ namespace E5R.Architecture.Core.Formatters
                 ?.Replace(".", string.Empty)
                 ?.Replace("-", string.Empty);
 
-            if(string.IsNullOrEmpty(_value) || _value.Length > 11 || _value.ToCharArray().Any(c => !char.IsNumber(c)))
+            if (string.IsNullOrEmpty(_value) || _value.Length > 11 ||
+                _value.ToCharArray().Any(c => !char.IsNumber(c)))
             {
                 throw new FormatException("Invalid formatted CPF string value");
             }

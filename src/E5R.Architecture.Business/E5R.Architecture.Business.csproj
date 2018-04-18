@@ -1,0 +1,12 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+  <Import Project="..\..\packages.props" />
+  <PropertyGroup>
+    <AssemblyName>E5R.Architecture.Business</AssemblyName>
+    <PackageId>E5R.Architecture.Business</PackageId>
+    <RootNamespace>$(RootPkgNamespace).Business</RootNamespace>
+    <Description>Componente de negócio, parte da arquitetura de software E5R Development Team</Description>
+  </PropertyGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\E5R.Architecture.Data\E5R.Architecture.Data.csproj" />
+  </ItemGroup>
+</Project>

@@ -1,5 +1,5 @@
 # E5R.Architecture
-Componentes da arquitetura de software E5R Development Team para .NET Standard >= 1.0, .NET >= 4.0.
+Componentes da arquitetura de software E5R Development Team para .NET Standard >= 1.3, .NET >= 4.5.1.
 
 
 ## Construção
@@ -15,5 +15,8 @@ Pacote  | NuGet | NuGet RC
 ------- | :---- | :------- 
 E5R.Architecture.Core | [![NuGet](https://img.shields.io/nuget/v/E5R.Architecture.Core.png?style=flat-square)](https://www.nuget.org/packages/E5R.Architecture.Core) | [![NuGet RC](https://img.shields.io/nuget/vpre/E5R.Architecture.Core.png?style=flat-square)](https://www.nuget.org/packages/E5R.Architecture.Core)
 E5R.Architecture.Data | [![NuGet](https://img.shields.io/nuget/v/E5R.Architecture.Data.png?style=flat-square)](https://www.nuget.org/packages/E5R.Architecture.Data) | [![NuGet RC](https://img.shields.io/nuget/vpre/E5R.Architecture.Data.png?style=flat-square)](https://www.nuget.org/packages/E5R.Architecture.Data)
+E5R.Architecture.Data.Dapper | [![NuGet](https://img.shields.io/nuget/v/E5R.Architecture.Data.Dapper.png?style=flat-square)](https://www.nuget.org/packages/E5R.Architecture.Data.Dapper) | [![NuGet RC](https://img.shields.io/nuget/vpre/E5R.Architecture.Data.Dapper.png?style=flat-square)](https://www.nuget.org/packages/E5R.Architecture.Data.Dapper)
+E5R.Architecture.Data.EntityFrameworkCore | [![NuGet](https://img.shields.io/nuget/v/E5R.Architecture.Data.EntityFrameworkCore.png?style=flat-square)](https://www.nuget.org/packages/E5R.Architecture.Data.EntityFrameworkCore) | [![NuGet RC](https://img.shields.io/nuget/vpre/E5R.Architecture.Data.EntityFrameworkCore.png?style=flat-square)](https://www.nuget.org/packages/E5R.Architecture.Data.EntityFrameworkCore)
+E5R.Architecture.Business | [![NuGet](https://img.shields.io/nuget/v/E5R.Architecture.Business.png?style=flat-square)](https://www.nuget.org/packages/E5R.Architecture.Business) | [![NuGet RC](https://img.shields.io/nuget/vpre/E5R.Architecture.Business.png?style=flat-square)](https://www.nuget.org/packages/E5R.Architecture.Business)
 
 Acompanhe as novidades em [NEWS.md](NEWS.md)

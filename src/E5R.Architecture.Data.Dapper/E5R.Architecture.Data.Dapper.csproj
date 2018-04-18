@@ -1,0 +1,15 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+  <Import Project="..\..\packages.props" />
+  <PropertyGroup>
+    <AssemblyName>E5R.Architecture.Data.Dapper</AssemblyName>
+    <PackageId>E5R.Architecture.Data.Dapper</PackageId>
+    <RootNamespace>$(RootPkgNamespace).Data.Dapper</RootNamespace>
+    <Description>Componente de dados específico para Dapper, parte da arquitetura de software E5R Development Team</Description>
+  </PropertyGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\E5R.Architecture.Data\E5R.Architecture.Data.csproj" />
+  </ItemGroup>
+  <ItemGroup>
+    <PackageReference Include="Dapper" Version="1.50.4" />
+  </ItemGroup>
+</Project>
