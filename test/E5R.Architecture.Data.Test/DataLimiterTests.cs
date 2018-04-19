@@ -5,7 +5,6 @@ using Xunit;
 namespace E5R.Architecture.Data.Test
 {
     using Abstractions;
-    using Mocks;
 
     public class DataLimiterTests
     {
@@ -37,9 +36,9 @@ namespace E5R.Architecture.Data.Test
 
         #region Mocks
 
-        class EmptyDataLimiter : DataLimiter<ObjectDataModelMock>
+        class EmptyDataLimiter : DataLimiter<DataModel<object>>
         {
-            public override Expression<Func<ObjectDataModelMock, object>> GetSorter()
+            public override Expression<Func<DataModel<object>, object>> GetSorter()
                 => null;
         }
 

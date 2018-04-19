@@ -6,7 +6,6 @@ using Xunit;
 namespace E5R.Architecture.Data.Test
 {
     using Abstractions;
-    using Mocks;
 
     public class DataReducerTests
     {
@@ -22,9 +21,9 @@ namespace E5R.Architecture.Data.Test
 
         #region Mocks
 
-        class EmptyDataReducer : DataReducer<ObjectDataModelMock>
+        class EmptyDataReducer : DataReducer<DataModel<object>>
         {
-            public override IEnumerable<Expression<Func<ObjectDataModelMock, bool>>> GetReducer()
+            public override IEnumerable<Expression<Func<DataModel<object>, bool>>> GetReducer()
                 => null;
         }
 

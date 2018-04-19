@@ -1,11 +1,11 @@
 ﻿namespace E5R.Architecture.Data.Abstractions
 {
-    public interface IStorage<out TImpl, TModel> :
-        IStorageReader<TImpl, TModel>,
-        IStorageWriter<TImpl, TModel>,
-        IBulkStorageWriter<TImpl, TModel>
+    public interface IStorage<out TImpl, TDataModel> :
+        IStorageReader<TImpl, TDataModel>,
+        IStorageWriter<TImpl, TDataModel>,
+        IBulkStorageWriter<TImpl, TDataModel>
         where TImpl : class
-        where TModel : DataModel<TModel>
+        where TDataModel : IDataModel
     {
     }
 }

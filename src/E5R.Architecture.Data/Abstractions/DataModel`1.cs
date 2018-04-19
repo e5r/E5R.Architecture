@@ -1,19 +1,18 @@
-﻿using System;
-using System.Linq.Expressions;
-
-namespace E5R.Architecture.Data.Abstractions
+﻿namespace E5R.Architecture.Data.Abstractions
 {
     /// <summary>
-    /// Data model (Entity) representation with identifier criteria
+    /// Data model (Entity) representation with identifiers
     /// </summary>
-    /// <typeparam name="T">Type of model</typeparam>
-    public abstract class DataModel<T>
-        where T : class
+    /// <typeparam name="TBusinessModel">Type of business model</typeparam>
+    public abstract class DataModel<TBusinessModel> : IDataModel
+        where TBusinessModel : new()
     {
-        /// <summary>
-        /// Reducer that ensure the return of a single object.
-        /// </summary>
-        /// <returns>Reduce expression</returns>
-        public abstract Expression<Func<T, bool>> GetIdenifierCriteria();
+        protected DataModel() => Business = new TBusinessModel();
+
+        protected DataModel(TBusinessModel businessModel) => Business = businessModel;
+
+        protected TBusinessModel Business { get; private set; }
+
+        public virtual object[] IdentifierValues { get; }
     }
 }

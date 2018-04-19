@@ -1,30 +1,33 @@
-﻿namespace E5R.Architecture.Data.EntityFrameworkCore
+﻿using Microsoft.EntityFrameworkCore;
+
+namespace E5R.Architecture.Data.EntityFrameworkCore
 {
     using Abstractions;
 
-    public class StorageWriter<TModel> : IStorageWriter<StorageWriter<TModel>, TModel>
-        where TModel : DataModel<TModel>
+    public class StorageWriter<TDataModel> : IStorageWriter<StorageWriter<TDataModel>, TDataModel>
+        where TDataModel : class, IDataModel
     {
-        private readonly FullStorage<TModel> _base;
+        private readonly FullStorage<TDataModel> _base;
 
         public StorageWriter()
         {
-            _base = new FullStorage<TModel>();
+            _base = new FullStorage<TDataModel>();
         }
 
+        public DbSet<TDataModel> Set => _base.Set;
         protected WriterDelegate Write => _base.Write;
 
-        public StorageWriter<TModel> Configure(UnderlyingSession session)
+        public StorageWriter<TDataModel> Configure(UnderlyingSession session)
         {
             _base.Configure(session);
 
             return this;
         }
 
-        public TModel Create(TModel data) => _base.Create(data);
+        public TDataModel Create(TDataModel data) => _base.Create(data);
 
-        public TModel Replace(TModel data) => _base.Replace(data);
+        public TDataModel Replace(TDataModel data) => _base.Replace(data);
 
-        public void Remove(TModel data) => _base.Remove(data);
+        public void Remove(TDataModel data) => _base.Remove(data);
     }
 }
