@@ -2,15 +2,15 @@
 
 namespace E5R.Architecture.Data.Abstractions
 {
-    public interface IStorageReader<out TImpl, TModel> : IStorageSignature, ITradableObject<TImpl>
+    public interface IStorageReader<out TImpl, TDataModel> : IStorageSignature, ITradableObject<TImpl>
         where TImpl : class
-        where TModel : DataModel<TModel>
+        where TDataModel : IDataModel
     {
-        TModel Find(TModel data);
-        DataLimiterResult<TModel> Get(DataLimiter<TModel> limiter);
-        IEnumerable<TModel> Search(DataReducer<TModel> reducer);
+        TDataModel Find(TDataModel data);
+        DataLimiterResult<TDataModel> Get(DataLimiter<TDataModel> limiter);
+        IEnumerable<TDataModel> Search(DataReducer<TDataModel> reducer);
 
-        DataLimiterResult<TModel> LimitedSearch(DataReducer<TModel> reducer,
-            DataLimiter<TModel> limiter);
+        DataLimiterResult<TDataModel> LimitedSearch(DataReducer<TDataModel> reducer,
+            DataLimiter<TDataModel> limiter);
     }
 }

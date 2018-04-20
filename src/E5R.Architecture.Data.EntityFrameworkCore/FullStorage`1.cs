@@ -8,17 +8,21 @@ namespace E5R.Architecture.Data.EntityFrameworkCore
     using Core;
     using Abstractions;
 
-    internal class FullStorage<TModel> : TradableStorage<FullStorage<TModel>>
-        where TModel : DataModel<TModel>
+    internal class FullStorage<TDataModel> : TradableStorage<FullStorage<TDataModel>>
+        where TDataModel : class, IDataModel
     {
-        public IQueryable<TModel> Read { get; private set; }
+        public DbSet<TDataModel> Set { get; private set; }
+        public IQueryable<TDataModel> Query { get; private set; }
         public WriterDelegate Write { get; private set; }
 
-        public override FullStorage<TModel> Configure(UnderlyingSession session)
+        public override FullStorage<TDataModel> Configure(UnderlyingSession session)
         {
             base.Configure(session);
 
-            Read = Context.Set<TModel>().AsNoTracking();
+            Context.ChangeTracker.QueryTrackingBehavior = QueryTrackingBehavior.NoTracking;
+
+            Set = Context.Set<TDataModel>();
+            Query = Set.AsNoTracking();
             Write = Context.ChangeTracker.TrackGraph;
 
             return this;
@@ -26,29 +30,29 @@ namespace E5R.Architecture.Data.EntityFrameworkCore
 
         #region IStorageReader
 
-        public TModel Find(TModel data)
+        public TDataModel Find(TDataModel data)
         {
             Checker.NotNullArgument(data, nameof(data));
 
-            return Read.SingleOrDefault(data.GetIdenifierCriteria());
+            return Set.Find(data.IdentifierValues);
         }
 
-        public DataLimiterResult<TModel> Get(DataLimiter<TModel> limiter)
+        public DataLimiterResult<TDataModel> Get(DataLimiter<TDataModel> limiter)
         {
             Checker.NotNullArgument(limiter, nameof(limiter));
 
-            return QueryLimitResult(limiter, Read);
+            return QueryLimitResult(limiter, Query);
         }
 
-        public IEnumerable<TModel> Search(DataReducer<TModel> reducer)
+        public IEnumerable<TDataModel> Search(DataReducer<TDataModel> reducer)
         {
             Checker.NotNullArgument(reducer, nameof(reducer));
 
             return QuerySearch(reducer);
         }
 
-        public DataLimiterResult<TModel> LimitedSearch(DataReducer<TModel> reducer,
-            DataLimiter<TModel> limiter)
+        public DataLimiterResult<TDataModel> LimitedSearch(DataReducer<TDataModel> reducer,
+            DataLimiter<TDataModel> limiter)
         {
             Checker.NotNullArgument(reducer, nameof(reducer));
             Checker.NotNullArgument(limiter, nameof(limiter));
@@ -62,7 +66,7 @@ namespace E5R.Architecture.Data.EntityFrameworkCore
 
         #region IStorageWriter
 
-        public TModel Create(TModel data)
+        public TDataModel Create(TDataModel data)
         {
             Checker.NotNullArgument(data, nameof(data));
 
@@ -74,7 +78,7 @@ namespace E5R.Architecture.Data.EntityFrameworkCore
             return data;
         }
 
-        public TModel Replace(TModel data)
+        public TDataModel Replace(TDataModel data)
         {
             Checker.NotNullArgument(data, nameof(data));
 
@@ -86,7 +90,7 @@ namespace E5R.Architecture.Data.EntityFrameworkCore
             return data;
         }
 
-        public void Remove(TModel data)
+        public void Remove(TDataModel data)
         {
             Checker.NotNullArgument(data, nameof(data));
 
@@ -98,29 +102,29 @@ namespace E5R.Architecture.Data.EntityFrameworkCore
 
         #endregion
 
-        public IEnumerable<TModel> BulkCreate(IEnumerable<TModel> data)
+        public IEnumerable<TDataModel> BulkCreate(IEnumerable<TDataModel> data)
         {
             throw new System.NotImplementedException();
         }
 
-        public IEnumerable<TModel> BulkReplace(IEnumerable<TModel> data)
+        public IEnumerable<TDataModel> BulkReplace(IEnumerable<TDataModel> data)
         {
             throw new System.NotImplementedException();
         }
 
-        public void BulkRemove(IEnumerable<TModel> data)
+        public void BulkRemove(IEnumerable<TDataModel> data)
         {
             throw new System.NotImplementedException();
         }
 
-        public void BulkRemoveFromSearch(DataReducer<TModel> reducer)
+        public void BulkRemoveFromSearch(DataReducer<TDataModel> reducer)
         {
             throw new System.NotImplementedException();
         }
 
         #region Auxiliary methods
 
-        private IQueryable<TModel> QuerySearch(DataReducer<TModel> reducer)
+        private IQueryable<TDataModel> QuerySearch(DataReducer<TDataModel> reducer)
         {
             Checker.NotNullArgument(reducer, nameof(reducer));
 
@@ -128,11 +132,11 @@ namespace E5R.Architecture.Data.EntityFrameworkCore
 
             Checker.NotNullObject(reducerList, $"reducer.{nameof(reducer.GetReducer)}()");
 
-            return reducerList.Aggregate(Read, (q, w) => q.Where(w));
+            return reducerList.Aggregate(Query, (q, w) => q.Where(w));
         }
 
-        private DataLimiterResult<TModel> QueryLimitResult(DataLimiter<TModel> limiter,
-            IQueryable<TModel> origin)
+        private DataLimiterResult<TDataModel> QueryLimitResult(DataLimiter<TDataModel> limiter,
+            IQueryable<TDataModel> origin)
         {
             Checker.NotNullArgument(limiter, nameof(limiter));
 
@@ -166,7 +170,7 @@ namespace E5R.Architecture.Data.EntityFrameworkCore
                 .Skip(limiter.OffsetBegin)
                 .Take(limiter.OffsetEnd - limiter.OffsetBegin);
 
-            return new DataLimiterResult<TModel>(result, count);
+            return new DataLimiterResult<TDataModel>(result, count);
         }
 
         #endregion

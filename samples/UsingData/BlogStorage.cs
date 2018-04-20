@@ -53,7 +53,8 @@ namespace UsingData
         {
             // TODO: Implementar validação no Storage genérico
 
-            var originalBlog = _db.Blog.SingleOrDefault(blog.GetIdenifierCriteria().Compile());
+            var originalBlog =
+                _db.Blog.SingleOrDefault(w => w.BlogUrl.Equals(blog.IdentifierValues[0]));
 
             if (originalBlog == null)
             {
