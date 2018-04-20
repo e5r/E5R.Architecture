@@ -6,25 +6,28 @@ using Microsoft.EntityFrameworkCore;
 
 namespace E5R.Architecture.Data.EntityFrameworkCore
 {
-    public class BulkStorageWriter<TModel> : TradableStorage<BulkStorageWriter<TModel>>,
-        IBulkStorageWriter<BulkStorageWriter<TModel>, TModel>
-        where TModel : DataModel<TModel>
+    public class BulkStorageWriter<TDataModel> : TradableStorage<BulkStorageWriter<TDataModel>>,
+        IBulkStorageWriter<BulkStorageWriter<TDataModel>, TDataModel>
+        where TDataModel : class, IDataModel
     {
-        private IQueryable<TModel> _read;
+        private readonly FullStorage<TDataModel> _base;
 
-        protected WriterDelegate Write { get; private set; }
-
-        public override BulkStorageWriter<TModel> Configure(UnderlyingSession session)
+        public BulkStorageWriter()
         {
-            base.Configure(session);
+            _base = new FullStorage<TDataModel>();
+        }
 
-            Write = Context.ChangeTracker.TrackGraph;
-            _read = Context.Set<TModel>().AsNoTracking();
+        protected WriterDelegate Write => _base.Write;
+        private IQueryable<TDataModel> Query => _base.Query;
+
+        public override BulkStorageWriter<TDataModel> Configure(UnderlyingSession session)
+        {
+            _base.Configure(session);
 
             return this;
         }
 
-        public IEnumerable<TModel> BulkCreate(IEnumerable<TModel> data)
+        public IEnumerable<TDataModel> BulkCreate(IEnumerable<TDataModel> data)
         {
             Checker.NotNullArgument(data, nameof(data));
 
@@ -41,7 +44,7 @@ namespace E5R.Architecture.Data.EntityFrameworkCore
             return data;
         }
 
-        public IEnumerable<TModel> BulkReplace(IEnumerable<TModel> data)
+        public IEnumerable<TDataModel> BulkReplace(IEnumerable<TDataModel> data)
         {
             Checker.NotNullArgument(data, nameof(data));
 
@@ -58,7 +61,7 @@ namespace E5R.Architecture.Data.EntityFrameworkCore
             return data;
         }
 
-        public void BulkRemove(IEnumerable<TModel> data)
+        public void BulkRemove(IEnumerable<TDataModel> data)
         {
             Checker.NotNullArgument(data, nameof(data));
 
@@ -73,7 +76,7 @@ namespace E5R.Architecture.Data.EntityFrameworkCore
             Context.SaveChanges();
         }
 
-        public void BulkRemoveFromSearch(DataReducer<TModel> reducer)
+        public void BulkRemoveFromSearch(DataReducer<TDataModel> reducer)
         {
             Checker.NotNullArgument(reducer, nameof(reducer));
 
@@ -84,7 +87,7 @@ namespace E5R.Architecture.Data.EntityFrameworkCore
 
             Checker.NotNullObject(reducerList, $"reducer.{nameof(reducer.GetReducer)}()");
 
-            var search = reducerList.Aggregate(_read, (q, w) => q.Where(w));
+            var search = reducerList.Aggregate(Query, (q, w) => q.Where(w));
 
             foreach (var d in search)
             {

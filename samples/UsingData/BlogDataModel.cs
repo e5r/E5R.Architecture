@@ -1,17 +1,22 @@
-﻿using System;
-using System.Linq.Expressions;
-using E5R.Architecture.Data.Abstractions;
+﻿using E5R.Architecture.Data.Abstractions;
 
 namespace UsingData
 {
-    public class BlogDataModel : DataModel<BlogDataModel>
+    public class BlogDataModel : DataModel<BlogModel>
     {
-        public string BlogUrl { get; set; }
-        public string BlogTitle { get; set; }
+        public override object[] IdentifierValues
+            => new object[] {Business.BlogUrl};
 
-        public override Expression<Func<BlogDataModel, bool>> GetIdenifierCriteria()
+        public string BlogUrl
         {
-            return m => m.BlogUrl == BlogUrl;
+            get => Business.BlogUrl;
+            set => Business.BlogUrl = value;
+        }
+
+        public string BlogTitle
+        {
+            get => Business.BlogTitle;
+            set => Business.BlogTitle = value;
         }
     }
 }

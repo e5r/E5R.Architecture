@@ -1,19 +1,20 @@
-﻿using Xunit;
+﻿using E5R.Architecture.Data.Abstractions;
+using Xunit;
 
 namespace E5R.Architecture.Data.Test
 {
-    using Mocks;
-
     public class DataModelTests
     {
         [Fact]
         public void Must_Instantiate_Without_Identifier()
         {
             // Act
-            var instance = new ObjectDataModelMock();
+            var instance = new DataModelMock();
 
             // Assert
             Assert.NotNull(instance);
         }
+        
+        internal class DataModelMock : DataModel<object>{}
     }
 }

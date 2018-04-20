@@ -1,11 +1,11 @@
 ﻿namespace E5R.Architecture.Data.Abstractions
 {
-    public interface IStorageWriter<out TImpl, TModel> : IStorageSignature, ITradableObject<TImpl>
+    public interface IStorageWriter<out TImpl, TDataModel> : IStorageSignature, ITradableObject<TImpl>
         where TImpl : class
-        where TModel : DataModel<TModel>
+        where TDataModel : IDataModel
     {
-        TModel Create(TModel data);
-        TModel Replace(TModel data);
-        void Remove(TModel data);
+        TDataModel Create(TDataModel data);
+        TDataModel Replace(TDataModel data);
+        void Remove(TDataModel data);
     }
 }
