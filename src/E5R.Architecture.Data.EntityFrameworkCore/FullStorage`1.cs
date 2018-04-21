@@ -8,14 +8,14 @@ namespace E5R.Architecture.Data.EntityFrameworkCore
     using Core;
     using Abstractions;
 
-    internal class FullStorage<TDataModel> : TradableStorage<FullStorage<TDataModel>>
+    internal class FullStorage<TDataModel> : TradableStorage
         where TDataModel : class, IDataModel
     {
         public DbSet<TDataModel> Set { get; private set; }
         public IQueryable<TDataModel> Query { get; private set; }
         public WriterDelegate Write { get; private set; }
 
-        public override FullStorage<TDataModel> Configure(UnderlyingSession session)
+        public override void Configure(UnderlyingSession session)
         {
             base.Configure(session);
 
@@ -24,8 +24,6 @@ namespace E5R.Architecture.Data.EntityFrameworkCore
             Set = Context.Set<TDataModel>();
             Query = Set.AsNoTracking();
             Write = Context.ChangeTracker.TrackGraph;
-
-            return this;
         }
 
         #region IStorageReader

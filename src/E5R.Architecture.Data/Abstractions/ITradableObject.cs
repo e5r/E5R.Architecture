@@ -5,12 +5,11 @@
     /// </summary>
     /// <remarks>
     /// Um objeto negociável é um objeto que interage dentro de uma
-    /// transação negociál. Portanto, depende de um objeto de sessão,
+    /// transação negocial. Portanto, depende de um objeto de sessão,
     /// assim, deve ser capaz de ser configurado para isso.
     /// </remarks>
-    public interface ITradableObject<out TFluentResult>
-        where TFluentResult : class
+    public interface ITradableObject
     {
-        TFluentResult Configure(UnderlyingSession session);
+        void Configure(UnderlyingSession session);
     }
 }
