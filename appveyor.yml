@@ -7,43 +7,43 @@ platform: Any CPU
 
 clone_depth: 1
 
-environment:
-  CODECOV_TOKEN:
-    secure: GOUHfNAquS/rtP4gxA131uc6WZhGoHIsp66q7ECbzuvRJCNwKSfsFQRPeu2M6k6l
+#environment:
+#  CODECOV_TOKEN:
+#    secure: GOUHfNAquS/rtP4gxA131uc6WZhGoHIsp66q7ECbzuvRJCNwKSfsFQRPeu2M6k6l
 
 artifacts:
   - path: 'artifacts\E5R.Architecture.*.nupkg'
     name: E5RArchitecturePackages
 
-cache:
-  - '%ProgramData%\chocolatey\bin -> appveyor.yml'
-  - '%ProgramData%\chocolatey\lib -> appveyor.yml'
+#cache:
+#  - '%ProgramData%\chocolatey\bin -> appveyor.yml'
+#  - '%ProgramData%\chocolatey\lib -> appveyor.yml'
 
 init:
   - ps: 'git config --global core.autocrlf true'
 
 install:
   - ps: >-
-      "APPVEYOR_BUILD_NUMBER = ${ENV:APPVEYOR_BUILD_NUMBER}" | write-host;
-      "APPVEYOR_PULL_REQUEST_NUMBER = ${ENV:APPVEYOR_PULL_REQUEST_NUMBER}" | write-host;
-      "APPVEYOR_REPO_BRANCH = ${ENV:APPVEYOR_REPO_BRANCH}" | write-host;
-      "APPVEYOR_REPO_TAG = ${ENV:APPVEYOR_REPO_TAG}" | write-host;
-      "APPVEYOR_REPO_TAG_NAME = ${ENV:APPVEYOR_REPO_TAG_NAME}" | write-host;
-      "APPVEYOR_REPO_COMMIT = ${ENV:APPVEYOR_REPO_COMMIT}" | write-host;
+#      "APPVEYOR_BUILD_NUMBER = ${ENV:APPVEYOR_BUILD_NUMBER}" | write-host;
+#      "APPVEYOR_PULL_REQUEST_NUMBER = ${ENV:APPVEYOR_PULL_REQUEST_NUMBER}" | write-host;
+#      "APPVEYOR_REPO_BRANCH = ${ENV:APPVEYOR_REPO_BRANCH}" | write-host;
+#      "APPVEYOR_REPO_TAG = ${ENV:APPVEYOR_REPO_TAG}" | write-host;
+#      "APPVEYOR_REPO_TAG_NAME = ${ENV:APPVEYOR_REPO_TAG_NAME}" | write-host;
+#      "APPVEYOR_REPO_COMMIT = ${ENV:APPVEYOR_REPO_COMMIT}" | write-host;
       
       $BUILD_LABEL = "alpha";
       $BUILD_NUMBER = "{0:00000}" -f [int]::parse("${ENV:APPVEYOR_BUILD_NUMBER}");
       $ENV:BUILD_VERSION_SUFFIX = "${BUILD_LABEL}-${BUILD_NUMBER}";
       $BUILD_VERSION = (Select-Xml -Path ".\packages.props" -XPath "/Project/PropertyGroup/VersionPrefix" | Select-Object -ExpandProperty Node).InnerText;
       Update-AppveyorBuild -Version "${BUILD_VERSION}-${ENV:BUILD_VERSION_SUFFIX}";
-      if(!(test-path ${env:ProgramData}\chocolatey\bin\opencover.console.exe))
-      {
-        cinst opencover.portable;
-      }
-      if(!(test-path ${env:ProgramData}\chocolatey\bin\codecov.exe))
-      {
-        cinst codecov;
-      }
+#      if(!(test-path ${env:ProgramData}\chocolatey\bin\opencover.console.exe))
+#      {
+#        cinst opencover.portable;
+#      }
+#      if(!(test-path ${env:ProgramData}\chocolatey\bin\codecov.exe))
+#      {
+#        cinst codecov;
+#      }
 
 before_build:
   - ps: 'dotnet --info'
@@ -52,18 +52,19 @@ build_script:
   - ps: 'dotnet build .\E5R.Architecture.sln -c ${ENV:CONFIGURATION} --version-suffix ${ENV:BUILD_VERSION_SUFFIX}'
 
 test_script :
-  - ps: 'opencover.console -register:user -target:"dotnet.exe" -targetargs:"test .\test\E5R.Architecture.Core.Test" -output:".\E5R.Architecture.Core.Test.Coverage.xml" -oldstyle'
-  - ps: 'opencover.console -register:user -target:"dotnet.exe" -targetargs:"test .\test\E5R.Architecture.Data.Test" -output:".\E5R.Architecture.Data.Test.Coverage.xml" -oldstyle'
-  - ps: 'opencover.console -register:user -target:"dotnet.exe" -targetargs:"test .\test\E5R.Architecture.Data.Dapper.Test" -output:".\E5R.Architecture.Data.Dapper.Test.Coverage.xml" -oldstyle'
-  - ps: 'opencover.console -register:user -target:"dotnet.exe" -targetargs:"test .\test\E5R.Architecture.Data.EntityFrameworkCore.Test" -output:".\E5R.Architecture.Data.EntityFrameworkCore.Test.Coverage.xml" -oldstyle'
-  - ps: 'opencover.console -register:user -target:"dotnet.exe" -targetargs:"test .\test\E5R.Architecture.Business.Test" -output:".\E5R.Architecture.Business.Test.Coverage.xml" -oldstyle'
+#  - ps: 'opencover.console -register:user -target:"dotnet.exe" -targetargs:"test .\test\E5R.Architecture.Core.Test" -output:".\E5R.Architecture.Core.Test.Coverage.xml" -oldstyle'
+  - ps: 'dotnet test .\test\E5R.Architecture.Core.Test'
+  - ps: 'dotnet test .\test\E5R.Architecture.Data.Test'
+  - ps: 'dotnet test .\test\E5R.Architecture.Data.Dapper.Test'
+  - ps: 'dotnet test .\test\E5R.Architecture.Data.EntityFrameworkCore.Test'
+  - ps: 'dotnet test .\test\E5R.Architecture.Business.Test'
 
-after_test:
-  - ps: 'codecov -f .\E5R.Architecture.Core.Test.Coverage.xml --build "${ENV:APPVEYOR_BUILD_NUMBER}" --branch "${ENV:APPVEYOR_REPO_BRANCH}" --sha "${ENV:APPVEYOR_REPO_COMMIT}"'
-  - ps: 'codecov -f .\E5R.Architecture.Data.Test.Coverage.xml --build "${ENV:APPVEYOR_BUILD_NUMBER}" --branch "${ENV:APPVEYOR_REPO_BRANCH}" --sha "${ENV:APPVEYOR_REPO_COMMIT}"'
-  - ps: 'codecov -f .\E5R.Architecture.Data.Dapper.Test.Coverage.xml --build "${ENV:APPVEYOR_BUILD_NUMBER}" --branch "${ENV:APPVEYOR_REPO_BRANCH}" --sha "${ENV:APPVEYOR_REPO_COMMIT}"'
-  - ps: 'codecov -f .\E5R.Architecture.Data.EntityFrameworkCore.Test.Coverage.xml --build "${ENV:APPVEYOR_BUILD_NUMBER}" --branch "${ENV:APPVEYOR_REPO_BRANCH}" --sha "${ENV:APPVEYOR_REPO_COMMIT}"'
-  - ps: 'codecov -f .\E5R.Architecture.Business.Test.Coverage.xml --build "${ENV:APPVEYOR_BUILD_NUMBER}" --branch "${ENV:APPVEYOR_REPO_BRANCH}" --sha "${ENV:APPVEYOR_REPO_COMMIT}"'
+#after_test:
+#  - ps: 'codecov -f .\E5R.Architecture.Core.Test.Coverage.xml --build "${ENV:APPVEYOR_BUILD_NUMBER}" --branch "${ENV:APPVEYOR_REPO_BRANCH}" --sha "${ENV:APPVEYOR_REPO_COMMIT}"'
+#  - ps: 'codecov -f .\E5R.Architecture.Data.Test.Coverage.xml --build "${ENV:APPVEYOR_BUILD_NUMBER}" --branch "${ENV:APPVEYOR_REPO_BRANCH}" --sha "${ENV:APPVEYOR_REPO_COMMIT}"'
+#  - ps: 'codecov -f .\E5R.Architecture.Data.Dapper.Test.Coverage.xml --build "${ENV:APPVEYOR_BUILD_NUMBER}" --branch "${ENV:APPVEYOR_REPO_BRANCH}" --sha "${ENV:APPVEYOR_REPO_COMMIT}"'
+#  - ps: 'codecov -f .\E5R.Architecture.Data.EntityFrameworkCore.Test.Coverage.xml --build "${ENV:APPVEYOR_BUILD_NUMBER}" --branch "${ENV:APPVEYOR_REPO_BRANCH}" --sha "${ENV:APPVEYOR_REPO_COMMIT}"'
+#  - ps: 'codecov -f .\E5R.Architecture.Business.Test.Coverage.xml --build "${ENV:APPVEYOR_BUILD_NUMBER}" --branch "${ENV:APPVEYOR_REPO_BRANCH}" --sha "${ENV:APPVEYOR_REPO_COMMIT}"'
 
 deploy:
   - provider: NuGet
