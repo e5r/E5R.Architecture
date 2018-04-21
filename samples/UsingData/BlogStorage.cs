@@ -5,16 +5,11 @@ using E5R.Architecture.Data.Abstractions;
 
 namespace UsingData
 {
-    public class BlogStorage : IStorageWriter<BlogStorage, BlogDataModel>
+    public class BlogStorage : IStorageWriter<BlogDataModel>
     {
         private MemoryDatabase _db;
 
-        public BlogStorage Configure(UnderlyingSession session)
-        {
-            _db = session.Get<MemoryDatabase>();
-
-            return this;
-        }
+        public void Configure(UnderlyingSession session) => _db = session.Get<MemoryDatabase>();
 
         public BlogDataModel Create(BlogDataModel blog)
         {

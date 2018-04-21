@@ -6,26 +6,15 @@ using Microsoft.EntityFrameworkCore;
 
 namespace E5R.Architecture.Data.EntityFrameworkCore
 {
-    public class BulkStorageWriter<TDataModel> : TradableStorage<BulkStorageWriter<TDataModel>>,
-        IBulkStorageWriter<BulkStorageWriter<TDataModel>, TDataModel>
+    public class BulkStorageWriter<TDataModel> : TradableStorage, IBulkStorageWriter<TDataModel>
         where TDataModel : class, IDataModel
     {
         private readonly FullStorage<TDataModel> _base;
 
-        public BulkStorageWriter()
-        {
-            _base = new FullStorage<TDataModel>();
-        }
+        public BulkStorageWriter() => _base = new FullStorage<TDataModel>();
 
         protected WriterDelegate Write => _base.Write;
         private IQueryable<TDataModel> Query => _base.Query;
-
-        public override BulkStorageWriter<TDataModel> Configure(UnderlyingSession session)
-        {
-            _base.Configure(session);
-
-            return this;
-        }
 
         public IEnumerable<TDataModel> BulkCreate(IEnumerable<TDataModel> data)
         {

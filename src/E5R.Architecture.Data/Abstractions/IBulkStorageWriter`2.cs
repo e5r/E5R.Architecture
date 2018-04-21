@@ -2,9 +2,7 @@
 
 namespace E5R.Architecture.Data.Abstractions
 {
-    public interface IBulkStorageWriter<out TImpl, TDataModel> : IStorageSignature,
-        ITradableObject<TImpl>
-        where TImpl : class
+    public interface IBulkStorageWriter<TDataModel> : IStorageSignature, ITradableObject
         where TDataModel : IDataModel
     {
         IEnumerable<TDataModel> BulkCreate(IEnumerable<TDataModel> data);

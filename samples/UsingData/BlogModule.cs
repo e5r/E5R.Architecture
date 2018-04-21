@@ -7,7 +7,7 @@ namespace UsingData
     {
         public BlogModule(IUnitOfWork uow, BlogStorage storage)
         {
-            Storage1 = storage.Configure(uow.Session);
+            (Storage1 = storage).Configure(uow.Session);
         }
 
         public BlogStorage Blog => Storage1;
