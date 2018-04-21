@@ -2,8 +2,7 @@
 
 namespace E5R.Architecture.Data.Abstractions
 {
-    public interface IStorageReader<out TImpl, TDataModel> : IStorageSignature, ITradableObject<TImpl>
-        where TImpl : class
+    public interface IStorageReader<TDataModel> : IStorageSignature, ITradableObject
         where TDataModel : IDataModel
     {
         TDataModel Find(TDataModel data);

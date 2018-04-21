@@ -6,26 +6,16 @@ namespace E5R.Architecture.Data.EntityFrameworkCore
 {
     using Abstractions;
 
-    public class Storage<TDataModel> : IStorage<Storage<TDataModel>, TDataModel>
+    public class Storage<TDataModel> : IStorage<TDataModel>
         where TDataModel : class, IDataModel
     {
-        private readonly FullStorage<TDataModel> _base;
-
-        public Storage()
-        {
-            _base = new FullStorage<TDataModel>();
-        }
+        private readonly FullStorage<TDataModel> _base = new FullStorage<TDataModel>();
 
         protected DbSet<TDataModel> Set => _base.Set;
         protected IQueryable<TDataModel> Query => _base.Query;
         protected WriterDelegate Write => _base.Write;
 
-        public Storage<TDataModel> Configure(UnderlyingSession session)
-        {
-            _base.Configure(session);
-
-            return this;
-        }
+        public void Configure(UnderlyingSession session) => _base.Configure(session);
 
         public TDataModel Find(TDataModel data) => _base.Find(data);
 

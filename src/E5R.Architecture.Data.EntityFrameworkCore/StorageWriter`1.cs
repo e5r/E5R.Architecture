@@ -4,25 +4,15 @@ namespace E5R.Architecture.Data.EntityFrameworkCore
 {
     using Abstractions;
 
-    public class StorageWriter<TDataModel> : IStorageWriter<StorageWriter<TDataModel>, TDataModel>
+    public class StorageWriter<TDataModel> : IStorageWriter<TDataModel>
         where TDataModel : class, IDataModel
     {
-        private readonly FullStorage<TDataModel> _base;
-
-        public StorageWriter()
-        {
-            _base = new FullStorage<TDataModel>();
-        }
+        private readonly FullStorage<TDataModel> _base = new FullStorage<TDataModel>();
 
         public DbSet<TDataModel> Set => _base.Set;
         protected WriterDelegate Write => _base.Write;
 
-        public StorageWriter<TDataModel> Configure(UnderlyingSession session)
-        {
-            _base.Configure(session);
-
-            return this;
-        }
+        public void Configure(UnderlyingSession session) => _base.Configure(session);
 
         public TDataModel Create(TDataModel data) => _base.Create(data);
 
