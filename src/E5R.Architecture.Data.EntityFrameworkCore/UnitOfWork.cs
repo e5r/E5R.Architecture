@@ -24,7 +24,7 @@ namespace E5R.Architecture.Data.EntityFrameworkCore
 
         public void SaveWork()
         {
-            if (_context.ChangeTracker.HasChanges())
+            if (_sessionStarted)
             {
                 _context.Database.CurrentTransaction.Commit();
             }
@@ -68,12 +68,13 @@ namespace E5R.Architecture.Data.EntityFrameworkCore
 
             if (!disposing) return;
 
-            if (_context.ChangeTracker.HasChanges())
+            if (_sessionStarted)
             {
                 _context.Database.CurrentTransaction.Rollback();
             }
 
             _session = null;
+            _sessionStarted = false;
         }
     }
 }
