@@ -5,7 +5,7 @@
 using System;
 using Xunit;
 
-namespace E5R.Architecture.Data.Test
+namespace E5R.Architecture.Infrastructure.Test
 {
     public class UnderlyingSessionTests
     {

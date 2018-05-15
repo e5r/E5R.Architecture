@@ -4,6 +4,8 @@
 
 namespace E5R.Architecture.Data.Abstractions
 {
+    using Infrastructure;
+
     /// <summary>
     /// Objeto negociável.
     /// </summary>

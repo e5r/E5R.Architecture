@@ -9,6 +9,7 @@ using Microsoft.EntityFrameworkCore;
 namespace E5R.Architecture.Data.EntityFrameworkCore
 {
     using Abstractions;
+    using  Infrastructure;
 
     public class Storage<TDataModel> : IStorage<TDataModel>
         where TDataModel : class, IDataModel

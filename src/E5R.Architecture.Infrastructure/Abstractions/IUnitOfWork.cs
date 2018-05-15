@@ -4,7 +4,7 @@
 
 using System;
 
-namespace E5R.Architecture.Data.Abstractions
+namespace E5R.Architecture.Infrastructure.Abstractions
 {
     /// <summary>
     /// Unit of Work

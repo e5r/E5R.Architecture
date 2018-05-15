@@ -9,6 +9,7 @@ namespace E5R.Architecture.Data.EntityFrameworkCore
 {
     using Core;
     using Abstractions;
+    using Infrastructure;
 
     public class TradableStorage : ITradableObject
     {

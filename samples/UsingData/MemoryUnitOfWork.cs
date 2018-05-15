@@ -6,6 +6,7 @@ using System;
 using E5R.Architecture.Infrastructure.Abstractions;
 using E5R.Architecture.Data;
 using E5R.Architecture.Data.Abstractions;
+using E5R.Architecture.Infrastructure;
 
 namespace UsingData
 {

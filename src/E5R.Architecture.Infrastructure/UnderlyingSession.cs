@@ -4,7 +4,7 @@
 
 using System;
 
-namespace E5R.Architecture.Data
+namespace E5R.Architecture.Infrastructure
 {
     /// <summary>
     /// A underlying session representation of Unit of Work 

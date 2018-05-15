@@ -11,6 +11,7 @@ namespace E5R.Architecture.Data.EntityFrameworkCore
 {
     using Core;
     using Abstractions;
+    using Infrastructure;
 
     internal class FullStorage<TDataModel> : TradableStorage
         where TDataModel : class, IDataModel
