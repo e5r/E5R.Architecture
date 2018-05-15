@@ -1,7 +1,7 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
   <PropertyGroup>
     <OutputType>Exe</OutputType>
-    <TargetFramework>netcoreapp1.1</TargetFramework>
+    <TargetFrameworks>netcoreapp1.1;netcoreapp2.0;netstandard1.3;netstandard2.0;net46;net451</TargetFrameworks>
     <IsPackable>false</IsPackable>
   </PropertyGroup>
   <ItemGroup>
@@ -9,5 +9,7 @@
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\..\src\E5R.Architecture.Data\E5R.Architecture.Data.csproj" />
+    <ProjectReference Include="..\..\src\E5R.Architecture.Infrastructure.Defaults\E5R.Architecture.Infrastructure.Defaults.csproj" />
+    <ProjectReference Include="..\..\src\E5R.Architecture.Infrastructure\E5R.Architecture.Infrastructure.csproj" />
   </ItemGroup>
 </Project>

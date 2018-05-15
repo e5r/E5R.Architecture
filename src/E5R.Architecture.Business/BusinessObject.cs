@@ -1,6 +1,14 @@
-﻿namespace E5R.Architecture.Business
+﻿// Copyright (c) E5R Development Team. All rights reserved.
+// This file is a part of E5R.Architecture.
+// Licensed under the Apache version 2.0: https://github.com/e5r/licenses/blob/master/license/APACHE-2.0.txt
+
+using System;
+using System.Threading.Tasks;
+
+namespace E5R.Architecture.Business
 {
     using Core;
+    using Exceptions;
     using Data.Abstractions;
 
     /// <summary>
@@ -14,6 +22,44 @@
         where TModule : IDataMouleSignature
     {
         protected TModule Module { get; private set; }
+
+        private readonly Type _originType;
+
+        protected BusinessObject(object origin)
+        {
+            Checker.NotNullArgument(origin, nameof(origin));
+
+            _originType = origin.GetType();
+        }
+
+        protected void EnsureOrigin<TOrigin>()
+        {
+            var expectedType = typeof(TOrigin);
+
+            if (_originType == null || _originType != expectedType)
+            {
+                // TODO: Implementar internacionalização
+                throw new BusinessLayerException(
+                    $"This operation requires a business object created from the [{expectedType.Name}] model.");
+            }
+        }
+
+        protected async Task<TResult> RunWithEnsureOriginAsync<TOrigin, TResult>(
+            Func<TResult> function)
+            => await Task.Run(() =>
+            {
+                EnsureOrigin<TOrigin>();
+
+                return function();
+            });
+
+        protected async Task RunWithEnsureOriginAsync<TOrigin>(Action action)
+            => await Task.Run(() =>
+            {
+                EnsureOrigin<TOrigin>();
+
+                action();
+            });
 
         public TObject Anchor(TModule module)
         {
