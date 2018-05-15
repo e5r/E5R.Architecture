@@ -1,8 +1,13 @@
-﻿using System.Collections.Generic;
+﻿// Copyright (c) E5R Development Team. All rights reserved.
+// This file is a part of E5R.Architecture.
+// Licensed under the Apache version 2.0: https://github.com/e5r/licenses/blob/master/license/APACHE-2.0.txt
+
+using System.Collections.Generic;
 using System.IO;
 using System.Text;
-using E5R.Architecture.Core.Abstractions;
+using E5R.Architecture.Infrastructure.Abstractions;
 using E5R.Architecture.Data;
+using E5R.Architecture.Infrastructure;
 using Newtonsoft.Json;
 
 namespace UsingData
@@ -29,8 +34,10 @@ namespace UsingData
         {
             string dbFilePath = Path.Combine(fs.GetCurrentDirectory(), DatabaseFileName);
 
-            FileStream file = fs.OpenFile(dbFilePath, fs.FileExists(dbFilePath) ? FileMode.Truncate : FileMode.CreateNew);
-            string dataString = JsonConvert.SerializeObject(session.Get<MemoryDatabase>().Blog, Formatting.Indented);
+            FileStream file = fs.OpenFile(dbFilePath,
+                fs.FileExists(dbFilePath) ? FileMode.Truncate : FileMode.CreateNew);
+            string dataString = JsonConvert.SerializeObject(session.Get<MemoryDatabase>().Blog,
+                Formatting.Indented);
 
             using (StreamWriter writer = new StreamWriter(file, Encoding.UTF8))
             {
