@@ -34,6 +34,7 @@ test_script :
   - ps: 'dotnet test .\test\E5R.Architecture.Data.Dapper.Test'
   - ps: 'dotnet test .\test\E5R.Architecture.Data.EntityFrameworkCore.Test'
   - ps: 'dotnet test .\test\E5R.Architecture.Business.Test'
+  - ps: 'dotnet test .\test\E5R.Architecture.Infrastructure.Test'
 
 deploy:
   - provider: NuGet
