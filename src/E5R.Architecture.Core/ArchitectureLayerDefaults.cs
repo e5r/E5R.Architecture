@@ -24,6 +24,13 @@ namespace E5R.Architecture.Core
                 Id = "ArchitectureLayer.Data",
                 Desctiption = "Data Layer"
             });
+        
+        public static ArchitectureLayerIdentifier InfrastructureLayer
+            => _dataLayer ?? (_dataLayer = new ArchitectureLayerIdentifier
+            {
+                Id = "ArchitectureLayer.Infrastructure",
+                Desctiption = "Infrastructure Layer"
+            });
 
         public static ArchitectureLayerIdentifier PresentationLayer
             => _presentationLayer ?? (_presentationLayer = new ArchitectureLayerIdentifier
