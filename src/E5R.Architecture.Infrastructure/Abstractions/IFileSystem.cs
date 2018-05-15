@@ -5,7 +5,7 @@
 using System;
 using System.IO;
 
-namespace E5R.Architecture.Core.Abstractions
+namespace E5R.Architecture.Infrastructure.Abstractions
 {
     /// <summary>
     /// File system abstractions

@@ -4,7 +4,7 @@
 
 using System;
 
-namespace E5R.Architecture.Core.Abstractions
+namespace E5R.Architecture.Infrastructure.Abstractions
 {
     public interface IIoCContainer
     {

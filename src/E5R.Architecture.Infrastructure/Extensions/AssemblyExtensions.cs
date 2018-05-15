@@ -5,10 +5,12 @@
 using System;
 using System.Linq;
 using System.Reflection;
-using E5R.Architecture.Core.Abstractions;
 
-namespace E5R.Architecture.Core.Extensions
+namespace E5R.Architecture.Infrastructure.Extensions
 {
+    using Core;
+    using Abstractions;
+
     public static class AssemblyExtensions
     {
         public static void IoCRegistrar(this Assembly assembly, IIoCContainer container)

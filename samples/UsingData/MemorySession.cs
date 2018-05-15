@@ -5,7 +5,7 @@
 using System.Collections.Generic;
 using System.IO;
 using System.Text;
-using E5R.Architecture.Core.Abstractions;
+using E5R.Architecture.Infrastructure.Abstractions;
 using E5R.Architecture.Data;
 using Newtonsoft.Json;
 
@@ -33,8 +33,10 @@ namespace UsingData
         {
             string dbFilePath = Path.Combine(fs.GetCurrentDirectory(), DatabaseFileName);
 
-            FileStream file = fs.OpenFile(dbFilePath, fs.FileExists(dbFilePath) ? FileMode.Truncate : FileMode.CreateNew);
-            string dataString = JsonConvert.SerializeObject(session.Get<MemoryDatabase>().Blog, Formatting.Indented);
+            FileStream file = fs.OpenFile(dbFilePath,
+                fs.FileExists(dbFilePath) ? FileMode.Truncate : FileMode.CreateNew);
+            string dataString = JsonConvert.SerializeObject(session.Get<MemoryDatabase>().Blog,
+                Formatting.Indented);
 
             using (StreamWriter writer = new StreamWriter(file, Encoding.UTF8))
             {

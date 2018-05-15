@@ -4,9 +4,8 @@
 
 using System;
 using System.IO;
-using System.Reflection;
 
-namespace E5R.Architecture.Core
+namespace E5R.Architecture.Infrastructure.Defaults
 {
     using Abstractions;
 
