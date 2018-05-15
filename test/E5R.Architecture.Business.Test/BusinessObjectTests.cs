@@ -15,7 +15,7 @@ namespace E5R.Architecture.Business.Test
         public void Must_Instantiate()
         {
             // Act
-            var instance = new EmptyBusinessObject();
+            var instance = new EmptyBusinessObject(0);
 
             // Assert
             Assert.NotNull(instance);
@@ -25,7 +25,7 @@ namespace E5R.Architecture.Business.Test
         public void Module_IsNull_When_NotAnchored()
         {
             // Act
-            var instance = new EmptyBusinessObject();
+            var instance = new EmptyBusinessObject(0);
 
             // Assert
             Assert.Null(instance.ExposeModule);
@@ -38,7 +38,7 @@ namespace E5R.Architecture.Business.Test
             var module = new EmptyDataModule();
 
             // Act
-            var instance = new EmptyBusinessObject()
+            var instance = new EmptyBusinessObject(0)
                 .Anchor(module);
 
             // Assert
@@ -52,7 +52,7 @@ namespace E5R.Architecture.Business.Test
             var module = new EmptyDataModule();
 
             // Act
-            var instance1 = new EmptyBusinessObject();
+            var instance1 = new EmptyBusinessObject(0);
             var instance2 = instance1.Anchor(module);
 
             // Assert
@@ -65,7 +65,7 @@ namespace E5R.Architecture.Business.Test
             // Act/Assert
             var error =
                 Assert.Throws<ArgumentNullException>(
-                    () => new EmptyBusinessObject().Anchor(null));
+                    () => new EmptyBusinessObject(0).Anchor(null));
 
             Assert.Equal("module", error.ParamName);
         }
