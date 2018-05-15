@@ -52,6 +52,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "E5R.Architecture.Infrastruc
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "E5R.Architecture.Infrastructure.Defaults", "src\E5R.Architecture.Infrastructure.Defaults\E5R.Architecture.Infrastructure.Defaults.csproj", "{ED6F193E-0C72-49F5-A8A0-3693F6DCD47C}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "E5R.Architecture.Infrastructure.AspNetCore", "src\E5R.Architecture.Infrastructure.AspNetCore\E5R.Architecture.Infrastructure.AspNetCore.csproj", "{6C140C21-E0C7-49EF-8B02-6CE1148FDF2A}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -213,6 +215,18 @@ Global
 		{ED6F193E-0C72-49F5-A8A0-3693F6DCD47C}.Release|x64.Build.0 = Release|Any CPU
 		{ED6F193E-0C72-49F5-A8A0-3693F6DCD47C}.Release|x86.ActiveCfg = Release|Any CPU
 		{ED6F193E-0C72-49F5-A8A0-3693F6DCD47C}.Release|x86.Build.0 = Release|Any CPU
+		{6C140C21-E0C7-49EF-8B02-6CE1148FDF2A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6C140C21-E0C7-49EF-8B02-6CE1148FDF2A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6C140C21-E0C7-49EF-8B02-6CE1148FDF2A}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{6C140C21-E0C7-49EF-8B02-6CE1148FDF2A}.Debug|x64.Build.0 = Debug|Any CPU
+		{6C140C21-E0C7-49EF-8B02-6CE1148FDF2A}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{6C140C21-E0C7-49EF-8B02-6CE1148FDF2A}.Debug|x86.Build.0 = Debug|Any CPU
+		{6C140C21-E0C7-49EF-8B02-6CE1148FDF2A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6C140C21-E0C7-49EF-8B02-6CE1148FDF2A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6C140C21-E0C7-49EF-8B02-6CE1148FDF2A}.Release|x64.ActiveCfg = Release|Any CPU
+		{6C140C21-E0C7-49EF-8B02-6CE1148FDF2A}.Release|x64.Build.0 = Release|Any CPU
+		{6C140C21-E0C7-49EF-8B02-6CE1148FDF2A}.Release|x86.ActiveCfg = Release|Any CPU
+		{6C140C21-E0C7-49EF-8B02-6CE1148FDF2A}.Release|x86.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
 		{6B0605F2-241C-477C-A001-EB97A381BC19} = {BCB2EAC4-18E1-4CD2-A155-3F6F24AE5C3C}
@@ -230,5 +244,6 @@ Global
 		{08F5791D-7F9E-4142-9B0C-F9BB3A25D124} = {BCB2EAC4-18E1-4CD2-A155-3F6F24AE5C3C}
 		{91BB5C06-F44E-4553-98A8-AE94CD17C730} = {241F0BED-1992-44B7-8B1B-7EBB3C82010C}
 		{ED6F193E-0C72-49F5-A8A0-3693F6DCD47C} = {BCB2EAC4-18E1-4CD2-A155-3F6F24AE5C3C}
+		{6C140C21-E0C7-49EF-8B02-6CE1148FDF2A} = {BCB2EAC4-18E1-4CD2-A155-3F6F24AE5C3C}
 	EndGlobalSection
 EndGlobal
