@@ -67,12 +67,17 @@ class UnitOfWork : IUnitOfWork
 ```csharp
 class UnitOfWorkProperty<T>
 {
+    private readonly T _property;
+    
     UnitOfWorkProperty(IUnitOfWork uow)
     {
-        Property = uow.Property<T>();
+        _property = uow.Property<T>();
     }
 
-    T Property { get; private set }
+    static implicit operator T(UnitOfWorkProperty<T> p)
+    {
+        return _property;
+    }
 }
 ```
 
