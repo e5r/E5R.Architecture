@@ -137,7 +137,7 @@ class Repository_2 : IRepository<MyDtoB>
         return blog.Url;
     }
 }
-``
+```
 
 * Aqui um exemplo de repositório __ADO.NET__ que trabalha direto na `SqlTransaction`:
 
