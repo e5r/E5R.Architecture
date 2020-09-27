@@ -293,4 +293,5 @@ __pycache__/
 
 
 # Project files
+.vscode/
 E5R.Architecture.Samples.*
