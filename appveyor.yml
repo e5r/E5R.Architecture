@@ -56,4 +56,4 @@ deploy:
     on:
       branch: master
     auth_token:
-      secure: RsQffcoeH/0NhhYdhhcRBs/XuVwJq5KPYcfX19XmkNCrolsPiMWpJcabHLq62+4j
+      secure: ZEaPbdCkQoEXD/52qVLt7n6Kl6uCV/d/ba644DCMt86YRJs8kvpaprkYK6I5wUdq
