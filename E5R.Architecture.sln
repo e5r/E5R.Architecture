@@ -16,17 +16,17 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "E5R.Architecture.Data.Test", "test\E5R.Architecture.Data.Test\E5R.Architecture.Data.Test.csproj", "{FF26C1F3-8D3F-49A0-9820-1A7DCD4B52DC}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "_files", "_files", "{15921615-588F-43CA-AF0B-0122FC944E56}"
-ProjectSection(SolutionItems) = preProject
-	.gitignore = .gitignore
-	appveyor.yml = appveyor.yml
-	codecov.yml = codecov.yml
-	global.json = global.json
-	LICENSE.txt = LICENSE.txt
-	NEWS.md = NEWS.md
-	packages.props = packages.props
-	README.md = README.md
-	.editorconfig = .editorconfig
-EndProjectSection
+	ProjectSection(SolutionItems) = preProject
+		.gitignore = .gitignore
+		appveyor.yml = appveyor.yml
+		codecov.yml = codecov.yml
+		global.json = global.json
+		LICENSE.txt = LICENSE.txt
+		NEWS.md = NEWS.md
+		packages.props = packages.props
+		README.md = README.md
+		.editorconfig = .editorconfig
+	EndProjectSection
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "samples", "samples", "{02D85B61-3F4D-4FDD-B5D5-AB0589447E01}"
 EndProject
