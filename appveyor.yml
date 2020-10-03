@@ -7,6 +7,13 @@ platform: Any CPU
 
 clone_depth: 1
 
+branches:
+  only:
+    - master
+    - develop
+
+skip_tags: true
+
 artifacts:
   - path: 'artifacts\E5R.Architecture.*.nupkg'
     name: E5RArchitecturePackages
@@ -16,14 +23,21 @@ init:
 
 install:
   - ps: >-
-      $BUILD_LABEL = "alpha";
+      $BUILD_LABEL = "beta";
       $BUILD_NUMBER = "{0:00000}" -f [int]::parse("${ENV:APPVEYOR_BUILD_NUMBER}");
-      $ENV:BUILD_VERSION_SUFFIX = "${BUILD_LABEL}-${BUILD_NUMBER}";
+      $ENV:BUILD_VERSION_SUFFIX = "-${BUILD_LABEL}.${BUILD_NUMBER}";
+    on:
+      branch: develop
+  - ps: >-
+      $ENV:BUILD_VERSION_SUFFIX = "";
+    on:
+      branch: master
+  - ps: >-
       $BUILD_VERSION = (Select-Xml -Path ".\packages.props" -XPath "/Project/PropertyGroup/VersionPrefix" | Select-Object -ExpandProperty Node).InnerText;
-      Update-AppveyorBuild -Version "${BUILD_VERSION}-${ENV:BUILD_VERSION_SUFFIX}";
+      Update-AppveyorBuild -Version "${BUILD_VERSION}${ENV:BUILD_VERSION_SUFFIX}";
 
 before_build:
-  - ps: 'dotnet restore'
+  - ps: 'dotnet --info'
 
 build_script:
   - ps: 'dotnet build .\E5R.Architecture.sln -c ${ENV:CONFIGURATION} --version-suffix ${ENV:BUILD_VERSION_SUFFIX}'
@@ -42,16 +56,29 @@ deploy:
       secure: UiEhClEPf4VHjZt2bs/qkDFuwOxfhWn7dOC0yywa+7IXrJU2oX2f619taoR345Gp
     skip_symbols: true
     on:
-      branch: master
+      branch:
+        - master
+        - develop
     artifact: E5RArchitecturePackages
 
   - provider: GitHub
-    tag: $(appveyor_build_version)     # todo: Usar versão dinâmica
-    release: $(appveyor_build_version)  # todo: Usar versão dinâmica
-    description: 'CI Release v$(appveyor_build_version) from AppVeyor' # todo: Usar versão dinâmica
+    tag: $(appveyor_build_version)
+    release: $(appveyor_build_version)
+    description: 'CI Release v$(appveyor_build_version) from AppVeyor'
     artifact: E5RArchitecturePackages
-    prerelease: true
     on:
       branch: master
     auth_token:
       secure: ZEaPbdCkQoEXD/52qVLt7n6Kl6uCV/d/ba644DCMt86YRJs8kvpaprkYK6I5wUdq
+
+  - provider: GitHub
+    tag: $(appveyor_build_version)
+    release: $(appveyor_build_version)
+    description: 'CI Release v$(appveyor_build_version) from AppVeyor'
+    artifact: E5RArchitecturePackages
+    prerelease: true
+    on:
+      branch: develop
+    auth_token:
+      secure: ZEaPbdCkQoEXD/52qVLt7n6Kl6uCV/d/ba644DCMt86YRJs8kvpaprkYK6I5wUdq
+    
