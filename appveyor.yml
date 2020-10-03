@@ -4,14 +4,7 @@
 image: Visual Studio 2019
 configuration: Release
 platform: Any CPU
-
 clone_depth: 1
-
-branches:
-  only:
-    - master
-    - develop
-
 skip_tags: true
 
 artifacts:
@@ -21,64 +14,70 @@ artifacts:
 init:
   - ps: 'git config --global core.autocrlf true'
 
-install:
-  - ps: >-
-      $BUILD_LABEL = "beta";
-      $BUILD_NUMBER = "{0:00000}" -f [int]::parse("${ENV:APPVEYOR_BUILD_NUMBER}");
-      $ENV:BUILD_VERSION_SUFFIX = "-${BUILD_LABEL}.${BUILD_NUMBER}";
-    on:
-      branch: develop
-  - ps: >-
-      $ENV:BUILD_VERSION_SUFFIX = "";
-    on:
-      branch: master
-  - ps: >-
-      $BUILD_VERSION = (Select-Xml -Path ".\packages.props" -XPath "/Project/PropertyGroup/VersionPrefix" | Select-Object -ExpandProperty Node).InnerText;
-      Update-AppveyorBuild -Version "${BUILD_VERSION}${ENV:BUILD_VERSION_SUFFIX}";
-
 before_build:
   - ps: 'dotnet --info'
-
-build_script:
-  - ps: 'dotnet build .\E5R.Architecture.sln -c ${ENV:CONFIGURATION} --version-suffix ${ENV:BUILD_VERSION_SUFFIX}'
+  - ps: 'dotnet restore'
 
 test_script :
-  - ps: 'dotnet test .\test\E5R.Architecture.Core.Test'
-  - ps: 'dotnet test .\test\E5R.Architecture.Data.Test'
-  - ps: 'dotnet test .\test\E5R.Architecture.Data.Dapper.Test'
-  - ps: 'dotnet test .\test\E5R.Architecture.Data.EntityFrameworkCore.Test'
-  - ps: 'dotnet test .\test\E5R.Architecture.Business.Test'
-  - ps: 'dotnet test .\test\E5R.Architecture.Infrastructure.Test'
+  - ps: 'dotnet test --no-restore .\test\E5R.Architecture.Core.Test'
+  - ps: 'dotnet test --no-restore .\test\E5R.Architecture.Data.Test'
+  - ps: 'dotnet test --no-restore .\test\E5R.Architecture.Data.Dapper.Test'
+  - ps: 'dotnet test --no-restore .\test\E5R.Architecture.Data.EntityFrameworkCore.Test'
+  - ps: 'dotnet test --no-restore .\test\E5R.Architecture.Business.Test'
+  - ps: 'dotnet test --no-restore .\test\E5R.Architecture.Infrastructure.Test'
 
-deploy:
-  - provider: NuGet
-    api_key:
-      secure: UiEhClEPf4VHjZt2bs/qkDFuwOxfhWn7dOC0yywa+7IXrJU2oX2f619taoR345Gp
-    skip_symbols: true
-    on:
-      branch:
-        - master
-        - develop
-    artifact: E5RArchitecturePackages
+for:
+-
+  branches:
+    only:
+      - master
 
-  - provider: GitHub
-    tag: $(appveyor_build_version)
-    release: $(appveyor_build_version)
-    description: 'CI Release v$(appveyor_build_version) from AppVeyor'
-    artifact: E5RArchitecturePackages
-    on:
-      branch: master
-    auth_token:
-      secure: ZEaPbdCkQoEXD/52qVLt7n6Kl6uCV/d/ba644DCMt86YRJs8kvpaprkYK6I5wUdq
+  install:
+    - ps: >-
+        $BUILD_VERSION = (Select-Xml -Path ".\packages.props" -XPath "/Project/PropertyGroup/VersionPrefix" | Select-Object -ExpandProperty Node).InnerText;
+        Update-AppveyorBuild -Version "${BUILD_VERSION}";
 
-  - provider: GitHub
-    tag: $(appveyor_build_version)
-    release: $(appveyor_build_version)
-    description: 'CI Release v$(appveyor_build_version) from AppVeyor'
-    artifact: E5RArchitecturePackages
-    prerelease: true
-    on:
-      branch: develop
-    auth_token:
-      secure: ZEaPbdCkQoEXD/52qVLt7n6Kl6uCV/d/ba644DCMt86YRJs8kvpaprkYK6I5wUdq
-    
+  build_script:
+    - ps: 'dotnet build .\E5R.Architecture.sln --no-restore -c ${ENV:CONFIGURATION}'
+
+  deploy:
+    - provider: NuGet
+      api_key:
+        secure: UiEhClEPf4VHjZt2bs/qkDFuwOxfhWn7dOC0yywa+7IXrJU2oX2f619taoR345Gp
+      skip_symbols: true
+      artifact: E5RArchitecturePackages
+
+    - provider: GitHub
+      tag: $(appveyor_build_version)
+      release: $(appveyor_build_version)
+      description: 'CI Release v$(appveyor_build_version) from AppVeyor'
+      artifact: E5RArchitecturePackages
+      auth_token:
+        secure: ZEaPbdCkQoEXD/52qVLt7n6Kl6uCV/d/ba644DCMt86YRJs8kvpaprkYK6I5wUdq
+
+-
+  branches:
+    only:
+      - develop
+
+  install:
+    - ps: >-
+        $BUILD_LABEL = "beta";
+        $BUILD_NUMBER = "{0:00000}" -f [int]::parse("${ENV:APPVEYOR_BUILD_NUMBER}");
+        $ENV:BUILD_VERSION_SUFFIX = "${BUILD_LABEL}.${BUILD_NUMBER}";
+        $BUILD_VERSION = (Select-Xml -Path ".\packages.props" -XPath "/Project/PropertyGroup/VersionPrefix" | Select-Object -ExpandProperty Node).InnerText;
+        Update-AppveyorBuild -Version "${BUILD_VERSION}-${ENV:BUILD_VERSION_SUFFIX}";
+
+  build_script:
+    - ps: 'dotnet build .\E5R.Architecture.sln --no-restore -c ${ENV:CONFIGURATION} --version-suffix ${ENV:BUILD_VERSION_SUFFIX}'
+
+  deploy:
+    - provider: GitHub
+      tag: $(appveyor_build_version)
+      release: $(appveyor_build_version)
+      description: 'CI Release v$(appveyor_build_version) from AppVeyor'
+      artifact: E5RArchitecturePackages
+      prerelease: true
+      on:branch: develop
+      auth_token:
+        secure: ZEaPbdCkQoEXD/52qVLt7n6Kl6uCV/d/ba644DCMt86YRJs8kvpaprkYK6I5wUdq
