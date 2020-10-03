@@ -1,5 +1,5 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
-  <Import Project="..\..\packages.props"/>
+  <Import Project="..\..\packages.props" />
   <PropertyGroup>
     <AssemblyName>E5R.Architecture.Infrastructure.AspNetCore</AssemblyName>
     <PackageId>E5R.Architecture.Infrastructure.AspNetCore</PackageId>
@@ -7,10 +7,10 @@
     <Description>Componentes de infraestrutura para projetos ASP.NET Core, parte da arquitetura de software E5R Development Team</Description>
   </PropertyGroup>
   <ItemGroup>
-    <ProjectReference Include="..\E5R.Architecture.Core\E5R.Architecture.Core.csproj"/>
-    <ProjectReference Include="..\E5R.Architecture.Infrastructure\E5R.Architecture.Infrastructure.csproj"/>
+    <ProjectReference Include="..\E5R.Architecture.Core\E5R.Architecture.Core.csproj" />
+    <ProjectReference Include="..\E5R.Architecture.Infrastructure\E5R.Architecture.Infrastructure.csproj" />
   </ItemGroup>
   <ItemGroup>
-    <PackageReference Include="Microsoft.AspNetCore.Http.Abstractions" Version="1.1.2"/>
+    <PackageReference Include="Microsoft.AspNetCore.Http.Abstractions" Version="1.1.2" />
   </ItemGroup>
 </Project>
