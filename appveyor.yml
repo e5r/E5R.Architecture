@@ -46,13 +46,11 @@ deploy:
     artifact: E5RArchitecturePackages
 
   - provider: GitHub
-    tag: v0.1.0-alpha     # todo: Usar versão dinâmica
-    release: 0.1.0-alpha  # todo: Usar versão dinâmica
+    tag: $(appveyor_build_version)     # todo: Usar versão dinâmica
+    release: $(appveyor_build_version)  # todo: Usar versão dinâmica
     description: 'CI Release v$(appveyor_build_version) from AppVeyor' # todo: Usar versão dinâmica
     artifact: E5RArchitecturePackages
-    draft: true
     prerelease: true
-    force_update: true
     on:
       branch: master
     auth_token:
