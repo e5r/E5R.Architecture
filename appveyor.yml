@@ -64,7 +64,7 @@ for:
     - ps: >-
         $BUILD_LABEL = "beta";
         $BUILD_NUMBER = "{0:00000}" -f [int]::parse("${ENV:APPVEYOR_BUILD_NUMBER}");
-        $ENV:BUILD_VERSION_SUFFIX = "${BUILD_LABEL}.${BUILD_NUMBER}";
+        $ENV:BUILD_VERSION_SUFFIX = "${BUILD_LABEL}-${BUILD_NUMBER}";
         $BUILD_VERSION = (Select-Xml -Path ".\packages.props" -XPath "/Project/PropertyGroup/VersionPrefix" | Select-Object -ExpandProperty Node).InnerText;
         Update-AppveyorBuild -Version "${BUILD_VERSION}-${ENV:BUILD_VERSION_SUFFIX}";
 
