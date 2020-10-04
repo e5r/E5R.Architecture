@@ -18,6 +18,14 @@ before_build:
   - ps: 'dotnet --info'
   - ps: 'dotnet restore'
 
+build_script:
+  - ps: >-
+      if ($ENV:BUILD_VERSION_SUFFIX) {
+        dotnet build .\E5R.Architecture.sln --no-restore -c ${ENV:CONFIGURATION} --version-suffix ${ENV:BUILD_VERSION_SUFFIX};
+      } else {
+        dotnet build .\E5R.Architecture.sln --no-restore -c ${ENV:CONFIGURATION};
+      }
+
 test_script :
   - ps: 'dotnet test --no-restore .\test\E5R.Architecture.Core.Test'
   - ps: 'dotnet test --no-restore .\test\E5R.Architecture.Data.Test'
@@ -25,6 +33,13 @@ test_script :
   - ps: 'dotnet test --no-restore .\test\E5R.Architecture.Data.EntityFrameworkCore.Test'
   - ps: 'dotnet test --no-restore .\test\E5R.Architecture.Business.Test'
   - ps: 'dotnet test --no-restore .\test\E5R.Architecture.Infrastructure.Test'
+
+deploy:
+  - provider: NuGet
+    api_key:
+      secure: UiEhClEPf4VHjZt2bs/qkDFuwOxfhWn7dOC0yywa+7IXrJU2oX2f619taoR345Gp
+    skip_symbols: true
+    artifact: E5RArchitecturePackages
 
 for:
 -
@@ -36,16 +51,6 @@ for:
     - ps: >-
         $BUILD_VERSION = (Select-Xml -Path ".\packages.props" -XPath "/Project/PropertyGroup/VersionPrefix" | Select-Object -ExpandProperty Node).InnerText;
         Update-AppveyorBuild -Version "${BUILD_VERSION}";
-
-  build_script:
-    - ps: 'dotnet build .\E5R.Architecture.sln --no-restore -c ${ENV:CONFIGURATION}'
-
-  deploy:
-    - provider: NuGet
-      api_key:
-        secure: UiEhClEPf4VHjZt2bs/qkDFuwOxfhWn7dOC0yywa+7IXrJU2oX2f619taoR345Gp
-      skip_symbols: true
-      artifact: E5RArchitecturePackages
 
     - provider: GitHub
       tag: v$(appveyor_build_version)
@@ -62,15 +67,12 @@ for:
 
   install:
     - ps: >-
-        $BUILD_TIMESTAMP = (Get-Date -Format "yyyyMMddHHmmss")
+        $BUILD_TIMESTAMP = (Get-Date -Format "yyyyMMddHHmmss");
         $BUILD_LABEL = "beta";
         $BUILD_NUMBER = "{0:00000}" -f [int]::parse("${ENV:APPVEYOR_BUILD_NUMBER}");
         $ENV:BUILD_VERSION_SUFFIX = "${BUILD_LABEL}-${BUILD_TIMESTAMP}-${BUILD_NUMBER}";
         $BUILD_VERSION = (Select-Xml -Path ".\packages.props" -XPath "/Project/PropertyGroup/VersionPrefix" | Select-Object -ExpandProperty Node).InnerText;
         Update-AppveyorBuild -Version "${BUILD_VERSION}-${ENV:BUILD_VERSION_SUFFIX}";
-
-  build_script:
-    - ps: 'dotnet build .\E5R.Architecture.sln --no-restore -c ${ENV:CONFIGURATION} --version-suffix ${ENV:BUILD_VERSION_SUFFIX}'
 
   deploy:
     - provider: GitHub
