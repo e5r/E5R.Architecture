@@ -11,9 +11,9 @@ namespace E5R.Architecture.Data.Abstractions
     {
         TDataModel Find(TDataModel data);
         DataLimiterResult<TDataModel> Get(DataLimiter<TDataModel> limiter);
-        IEnumerable<TDataModel> Search(DataReducer<TDataModel> reducer);
+        IEnumerable<TDataModel> Search(DataFilter<TDataModel> filter);
 
-        DataLimiterResult<TDataModel> LimitedSearch(DataReducer<TDataModel> reducer,
+        DataLimiterResult<TDataModel> LimitedSearch(DataFilter<TDataModel> filter,
             DataLimiter<TDataModel> limiter);
     }
 }

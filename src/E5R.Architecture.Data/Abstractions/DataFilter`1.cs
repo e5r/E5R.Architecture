@@ -9,16 +9,16 @@ using System.Linq.Expressions;
 namespace E5R.Architecture.Data.Abstractions
 {
     /// <summary>
-    /// Data reducer (Where) for data model with identifier
+    /// Data filter (Where) for data model with identifier
     /// </summary>
     /// <typeparam name="TDataModel">Model type</typeparam>
-    public abstract class DataReducer<TDataModel>
+    public abstract class DataFilter<TDataModel>
         where TDataModel : IDataModel
     {
         /// <summary>
-        /// Get a reducer expression (Where)
+        /// Get a filter expression (Where)
         /// </summary>
         /// <returns>List of reducer expression</returns>
-        public abstract IEnumerable<Expression<Func<TDataModel, bool>>> GetReducer();
+        public abstract IEnumerable<Expression<Func<TDataModel, bool>>> GetFilter();
     }
 }

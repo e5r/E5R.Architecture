@@ -6,3 +6,8 @@
 - Mover ..Core/Formatters para outro assembly
 - Rever necessidade de ..Core/ComponentInformation e SemVer
 - Promover ..Core como uma camada CrossCutting
+- Remover necessidade de objetos de assinatura
+  > IDataModuleSignature
+  > IStorageSignature
+- Remover necessidade de objeto ITradableObject
+- Repensar DataModule<>

@@ -25,9 +25,9 @@ namespace E5R.Architecture.Data.EntityFrameworkCore
 
         public DataLimiterResult<TDataModel> Get(DataLimiter<TDataModel> limiter) => _base.Get(limiter);
 
-        public IEnumerable<TDataModel> Search(DataReducer<TDataModel> reducer) => _base.Search(reducer);
+        public IEnumerable<TDataModel> Search(DataFilter<TDataModel> filter) => _base.Search(filter);
 
-        public DataLimiterResult<TDataModel> LimitedSearch(DataReducer<TDataModel> reducer,
-            DataLimiter<TDataModel> limiter) => _base.LimitedSearch(reducer, limiter);
+        public DataLimiterResult<TDataModel> LimitedSearch(DataFilter<TDataModel> filter,
+            DataLimiter<TDataModel> limiter) => _base.LimitedSearch(filter, limiter);
     }
 }

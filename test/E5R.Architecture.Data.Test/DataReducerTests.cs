@@ -17,7 +17,7 @@ namespace E5R.Architecture.Data.Test
         public void Must_Instantiate_For_Model_Without_Identifier()
         {
             // Act
-            var instance = new EmptyDataReducer();
+            var instance = new EmptyDataFilter();
 
             // Assert
             Assert.NotNull(instance);
@@ -25,9 +25,9 @@ namespace E5R.Architecture.Data.Test
 
         #region Mocks
 
-        class EmptyDataReducer : DataReducer<DataModel<object>>
+        class EmptyDataFilter : DataFilter<DataModel<object>>
         {
-            public override IEnumerable<Expression<Func<DataModel<object>, bool>>> GetReducer()
+            public override IEnumerable<Expression<Func<DataModel<object>, bool>>> GetFilter()
                 => null;
         }
 

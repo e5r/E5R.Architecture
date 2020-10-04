@@ -69,18 +69,18 @@ namespace E5R.Architecture.Data.EntityFrameworkCore
             Context.SaveChanges();
         }
 
-        public void BulkRemoveFromSearch(DataReducer<TDataModel> reducer)
+        public void BulkRemoveFromSearch(DataFilter<TDataModel> filter)
         {
-            Checker.NotNullArgument(reducer, nameof(reducer));
+            Checker.NotNullArgument(filter, nameof(filter));
 
             // TODO: Implementar validação
 
             // TODO: Refatorar com [StorageReader/QuerySearch]
-            var reducerList = reducer.GetReducer();
+            var filterList = filter.GetFilter();
 
-            Checker.NotNullObject(reducerList, $"reducer.{nameof(reducer.GetReducer)}()");
+            Checker.NotNullObject(filterList, $"filter.{nameof(filter.GetFilter)}()");
 
-            var search = reducerList.Aggregate(Query, (q, w) => q.Where(w));
+            var search = filterList.Aggregate(Query, (q, w) => q.Where(w));
 
             foreach (var d in search)
             {

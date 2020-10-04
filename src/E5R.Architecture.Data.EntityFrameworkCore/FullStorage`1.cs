@@ -47,20 +47,20 @@ namespace E5R.Architecture.Data.EntityFrameworkCore
             return QueryLimitResult(limiter, Query);
         }
 
-        public IEnumerable<TDataModel> Search(DataReducer<TDataModel> reducer)
+        public IEnumerable<TDataModel> Search(DataFilter<TDataModel> filter)
         {
-            Checker.NotNullArgument(reducer, nameof(reducer));
+            Checker.NotNullArgument(filter, nameof(filter));
 
-            return QuerySearch(reducer);
+            return QuerySearch(filter);
         }
 
-        public DataLimiterResult<TDataModel> LimitedSearch(DataReducer<TDataModel> reducer,
+        public DataLimiterResult<TDataModel> LimitedSearch(DataFilter<TDataModel> filter,
             DataLimiter<TDataModel> limiter)
         {
-            Checker.NotNullArgument(reducer, nameof(reducer));
+            Checker.NotNullArgument(filter, nameof(filter));
             Checker.NotNullArgument(limiter, nameof(limiter));
 
-            var result = QuerySearch(reducer);
+            var result = QuerySearch(filter);
 
             return QueryLimitResult(limiter, result);
         }
@@ -120,22 +120,22 @@ namespace E5R.Architecture.Data.EntityFrameworkCore
             throw new System.NotImplementedException();
         }
 
-        public void BulkRemoveFromSearch(DataReducer<TDataModel> reducer)
+        public void BulkRemoveFromSearch(DataFilter<TDataModel> filter)
         {
             throw new System.NotImplementedException();
         }
 
         #region Auxiliary methods
 
-        private IQueryable<TDataModel> QuerySearch(DataReducer<TDataModel> reducer)
+        private IQueryable<TDataModel> QuerySearch(DataFilter<TDataModel> filter)
         {
-            Checker.NotNullArgument(reducer, nameof(reducer));
+            Checker.NotNullArgument(filter, nameof(filter));
 
-            var reducerList = reducer.GetReducer();
+            var filterList = filter.GetFilter();
 
-            Checker.NotNullObject(reducerList, $"reducer.{nameof(reducer.GetReducer)}()");
+            Checker.NotNullObject(filterList, $"filter.{nameof(filter.GetFilter)}()");
 
-            return reducerList.Aggregate(Query, (q, w) => q.Where(w));
+            return filterList.Aggregate(Query, (q, w) => q.Where(w));
         }
 
         private DataLimiterResult<TDataModel> QueryLimitResult(DataLimiter<TDataModel> limiter,
