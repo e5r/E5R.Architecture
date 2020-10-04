@@ -29,19 +29,17 @@ build_script:
 
 test_script:
   # Executa os testes
-  - ps: 'dotnet test --no-restore /p:CollectCoverage=true /p:CoverletOutput=TestResults/ /p:CoverletOutputFormat=opencover ./test/E5R.Architecture.Core.Test'
-  - ps: 'dotnet test --no-restore /p:CollectCoverage=true /p:CoverletOutput=TestResults/ /p:CoverletOutputFormat=opencover ./test/E5R.Architecture.Data.Test'
-  - ps: 'dotnet test --no-restore /p:CollectCoverage=true /p:CoverletOutput=TestResults/ /p:CoverletOutputFormat=opencover ./test/E5R.Architecture.Data.Dapper.Test'
-  - ps: 'dotnet test --no-restore /p:CollectCoverage=true /p:CoverletOutput=TestResults/ /p:CoverletOutputFormat=opencover ./test/E5R.Architecture.Data.EntityFrameworkCore.Test'
-  - ps: 'dotnet test --no-restore /p:CollectCoverage=true /p:CoverletOutput=TestResults/ /p:CoverletOutputFormat=opencover ./test/E5R.Architecture.Business.Test'
-  - ps: 'dotnet test --no-restore /p:CollectCoverage=true /p:CoverletOutput=TestResults/ /p:CoverletOutputFormat=opencover ./test/E5R.Architecture.Infrastructure.Test'
+  - ps: 'dotnet test --no-restore /p:CollectCoverage=true /p:CoverletOutput=TestResults/ /p:CoverletOutputFormat=opencover'
   # Reporta a cobertura de código para https://codecov.io
-  - ps: 'codecov -f .\test\E5R.Architecture.Core.Test\TestResults\coverage.opencover.xml'
-  - ps: 'codecov -f .\test\E5R.Architecture.Data.Test\TestResults\coverage.opencover.xml'
-  - ps: 'codecov -f .\test\E5R.Architecture.Data.Dapper.Test\TestResults\coverage.opencover.xml'
-  - ps: 'codecov -f .\test\E5R.Architecture.Data.EntityFrameworkCore.Test\TestResults\coverage.opencover.xml'
-  - ps: 'codecov -f .\test\E5R.Architecture.Business.Test\TestResults\coverage.opencover.xml'
-  - ps: 'codecov -f .\test\E5R.Architecture.Infrastructure.Test\TestResults\coverage.opencover.xml'
+  - ps: >-
+      if (("develop", "master").contains(${ENV:APPVEYOR_REPO_BRANCH})) {
+        codecov -f .\test\E5R.Architecture.Core.Test\TestResults\coverage.opencover.xml';
+        codecov -f .\test\E5R.Architecture.Data.Test\TestResults\coverage.opencover.xml';
+        codecov -f .\test\E5R.Architecture.Data.Dapper.Test\TestResults\coverage.opencover.xml';
+        codecov -f .\test\E5R.Architecture.Data.EntityFrameworkCore.Test\TestResults\coverage.opencover.xml';
+        codecov -f .\test\E5R.Architecture.Business.Test\TestResults\coverage.opencover.xml';
+        codecov -f .\test\E5R.Architecture.Infrastructure.Test\TestResults\coverage.opencover.xml';
+      }
 
 deploy:
   - provider: NuGet
