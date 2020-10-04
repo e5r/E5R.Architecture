@@ -3,13 +3,13 @@
 // Licensed under the Apache version 2.0: https://github.com/e5r/licenses/blob/master/license/APACHE-2.0.txt
 
 using System;
+using static System.Reflection.Assembly;
 
 namespace E5R.Architecture.Core
 {
     public class ArchitectureLayerException : Exception
     {
         private const string OwnerHelpLink = "https://github.com/e5r/E5R.Architecture.Docs";
-        private ComponentInformation _info;
 
         private readonly ArchitectureLayerIdentifier _layerId;
 
@@ -29,14 +29,12 @@ namespace E5R.Architecture.Core
         {
             _layerId = layerId;
 
-            MakeInformation();
+            ComponentInfo = ComponentInformation.MakeFromAssembly(GetCallingAssembly());
         }
 
         public override string HelpLink => OwnerHelpLink;
 
-        private void MakeInformation()
-        {
-            throw new NotImplementedException();
-        }
+        public ComponentInformation ComponentInfo { get; private set; }
+
     }
 }
