@@ -48,7 +48,7 @@ for:
       artifact: E5RArchitecturePackages
 
     - provider: GitHub
-      tag: $(appveyor_build_version)
+      tag: v$(appveyor_build_version)
       release: $(appveyor_build_version)
       description: 'CI Release v$(appveyor_build_version) from AppVeyor'
       artifact: E5RArchitecturePackages
@@ -62,9 +62,10 @@ for:
 
   install:
     - ps: >-
+        $BUILD_TIMESTAMP = (Get-Date -Format "yyyyMMddHHmmss")
         $BUILD_LABEL = "beta";
         $BUILD_NUMBER = "{0:00000}" -f [int]::parse("${ENV:APPVEYOR_BUILD_NUMBER}");
-        $ENV:BUILD_VERSION_SUFFIX = "${BUILD_LABEL}-${BUILD_NUMBER}";
+        $ENV:BUILD_VERSION_SUFFIX = "${BUILD_LABEL}-${BUILD_TIMESTAMP}-${BUILD_NUMBER}";
         $BUILD_VERSION = (Select-Xml -Path ".\packages.props" -XPath "/Project/PropertyGroup/VersionPrefix" | Select-Object -ExpandProperty Node).InnerText;
         Update-AppveyorBuild -Version "${BUILD_VERSION}-${ENV:BUILD_VERSION_SUFFIX}";
 
@@ -73,11 +74,10 @@ for:
 
   deploy:
     - provider: GitHub
-      tag: $(appveyor_build_version)
+      tag: v$(appveyor_build_version)
       release: $(appveyor_build_version)
       description: 'CI Release v$(appveyor_build_version) from AppVeyor'
       artifact: E5RArchitecturePackages
       prerelease: true
-      on:branch: develop
       auth_token:
         secure: ZEaPbdCkQoEXD/52qVLt7n6Kl6uCV/d/ba644DCMt86YRJs8kvpaprkYK6I5wUdq
