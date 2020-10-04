@@ -1,7 +1,7 @@
 <Project>
 
   <PropertyGroup>
-    <VersionPrefix>0.1.1</VersionPrefix>
+    <VersionPrefix>0.1.2</VersionPrefix>
     <FileVersion>$(VersionPrefix).0</FileVersion>
     <AssemblyVersion>$(VersionPrefix).0</AssemblyVersion>
     <RootPkgNamespace>E5R.Architecture</RootPkgNamespace>
@@ -12,7 +12,7 @@
     <RepositoryUrl>https://github.com/e5r/E5R.Architecture</RepositoryUrl>
     <RepositoryType>git</RepositoryType>
     <PackageProjectUrl>https://github.com/e5r/E5R.Architecture</PackageProjectUrl>
-    <PackageLicenseUrl>https://github.com/e5r/E5R.Architecture/blob/master/LICENSE</PackageLicenseUrl>
+    <PackageLicenseUrl>https://github.com/e5r/E5R.Architecture/blob/master/LICENSE.txt</PackageLicenseUrl>
     <PackageIconUrl>https://avatars3.githubusercontent.com/u/8513737</PackageIconUrl>
     <PackageReleaseNotes>Componentes da arquitetura de software E5R Development Team para .NET Standard 2.0</PackageReleaseNotes>
     <PackageTags>E5R Development Team Architecture</PackageTags>
