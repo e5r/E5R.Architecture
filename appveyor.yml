@@ -16,6 +16,7 @@ init:
 
 before_build:
   - ps: 'dotnet --info'
+  - ps: 'dotnet tool install --global Codecov.Tool'
   - ps: 'dotnet restore'
 
 build_script:
@@ -26,13 +27,21 @@ build_script:
         dotnet build .\E5R.Architecture.sln --no-restore -c ${ENV:CONFIGURATION};
       }
 
-test_script :
-  - ps: 'dotnet test --no-restore .\test\E5R.Architecture.Core.Test'
-  - ps: 'dotnet test --no-restore .\test\E5R.Architecture.Data.Test'
-  - ps: 'dotnet test --no-restore .\test\E5R.Architecture.Data.Dapper.Test'
-  - ps: 'dotnet test --no-restore .\test\E5R.Architecture.Data.EntityFrameworkCore.Test'
-  - ps: 'dotnet test --no-restore .\test\E5R.Architecture.Business.Test'
-  - ps: 'dotnet test --no-restore .\test\E5R.Architecture.Infrastructure.Test'
+test_script:
+  # Executa os testes
+  - ps: 'dotnet test --no-restore /p:CollectCoverage=true /p:CoverletOutput=TestResults/ .\test\E5R.Architecture.Core.Test'
+  - ps: 'dotnet test --no-restore /p:CollectCoverage=true /p:CoverletOutput=TestResults/ .\test\E5R.Architecture.Data.Test'
+  - ps: 'dotnet test --no-restore /p:CollectCoverage=true /p:CoverletOutput=TestResults/ .\test\E5R.Architecture.Data.Dapper.Test'
+  - ps: 'dotnet test --no-restore /p:CollectCoverage=true /p:CoverletOutput=TestResults/ .\test\E5R.Architecture.Data.EntityFrameworkCore.Test'
+  - ps: 'dotnet test --no-restore /p:CollectCoverage=true /p:CoverletOutput=TestResults/ .\test\E5R.Architecture.Business.Test'
+  - ps: 'dotnet test --no-restore /p:CollectCoverage=true /p:CoverletOutput=TestResults/ .\test\E5R.Architecture.Infrastructure.Test'
+  # Reporta a cobertura de código para https://codecov.io
+  - ps: 'codecov -f .\test\E5R.Architecture.Core.Test\TestResults\coverage.opencover.xml'
+  - ps: 'codecov -f .\test\E5R.Architecture.Data.Test\TestResults\coverage.opencover.xml'
+  - ps: 'codecov -f .\test\E5R.Architecture.Data.Dapper.Test\TestResults\coverage.opencover.xml'
+  - ps: 'codecov -f .\test\E5R.Architecture.Data.EntityFrameworkCore.Test\TestResults\coverage.opencover.xml'
+  - ps: 'codecov -f .\test\E5R.Architecture.Business.Test\TestResults\coverage.opencover.xml'
+  - ps: 'codecov -f .\test\E5R.Architecture.Infrastructure.Test\TestResults\coverage.opencover.xml'
 
 deploy:
   - provider: NuGet
