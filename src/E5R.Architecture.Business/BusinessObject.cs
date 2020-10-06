@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 namespace E5R.Architecture.Business
 {
     using Core;
-    using Exceptions;
+    using Core.Exceptions;
     using Data.Abstractions;
 
     /// <summary>

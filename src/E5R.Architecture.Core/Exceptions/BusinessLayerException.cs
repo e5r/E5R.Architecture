@@ -4,10 +4,10 @@
 
 using System;
 
-namespace E5R.Architecture.Business.Exceptions
+namespace E5R.Architecture.Core.Exceptions
 {
     using Core;
-    using static Core.ArchitectureLayerDefaults;
+    using static Core.ArchitectureLayerIdentifier;
 
     public class BusinessLayerException : ArchitectureLayerException
     {

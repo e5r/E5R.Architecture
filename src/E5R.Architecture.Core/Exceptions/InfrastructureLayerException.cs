@@ -4,10 +4,10 @@
 
 using System;
 
-namespace E5R.Architecture.Infrastructure.Exceptions
+namespace E5R.Architecture.Core.Exceptions
 {
     using Core;
-    using static Core.ArchitectureLayerDefaults;
+    using static Core.ArchitectureLayerIdentifier;
 
     public class InfrastructureLayerException : ArchitectureLayerException
     {

@@ -5,7 +5,7 @@
 using System;
 using static System.Reflection.Assembly;
 
-namespace E5R.Architecture.Core
+namespace E5R.Architecture.Core.Exceptions
 {
     public class ArchitectureLayerException : Exception
     {
