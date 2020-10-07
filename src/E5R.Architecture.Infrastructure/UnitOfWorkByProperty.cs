@@ -36,8 +36,7 @@ namespace E5R.Architecture.Infrastructure
 
             var propertyType = property.GetType();
 
-            // TODO: Precisa mesmo do propertyType == targetType?
-            if (propertyType == targetType || targetType.IsAssignableFrom(propertyType))
+            if (targetType.IsAssignableFrom(propertyType))
             {
                 return (T)property;
             }

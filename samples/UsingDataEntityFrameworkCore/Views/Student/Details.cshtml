@@ -43,7 +43,11 @@
     <td>
         @Html.DisplayFor(modelItem => item.Grade)
     </td>
-</tr>
-}
+</tr>}
     </table>
 </dd>
+
+<hr />
+<a asp-action="Details2" asp-route-id="@Model.ID">Visualizar no <strong>modo #2</strong></a>
+<br />
+<a asp-action="Details3" asp-route-id="@Model.ID">Visualizar no <strong>modo #3</strong></a>

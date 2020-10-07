@@ -18,5 +18,7 @@ namespace E5R.Architecture.Data.Abstractions
         protected TBusinessModel Business { get; private set; }
 
         public virtual object[] IdentifierValues { get; }
+
+        public TBusinessModel Unwrap() => Business;
     }
 }

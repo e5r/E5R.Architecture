@@ -43,12 +43,13 @@ namespace E5R.Architecture.Infrastructure.AspNetCore
             {
                 _logger.LogTrace("Discarding unit of work");
                 uow.DiscardWork();
+                _logger.LogTrace("Unit of work successfully discarded");
                 throw;
             }
 
             _logger.LogTrace("Saving unit of work");
             uow.SaveWork();
-            _logger.LogTrace("Unit of work saved successfully");
+            _logger.LogTrace("Unit of work successfully saved");
         }
     }
 }
