@@ -20,7 +20,6 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "_files", "_files", "{159216
 		.gitignore = .gitignore
 		appveyor.yml = appveyor.yml
 		codecov.yml = codecov.yml
-		global.json = global.json
 		LICENSE.txt = LICENSE.txt
 		NEWS.md = NEWS.md
 		packages.props = packages.props
