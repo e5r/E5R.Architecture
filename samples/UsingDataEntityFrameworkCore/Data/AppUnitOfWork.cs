@@ -9,14 +9,20 @@ namespace UsingDataEntityFrameworkCore.Data
         {
             var transaction = Property<DbTransaction>();
 
-            transaction.Rollback();
+            if (transaction != null)
+            {
+                transaction.Rollback();
+            }
         }
 
         public override void SaveWork()
         {
             var transaction = Property<DbTransaction>();
 
-            transaction.Commit();
+            if (transaction != null)
+            {
+                transaction.Commit();
+            }
         }
     }
 }

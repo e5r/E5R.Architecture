@@ -45,7 +45,8 @@ namespace UsingDataEntityFrameworkCore
             #region services.AddPropertyUnitOfWork(options);
             services.AddScoped<DbConnection, SqliteConnection>(_ =>
             {
-                return new SqliteConnection("Data Source=school.db");
+                var connectionString = Configuration.GetConnectionString("SQLiteConnection");
+                return new SqliteConnection(connectionString);
             });
 
             services.AddDbContext<SchoolContext>((serviceProvider, options) =>
