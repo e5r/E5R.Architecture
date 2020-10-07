@@ -9,7 +9,7 @@ namespace E5R.Architecture.Infrastructure.Abstractions
     /// <summary>
     /// Unit of Work
     /// </summary>
-    public interface IUnitOfWork : IDisposable
+    public interface IUnitOfWork
     {
         /// <summary>
         /// Saves the pending work
@@ -17,9 +17,8 @@ namespace E5R.Architecture.Infrastructure.Abstractions
         void SaveWork();
 
         /// <summary>
-        /// The session object
+        /// Discard the pending work
         /// </summary>
-        /// <remarks>Creates if there is not</remarks>
-        UnderlyingSession Session { get; }
+        void DiscardWork();
     }
 }

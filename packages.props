@@ -1,32 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
 <Project>
-
-  <PropertyGroup>
-    <VersionPrefix>0.1.2</VersionPrefix>
-    <FileVersion>$(VersionPrefix).0</FileVersion>
-    <AssemblyVersion>$(VersionPrefix).0</AssemblyVersion>
-    <RootPkgNamespace>E5R.Architecture</RootPkgNamespace>
-    <Product>E5R.Architecture</Product>
-    <Company>E5R Development Team</Company>
-    <Authors>erlimar</Authors>
-    <Copyright>Copyright (c) E5R Development Team</Copyright>
-    <RepositoryUrl>https://github.com/e5r/E5R.Architecture</RepositoryUrl>
-    <RepositoryType>git</RepositoryType>
-    <PackageProjectUrl>https://github.com/e5r/E5R.Architecture</PackageProjectUrl>
-    <PackageLicenseUrl>https://github.com/e5r/E5R.Architecture/blob/master/LICENSE.txt</PackageLicenseUrl>
-    <PackageIconUrl>https://avatars3.githubusercontent.com/u/8513737</PackageIconUrl>
-    <PackageReleaseNotes>Componentes da arquitetura de software E5R Development Team para .NET Standard 2.0</PackageReleaseNotes>
-    <PackageTags>E5R Development Team Architecture</PackageTags>
-    <TargetFrameworks>netstandard2.0;netstandard2.1;</TargetFrameworks>
-  </PropertyGroup>
-
-  <PropertyGroup Condition=" '$(Configuration)' == 'Release' ">
-    <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
-    <OutputPath>$(SolutionDir)artifacts</OutputPath>
-  </PropertyGroup>
-
-  <PropertyGroup Condition=" '$(Configuration)' == 'Debug' ">
-    <DebugType>Full</DebugType>
-    <GeneratePackageOnBuild>false</GeneratePackageOnBuild>
-  </PropertyGroup>
-
+    <PropertyGroup>
+        <VersionPrefix>0.1.2</VersionPrefix>
+        <FileVersion>$(VersionPrefix).0</FileVersion>
+        <AssemblyVersion>$(VersionPrefix).0</AssemblyVersion>
+        <RootPkgNamespace>E5R.Architecture</RootPkgNamespace>
+        <Product>E5R.Architecture</Product>
+        <Company>E5R Development Team</Company>
+        <Authors>erlimar</Authors>
+        <Copyright>Copyright (c) E5R Development Team</Copyright>
+        <RepositoryUrl>https://github.com/e5r/E5R.Architecture</RepositoryUrl>
+        <RepositoryType>git</RepositoryType>
+        <PackageProjectUrl>https://github.com/e5r/E5R.Architecture</PackageProjectUrl>
+        <PackageLicenseUrl>https://github.com/e5r/E5R.Architecture/blob/master/LICENSE.txt</PackageLicenseUrl>
+        <PackageIconUrl>https://avatars3.githubusercontent.com/u/8513737</PackageIconUrl>
+        <PackageReleaseNotes>Componentes da arquitetura de software E5R Development Team para .NET Standard 2.0</PackageReleaseNotes>
+        <PackageTags>E5R Development Team Architecture</PackageTags>
+        <TargetFramework>netstandard2.0</TargetFramework>
+    </PropertyGroup>
+    <PropertyGroup Condition=" '$(Configuration)' == 'Release' ">
+        <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
+        <OutputPath>$(SolutionDir)artifacts</OutputPath>
+    </PropertyGroup>
+    <PropertyGroup Condition=" '$(Configuration)' == 'Debug' ">
+        <DebugType>Full</DebugType>
+        <GeneratePackageOnBuild>false</GeneratePackageOnBuild>
+    </PropertyGroup>
 </Project>

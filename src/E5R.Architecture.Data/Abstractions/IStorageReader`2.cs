@@ -6,7 +6,7 @@ using System.Collections.Generic;
 
 namespace E5R.Architecture.Data.Abstractions
 {
-    public interface IStorageReader<TDataModel> : IStorageSignature, ITradableObject
+    public interface IStorageReader<TDataModel> : IStorageSignature
         where TDataModel : IDataModel
     {
         TDataModel Find(TDataModel data);

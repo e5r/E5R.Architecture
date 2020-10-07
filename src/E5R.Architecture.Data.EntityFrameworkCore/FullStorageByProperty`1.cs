@@ -9,22 +9,24 @@ using Microsoft.EntityFrameworkCore;
 
 namespace E5R.Architecture.Data.EntityFrameworkCore
 {
-    using Core;
     using Abstractions;
+    using Core;
     using Infrastructure;
 
-    internal class FullStorage<TDataModel> : TradableStorage
+    public class FullStorageByProperty<TDbContext, TDataModel>
         where TDataModel : class, IDataModel
+        where TDbContext : DbContext
     {
-        public DbSet<TDataModel> Set { get; private set; }
-        public IQueryable<TDataModel> Query { get; private set; }
-        public WriterDelegate Write { get; private set; }
+        protected TDbContext Context { get; private set; }
+        protected DbSet<TDataModel> Set { get; private set; }
+        protected IQueryable<TDataModel> Query { get; private set; }
+        protected WriterDelegate Write { get; private set; }
 
-        public override void Configure(UnderlyingSession session)
+        public FullStorageByProperty(UnitOfWorkProperty<TDbContext> context)
         {
-            base.Configure(session);
+            Checker.NotNullArgument(context, nameof(context));
 
-            Context.ChangeTracker.QueryTrackingBehavior = QueryTrackingBehavior.NoTracking;
+            Context = context;
 
             Set = Context.Set<TDataModel>();
             Query = Set.AsNoTracking();
@@ -105,29 +107,83 @@ namespace E5R.Architecture.Data.EntityFrameworkCore
 
         #endregion
 
+        #region IBulkStorageWriter
+
         public IEnumerable<TDataModel> BulkCreate(IEnumerable<TDataModel> data)
         {
-            throw new System.NotImplementedException();
+            Checker.NotNullArgument(data, nameof(data));
+
+            // TODO: Implementar validação
+
+            // TODO: Utilizar Bulk com alguma biblioteca ao invés dessa iteração
+            foreach (var d in data)
+            {
+                Write(d, node => node.Entry.State = EntityState.Added);
+            }
+
+            Context.SaveChanges();
+
+            return data;
         }
 
         public IEnumerable<TDataModel> BulkReplace(IEnumerable<TDataModel> data)
         {
-            throw new System.NotImplementedException();
+            Checker.NotNullArgument(data, nameof(data));
+
+            // TODO: Implementar validação
+
+            // TODO: Utilizar Bulk com alguma biblioteca ao invés dessa iteração
+            foreach (var d in data)
+            {
+                Write(d, node => node.Entry.State = EntityState.Modified);
+            }
+
+            Context.SaveChanges();
+
+            return data;
         }
 
         public void BulkRemove(IEnumerable<TDataModel> data)
         {
-            throw new System.NotImplementedException();
+            Checker.NotNullArgument(data, nameof(data));
+
+            // TODO: Implementar validação
+
+            // TODO: Utilizar Bulk com alguma biblioteca ao invés dessa iteração
+            foreach (var d in data)
+            {
+                Write(d, node => node.Entry.State = EntityState.Deleted);
+            }
+
+            Context.SaveChanges();
         }
 
         public void BulkRemoveFromSearch(DataFilter<TDataModel> filter)
         {
-            throw new System.NotImplementedException();
+            Checker.NotNullArgument(filter, nameof(filter));
+
+            // TODO: Implementar validação
+
+            // TODO: Refatorar com [StorageReader/QuerySearch]
+            var filterList = filter.GetFilter();
+
+            Checker.NotNullObject(filterList, $"filter.{nameof(filter.GetFilter)}()");
+
+            var search = filterList.Aggregate(Query, (q, w) => q.Where(w));
+
+            foreach (var d in search)
+            {
+                Write(d, node => node.Entry.State = EntityState.Deleted);
+            }
+
+            Context.SaveChanges();
         }
+
+        #endregion
 
         #region Auxiliary methods
 
-        private IQueryable<TDataModel> QuerySearch(DataFilter<TDataModel> filter)
+        public IQueryable<TDataModel> QuerySearch(DataFilter<TDataModel> filter)
         {
             Checker.NotNullArgument(filter, nameof(filter));
 
@@ -138,7 +194,7 @@ namespace E5R.Architecture.Data.EntityFrameworkCore
             return filterList.Aggregate(Query, (q, w) => q.Where(w));
         }
 
-        private DataLimiterResult<TDataModel> QueryLimitResult(DataLimiter<TDataModel> limiter,
+        public DataLimiterResult<TDataModel> QueryLimitResult(DataLimiter<TDataModel> limiter,
             IQueryable<TDataModel> origin)
         {
             Checker.NotNullArgument(limiter, nameof(limiter));
