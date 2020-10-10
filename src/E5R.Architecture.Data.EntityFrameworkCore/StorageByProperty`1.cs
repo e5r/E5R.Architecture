@@ -2,25 +2,22 @@
 // This file is a part of E5R.Architecture.
 // Licensed under the Apache version 2.0: https://github.com/e5r/licenses/blob/master/license/APACHE-2.0.txt
 
-using System.Collections.Generic;
-using System.Linq;
+using E5R.Architecture.Data.Abstractions;
+using E5R.Architecture.Infrastructure;
 using Microsoft.EntityFrameworkCore;
 
 namespace E5R.Architecture.Data.EntityFrameworkCore
 {
-    using Abstractions;
-    using Infrastructure;
-
-    public class StorageProperty<TDataModel>
+    public class StorageByProperty<TDataModel>
         : StorageByProperty<DbContext, TDataModel>
         where TDataModel : class, IDataModel
     {
-        public StorageProperty(UnitOfWorkProperty<DbContext> context)
+        public StorageByProperty(UnitOfWorkProperty<DbContext> context)
             : base(context) { }
     }
 
     public class StorageByProperty<TDbContext, TDataModel>
-        : FullStorageByProperty<TDbContext, TDataModel>, IStorage<TDataModel>
+        : FullStorageByProperty<TDbContext, TDataModel>, IStorage<TDbContext, TDataModel>
         where TDataModel : class, IDataModel
         where TDbContext : DbContext
     {

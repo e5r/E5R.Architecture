@@ -6,6 +6,10 @@ using System.Collections.Generic;
 
 namespace E5R.Architecture.Data.Abstractions
 {
+    public interface IBulkStorageWriter<TUowProperty, TDataModel> : IBulkStorageWriter<TDataModel>
+        where TDataModel : IDataModel
+    { }
+
     public interface IBulkStorageWriter<TDataModel> : IStorageSignature
         where TDataModel : IDataModel
     {

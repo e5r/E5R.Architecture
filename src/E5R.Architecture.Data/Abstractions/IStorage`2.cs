@@ -4,11 +4,14 @@
 
 namespace E5R.Architecture.Data.Abstractions
 {
+    public interface IStorage<TUowProperty, TDataModel> : IStorage<TDataModel>
+        where TDataModel : IDataModel
+    { }
+
     public interface IStorage<TDataModel> :
         IStorageReader<TDataModel>,
         IStorageWriter<TDataModel>,
         IBulkStorageWriter<TDataModel>
         where TDataModel : IDataModel
-    {
-    }
+    { }
 }

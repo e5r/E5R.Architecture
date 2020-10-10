@@ -5,14 +5,13 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using E5R.Architecture.Core;
+using E5R.Architecture.Data.Abstractions;
+using E5R.Architecture.Infrastructure;
 using Microsoft.EntityFrameworkCore;
 
 namespace E5R.Architecture.Data.EntityFrameworkCore
 {
-    using Abstractions;
-    using Core;
-    using Infrastructure;
-
     public class FullStorageByProperty<TDbContext, TDataModel>
         where TDataModel : class, IDataModel
         where TDbContext : DbContext
