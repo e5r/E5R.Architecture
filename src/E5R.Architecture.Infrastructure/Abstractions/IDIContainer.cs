@@ -6,10 +6,10 @@ using System;
 
 namespace E5R.Architecture.Infrastructure.Abstractions
 {
-    public interface IIoCContainer
+    public interface IDIContainer
     {
-        void Register(IoCLifecycle lifecycle, Type implementationType);
-        void Register(IoCLifecycle lifecycle, Type baseType, Type implementationType);
-        void Register(IoCLifecycle lifecycle, Type baseType, Func<object> implementationFactory);
+        void Register(DILifetime lifetime, Type implementationType);
+        void Register(DILifetime lifetime, Type baseType, Type implementationType);
+        void Register(DILifetime lifetime, Type baseType, Func<object> implementationFactory);
     }
 }

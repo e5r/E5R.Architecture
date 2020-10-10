@@ -4,8 +4,8 @@
 
 namespace E5R.Architecture.Infrastructure.Abstractions
 {
-    public interface IIoCRegistrar
+    public interface IDIRegistrar
     {
-        void Register(IIoCContainer container);
+        void Register(IDIContainer container);
     }
 }
