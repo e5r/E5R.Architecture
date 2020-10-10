@@ -8,6 +8,7 @@ using System.IO;
 namespace E5R.Architecture.Infrastructure.Defaults
 {
     using Abstractions;
+    using E5R.Architecture.Core;
 
     /// <summary>
     /// Default implementation of <see cref="IFileSystem"/>
@@ -16,10 +17,7 @@ namespace E5R.Architecture.Infrastructure.Defaults
     {
         public bool FileExists(string path)
         {
-            if (string.IsNullOrEmpty(path))
-            {
-                throw new ArgumentNullException(nameof(path));
-            }
+            Checker.NotNullArgument(path, nameof(path));
 
             return File.Exists(path);
         }
@@ -40,27 +38,21 @@ namespace E5R.Architecture.Infrastructure.Defaults
             }
         }
 
-        public string GetBaseDirectory()
-        {
-#if NET451 || NET46
-            return AppDomain.CurrentDomain.BaseDirectory;
-#else
-            return AppContext.BaseDirectory;
-#endif
-        }
+        public string GetBaseDirectory() => AppContext.BaseDirectory;
 
-        public FileStream OpenFile(string path, FileMode mode)
+        public FileStream CreateFileStream(string path, FileMode mode)
         {
-            if (string.IsNullOrEmpty(path))
-            {
-                throw new ArgumentNullException(nameof(path));
-            }
+            Checker.NotNullArgument(path, nameof(path));
 
             try
             {
                 return new FileStream(path, mode);
             }
             catch (FileNotFoundException)
+            {
+                throw;
+            }
+            catch (IOException)
             {
                 throw;
             }
