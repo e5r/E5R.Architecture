@@ -1,22 +1,16 @@
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
+using System.Data;
+using System.Data.Common;
+using E5R.Architecture.Data.Abstractions;
+using E5R.Architecture.Data.EntityFrameworkCore;
+using E5R.Architecture.Infrastructure;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
-using Microsoft.AspNetCore.HttpsPolicy;
+using Microsoft.Data.Sqlite;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using UsingDataEntityFrameworkCore.Data;
-using Microsoft.EntityFrameworkCore;
-using System.Data.Common;
-using Microsoft.Data.Sqlite;
-using E5R.Architecture.Infrastructure.Abstractions;
-using E5R.Architecture.Infrastructure;
-using System.Data;
-using E5R.Architecture.Data.Abstractions;
-using E5R.Architecture.Data.EntityFrameworkCore;
 
 namespace UsingDataEntityFrameworkCore
 {
@@ -37,16 +31,24 @@ namespace UsingDataEntityFrameworkCore
 
         public IConfiguration Configuration { get; }
 
-        // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddControllersWithViews();
 
-            #region services.AddPropertyUnitOfWork(options);
-            services.AddScoped<DbConnection, SqliteConnection>(_ =>
+            services.AddScoped<DbConnection>(_ =>
+                new SqliteConnection(Configuration.GetConnectionString("SQLiteConnection"))
+            );
+
+            services.AddScoped<DbTransaction>(serviceProvider =>
             {
-                var connectionString = Configuration.GetConnectionString("SQLiteConnection");
-                return new SqliteConnection(connectionString);
+                var connection = serviceProvider.GetRequiredService<DbConnection>();
+
+                if (connection.State == ConnectionState.Closed)
+                {
+                    connection.Open();
+                }
+
+                return connection.BeginTransaction();
             });
 
             services.AddDbContext<SchoolContext>((serviceProvider, options) =>
@@ -56,55 +58,26 @@ namespace UsingDataEntityFrameworkCore
                 options.UseSqlite(conn);
             });
 
-            services.AddScoped<AppUnitOfWork>();
-            services.AddScoped<IUnitOfWork>(serviceProvider =>
+            services.AddScoped<DbContext>(ServiceProvider => ServiceProvider.GetRequiredService<SchoolContext>());
+
+            services.AddUnitOfWorkPropertyStrategy<AppUnitOfWork>(options =>
             {
-                var uow = serviceProvider.GetRequiredService<AppUnitOfWork>();
-
-                return uow;
+                options
+                    .AddProperty<DbConnection>()
+                    .AddProperty<DbTransaction>()
+                    .AddProperty<DbContext>()
+                    .AddProperty<SchoolContext>((uow, context) =>
+                    {
+                        if (context.Database.CurrentTransaction == null)
+                        {
+                            context.Database.UseTransaction(uow.Property<DbTransaction>());
+                        }
+                    });
             });
-            services.AddScoped(typeof(UnitOfWorkProperty<>));
-            //StorageReaderByProperty<SchoolContext>
-            services.AddScoped(typeof(IStorageReader<>), typeof(DefaultStorageReader<>));
 
-            services.AddScoped<UnitOfWorkByProperty>(serviceProvider =>
-            {
-                DbTransaction transaction = null;
-                var conn = serviceProvider.GetRequiredService<DbConnection>();
-                var context = serviceProvider.GetRequiredService<SchoolContext>();
-                var uow = serviceProvider.GetRequiredService<AppUnitOfWork>();
-
-                uow.Property(() => conn);
-                uow.Property(() =>
-                {
-                    if (conn.State != ConnectionState.Open)
-                    {
-                        conn.Open();
-                    }
-
-                    if (transaction == null)
-                    {
-                        transaction = conn.BeginTransaction();
-                    }
-
-                    return transaction;
-                });
-                uow.Property(() =>
-                {
-                    if (context.Database.CurrentTransaction == null)
-                    {
-                        context.Database.UseTransaction(uow.Property<DbTransaction>());
-                    }
-
-                    return context;
-                });
-
-                return uow;
-            });
-            #endregion
+            services.AddStoragePropertyStrategy();
         }
 
-        // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
         {
             if (env.IsDevelopment())
@@ -114,7 +87,6 @@ namespace UsingDataEntityFrameworkCore
             else
             {
                 app.UseExceptionHandler("/Home/Error");
-                // The default HSTS value is 30 days. You may want to change this for production scenarios, see https://aka.ms/aspnetcore-hsts.
                 app.UseHsts();
             }
 

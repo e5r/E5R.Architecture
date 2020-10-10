@@ -1,36 +1,39 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Diagnostics;
+using System.Data.Common;
 using System.Linq;
 using System.Threading.Tasks;
-using Microsoft.AspNetCore.Mvc;
-using Microsoft.Extensions.Logging;
-using UsingDataEntityFrameworkCore.Models;
-using UsingDataEntityFrameworkCore.Data;
-using Microsoft.EntityFrameworkCore;
-using E5R.Architecture.Infrastructure;
-using System.Data.Common;
 using E5R.Architecture.Data.Abstractions;
+using E5R.Architecture.Infrastructure;
+using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
+using UsingDataEntityFrameworkCore.Data;
+using UsingDataEntityFrameworkCore.Models;
 
 namespace UsingDataEntityFrameworkCore.Controllers
 {
     public class StudentController : Controller
     {
         private readonly SchoolContext _context;
+        private readonly SchoolContext _context2;
         private readonly DbConnection _connection;
         private readonly DbTransaction _transaction;
         private readonly IStorageReader<Student> _storage;
+        private readonly IStorageReader<SchoolContext, Student> _storage2;
 
         public StudentController(
             SchoolContext context,
+            UnitOfWorkProperty<SchoolContext> context2,
             UnitOfWorkProperty<DbConnection> connection,
             UnitOfWorkProperty<DbTransaction> transaction,
-            IStorageReader<Student> storage)
+            IStorageReader<Student> storage,
+            IStorageReader<SchoolContext, Student> storage2)
         {
             _context = context ?? throw new ArgumentNullException(nameof(context));
+            _context2 = context2 ?? throw new ArgumentNullException(nameof(context2));
             _connection = connection ?? throw new ArgumentNullException(nameof(connection));
             _transaction = transaction ?? throw new ArgumentNullException(nameof(transaction));
             _storage = storage ?? throw new ArgumentNullException(nameof(storage));
+            _storage2 = storage2 ?? throw new ArgumentNullException(nameof(storage2));
         }
 
         public async Task<IActionResult> Index()
@@ -88,6 +91,8 @@ namespace UsingDataEntityFrameworkCore.Controllers
 
         public async Task<IActionResult> Details3(int? id)
         {
+            var student = _storage2.Find(new Student { ID = id.Value });
+
             throw new NotImplementedException("Isso deve gerar um IUnitOfWork.DiscardWork()");
         }
     }

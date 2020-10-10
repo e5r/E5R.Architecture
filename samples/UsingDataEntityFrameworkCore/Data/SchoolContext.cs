@@ -1,5 +1,5 @@
-using UsingDataEntityFrameworkCore.Models;
 using Microsoft.EntityFrameworkCore;
+using UsingDataEntityFrameworkCore.Models;
 
 namespace UsingDataEntityFrameworkCore.Data
 {

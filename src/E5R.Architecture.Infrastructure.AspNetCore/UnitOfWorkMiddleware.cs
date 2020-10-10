@@ -4,14 +4,13 @@
 
 using System;
 using System.Threading.Tasks;
+using E5R.Architecture.Core;
+using E5R.Architecture.Infrastructure.Abstractions;
 using Microsoft.AspNetCore.Http;
 using Microsoft.Extensions.Logging;
 
 namespace E5R.Architecture.Infrastructure.AspNetCore
 {
-    using Core;
-    using Abstractions;
-
     public class UnitOfWorkMiddleware
     {
         private readonly RequestDelegate _next;
@@ -44,6 +43,7 @@ namespace E5R.Architecture.Infrastructure.AspNetCore
                 _logger.LogTrace("Discarding unit of work");
                 uow.DiscardWork();
                 _logger.LogTrace("Unit of work successfully discarded");
+
                 throw;
             }
 

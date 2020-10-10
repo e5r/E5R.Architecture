@@ -4,11 +4,12 @@
 
 using System;
 using System.Collections.Generic;
+using E5R.Architecture.Core;
+using E5R.Architecture.Core.Exceptions;
+using E5R.Architecture.Infrastructure.Abstractions;
 
 namespace E5R.Architecture.Infrastructure
 {
-    using Abstractions;
-
     public abstract class UnitOfWorkByProperty : IUnitOfWork
     {
         IDictionary<Type, Func<object>> _properties = new Dictionary<Type, Func<object>>();
@@ -36,24 +37,27 @@ namespace E5R.Architecture.Infrastructure
 
             var propertyType = property.GetType();
 
-            if (targetType.IsAssignableFrom(propertyType))
+            if (!targetType.IsAssignableFrom(propertyType))
             {
-                return (T)property;
+                throw new InvalidCastException();
             }
 
-            throw new InvalidCastException();
+            return property as T;
         }
 
-        public void Property<T>(Func<T> getter) where T : class
+        public void Property(Type targetType, Func<object> getter)
         {
-            var targetType = typeof(T);
+            Checker.NotNullArgument(targetType, nameof(targetType));
+            Checker.NotNullArgument(getter, nameof(getter));
 
             if (_properties.ContainsKey(targetType))
             {
-                throw new InvalidOperationException();
+                var ex = new InvalidOperationException($"The {targetType.FullName} property has already been registered");
+
+                throw new InfrastructureLayerException(ex);
             }
 
-            _properties.Add(targetType, getter as Func<object>);
+            _properties.Add(targetType, getter);
         }
     }
 }

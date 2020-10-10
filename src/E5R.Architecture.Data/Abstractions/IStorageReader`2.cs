@@ -6,6 +6,10 @@ using System.Collections.Generic;
 
 namespace E5R.Architecture.Data.Abstractions
 {
+    public interface IStorageReader<TUowProperty, TDataModel> : IStorageReader<TDataModel>
+        where TDataModel : IDataModel
+    { }
+
     public interface IStorageReader<TDataModel> : IStorageSignature
         where TDataModel : IDataModel
     {

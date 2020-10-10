@@ -6,7 +6,7 @@ using E5R.Architecture.Infrastructure.AspNetCore;
 
 namespace Microsoft.AspNetCore.Builder
 {
-    public static class MvcApplicationBuilderExtensions
+    public static class ApplicationBuilderExtensions
     {
         public static IApplicationBuilder UseUnitOfWork(this IApplicationBuilder builder)
         {

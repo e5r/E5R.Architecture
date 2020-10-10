@@ -18,7 +18,7 @@ namespace E5R.Architecture.Data.EntityFrameworkCore
     }
 
     public class StorageReaderByProperty<TDbContext, TDataModel>
-        : FullStorageByProperty<TDbContext, TDataModel>, IStorageReader<TDataModel>
+        : FullStorageByProperty<TDbContext, TDataModel>, IStorageReader<TDbContext, TDataModel>
         where TDataModel : class, IDataModel
         where TDbContext : DbContext
     {
