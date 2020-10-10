@@ -7,6 +7,11 @@ platform: Any CPU
 clone_depth: 1
 skip_tags: true
 
+branches:
+  only:
+    - master
+    - develop
+
 artifacts:
   - path: 'artifacts\E5R.Architecture.*.nupkg'
     name: E5RArchitecturePackages
