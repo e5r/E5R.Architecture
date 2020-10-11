@@ -95,8 +95,13 @@ namespace UsingDataEntityFrameworkCore.Controllers
             return View(nameof(Details), student);
         }
 
-        public async Task<IActionResult> Details3(int? id)
+        public IActionResult Details3(int? id)
         {
+            if (id == null)
+            {
+                return NotFound();
+            }
+
             var student = _readerStorage.Find(new Student { ID = id.Value });
 
             if (student == null)
