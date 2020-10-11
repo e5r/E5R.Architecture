@@ -3,25 +3,20 @@
 // Licensed under the Apache version 2.0: https://github.com/e5r/licenses/blob/master/license/APACHE-2.0.txt
 
 using System;
+using static E5R.Architecture.Core.ArchitectureLayerIdentifier;
 
 namespace E5R.Architecture.Core.Exceptions
 {
-    using Core;
-    using static Core.ArchitectureLayerIdentifier;
-
     public class BusinessLayerException : ArchitectureLayerException
     {
         public BusinessLayerException(string message) : base(BusinessLayer, message)
-        {
-        }
+        { }
 
         public BusinessLayerException(string message, Exception innerException) : base(
             BusinessLayer, message, innerException)
-        {
-        }
+        { }
 
         public BusinessLayerException(Exception exception) : base(BusinessLayer, exception)
-        {
-        }
+        { }
     }
 }
