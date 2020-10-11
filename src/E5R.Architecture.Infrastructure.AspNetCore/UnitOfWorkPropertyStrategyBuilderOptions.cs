@@ -20,6 +20,10 @@ namespace E5R.Architecture.Infrastructure.AspNetCore
             where TType : class
         => AddProperty<TType>((_uow, _object) => { });
 
+        public UnitOfWorkPropertyStrategyBuilderOptions TryAddProperty<TType>()
+            where TType : class
+        => TryAddProperty<TType>((_uow, _object) => { });
+
         public UnitOfWorkPropertyStrategyBuilderOptions AddProperty<TType>(Action<UnitOfWorkByProperty, TType> config)
             where TType : class
         {
@@ -29,6 +33,22 @@ namespace E5R.Architecture.Infrastructure.AspNetCore
             if (propertyList.ContainsKey(targetType))
             {
                 throw new InfrastructureLayerException($"The {targetType.FullName} property has already been registered");
+            }
+
+            propertyList.Add(targetType, (uow, @object) => config(uow, @object as TType));
+
+            return this;
+        }
+
+        public UnitOfWorkPropertyStrategyBuilderOptions TryAddProperty<TType>(Action<UnitOfWorkByProperty, TType> config)
+            where TType : class
+        {
+            var propertyList = Properties as Dictionary<Type, Action<UnitOfWorkByProperty, object>>;
+            var targetType = typeof(TType);
+
+            if (propertyList.ContainsKey(targetType))
+            {
+                return this;
             }
 
             propertyList.Add(targetType, (uow, @object) => config(uow, @object as TType));

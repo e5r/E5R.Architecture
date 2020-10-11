@@ -1,10 +1,8 @@
 using System.Data.Common;
-using E5R.Architecture.Infrastructure;
 
-namespace UsingDataEntityFrameworkCore.Data
+namespace E5R.Architecture.Infrastructure
 {
-    // TODO: Mover para E5R.Architecture.Infrastructure
-    public class AppUnitOfWork : UnitOfWorkByProperty
+    public class DbTransactionUnitOfWork : UnitOfWorkByProperty
     {
         public override void DiscardWork()
         {

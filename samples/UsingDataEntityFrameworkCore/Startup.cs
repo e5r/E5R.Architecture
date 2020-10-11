@@ -39,18 +39,6 @@ namespace UsingDataEntityFrameworkCore
                 new SqliteConnection(Configuration.GetConnectionString("SQLiteConnection"))
             );
 
-            services.AddScoped<DbTransaction>(serviceProvider =>
-            {
-                var connection = serviceProvider.GetRequiredService<DbConnection>();
-
-                if (connection.State == ConnectionState.Closed)
-                {
-                    connection.Open();
-                }
-
-                return connection.BeginTransaction();
-            });
-
             services.AddDbContext<SchoolContext>((serviceProvider, options) =>
             {
                 var conn = serviceProvider.GetRequiredService<DbConnection>();
@@ -60,11 +48,9 @@ namespace UsingDataEntityFrameworkCore
 
             services.AddScoped<DbContext>(ServiceProvider => ServiceProvider.GetRequiredService<SchoolContext>());
 
-            services.AddUnitOfWorkPropertyStrategy<AppUnitOfWork>(options =>
+            services.AddUnitOfWorkPropertyStrategy(options =>
             {
                 options
-                    .AddProperty<DbConnection>()
-                    .AddProperty<DbTransaction>()
                     .AddProperty<DbContext>()
                     .AddProperty<SchoolContext>((uow, context) =>
                     {
