@@ -33,7 +33,7 @@ build_script:
       }
 
 test_script:
-  - ps: 'dotnet test --no-restore /p:CollectCoverage=true /p:CoverletOutput=TestResults/ /p:CoverletOutputFormat=opencover'
+  - ps: 'dotnet test /p:CollectCoverage=true /p:CoverletOutput=TestResults/ /p:CoverletOutputFormat=opencover'
   - ps: >-
       if (("develop", "master").contains(${ENV:APPVEYOR_REPO_BRANCH})) {
         codecov -f .\test\E5R.Architecture.Core.Test\TestResults\coverage.opencover.xml';
