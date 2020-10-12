@@ -1,13 +1,8 @@
-- Implementar proposta de UnitOfWork
 - Implementar suporte em ..Data para acesso SQL puro
-- Remover necessidade de (ArchitectureLayerIdentifier)
-- Remover necessidade de UnderlyingSession
-- Remover necessidade de IoCLifecycle
-- Mover ..Core/Formatters para outro assembly
-- Rever necessidade de ..Core/ComponentInformation e SemVer
+  > IDataFilter, Sorter, Get(), Find(), Search(), etc.
 - Promover ..Core como uma camada CrossCutting
 - Remover necessidade de objetos de assinatura
   > IDataModuleSignature
   > IStorageSignature
-- Remover necessidade de objeto ITradableObject
 - Repensar DataModule<>
+- Implementar validação de modelo (IModelValidator)

@@ -16,6 +16,6 @@ namespace E5R.Architecture.Data.Abstractions
         IEnumerable<TDataModel> BulkCreate(IEnumerable<TDataModel> data);
         IEnumerable<TDataModel> BulkReplace(IEnumerable<TDataModel> data);
         void BulkRemove(IEnumerable<TDataModel> data);
-        void BulkRemoveFromSearch(DataFilter<TDataModel> filter);
+        void BulkRemove(IDataFilter<TDataModel> filter);
     }
 }

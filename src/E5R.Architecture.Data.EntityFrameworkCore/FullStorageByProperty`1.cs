@@ -41,22 +41,22 @@ namespace E5R.Architecture.Data.EntityFrameworkCore
             return Set.Find(data.IdentifierValues);
         }
 
-        public DataLimiterResult<TDataModel> Get(DataLimiter<TDataModel> limiter)
+        public DataLimiterResult<TDataModel> Get(IDataLimiter<TDataModel> limiter)
         {
             Checker.NotNullArgument(limiter, nameof(limiter));
 
             return QueryLimitResult(limiter, Query);
         }
 
-        public IEnumerable<TDataModel> Search(DataFilter<TDataModel> filter)
+        public IEnumerable<TDataModel> Search(IDataFilter<TDataModel> filter)
         {
             Checker.NotNullArgument(filter, nameof(filter));
 
             return QuerySearch(filter);
         }
 
-        public DataLimiterResult<TDataModel> LimitedSearch(DataFilter<TDataModel> filter,
-            DataLimiter<TDataModel> limiter)
+        public DataLimiterResult<TDataModel> LimitedSearch(IDataFilter<TDataModel> filter,
+            IDataLimiter<TDataModel> limiter)
         {
             Checker.NotNullArgument(filter, nameof(filter));
             Checker.NotNullArgument(limiter, nameof(limiter));
@@ -157,7 +157,7 @@ namespace E5R.Architecture.Data.EntityFrameworkCore
             Context.SaveChanges();
         }
 
-        public void BulkRemoveFromSearch(DataFilter<TDataModel> filter)
+        public void BulkRemove(IDataFilter<TDataModel> filter)
         {
             Checker.NotNullArgument(filter, nameof(filter));
 
@@ -182,7 +182,7 @@ namespace E5R.Architecture.Data.EntityFrameworkCore
 
         #region Auxiliary methods
 
-        public IQueryable<TDataModel> QuerySearch(DataFilter<TDataModel> filter)
+        public IQueryable<TDataModel> QuerySearch(IDataFilter<TDataModel> filter)
         {
             Checker.NotNullArgument(filter, nameof(filter));
 
@@ -193,42 +193,49 @@ namespace E5R.Architecture.Data.EntityFrameworkCore
             return filterList.Aggregate(Query, (q, w) => q.Where(w));
         }
 
-        public DataLimiterResult<TDataModel> QueryLimitResult(DataLimiter<TDataModel> limiter,
+        public DataLimiterResult<TDataModel> QueryLimitResult(IDataLimiter<TDataModel> limiter,
             IQueryable<TDataModel> origin)
         {
             Checker.NotNullArgument(limiter, nameof(limiter));
 
             // Ensures offset range
-            if (0 > limiter.OffsetBegin)
+            if (limiter.OffsetLimit.HasValue &&
+                (limiter.OffsetLimit.Value == 0 || limiter.OffsetLimit.Value > int.MaxValue))
             {
-                throw new ArgumentOutOfRangeException($"limiter.{limiter.OffsetBegin}");
+                throw new ArgumentOutOfRangeException($"limiter.{limiter.OffsetLimit}");
             }
 
-            if (0 > limiter.OffsetEnd)
-            {
-                throw new ArgumentOutOfRangeException($"limiter.{limiter.OffsetEnd}");
-            }
-
-            if (0 > limiter.OffsetEnd - limiter.OffsetBegin)
-            {
-                throw new ArgumentOutOfRangeException(
-                    $"limiter.{limiter.OffsetEnd} - limiter.{limiter.OffsetBegin}");
-            }
-
+            var result = origin.AsQueryable();
             var sorter = limiter.GetSorter();
 
-            Checker.NotNullObject(sorter, $"limiter.{nameof(limiter.GetSorter)}()");
+            if (sorter != null)
+            {
+                result = !limiter.Descending
+                    ? result.OrderBy(sorter)
+                    : result.OrderByDescending(sorter);
+            }
 
-            var ordered = !limiter.Descending
-                ? origin.OrderBy(sorter)
-                : origin.OrderByDescending(sorter);
+            uint offset = 0;
+            uint limit = 0;
+            int total = result.Count();
 
-            var count = ordered.Count();
-            var result = ordered
-                .Skip(limiter.OffsetBegin)
-                .Take(limiter.OffsetEnd - limiter.OffsetBegin);
+            if (limiter.OffsetBegin.HasValue)
+            {
+                offset = limiter.OffsetBegin.Value;
+                result = result.Skip(Convert.ToInt32(offset));
+            }
 
-            return new DataLimiterResult<TDataModel>(result, count);
+            if (limiter.OffsetLimit.HasValue)
+            {
+                limit = limiter.OffsetLimit.Value;
+                result = result.Take(Convert.ToInt32(limit));
+            }
+            else
+            {
+                limit = Convert.ToUInt32(total);
+            }
+
+            return new DataLimiterResult<TDataModel>(result, offset, limit, total);
         }
 
         #endregion

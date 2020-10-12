@@ -1,7 +1,9 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Data.Common;
 using System.Linq;
 using System.Threading.Tasks;
+using E5R.Architecture.Data;
 using E5R.Architecture.Data.Abstractions;
 using E5R.Architecture.Infrastructure;
 using Microsoft.AspNetCore.Mvc;
@@ -14,6 +16,8 @@ namespace UsingDataEntityFrameworkCore.Controllers
 {
     public class StudentController : Controller
     {
+        const uint PAGE_SIZE = 5;
+
         private readonly SchoolContext _context;
         private readonly SchoolContext _context2;
         private readonly DbConnection _connection;
@@ -23,23 +27,21 @@ namespace UsingDataEntityFrameworkCore.Controllers
         private readonly ILogger<StudentController> _logger;
 
         public StudentController(
-            SchoolContext context,
-            UnitOfWorkProperty<SchoolContext> context2,
+            ILogger<StudentController> logger,
+            UnitOfWorkProperty<SchoolContext> context,
             UnitOfWorkProperty<DbConnection> connection,
             UnitOfWorkProperty<DbTransaction> transaction,
+            SchoolContext context2,
             IStorageReader<Student> readerStorage,
-            IStorageReader<SchoolContext, Student> readerStorage2,
-            IStorageWriter<SchoolContext, Student> writeStorage,
-            ILogger<StudentController> logger
-            )
+            IStorageWriter<SchoolContext, Student> writeStorage)
         {
+            _logger = logger ?? throw new ArgumentNullException(nameof(logger));
             _context = context ?? throw new ArgumentNullException(nameof(context));
-            _context2 = context2 ?? throw new ArgumentNullException(nameof(context2));
             _connection = connection ?? throw new ArgumentNullException(nameof(connection));
             _transaction = transaction ?? throw new ArgumentNullException(nameof(transaction));
+            _context2 = context2 ?? throw new ArgumentNullException(nameof(context2));
             _readerStorage = readerStorage ?? throw new ArgumentNullException(nameof(readerStorage));
             _writeStorage = writeStorage ?? throw new ArgumentNullException(nameof(writeStorage));
-            _logger = logger ?? throw new ArgumentNullException(nameof(logger));
         }
 
         public async Task<IActionResult> Index()
@@ -47,7 +49,51 @@ namespace UsingDataEntityFrameworkCore.Controllers
             var students = await _context.Students
                 .ToListAsync();
 
-            return View(students);
+            var count = students.Count();
+
+            var dataResult = new DataLimiterResult<Student>(students, 0, (uint)count, count);
+
+            return View(dataResult);
+        }
+
+        public IActionResult Search(string searchString, uint? page)
+        {
+            uint pageOffset = Convert.ToUInt32(page.HasValue ? page.Value - 1 : 0);
+
+            // #if !DEBUG
+            // Usando filtro implícito
+            var query = _readerStorage.Query()
+                .OffsetBegin(pageOffset * PAGE_SIZE)
+                .OffsetLimit(5);
+
+            if (!string.IsNullOrWhiteSpace(searchString))
+            {
+                query.AddFilter(f =>
+                    f.FirstMidName.ToLower().Contains(searchString.ToLower()) ||
+                    f.LastName.ToLower().Contains(searchString.ToLower())
+                );
+            }
+
+            var students = query.LimitedSearch();
+            // #else
+            //             // Usando filtro explícito
+            //             var filter = new LinqDataFilter<Student>();
+
+            //             if (!string.IsNullOrWhiteSpace(searchString))
+            //             {
+            //                 filter = filter
+            //                     .AddFilter(f =>
+            //                         f.FirstMidName.ToLower().Contains(searchString.ToLower()) ||
+            //                         f.LastName.ToLower().Contains(searchString.ToLower())
+            //                     );
+            //             }
+
+            //             var students = _readerStorage.Search(filter);
+            // #endif
+
+            ViewData["SearchString"] = searchString;
+
+            return View(nameof(Index), students);
         }
 
         public async Task<IActionResult> Details(int? id)
