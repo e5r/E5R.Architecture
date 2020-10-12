@@ -34,15 +34,15 @@ build_script:
 
 test_script:
   - ps: 'dotnet test /p:CollectCoverage=true /p:CoverletOutput=TestResults/ /p:CoverletOutputFormat=opencover'
-  - ps: >-
-      if (("develop", "master").contains(${ENV:APPVEYOR_REPO_BRANCH})) {
-        codecov -f .\test\E5R.Architecture.Core.Test\TestResults\coverage.opencover.xml';
-        codecov -f .\test\E5R.Architecture.Data.Test\TestResults\coverage.opencover.xml';
-        codecov -f .\test\E5R.Architecture.Data.Dapper.Test\TestResults\coverage.opencover.xml';
-        codecov -f .\test\E5R.Architecture.Data.EntityFrameworkCore.Test\TestResults\coverage.opencover.xml';
-        codecov -f .\test\E5R.Architecture.Business.Test\TestResults\coverage.opencover.xml';
-        codecov -f .\test\E5R.Architecture.Infrastructure.Test\TestResults\coverage.opencover.xml';
-      }
+  # - ps: >-
+  #     if (("develop", "master").contains(${ENV:APPVEYOR_REPO_BRANCH})) {
+  #       codecov -f .\test\E5R.Architecture.Core.Test\TestResults\coverage.opencover.xml';
+  #       codecov -f .\test\E5R.Architecture.Data.Test\TestResults\coverage.opencover.xml';
+  #       codecov -f .\test\E5R.Architecture.Data.Dapper.Test\TestResults\coverage.opencover.xml';
+  #       codecov -f .\test\E5R.Architecture.Data.EntityFrameworkCore.Test\TestResults\coverage.opencover.xml';
+  #       codecov -f .\test\E5R.Architecture.Business.Test\TestResults\coverage.opencover.xml';
+  #       codecov -f .\test\E5R.Architecture.Infrastructure.Test\TestResults\coverage.opencover.xml';
+  #     }
 
 for:
 -
