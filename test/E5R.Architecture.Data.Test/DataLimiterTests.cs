@@ -29,20 +29,26 @@ namespace E5R.Architecture.Data.Test
             var instance = new EmptyDataLimiter
             {
                 OffsetBegin = 1,
-                OffsetEnd = 2
+                OffsetLimit = 2
             };
 
             // Assert
             Assert.NotNull(instance);
-            Assert.Equal(1, instance.OffsetBegin);
-            Assert.Equal(2, instance.OffsetEnd);
+            Assert.NotNull(instance.OffsetBegin);
+            Assert.NotNull(instance.OffsetLimit);
+            Assert.Equal((uint)1, instance.OffsetBegin.Value);
+            Assert.Equal((uint)2, instance.OffsetLimit);
         }
 
         #region Mocks
 
-        class EmptyDataLimiter : DataLimiter<DataModel<object>>
+        class EmptyDataLimiter : IDataLimiter<DataModel<object>>
         {
-            public override Expression<Func<DataModel<object>, object>> GetSorter()
+            public uint? OffsetBegin { get; set; }
+            public uint? OffsetLimit { get; set; }
+            public bool Descending { get; set; }
+
+            public Expression<Func<DataModel<object>, object>> GetSorter()
                 => null;
         }
 

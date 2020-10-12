@@ -8,6 +8,5 @@ namespace E5R.Architecture.Data.Abstractions
     /// IStorage signature
     /// </summary>
     public interface IStorageSignature
-    {
-    }
+    { }
 }

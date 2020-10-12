@@ -20,7 +20,6 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "_files", "_files", "{159216
 		.gitignore = .gitignore
 		appveyor.yml = appveyor.yml
 		codecov.yml = codecov.yml
-		global.json = global.json
 		LICENSE.txt = LICENSE.txt
 		NEWS.md = NEWS.md
 		packages.props = packages.props
@@ -53,6 +52,8 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "E5R.Architecture.Infrastructure.Defaults", "src\E5R.Architecture.Infrastructure.Defaults\E5R.Architecture.Infrastructure.Defaults.csproj", "{ED6F193E-0C72-49F5-A8A0-3693F6DCD47C}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "E5R.Architecture.Infrastructure.AspNetCore", "src\E5R.Architecture.Infrastructure.AspNetCore\E5R.Architecture.Infrastructure.AspNetCore.csproj", "{6C140C21-E0C7-49EF-8B02-6CE1148FDF2A}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UsingDataEntityFrameworkCore", "samples\UsingDataEntityFrameworkCore\UsingDataEntityFrameworkCore.csproj", "{AB7FE27B-581A-4DEA-9005-92E6BDF9F461}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -227,6 +228,18 @@ Global
 		{6C140C21-E0C7-49EF-8B02-6CE1148FDF2A}.Release|x64.Build.0 = Release|Any CPU
 		{6C140C21-E0C7-49EF-8B02-6CE1148FDF2A}.Release|x86.ActiveCfg = Release|Any CPU
 		{6C140C21-E0C7-49EF-8B02-6CE1148FDF2A}.Release|x86.Build.0 = Release|Any CPU
+		{AB7FE27B-581A-4DEA-9005-92E6BDF9F461}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{AB7FE27B-581A-4DEA-9005-92E6BDF9F461}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{AB7FE27B-581A-4DEA-9005-92E6BDF9F461}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{AB7FE27B-581A-4DEA-9005-92E6BDF9F461}.Debug|x64.Build.0 = Debug|Any CPU
+		{AB7FE27B-581A-4DEA-9005-92E6BDF9F461}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{AB7FE27B-581A-4DEA-9005-92E6BDF9F461}.Debug|x86.Build.0 = Debug|Any CPU
+		{AB7FE27B-581A-4DEA-9005-92E6BDF9F461}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{AB7FE27B-581A-4DEA-9005-92E6BDF9F461}.Release|Any CPU.Build.0 = Release|Any CPU
+		{AB7FE27B-581A-4DEA-9005-92E6BDF9F461}.Release|x64.ActiveCfg = Release|Any CPU
+		{AB7FE27B-581A-4DEA-9005-92E6BDF9F461}.Release|x64.Build.0 = Release|Any CPU
+		{AB7FE27B-581A-4DEA-9005-92E6BDF9F461}.Release|x86.ActiveCfg = Release|Any CPU
+		{AB7FE27B-581A-4DEA-9005-92E6BDF9F461}.Release|x86.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
 		{6B0605F2-241C-477C-A001-EB97A381BC19} = {BCB2EAC4-18E1-4CD2-A155-3F6F24AE5C3C}
@@ -245,5 +258,6 @@ Global
 		{91BB5C06-F44E-4553-98A8-AE94CD17C730} = {241F0BED-1992-44B7-8B1B-7EBB3C82010C}
 		{ED6F193E-0C72-49F5-A8A0-3693F6DCD47C} = {BCB2EAC4-18E1-4CD2-A155-3F6F24AE5C3C}
 		{6C140C21-E0C7-49EF-8B02-6CE1148FDF2A} = {BCB2EAC4-18E1-4CD2-A155-3F6F24AE5C3C}
+		{AB7FE27B-581A-4DEA-9005-92E6BDF9F461} = {02D85B61-3F4D-4FDD-B5D5-AB0589447E01}
 	EndGlobalSection
 EndGlobal

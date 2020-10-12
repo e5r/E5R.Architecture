@@ -8,6 +8,5 @@ namespace E5R.Architecture.Data.Abstractions
     /// DataModule signature
     /// </summary>
     public interface IDataMouleSignature
-    {
-    }
+    { }
 }

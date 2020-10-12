@@ -6,14 +6,18 @@ using System.Collections.Generic;
 
 namespace E5R.Architecture.Data.Abstractions
 {
-    public interface IStorageReader<TDataModel> : IStorageSignature, ITradableObject
+    public interface IStorageReader<TUowProperty, TDataModel> : IStorageReader<TDataModel>
+        where TDataModel : IDataModel
+    { }
+
+    public interface IStorageReader<TDataModel> : IStorageSignature
         where TDataModel : IDataModel
     {
         TDataModel Find(TDataModel data);
-        DataLimiterResult<TDataModel> Get(DataLimiter<TDataModel> limiter);
-        IEnumerable<TDataModel> Search(DataReducer<TDataModel> reducer);
+        DataLimiterResult<TDataModel> Get(IDataLimiter<TDataModel> limiter);
+        IEnumerable<TDataModel> Search(IDataFilter<TDataModel> filter);
 
-        DataLimiterResult<TDataModel> LimitedSearch(DataReducer<TDataModel> reducer,
-            DataLimiter<TDataModel> limiter);
+        DataLimiterResult<TDataModel> LimitedSearch(IDataFilter<TDataModel> filter,
+            IDataLimiter<TDataModel> limiter);
     }
 }

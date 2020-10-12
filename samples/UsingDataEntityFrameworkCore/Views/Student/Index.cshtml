@@ -1,0 +1,81 @@
+﻿@model E5R.Architecture.Data.DataLimiterResult<UsingDataEntityFrameworkCore.Models.Student>
+
+@{
+    ViewData["Title"] = "Estudantes";
+}
+
+<h2>Estudantes</h2>
+
+<p>
+    <a asp-action="Create">Criar novo</a>
+</p>
+<form asp-action="Search">
+    <p>
+        Nome: <input type="text" name="SearchString" value="@ViewData["SearchString"]">
+        <input type="submit" value="Filtrar" />
+    </p>
+</form>
+<table class="table">
+    <thead>
+        <tr>
+                <th>
+                    @Html.DisplayNameFor(model => model.Result.First().LastName)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Result.First().FirstMidName)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Result.First().EnrollmentDate)
+                </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model.Result) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.LastName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.FirstMidName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.EnrollmentDate)
+            </td>
+            <td>
+                <a asp-action="Edit" asp-route-id="@item.ID">Editar</a> |
+                <a asp-action="Details" asp-route-id="@item.ID">Detalhes</a> |
+                <a asp-action="Delete" asp-route-id="@item.ID">Deletar</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>
+
+<p>
+    Total de registros: <strong>@Model.Total</strong>
+</p>
+
+@if(Model.PageCount > 1)
+{
+    <nav aria-label="Navegação de páginas de resultados">
+    <ul class="pagination">
+        <li class="page-item @(Model.PreviousPage.HasValue ? string.Empty : "disabled")">
+            <a asp-action="Search" 
+                asp-route-searchString="@ViewData["SearchString"]"
+                asp-route-page="@Model.PreviousPage"
+                class="page-link">Anterior</a>
+        </li>
+        @for(var p = 1; p <= Model.PageCount; p++)
+        {
+            <li class="page-item @(Model.CurrentPage == p ? "active" : string.Empty)"><a asp-action="Search" asp-route-searchString="@ViewData["SearchString"]" asp-route-page="@p" class="page-link">@p</a></li>
+        }
+        <li class="page-item @(Model.NextPage.HasValue ? string.Empty : "disabled")">
+            <a asp-action="Search" 
+                asp-route-searchString="@ViewData["SearchString"]"
+                asp-route-page="@Model.NextPage"
+                class="page-link">Próximo</a>
+        </li>
+    </ul>
+    </nav>
+}
