@@ -22,13 +22,12 @@ artifacts:
 init:
   - ps: 'git config --global core.autocrlf true'
   - ps: 'dotnet tool install --global Codecov.Tool'
+  - ps: 'if(-not $ENV:APPVEYOR_PULL_REQUEST_NUMBER) { $ENV:IS_NOT_PR = "true"; }'
+  - ps: 'write-host "init.IS_NOT_PR: ${ENV:IS_NOT_PR}"'
 
 before_build:
   - ps: 'dotnet --info'
   - ps: 'dotnet restore'
-
-before_deploy:
-  - ps: if(-not $ENV:APPVEYOR_PULL_REQUEST_NUMBER) { $ENV:IS_NOT_PR = "true"; }
 
 build_script:
   - ps: >-
@@ -57,7 +56,7 @@ for:
       - master
   install:
     - ps: >-
-        echo "install.IS_NOT_PR: ${ENV:IS_NOT_PR}";
+        write-host "install.IS_NOT_PR: ${ENV:IS_NOT_PR}";
         if(-not $ENV:APPVEYOR_PULL_REQUEST_NUMBER) {
           $BUILD_VERSION = (Select-Xml -Path ".\packages.props" -XPath "/Project/PropertyGroup/VersionPrefix" | Select-Object -ExpandProperty Node).InnerText;
           Update-AppveyorBuild -Version "${BUILD_VERSION}";
@@ -93,6 +92,7 @@ for:
       - develop
   install:
     - ps: >-
+        write-host "install.IS_NOT_PR: ${ENV:IS_NOT_PR}";
         $BUILD_TIMESTAMP = (Get-Date -Format "yyyyMMddHHmmss");
         $BUILD_NUMBER = "{0:00000}" -f [int]::parse("${ENV:APPVEYOR_BUILD_NUMBER}");
         $ENV:BUILD_VERSION_SUFFIX = "${ENV:BUILD_LABEL}-${BUILD_TIMESTAMP}-${BUILD_NUMBER}";
