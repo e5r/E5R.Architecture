@@ -34,7 +34,7 @@ namespace E5R.Architecture.Infrastructure.Abstractions
         string GetBaseDirectory();
 
         /// <summary>
-        /// Open a file stream
+        /// Create a file stream
         /// </summary>
         /// <param name="path">Path to file</param>
         /// <param name="mode">File mode</param>
@@ -42,6 +42,6 @@ namespace E5R.Architecture.Infrastructure.Abstractions
         /// <exception cref="FileNotFoundException">If file not exists</exception>
         /// <exception cref="IOException">Other errors</exception>
         /// <returns></returns>
-        FileStream OpenFile(string path, FileMode mode);
+        FileStream CreateFileStream(string path, FileMode mode);
     }
 }

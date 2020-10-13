@@ -2,14 +2,12 @@
 // This file is a part of E5R.Architecture.
 // Licensed under the Apache version 2.0: https://github.com/e5r/licenses/blob/master/license/APACHE-2.0.txt
 
-using System;
-
 namespace E5R.Architecture.Infrastructure.Abstractions
 {
     /// <summary>
     /// Unit of Work
     /// </summary>
-    public interface IUnitOfWork : IDisposable
+    public interface IUnitOfWork
     {
         /// <summary>
         /// Saves the pending work
@@ -17,9 +15,8 @@ namespace E5R.Architecture.Infrastructure.Abstractions
         void SaveWork();
 
         /// <summary>
-        /// The session object
+        /// Discard the pending work
         /// </summary>
-        /// <remarks>Creates if there is not</remarks>
-        UnderlyingSession Session { get; }
+        void DiscardWork();
     }
 }

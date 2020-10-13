@@ -13,23 +13,23 @@ namespace E5R.Architecture.Infrastructure.Extensions
 
     public static class AssemblyExtensions
     {
-        public static void IoCRegistrar(this Assembly assembly, IIoCContainer container)
+        public static void DIRegistrar(this Assembly assembly, IDIContainer container)
         {
             Checker.NotNullArgument(assembly, nameof(assembly));
             Checker.NotNullArgument(container, nameof(container));
 
             assembly.DefinedTypes
-                .Where(t => t.ImplementedInterfaces.Contains(typeof(IIoCRegistrar)))
+                .Where(t => t.ImplementedInterfaces.Contains(typeof(IDIRegistrar)))
                 .Select(t => Activate(t.AsType()))
                 .ToList()
                 .ForEach(f => f.Register(container));
         }
 
-        private static IIoCRegistrar Activate(Type type)
+        private static IDIRegistrar Activate(Type type)
         {
             Checker.NotNullArgument(type, nameof(type));
 
-            return Activator.CreateInstance(type, new { }) as IIoCRegistrar;
+            return Activator.CreateInstance(type, new { }) as IDIRegistrar;
         }
     }
 }

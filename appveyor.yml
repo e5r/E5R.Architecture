@@ -7,16 +7,21 @@ platform: Any CPU
 clone_depth: 1
 skip_tags: true
 
+branches:
+  only:
+    - master
+    - develop
+
 artifacts:
-  - path: 'artifacts\E5R.Architecture.*.nupkg'
+  - path: 'artifacts\E5R.Architecture.*.$(appveyor_build_version).nupkg'
     name: E5RArchitecturePackages
 
 init:
   - ps: 'git config --global core.autocrlf true'
+  - ps: 'dotnet tool install --global Codecov.Tool'
 
 before_build:
   - ps: 'dotnet --info'
-  - ps: 'dotnet tool install --global Codecov.Tool'
   - ps: 'dotnet restore'
 
 build_script:
@@ -28,39 +33,27 @@ build_script:
       }
 
 test_script:
-  # Executa os testes
-  - ps: 'dotnet test --no-restore /p:CollectCoverage=true /p:CoverletOutput=TestResults/ /p:CoverletOutputFormat=opencover ./test/E5R.Architecture.Core.Test'
-  - ps: 'dotnet test --no-restore /p:CollectCoverage=true /p:CoverletOutput=TestResults/ /p:CoverletOutputFormat=opencover ./test/E5R.Architecture.Data.Test'
-  - ps: 'dotnet test --no-restore /p:CollectCoverage=true /p:CoverletOutput=TestResults/ /p:CoverletOutputFormat=opencover ./test/E5R.Architecture.Data.Dapper.Test'
-  - ps: 'dotnet test --no-restore /p:CollectCoverage=true /p:CoverletOutput=TestResults/ /p:CoverletOutputFormat=opencover ./test/E5R.Architecture.Data.EntityFrameworkCore.Test'
-  - ps: 'dotnet test --no-restore /p:CollectCoverage=true /p:CoverletOutput=TestResults/ /p:CoverletOutputFormat=opencover ./test/E5R.Architecture.Business.Test'
-  - ps: 'dotnet test --no-restore /p:CollectCoverage=true /p:CoverletOutput=TestResults/ /p:CoverletOutputFormat=opencover ./test/E5R.Architecture.Infrastructure.Test'
-  # Reporta a cobertura de código para https://codecov.io
-  - ps: 'codecov -f .\test\E5R.Architecture.Core.Test\TestResults\coverage.opencover.xml'
-  - ps: 'codecov -f .\test\E5R.Architecture.Data.Test\TestResults\coverage.opencover.xml'
-  - ps: 'codecov -f .\test\E5R.Architecture.Data.Dapper.Test\TestResults\coverage.opencover.xml'
-  - ps: 'codecov -f .\test\E5R.Architecture.Data.EntityFrameworkCore.Test\TestResults\coverage.opencover.xml'
-  - ps: 'codecov -f .\test\E5R.Architecture.Business.Test\TestResults\coverage.opencover.xml'
-  - ps: 'codecov -f .\test\E5R.Architecture.Infrastructure.Test\TestResults\coverage.opencover.xml'
-
-deploy:
-  - provider: NuGet
-    api_key:
-      secure: UiEhClEPf4VHjZt2bs/qkDFuwOxfhWn7dOC0yywa+7IXrJU2oX2f619taoR345Gp
-    skip_symbols: true
-    artifact: E5RArchitecturePackages
+  - ps: 'dotnet test /p:CollectCoverage=true /p:CoverletOutput=TestResults/ /p:CoverletOutputFormat=opencover'
+  # - ps: >-
+  #     if (("develop", "master").contains(${ENV:APPVEYOR_REPO_BRANCH})) {
+  #       codecov -f .\test\E5R.Architecture.Core.Test\TestResults\coverage.opencover.xml';
+  #       codecov -f .\test\E5R.Architecture.Data.Test\TestResults\coverage.opencover.xml';
+  #       codecov -f .\test\E5R.Architecture.Data.Dapper.Test\TestResults\coverage.opencover.xml';
+  #       codecov -f .\test\E5R.Architecture.Data.EntityFrameworkCore.Test\TestResults\coverage.opencover.xml';
+  #       codecov -f .\test\E5R.Architecture.Business.Test\TestResults\coverage.opencover.xml';
+  #       codecov -f .\test\E5R.Architecture.Infrastructure.Test\TestResults\coverage.opencover.xml';
+  #     }
 
 for:
 -
   branches:
     only:
       - master
-
   install:
     - ps: >-
         $BUILD_VERSION = (Select-Xml -Path ".\packages.props" -XPath "/Project/PropertyGroup/VersionPrefix" | Select-Object -ExpandProperty Node).InnerText;
         Update-AppveyorBuild -Version "${BUILD_VERSION}";
-
+  deploy:
     - provider: GitHub
       tag: v$(appveyor_build_version)
       release: $(appveyor_build_version)
@@ -68,12 +61,16 @@ for:
       artifact: E5RArchitecturePackages
       auth_token:
         secure: ZEaPbdCkQoEXD/52qVLt7n6Kl6uCV/d/ba644DCMt86YRJs8kvpaprkYK6I5wUdq
+    - provider: NuGet
+      api_key:
+        secure: UiEhClEPf4VHjZt2bs/qkDFuwOxfhWn7dOC0yywa+7IXrJU2oX2f619taoR345Gp
+      skip_symbols: true
+      artifact: E5RArchitecturePackages
 
 -
   branches:
     only:
       - develop
-
   install:
     - ps: >-
         $BUILD_TIMESTAMP = (Get-Date -Format "yyyyMMddHHmmss");
@@ -82,7 +79,6 @@ for:
         $ENV:BUILD_VERSION_SUFFIX = "${BUILD_LABEL}-${BUILD_TIMESTAMP}-${BUILD_NUMBER}";
         $BUILD_VERSION = (Select-Xml -Path ".\packages.props" -XPath "/Project/PropertyGroup/VersionPrefix" | Select-Object -ExpandProperty Node).InnerText;
         Update-AppveyorBuild -Version "${BUILD_VERSION}-${ENV:BUILD_VERSION_SUFFIX}";
-
   deploy:
     - provider: GitHub
       tag: v$(appveyor_build_version)
@@ -92,3 +88,8 @@ for:
       prerelease: true
       auth_token:
         secure: ZEaPbdCkQoEXD/52qVLt7n6Kl6uCV/d/ba644DCMt86YRJs8kvpaprkYK6I5wUdq
+    - provider: NuGet
+      api_key:
+        secure: UiEhClEPf4VHjZt2bs/qkDFuwOxfhWn7dOC0yywa+7IXrJU2oX2f619taoR345Gp
+      skip_symbols: true
+      artifact: E5RArchitecturePackages
