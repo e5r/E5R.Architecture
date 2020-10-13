@@ -13,7 +13,7 @@ branches:
     - develop
 
 artifacts:
-  - path: 'artifacts\E5R.Architecture.*.nupkg'
+  - path: 'artifacts\E5R.Architecture.*.$(appveyor_build_version).nupkg'
     name: E5RArchitecturePackages
 
 init:
