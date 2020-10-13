@@ -7,6 +7,9 @@ platform: Any CPU
 clone_depth: 1
 skip_tags: true
 
+environment:
+  BUILD_LABEL: beta
+
 branches:
   only:
     - master
@@ -23,6 +26,9 @@ init:
 before_build:
   - ps: 'dotnet --info'
   - ps: 'dotnet restore'
+
+before_deploy:
+  - ps: if(-not $ENV:APPVEYOR_PULL_REQUEST_NUMBER) { $ENV:IS_NOT_PR = "true"; }
 
 build_script:
   - ps: >-
@@ -51,21 +57,35 @@ for:
       - master
   install:
     - ps: >-
-        $BUILD_VERSION = (Select-Xml -Path ".\packages.props" -XPath "/Project/PropertyGroup/VersionPrefix" | Select-Object -ExpandProperty Node).InnerText;
-        Update-AppveyorBuild -Version "${BUILD_VERSION}";
+        echo "install.IS_NOT_PR: ${ENV:IS_NOT_PR}";
+        if(-not $ENV:APPVEYOR_PULL_REQUEST_NUMBER) {
+          $BUILD_VERSION = (Select-Xml -Path ".\packages.props" -XPath "/Project/PropertyGroup/VersionPrefix" | Select-Object -ExpandProperty Node).InnerText;
+          Update-AppveyorBuild -Version "${BUILD_VERSION}";
+        } else {
+          $BUILD_TIMESTAMP = (Get-Date -Format "yyyyMMddHHmmss");
+          $BUILD_NUMBER = "{0:00000}" -f [int]::parse("${ENV:APPVEYOR_BUILD_NUMBER}");
+          $ENV:BUILD_VERSION_SUFFIX = "${ENV:BUILD_LABEL}-${BUILD_TIMESTAMP}-${BUILD_NUMBER}";
+          $BUILD_VERSION = (Select-Xml -Path ".\packages.props" -XPath "/Project/PropertyGroup/VersionPrefix" | Select-Object -ExpandProperty Node).InnerText;
+          Update-AppveyorBuild -Version "${BUILD_VERSION}-${ENV:BUILD_VERSION_SUFFIX}";
+        }
   deploy:
     - provider: GitHub
       tag: v$(appveyor_build_version)
+      APPVEYOR_PULL_REQUEST_NUMBER: false
       release: $(appveyor_build_version)
       description: 'CI Release v$(appveyor_build_version) from AppVeyor'
       artifact: E5RArchitecturePackages
       auth_token:
         secure: ZEaPbdCkQoEXD/52qVLt7n6Kl6uCV/d/ba644DCMt86YRJs8kvpaprkYK6I5wUdq
+      on:
+        IS_NOT_PR: true
     - provider: NuGet
       api_key:
         secure: UiEhClEPf4VHjZt2bs/qkDFuwOxfhWn7dOC0yywa+7IXrJU2oX2f619taoR345Gp
       skip_symbols: true
       artifact: E5RArchitecturePackages
+      on:
+        IS_NOT_PR: true
 
 -
   branches:
@@ -74,9 +94,8 @@ for:
   install:
     - ps: >-
         $BUILD_TIMESTAMP = (Get-Date -Format "yyyyMMddHHmmss");
-        $BUILD_LABEL = "beta";
         $BUILD_NUMBER = "{0:00000}" -f [int]::parse("${ENV:APPVEYOR_BUILD_NUMBER}");
-        $ENV:BUILD_VERSION_SUFFIX = "${BUILD_LABEL}-${BUILD_TIMESTAMP}-${BUILD_NUMBER}";
+        $ENV:BUILD_VERSION_SUFFIX = "${ENV:BUILD_LABEL}-${BUILD_TIMESTAMP}-${BUILD_NUMBER}";
         $BUILD_VERSION = (Select-Xml -Path ".\packages.props" -XPath "/Project/PropertyGroup/VersionPrefix" | Select-Object -ExpandProperty Node).InnerText;
         Update-AppveyorBuild -Version "${BUILD_VERSION}-${ENV:BUILD_VERSION_SUFFIX}";
   deploy:
@@ -88,8 +107,12 @@ for:
       prerelease: true
       auth_token:
         secure: ZEaPbdCkQoEXD/52qVLt7n6Kl6uCV/d/ba644DCMt86YRJs8kvpaprkYK6I5wUdq
+      on:
+        IS_NOT_PR: true
     - provider: NuGet
       api_key:
         secure: UiEhClEPf4VHjZt2bs/qkDFuwOxfhWn7dOC0yywa+7IXrJU2oX2f619taoR345Gp
       skip_symbols: true
       artifact: E5RArchitecturePackages
+      on:
+        IS_NOT_PR: true
