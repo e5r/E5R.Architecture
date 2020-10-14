@@ -5,12 +5,11 @@
 using System;
 using System.Linq;
 using System.Reflection;
+using E5R.Architecture.Core;
+using E5R.Architecture.Infrastructure.Abstractions;
 
 namespace E5R.Architecture.Infrastructure.Extensions
 {
-    using Core;
-    using Abstractions;
-
     public static class AssemblyExtensions
     {
         public static void DIRegistrar(this Assembly assembly, IDIContainer container)
@@ -29,7 +28,7 @@ namespace E5R.Architecture.Infrastructure.Extensions
         {
             Checker.NotNullArgument(type, nameof(type));
 
-            return Activator.CreateInstance(type, new { }) as IDIRegistrar;
+            return Activator.CreateInstance(type) as IDIRegistrar;
         }
     }
 }

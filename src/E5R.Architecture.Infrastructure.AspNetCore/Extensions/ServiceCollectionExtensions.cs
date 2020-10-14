@@ -6,9 +6,11 @@ using System;
 using System.Data;
 using System.Data.Common;
 using System.Linq;
+using System.Reflection;
 using E5R.Architecture.Infrastructure;
 using E5R.Architecture.Infrastructure.Abstractions;
 using E5R.Architecture.Infrastructure.AspNetCore;
+using E5R.Architecture.Infrastructure.Extensions;
 using Microsoft.Extensions.DependencyInjection.Extensions;
 
 namespace Microsoft.Extensions.DependencyInjection
@@ -37,9 +39,9 @@ namespace Microsoft.Extensions.DependencyInjection
         }
 
         public static IServiceCollection AddUnitOfWorkPropertyStrategy<TAppUnitOfWork>(
-        this IServiceCollection serviceCollection,
-        Action<UnitOfWorkPropertyStrategyBuilderOptions> config)
-        where TAppUnitOfWork : UnitOfWorkByProperty
+            this IServiceCollection serviceCollection,
+            Action<UnitOfWorkPropertyStrategyBuilderOptions> config)
+            where TAppUnitOfWork : UnitOfWorkByProperty
         {
             var options = new UnitOfWorkPropertyStrategyBuilderOptions();
 
@@ -76,6 +78,28 @@ namespace Microsoft.Extensions.DependencyInjection
 
                 return uow;
             });
+
+            return serviceCollection;
+        }
+
+        public static IServiceCollection AddCrossCutting(
+            this IServiceCollection serviceCollection,
+            params string[] assemblies
+        )
+        {
+            var container = new ServiceCollectionDIContainer(serviceCollection);
+
+            if (assemblies != null && assemblies.Length > 0)
+            {
+                assemblies.ToList().ForEach(assemblyName =>
+                {
+                    Assembly.Load(assemblyName).DIRegistrar(container);
+                });
+            }
+            else
+            {
+                AppDomain.CurrentDomain.DIRegistrar(container);
+            }
 
             return serviceCollection;
         }
