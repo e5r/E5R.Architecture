@@ -206,14 +206,28 @@ namespace E5R.Architecture.Data.EntityFrameworkCore
             }
 
             var result = origin.AsQueryable();
-            var sorter = limiter.GetSorter();
 
-            if (sorter != null)
+            IOrderedQueryable<TDataModel> orderBy = null;
+
+            foreach (var sorter in limiter.GetSorters())
             {
-                result = !limiter.Descending
-                    ? result.OrderBy(sorter)
-                    : result.OrderByDescending(sorter);
+                if (orderBy == null)
+                {
+                    if (sorter.Descending)
+                        orderBy = result.OrderByDescending(sorter.Sorter);
+                    else
+                        orderBy = result.OrderBy(sorter.Sorter);
+                }
+                else
+                {
+                    if (sorter.Descending)
+                        orderBy = orderBy.ThenByDescending(sorter.Sorter);
+                    else
+                        orderBy = orderBy.ThenBy(sorter.Sorter);
+                }
             }
+
+            result = orderBy ?? result;
 
             uint offset = 0;
             uint limit = 0;

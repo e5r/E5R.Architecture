@@ -1,8 +1,20 @@
-- Implementar suporte em ..Data para acesso SQL puro
-  > IDataFilter, Sorter, Get(), Find(), Search(), etc.
-- Promover ..Core como uma camada CrossCutting
+Para versão atual
+=================
+- Implementar validação de modelo (IModelValidator)
+
+Para versão 1.0
+=================
 - Remover necessidade de objetos de assinatura
   > IDataModuleSignature
   > IStorageSignature
 - Repensar DataModule<>
-- Implementar validação de modelo (IModelValidator)
+- Renomear Storage para Store?
+- Implementar Data.Dapper
+  > Implementar suporte a SQL puro
+  > IDataFilter, Sorter, Get(), Find(), Search(), etc.
+- Adicionar suporte a consultas com SQL puro mesmo no EntityFramework
+
+Versões futuras
+===============
+- Implementar Data para cenário na nuvem
+- Implementar Data para cenário em sistema de arquivos

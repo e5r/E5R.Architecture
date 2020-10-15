@@ -43,23 +43,30 @@ namespace E5R.Architecture.Data
             return this;
         }
 
+        public LinqStorageQueryBuilder<TDataModel> SortDescending(Expression<Func<TDataModel, object>> sorter)
+        {
+            Limiter.SortDescending(sorter);
+
+            return this;
+        }
+
         public LinqStorageQueryBuilder<TDataModel> OffsetBegin(uint offset)
         {
-            Limiter.Begin(offset);
+            Limiter.BeginOffset(offset);
 
             return this;
         }
 
         public LinqStorageQueryBuilder<TDataModel> OffsetLimit(uint offsetLimit)
         {
-            Limiter.Limit(offsetLimit);
+            Limiter.LimitOffset(offsetLimit);
 
             return this;
         }
 
-        public LinqStorageQueryBuilder<TDataModel> Descending()
+        public LinqStorageQueryBuilder<TDataModel> Paginate(uint currentPage, uint limitPerPage)
         {
-            Limiter.Desc();
+            Limiter.Paginate(currentPage, limitPerPage);
 
             return this;
         }
