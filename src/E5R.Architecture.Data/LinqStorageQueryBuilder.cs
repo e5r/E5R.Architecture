@@ -23,10 +23,12 @@ namespace E5R.Architecture.Data
 
             Filter = new LinqDataFilter<TDataModel>();
             Limiter = new LinqDataLimiter<TDataModel>();
+            Projections = new List<IDataProjection>();
         }
 
         private LinqDataFilter<TDataModel> Filter { get; set; }
         private LinqDataLimiter<TDataModel> Limiter { get; set; }
+        private IList<IDataProjection> Projections { get; set; }
 
         #region Configuration   
         public LinqStorageQueryBuilder<TDataModel> AddFilter(Expression<Func<TDataModel, bool>> filter)
@@ -34,6 +36,27 @@ namespace E5R.Architecture.Data
             Filter.AddFilter(filter);
 
             return this;
+        }
+
+        public LinqStorageQueryBuilder<TDataModel> AddProjection(LinqDataProjection projection)
+        {
+            Checker.NotNullArgument(projection, nameof(projection));
+
+            Projections.Add(projection);
+
+            return this;
+        }
+
+        public LinqStorageQueryBuilder<TDataModel> AddProjection(string projection)
+        {
+            Checker.NotEmptyOrWhiteArgument(projection, nameof(projection));
+
+            return AddProjection(new LinqDataProjection(projection));
+        }
+
+        public LinqDataProjectionQueryBuilder<TDataModel> AddProjection()
+        {
+            return new LinqDataProjectionQueryBuilder<TDataModel>(this);
         }
 
         public LinqStorageQueryBuilder<TDataModel> Sort(Expression<Func<TDataModel, object>> sorter)
@@ -73,11 +96,11 @@ namespace E5R.Architecture.Data
         #endregion
 
         #region Actions
-        public DataLimiterResult<TDataModel> Get() => _storage.Get(Limiter);
+        public DataLimiterResult<TDataModel> Get() => _storage.Get(Limiter, Projections);
 
-        public IEnumerable<TDataModel> Search() => _storage.Search(Filter);
+        public IEnumerable<TDataModel> Search() => _storage.Search(Filter, Projections);
 
-        public DataLimiterResult<TDataModel> LimitedSearch() => _storage.LimitedSearch(Filter, Limiter);
+        public DataLimiterResult<TDataModel> LimitedSearch() => _storage.LimitedSearch(Filter, Limiter, Projections);
         #endregion
     }
 }

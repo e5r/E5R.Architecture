@@ -14,10 +14,10 @@ namespace E5R.Architecture.Data.Abstractions
         where TDataModel : IDataModel
     {
         TDataModel Find(TDataModel data);
-        DataLimiterResult<TDataModel> Get(IDataLimiter<TDataModel> limiter);
-        IEnumerable<TDataModel> Search(IDataFilter<TDataModel> filter);
+        DataLimiterResult<TDataModel> Get(IDataLimiter<TDataModel> limiter, IEnumerable<IDataProjection> projections = null);
+        IEnumerable<TDataModel> Search(IDataFilter<TDataModel> filter, IEnumerable<IDataProjection> projections = null);
 
         DataLimiterResult<TDataModel> LimitedSearch(IDataFilter<TDataModel> filter,
-            IDataLimiter<TDataModel> limiter);
+            IDataLimiter<TDataModel> limiter, IEnumerable<IDataProjection> projections = null);
     }
 }

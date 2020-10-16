@@ -41,29 +41,31 @@ namespace E5R.Architecture.Data.EntityFrameworkCore
             return Set.Find(data.IdentifierValues);
         }
 
-        public DataLimiterResult<TDataModel> Get(IDataLimiter<TDataModel> limiter)
+        public DataLimiterResult<TDataModel> Get(IDataLimiter<TDataModel> limiter, IEnumerable<IDataProjection> projections)
         {
             Checker.NotNullArgument(limiter, nameof(limiter));
 
-            return QueryLimitResult(limiter, Query);
+            return QueryLimitResult(limiter, Query, projections);
         }
 
-        public IEnumerable<TDataModel> Search(IDataFilter<TDataModel> filter)
+        public IEnumerable<TDataModel> Search(IDataFilter<TDataModel> filter, IEnumerable<IDataProjection> projections)
         {
             Checker.NotNullArgument(filter, nameof(filter));
 
-            return QuerySearch(filter);
+            return QuerySearch(filter, projections);
         }
 
         public DataLimiterResult<TDataModel> LimitedSearch(IDataFilter<TDataModel> filter,
-            IDataLimiter<TDataModel> limiter)
+            IDataLimiter<TDataModel> limiter, IEnumerable<IDataProjection> projections)
         {
             Checker.NotNullArgument(filter, nameof(filter));
             Checker.NotNullArgument(limiter, nameof(limiter));
 
-            var result = QuerySearch(filter);
+            var result = QuerySearch(filter, projections);
 
-            return QueryLimitResult(limiter, result);
+            // A projeção já foi aplicada em QuerySearch(), por isso não precisa
+            // ser repassada aqui
+            return QueryLimitResult(limiter, result, null);
         }
 
         #endregion
@@ -182,7 +184,7 @@ namespace E5R.Architecture.Data.EntityFrameworkCore
 
         #region Auxiliary methods
 
-        public IQueryable<TDataModel> QuerySearch(IDataFilter<TDataModel> filter)
+        IQueryable<TDataModel> QuerySearch(IDataFilter<TDataModel> filter, IEnumerable<IDataProjection> projections)
         {
             Checker.NotNullArgument(filter, nameof(filter));
 
@@ -190,11 +192,13 @@ namespace E5R.Architecture.Data.EntityFrameworkCore
 
             Checker.NotNullObject(filterList, $"filter.{nameof(filter.GetFilter)}()");
 
-            return filterList.Aggregate(Query, (q, w) => q.Where(w));
+            var query = filterList.Aggregate(Query, (q, w) => q.Where(w));
+
+            return TryApplyProjections(query, projections);
         }
 
-        public DataLimiterResult<TDataModel> QueryLimitResult(IDataLimiter<TDataModel> limiter,
-            IQueryable<TDataModel> origin)
+        DataLimiterResult<TDataModel> QueryLimitResult(IDataLimiter<TDataModel> limiter,
+            IQueryable<TDataModel> origin, IEnumerable<IDataProjection> projections)
         {
             Checker.NotNullArgument(limiter, nameof(limiter));
 
@@ -205,7 +209,7 @@ namespace E5R.Architecture.Data.EntityFrameworkCore
                 throw new ArgumentOutOfRangeException($"limiter.{limiter.OffsetLimit}");
             }
 
-            var result = origin.AsQueryable();
+            var result = TryApplyProjections(origin, projections);
 
             IOrderedQueryable<TDataModel> orderBy = null;
 
@@ -250,6 +254,16 @@ namespace E5R.Architecture.Data.EntityFrameworkCore
             }
 
             return new DataLimiterResult<TDataModel>(result, offset, limit, total);
+        }
+
+        IQueryable<TDataModel> TryApplyProjections(IQueryable<TDataModel> query, IEnumerable<IDataProjection> projections)
+        {
+            foreach (var projection in (projections ?? Enumerable.Empty<IDataProjection>()))
+            {
+                query = query.Include(projection.GetProjectionString());
+            }
+
+            return query;
         }
 
         #endregion
