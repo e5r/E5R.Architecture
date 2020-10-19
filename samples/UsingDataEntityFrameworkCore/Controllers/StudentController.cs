@@ -1,10 +1,10 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Data.Common;
 using System.Linq;
 using System.Threading.Tasks;
 using E5R.Architecture.Data;
 using E5R.Architecture.Data.Abstractions;
+using E5R.Architecture.Data.Abstractions.Alias;
 using E5R.Architecture.Infrastructure;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
@@ -22,8 +22,8 @@ namespace UsingDataEntityFrameworkCore.Controllers
         private readonly SchoolContext _context2;
         private readonly DbConnection _connection;
         private readonly DbTransaction _transaction;
-        private readonly IStorageReader<Student> _readerStorage;
-        private readonly IStorageWriter<SchoolContext, Student> _writeStorage;
+        private readonly IStoreReader<Student> _readerStore;
+        private readonly IStoreWriter<SchoolContext, Student> _writerStore;
         private readonly ILogger<StudentController> _logger;
 
         public StudentController(
@@ -32,16 +32,16 @@ namespace UsingDataEntityFrameworkCore.Controllers
             UnitOfWorkProperty<DbConnection> connection,
             UnitOfWorkProperty<DbTransaction> transaction,
             SchoolContext context2,
-            IStorageReader<Student> readerStorage,
-            IStorageWriter<SchoolContext, Student> writeStorage)
+            IStoreReader<Student> readerStore,
+            IStoreWriter<SchoolContext, Student> writerStore)
         {
             _logger = logger ?? throw new ArgumentNullException(nameof(logger));
             _context = context ?? throw new ArgumentNullException(nameof(context));
             _connection = connection ?? throw new ArgumentNullException(nameof(connection));
             _transaction = transaction ?? throw new ArgumentNullException(nameof(transaction));
             _context2 = context2 ?? throw new ArgumentNullException(nameof(context2));
-            _readerStorage = readerStorage ?? throw new ArgumentNullException(nameof(readerStorage));
-            _writeStorage = writeStorage ?? throw new ArgumentNullException(nameof(writeStorage));
+            _readerStore = readerStore ?? throw new ArgumentNullException(nameof(readerStore));
+            _writerStore = writerStore ?? throw new ArgumentNullException(nameof(writerStore));
         }
 
         public async Task<IActionResult> Index()
@@ -62,7 +62,7 @@ namespace UsingDataEntityFrameworkCore.Controllers
 
             // #if !DEBUG
             // Usando filtro implícito
-            var query = _readerStorage.Query()
+            var query = _readerStore.Query()
                 .OffsetBegin(pageOffset * PAGE_SIZE)
                 .OffsetLimit(5);
 
@@ -88,7 +88,7 @@ namespace UsingDataEntityFrameworkCore.Controllers
             //                     );
             //             }
 
-            //             var students = _readerStorage.Search(filter);
+            //             var students = _readerStore.Search(filter);
             // #endif
 
             ViewData["SearchString"] = searchString;
@@ -125,7 +125,7 @@ namespace UsingDataEntityFrameworkCore.Controllers
             }
 
             // TODO: Incluir projeção
-            var student = _readerStorage.Find(new Student { ID = id.Value });
+            var student = _readerStore.Find(new Student { ID = id.Value });
 
             if (student == null)
             {
@@ -148,14 +148,14 @@ namespace UsingDataEntityFrameworkCore.Controllers
                 return NotFound();
             }
 
-            var student = _readerStorage.Find(new Student { ID = id.Value });
+            var student = _readerStore.Find(new Student { ID = id.Value });
 
             if (student == null)
             {
                 return NotFound();
             }
 
-            var createdStudent = _writeStorage.Create(new Student
+            var createdStudent = _writerStore.Create(new Student
             {
                 FirstMidName = student.FirstMidName + " (copy)",
                 LastName = student.LastName,
