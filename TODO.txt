@@ -1,16 +1,6 @@
 Para versão atual
 =================
 - Implementar validação de modelo (IModelValidator)
-- Implementar IStorageQueryable
-  > A idéia é que ele seja opcional
-    - Para isso teremos uma implementação padrão, tipo StorageQueryableNotImplemented
-    - Nos métodos de extensão haver um AddFeatureStorageQueryableNotImplemented()
-    - Nos métodos de extensão do EntityFramework implementar um StorageQueryable
-    - Um IStorageQueryable herda IStorage, portanto pode ser utilizado normalmente como um
-      mas permite consultas que retornam IQueryable
-  > Motivação: Em cenários onde seja preciso executar RawSQL por exemplo, é útil fazer
-               a primeira consulta com SQL, mas aproveitar os conceitos dados pelo IStorage,
-               como Filter, Limiter e Projection
 
 Para versão 1.0
 =================

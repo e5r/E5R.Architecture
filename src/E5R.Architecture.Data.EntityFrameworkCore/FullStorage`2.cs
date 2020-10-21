@@ -12,7 +12,7 @@ using Microsoft.EntityFrameworkCore;
 
 namespace E5R.Architecture.Data.EntityFrameworkCore
 {
-    public class FullStorage<TDbContext, TDataModel>
+    public class FullStorage<TDbContext, TDataModel> : StorageBase<TDataModel>
         where TDataModel : class, IDataModel
         where TDbContext : DbContext
     {
@@ -52,7 +52,7 @@ namespace E5R.Architecture.Data.EntityFrameworkCore
         {
             Checker.NotNullArgument(filter, nameof(filter));
 
-            return QuerySearch(filter, projections);
+            return QuerySearch(Query, filter, projections);
         }
 
         public DataLimiterResult<TDataModel> LimitedSearch(IDataFilter<TDataModel> filter,
@@ -61,7 +61,7 @@ namespace E5R.Architecture.Data.EntityFrameworkCore
             Checker.NotNullArgument(filter, nameof(filter));
             Checker.NotNullArgument(limiter, nameof(limiter));
 
-            var result = QuerySearch(filter, projections);
+            var result = QuerySearch(Query, filter, projections);
 
             // A projeção já foi aplicada em QuerySearch(), por isso não precisa
             // ser repassada aqui
@@ -178,92 +178,6 @@ namespace E5R.Architecture.Data.EntityFrameworkCore
             }
 
             Context.SaveChanges();
-        }
-
-        #endregion
-
-        #region Auxiliary methods
-
-        IQueryable<TDataModel> QuerySearch(IDataFilter<TDataModel> filter, IEnumerable<IDataProjection> projections)
-        {
-            Checker.NotNullArgument(filter, nameof(filter));
-
-            var filterList = filter.GetFilter();
-
-            Checker.NotNullObject(filterList, $"filter.{nameof(filter.GetFilter)}()");
-
-            var query = filterList.Aggregate(Query, (q, w) => q.Where(w));
-
-            return TryApplyProjections(query, projections);
-        }
-
-        DataLimiterResult<TDataModel> QueryLimitResult(IDataLimiter<TDataModel> limiter,
-            IQueryable<TDataModel> origin, IEnumerable<IDataProjection> projections)
-        {
-            Checker.NotNullArgument(limiter, nameof(limiter));
-
-            // Ensures offset range
-            if (limiter.OffsetLimit.HasValue &&
-                (limiter.OffsetLimit.Value == 0 || limiter.OffsetLimit.Value > int.MaxValue))
-            {
-                throw new ArgumentOutOfRangeException($"limiter.{limiter.OffsetLimit}");
-            }
-
-            var result = TryApplyProjections(origin, projections);
-
-            IOrderedQueryable<TDataModel> orderBy = null;
-
-            foreach (var sorter in limiter.GetSorters())
-            {
-                if (orderBy == null)
-                {
-                    if (sorter.Descending)
-                        orderBy = result.OrderByDescending(sorter.Sorter);
-                    else
-                        orderBy = result.OrderBy(sorter.Sorter);
-                }
-                else
-                {
-                    if (sorter.Descending)
-                        orderBy = orderBy.ThenByDescending(sorter.Sorter);
-                    else
-                        orderBy = orderBy.ThenBy(sorter.Sorter);
-                }
-            }
-
-            result = orderBy ?? result;
-
-            uint offset = 0;
-            uint limit = 0;
-            int total = result.Count();
-
-            if (limiter.OffsetBegin.HasValue)
-            {
-                offset = limiter.OffsetBegin.Value;
-                result = result.Skip(Convert.ToInt32(offset));
-            }
-
-            if (limiter.OffsetLimit.HasValue)
-            {
-                limit = limiter.OffsetLimit.Value;
-                result = result.Take(Convert.ToInt32(limit));
-            }
-            else
-            {
-                limit = Convert.ToUInt32(total);
-            }
-
-            return new DataLimiterResult<TDataModel>(result, offset, limit, total);
-        }
-
-        IQueryable<TDataModel> TryApplyProjections(IQueryable<TDataModel> query, IEnumerable<IDataProjection> projections)
-        {
-            foreach (var projection in (projections ?? Enumerable.Empty<IDataProjection>()))
-            {
-                query = query.Include(projection.GetProjectionString());
-            }
-
-            return query;
         }
 
         #endregion
