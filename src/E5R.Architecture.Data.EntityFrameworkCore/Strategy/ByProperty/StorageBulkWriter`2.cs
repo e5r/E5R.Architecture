@@ -7,25 +7,25 @@ using E5R.Architecture.Data.Abstractions.Alias;
 using E5R.Architecture.Infrastructure;
 using Microsoft.EntityFrameworkCore;
 
-namespace E5R.Architecture.Data.EntityFrameworkCore
+namespace E5R.Architecture.Data.EntityFrameworkCore.Strategy.ByProperty
 {
-    public class StorageWriterByProperty<TDataModel>
-        : StorageWriterByProperty<DbContext, TDataModel>
+    public class StorageBulkWriter<TDataModel>
+        : StorageBulkWriter<DbContext, TDataModel>
         where TDataModel : class, IDataModel
     {
-        public StorageWriterByProperty(UnitOfWorkProperty<DbContext> context)
+        public StorageBulkWriter(UnitOfWorkProperty<DbContext> context)
             : base(context) { }
     }
 
-    public class StorageWriterByProperty<TDbContext, TDataModel>
-        : FullStorageByProperty<TDbContext, TDataModel>,
-        IStorageWriter<TDbContext, TDataModel>,
-        IRepositoryWriter<TDbContext, TDataModel>,
-        IStoreWriter<TDbContext, TDataModel>
+    public class StorageBulkWriter<TDbContext, TDataModel>
+        : FullStorage<TDbContext, TDataModel>,
+        IStorageBulkWriter<TDbContext, TDataModel>,
+        IRepositoryBulkWriter<TDbContext, TDataModel>,
+        IStoreBulkWriter<TDbContext, TDataModel>
         where TDataModel : class, IDataModel
         where TDbContext : DbContext
     {
-        public StorageWriterByProperty(UnitOfWorkProperty<TDbContext> context)
+        public StorageBulkWriter(UnitOfWorkProperty<TDbContext> context)
             : base(context) { }
     }
 }

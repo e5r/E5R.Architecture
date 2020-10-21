@@ -12,7 +12,7 @@ using Microsoft.EntityFrameworkCore;
 
 namespace E5R.Architecture.Data.EntityFrameworkCore
 {
-    public class FullStorageByProperty<TDbContext, TDataModel>
+    public class FullStorage<TDbContext, TDataModel>
         where TDataModel : class, IDataModel
         where TDbContext : DbContext
     {
@@ -21,7 +21,7 @@ namespace E5R.Architecture.Data.EntityFrameworkCore
         protected IQueryable<TDataModel> Query { get; private set; }
         protected WriterDelegate Write { get; private set; }
 
-        public FullStorageByProperty(UnitOfWorkProperty<TDbContext> context)
+        public FullStorage(TDbContext context)
         {
             Checker.NotNullArgument(context, nameof(context));
 

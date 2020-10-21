@@ -7,25 +7,25 @@ using E5R.Architecture.Data.Abstractions.Alias;
 using E5R.Architecture.Infrastructure;
 using Microsoft.EntityFrameworkCore;
 
-namespace E5R.Architecture.Data.EntityFrameworkCore
+namespace E5R.Architecture.Data.EntityFrameworkCore.Strategy.ByProperty
 {
-    public class StorageByProperty<TDataModel>
-        : StorageByProperty<DbContext, TDataModel>
+    public class Storage<TDataModel>
+        : Storage<DbContext, TDataModel>
         where TDataModel : class, IDataModel
     {
-        public StorageByProperty(UnitOfWorkProperty<DbContext> context)
+        public Storage(UnitOfWorkProperty<DbContext> context)
             : base(context) { }
     }
 
-    public class StorageByProperty<TDbContext, TDataModel>
-        : FullStorageByProperty<TDbContext, TDataModel>,
+    public class Storage<TDbContext, TDataModel>
+        : FullStorage<TDbContext, TDataModel>,
         IStorage<TDbContext, TDataModel>,
         IRepository<TDbContext, TDataModel>,
         IStore<TDbContext, TDataModel>
         where TDataModel : class, IDataModel
         where TDbContext : DbContext
     {
-        public StorageByProperty(UnitOfWorkProperty<TDbContext> context)
+        public Storage(UnitOfWorkProperty<TDbContext> context)
             : base(context) { }
     }
 }

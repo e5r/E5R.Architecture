@@ -1,7 +1,7 @@
 using System.Data;
 using System.Data.Common;
 using E5R.Architecture.Data.Abstractions;
-using E5R.Architecture.Data.EntityFrameworkCore;
+using E5R.Architecture.Data.EntityFrameworkCore.Strategy.ByProperty;
 using E5R.Architecture.Infrastructure;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
@@ -14,14 +14,6 @@ using UsingDataEntityFrameworkCore.Data;
 
 namespace UsingDataEntityFrameworkCore
 {
-    public class DefaultStorageReader<TDataModel>
-        : StorageReaderByProperty<SchoolContext, TDataModel>
-        where TDataModel : class, IDataModel
-    {
-        public DefaultStorageReader(UnitOfWorkProperty<SchoolContext> context)
-            : base(context) { }
-    }
-
     public class Startup
     {
         public Startup(IConfiguration configuration)

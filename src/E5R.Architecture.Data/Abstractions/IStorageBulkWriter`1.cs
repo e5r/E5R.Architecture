@@ -6,11 +6,11 @@ using System.Collections.Generic;
 
 namespace E5R.Architecture.Data.Abstractions
 {
-    public interface IBulkStorageWriter<TUowProperty, TDataModel> : IBulkStorageWriter<TDataModel>
+    public interface IStorageBulkWriter<TUowProperty, TDataModel> : IStorageBulkWriter<TDataModel>
         where TDataModel : IDataModel
     { }
 
-    public interface IBulkStorageWriter<TDataModel> : IStorageSignature
+    public interface IStorageBulkWriter<TDataModel> : IStorageSignature
         where TDataModel : IDataModel
     {
         IEnumerable<TDataModel> BulkCreate(IEnumerable<TDataModel> data);

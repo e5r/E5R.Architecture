@@ -4,7 +4,7 @@
 
 using E5R.Architecture.Data.Abstractions;
 using E5R.Architecture.Data.Abstractions.Alias;
-using E5R.Architecture.Data.EntityFrameworkCore;
+using ByProperty = E5R.Architecture.Data.EntityFrameworkCore.Strategy.ByProperty;
 
 namespace Microsoft.Extensions.DependencyInjection
 {
@@ -13,37 +13,37 @@ namespace Microsoft.Extensions.DependencyInjection
         public static IServiceCollection AddStoragePropertyStrategy(this IServiceCollection serviceCollection)
         {
             // Objetos de armazenamento principais
-            serviceCollection.AddScoped(typeof(IStorage<>), typeof(StorageByProperty<>));
-            serviceCollection.AddScoped(typeof(IStorageReader<>), typeof(StorageReaderByProperty<>));
-            serviceCollection.AddScoped(typeof(IStorageWriter<>), typeof(StorageWriterByProperty<>));
-            serviceCollection.AddScoped(typeof(IBulkStorageWriter<>), typeof(BulkStorageWriterByProperty<>));
+            serviceCollection.AddScoped(typeof(IStorage<>), typeof(ByProperty.Storage<>));
+            serviceCollection.AddScoped(typeof(IStorageReader<>), typeof(ByProperty.StorageReader<>));
+            serviceCollection.AddScoped(typeof(IStorageWriter<>), typeof(ByProperty.StorageWriter<>));
+            serviceCollection.AddScoped(typeof(IStorageBulkWriter<>), typeof(ByProperty.StorageBulkWriter<>));
 
-            serviceCollection.AddScoped(typeof(IStorage<,>), typeof(StorageByProperty<,>));
-            serviceCollection.AddScoped(typeof(IStorageReader<,>), typeof(StorageReaderByProperty<,>));
-            serviceCollection.AddScoped(typeof(IStorageWriter<,>), typeof(StorageWriterByProperty<,>));
-            serviceCollection.AddScoped(typeof(IBulkStorageWriter<,>), typeof(BulkStorageWriterByProperty<,>));
+            serviceCollection.AddScoped(typeof(IStorage<,>), typeof(ByProperty.Storage<,>));
+            serviceCollection.AddScoped(typeof(IStorageReader<,>), typeof(ByProperty.StorageReader<,>));
+            serviceCollection.AddScoped(typeof(IStorageWriter<,>), typeof(ByProperty.StorageWriter<,>));
+            serviceCollection.AddScoped(typeof(IStorageBulkWriter<,>), typeof(ByProperty.StorageBulkWriter<,>));
 
             // Alias [Repository] dos objetos de armazenamento
-            serviceCollection.AddScoped(typeof(IRepository<>), typeof(StorageByProperty<>));
-            serviceCollection.AddScoped(typeof(IRepositoryReader<>), typeof(StorageReaderByProperty<>));
-            serviceCollection.AddScoped(typeof(IRepositoryWriter<>), typeof(StorageWriterByProperty<>));
-            serviceCollection.AddScoped(typeof(IRepositoryBulkWriter<>), typeof(BulkStorageWriterByProperty<>));
+            serviceCollection.AddScoped(typeof(IRepository<>), typeof(ByProperty.Storage<>));
+            serviceCollection.AddScoped(typeof(IRepositoryReader<>), typeof(ByProperty.StorageReader<>));
+            serviceCollection.AddScoped(typeof(IRepositoryWriter<>), typeof(ByProperty.StorageWriter<>));
+            serviceCollection.AddScoped(typeof(IRepositoryBulkWriter<>), typeof(ByProperty.StorageBulkWriter<>));
 
-            serviceCollection.AddScoped(typeof(IRepository<,>), typeof(StorageByProperty<,>));
-            serviceCollection.AddScoped(typeof(IRepositoryReader<,>), typeof(StorageReaderByProperty<,>));
-            serviceCollection.AddScoped(typeof(IRepositoryWriter<,>), typeof(StorageWriterByProperty<,>));
-            serviceCollection.AddScoped(typeof(IRepositoryBulkWriter<,>), typeof(BulkStorageWriterByProperty<,>));
+            serviceCollection.AddScoped(typeof(IRepository<,>), typeof(ByProperty.Storage<,>));
+            serviceCollection.AddScoped(typeof(IRepositoryReader<,>), typeof(ByProperty.StorageReader<,>));
+            serviceCollection.AddScoped(typeof(IRepositoryWriter<,>), typeof(ByProperty.StorageWriter<,>));
+            serviceCollection.AddScoped(typeof(IRepositoryBulkWriter<,>), typeof(ByProperty.StorageBulkWriter<,>));
 
             // Alias [Store] dos objetos de armazenamento
-            serviceCollection.AddScoped(typeof(IStore<>), typeof(StorageByProperty<>));
-            serviceCollection.AddScoped(typeof(IStoreReader<>), typeof(StorageReaderByProperty<>));
-            serviceCollection.AddScoped(typeof(IStoreWriter<>), typeof(StorageWriterByProperty<>));
-            serviceCollection.AddScoped(typeof(IStoreBulkWriter<>), typeof(BulkStorageWriterByProperty<>));
+            serviceCollection.AddScoped(typeof(IStore<>), typeof(ByProperty.Storage<>));
+            serviceCollection.AddScoped(typeof(IStoreReader<>), typeof(ByProperty.StorageReader<>));
+            serviceCollection.AddScoped(typeof(IStoreWriter<>), typeof(ByProperty.StorageWriter<>));
+            serviceCollection.AddScoped(typeof(IStoreBulkWriter<>), typeof(ByProperty.StorageBulkWriter<>));
 
-            serviceCollection.AddScoped(typeof(IStore<,>), typeof(StorageByProperty<,>));
-            serviceCollection.AddScoped(typeof(IStoreReader<,>), typeof(StorageReaderByProperty<,>));
-            serviceCollection.AddScoped(typeof(IStoreWriter<,>), typeof(StorageWriterByProperty<,>));
-            serviceCollection.AddScoped(typeof(IStoreBulkWriter<,>), typeof(BulkStorageWriterByProperty<,>));
+            serviceCollection.AddScoped(typeof(IStore<,>), typeof(ByProperty.Storage<,>));
+            serviceCollection.AddScoped(typeof(IStoreReader<,>), typeof(ByProperty.StorageReader<,>));
+            serviceCollection.AddScoped(typeof(IStoreWriter<,>), typeof(ByProperty.StorageWriter<,>));
+            serviceCollection.AddScoped(typeof(IStoreBulkWriter<,>), typeof(ByProperty.StorageBulkWriter<,>));
 
             return serviceCollection;
         }

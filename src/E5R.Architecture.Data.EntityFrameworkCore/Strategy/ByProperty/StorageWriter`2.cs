@@ -7,25 +7,25 @@ using E5R.Architecture.Data.Abstractions.Alias;
 using E5R.Architecture.Infrastructure;
 using Microsoft.EntityFrameworkCore;
 
-namespace E5R.Architecture.Data.EntityFrameworkCore
+namespace E5R.Architecture.Data.EntityFrameworkCore.Strategy.ByProperty
 {
-    public class StorageReaderByProperty<TDataModel>
-        : StorageReaderByProperty<DbContext, TDataModel>
+    public class StorageWriter<TDataModel>
+        : StorageWriter<DbContext, TDataModel>
         where TDataModel : class, IDataModel
     {
-        public StorageReaderByProperty(UnitOfWorkProperty<DbContext> context)
+        public StorageWriter(UnitOfWorkProperty<DbContext> context)
             : base(context) { }
     }
 
-    public class StorageReaderByProperty<TDbContext, TDataModel>
-        : FullStorageByProperty<TDbContext, TDataModel>,
-        IStorageReader<TDbContext, TDataModel>,
-        IRepositoryReader<TDbContext, TDataModel>,
-        IStoreReader<TDbContext, TDataModel>
+    public class StorageWriter<TDbContext, TDataModel>
+        : FullStorage<TDbContext, TDataModel>,
+        IStorageWriter<TDbContext, TDataModel>,
+        IRepositoryWriter<TDbContext, TDataModel>,
+        IStoreWriter<TDbContext, TDataModel>
         where TDataModel : class, IDataModel
         where TDbContext : DbContext
     {
-        public StorageReaderByProperty(UnitOfWorkProperty<TDbContext> context)
+        public StorageWriter(UnitOfWorkProperty<TDbContext> context)
             : base(context) { }
     }
 }

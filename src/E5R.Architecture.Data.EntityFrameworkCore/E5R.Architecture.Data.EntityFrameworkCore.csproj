@@ -14,5 +14,8 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Extensions\" />
+    <Folder Include="Strategy\" />
+    <Folder Include="Strategy\ByProperty\" />
+    <Folder Include="Strategy\TransactionScope\" />
   </ItemGroup>
 </Project>

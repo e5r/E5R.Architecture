@@ -8,7 +8,7 @@ namespace E5R.Architecture.Data.Abstractions.Alias
         where TDataModel : IDataModel
     { }
 
-    public interface IRepositoryBulkWriter<TDataModel> : IBulkStorageWriter<TDataModel>
+    public interface IRepositoryBulkWriter<TDataModel> : IStorageBulkWriter<TDataModel>
         where TDataModel : IDataModel
     { }
 }
