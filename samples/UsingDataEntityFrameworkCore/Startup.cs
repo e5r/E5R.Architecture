@@ -1,7 +1,6 @@
 using System.Data;
 using System.Data.Common;
 using E5R.Architecture.Data.Abstractions;
-using E5R.Architecture.Data.EntityFrameworkCore.Strategy.ByProperty;
 using E5R.Architecture.Infrastructure;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
@@ -27,6 +26,7 @@ namespace UsingDataEntityFrameworkCore
         {
             services.AddControllersWithViews();
 
+            // Strategy.ByProperty
             services.AddScoped<DbConnection>(_ =>
                 new SqliteConnection(Configuration.GetConnectionString("SQLiteConnection"))
             );
@@ -54,6 +54,15 @@ namespace UsingDataEntityFrameworkCore
             });
 
             services.AddStoragePropertyStrategy();
+
+            // Strategy.TransactionScope
+            //services.AddDbContext<SchoolContext>((serviceProvider, options) =>
+            //{
+            //    options.UseSqlite(Configuration.GetConnectionString("SQLiteConnection"));
+            //});
+            //services.AddScoped<DbContext>(ServiceProvider => ServiceProvider.GetRequiredService<SchoolContext>());
+            //services.AddUnitOfWorkTransactionScopeStrategy();
+            //services.AddStorageTransactionScopeStrategy();
         }
 
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)

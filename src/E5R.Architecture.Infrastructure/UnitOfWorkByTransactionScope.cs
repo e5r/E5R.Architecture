@@ -9,7 +9,7 @@ namespace E5R.Architecture.Infrastructure
 {
     using Abstractions;
 
-    public abstract class UnitOfWorkByTransactionScope : IUnitOfWork, IDisposable
+    public class UnitOfWorkByTransactionScope : IUnitOfWork, IDisposable
     {
         private readonly TransactionScope _scope;
         private bool _disposed;
@@ -35,7 +35,7 @@ namespace E5R.Architecture.Infrastructure
 
         public void Dispose() => Dispose(true);
 
-        protected virtual void Dispose(bool disposing)
+        void Dispose(bool disposing)
         {
             if (_disposed)
             {

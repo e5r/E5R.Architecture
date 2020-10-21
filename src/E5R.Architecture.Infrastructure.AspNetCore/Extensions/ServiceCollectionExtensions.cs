@@ -82,6 +82,10 @@ namespace Microsoft.Extensions.DependencyInjection
             return serviceCollection;
         }
 
+        public static IServiceCollection AddUnitOfWorkTransactionScopeStrategy(
+            this IServiceCollection serviceCollection)
+            => serviceCollection.AddScoped<IUnitOfWork, UnitOfWorkByTransactionScope>();
+
         public static IServiceCollection AddCrossCutting(
             this IServiceCollection serviceCollection,
             params string[] assemblies
