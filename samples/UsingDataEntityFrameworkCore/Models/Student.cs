@@ -13,13 +13,7 @@ namespace UsingDataEntityFrameworkCore.Models
 
         public ICollection<Enrollment> Enrollments { get; set; }
 
-        public object[] IdentifierValues
-        {
-            get
-            {
-                return new object[] { (Int32)ID };
-            }
-        }
+        public object[] IdentifierValues => new[] { (object)ID };
     }
 
     //public class StudentDataModel : DataModel<Student>

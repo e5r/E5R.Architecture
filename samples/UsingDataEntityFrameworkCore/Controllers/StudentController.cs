@@ -124,19 +124,19 @@ namespace UsingDataEntityFrameworkCore.Controllers
                 return NotFound();
             }
 
-            // TODO: Incluir projeção
-            var student = _readerStore.Find(new Student { ID = id.Value });
+            var student = _readerStore.Query()
+                .AddProjection()
+                    .Include<Enrollment>(i => i.Enrollments)
+                        .ThenInclude<Course>(i => i.Course)
+                    .Project()
+                .AddFilter(w => w.ID == id)
+                .Search()
+                .FirstOrDefault();
 
             if (student == null)
             {
                 return NotFound();
             }
-
-            // NOTE: Com as projeções diretamente no IStorage, este trecho será desnecessário
-            student.Enrollments = await _context.Enrollments
-                .Where(w => w.StudentID == student.ID)
-                .Include(i => i.Course)
-                .ToListAsync();
 
             return View(nameof(Details), student);
         }
@@ -148,7 +148,13 @@ namespace UsingDataEntityFrameworkCore.Controllers
                 return NotFound();
             }
 
-            var student = _readerStore.Find(new Student { ID = id.Value });
+            //var student = _readerStore.Find(new Student { ID = id.Value });
+            var student = _readerStore.Query()
+                .AddProjection()
+                    .Include<Enrollment>(i => i.Enrollments)
+                        .ThenInclude<Course>(i => i.Course)
+                    .Project()
+                .Find(id);
 
             if (student == null)
             {

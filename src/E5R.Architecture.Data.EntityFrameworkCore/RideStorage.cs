@@ -24,32 +24,42 @@ namespace E5R.Architecture.Data.EntityFrameworkCore
 
         #region IStorageReader
 
-        public TDataModel Find(TDataModel data)
+        public TDataModel Find(object identifier, IDataProjection<TDataModel> projection = null)
         {
-            throw new DataLayerException($"{this.GetType().Name} not implement {nameof(Find)}()!");
+            throw new DataLayerException($"{this.GetType().Name} not implement {nameof(Find)}(identifier)!");
         }
 
-        public DataLimiterResult<TDataModel> Get(IDataLimiter<TDataModel> limiter, IEnumerable<IDataProjection> projections)
+        public TDataModel Find(object[] identifiers, IDataProjection<TDataModel> projection = null)
+        {
+            throw new DataLayerException($"{this.GetType().Name} not implement {nameof(Find)}(identifiers)!");
+        }
+
+        public TDataModel Find(TDataModel data, IDataProjection<TDataModel> projection = null)
+        {
+            throw new DataLayerException($"{this.GetType().Name} not implement {nameof(Find)}(data)!");
+        }
+
+        public DataLimiterResult<TDataModel> Get(IDataLimiter<TDataModel> limiter, IDataProjection<TDataModel> projection)
         {
             Checker.NotNullArgument(limiter, nameof(limiter));
 
-            return QueryLimitResult(limiter, _query, projections);
+            return QueryLimitResult(limiter, _query, projection);
         }
 
-        public IEnumerable<TDataModel> Search(IDataFilter<TDataModel> filter, IEnumerable<IDataProjection> projections)
+        public IEnumerable<TDataModel> Search(IDataFilter<TDataModel> filter, IDataProjection<TDataModel> projection)
         {
             Checker.NotNullArgument(filter, nameof(filter));
 
-            return QuerySearch(_query, filter, projections);
+            return QuerySearch(_query, filter, projection);
         }
 
         public DataLimiterResult<TDataModel> LimitedSearch(IDataFilter<TDataModel> filter,
-            IDataLimiter<TDataModel> limiter, IEnumerable<IDataProjection> projections)
+            IDataLimiter<TDataModel> limiter, IDataProjection<TDataModel> projection)
         {
             Checker.NotNullArgument(filter, nameof(filter));
             Checker.NotNullArgument(limiter, nameof(limiter));
 
-            var result = QuerySearch(_query, filter, projections);
+            var result = QuerySearch(_query, filter, projection);
 
             // A projeção já foi aplicada em QuerySearch(), por isso não precisa
             // ser repassada aqui

@@ -13,11 +13,13 @@ namespace E5R.Architecture.Data.Abstractions
     public interface IStorageReader<TDataModel> : IStorageSignature
         where TDataModel : IDataModel
     {
-        TDataModel Find(TDataModel data);
-        DataLimiterResult<TDataModel> Get(IDataLimiter<TDataModel> limiter, IEnumerable<IDataProjection> projections = null);
-        IEnumerable<TDataModel> Search(IDataFilter<TDataModel> filter, IEnumerable<IDataProjection> projections = null);
+        TDataModel Find(object identifier, IDataProjection<TDataModel> projection = null);
+        TDataModel Find(object[] identifiers, IDataProjection<TDataModel> projection = null);
+        TDataModel Find(TDataModel data, IDataProjection<TDataModel> projection = null);
+        DataLimiterResult<TDataModel> Get(IDataLimiter<TDataModel> limiter, IDataProjection<TDataModel> projection = null);
+        IEnumerable<TDataModel> Search(IDataFilter<TDataModel> filter, IDataProjection<TDataModel> projection = null);
 
         DataLimiterResult<TDataModel> LimitedSearch(IDataFilter<TDataModel> filter,
-            IDataLimiter<TDataModel> limiter, IEnumerable<IDataProjection> projections = null);
+            IDataLimiter<TDataModel> limiter, IDataProjection<TDataModel> projections = null);
     }
 }

@@ -18,7 +18,7 @@ namespace E5R.Architecture.Data.EntityFrameworkCore
         protected IQueryable<TDataModel> QuerySearch(
             IQueryable<TDataModel> origin,
             IDataFilter<TDataModel> filter,
-            IEnumerable<IDataProjection> projections)
+            IDataProjection<TDataModel> projection)
         {
             Checker.NotNullArgument(origin, nameof(origin));
             Checker.NotNullArgument(filter, nameof(filter));
@@ -29,13 +29,13 @@ namespace E5R.Architecture.Data.EntityFrameworkCore
 
             var query = filterList.Aggregate(origin, (q, w) => q.Where(w));
 
-            return TryApplyProjections(query, projections);
+            return TryApplyProjection(query, projection);
         }
 
         protected DataLimiterResult<TDataModel> QueryLimitResult(
             IDataLimiter<TDataModel> limiter,
             IQueryable<TDataModel> origin,
-            IEnumerable<IDataProjection> projections)
+            IDataProjection<TDataModel> projection)
         {
             Checker.NotNullArgument(limiter, nameof(limiter));
             Checker.NotNullArgument(origin, nameof(origin));
@@ -47,7 +47,7 @@ namespace E5R.Architecture.Data.EntityFrameworkCore
                 throw new ArgumentOutOfRangeException($"limiter.{limiter.OffsetLimit}");
             }
 
-            var result = TryApplyProjections(origin, projections);
+            var result = TryApplyProjection(origin, projection);
 
             IOrderedQueryable<TDataModel> orderBy = null;
 
@@ -94,14 +94,16 @@ namespace E5R.Architecture.Data.EntityFrameworkCore
             return new DataLimiterResult<TDataModel>(result, offset, limit, total);
         }
 
-        protected IQueryable<TDataModel> TryApplyProjections(
+        protected IQueryable<TDataModel> TryApplyProjection(
             IQueryable<TDataModel> query,
-            IEnumerable<IDataProjection> projections)
+            IDataProjection<TDataModel> projection)
         {
-            foreach (var projection in (projections ?? Enumerable.Empty<IDataProjection>()))
-            {
-                query = query.Include(projection.GetProjectionString());
-            }
+            if (projection == null)
+                return query;
+
+            query = projection.Includes.Aggregate(query, (q, i) => query.Include(i));
+
+            // TODO: .Select()
 
             return query;
         }

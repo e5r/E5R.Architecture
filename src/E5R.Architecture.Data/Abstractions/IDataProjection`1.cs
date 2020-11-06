@@ -2,18 +2,18 @@
 // This file is a part of E5R.Architecture.
 // Licensed under the Apache version 2.0: https://github.com/e5r/licenses/blob/master/license/APACHE-2.0.txt
 
+using System.Collections.Generic;
+
 namespace E5R.Architecture.Data.Abstractions
 {
     /// <summary>
     /// Data projection (Include) for data model
     /// </summary>
-    public interface IDataProjection
+    public interface IDataProjection<TDataModel>
     {
         /// <summary>
-        /// Get a string projection (Include)
+        /// A navigation property paths (separated by ".")
         /// </summary>
-        string GetProjectionString();
-
-        // TODO: Implementar Projeção por Expression<>
+        IEnumerable<string> Includes { get; }
     }
 }

@@ -53,10 +53,24 @@ namespace E5R.Architecture.Data.EntityFrameworkCore.Test
             // RideStorage
             {
                 // Arrange
-                var expectedErrorMessage = $"{typeof(RideStorage<EmptyDataModel>).Name} not implement Find()!";
+                var expectedErrorMessage = $"{typeof(RideStorage<EmptyDataModel>).Name} not implement Find(";
 
                 // Act
-                var exception = Assert.Throws<DataLayerException>(() =>
+                var exception1 = Assert.Throws<DataLayerException>(() =>
+                {
+                    var ride = new RideStorage<EmptyDataModel>(emptyQuery);
+
+                    ride.Find(new object());
+                });
+
+                var exception2 = Assert.Throws<DataLayerException>(() =>
+                {
+                    var ride = new RideStorage<EmptyDataModel>(emptyQuery);
+
+                    ride.Find(new object[] { });
+                });
+
+                var exception3 = Assert.Throws<DataLayerException>(() =>
                 {
                     var ride = new RideStorage<EmptyDataModel>(emptyQuery);
 
@@ -64,16 +78,32 @@ namespace E5R.Architecture.Data.EntityFrameworkCore.Test
                 });
 
                 // Assert
-                Assert.Equal(expectedErrorMessage, exception.Message);
+                Assert.True(exception1.Message.StartsWith(expectedErrorMessage));
+                Assert.True(exception2.Message.StartsWith(expectedErrorMessage));
+                Assert.True(exception3.Message.StartsWith(expectedErrorMessage));
             }
 
             // Alias: RideStore
             {
                 // Arrange
-                var expectedErrorMessage = $"{typeof(RideStore<EmptyDataModel>).Name} not implement Find()!";
+                var expectedErrorMessage = $"{typeof(RideStore<EmptyDataModel>).Name} not implement Find(";
 
                 // Act
-                var exception = Assert.Throws<DataLayerException>(() =>
+                var exception1 = Assert.Throws<DataLayerException>(() =>
+                {
+                    var ride = new RideStore<EmptyDataModel>(emptyQuery);
+
+                    ride.Find(new object());
+                });
+
+                var exception2 = Assert.Throws<DataLayerException>(() =>
+                {
+                    var ride = new RideStore<EmptyDataModel>(emptyQuery);
+
+                    ride.Find(new object[] { });
+                });
+
+                var exception3 = Assert.Throws<DataLayerException>(() =>
                 {
                     var ride = new RideStore<EmptyDataModel>(emptyQuery);
 
@@ -81,16 +111,32 @@ namespace E5R.Architecture.Data.EntityFrameworkCore.Test
                 });
 
                 // Assert
-                Assert.Equal(expectedErrorMessage, exception.Message);
+                Assert.True(exception1.Message.StartsWith(expectedErrorMessage));
+                Assert.True(exception2.Message.StartsWith(expectedErrorMessage));
+                Assert.True(exception3.Message.StartsWith(expectedErrorMessage));
             }
 
             // Alias: RideRepository
             {
                 // Arrange
-                var expectedErrorMessage = $"{typeof(RideRepository<EmptyDataModel>).Name} not implement Find()!";
+                var expectedErrorMessage = $"{typeof(RideRepository<EmptyDataModel>).Name} not implement Find(";
 
                 // Act
-                var exception = Assert.Throws<DataLayerException>(() =>
+                var exception1 = Assert.Throws<DataLayerException>(() =>
+                {
+                    var ride = new RideRepository<EmptyDataModel>(emptyQuery);
+
+                    ride.Find(new object());
+                });
+
+                var exception2 = Assert.Throws<DataLayerException>(() =>
+                {
+                    var ride = new RideRepository<EmptyDataModel>(emptyQuery);
+
+                    ride.Find(new object[] { });
+                });
+
+                var exception3 = Assert.Throws<DataLayerException>(() =>
                 {
                     var ride = new RideRepository<EmptyDataModel>(emptyQuery);
 
@@ -98,7 +144,9 @@ namespace E5R.Architecture.Data.EntityFrameworkCore.Test
                 });
 
                 // Assert
-                Assert.Equal(expectedErrorMessage, exception.Message);
+                Assert.True(exception1.Message.StartsWith(expectedErrorMessage));
+                Assert.True(exception2.Message.StartsWith(expectedErrorMessage));
+                Assert.True(exception3.Message.StartsWith(expectedErrorMessage));
             }
         }
     }

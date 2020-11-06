@@ -5,9 +5,9 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Linq.Expressions;
 using E5R.Architecture.Core;
 using E5R.Architecture.Data.Abstractions;
-using E5R.Architecture.Infrastructure;
 using Microsoft.EntityFrameworkCore;
 
 namespace E5R.Architecture.Data.EntityFrameworkCore
@@ -34,34 +34,70 @@ namespace E5R.Architecture.Data.EntityFrameworkCore
 
         #region IStorageReader
 
-        public TDataModel Find(TDataModel data)
+        public TDataModel Find(TDataModel data, IDataProjection<TDataModel> projection)
         {
             Checker.NotNullArgument(data, nameof(data));
 
-            return Set.Find(data.IdentifierValues);
+            return Find(data.IdentifierValues, projection);
         }
 
-        public DataLimiterResult<TDataModel> Get(IDataLimiter<TDataModel> limiter, IEnumerable<IDataProjection> projections)
+        public TDataModel Find(object identifier, IDataProjection<TDataModel> projection)
+            => Find(new object[] { identifier }, projection);
+
+        public TDataModel Find(object[] identifiers, IDataProjection<TDataModel> projection)
+        {
+            Checker.NotNullArgument(identifiers, nameof(identifiers));
+
+            var primaryKeys = Context.Model.FindEntityType(typeof(TDataModel))
+                .FindPrimaryKey()
+                .Properties;
+
+            if (primaryKeys.Count() != identifiers.Count())
+            {
+                // TODO: Aplicar localização
+                throw new InvalidOperationException($"Quantidade de chaves primárias configuradas em {typeof(TDataModel)} diferente do esperado.");
+            }
+
+            var filter = new LinqDataFilter<TDataModel>();
+            var param = Expression.Parameter(typeof(TDataModel), "e");
+
+            foreach (var (pk, idx) in primaryKeys.Select((pk, idx) => (pk, idx)))
+            {
+                var predicate = Expression.Lambda<Func<TDataModel, bool>>(
+                    Expression.Equal(
+                        Expression.PropertyOrField(param, pk.Name),
+                        Expression.Constant(identifiers[idx])
+                    ),
+                    param
+                );
+
+                filter.AddFilter(predicate);
+            }
+
+            return QuerySearch(Query, filter, projection).FirstOrDefault();
+        }
+
+        public DataLimiterResult<TDataModel> Get(IDataLimiter<TDataModel> limiter, IDataProjection<TDataModel> projection)
         {
             Checker.NotNullArgument(limiter, nameof(limiter));
 
-            return QueryLimitResult(limiter, Query, projections);
+            return QueryLimitResult(limiter, Query, projection);
         }
 
-        public IEnumerable<TDataModel> Search(IDataFilter<TDataModel> filter, IEnumerable<IDataProjection> projections)
+        public IEnumerable<TDataModel> Search(IDataFilter<TDataModel> filter, IDataProjection<TDataModel> projection)
         {
             Checker.NotNullArgument(filter, nameof(filter));
 
-            return QuerySearch(Query, filter, projections);
+            return QuerySearch(Query, filter, projection);
         }
 
         public DataLimiterResult<TDataModel> LimitedSearch(IDataFilter<TDataModel> filter,
-            IDataLimiter<TDataModel> limiter, IEnumerable<IDataProjection> projections)
+            IDataLimiter<TDataModel> limiter, IDataProjection<TDataModel> projection)
         {
             Checker.NotNullArgument(filter, nameof(filter));
             Checker.NotNullArgument(limiter, nameof(limiter));
 
-            var result = QuerySearch(Query, filter, projections);
+            var result = QuerySearch(Query, filter, projection);
 
             // A projeção já foi aplicada em QuerySearch(), por isso não precisa
             // ser repassada aqui
