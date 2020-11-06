@@ -2,14 +2,11 @@
 // This file is a part of E5R.Architecture.
 // Licensed under the Apache version 2.0: https://github.com/e5r/licenses/blob/master/license/APACHE-2.0.txt
 
-using System;
 using System.Collections.Generic;
 using System.Linq;
 using E5R.Architecture.Core;
 using E5R.Architecture.Core.Exceptions;
 using E5R.Architecture.Data.Abstractions;
-using E5R.Architecture.Infrastructure;
-using Microsoft.EntityFrameworkCore;
 
 namespace E5R.Architecture.Data.EntityFrameworkCore
 {
@@ -29,7 +26,7 @@ namespace E5R.Architecture.Data.EntityFrameworkCore
 
         public TDataModel Find(TDataModel data)
         {
-            throw new DataLayerException($"{nameof(RideStorage<TDataModel>)} not implement {nameof(Find)} method!");
+            throw new DataLayerException($"{this.GetType().Name} not implement {nameof(Find)}()!");
         }
 
         public DataLimiterResult<TDataModel> Get(IDataLimiter<TDataModel> limiter, IEnumerable<IDataProjection> projections)

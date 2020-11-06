@@ -1,13 +1,13 @@
-Para versão atual
-=================
+v0.x
+====
 - Criar Aliases para RideStorage
   > RideStore, RideRepository
 - Implementar validação de modelo (IModelValidator)
 - Permitir retornar objeto anônimo nas consultas e Find
   > Pra quando queremos só o ID de um objeto por exemplo
 
-Para versão 1.0
-=================
+v1.0
+====
 - Remover necessidade de objetos de assinatura
   > IDataModuleSignature
   > IStorageSignature
@@ -18,8 +18,15 @@ Para versão 1.0
   > Implementar suporte a SQL puro
   > IDataFilter, Sorter, Get(), Find(), Search(), etc.
 - Adicionar suporte a consultas com SQL puro mesmo no EntityFramework
+- Publicar documentação online
+  > API
+  > Tutoriais
 
-Versões futuras
-===============
+v2.0
+====
+- Estabilizar conceito de BusinessObject
+
+vNext
+=====
 - Implementar Data para cenário na nuvem
 - Implementar Data para cenário em sistema de arquivos
