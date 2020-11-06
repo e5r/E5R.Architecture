@@ -117,7 +117,7 @@ namespace UsingDataEntityFrameworkCore.Controllers
             return View(student);
         }
 
-        public async Task<IActionResult> Details2(int? id)
+        public IActionResult Details2(int? id)
         {
             if (id == null)
             {
@@ -148,7 +148,6 @@ namespace UsingDataEntityFrameworkCore.Controllers
                 return NotFound();
             }
 
-            //var student = _readerStore.Find(new Student { ID = id.Value });
             var student = _readerStore.Query()
                 .AddProjection()
                     .Include<Enrollment>(i => i.Enrollments)
