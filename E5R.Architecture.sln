@@ -1,22 +1,23 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 15
-VisualStudioVersion = 15.0.26124.0
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.30621.155
 MinimumVisualStudioVersion = 15.0.26124.0
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{BCB2EAC4-18E1-4CD2-A155-3F6F24AE5C3C}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "E5R.Architecture.Core", "src\E5R.Architecture.Core\E5R.Architecture.Core.csproj", "{6B0605F2-241C-477C-A001-EB97A381BC19}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "E5R.Architecture.Core", "src\E5R.Architecture.Core\E5R.Architecture.Core.csproj", "{6B0605F2-241C-477C-A001-EB97A381BC19}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "test", "test", "{241F0BED-1992-44B7-8B1B-7EBB3C82010C}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "E5R.Architecture.Core.Test", "test\E5R.Architecture.Core.Test\E5R.Architecture.Core.Test.csproj", "{3132528D-ACFB-4009-A8BE-7D63F70E3FBF}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "E5R.Architecture.Core.Test", "test\E5R.Architecture.Core.Test\E5R.Architecture.Core.Test.csproj", "{3132528D-ACFB-4009-A8BE-7D63F70E3FBF}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "E5R.Architecture.Data", "src\E5R.Architecture.Data\E5R.Architecture.Data.csproj", "{B747AE53-26B0-4CC2-A9BF-A96D038F8501}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "E5R.Architecture.Data", "src\E5R.Architecture.Data\E5R.Architecture.Data.csproj", "{B747AE53-26B0-4CC2-A9BF-A96D038F8501}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "E5R.Architecture.Data.Test", "test\E5R.Architecture.Data.Test\E5R.Architecture.Data.Test.csproj", "{FF26C1F3-8D3F-49A0-9820-1A7DCD4B52DC}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "E5R.Architecture.Data.Test", "test\E5R.Architecture.Data.Test\E5R.Architecture.Data.Test.csproj", "{FF26C1F3-8D3F-49A0-9820-1A7DCD4B52DC}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "_files", "_files", "{15921615-588F-43CA-AF0B-0122FC944E56}"
 	ProjectSection(SolutionItems) = preProject
+		.editorconfig = .editorconfig
 		.gitignore = .gitignore
 		appveyor.yml = appveyor.yml
 		codecov.yml = codecov.yml
@@ -24,36 +25,36 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "_files", "_files", "{159216
 		NEWS.md = NEWS.md
 		packages.props = packages.props
 		README.md = README.md
-		.editorconfig = .editorconfig
+		TODO.txt = TODO.txt
 	EndProjectSection
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "samples", "samples", "{02D85B61-3F4D-4FDD-B5D5-AB0589447E01}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UsingCore", "samples\UsingCore\UsingCore.csproj", "{D4C8D0D4-7564-4EF5-AD70-3F90ED847797}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "UsingCore", "samples\UsingCore\UsingCore.csproj", "{D4C8D0D4-7564-4EF5-AD70-3F90ED847797}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UsingData", "samples\UsingData\UsingData.csproj", "{CF08BC21-5D53-493B-ABA9-29DEC1D0A350}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "UsingData", "samples\UsingData\UsingData.csproj", "{CF08BC21-5D53-493B-ABA9-29DEC1D0A350}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "E5R.Architecture.Data.EntityFrameworkCore", "src\E5R.Architecture.Data.EntityFrameworkCore\E5R.Architecture.Data.EntityFrameworkCore.csproj", "{B6524EEE-E9F5-4DFE-BD49-D04346B84F3E}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "E5R.Architecture.Data.EntityFrameworkCore", "src\E5R.Architecture.Data.EntityFrameworkCore\E5R.Architecture.Data.EntityFrameworkCore.csproj", "{B6524EEE-E9F5-4DFE-BD49-D04346B84F3E}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "E5R.Architecture.Data.EntityFrameworkCore.Test", "test\E5R.Architecture.Data.EntityFrameworkCore.Test\E5R.Architecture.Data.EntityFrameworkCore.Test.csproj", "{928D96CF-1548-4A0C-99AD-B32E771B5E5F}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "E5R.Architecture.Data.EntityFrameworkCore.Test", "test\E5R.Architecture.Data.EntityFrameworkCore.Test\E5R.Architecture.Data.EntityFrameworkCore.Test.csproj", "{928D96CF-1548-4A0C-99AD-B32E771B5E5F}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "E5R.Architecture.Data.Dapper", "src\E5R.Architecture.Data.Dapper\E5R.Architecture.Data.Dapper.csproj", "{6140CBC0-C9DA-4B90-BF46-B4EDC9039A53}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "E5R.Architecture.Data.Dapper", "src\E5R.Architecture.Data.Dapper\E5R.Architecture.Data.Dapper.csproj", "{6140CBC0-C9DA-4B90-BF46-B4EDC9039A53}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "E5R.Architecture.Data.Dapper.Test", "test\E5R.Architecture.Data.Dapper.Test\E5R.Architecture.Data.Dapper.Test.csproj", "{208EC8FF-A9F8-400B-88A2-897FD039F165}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "E5R.Architecture.Data.Dapper.Test", "test\E5R.Architecture.Data.Dapper.Test\E5R.Architecture.Data.Dapper.Test.csproj", "{208EC8FF-A9F8-400B-88A2-897FD039F165}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "E5R.Architecture.Business", "src\E5R.Architecture.Business\E5R.Architecture.Business.csproj", "{660627D0-3F8C-4BF3-9228-7EFE0D312725}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "E5R.Architecture.Business", "src\E5R.Architecture.Business\E5R.Architecture.Business.csproj", "{660627D0-3F8C-4BF3-9228-7EFE0D312725}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "E5R.Architecture.Business.Test", "test\E5R.Architecture.Business.Test\E5R.Architecture.Business.Test.csproj", "{A3C72EB5-2750-4137-803A-BD5E473C48FE}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "E5R.Architecture.Business.Test", "test\E5R.Architecture.Business.Test\E5R.Architecture.Business.Test.csproj", "{A3C72EB5-2750-4137-803A-BD5E473C48FE}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "E5R.Architecture.Infrastructure", "src\E5R.Architecture.Infrastructure\E5R.Architecture.Infrastructure.csproj", "{08F5791D-7F9E-4142-9B0C-F9BB3A25D124}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "E5R.Architecture.Infrastructure", "src\E5R.Architecture.Infrastructure\E5R.Architecture.Infrastructure.csproj", "{08F5791D-7F9E-4142-9B0C-F9BB3A25D124}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "E5R.Architecture.Infrastructure.Test", "test\E5R.Architecture.Infrastructure.Test\E5R.Architecture.Infrastructure.Test.csproj", "{91BB5C06-F44E-4553-98A8-AE94CD17C730}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "E5R.Architecture.Infrastructure.Test", "test\E5R.Architecture.Infrastructure.Test\E5R.Architecture.Infrastructure.Test.csproj", "{91BB5C06-F44E-4553-98A8-AE94CD17C730}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "E5R.Architecture.Infrastructure.Defaults", "src\E5R.Architecture.Infrastructure.Defaults\E5R.Architecture.Infrastructure.Defaults.csproj", "{ED6F193E-0C72-49F5-A8A0-3693F6DCD47C}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "E5R.Architecture.Infrastructure.Defaults", "src\E5R.Architecture.Infrastructure.Defaults\E5R.Architecture.Infrastructure.Defaults.csproj", "{ED6F193E-0C72-49F5-A8A0-3693F6DCD47C}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "E5R.Architecture.Infrastructure.AspNetCore", "src\E5R.Architecture.Infrastructure.AspNetCore\E5R.Architecture.Infrastructure.AspNetCore.csproj", "{6C140C21-E0C7-49EF-8B02-6CE1148FDF2A}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "E5R.Architecture.Infrastructure.AspNetCore", "src\E5R.Architecture.Infrastructure.AspNetCore\E5R.Architecture.Infrastructure.AspNetCore.csproj", "{6C140C21-E0C7-49EF-8B02-6CE1148FDF2A}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UsingDataEntityFrameworkCore", "samples\UsingDataEntityFrameworkCore\UsingDataEntityFrameworkCore.csproj", "{AB7FE27B-581A-4DEA-9005-92E6BDF9F461}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "UsingDataEntityFrameworkCore", "samples\UsingDataEntityFrameworkCore\UsingDataEntityFrameworkCore.csproj", "{AB7FE27B-581A-4DEA-9005-92E6BDF9F461}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -64,26 +65,55 @@ Global
 		Release|x64 = Release|x64
 		Release|x86 = Release|x86
 	EndGlobalSection
-	GlobalSection(SolutionProperties) = preSolution
-		HideSolutionNode = FALSE
-	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
 		{6B0605F2-241C-477C-A001-EB97A381BC19}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{6B0605F2-241C-477C-A001-EB97A381BC19}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6B0605F2-241C-477C-A001-EB97A381BC19}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{6B0605F2-241C-477C-A001-EB97A381BC19}.Debug|x64.Build.0 = Debug|Any CPU
+		{6B0605F2-241C-477C-A001-EB97A381BC19}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{6B0605F2-241C-477C-A001-EB97A381BC19}.Debug|x86.Build.0 = Debug|Any CPU
 		{6B0605F2-241C-477C-A001-EB97A381BC19}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{6B0605F2-241C-477C-A001-EB97A381BC19}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6B0605F2-241C-477C-A001-EB97A381BC19}.Release|x64.ActiveCfg = Release|Any CPU
+		{6B0605F2-241C-477C-A001-EB97A381BC19}.Release|x64.Build.0 = Release|Any CPU
+		{6B0605F2-241C-477C-A001-EB97A381BC19}.Release|x86.ActiveCfg = Release|Any CPU
+		{6B0605F2-241C-477C-A001-EB97A381BC19}.Release|x86.Build.0 = Release|Any CPU
 		{3132528D-ACFB-4009-A8BE-7D63F70E3FBF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{3132528D-ACFB-4009-A8BE-7D63F70E3FBF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3132528D-ACFB-4009-A8BE-7D63F70E3FBF}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{3132528D-ACFB-4009-A8BE-7D63F70E3FBF}.Debug|x64.Build.0 = Debug|Any CPU
+		{3132528D-ACFB-4009-A8BE-7D63F70E3FBF}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{3132528D-ACFB-4009-A8BE-7D63F70E3FBF}.Debug|x86.Build.0 = Debug|Any CPU
 		{3132528D-ACFB-4009-A8BE-7D63F70E3FBF}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{3132528D-ACFB-4009-A8BE-7D63F70E3FBF}.Release|Any CPU.Build.0 = Release|Any CPU
+		{3132528D-ACFB-4009-A8BE-7D63F70E3FBF}.Release|x64.ActiveCfg = Release|Any CPU
+		{3132528D-ACFB-4009-A8BE-7D63F70E3FBF}.Release|x64.Build.0 = Release|Any CPU
+		{3132528D-ACFB-4009-A8BE-7D63F70E3FBF}.Release|x86.ActiveCfg = Release|Any CPU
+		{3132528D-ACFB-4009-A8BE-7D63F70E3FBF}.Release|x86.Build.0 = Release|Any CPU
 		{B747AE53-26B0-4CC2-A9BF-A96D038F8501}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{B747AE53-26B0-4CC2-A9BF-A96D038F8501}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B747AE53-26B0-4CC2-A9BF-A96D038F8501}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{B747AE53-26B0-4CC2-A9BF-A96D038F8501}.Debug|x64.Build.0 = Debug|Any CPU
+		{B747AE53-26B0-4CC2-A9BF-A96D038F8501}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{B747AE53-26B0-4CC2-A9BF-A96D038F8501}.Debug|x86.Build.0 = Debug|Any CPU
 		{B747AE53-26B0-4CC2-A9BF-A96D038F8501}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{B747AE53-26B0-4CC2-A9BF-A96D038F8501}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B747AE53-26B0-4CC2-A9BF-A96D038F8501}.Release|x64.ActiveCfg = Release|Any CPU
+		{B747AE53-26B0-4CC2-A9BF-A96D038F8501}.Release|x64.Build.0 = Release|Any CPU
+		{B747AE53-26B0-4CC2-A9BF-A96D038F8501}.Release|x86.ActiveCfg = Release|Any CPU
+		{B747AE53-26B0-4CC2-A9BF-A96D038F8501}.Release|x86.Build.0 = Release|Any CPU
 		{FF26C1F3-8D3F-49A0-9820-1A7DCD4B52DC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{FF26C1F3-8D3F-49A0-9820-1A7DCD4B52DC}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{FF26C1F3-8D3F-49A0-9820-1A7DCD4B52DC}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{FF26C1F3-8D3F-49A0-9820-1A7DCD4B52DC}.Debug|x64.Build.0 = Debug|Any CPU
+		{FF26C1F3-8D3F-49A0-9820-1A7DCD4B52DC}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{FF26C1F3-8D3F-49A0-9820-1A7DCD4B52DC}.Debug|x86.Build.0 = Debug|Any CPU
 		{FF26C1F3-8D3F-49A0-9820-1A7DCD4B52DC}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{FF26C1F3-8D3F-49A0-9820-1A7DCD4B52DC}.Release|Any CPU.Build.0 = Release|Any CPU
+		{FF26C1F3-8D3F-49A0-9820-1A7DCD4B52DC}.Release|x64.ActiveCfg = Release|Any CPU
+		{FF26C1F3-8D3F-49A0-9820-1A7DCD4B52DC}.Release|x64.Build.0 = Release|Any CPU
+		{FF26C1F3-8D3F-49A0-9820-1A7DCD4B52DC}.Release|x86.ActiveCfg = Release|Any CPU
+		{FF26C1F3-8D3F-49A0-9820-1A7DCD4B52DC}.Release|x86.Build.0 = Release|Any CPU
 		{D4C8D0D4-7564-4EF5-AD70-3F90ED847797}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{D4C8D0D4-7564-4EF5-AD70-3F90ED847797}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{D4C8D0D4-7564-4EF5-AD70-3F90ED847797}.Debug|x64.ActiveCfg = Debug|Any CPU
@@ -241,6 +271,9 @@ Global
 		{AB7FE27B-581A-4DEA-9005-92E6BDF9F461}.Release|x86.ActiveCfg = Release|Any CPU
 		{AB7FE27B-581A-4DEA-9005-92E6BDF9F461}.Release|x86.Build.0 = Release|Any CPU
 	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
 		{6B0605F2-241C-477C-A001-EB97A381BC19} = {BCB2EAC4-18E1-4CD2-A155-3F6F24AE5C3C}
 		{3132528D-ACFB-4009-A8BE-7D63F70E3FBF} = {241F0BED-1992-44B7-8B1B-7EBB3C82010C}
@@ -259,5 +292,8 @@ Global
 		{ED6F193E-0C72-49F5-A8A0-3693F6DCD47C} = {BCB2EAC4-18E1-4CD2-A155-3F6F24AE5C3C}
 		{6C140C21-E0C7-49EF-8B02-6CE1148FDF2A} = {BCB2EAC4-18E1-4CD2-A155-3F6F24AE5C3C}
 		{AB7FE27B-581A-4DEA-9005-92E6BDF9F461} = {02D85B61-3F4D-4FDD-B5D5-AB0589447E01}
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {A99DE179-3A57-4B1C-8E45-A023F920A11B}
 	EndGlobalSection
 EndGlobal
