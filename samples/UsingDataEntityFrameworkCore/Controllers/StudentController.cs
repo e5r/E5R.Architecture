@@ -5,6 +5,8 @@ using System.Threading.Tasks;
 using E5R.Architecture.Data;
 using E5R.Architecture.Data.Abstractions;
 using E5R.Architecture.Data.Abstractions.Alias;
+using E5R.Architecture.Data.EntityFrameworkCore;
+using E5R.Architecture.Data.EntityFrameworkCore.Alias;
 using E5R.Architecture.Infrastructure;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
@@ -175,7 +177,17 @@ namespace UsingDataEntityFrameworkCore.Controllers
             var allCoursesTests = _storeCourseTest.Query()
                 .Search();
 
-            foreach(var courseTest in allCoursesTests)
+            foreach (var courseTest in allCoursesTests)
+            {
+                var reload = _storeCourseTest.Find(courseTest.IdentifierValues);
+                _logger.LogDebug($"CourseTest {{ CourseID: {reload.CourseID}, CourseGUID: {reload.CourseGUID} }}");
+            }
+
+            var allCoursesTests2 = new RawSqlRideRepository<CourseTest>(_context, "SELECT * FROM course_test")
+                .Query()
+                .Search();
+
+            foreach (var courseTest in allCoursesTests)
             {
                 var reload = _storeCourseTest.Find(courseTest.IdentifierValues);
                 _logger.LogDebug($"CourseTest {{ CourseID: {reload.CourseID}, CourseGUID: {reload.CourseGUID} }}");
