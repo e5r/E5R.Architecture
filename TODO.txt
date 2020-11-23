@@ -5,6 +5,14 @@ v0.x
 - Implementar validação de modelo (IModelValidator)
 - Permitir retornar objeto anônimo nas consultas e Find
   > Pra quando queremos só o ID de um objeto por exemplo
+- Implementar gerenciador de notificações genérico
+  > NotificationManager<TEnum>
+    * Implementar validador NotificationValidator<TEnum>
+      - .EnsureValidation(TEnum tipo, string message, NotificationParam[] params);
+    * .SendAsync(TEnum tipo, string message, NotificationParam[] params);
+  > Implementar opção ZeroMQ
+  > Implementar repositório genérico para Notificações?
+    * INotificationManagerStore<>?
 
 v1.0
 ====

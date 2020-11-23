@@ -21,6 +21,15 @@ namespace E5R.Architecture.Data
             _storageQueryBuilder = storageQueryBuilder;
         }
 
+        public LinqDataProjectionQueryBuilder<TDataModel> Include(Expression<Func<TDataModel, object>> expression)
+        {
+            Checker.NotNullArgument(expression, nameof(expression));
+
+            _storageQueryBuilder.Projection.Include(expression as LambdaExpression);
+
+            return this;
+        }
+
         public LinqDataProjectionInnerQueryBuilder<T, TDataModel> Include<T>(Expression<Func<TDataModel, object>> expression)
             where T : IDataModel
         {
@@ -48,6 +57,24 @@ namespace E5R.Architecture.Data
 
             _storageQueryBuilder = storageQueryBuilder;
             _root = root;
+        }
+
+        public LinqDataProjectionQueryBuilder<TRootDataModel> Include(Expression<Func<TRootDataModel, object>> expression)
+        {
+            Checker.NotNullArgument(expression, nameof(expression));
+
+            _storageQueryBuilder.Projection.Include(expression as LambdaExpression);
+
+            return _root;
+        }
+
+        public LinqDataProjectionInnerQueryBuilder<TDataModel, TRootDataModel> ThenInclude(Expression<Func<TDataModel, object>> expression)
+        {
+            Checker.NotNullArgument(expression, nameof(expression));
+
+            _storageQueryBuilder.Projection.ThenInclude(expression as LambdaExpression);
+
+            return this;
         }
 
         public LinqDataProjectionInnerQueryBuilder<T, TRootDataModel> ThenInclude<T>(Expression<Func<TDataModel, object>> expression)
