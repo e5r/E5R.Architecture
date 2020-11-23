@@ -1,10 +1,12 @@
-﻿using System;
+using System;
 using System.Data.Common;
 using System.Linq;
 using System.Threading.Tasks;
 using E5R.Architecture.Data;
 using E5R.Architecture.Data.Abstractions;
 using E5R.Architecture.Data.Abstractions.Alias;
+using E5R.Architecture.Data.EntityFrameworkCore;
+using E5R.Architecture.Data.EntityFrameworkCore.Alias;
 using E5R.Architecture.Infrastructure;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
@@ -24,6 +26,7 @@ namespace UsingDataEntityFrameworkCore.Controllers
         private readonly DbTransaction _transaction;
         private readonly IStoreReader<Student> _readerStore;
         private readonly IStoreWriter<SchoolContext, Student> _writerStore;
+        private readonly IStoreReader<CourseTest> _storeCourseTest;
         private readonly ILogger<StudentController> _logger;
 
         public StudentController(
@@ -33,7 +36,8 @@ namespace UsingDataEntityFrameworkCore.Controllers
             UnitOfWorkProperty<DbTransaction> transaction,
             SchoolContext context2,
             IStoreReader<Student> readerStore,
-            IStoreWriter<SchoolContext, Student> writerStore)
+            IStoreWriter<SchoolContext, Student> writerStore,
+            IStoreReader<CourseTest> storeCourseTest)
         {
             _logger = logger ?? throw new ArgumentNullException(nameof(logger));
             _context = context ?? throw new ArgumentNullException(nameof(context));
@@ -42,6 +46,7 @@ namespace UsingDataEntityFrameworkCore.Controllers
             _context2 = context2 ?? throw new ArgumentNullException(nameof(context2));
             _readerStore = readerStore ?? throw new ArgumentNullException(nameof(readerStore));
             _writerStore = writerStore ?? throw new ArgumentNullException(nameof(writerStore));
+            _storeCourseTest = storeCourseTest ?? throw new ArgumentNullException(nameof(storeCourseTest));
         }
 
         public async Task<IActionResult> Index()
@@ -168,6 +173,25 @@ namespace UsingDataEntityFrameworkCore.Controllers
             });
 
             _logger.LogDebug($"Novo estudante criado com ID: {createdStudent.ID}");
+
+            var allCoursesTests = _storeCourseTest.Query()
+                .Search();
+
+            foreach (var courseTest in allCoursesTests)
+            {
+                var reload = _storeCourseTest.Find(courseTest.IdentifierValues);
+                _logger.LogDebug($"CourseTest {{ CourseID: {reload.CourseID}, CourseGUID: {reload.CourseGUID} }}");
+            }
+
+            var allCoursesTests2 = new RawSqlRideRepository<CourseTest>(_context, "SELECT * FROM course_test")
+                .Query()
+                .Search();
+
+            foreach (var courseTest in allCoursesTests)
+            {
+                var reload = _storeCourseTest.Find(courseTest.IdentifierValues);
+                _logger.LogDebug($"CourseTest {{ CourseID: {reload.CourseID}, CourseGUID: {reload.CourseGUID} }}");
+            }
 
             throw new NotImplementedException("Isso deve gerar um IUnitOfWork.DiscardWork()");
         }
