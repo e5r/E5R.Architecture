@@ -13,7 +13,7 @@ namespace E5R.Architecture.Data
     public class LinqStorageQueryBuilder<TDataModel>
         where TDataModel : IDataModel
     {
-        private readonly IStorageReader<TDataModel> _storage;
+        internal readonly IStorageReader<TDataModel> _storage;
 
         public LinqStorageQueryBuilder(IStorageReader<TDataModel> storage)
         {
@@ -26,8 +26,8 @@ namespace E5R.Architecture.Data
             Projection = new LinqDataProjection<TDataModel>();
         }
 
-        private LinqDataFilter<TDataModel> Filter { get; set; }
-        private LinqDataLimiter<TDataModel> Limiter { get; set; }
+        internal LinqDataFilter<TDataModel> Filter { get; set; }
+        internal LinqDataLimiter<TDataModel> Limiter { get; set; }
         internal LinqDataProjection<TDataModel> Projection { get; set; }
 
         #region Configuration   
@@ -86,11 +86,11 @@ namespace E5R.Architecture.Data
 
         public TDataModel Find(TDataModel data) => _storage.Find(data, Projection);
 
-        public DataLimiterResult<TDataModel> Get() => _storage.Get(Limiter, Projection);
+        public PaginatedResult<TDataModel> Get() => _storage.Get(Limiter, Projection);
 
         public IEnumerable<TDataModel> Search() => _storage.Search(Filter, Projection);
 
-        public DataLimiterResult<TDataModel> LimitedSearch() => _storage.LimitedSearch(Filter, Limiter, Projection);
+        public PaginatedResult<TDataModel> LimitedSearch() => _storage.LimitedSearch(Filter, Limiter, Projection);
         #endregion
     }
 }

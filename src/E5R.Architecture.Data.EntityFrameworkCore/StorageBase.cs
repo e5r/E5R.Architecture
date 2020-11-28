@@ -3,22 +3,81 @@
 // Licensed under the Apache version 2.0: https://github.com/e5r/licenses/blob/master/license/APACHE-2.0.txt
 
 using System;
-using System.Collections.Generic;
 using System.Linq;
+using System.Linq.Expressions;
 using E5R.Architecture.Core;
 using E5R.Architecture.Data.Abstractions;
-using E5R.Architecture.Infrastructure;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore.Metadata;
 
 namespace E5R.Architecture.Data.EntityFrameworkCore
 {
     public class StorageBase<TDataModel>
         where TDataModel : class, IDataModel
     {
+        public IQueryable<TDataModel> QueryFind(
+            IEntityType entityType,
+            IQueryable<TDataModel> origin,
+            object[] identifiers,
+            IDataProjection projection)
+        {
+            Checker.NotNullArgument(origin, nameof(origin));
+            Checker.NotNullArgument(entityType, nameof(entityType));
+            Checker.NotNullArgument(identifiers, nameof(identifiers));
+
+            var primaryKeys = entityType.FindPrimaryKey().Properties;
+
+            if (identifiers.Length < 1)
+            {
+                // TODO: Aplicar localização
+                throw new InvalidOperationException("At least one identifier must be informed.");
+            }
+
+            if (primaryKeys.Count() != identifiers.Count())
+            {
+                // TODO: Aplicar localização
+                throw new InvalidOperationException($"Number of primary keys configured in {typeof(TDataModel)} different than expected.");
+            }
+
+            var filter = new LinqDataFilter<TDataModel>();
+            var param = Expression.Parameter(typeof(TDataModel), "e");
+            Expression<Func<TDataModel, bool>> filterExpression = null;
+
+            foreach (var (pk, idx) in primaryKeys.Select((pk, idx) => (pk, idx)))
+            {
+                if (filterExpression != null)
+                {
+                    filterExpression = Expression.Lambda<Func<TDataModel, bool>>(
+                        Expression.AndAlso(
+                            filterExpression.Body,
+                            Expression.Equal(
+                                Expression.PropertyOrField(param, pk.Name),
+                                Expression.Constant(identifiers[idx])
+                        )),
+                        param
+                        );
+                }
+                else
+                {
+                    filterExpression = Expression.Lambda<Func<TDataModel, bool>>(
+                        Expression.Equal(
+                            Expression.PropertyOrField(param, pk.Name),
+                            Expression.Constant(identifiers[idx])
+                        ),
+                        param
+                    );
+                }
+            }
+
+            filter.AddFilter(filterExpression);
+
+            return QuerySearch(origin, filter, projection);
+        }
+
         protected IQueryable<TDataModel> QuerySearch(
             IQueryable<TDataModel> origin,
             IDataFilter<TDataModel> filter,
-            IDataProjection<TDataModel> projection)
+            IDataProjection projection)
         {
             Checker.NotNullArgument(origin, nameof(origin));
             Checker.NotNullArgument(filter, nameof(filter));
@@ -32,10 +91,17 @@ namespace E5R.Architecture.Data.EntityFrameworkCore
             return TryApplyProjection(query, projection);
         }
 
-        protected DataLimiterResult<TDataModel> QueryLimitResult(
-            IDataLimiter<TDataModel> limiter,
+        /// <summary>
+        /// Query for operations that must return an <see cref="PaginatedResult{}" />
+        /// </summary>
+        /// <param name="limiter">Data limiter</param>
+        /// <param name="origin">Original data query</param>
+        /// <param name="projection">Data projection</param>
+        /// <returns>Tuple of (offset, limit, total, result)</returns>
+        protected (uint, uint, int, IQueryable<TDataModel>) QueryPreLimitResult(
             IQueryable<TDataModel> origin,
-            IDataProjection<TDataModel> projection)
+            IDataLimiter<TDataModel> limiter,
+            IDataProjection projection)
         {
             Checker.NotNullArgument(limiter, nameof(limiter));
             Checker.NotNullArgument(origin, nameof(origin));
@@ -91,19 +157,17 @@ namespace E5R.Architecture.Data.EntityFrameworkCore
                 limit = Convert.ToUInt32(total);
             }
 
-            return new DataLimiterResult<TDataModel>(result, offset, limit, total);
+            return (offset, limit, total, result);
         }
 
         protected IQueryable<TDataModel> TryApplyProjection(
             IQueryable<TDataModel> query,
-            IDataProjection<TDataModel> projection)
+            IDataProjection projection)
         {
             if (projection == null)
                 return query;
 
             query = projection.Includes.Aggregate(query, (q, i) => query.Include(i));
-
-            // TODO: .Select()
 
             return query;
         }

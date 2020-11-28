@@ -2,10 +2,8 @@ using System;
 using System.Data.Common;
 using System.Linq;
 using System.Threading.Tasks;
-using E5R.Architecture.Data;
 using E5R.Architecture.Data.Abstractions;
 using E5R.Architecture.Data.Abstractions.Alias;
-using E5R.Architecture.Data.EntityFrameworkCore;
 using E5R.Architecture.Data.EntityFrameworkCore.Alias;
 using E5R.Architecture.Infrastructure;
 using Microsoft.AspNetCore.Mvc;
@@ -13,6 +11,7 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Logging;
 using UsingDataEntityFrameworkCore.Data;
 using UsingDataEntityFrameworkCore.Models;
+using E5R.Architecture.Core;
 
 namespace UsingDataEntityFrameworkCore.Controllers
 {
@@ -56,7 +55,7 @@ namespace UsingDataEntityFrameworkCore.Controllers
 
             var count = students.Count();
 
-            var dataResult = new DataLimiterResult<Student>(students, 0, (uint)count, count);
+            var dataResult = new PaginatedResult<Student>(students, 0, (uint)count, count);
 
             return View(dataResult);
         }
@@ -137,6 +136,23 @@ namespace UsingDataEntityFrameworkCore.Controllers
                 .AddFilter(w => w.ID == id)
                 .Search()
                 .FirstOrDefault();
+
+            var studentResume = _readerStore.Query()
+                .AddFilter(w => w.Enrollments.Any())
+                .Sort(s => s.FirstMidName)
+                .AddProjection()
+                    .Include(i => i.Enrollments)
+                    .Project(s => new
+                    {
+                        s.FirstMidName,
+                        s.LastName
+                    })
+                .LimitedSearch().Result;
+
+            foreach (var sr in studentResume)
+            {
+                _logger.LogDebug("First name: {0}, Last name: {1}", sr.FirstMidName, sr.LastName);
+            }
 
             if (student == null)
             {

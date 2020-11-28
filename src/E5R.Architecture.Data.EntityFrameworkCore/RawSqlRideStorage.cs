@@ -10,8 +10,6 @@ namespace E5R.Architecture.Data.EntityFrameworkCore
     public class RawSqlRideStorage<TDataModel> : RideStorage<TDataModel>
         where TDataModel : class, IDataModel
     {
-        private readonly DbSet<TDataModel> _set;
-
         public RawSqlRideStorage(DbContext context, string sql, params object[] parameters)
             : base(context.Set<TDataModel>().FromSqlRaw(sql, parameters))
         { }

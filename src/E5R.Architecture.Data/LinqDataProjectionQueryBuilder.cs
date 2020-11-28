@@ -41,6 +41,8 @@ namespace E5R.Architecture.Data
         }
 
         public LinqStorageQueryBuilder<TDataModel> Project() => _storageQueryBuilder;
+        public LinqStorageProjectionActionsQueryBuilder<TDataModel, TSelect> Project<TSelect>(Expression<Func<TDataModel, TSelect>> select)
+            => new LinqStorageProjectionActionsQueryBuilder<TDataModel, TSelect>(_storageQueryBuilder, select);
     }
 
     public class LinqDataProjectionInnerQueryBuilder<TDataModel, TRootDataModel>

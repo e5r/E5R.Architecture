@@ -32,98 +32,142 @@ namespace E5R.Architecture.Data.EntityFrameworkCore
             Write = Context.ChangeTracker.TrackGraph;
         }
 
-        #region IStorageReader
+        #region IStorageReader for TDataModel
 
-        public TDataModel Find(TDataModel data, IDataProjection<TDataModel> projection)
+        public TDataModel Find(TDataModel data, IDataProjection projection)
         {
             Checker.NotNullArgument(data, nameof(data));
 
             return Find(data.IdentifierValues, projection);
         }
 
-        public TDataModel Find(object identifier, IDataProjection<TDataModel> projection)
+        public TDataModel Find(object identifier, IDataProjection projection)
             => Find(new object[] { identifier }, projection);
 
-        public TDataModel Find(object[] identifiers, IDataProjection<TDataModel> projection)
+        public TDataModel Find(object[] identifiers, IDataProjection projection)
         {
             Checker.NotNullArgument(identifiers, nameof(identifiers));
 
-            var primaryKeys = Context.Model.FindEntityType(typeof(TDataModel))
-                .FindPrimaryKey()
-                .Properties;
+            var entityType = Context.Model.FindEntityType(typeof(TDataModel));
 
-            if (identifiers.Length < 1)
-            {
-                // TODO: Aplicar localização
-                throw new InvalidOperationException("At least one identifier must be informed.");
-            }
-
-            if (primaryKeys.Count() != identifiers.Count())
-            {
-                // TODO: Aplicar localização
-                throw new InvalidOperationException($"Number of primary keys configured in {typeof(TDataModel)} different than expected.");
-            }
-
-            var filter = new LinqDataFilter<TDataModel>();
-            var param = Expression.Parameter(typeof(TDataModel), "e");
-            Expression<Func<TDataModel, bool>> filterExpression = null;
-
-            foreach (var (pk, idx) in primaryKeys.Select((pk, idx) => (pk, idx)))
-            {
-                if (filterExpression != null)
-                {
-                    filterExpression = Expression.Lambda<Func<TDataModel, bool>>(
-                        Expression.AndAlso(
-                            filterExpression.Body,
-                            Expression.Equal(
-                                Expression.PropertyOrField(param, pk.Name),
-                                Expression.Constant(identifiers[idx])
-                        )),
-                        param
-                        );
-                }
-                else
-                {
-                    filterExpression = Expression.Lambda<Func<TDataModel, bool>>(
-                        Expression.Equal(
-                            Expression.PropertyOrField(param, pk.Name),
-                            Expression.Constant(identifiers[idx])
-                        ),
-                        param
-                    );
-                }
-            }
-
-            filter.AddFilter(filterExpression);
-
-            return QuerySearch(Query, filter, projection).FirstOrDefault();
+            return QueryFind(entityType, Query, identifiers, projection)
+                .FirstOrDefault();
         }
 
-        public DataLimiterResult<TDataModel> Get(IDataLimiter<TDataModel> limiter, IDataProjection<TDataModel> projection)
+        public PaginatedResult<TDataModel> Get(IDataLimiter<TDataModel> limiter, IDataProjection projection)
         {
             Checker.NotNullArgument(limiter, nameof(limiter));
 
-            return QueryLimitResult(limiter, Query, projection);
+            var (offset, limit, total, result) = QueryPreLimitResult(Query, limiter, projection);
+
+            return new PaginatedResult<TDataModel>(
+                result,
+                offset,
+                limit,
+                total
+            );
         }
 
-        public IEnumerable<TDataModel> Search(IDataFilter<TDataModel> filter, IDataProjection<TDataModel> projection)
+        public IEnumerable<TDataModel> Search(IDataFilter<TDataModel> filter, IDataProjection projection)
         {
             Checker.NotNullArgument(filter, nameof(filter));
 
             return QuerySearch(Query, filter, projection);
         }
 
-        public DataLimiterResult<TDataModel> LimitedSearch(IDataFilter<TDataModel> filter,
-            IDataLimiter<TDataModel> limiter, IDataProjection<TDataModel> projection)
+        public PaginatedResult<TDataModel> LimitedSearch(IDataFilter<TDataModel> filter,
+            IDataLimiter<TDataModel> limiter, IDataProjection projection)
         {
             Checker.NotNullArgument(filter, nameof(filter));
             Checker.NotNullArgument(limiter, nameof(limiter));
 
-            var result = QuerySearch(Query, filter, projection);
+            var query = QuerySearch(Query, filter, projection);
 
-            // A projeção já foi aplicada em QuerySearch(), por isso não precisa
-            // ser repassada aqui
-            return QueryLimitResult(limiter, result, null);
+            // A projeção já foi aplicada em QuerySearch(),
+            // por isso não precisa ser repassada aqui
+            var (offset, limit, total, result) = QueryPreLimitResult(query, limiter, null);
+
+            return new PaginatedResult<TDataModel>(
+                result,
+                offset,
+                limit,
+                total
+            );
+        }
+
+        #endregion
+
+        #region IStorageReader for TSelect
+
+        public TSelect Find<TSelect>(TDataModel data, IDataProjection<TDataModel, TSelect> projection)
+        {
+            Checker.NotNullArgument(data, nameof(data));
+
+            return Find(data.IdentifierValues, projection);
+        }
+
+        public TSelect Find<TSelect>(object identifier, IDataProjection<TDataModel, TSelect> projection)
+            => Find(new object[] { identifier }, projection);
+
+        public TSelect Find<TSelect>(object[] identifiers, IDataProjection<TDataModel, TSelect> projection)
+        {
+            Checker.NotNullArgument(identifiers, nameof(identifiers));
+            Checker.NotNullArgument(projection, nameof(projection));
+            Checker.NotNullObject(projection.Select, $"{nameof(projection)}.{nameof(projection.Select)}");
+
+            var entityType = Context.Model.FindEntityType(typeof(TDataModel));
+
+            return QueryFind(entityType, Query, identifiers, projection)
+                .Select(projection.Select)
+                .FirstOrDefault();
+        }
+
+        public PaginatedResult<TSelect> Get<TSelect>(IDataLimiter<TDataModel> limiter, IDataProjection<TDataModel, TSelect> projection)
+        {
+            Checker.NotNullArgument(limiter, nameof(limiter));
+            Checker.NotNullArgument(projection, nameof(projection));
+            Checker.NotNullObject(projection.Select, $"{nameof(projection)}.{nameof(projection.Select)}");
+
+            var (offset, limit, total, result) = QueryPreLimitResult(Query, limiter, projection);
+
+            return new PaginatedResult<TSelect>(
+                result.Select(projection.Select),
+                offset,
+                limit,
+                total
+            );
+        }
+
+        public IEnumerable<TSelect> Search<TSelect>(IDataFilter<TDataModel> filter, IDataProjection<TDataModel, TSelect> projection)
+        {
+            Checker.NotNullArgument(filter, nameof(filter));
+            Checker.NotNullArgument(projection, nameof(projection));
+            Checker.NotNullObject(projection.Select, $"{nameof(projection)}.{nameof(projection.Select)}");
+
+            return QuerySearch(Query, filter, projection)
+                .Select(projection.Select);
+        }
+
+        public PaginatedResult<TSelect> LimitedSearch<TSelect>(IDataFilter<TDataModel> filter,
+            IDataLimiter<TDataModel> limiter, IDataProjection<TDataModel, TSelect> projection)
+        {
+            Checker.NotNullArgument(filter, nameof(filter));
+            Checker.NotNullArgument(limiter, nameof(limiter));
+            Checker.NotNullArgument(projection, nameof(projection));
+            Checker.NotNullObject(projection.Select, $"{nameof(projection)}.{nameof(projection.Select)}");
+
+            var query = QuerySearch(Query, filter, projection);
+
+            // A projeção já foi aplicada em QuerySearch(),
+            // por isso não precisa ser repassada aqui
+            var (offset, limit, total, result) = QueryPreLimitResult(query, limiter, null);
+
+            return new PaginatedResult<TSelect>(
+                result.Select(projection.Select),
+                offset,
+                limit,
+                total
+            );
         }
 
         #endregion

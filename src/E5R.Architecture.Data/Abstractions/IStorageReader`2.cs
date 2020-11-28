@@ -3,6 +3,7 @@
 // Licensed under the Apache version 2.0: https://github.com/e5r/licenses/blob/master/license/APACHE-2.0.txt
 
 using System.Collections.Generic;
+using E5R.Architecture.Core;
 
 namespace E5R.Architecture.Data.Abstractions
 {
@@ -13,13 +14,28 @@ namespace E5R.Architecture.Data.Abstractions
     public interface IStorageReader<TDataModel> : IStorageSignature
         where TDataModel : IDataModel
     {
-        TDataModel Find(object identifier, IDataProjection<TDataModel> projection = null);
-        TDataModel Find(object[] identifiers, IDataProjection<TDataModel> projection = null);
-        TDataModel Find(TDataModel data, IDataProjection<TDataModel> projection = null);
-        DataLimiterResult<TDataModel> Get(IDataLimiter<TDataModel> limiter, IDataProjection<TDataModel> projection = null);
-        IEnumerable<TDataModel> Search(IDataFilter<TDataModel> filter, IDataProjection<TDataModel> projection = null);
+        #region TDataModel operations
 
-        DataLimiterResult<TDataModel> LimitedSearch(IDataFilter<TDataModel> filter,
-            IDataLimiter<TDataModel> limiter, IDataProjection<TDataModel> projections = null);
+        TDataModel Find(object identifier, IDataProjection projection = null);
+        TDataModel Find(object[] identifiers, IDataProjection projection = null);
+        TDataModel Find(TDataModel data, IDataProjection projection = null);
+        PaginatedResult<TDataModel> Get(IDataLimiter<TDataModel> limiter, IDataProjection projection = null);
+        IEnumerable<TDataModel> Search(IDataFilter<TDataModel> filter, IDataProjection projection = null);
+        PaginatedResult<TDataModel> LimitedSearch(IDataFilter<TDataModel> filter,
+            IDataLimiter<TDataModel> limiter, IDataProjection projection = null);
+
+        #endregion
+
+        #region TSelect operations
+
+        TSelect Find<TSelect>(object identifier, IDataProjection<TDataModel, TSelect> projection);
+        TSelect Find<TSelect>(object[] identifiers, IDataProjection<TDataModel, TSelect> projection);
+        TSelect Find<TSelect>(TDataModel data, IDataProjection<TDataModel, TSelect> projection);
+        PaginatedResult<TSelect> Get<TSelect>(IDataLimiter<TDataModel> limiter, IDataProjection<TDataModel, TSelect> projection);
+        IEnumerable<TSelect> Search<TSelect>(IDataFilter<TDataModel> filter, IDataProjection<TDataModel, TSelect> projection);
+        PaginatedResult<TSelect> LimitedSearch<TSelect>(IDataFilter<TDataModel> filter,
+            IDataLimiter<TDataModel> limiter, IDataProjection<TDataModel, TSelect> projection);
+
+        #endregion
     }
 }
