@@ -18,6 +18,14 @@ namespace E5R.Architecture.Core
             _parameters = new Dictionary<string, List<object>>();
         }
 
+        public Parameters(Dictionary<string, object> parameters)
+            : this()
+        {
+            Checker.NotNullArgument(parameters, nameof(parameters));
+
+            parameters.ToList().ForEach(i => Add(i.Key, i.Value));
+        }
+
         public object this[string key]
         {
             get
