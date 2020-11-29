@@ -3,6 +3,8 @@
 // Licensed under the Apache version 2.0: https://github.com/e5r/licenses/blob/master/license/APACHE-2.0.txt
 
 using System;
+using System.Collections.Generic;
+using System.Threading.Tasks;
 using Xunit;
 
 namespace E5R.Architecture.Core.Test
@@ -44,7 +46,12 @@ namespace E5R.Architecture.Core.Test
     public class IsOkRule : RuleFor<MyEmptyModel>
     {
         public IsOkRule() : base("RN", "IsOk RN!") { }
-        protected override bool Check(MyEmptyModel target) => true;
+        protected override Task<bool> CheckAsync(MyEmptyModel target, out IDictionary<string, string> unconformities)
+        {
+            unconformities = null;
+
+            return Task.FromResult<bool>(true);
+        }
     }
 
     public class DynamicRule : RuleFor<MyEmptyModel>
@@ -53,7 +60,12 @@ namespace E5R.Architecture.Core.Test
             : base(code, description)
         { }
 
-        protected override bool Check(MyEmptyModel target) => true;
+        protected override Task<bool> CheckAsync(MyEmptyModel target, out IDictionary<string, string> unconformities)
+        {
+            unconformities = null;
+
+            return Task.FromResult<bool>(true);
+        }
     }
     #endregion
 }

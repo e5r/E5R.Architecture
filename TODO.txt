@@ -1,11 +1,7 @@
 v0.x
 ====
 - Implementar validação de modelo (IModelValidator)
-- Implementar gerenciador de notificações genérico
-  > NotificationManager<TEnum>
-    * Implementar validador NotificationValidator<TEnum>
-      - .EnsureValidation(TEnum tipo, string message, NotificationParam[] params);
-    * .SendAsync(TEnum tipo, string message, NotificationParam[] params);
+- Gerenciador de notificações genérico
   > Implementar opção ZeroMQ
   > Implementar repositório genérico para Notificações?
     * INotificationManagerStore<>?

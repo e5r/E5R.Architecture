@@ -3,6 +3,7 @@
 // Licensed under the Apache version 2.0: https://github.com/e5r/licenses/blob/master/license/APACHE-2.0.txt
 
 using System;
+using System.Threading.Tasks;
 
 namespace E5R.Architecture.Core
 {
@@ -10,5 +11,6 @@ namespace E5R.Architecture.Core
         where TEnum : Enum
     {
         void Dispatch(NotificationMessage<TEnum> message);
+        Task DispatchAsync(NotificationMessage<TEnum> message);
     }
 }

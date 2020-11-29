@@ -1,4 +1,5 @@
-﻿// Copyright (c) E5R Development Team. All rights reserved.
+﻿using System.Threading.Tasks;
+// Copyright (c) E5R Development Team. All rights reserved.
 // This file is a part of E5R.Architecture.
 // Licensed under the Apache version 2.0: https://github.com/e5r/licenses/blob/master/license/APACHE-2.0.txt
 
@@ -24,6 +25,9 @@ namespace E5R.Architecture.Core
         }
 
         public void Notify(TEnum type, object body, Parameters parameters = null)
+            => NotifyAsync(type, body, parameters).Wait();
+
+        public async Task NotifyAsync(TEnum type, object body, Parameters parameters = null)
         {
             Checker.NotNullArgument(type, nameof(type));
 
@@ -31,8 +35,8 @@ namespace E5R.Architecture.Core
 
             var message = new NotificationMessage<TEnum>(type, body, parameters);
 
-            _validationRule.Ensure(message);
-            _dispatcher.Dispatch(message);
+            await _validationRule.EnsureAsync(message);
+            await _dispatcher.DispatchAsync(message);
         }
     }
 }
