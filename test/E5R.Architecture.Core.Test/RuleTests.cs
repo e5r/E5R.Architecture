@@ -43,14 +43,20 @@ namespace E5R.Architecture.Core.Test
     #region Mocks
     public class MyEmptyModel { }
 
+    public class MyTreeProperties
+    {
+        public string One { get; set; }
+        public string Two { get; set; }
+        public string Tree { get; set; }
+    }
+
     public class IsOkRule : RuleFor<MyEmptyModel>
     {
         public IsOkRule() : base("RN", "IsOk RN!") { }
-        protected override Task<bool> CheckAsync(MyEmptyModel target, out IDictionary<string, string> unconformities)
-        {
-            unconformities = null;
 
-            return Task.FromResult<bool>(true);
+        protected async override Task<RuleCheckResult> CheckAsync(MyEmptyModel target)
+        {
+            return RuleCheckResult.Success;
         }
     }
 
@@ -60,11 +66,25 @@ namespace E5R.Architecture.Core.Test
             : base(code, description)
         { }
 
-        protected override Task<bool> CheckAsync(MyEmptyModel target, out IDictionary<string, string> unconformities)
+        protected async override Task<RuleCheckResult> CheckAsync(MyEmptyModel target)
         {
-            unconformities = null;
+            return RuleCheckResult.Success;
+        }
+    }
 
-            return Task.FromResult<bool>(true);
+    public class TwoUnconformitiesRule : RuleFor<MyTreeProperties>
+    {
+        public TwoUnconformitiesRule()
+            : base("RN", "Two unconformities rule")
+        { }
+
+        protected async override Task<RuleCheckResult> CheckAsync(MyTreeProperties target)
+        {
+            return new RuleCheckResult(false, new Dictionary<string, string>
+            {
+                { "one","Unconformity one" },
+                { "two","Unconformity two" }
+            });
         }
     }
     #endregion

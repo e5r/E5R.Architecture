@@ -5,6 +5,7 @@
 
 using System.Collections.Generic;
 using E5R.Architecture.Core.Exceptions;
+using System;
 
 namespace E5R.Architecture.Core
 {
@@ -30,7 +31,7 @@ namespace E5R.Architecture.Core
     ///         : base("RN-1", "My rule 1")
     ///     { }
     /// 
-    ///     protected override bool Check(MyModel target)
+    ///     protected async override Task<RuleCheckResult> CheckAsync(MyModel target)
     ///     {
     ///         if (target.Number < 1 || target.Number > 99)
     ///             return false;
@@ -38,7 +39,7 @@ namespace E5R.Architecture.Core
     ///         if (target.Name != "Brazil")
     ///             return false;
     /// 
-    ///         return true;
+    ///         return RuleCheckResult.Success;
     ///     }
     /// }
     /// </code>
@@ -72,7 +73,7 @@ namespace E5R.Architecture.Core
 
         public string Description { get; private set; }
 
-        protected abstract Task<bool> CheckAsync(TTarget target, out IDictionary<string, string> unconformities);
+        protected abstract Task<RuleCheckResult> CheckAsync(TTarget target);
 
         /// <summary>
         /// Ensures the object's compliance with the rules
@@ -92,16 +93,32 @@ namespace E5R.Architecture.Core
 
         public async Task EnsureAsync(TTarget target, string exceptionMessageTemplate = null)
         {
-            if (!await CheckAsync(target, out IDictionary<string, string> unconformities))
+            RuleCheckResult result = null;
+
+            try
             {
-                if (!string.IsNullOrWhiteSpace(exceptionMessageTemplate))
+                result = await CheckAsync(target);
+            }
+            catch (Exception ex)
+            {
+                result = new RuleCheckResult(false, new Dictionary<string, string>
                 {
-                    throw new ViolatedRuleException(this, unconformities, exceptionMessageTemplate);
-                }
-                else
-                {
-                    throw new ViolatedRuleException(this, unconformities);
-                }
+                    { "$exception", ex.Message }
+                });
+            }
+
+            if (result.IsSuccess)
+            {
+                return;
+            }
+
+            if (!string.IsNullOrWhiteSpace(exceptionMessageTemplate))
+            {
+                throw new ViolatedRuleException(this, result.Unconformities, exceptionMessageTemplate);
+            }
+            else
+            {
+                throw new ViolatedRuleException(this, result.Unconformities);
             }
         }
     }
