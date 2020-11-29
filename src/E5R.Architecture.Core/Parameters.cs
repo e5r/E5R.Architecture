@@ -28,16 +28,7 @@ namespace E5R.Architecture.Core
             set => Add(key, value);
         }
 
-        public ICollection<string> Keys => _parameters.Keys;
-
-        public ICollection<object> Values => _parameters.Values.SelectMany(m => m).ToList();
-
-        public int Count => _parameters.Count;
-
-        public bool IsReadOnly => false;
-
-        public void Add(string key, object value)
-            => Add(new KeyValuePair<string, object>(key, value));
+        public void Add(string key, object value) => Add(new KeyValuePair<string, object>(key, value));
 
         public void Add(KeyValuePair<string, object> item)
         {
@@ -52,19 +43,15 @@ namespace E5R.Architecture.Core
             values.Add(item.Value);
         }
 
-        public void Clear() => _parameters.Clear();
-
         public bool Contains(KeyValuePair<string, object> item)
         {
             if (_parameters.TryGetValue(item.Key, out List<object> values))
             {
-                return values.Contains(item);
+                return values.Contains(item.Value);
             }
 
             return false;
         }
-
-        public bool ContainsKey(string key) => _parameters.ContainsKey(key);
 
         public void CopyTo(KeyValuePair<string, object>[] array, int arrayIndex)
         {
@@ -79,13 +66,6 @@ namespace E5R.Architecture.Core
             }
         }
 
-        public IEnumerator<KeyValuePair<string, object>> GetEnumerator()
-            => _parameters
-            .Select(s => new KeyValuePair<string, object>(s.Key, s.Value))
-            .GetEnumerator();
-
-        public bool Remove(string key) => _parameters.Remove(key);
-
         public bool Remove(KeyValuePair<string, object> item)
         {
             if (_parameters.TryGetValue(item.Key, out List<object> values))
@@ -95,29 +75,44 @@ namespace E5R.Architecture.Core
 
             return false;
         }
-
-        public bool TryGetValue(string key, out object value)
+        public bool TryGetValue(string key, out object values)
         {
             if (_parameters.TryGetValue(key, out List<object> allValues))
             {
-                value = allValues;
+                values = allValues;
                 return true;
             }
 
-            value = null;
+            values = null;
 
             return false;
         }
 
-        public bool TryGetValue<T>(string key, out T value)
+        public bool TryGetValue<T>(string key, out IList<T> values)
         {
             if (_parameters.TryGetValue(key, out List<object> allValues))
             {
-                var firstItem = allValues.FirstOrDefault();
-
-                value = (T)firstItem;
+                values = allValues.Select(s => (T)s).ToList();
 
                 return true;
+            }
+
+            values = null;
+
+            return false;
+        }
+
+        public bool TryGetFirstValue<T>(string key, out T value)
+        {
+            if (_parameters.TryGetValue(key, out List<object> allValues))
+            {
+                var firstValue = allValues.Select(s => (T)s).FirstOrDefault();
+
+                if (firstValue != null)
+                {
+                    value = firstValue;
+                    return true;
+                }
             }
 
             value = default(T);
@@ -125,6 +120,34 @@ namespace E5R.Architecture.Core
             return false;
         }
 
+        public T FirstOrDefaultValue<T>(string key)
+        {
+            if (TryGetFirstValue<T>(key, out T value))
+            {
+                return value;
+            }
+
+            return default(T);
+        }
+
+        public bool ContainsKey(string key) => _parameters.ContainsKey(key);
+
+        public bool Remove(string key) => _parameters.Remove(key);
+
+        public void Clear() => _parameters.Clear();
+
+        public ICollection<string> Keys => _parameters.Keys;
+
+        public ICollection<object> Values => _parameters.Values.SelectMany(m => m).ToList();
+
+        public int Count => _parameters.Count;
+
+        public bool IsReadOnly => false;
+
         IEnumerator IEnumerable.GetEnumerator() => _parameters.GetEnumerator();
+        public IEnumerator<KeyValuePair<string, object>> GetEnumerator()
+            => _parameters
+            .Select(s => new KeyValuePair<string, object>(s.Key, s.Value))
+            .GetEnumerator();
     }
 }
