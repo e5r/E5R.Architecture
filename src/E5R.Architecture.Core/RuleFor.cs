@@ -2,6 +2,7 @@
 // This file is a part of E5R.Architecture.
 // Licensed under the Apache version 2.0: https://github.com/e5r/licenses/blob/master/license/APACHE-2.0.txt
 
+using System.Collections.Generic;
 using E5R.Architecture.Core.Exceptions;
 
 namespace E5R.Architecture.Core
@@ -70,7 +71,7 @@ namespace E5R.Architecture.Core
 
         public string Description { get; private set; }
 
-        protected abstract bool Check(TTarget target);
+        protected abstract bool Check(TTarget target, out IDictionary<string, string> unconformities);
 
         /// <summary>
         /// Ensures the object's compliance with the rules
@@ -87,15 +88,15 @@ namespace E5R.Architecture.Core
         /// </exception>
         public void Ensure(TTarget target, string exceptionMessageTemplate = null)
         {
-            if (!Check(target))
+            if (!Check(target, out IDictionary<string, string> unconformities))
             {
                 if (!string.IsNullOrWhiteSpace(exceptionMessageTemplate))
                 {
-                    throw new ViolatedRuleException(this, exceptionMessageTemplate);
+                    throw new ViolatedRuleException(this, unconformities, exceptionMessageTemplate);
                 }
                 else
                 {
-                    throw new ViolatedRuleException(this);
+                    throw new ViolatedRuleException(this, unconformities);
                 }
             }
         }
