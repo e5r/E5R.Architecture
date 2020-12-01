@@ -34,10 +34,10 @@ namespace E5R.Architecture.Core
     ///     protected async override Task<RuleCheckResult> CheckAsync(MyModel target)
     ///     {
     ///         if (target.Number < 1 || target.Number > 99)
-    ///             return false;
+    ///             return RuleCheckResult.Fail;
     /// 
     ///         if (target.Name != "Brazil")
-    ///             return false;
+    ///             return RuleCheckResult.Fail;
     /// 
     ///         return RuleCheckResult.Success;
     ///     }
