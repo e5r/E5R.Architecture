@@ -21,6 +21,13 @@ namespace E5R.Architecture.Infrastructure.Abstractions
         bool FileExists(string path);
 
         /// <summary>
+        /// Check if directory path exists
+        /// </summary>
+        /// <param name="path">Directory path</param>
+        /// <returns>True if exists, false otherwise</returns>
+        bool DirectoryExists(string path);
+
+        /// <summary>
         /// Get current directory path
         /// </summary>
         /// <exception cref="NotSupportedException"></exception>
@@ -43,5 +50,11 @@ namespace E5R.Architecture.Infrastructure.Abstractions
         /// <exception cref="IOException">Other errors</exception>
         /// <returns></returns>
         FileStream CreateFileStream(string path, FileMode mode);
+
+        /// <summary>
+        /// Create a directory
+        /// </summary>
+        /// <param name="path">Path to directory</param>
+        void CreateDirectory(string path);
     }
 }
