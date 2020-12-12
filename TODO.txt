@@ -1,11 +1,46 @@
 v0.x
 ====
+- Refatorar Query() ou QueryBuilder()
+  > Renomear IDataProjection por IDataIncludes
+  : Find()
+  - Obtém um único registro previamente conhecido por seu(s) identificador(es)
+  : Get()
+  - Pega "todos" os registros disponíveis. Trata-se de um "GetAll()", portanto,
+    é uma consulta "perigosa" porque pode simplesmente ser muito custoza.
+    Com isso, é obrigatório informar uma limitação (IDataLimiter) explicitamente,
+    o que inclui limites de offset, e ordenação. Mesmo que se queira todos os
+    registros sem limite de offset, precisa-se ser explícito devido a natureza
+    "perigosa" desse tipo de consulta.
+  - O resultado inclui informações estatísticas de paginação. Mesmo que só se
+    queira o resultado em si, as informações quanto a quantidade total de registros
+    disponíveis, bem como o range onde os dados retornados se enquadram, estarão
+    disponíveis para tomada de decisão do dev responsável pela pesquisa.
+  : Search()
+  - Faz uma busca, ou pesquisa, na base. O objetivo é coletar um grupo de registros
+    que atendam a critérios de busca (IDataFilter). Não requer limitação (IDataLimiter)
+    ou informações de ordenamento, porque entende-se que os critérios da buscam já fazem
+    o papel de limitador, e como o objetivo é encontrar correspondências, não há necessidade
+    de customizar a ordenação dos dados, visto que essa é uma tarefa secundária,
+    além de poder ser feito após a obtenção dos dados com algorítimos de ordenação
+    suficientemente eficazes com os dados já em memória, ou até mesmo simpesmente
+    confiar na ordenação indexada nos próprios mecanismos de banco de dados.
+    Uma pesquisa muito abrangente é tão perigosa quanto a uma obtenção de todos os
+    registros sem nenhum limite. Mesmo que seja uma busca amplamente abrangente, ainda
+    assim precisa-se ser explícito quanto ao filtro.
+  - O resultado é uma lista com os itens correspondentes sem informações estatísticas
+    de paginação.
+  : LimitedSearch()
+  - É uma combinação de Get() + Search()
+  - O resultado inclui informações estatísticas de paginação.
+- Adicionar a Query() e QueryBuilder() Sort() e ThenSort();
 - Implementar validação de modelo (IModelValidator)
 - Gerenciador de notificações genérico
-  > Implementar opção ZeroMQ
+  > Implementar opção ZeroMQ (ou RabbitMQ)
   > Implementar repositório genérico para Notificações?
     * INotificationManagerStore<>?
 - Alterar IStorage<>.Search para utilizar IDataLimiter<> e assim acessar Sorter()
+  > ### Não permitir o uso de Search() quando for configurado um Limiter()[ Sort, Offset, Paginate, etc.]
+
   > Isso deixará as pesquisas uniformes (Find, Get, Search e LimitedSearch)
   > Ou deixar como está. Firmar o conceito e relação entre Find, Get, Search e LimitedSearch
     com seus respectivos objetivos. Mas registrar log com Warning, para quando for utilizado
@@ -17,6 +52,29 @@ v0.x
         e genérico.
       > A solução seria informar um logger como parâmetro "Query(myLogger)", e isso seria feio,
         além de obrigar o usuário a informar um logger que pode nem mesmo ser necessário.
+- Implementar mecanismo de transformação
+  > Modelo genérico simples
+    - Mesmo papel do AutoMapper, porém genérico e independente apesar de simples
+    - Uso: 
+      1) Cria-se uma classe que implementa ITransformer<From, To>
+      2) Registra o gerente de transformação genérico GenericTransformationManager
+         services.AddGenericTransformationManager();
+      3) Usa-se no construtor (ITransformationManager manager)
+         manager.Transform<From, To>()
+  > Modelo baseado em AutoMapper
+    - Usa o AutoMapper para resolver as transformações
+    - Uso:
+      1) Registra-se os mapeamentos do AutoMapper como de costume, usando AutoMapper.Profile
+         ou outros meios de sua preferência
+      2) Registra o gerente de transformação AutoMapperTransformationManager
+      3) Usa-se no construtor (ITransformationManager manager)
+         manager.Transform<From, To>()
+- Adicionar IRepository<> genérico
+  > Este deve usar um objeto de domínio qualquer ao invés do IDataModel que o IStore<> usa
+    - Porque a camada de domínio não enxerga os objetos de dados IDataModel
+    - Este IRepository<> genérico evita o ter que criar um IMyRepository, e criar métodos
+      que na prática só seriam atalhos para os métodos genéricos de IStore<>
+    - Será necessário primeiro o mecanismo de transformação
 
 v1.0
 ====
