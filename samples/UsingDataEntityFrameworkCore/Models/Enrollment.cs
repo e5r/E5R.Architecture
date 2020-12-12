@@ -16,7 +16,7 @@ namespace UsingDataEntityFrameworkCore.Models
         public Grade? Grade { get; set; }
 
         public Course Course { get; set; }
-        public Student Studend { get; set; }
+        public Student Student { get; set; }
 
         public object[] IdentifierValues => new[] { (object)EnrollmentID };
     }

@@ -48,9 +48,10 @@ namespace E5R.Architecture.Data.Query
             return new ProjectionInnerBuilder<T, TRootDataModel>(_storage, _filter, _limiter, _projection);
         }
 
+        public ProjectionInnerBuilder<TDataModel, TRootDataModel, TSelect> Map<TSelect>(Expression<Func<TRootDataModel, TSelect>> select)
+            => new ProjectionInnerBuilder<TDataModel, TRootDataModel, TSelect>(_storage, _filter, _limiter, _projection, select);
+
         public QueryBuilderWithProjection<TRootDataModel> Project()
             => new QueryBuilderWithProjection<TRootDataModel>(_storage, _filter, _limiter, _projection);
-
-        // TODO: Implementar Project({})
     }
 }

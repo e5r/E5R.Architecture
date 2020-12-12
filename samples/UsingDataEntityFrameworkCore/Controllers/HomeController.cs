@@ -1,4 +1,5 @@
-﻿using System.Diagnostics;
+﻿using System.Linq;
+using System.Diagnostics;
 using E5R.Architecture.Data;
 using E5R.Architecture.Data.Abstractions;
 using E5R.Architecture.Data.Abstractions.Alias;
@@ -34,12 +35,20 @@ namespace UsingDataEntityFrameworkCore.Controllers
             // Equivalentes para Find() com Include()
             var b1 = _enrollmentStore.QueryBuilder()
                 .Projection()
-                    .Include(i => i.Studend)
+                    .Include(i => i.Student)
                     .Include(i => i.Course)
-                    // .Map(m => new {
-                    //     Name = m.Name,
-                    //     Id = m.Identifier
-                    // })
+                    .Project()
+                .Find(2);
+
+            var b2 = _enrollmentStore.QueryBuilder()
+                .Projection()
+                    .Include(i => i.Student)
+                    .Include(i => i.Course)
+                    .Map(m => new
+                    {
+                        Student = m.Student.FirstMidName,
+                        Course = m.Course.Title
+                    })
                     .Project()
                 .Find(2);
 
@@ -52,17 +61,23 @@ namespace UsingDataEntityFrameworkCore.Controllers
                     .Project()
                 .Find(2);
 
-            // var studentResume = _readerStore.Query()
-            //     .AddFilter(w => w.Enrollments.Any())
-            //     .Sort(s => s.FirstMidName)
-            //     .AddProjection()
-            //         .Include(i => i.Enrollments)
-            //         .Project(s => new
-            //         {
-            //             s.FirstMidName,
-            //             s.LastName
-            //         })
-            //     .LimitedSearch().Result;
+            var c2 = _studentStore.QueryBuilder()
+                .Projection()
+                    .Include(i => i.Enrollments)
+                    .Include<Enrollment>(i => i.Enrollments)
+                        .ThenInclude<Course>(i => i.Course)
+                    .Map(m => new
+                    {
+                        StudentName = m.FirstMidName,
+                        TotalEnrollments = m.Enrollments.Count,
+                        Enrollments = m.Enrollments.Select(s => new
+                        {
+                            Grade = s.Grade,
+                            Course = s.Course.Title
+                        })
+                    })
+                    .Project()
+                .Find(2);
 
             return View();
         }
