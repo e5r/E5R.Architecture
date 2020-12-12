@@ -167,7 +167,7 @@ namespace E5R.Architecture.Data.EntityFrameworkCore
             if (projection == null)
                 return query;
 
-            query = projection.Includes.Aggregate(query, (q, i) => query.Include(i));
+            query = projection.Includes.Aggregate(query, (q, i) => q.Include(i));
 
             return query;
         }
