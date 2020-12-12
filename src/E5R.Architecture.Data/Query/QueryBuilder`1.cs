@@ -28,13 +28,8 @@ namespace E5R.Architecture.Data.Query
 
         #region Makers
 
-        public ProjectionBuilder<TDataModel> Projection()
-            => new ProjectionBuilder<TDataModel>(_storage, _filter, _limiter, _projection);
-
-        public QueryBuilderWithProjection<TDataModel> Include(Expression<Func<TDataModel, object>> expression)
-            => new ProjectionBuilder<TDataModel>(_storage, _filter, _limiter, _projection)
-                .Include(expression)
-                .Project();
+        public ProjectionRootBuilder<TDataModel> Projection()
+            => new ProjectionRootBuilder<TDataModel>(_storage, _filter, _limiter, _projection);
 
         #endregion
 

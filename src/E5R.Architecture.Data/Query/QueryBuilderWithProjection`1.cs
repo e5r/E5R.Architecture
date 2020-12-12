@@ -18,11 +18,6 @@ namespace E5R.Architecture.Data.Query
             : base(storage, filter, limiter, projection)
         { }
 
-        public QueryBuilderWithProjection<TDataModel> Include(Expression<Func<TDataModel, object>> expression)
-            => new ProjectionBuilder<TDataModel>(_storage, _filter, _limiter, _projection)
-                .Include(expression)
-                .Project();
-
         #region Storage Actions
 
         public TDataModel Find(object identifier) => _storage.Find(identifier, _projection);

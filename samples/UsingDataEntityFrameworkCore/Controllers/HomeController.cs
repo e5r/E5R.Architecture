@@ -42,14 +42,27 @@ namespace UsingDataEntityFrameworkCore.Controllers
                     // })
                     .Project()
                 .Find(2);
-            var b2 = _enrollmentStore.QueryBuilder()
-                .Include(i => i.Studend)
-                .Include(i => i.Course)
-                // .Map(m => new {
-                //     Name = m.Name,
-                //     Id = m.Identifier
-                // })
+
+            // Equivalentes para Find() com Include() e ThenInclude()
+            var c1 = _studentStore.QueryBuilder()
+                .Projection()
+                    .Include(i => i.Enrollments)
+                    .Include<Enrollment>(i => i.Enrollments)
+                        .ThenInclude<Course>(i => i.Course)
+                    .Project()
                 .Find(2);
+
+            // var studentResume = _readerStore.Query()
+            //     .AddFilter(w => w.Enrollments.Any())
+            //     .Sort(s => s.FirstMidName)
+            //     .AddProjection()
+            //         .Include(i => i.Enrollments)
+            //         .Project(s => new
+            //         {
+            //             s.FirstMidName,
+            //             s.LastName
+            //         })
+            //     .LimitedSearch().Result;
 
             return View();
         }
