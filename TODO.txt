@@ -7,9 +7,9 @@ v0.x
   > Renomear LinqDataProjection<> para DataProjection<>
   > Renomear LinqDataSorter<> para DataSorter<>
   > Renomear LinqDataProjectionIncludeMember para DataProjectionIncludeMember
-  : Find()
+  : [x] Find()
   - Obtém um único registro previamente conhecido por seu(s) identificador(es)
-  : Get()
+  : [ ] Get()
   - Pega "todos" os registros disponíveis. Trata-se de um "GetAll()", portanto,
     é uma consulta "perigosa" porque pode simplesmente ser muito custoza.
     Com isso, é obrigatório informar uma limitação (IDataLimiter) explicitamente,
@@ -20,7 +20,7 @@ v0.x
     queira o resultado em si, as informações quanto a quantidade total de registros
     disponíveis, bem como o range onde os dados retornados se enquadram, estarão
     disponíveis para tomada de decisão do dev responsável pela pesquisa.
-  : Search()
+  : [ ] Search()
   - Faz uma busca, ou pesquisa, na base. O objetivo é coletar um grupo de registros
     que atendam a critérios de busca (IDataFilter). Não requer limitação (IDataLimiter)
     ou informações de ordenamento, porque entende-se que os critérios da buscam já fazem
@@ -34,7 +34,7 @@ v0.x
     assim precisa-se ser explícito quanto ao filtro.
   - O resultado é uma lista com os itens correspondentes sem informações estatísticas
     de paginação.
-  : LimitedSearch()
+  : [ ] LimitedSearch()
   - É uma combinação de Get() + Search()
   - O resultado inclui informações estatísticas de paginação.
 - Adicionar a Query() e QueryBuilder() Sort() e ThenSort();

@@ -24,6 +24,13 @@ namespace E5R.Architecture.Data
             _includes = new List<LinqDataProjectionIncludeMember>();
         }
 
+        internal LinqDataProjection(IList<LinqDataProjectionIncludeMember> includes)
+        {
+            Checker.NotNullArgument(includes, nameof(includes));
+
+            _includes = includes;
+        }
+
         public void Include(Expression<Func<TDataModel, object>> expression)
             => Include(expression as Expression<Func<object, object>>);
 
@@ -84,6 +91,9 @@ namespace E5R.Architecture.Data
             _includes = new List<LinqDataProjectionIncludeMember>();
             _select = select;
         }
+
+        internal LinqDataProjection<TDataModel> GetOnlyIncludeProjection()
+            => new LinqDataProjection<TDataModel>(_includes);
 
         public LinqDataProjection(IEnumerable<LinqDataProjectionIncludeMember> includes, Expression<Func<TDataModel, TSelect>> select)
         {

@@ -7,9 +7,9 @@ using System.Linq.Expressions;
 using E5R.Architecture.Core;
 using E5R.Architecture.Data.Abstractions;
 
-namespace E5R.Architecture.Data.Query
+namespace E5R.Architecture.Data.FluentQuery
 {
-    public class ProjectionInnerBuilder<TDataModel, TRootDataModel> : QueryBuilderElements<TRootDataModel>
+    public class ProjectionInnerBuilder<TDataModel, TRootDataModel> : FluentQueryBuilderElements<TRootDataModel>
         where TDataModel : IDataModel
         where TRootDataModel : IDataModel
     {
@@ -51,7 +51,7 @@ namespace E5R.Architecture.Data.Query
         public ProjectionInnerBuilder<TDataModel, TRootDataModel, TSelect> Map<TSelect>(Expression<Func<TRootDataModel, TSelect>> select)
             => new ProjectionInnerBuilder<TDataModel, TRootDataModel, TSelect>(_storage, _filter, _limiter, _projection, select);
 
-        public QueryBuilderWithProjection<TRootDataModel> Project()
-            => new QueryBuilderWithProjection<TRootDataModel>(_storage, _filter, _limiter, _projection);
+        public FluentQueryBuilderWithProjection<TRootDataModel> Project()
+            => new FluentQueryBuilderWithProjection<TRootDataModel>(_storage, _filter, _limiter, _projection);
     }
 }

@@ -5,9 +5,9 @@
 using E5R.Architecture.Core;
 using E5R.Architecture.Data.Abstractions;
 
-namespace E5R.Architecture.Data.Query
+namespace E5R.Architecture.Data.FluentQuery
 {
-    public class QueryBuilderElements<TDataModel>
+    public class FluentQueryBuilderElements<TDataModel>
         where TDataModel : IDataModel
     {
         internal readonly IStorageReader<TDataModel> _storage;
@@ -15,7 +15,7 @@ namespace E5R.Architecture.Data.Query
         internal readonly LinqDataLimiter<TDataModel> _limiter;
         internal readonly LinqDataProjection<TDataModel> _projection;
 
-        internal QueryBuilderElements(
+        internal FluentQueryBuilderElements(
             IStorageReader<TDataModel> storage,
             LinqDataFilter<TDataModel> filter,
             LinqDataLimiter<TDataModel> limiter,

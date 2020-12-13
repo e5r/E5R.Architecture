@@ -2,7 +2,7 @@
 // This file is a part of E5R.Architecture.
 // Licensed under the Apache version 2.0: https://github.com/e5r/licenses/blob/master/license/APACHE-2.0.txt
 
-using E5R.Architecture.Data.Query;
+using E5R.Architecture.Data.FluentQuery;
 
 namespace E5R.Architecture.Data.Abstractions
 {
@@ -14,10 +14,10 @@ namespace E5R.Architecture.Data.Abstractions
             return new LinqStorageQueryBuilder<TDataModel>(storage);
         }
 
-        public static QueryBuilder<TDataModel> QueryBuilder<TDataModel>(this IStorageReader<TDataModel> storage)
+        public static FluentQueryBuilder<TDataModel> AsFluentQuery<TDataModel>(this IStorageReader<TDataModel> storage)
             where TDataModel : IDataModel
         {
-            return new QueryBuilder<TDataModel>(storage);
+            return new FluentQueryBuilder<TDataModel>(storage);
         }
     }
 }

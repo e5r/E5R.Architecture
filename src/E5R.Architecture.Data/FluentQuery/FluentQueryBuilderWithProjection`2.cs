@@ -6,14 +6,14 @@ using System;
 using System.Linq.Expressions;
 using E5R.Architecture.Data.Abstractions;
 
-namespace E5R.Architecture.Data.Query
+namespace E5R.Architecture.Data.FluentQuery
 {
-    public class QueryBuilderWithProjection<TDataModel, TSelect> : QueryBuilderElements<TDataModel>
+    public class FluentQueryBuilderWithProjection<TDataModel, TSelect> : FluentQueryBuilderElements<TDataModel>
         where TDataModel : IDataModel
     {
         private new readonly LinqDataProjection<TDataModel, TSelect> _projection;
 
-        internal QueryBuilderWithProjection(IStorageReader<TDataModel> storage,
+        internal FluentQueryBuilderWithProjection(IStorageReader<TDataModel> storage,
             LinqDataFilter<TDataModel> filter,
             LinqDataLimiter<TDataModel> limiter,
             LinqDataProjection<TDataModel> projection,
@@ -22,6 +22,12 @@ namespace E5R.Architecture.Data.Query
         {
             _projection = new LinqDataProjection<TDataModel, TSelect>(projection._includes, select);
         }
+
+        public FluentQueryBuilderWithFilter<TDataModel, TSelect> Filter(Expression<Func<TDataModel, bool>> filterExpression)
+            => new FluentQueryBuilderWithFilter<TDataModel, TSelect>(_storage, _filter, _limiter, _projection)
+                .Filter(filterExpression);
+
+        // TODO: Adicionar métodos de limiter
 
         #region Storage Actions
 

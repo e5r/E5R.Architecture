@@ -4,19 +4,19 @@
 
 using E5R.Architecture.Data.Abstractions;
 
-namespace E5R.Architecture.Data.Query
+namespace E5R.Architecture.Data.FluentQuery
 {
-    public class QueryBuilder<TDataModel> : QueryBuilderElements<TDataModel>
+    public class FluentQueryBuilder<TDataModel> : FluentQueryBuilderElements<TDataModel>
         where TDataModel : IDataModel
     {
-        public QueryBuilder(IStorageReader<TDataModel> storage)
+        public FluentQueryBuilder(IStorageReader<TDataModel> storage)
             : base(storage,
                   new LinqDataFilter<TDataModel>(),
                   new LinqDataLimiter<TDataModel>(),
                   new LinqDataProjection<TDataModel>())
         { }
 
-        internal QueryBuilder(
+        internal FluentQueryBuilder(
             IStorageReader<TDataModel> storage,
             LinqDataFilter<TDataModel> filter,
             LinqDataLimiter<TDataModel> limiter,

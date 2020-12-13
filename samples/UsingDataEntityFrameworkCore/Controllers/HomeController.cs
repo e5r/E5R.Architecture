@@ -30,17 +30,17 @@ namespace UsingDataEntityFrameworkCore.Controllers
             var a1_0 = _studentStore.Find(2, new LinqDataProjection<Student>());
             var a1_1 = _studentStore.Find(2, null);
             var a1 = _studentStore.Find(2);
-            var a2 = _studentStore.QueryBuilder().Find(2);
+            var a2 = _studentStore.AsFluentQuery().Find(2);
 
             // Equivalentes para Find() com Include()
-            var b1 = _enrollmentStore.QueryBuilder()
+            var b1 = _enrollmentStore.AsFluentQuery()
                 .Projection()
                     .Include(i => i.Student)
                     .Include(i => i.Course)
                     .Project()
                 .Find(2);
 
-            var b2 = _enrollmentStore.QueryBuilder()
+            var b2 = _enrollmentStore.AsFluentQuery()
                 .Projection()
                     .Include(i => i.Student)
                     .Include(i => i.Course)
@@ -53,7 +53,7 @@ namespace UsingDataEntityFrameworkCore.Controllers
                 .Find(2);
 
             // Equivalentes para Find() com Include() e ThenInclude()
-            var c1 = _studentStore.QueryBuilder()
+            var c1 = _studentStore.AsFluentQuery()
                 .Projection()
                     .Include(i => i.Enrollments)
                     .Include<Enrollment>(i => i.Enrollments)
@@ -61,7 +61,7 @@ namespace UsingDataEntityFrameworkCore.Controllers
                     .Project()
                 .Find(2);
 
-            var c2 = _studentStore.QueryBuilder()
+            var c2 = _studentStore.AsFluentQuery()
                 .Projection()
                     .Include(i => i.Enrollments)
                     .Include<Enrollment>(i => i.Enrollments)
@@ -78,6 +78,37 @@ namespace UsingDataEntityFrameworkCore.Controllers
                     })
                     .Project()
                 .Find(2);
+
+            // Equivalentes para Search() com Include() e ThenInclude()
+            var d1 = _studentStore.AsFluentQuery()
+                .Projection()
+                    .Include(i => i.Enrollments)
+                    .Include<Enrollment>(i => i.Enrollments)
+                        .ThenInclude<Course>(i => i.Course)
+                    .Project()
+                .Filter(w => w.FirstMidName.Contains("e"))
+                .Search()
+                .ToList();
+
+            var d2 = _studentStore.AsFluentQuery()
+                .Projection()
+                    .Include(i => i.Enrollments)
+                    .Include<Enrollment>(i => i.Enrollments)
+                        .ThenInclude<Course>(i => i.Course)
+                    .Map(m => new
+                    {
+                        StudentName = m.FirstMidName,
+                        TotalEnrollments = m.Enrollments.Count,
+                        Enrollments = m.Enrollments.Select(s => new
+                        {
+                            Grade = s.Grade,
+                            Course = s.Course.Title
+                        })
+                    })
+                    .Project()
+                .Filter(w => w.FirstMidName.Contains("e"))
+                .Search()
+                .ToList();
 
             return View();
         }

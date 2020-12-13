@@ -7,19 +7,26 @@ using System.Linq.Expressions;
 using E5R.Architecture.Core;
 using E5R.Architecture.Data.Abstractions;
 
-namespace E5R.Architecture.Data.Query
+namespace E5R.Architecture.Data.FluentQuery
 {
-    public class ProjectionRootBuilder<TDataModel> : QueryBuilderElements<TDataModel>
+    public class ProjectionRootBuilder<TDataModel, TSelect> : FluentQueryBuilderElements<TDataModel>
         where TDataModel : IDataModel
     {
+        private readonly Expression<Func<TDataModel, TSelect>> _select;
+
         internal ProjectionRootBuilder(IStorageReader<TDataModel> storage,
             LinqDataFilter<TDataModel> filter,
             LinqDataLimiter<TDataModel> limiter,
-            LinqDataProjection<TDataModel> projection)
+            LinqDataProjection<TDataModel> projection,
+            Expression<Func<TDataModel, TSelect>> select)
             : base(storage, filter, limiter, projection)
-        { }
+        {
+            Checker.NotNullArgument(select, nameof(select));
 
-        public ProjectionRootBuilder<TDataModel> Include(Expression<Func<TDataModel, object>> expression)
+            _select = select;
+        }
+
+        public ProjectionRootBuilder<TDataModel, TSelect> Include(Expression<Func<TDataModel, object>> expression)
         {
             Checker.NotNullArgument(expression, nameof(expression));
 
@@ -38,10 +45,7 @@ namespace E5R.Architecture.Data.Query
             return new ProjectionInnerBuilder<T, TDataModel>(_storage, _filter, _limiter, _projection);
         }
 
-        public ProjectionRootBuilder<TDataModel, TSelect> Map<TSelect>(Expression<Func<TDataModel, TSelect>> select)
-            => new ProjectionRootBuilder<TDataModel, TSelect>(_storage, _filter, _limiter, _projection, select);
-
-        public QueryBuilderWithProjection<TDataModel> Project()
-            => new QueryBuilderWithProjection<TDataModel>(_storage, _filter, _limiter, _projection);
+        public FluentQueryBuilderWithProjection<TDataModel, TSelect> Project()
+            => new FluentQueryBuilderWithProjection<TDataModel, TSelect>(_storage, _filter, _limiter, _projection, _select);
     }
 }
