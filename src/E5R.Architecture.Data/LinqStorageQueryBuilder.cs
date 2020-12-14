@@ -10,6 +10,7 @@ using E5R.Architecture.Data.Abstractions;
 
 namespace E5R.Architecture.Data
 {
+    [Obsolete("This class is obsolete. Use FluentQueryBuilder instead.", false)]
     public class LinqStorageQueryBuilder<TDataModel>
         where TDataModel : IDataModel
     {

@@ -9,6 +9,7 @@ using E5R.Architecture.Data.Abstractions;
 
 namespace E5R.Architecture.Data
 {
+    [Obsolete]
     public class LinqDataProjectionQueryBuilder<TDataModel>
         where TDataModel : IDataModel
     {
@@ -45,9 +46,10 @@ namespace E5R.Architecture.Data
             => new LinqStorageProjectionActionsQueryBuilder<TDataModel, TSelect>(_storageQueryBuilder, select);
     }
 
+    [Obsolete]
     public class LinqDataProjectionInnerQueryBuilder<TDataModel, TRootDataModel>
-        where TDataModel : IDataModel
-        where TRootDataModel : IDataModel
+            where TDataModel : IDataModel
+            where TRootDataModel : IDataModel
     {
         private readonly LinqStorageQueryBuilder<TRootDataModel> _storageQueryBuilder;
         private readonly LinqDataProjectionQueryBuilder<TRootDataModel> _root;
@@ -61,6 +63,7 @@ namespace E5R.Architecture.Data
             _root = root;
         }
 
+        [Obsolete]
         public LinqDataProjectionQueryBuilder<TRootDataModel> Include(Expression<Func<TRootDataModel, object>> expression)
         {
             Checker.NotNullArgument(expression, nameof(expression));
