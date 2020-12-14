@@ -32,7 +32,9 @@ namespace E5R.Architecture.Data
 
         public TSelect Find(TDataModel data) => _rootBuilder._storage.Find<TSelect>(data, _projection);
 
-        public PaginatedResult<TSelect> Get() => _rootBuilder._storage.Get<TSelect>(_rootBuilder.Limiter, _projection);
+        public IEnumerable<TSelect> GetAll() => _rootBuilder._storage.GetAll<TSelect>(_projection);
+
+        public PaginatedResult<TSelect> LimitedGet() => _rootBuilder._storage.LimitedGet<TSelect>(_rootBuilder.Limiter, _projection);
 
         public IEnumerable<TSelect> Search() => _rootBuilder._storage.Search<TSelect>(_rootBuilder.Filter, _projection);
 

@@ -86,7 +86,9 @@ namespace E5R.Architecture.Data
 
         public TDataModel Find(TDataModel data) => _storage.Find(data, Projection);
 
-        public PaginatedResult<TDataModel> Get() => _storage.Get(Limiter, Projection);
+        public IEnumerable<TDataModel> GetAll() => _storage.GetAll(Projection);
+
+        public PaginatedResult<TDataModel> LimitedGet() => _storage.LimitedGet(Limiter, Projection);
 
         public IEnumerable<TDataModel> Search() => _storage.Search(Filter, Projection);
 

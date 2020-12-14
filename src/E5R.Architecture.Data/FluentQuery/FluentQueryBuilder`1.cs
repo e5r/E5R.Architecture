@@ -2,6 +2,7 @@
 // This file is a part of E5R.Architecture.
 // Licensed under the Apache version 2.0: https://github.com/e5r/licenses/blob/master/license/APACHE-2.0.txt
 
+using System.Collections.Generic;
 using E5R.Architecture.Data.Abstractions;
 
 namespace E5R.Architecture.Data.FluentQuery
@@ -38,6 +39,8 @@ namespace E5R.Architecture.Data.FluentQuery
         public TDataModel Find(object[] identifiers) => _storage.Find(identifiers, null);
 
         public TDataModel Find(TDataModel data) => _storage.Find(data, null);
+
+        public IEnumerable<TDataModel> GetAll() => _storage.GetAll(null);
 
         #endregion
     }

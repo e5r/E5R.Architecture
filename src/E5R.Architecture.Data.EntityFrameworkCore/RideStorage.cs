@@ -40,7 +40,9 @@ namespace E5R.Architecture.Data.EntityFrameworkCore
             throw new DataLayerException($"{this.GetType().Name} not implement {nameof(Find)}(identifiers)!");
         }
 
-        public PaginatedResult<TDataModel> Get(IDataLimiter<TDataModel> limiter, IDataProjection projection)
+        public IEnumerable<TDataModel> GetAll(IDataProjection projection) => TryApplyProjection(_query, projection);
+
+        public PaginatedResult<TDataModel> LimitedGet(IDataLimiter<TDataModel> limiter, IDataProjection projection)
         {
             Checker.NotNullArgument(limiter, nameof(limiter));
 
@@ -100,7 +102,15 @@ namespace E5R.Architecture.Data.EntityFrameworkCore
             throw new DataLayerException($"{this.GetType().Name} not implement {nameof(Find)}(identifiers)!");
         }
 
-        public PaginatedResult<TSelect> Get<TSelect>(IDataLimiter<TDataModel> limiter, IDataProjection<TDataModel, TSelect> projection)
+        public IEnumerable<TSelect> GetAll<TSelect>(IDataProjection<TDataModel, TSelect> projection)
+        {
+            Checker.NotNullArgument(projection, nameof(projection));
+            Checker.NotNullObject(projection.Select, $"{nameof(projection)}.{nameof(projection.Select)}");
+
+            return TryApplyProjection(_query, projection).Select(projection.Select);
+        }
+
+        public PaginatedResult<TSelect> LimitedGet<TSelect>(IDataLimiter<TDataModel> limiter, IDataProjection<TDataModel, TSelect> projection)
         {
             Checker.NotNullArgument(limiter, nameof(limiter));
             Checker.NotNullArgument(projection, nameof(projection));

@@ -56,7 +56,7 @@ namespace E5R.Architecture.Data.FluentQuery
 
         #region Storage Actions
 
-        public PaginatedResult<TDataModel> Get() => _storage.Get(_limiter, _projection);
+        public PaginatedResult<TDataModel> LimitedGet() => _storage.LimitedGet(_limiter, _projection);
 
         #endregion
     }

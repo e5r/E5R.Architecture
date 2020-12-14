@@ -19,7 +19,8 @@ namespace E5R.Architecture.Data.Abstractions
         TDataModel Find(object identifier, IDataProjection projection = null);
         TDataModel Find(object[] identifiers, IDataProjection projection = null);
         TDataModel Find(TDataModel data, IDataProjection projection = null);
-        PaginatedResult<TDataModel> Get(IDataLimiter<TDataModel> limiter, IDataProjection projection = null);
+        IEnumerable<TDataModel> GetAll(IDataProjection projection = null);
+        PaginatedResult<TDataModel> LimitedGet(IDataLimiter<TDataModel> limiter, IDataProjection projection = null);
         IEnumerable<TDataModel> Search(IDataFilter<TDataModel> filter, IDataProjection projection = null);
         PaginatedResult<TDataModel> LimitedSearch(IDataFilter<TDataModel> filter,
             IDataLimiter<TDataModel> limiter, IDataProjection projection = null);
@@ -31,7 +32,8 @@ namespace E5R.Architecture.Data.Abstractions
         TSelect Find<TSelect>(object identifier, IDataProjection<TDataModel, TSelect> projection);
         TSelect Find<TSelect>(object[] identifiers, IDataProjection<TDataModel, TSelect> projection);
         TSelect Find<TSelect>(TDataModel data, IDataProjection<TDataModel, TSelect> projection);
-        PaginatedResult<TSelect> Get<TSelect>(IDataLimiter<TDataModel> limiter, IDataProjection<TDataModel, TSelect> projection);
+        IEnumerable<TSelect> GetAll<TSelect>(IDataProjection<TDataModel, TSelect> projection);
+        PaginatedResult<TSelect> LimitedGet<TSelect>(IDataLimiter<TDataModel> limiter, IDataProjection<TDataModel, TSelect> projection);
         IEnumerable<TSelect> Search<TSelect>(IDataFilter<TDataModel> filter, IDataProjection<TDataModel, TSelect> projection);
         PaginatedResult<TSelect> LimitedSearch<TSelect>(IDataFilter<TDataModel> filter,
             IDataLimiter<TDataModel> limiter, IDataProjection<TDataModel, TSelect> projection);
