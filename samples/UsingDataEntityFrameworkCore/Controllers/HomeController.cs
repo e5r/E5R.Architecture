@@ -223,6 +223,66 @@ namespace UsingDataEntityFrameworkCore.Controllers
                 .Paginate(2, 3)
                 .LimitedGet();
 
+            var g1_a = _studentStore.AsFluentQuery()
+                .Projection()
+                    .Include(i => i.Enrollments)
+                    .Include<Enrollment>(i => i.Enrollments)
+                        .ThenInclude<Course>(i => i.Course)
+                    .Project()
+                .Sort(s => s.LastName)
+                .Filter(w => w.ID > 0)
+                .LimitedSearch();
+
+            var g1_b = _studentStore.AsFluentQuery()
+                .Projection()
+                    .Include(i => i.Enrollments)
+                    .Include<Enrollment>(i => i.Enrollments)
+                        .ThenInclude<Course>(i => i.Course)
+                    .Project()
+                .Filter(w => w.ID > 0)
+                .Sort(s => s.LastName)
+                .LimitedSearch();
+
+            var g2_a = _studentStore.AsFluentQuery()
+                .Projection()
+                    .Include(i => i.Enrollments)
+                    .Include<Enrollment>(i => i.Enrollments)
+                        .ThenInclude<Course>(i => i.Course)
+                    .Map(m => new
+                    {
+                        StudentName = $"{m.LastName}, {m.FirstMidName}",
+                        TotalEnrollments = m.Enrollments.Count,
+                        Enrollments = m.Enrollments.Select(s => new
+                        {
+                            Grade = s.Grade,
+                            Course = s.Course.Title
+                        })
+                    })
+                    .Project()
+                .Sort(s => s.LastName)
+                .Filter(w => w.ID > 0)
+                .LimitedSearch();
+
+            var g2_b = _studentStore.AsFluentQuery()
+                .Projection()
+                    .Include(i => i.Enrollments)
+                    .Include<Enrollment>(i => i.Enrollments)
+                        .ThenInclude<Course>(i => i.Course)
+                    .Map(m => new
+                    {
+                        StudentName = $"{m.LastName}, {m.FirstMidName}",
+                        TotalEnrollments = m.Enrollments.Count,
+                        Enrollments = m.Enrollments.Select(s => new
+                        {
+                            Grade = s.Grade,
+                            Course = s.Course.Title
+                        })
+                    })
+                    .Project()
+                .Filter(w => w.ID > 0)
+                .Sort(s => s.LastName)
+                .LimitedSearch();
+
             return View();
         }
 

@@ -23,6 +23,10 @@ namespace E5R.Architecture.Data.FluentQuery
             _projection = projection;
         }
 
+        public FluentQueryBuilderWithLimiterAndFilter<TDataModel, TSelect> Filter(Expression<Func<TDataModel, bool>> filter)
+            => new FluentQueryBuilderWithLimiterAndFilter<TDataModel, TSelect>(_storage, _filter, _limiter, _projection)
+                .Filter(filter);
+
         public FluentQueryBuilderWithLimiter<TDataModel, TSelect> Sort(Expression<Func<TDataModel, object>> sorter)
         {
             _limiter.Sort(sorter);

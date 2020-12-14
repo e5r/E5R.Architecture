@@ -3,18 +3,18 @@
 // Licensed under the Apache version 2.0: https://github.com/e5r/licenses/blob/master/license/APACHE-2.0.txt
 
 using System;
-using System.Collections.Generic;
 using System.Linq.Expressions;
+using E5R.Architecture.Core;
 using E5R.Architecture.Data.Abstractions;
 
 namespace E5R.Architecture.Data.FluentQuery
 {
-    public class FluentQueryBuilderWithFilter<TDataModel, TSelect> : FluentQueryBuilderElements<TDataModel>
+    public class FluentQueryBuilderWithLimiterAndFilter<TDataModel, TSelect> : FluentQueryBuilderElements<TDataModel>
         where TDataModel : IDataModel
     {
         private new readonly LinqDataProjection<TDataModel, TSelect> _projection;
 
-        internal FluentQueryBuilderWithFilter(IStorageReader<TDataModel> storage,
+        internal FluentQueryBuilderWithLimiterAndFilter(IStorageReader<TDataModel> storage,
             LinqDataFilter<TDataModel> filter,
             LinqDataLimiter<TDataModel> limiter,
             LinqDataProjection<TDataModel, TSelect> projection)
@@ -23,7 +23,7 @@ namespace E5R.Architecture.Data.FluentQuery
             _projection = projection;
         }
 
-        public FluentQueryBuilderWithFilter<TDataModel, TSelect> Filter(Expression<Func<TDataModel, bool>> filter)
+        public FluentQueryBuilderWithLimiterAndFilter<TDataModel, TSelect> Filter(Expression<Func<TDataModel, bool>> filter)
         {
             _filter.AddFilter(filter);
 
@@ -31,28 +31,43 @@ namespace E5R.Architecture.Data.FluentQuery
         }
 
         public FluentQueryBuilderWithLimiterAndFilter<TDataModel, TSelect> Sort(Expression<Func<TDataModel, object>> sorter)
-            => new FluentQueryBuilderWithLimiterAndFilter<TDataModel, TSelect>(_storage, _filter, _limiter, _projection)
-                .Sort(sorter);
+        {
+            _limiter.Sort(sorter);
+
+            return this;
+        }
 
         public FluentQueryBuilderWithLimiterAndFilter<TDataModel, TSelect> SortDescending(Expression<Func<TDataModel, object>> sorter)
-            => new FluentQueryBuilderWithLimiterAndFilter<TDataModel, TSelect>(_storage, _filter, _limiter, _projection)
-                .SortDescending(sorter);
+        {
+            _limiter.SortDescending(sorter);
+
+            return this;
+        }
 
         public FluentQueryBuilderWithLimiterAndFilter<TDataModel, TSelect> OffsetBegin(uint offset)
-            => new FluentQueryBuilderWithLimiterAndFilter<TDataModel, TSelect>(_storage, _filter, _limiter, _projection)
-                .OffsetBegin(offset);
+        {
+            _limiter.BeginOffset(offset);
+
+            return this;
+        }
 
         public FluentQueryBuilderWithLimiterAndFilter<TDataModel, TSelect> OffsetLimit(uint offsetLimit)
-            => new FluentQueryBuilderWithLimiterAndFilter<TDataModel, TSelect>(_storage, _filter, _limiter, _projection)
-                .OffsetLimit(offsetLimit);
+        {
+            _limiter.LimitOffset(offsetLimit);
+
+            return this;
+        }
 
         public FluentQueryBuilderWithLimiterAndFilter<TDataModel, TSelect> Paginate(uint currentPage, uint limitPerPage)
-            => new FluentQueryBuilderWithLimiterAndFilter<TDataModel, TSelect>(_storage, _filter, _limiter, _projection)
-                .Paginate(currentPage, limitPerPage);
+        {
+            _limiter.Paginate(currentPage, limitPerPage);
+
+            return this;
+        }
 
         #region Storage Actions
 
-        public IEnumerable<TSelect> Search() => _storage.Search<TSelect>(_filter, _projection);
+        public PaginatedResult<TSelect> LimitedSearch() => _storage.LimitedSearch<TSelect>(_filter, _limiter, _projection);
 
         #endregion
     }
