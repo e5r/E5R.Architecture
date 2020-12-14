@@ -27,7 +27,25 @@ namespace E5R.Architecture.Data.FluentQuery
             => new FluentQueryBuilderWithFilter<TDataModel, TSelect>(_storage, _filter, _limiter, _projection)
                 .Filter(filterExpression);
 
-        // TODO: Adicionar métodos de limiter
+        public FluentQueryBuilderWithLimiter<TDataModel, TSelect> Sort(Expression<Func<TDataModel, object>> sortExpression)
+            => new FluentQueryBuilderWithLimiter<TDataModel, TSelect>(_storage, _filter, _limiter, _projection)
+                .Sort(sortExpression);
+
+        public FluentQueryBuilderWithLimiter<TDataModel, TSelect> SortDescending(Expression<Func<TDataModel, object>> sortExpression)
+            => new FluentQueryBuilderWithLimiter<TDataModel, TSelect>(_storage, _filter, _limiter, _projection)
+                .SortDescending(sortExpression);
+
+        public FluentQueryBuilderWithLimiter<TDataModel, TSelect> OffsetBegin(uint offsetBegin)
+            => new FluentQueryBuilderWithLimiter<TDataModel, TSelect>(_storage, _filter, _limiter, _projection)
+                .OffsetBegin(offsetBegin);
+
+        public FluentQueryBuilderWithLimiter<TDataModel, TSelect> OffsetLimit(uint offsetLimit)
+            => new FluentQueryBuilderWithLimiter<TDataModel, TSelect>(_storage, _filter, _limiter, _projection)
+                .OffsetLimit(offsetLimit);
+
+        public FluentQueryBuilderWithLimiter<TDataModel, TSelect> Paginate(uint currentPage, uint limitPerPage)
+            => new FluentQueryBuilderWithLimiter<TDataModel, TSelect>(_storage, _filter, _limiter, _projection)
+                .Paginate(currentPage, limitPerPage);
 
         #region Storage Actions
 

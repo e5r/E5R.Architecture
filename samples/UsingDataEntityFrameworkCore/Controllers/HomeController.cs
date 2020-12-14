@@ -110,6 +110,91 @@ namespace UsingDataEntityFrameworkCore.Controllers
                 .Search()
                 .ToList();
 
+            // Equivalentes para Search() com Include() e ThenInclude()
+            var e1_a = _studentStore.AsFluentQuery()
+                .Projection()
+                    .Include(i => i.Enrollments)
+                    .Include<Enrollment>(i => i.Enrollments)
+                        .ThenInclude<Course>(i => i.Course)
+                    .Project()
+                .Sort(s => s.FirstMidName)
+                .Get();
+
+            var e2_a = _studentStore.AsFluentQuery()
+                .Projection()
+                    .Include(i => i.Enrollments)
+                    .Include<Enrollment>(i => i.Enrollments)
+                        .ThenInclude<Course>(i => i.Course)
+                    .Map(m => new
+                    {
+                        StudentName = m.FirstMidName,
+                        TotalEnrollments = m.Enrollments.Count,
+                        Enrollments = m.Enrollments.Select(s => new
+                        {
+                            Grade = s.Grade,
+                            Course = s.Course.Title
+                        })
+                    })
+                    .Project()
+                .SortDescending(s => s.FirstMidName)
+                .Get();
+
+            var e1_b = _studentStore.AsFluentQuery()
+                .Projection()
+                    .Include(i => i.Enrollments)
+                    .Include<Enrollment>(i => i.Enrollments)
+                        .ThenInclude<Course>(i => i.Course)
+                    .Project()
+                .OffsetBegin(3)
+                .Get();
+
+            var e2_b = _studentStore.AsFluentQuery()
+                .Projection()
+                    .Include(i => i.Enrollments)
+                    .Include<Enrollment>(i => i.Enrollments)
+                        .ThenInclude<Course>(i => i.Course)
+                    .Map(m => new
+                    {
+                        StudentName = m.FirstMidName,
+                        TotalEnrollments = m.Enrollments.Count,
+                        Enrollments = m.Enrollments.Select(s => new
+                        {
+                            Grade = s.Grade,
+                            Course = s.Course.Title
+                        })
+                    })
+                    .Project()
+                .OffsetLimit(3)
+                .Get();
+
+            var e1_c = _studentStore.AsFluentQuery()
+                .Projection()
+                    .Include(i => i.Enrollments)
+                    .Include<Enrollment>(i => i.Enrollments)
+                        .ThenInclude<Course>(i => i.Course)
+                    .Project()
+                .Paginate(1, 3)
+                .Get();
+
+            var e2_c = _studentStore.AsFluentQuery()
+                .Projection()
+                    .Include(i => i.Enrollments)
+                    .Include<Enrollment>(i => i.Enrollments)
+                        .ThenInclude<Course>(i => i.Course)
+                    .Map(m => new
+                    {
+                        StudentName = m.FirstMidName,
+                        TotalEnrollments = m.Enrollments.Count,
+                        Enrollments = m.Enrollments.Select(s => new
+                        {
+                            Grade = s.Grade,
+                            Course = s.Course.Title
+                        })
+                    })
+                    .Project()
+                .Paginate(2, 3)
+                .Get();
+
             return View();
         }
 
