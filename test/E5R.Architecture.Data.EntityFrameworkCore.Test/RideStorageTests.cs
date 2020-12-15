@@ -78,9 +78,9 @@ namespace E5R.Architecture.Data.EntityFrameworkCore.Test
                 });
 
                 // Assert
-                Assert.True(exception1.Message.StartsWith(expectedErrorMessage));
-                Assert.True(exception2.Message.StartsWith(expectedErrorMessage));
-                Assert.True(exception3.Message.StartsWith(expectedErrorMessage));
+                Assert.StartsWith(expectedErrorMessage, exception1.Message);
+                Assert.StartsWith(expectedErrorMessage, exception2.Message);
+                Assert.StartsWith(expectedErrorMessage, exception3.Message);
             }
 
             // Alias: RideStore
@@ -111,9 +111,9 @@ namespace E5R.Architecture.Data.EntityFrameworkCore.Test
                 });
 
                 // Assert
-                Assert.True(exception1.Message.StartsWith(expectedErrorMessage));
-                Assert.True(exception2.Message.StartsWith(expectedErrorMessage));
-                Assert.True(exception3.Message.StartsWith(expectedErrorMessage));
+                Assert.StartsWith(expectedErrorMessage, exception1.Message);
+                Assert.StartsWith(expectedErrorMessage, exception2.Message);
+                Assert.StartsWith(expectedErrorMessage, exception3.Message);
             }
 
             // Alias: RideRepository
@@ -144,9 +144,9 @@ namespace E5R.Architecture.Data.EntityFrameworkCore.Test
                 });
 
                 // Assert
-                Assert.True(exception1.Message.StartsWith(expectedErrorMessage));
-                Assert.True(exception2.Message.StartsWith(expectedErrorMessage));
-                Assert.True(exception3.Message.StartsWith(expectedErrorMessage));
+                Assert.StartsWith(expectedErrorMessage, exception1.Message);
+                Assert.StartsWith(expectedErrorMessage, exception2.Message);
+                Assert.StartsWith(expectedErrorMessage, exception3.Message);
             }
         }
     }

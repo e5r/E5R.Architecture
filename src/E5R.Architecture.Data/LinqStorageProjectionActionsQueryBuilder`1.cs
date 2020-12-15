@@ -15,7 +15,7 @@ namespace E5R.Architecture.Data
         where TDataModel : IDataModel
     {
         private readonly LinqStorageQueryBuilder<TDataModel> _rootBuilder;
-        private readonly LinqDataProjection<TDataModel, TSelect> _projection;
+        private readonly DataProjection<TDataModel, TSelect> _projection;
 
         public LinqStorageProjectionActionsQueryBuilder(LinqStorageQueryBuilder<TDataModel> rootBuilder, Expression<Func<TDataModel, TSelect>> select)
         {
@@ -23,7 +23,7 @@ namespace E5R.Architecture.Data
             Checker.NotNullArgument(select, nameof(select));
 
             _rootBuilder = rootBuilder;
-            _projection = new LinqDataProjection<TDataModel, TSelect>(_rootBuilder.Projection._includes, select);
+            _projection = new DataProjection<TDataModel, TSelect>(_rootBuilder.Projection._includes, select);
         }
 
         #region Actions

@@ -2,11 +2,6 @@ v0.x
 ====
 - Refatorar Query() ou QueryBuilder()
   > Renomear IDataProjection para IDataIncludes
-  > Renomear LinqDataFilter<> para DataFilter<>
-  > Renomear LinqDataLimiter<> para DataLimiter<>
-  > Renomear LinqDataProjection<> para DataProjection<>
-  > Renomear LinqDataSorter<> para DataSorter<>
-  > Renomear LinqDataProjectionIncludeMember para DataProjectionIncludeMember
   : [x] Find()
   - Obtém um único registro previamente conhecido por seu(s) identificador(es)
   : [x] Get()
@@ -34,7 +29,7 @@ v0.x
     assim precisa-se ser explícito quanto ao filtro.
   - O resultado é uma lista com os itens correspondentes sem informações estatísticas
     de paginação.
-  : [ ] LimitedSearch()
+  : [x] LimitedSearch()
   - É uma combinação de Get() + Search()
   - O resultado inclui informações estatísticas de paginação.
 - Adicionar a Query() e QueryBuilder() Sort() e ThenSort();

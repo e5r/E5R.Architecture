@@ -11,15 +11,15 @@ namespace E5R.Architecture.Data.FluentQuery
         where TDataModel : IDataModel
     {
         internal readonly IStorageReader<TDataModel> _storage;
-        internal readonly LinqDataFilter<TDataModel> _filter;
-        internal readonly LinqDataLimiter<TDataModel> _limiter;
-        internal readonly LinqDataProjection<TDataModel> _projection;
+        internal readonly DataFilter<TDataModel> _filter;
+        internal readonly DataLimiter<TDataModel> _limiter;
+        internal readonly DataProjection<TDataModel> _projection;
 
         internal FluentQueryBuilderElements(
             IStorageReader<TDataModel> storage,
-            LinqDataFilter<TDataModel> filter,
-            LinqDataLimiter<TDataModel> limiter,
-            LinqDataProjection<TDataModel> projection)
+            DataFilter<TDataModel> filter,
+            DataLimiter<TDataModel> limiter,
+            DataProjection<TDataModel> projection)
         {
             Checker.NotNullArgument(storage, nameof(storage));
             Checker.NotNullArgument(filter, nameof(filter));

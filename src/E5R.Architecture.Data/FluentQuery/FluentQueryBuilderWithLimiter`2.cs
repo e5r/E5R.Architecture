@@ -12,12 +12,12 @@ namespace E5R.Architecture.Data.FluentQuery
     public class FluentQueryBuilderWithLimiter<TDataModel, TSelect> : FluentQueryBuilderElements<TDataModel>
         where TDataModel : IDataModel
     {
-        private new readonly LinqDataProjection<TDataModel, TSelect> _projection;
+        private new readonly DataProjection<TDataModel, TSelect> _projection;
 
         internal FluentQueryBuilderWithLimiter(IStorageReader<TDataModel> storage,
-            LinqDataFilter<TDataModel> filter,
-            LinqDataLimiter<TDataModel> limiter,
-            LinqDataProjection<TDataModel, TSelect> projection)
+            DataFilter<TDataModel> filter,
+            DataLimiter<TDataModel> limiter,
+            DataProjection<TDataModel, TSelect> projection)
             : base(storage, filter, limiter, projection.GetOnlyIncludeProjection())
         {
             _projection = projection;

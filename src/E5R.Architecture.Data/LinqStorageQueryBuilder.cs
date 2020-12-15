@@ -22,14 +22,14 @@ namespace E5R.Architecture.Data
 
             _storage = storage;
 
-            Filter = new LinqDataFilter<TDataModel>();
-            Limiter = new LinqDataLimiter<TDataModel>();
-            Projection = new LinqDataProjection<TDataModel>();
+            Filter = new DataFilter<TDataModel>();
+            Limiter = new DataLimiter<TDataModel>();
+            Projection = new DataProjection<TDataModel>();
         }
 
-        internal LinqDataFilter<TDataModel> Filter { get; set; }
-        internal LinqDataLimiter<TDataModel> Limiter { get; set; }
-        internal LinqDataProjection<TDataModel> Projection { get; set; }
+        internal DataFilter<TDataModel> Filter { get; set; }
+        internal DataLimiter<TDataModel> Limiter { get; set; }
+        internal DataProjection<TDataModel> Projection { get; set; }
 
         #region Configuration   
         public LinqStorageQueryBuilder<TDataModel> AddFilter(Expression<Func<TDataModel, bool>> filter)

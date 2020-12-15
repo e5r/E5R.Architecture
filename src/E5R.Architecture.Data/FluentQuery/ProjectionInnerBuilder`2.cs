@@ -14,9 +14,9 @@ namespace E5R.Architecture.Data.FluentQuery
         where TRootDataModel : IDataModel
     {
         internal ProjectionInnerBuilder(IStorageReader<TRootDataModel> storage,
-            LinqDataFilter<TRootDataModel> filter,
-            LinqDataLimiter<TRootDataModel> limiter,
-            LinqDataProjection<TRootDataModel> projection)
+            DataFilter<TRootDataModel> filter,
+            DataLimiter<TRootDataModel> limiter,
+            DataProjection<TRootDataModel> projection)
             : base(storage, filter, limiter, projection)
         { }
 

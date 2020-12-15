@@ -54,9 +54,9 @@ namespace E5R.Architecture.Core.Test
     {
         public IsOkRule() : base("RN", "IsOk RN!") { }
 
-        protected async override Task<RuleCheckResult> CheckAsync(MyEmptyModel target)
+        protected override Task<RuleCheckResult> CheckAsync(MyEmptyModel target)
         {
-            return RuleCheckResult.Success;
+            return Task.FromResult(RuleCheckResult.Success);
         }
     }
 
@@ -66,9 +66,9 @@ namespace E5R.Architecture.Core.Test
             : base(code, description)
         { }
 
-        protected async override Task<RuleCheckResult> CheckAsync(MyEmptyModel target)
+        protected override Task<RuleCheckResult> CheckAsync(MyEmptyModel target)
         {
-            return RuleCheckResult.Success;
+            return Task.FromResult(RuleCheckResult.Success);
         }
     }
 
@@ -78,13 +78,13 @@ namespace E5R.Architecture.Core.Test
             : base("RN", "Two unconformities rule")
         { }
 
-        protected async override Task<RuleCheckResult> CheckAsync(MyTreeProperties target)
+        protected override Task<RuleCheckResult> CheckAsync(MyTreeProperties target)
         {
-            return new RuleCheckResult(false, new Dictionary<string, string>
+            return Task.FromResult(new RuleCheckResult(false, new Dictionary<string, string>
             {
                 { "one","Unconformity one" },
                 { "two","Unconformity two" }
-            });
+            }));
         }
     }
     #endregion

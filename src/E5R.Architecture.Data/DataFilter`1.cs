@@ -13,13 +13,13 @@ namespace E5R.Architecture.Data
     /// Linq implementation for IDataFilter
     /// </summary>
     /// <typeparam name="TDataModel">Model type</typeparam>
-    public class LinqDataFilter<TDataModel> : IDataFilter<TDataModel>
+    public class DataFilter<TDataModel> : IDataFilter<TDataModel>
         where TDataModel : IDataModel
     {
         private readonly List<Expression<Func<TDataModel, bool>>> _filters
             = new List<Expression<Func<TDataModel, bool>>>();
 
-        public LinqDataFilter<TDataModel> AddFilter(Expression<Func<TDataModel, bool>> filter)
+        public DataFilter<TDataModel> AddFilter(Expression<Func<TDataModel, bool>> filter)
         {
             _filters.Add(filter);
 

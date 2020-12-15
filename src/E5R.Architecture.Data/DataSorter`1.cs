@@ -13,10 +13,10 @@ namespace E5R.Architecture.Data
     /// Linq implementation for IDataSorter
     /// </summary>
     /// <typeparam name="TDataModel">Model type</typeparam>
-    public class LinqDataSorter<TDataModel> : IDataSorter<TDataModel>
+    public class DataSorter<TDataModel> : IDataSorter<TDataModel>
         where TDataModel : IDataModel
     {
-        public LinqDataSorter(Expression<Func<TDataModel, object>> sorter, bool descending)
+        public DataSorter(Expression<Func<TDataModel, object>> sorter, bool descending)
         {
             Checker.NotNullArgument(sorter, nameof(sorter));
 

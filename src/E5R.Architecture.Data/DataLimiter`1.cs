@@ -10,7 +10,7 @@ using E5R.Architecture.Core;
 namespace E5R.Architecture.Data.Abstractions
 {
     /// <inheritdoc />
-    public class LinqDataLimiter<TDataModel> : IDataLimiter<TDataModel>
+    public class DataLimiter<TDataModel> : IDataLimiter<TDataModel>
         where TDataModel : IDataModel
     {
         public uint? OffsetBegin { get; private set; }
@@ -19,39 +19,39 @@ namespace E5R.Architecture.Data.Abstractions
 
         private List<IDataSorter<TDataModel>> _sorters = new List<IDataSorter<TDataModel>>();
 
-        public LinqDataLimiter<TDataModel> Sort(Expression<Func<TDataModel, object>> sorter)
+        public DataLimiter<TDataModel> Sort(Expression<Func<TDataModel, object>> sorter)
         {
             Checker.NotNullArgument(sorter, nameof(sorter));
 
-            _sorters.Add(new LinqDataSorter<TDataModel>(sorter, false));
+            _sorters.Add(new DataSorter<TDataModel>(sorter, false));
 
             return this;
         }
 
-        public LinqDataLimiter<TDataModel> SortDescending(Expression<Func<TDataModel, object>> sorter)
+        public DataLimiter<TDataModel> SortDescending(Expression<Func<TDataModel, object>> sorter)
         {
             Checker.NotNullArgument(sorter, nameof(sorter));
 
-            _sorters.Add(new LinqDataSorter<TDataModel>(sorter, true));
+            _sorters.Add(new DataSorter<TDataModel>(sorter, true));
 
             return this;
         }
 
-        public LinqDataLimiter<TDataModel> BeginOffset(uint offset)
+        public DataLimiter<TDataModel> BeginOffset(uint offset)
         {
             OffsetBegin = offset;
 
             return this;
         }
 
-        public LinqDataLimiter<TDataModel> LimitOffset(uint offsetLimit)
+        public DataLimiter<TDataModel> LimitOffset(uint offsetLimit)
         {
             OffsetLimit = offsetLimit;
 
             return this;
         }
 
-        public LinqDataLimiter<TDataModel> Paginate(uint currentPage, uint limitPerPage)
+        public DataLimiter<TDataModel> Paginate(uint currentPage, uint limitPerPage)
         {
             if (currentPage < 1)
             {

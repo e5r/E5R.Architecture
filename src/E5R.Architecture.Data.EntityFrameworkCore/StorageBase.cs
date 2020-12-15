@@ -39,7 +39,7 @@ namespace E5R.Architecture.Data.EntityFrameworkCore
                 throw new InvalidOperationException($"Number of primary keys configured in {typeof(TDataModel)} different than expected.");
             }
 
-            var filter = new LinqDataFilter<TDataModel>();
+            var filter = new DataFilter<TDataModel>();
             var param = Expression.Parameter(typeof(TDataModel), "e");
             Expression<Func<TDataModel, bool>> filterExpression = null;
 

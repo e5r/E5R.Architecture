@@ -66,19 +66,17 @@ namespace UsingDataEntityFrameworkCore.Controllers
 
             // #if !DEBUG
             // Usando filtro implícito
-            var query = _readerStore.Query()
+            var query = _readerStore.AsFluentQuery()
                 .OffsetBegin(pageOffset * PAGE_SIZE)
                 .OffsetLimit(5);
 
-            if (!string.IsNullOrWhiteSpace(searchString))
-            {
-                query.AddFilter(f =>
-                    f.FirstMidName.ToLower().Contains(searchString.ToLower()) ||
-                    f.LastName.ToLower().Contains(searchString.ToLower())
-                );
-            }
-
-            var students = query.LimitedSearch();
+            PaginatedResult<Student> students = !string.IsNullOrWhiteSpace(searchString)
+                ? query
+                    .Filter(f =>
+                        f.FirstMidName.ToLower().Contains(searchString.ToLower()) ||
+                        f.LastName.ToLower().Contains(searchString.ToLower()))
+                    .LimitedSearch()
+                : query.LimitedGet();
             // #else
             //             // Usando filtro explícito
             //             var filter = new LinqDataFilter<Student>();
@@ -128,25 +126,26 @@ namespace UsingDataEntityFrameworkCore.Controllers
                 return NotFound();
             }
 
-            var student = _readerStore.Query()
-                .AddProjection()
+            var student = _readerStore.AsFluentQuery()
+                .Projection()
                     .Include<Enrollment>(i => i.Enrollments)
                         .ThenInclude<Course>(i => i.Course)
                     .Project()
-                .AddFilter(w => w.ID == id)
+                .Filter(w => w.ID == id)
                 .Search()
                 .FirstOrDefault();
 
-            var studentResume = _readerStore.Query()
-                .AddFilter(w => w.Enrollments.Any())
-                .Sort(s => s.FirstMidName)
-                .AddProjection()
+            var studentResume = _readerStore.AsFluentQuery()
+                .Projection()
                     .Include(i => i.Enrollments)
-                    .Project(s => new
+                    .Map(m => new
                     {
-                        s.FirstMidName,
-                        s.LastName
+                        m.FirstMidName,
+                        m.LastName
                     })
+                    .Project()
+                .Filter(w => w.Enrollments.Any())
+                .Sort(s => s.FirstMidName)
                 .LimitedSearch().Result;
 
             foreach (var sr in studentResume)
@@ -169,8 +168,8 @@ namespace UsingDataEntityFrameworkCore.Controllers
                 return NotFound();
             }
 
-            var student = _readerStore.Query()
-                .AddProjection()
+            var student = _readerStore.AsFluentQuery()
+                .Projection()
                     .Include<Enrollment>(i => i.Enrollments)
                         .ThenInclude<Course>(i => i.Course)
                     .Project()
@@ -190,8 +189,8 @@ namespace UsingDataEntityFrameworkCore.Controllers
 
             _logger.LogDebug($"Novo estudante criado com ID: {createdStudent.ID}");
 
-            var allCoursesTests = _storeCourseTest.Query()
-                .Search();
+            var allCoursesTests = _storeCourseTest.AsFluentQuery()
+                .GetAll();
 
             foreach (var courseTest in allCoursesTests)
             {
@@ -200,8 +199,8 @@ namespace UsingDataEntityFrameworkCore.Controllers
             }
 
             var allCoursesTests2 = new RawSqlRideRepository<CourseTest>(_context, "SELECT * FROM course_test")
-                .Query()
-                .Search();
+                .AsFluentQuery()
+                .GetAll();
 
             foreach (var courseTest in allCoursesTests)
             {

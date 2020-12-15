@@ -13,9 +13,9 @@ namespace E5R.Architecture.Data.FluentQuery
         where TDataModel : IDataModel
     {
         internal FluentQueryBuilderWithProjection(IStorageReader<TDataModel> storage,
-            LinqDataFilter<TDataModel> filter,
-            LinqDataLimiter<TDataModel> limiter,
-            LinqDataProjection<TDataModel> projection)
+            DataFilter<TDataModel> filter,
+            DataLimiter<TDataModel> limiter,
+            DataProjection<TDataModel> projection)
             : base(storage, filter, limiter, projection)
         { }
 

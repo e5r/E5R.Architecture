@@ -8,25 +8,25 @@ using System.Reflection;
 
 namespace E5R.Architecture.Data
 {
-    public class LinqDataProjectionIncludeMember
+    public class DataProjectionIncludeMember
     {
         readonly IList<MemberInfo> _memberChain;
 
-        public LinqDataProjectionIncludeMember(MemberInfo member)
+        public DataProjectionIncludeMember(MemberInfo member)
         {
             _memberChain = new List<MemberInfo> { member };
         }
 
-        public LinqDataProjectionIncludeMember(IList<MemberInfo> memberChain)
+        public DataProjectionIncludeMember(IList<MemberInfo> memberChain)
         {
             _memberChain = memberChain;
         }
 
-        public LinqDataProjectionIncludeMember Append(MemberInfo member)
+        public DataProjectionIncludeMember Append(MemberInfo member)
         {
             _memberChain.Add(member);
 
-            return new LinqDataProjectionIncludeMember(_memberChain);
+            return new DataProjectionIncludeMember(_memberChain);
         }
 
         public override string ToString()

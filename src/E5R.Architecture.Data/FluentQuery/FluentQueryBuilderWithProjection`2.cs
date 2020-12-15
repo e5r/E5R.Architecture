@@ -12,16 +12,16 @@ namespace E5R.Architecture.Data.FluentQuery
     public class FluentQueryBuilderWithProjection<TDataModel, TSelect> : FluentQueryBuilderElements<TDataModel>
         where TDataModel : IDataModel
     {
-        private new readonly LinqDataProjection<TDataModel, TSelect> _projection;
+        private new readonly DataProjection<TDataModel, TSelect> _projection;
 
         internal FluentQueryBuilderWithProjection(IStorageReader<TDataModel> storage,
-            LinqDataFilter<TDataModel> filter,
-            LinqDataLimiter<TDataModel> limiter,
-            LinqDataProjection<TDataModel> projection,
+            DataFilter<TDataModel> filter,
+            DataLimiter<TDataModel> limiter,
+            DataProjection<TDataModel> projection,
             Expression<Func<TDataModel, TSelect>> select)
             : base(storage, filter, limiter, projection)
         {
-            _projection = new LinqDataProjection<TDataModel, TSelect>(projection._includes, select);
+            _projection = new DataProjection<TDataModel, TSelect>(projection._includes, select);
         }
 
         public FluentQueryBuilderWithFilter<TDataModel, TSelect> Filter(Expression<Func<TDataModel, bool>> filterExpression)
