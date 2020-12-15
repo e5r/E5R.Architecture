@@ -38,20 +38,6 @@ v0.x
   > Implementar opção ZeroMQ (ou RabbitMQ)
   > Implementar repositório genérico para Notificações?
     * INotificationManagerStore<>?
-- Alterar IStorage<>.Search para utilizar IDataLimiter<> e assim acessar Sorter()
-  > ### Não permitir o uso de Search() quando for configurado um Limiter()[ Sort, Offset, Paginate, etc.]
-
-  > Isso deixará as pesquisas uniformes (Find, Get, Search e LimitedSearch)
-  > Ou deixar como está. Firmar o conceito e relação entre Find, Get, Search e LimitedSearch
-    com seus respectivos objetivos. Mas registrar log com Warning, para quando for utilizado
-    um método que não precisa de um recurso e ele for configurado em .Query().
-    Ex: .Query().AddSorter(), e depois chamar .Search()
-    - Neste cenário o log seria um problema:
-      > Quando inicializamos a consulta com "Query()", criamos um objeto fora do contexto
-        de injeção de dependência. Neste caso, não temos um objeto ILogger<> ou algo semelhante
-        e genérico.
-      > A solução seria informar um logger como parâmetro "Query(myLogger)", e isso seria feio,
-        além de obrigar o usuário a informar um logger que pode nem mesmo ser necessário.
 - Implementar mecanismo de transformação
   > Modelo genérico simples
     - Mesmo papel do AutoMapper, porém genérico e independente apesar de simples
