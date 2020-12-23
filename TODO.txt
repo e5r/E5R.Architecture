@@ -1,7 +1,6 @@
 v0.x
 ====
-- Refatorar Query() ou QueryBuilder()
-  > Renomear IDataProjection para IDataIncludes
+- Criar documentação conceitual mínima (camada de dados)
   : [x] Find()
   - Obtém um único registro previamente conhecido por seu(s) identificador(es)
   : [x] Get()
@@ -32,12 +31,9 @@ v0.x
   : [x] LimitedSearch()
   - É uma combinação de Get() + Search()
   - O resultado inclui informações estatísticas de paginação.
-- Adicionar a Query() e QueryBuilder() Sort() e ThenSort();
 - Implementar validação de modelo (IModelValidator)
 - Gerenciador de notificações genérico
   > Implementar opção ZeroMQ (ou RabbitMQ)
-  > Implementar repositório genérico para Notificações?
-    * INotificationManagerStore<>?
 - Implementar mecanismo de transformação
   > Modelo genérico simples
     - Mesmo papel do AutoMapper, porém genérico e independente apesar de simples
@@ -55,12 +51,7 @@ v0.x
       2) Registra o gerente de transformação AutoMapperTransformationManager
       3) Usa-se no construtor (ITransformationManager manager)
          manager.Transform<From, To>()
-- Adicionar IRepository<> genérico
-  > Este deve usar um objeto de domínio qualquer ao invés do IDataModel que o IStore<> usa
-    - Porque a camada de domínio não enxerga os objetos de dados IDataModel
-    - Este IRepository<> genérico evita o ter que criar um IMyRepository, e criar métodos
-      que na prática só seriam atalhos para os métodos genéricos de IStore<>
-    - Será necessário primeiro o mecanismo de transformação
+- Implementar opção GroupBy para IStorageReader<>
 
 v1.0
 ====
