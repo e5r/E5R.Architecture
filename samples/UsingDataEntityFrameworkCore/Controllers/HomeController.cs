@@ -26,6 +26,19 @@ namespace UsingDataEntityFrameworkCore.Controllers
 
         public IActionResult Index()
         {
+            var projection = new DataProjection<Student, int, object>(
+                s => s.EnrollmentDate.Year,
+                g => new
+                {
+                    Ano = g.Key,
+                    Total = g.Count(),
+                    MaiorData = g.Max(c => c.EnrollmentDate),
+                    MenorData = g.Min(c => c.EnrollmentDate)
+                });
+
+            var result = _studentStore.GetAll(projection);
+            var resultList = result.ToList();
+
             // Equivalentes para GetAll()
             var a1 = _studentStore.GetAll();
             var a2 = _studentStore.GetAll(new DataProjection<Student>());

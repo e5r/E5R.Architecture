@@ -182,6 +182,73 @@ namespace E5R.Architecture.Data.EntityFrameworkCore
 
         #endregion
 
+        #region IStorageReader for TGroup
+
+        public IEnumerable<TSelect> GetAll<TGroup, TSelect>(IDataProjection<TDataModel, TGroup, TSelect> projection)
+        {
+            Checker.NotNullArgument(projection, nameof(projection));
+            Checker.NotNullObject(projection.Group, $"{nameof(projection)}.{nameof(projection.Group)}");
+            Checker.NotNullObject(projection.Select, $"{nameof(projection)}.{nameof(projection.Select)}");
+
+            return TryApplyProjection(Query, projection)
+                .GroupBy(projection.Group)
+                .Select(projection.Select);
+        }
+
+        public PaginatedResult<TSelect> LimitedGet<TGroup, TSelect>(IDataLimiter<TDataModel> limiter, IDataProjection<TDataModel, TGroup, TSelect> projection)
+        {
+            Checker.NotNullArgument(limiter, nameof(limiter));
+            Checker.NotNullArgument(projection, nameof(projection));
+            Checker.NotNullObject(projection.Group, $"{nameof(projection)}.{nameof(projection.Group)}");
+            Checker.NotNullObject(projection.Select, $"{nameof(projection)}.{nameof(projection.Select)}");
+
+            var (offset, limit, total, result) = QueryPreLimitResult(Query, limiter, projection);
+
+            return new PaginatedResult<TSelect>(
+                result.GroupBy(projection.Group).Select(projection.Select),
+                offset,
+                limit,
+                total
+            );
+        }
+
+        public IEnumerable<TSelect> Search<TGroup, TSelect>(IDataFilter<TDataModel> filter, IDataProjection<TDataModel, TGroup, TSelect> projection)
+        {
+            Checker.NotNullArgument(filter, nameof(filter));
+            Checker.NotNullArgument(projection, nameof(projection));
+            Checker.NotNullObject(projection.Group, $"{nameof(projection)}.{nameof(projection.Group)}");
+            Checker.NotNullObject(projection.Select, $"{nameof(projection)}.{nameof(projection.Select)}");
+
+            return QuerySearch(Query, filter, projection)
+                .GroupBy(projection.Group)
+                .Select(projection.Select);
+        }
+
+        public PaginatedResult<TSelect> LimitedSearch<TGroup, TSelect>(IDataFilter<TDataModel> filter,
+            IDataLimiter<TDataModel> limiter, IDataProjection<TDataModel, TGroup, TSelect> projection)
+        {
+            Checker.NotNullArgument(filter, nameof(filter));
+            Checker.NotNullArgument(limiter, nameof(limiter));
+            Checker.NotNullArgument(projection, nameof(projection));
+            Checker.NotNullObject(projection.Group, $"{nameof(projection)}.{nameof(projection.Group)}");
+            Checker.NotNullObject(projection.Select, $"{nameof(projection)}.{nameof(projection.Select)}");
+
+            var query = QuerySearch(Query, filter, projection);
+
+            // A projeção já foi aplicada em QuerySearch(),
+            // por isso não precisa ser repassada aqui
+            var (offset, limit, total, result) = QueryPreLimitResult(query, limiter, null);
+
+            return new PaginatedResult<TSelect>(
+                result.GroupBy(projection.Group).Select(projection.Select),
+                offset,
+                limit,
+                total
+            );
+        }
+
+        #endregion
+
         #region IStorageWriter
 
         public TDataModel Create(TDataModel data)

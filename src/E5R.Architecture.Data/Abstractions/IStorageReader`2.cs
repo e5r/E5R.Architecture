@@ -39,5 +39,15 @@ namespace E5R.Architecture.Data.Abstractions
             IDataLimiter<TDataModel> limiter, IDataProjection<TDataModel, TSelect> projection);
 
         #endregion
+
+        #region TGroup operations
+
+        IEnumerable<TSelect> GetAll<TGroup, TSelect>(IDataProjection<TDataModel, TGroup, TSelect> projection);
+        PaginatedResult<TSelect> LimitedGet<TGroup, TSelect>(IDataLimiter<TDataModel> limiter, IDataProjection<TDataModel, TGroup, TSelect> projection);
+        IEnumerable<TSelect> Search<TGroup, TSelect>(IDataFilter<TDataModel> filter, IDataProjection<TDataModel, TGroup, TSelect> projection);
+        PaginatedResult<TSelect> LimitedSearch<TGroup, TSelect>(IDataFilter<TDataModel> filter,
+            IDataLimiter<TDataModel> limiter, IDataProjection<TDataModel, TGroup, TSelect> projection);
+
+        #endregion
     }
 }
