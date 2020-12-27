@@ -16,24 +16,24 @@ namespace E5R.Architecture.Data.FluentQuery
         internal ProjectionInnerBuilder(IStorageReader<TRootDataModel> storage,
             DataFilter<TRootDataModel> filter,
             DataLimiter<TRootDataModel> limiter,
-            DataProjection<TRootDataModel> projection)
-            : base(storage, filter, limiter, projection)
+            DataIncludes<TRootDataModel> includes)
+            : base(storage, filter, limiter, includes)
         { }
 
         public ProjectionRootBuilder<TRootDataModel> Include(Expression<Func<TRootDataModel, object>> expression)
         {
             Checker.NotNullArgument(expression, nameof(expression));
 
-            _projection.Include(expression as LambdaExpression);
+            _includes.Include(expression as LambdaExpression);
 
-            return new ProjectionRootBuilder<TRootDataModel>(_storage, _filter, _limiter, _projection);
+            return new ProjectionRootBuilder<TRootDataModel>(_storage, _filter, _limiter, _includes);
         }
 
         public ProjectionInnerBuilder<TDataModel, TRootDataModel> ThenInclude(Expression<Func<TDataModel, object>> expression)
         {
             Checker.NotNullArgument(expression, nameof(expression));
 
-            _projection.ThenInclude(expression as LambdaExpression);
+            _includes.ThenInclude(expression as LambdaExpression);
 
             return this;
         }
@@ -43,15 +43,15 @@ namespace E5R.Architecture.Data.FluentQuery
         {
             Checker.NotNullArgument(expression, nameof(expression));
 
-            _projection.ThenInclude(expression as LambdaExpression);
+            _includes.ThenInclude(expression as LambdaExpression);
 
-            return new ProjectionInnerBuilder<T, TRootDataModel>(_storage, _filter, _limiter, _projection);
+            return new ProjectionInnerBuilder<T, TRootDataModel>(_storage, _filter, _limiter, _includes);
         }
 
         public ProjectionInnerBuilder<TDataModel, TRootDataModel, TSelect> Map<TSelect>(Expression<Func<TRootDataModel, TSelect>> select)
-            => new ProjectionInnerBuilder<TDataModel, TRootDataModel, TSelect>(_storage, _filter, _limiter, _projection, select);
+            => new ProjectionInnerBuilder<TDataModel, TRootDataModel, TSelect>(_storage, _filter, _limiter, _includes, select);
 
         public FluentQueryBuilderWithProjection<TRootDataModel> Project()
-            => new FluentQueryBuilderWithProjection<TRootDataModel>(_storage, _filter, _limiter, _projection);
+            => new FluentQueryBuilderWithProjection<TRootDataModel>(_storage, _filter, _limiter, _includes);
     }
 }

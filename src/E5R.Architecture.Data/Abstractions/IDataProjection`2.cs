@@ -10,7 +10,7 @@ namespace E5R.Architecture.Data.Abstractions
     // <summary>
     /// Data projection (Include and Select) for data model
     /// </summary>
-    public interface IDataProjection<TDataModel, TSelect> : IDataProjection
+    public interface IDataProjection<TDataModel, TSelect> : IDataIncludes
     {
         Expression<Func<TDataModel, TSelect>> Select { get; }
     }

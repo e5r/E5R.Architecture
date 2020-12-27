@@ -15,8 +15,8 @@ namespace E5R.Architecture.Data.FluentQuery
         internal FluentQueryBuilderWithLimiterAndFilter(IStorageReader<TDataModel> storage,
             DataFilter<TDataModel> filter,
             DataLimiter<TDataModel> limiter,
-            DataProjection<TDataModel> projection)
-            : base(storage, filter, limiter, projection)
+            DataIncludes<TDataModel> includes)
+            : base(storage, filter, limiter, includes)
         { }
 
         public FluentQueryBuilderWithLimiterAndFilter<TDataModel> Filter(Expression<Func<TDataModel, bool>> filter)
@@ -63,7 +63,7 @@ namespace E5R.Architecture.Data.FluentQuery
 
         #region Storage Actions
 
-        public PaginatedResult<TDataModel> LimitedSearch() => _storage.LimitedSearch(_filter, _limiter, _projection);
+        public PaginatedResult<TDataModel> LimitedSearch() => _storage.LimitedSearch(_filter, _limiter, _includes);
 
         #endregion
     }

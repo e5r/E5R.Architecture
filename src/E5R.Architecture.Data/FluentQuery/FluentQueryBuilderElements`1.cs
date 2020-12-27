@@ -13,23 +13,23 @@ namespace E5R.Architecture.Data.FluentQuery
         internal readonly IStorageReader<TDataModel> _storage;
         internal readonly DataFilter<TDataModel> _filter;
         internal readonly DataLimiter<TDataModel> _limiter;
-        internal readonly DataProjection<TDataModel> _projection;
+        internal readonly DataIncludes<TDataModel> _includes;
 
         internal FluentQueryBuilderElements(
             IStorageReader<TDataModel> storage,
             DataFilter<TDataModel> filter,
             DataLimiter<TDataModel> limiter,
-            DataProjection<TDataModel> projection)
+            DataIncludes<TDataModel> includes)
         {
             Checker.NotNullArgument(storage, nameof(storage));
             Checker.NotNullArgument(filter, nameof(filter));
             Checker.NotNullArgument(limiter, nameof(limiter));
-            Checker.NotNullArgument(projection, nameof(projection));
+            Checker.NotNullArgument(includes, nameof(includes));
 
             _storage = storage;
             _filter = filter;
             _limiter = limiter;
-            _projection = projection;
+            _includes = includes;
         }
     }
 }

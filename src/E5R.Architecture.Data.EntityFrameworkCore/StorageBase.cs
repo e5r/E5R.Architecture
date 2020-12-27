@@ -19,7 +19,7 @@ namespace E5R.Architecture.Data.EntityFrameworkCore
             IEntityType entityType,
             IQueryable<TDataModel> origin,
             object[] identifiers,
-            IDataProjection projection)
+            IDataIncludes includes)
         {
             Checker.NotNullArgument(origin, nameof(origin));
             Checker.NotNullArgument(entityType, nameof(entityType));
@@ -71,13 +71,13 @@ namespace E5R.Architecture.Data.EntityFrameworkCore
 
             filter.AddFilter(filterExpression);
 
-            return QuerySearch(origin, filter, projection);
+            return QuerySearch(origin, filter, includes);
         }
 
         protected IQueryable<TDataModel> QuerySearch(
             IQueryable<TDataModel> origin,
             IDataFilter<TDataModel> filter,
-            IDataProjection projection)
+            IDataIncludes includes)
         {
             Checker.NotNullArgument(origin, nameof(origin));
             Checker.NotNullArgument(filter, nameof(filter));
@@ -88,7 +88,7 @@ namespace E5R.Architecture.Data.EntityFrameworkCore
 
             var query = filterList.Aggregate(origin, (q, w) => q.Where(w));
 
-            return TryApplyProjection(query, projection);
+            return TryApplyIncludes(query, includes);
         }
 
         /// <summary>
@@ -96,12 +96,12 @@ namespace E5R.Architecture.Data.EntityFrameworkCore
         /// </summary>
         /// <param name="limiter">Data limiter</param>
         /// <param name="origin">Original data query</param>
-        /// <param name="projection">Data projection</param>
+        /// <param name="includes">Data includes</param>
         /// <returns>Tuple of (offset, limit, total, result)</returns>
         protected (uint, uint, int, IQueryable<TDataModel>) QueryPreLimitResult(
             IQueryable<TDataModel> origin,
             IDataLimiter<TDataModel> limiter,
-            IDataProjection projection)
+            IDataIncludes includes)
         {
             Checker.NotNullArgument(limiter, nameof(limiter));
             Checker.NotNullArgument(origin, nameof(origin));
@@ -113,7 +113,7 @@ namespace E5R.Architecture.Data.EntityFrameworkCore
                 throw new ArgumentOutOfRangeException($"limiter.{limiter.OffsetLimit}");
             }
 
-            var result = TryApplyProjection(origin, projection);
+            var result = TryApplyIncludes(origin, includes);
 
             IOrderedQueryable<TDataModel> orderBy = null;
 
@@ -160,16 +160,14 @@ namespace E5R.Architecture.Data.EntityFrameworkCore
             return (offset, limit, total, result);
         }
 
-        protected IQueryable<TDataModel> TryApplyProjection(
+        protected IQueryable<TDataModel> TryApplyIncludes(
             IQueryable<TDataModel> query,
-            IDataProjection projection)
+            IDataIncludes includes)
         {
-            if (projection == null)
+            if (includes == null)
                 return query;
 
-            query = projection.Includes.Aggregate(query, (q, i) => q.Include(i));
-
-            return query;
+            return includes.Includes.Aggregate(query, (q, i) => q.Include(i));
         }
     }
 }

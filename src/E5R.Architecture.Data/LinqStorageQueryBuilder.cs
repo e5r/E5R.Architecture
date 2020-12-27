@@ -24,12 +24,12 @@ namespace E5R.Architecture.Data
 
             Filter = new DataFilter<TDataModel>();
             Limiter = new DataLimiter<TDataModel>();
-            Projection = new DataProjection<TDataModel>();
+            Includes = new DataIncludes<TDataModel>();
         }
 
         internal DataFilter<TDataModel> Filter { get; set; }
         internal DataLimiter<TDataModel> Limiter { get; set; }
-        internal DataProjection<TDataModel> Projection { get; set; }
+        internal DataIncludes<TDataModel> Includes { get; set; }
 
         #region Configuration   
         public LinqStorageQueryBuilder<TDataModel> AddFilter(Expression<Func<TDataModel, bool>> filter)
@@ -81,19 +81,19 @@ namespace E5R.Architecture.Data
         #endregion
 
         #region Actions
-        public TDataModel Find(object identifier) => _storage.Find(identifier, Projection);
+        public TDataModel Find(object identifier) => _storage.Find(identifier, Includes);
 
-        public TDataModel Find(object[] identifiers) => _storage.Find(identifiers, Projection);
+        public TDataModel Find(object[] identifiers) => _storage.Find(identifiers, Includes);
 
-        public TDataModel Find(TDataModel data) => _storage.Find(data, Projection);
+        public TDataModel Find(TDataModel data) => _storage.Find(data, Includes);
 
-        public IEnumerable<TDataModel> GetAll() => _storage.GetAll(Projection);
+        public IEnumerable<TDataModel> GetAll() => _storage.GetAll(Includes);
 
-        public PaginatedResult<TDataModel> LimitedGet() => _storage.LimitedGet(Limiter, Projection);
+        public PaginatedResult<TDataModel> LimitedGet() => _storage.LimitedGet(Limiter, Includes);
 
-        public IEnumerable<TDataModel> Search() => _storage.Search(Filter, Projection);
+        public IEnumerable<TDataModel> Search() => _storage.Search(Filter, Includes);
 
-        public PaginatedResult<TDataModel> LimitedSearch() => _storage.LimitedSearch(Filter, Limiter, Projection);
+        public PaginatedResult<TDataModel> LimitedSearch() => _storage.LimitedSearch(Filter, Limiter, Includes);
         #endregion
     }
 }

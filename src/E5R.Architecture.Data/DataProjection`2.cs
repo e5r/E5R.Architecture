@@ -28,8 +28,8 @@ namespace E5R.Architecture.Data
             _select = select;
         }
 
-        internal DataProjection<TDataModel> GetOnlyIncludeProjection()
-            => new DataProjection<TDataModel>(_includes);
+        internal DataIncludes<TDataModel> GetDataIncludes()
+            => new DataIncludes<TDataModel>(_includes);
 
         public DataProjection(IEnumerable<DataProjectionIncludeMember> includes, Expression<Func<TDataModel, TSelect>> select)
         {

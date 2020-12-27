@@ -11,7 +11,7 @@ namespace E5R.Architecture.Data.Abstractions
     // <summary>
     /// Data projection (Include, Group and Select) for data model
     /// </summary>
-    public interface IDataProjection<TDataModel, TGroup, TSelect> : IDataProjection
+    public interface IDataProjection<TDataModel, TGroup, TSelect> : IDataIncludes
     {
         Expression<Func<IGrouping<TGroup, TDataModel>, TSelect>> Select { get; }
         Expression<Func<TDataModel, TGroup>> Group { get; }

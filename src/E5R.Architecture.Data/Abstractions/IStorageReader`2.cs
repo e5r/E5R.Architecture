@@ -16,14 +16,14 @@ namespace E5R.Architecture.Data.Abstractions
     {
         #region TDataModel operations
 
-        TDataModel Find(object identifier, IDataProjection projection = null);
-        TDataModel Find(object[] identifiers, IDataProjection projection = null);
-        TDataModel Find(TDataModel data, IDataProjection projection = null);
-        IEnumerable<TDataModel> GetAll(IDataProjection projection = null);
-        PaginatedResult<TDataModel> LimitedGet(IDataLimiter<TDataModel> limiter, IDataProjection projection = null);
-        IEnumerable<TDataModel> Search(IDataFilter<TDataModel> filter, IDataProjection projection = null);
+        TDataModel Find(object identifier, IDataIncludes includes = null);
+        TDataModel Find(object[] identifiers, IDataIncludes includes = null);
+        TDataModel Find(TDataModel data, IDataIncludes includes = null);
+        IEnumerable<TDataModel> GetAll(IDataIncludes includes = null);
+        PaginatedResult<TDataModel> LimitedGet(IDataLimiter<TDataModel> limiter, IDataIncludes includes = null);
+        IEnumerable<TDataModel> Search(IDataFilter<TDataModel> filter, IDataIncludes includes = null);
         PaginatedResult<TDataModel> LimitedSearch(IDataFilter<TDataModel> filter,
-            IDataLimiter<TDataModel> limiter, IDataProjection projection = null);
+            IDataLimiter<TDataModel> limiter, IDataIncludes includes = null);
 
         #endregion
 

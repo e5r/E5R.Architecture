@@ -34,33 +34,33 @@ namespace E5R.Architecture.Data.EntityFrameworkCore
 
         #region IStorageReader for TDataModel
 
-        public TDataModel Find(TDataModel data, IDataProjection projection)
+        public TDataModel Find(TDataModel data, IDataIncludes includes)
         {
             Checker.NotNullArgument(data, nameof(data));
 
-            return Find(data.IdentifierValues, projection);
+            return Find(data.IdentifierValues, includes);
         }
 
-        public TDataModel Find(object identifier, IDataProjection projection)
-            => Find(new object[] { identifier }, projection);
+        public TDataModel Find(object identifier, IDataIncludes includes)
+            => Find(new object[] { identifier }, includes);
 
-        public TDataModel Find(object[] identifiers, IDataProjection projection)
+        public TDataModel Find(object[] identifiers, IDataIncludes includes)
         {
             Checker.NotNullArgument(identifiers, nameof(identifiers));
 
             var entityType = Context.Model.FindEntityType(typeof(TDataModel));
 
-            return QueryFind(entityType, Query, identifiers, projection)
+            return QueryFind(entityType, Query, identifiers, includes)
                 .FirstOrDefault();
         }
 
-        public IEnumerable<TDataModel> GetAll(IDataProjection projection) => TryApplyProjection(Query, projection);
+        public IEnumerable<TDataModel> GetAll(IDataIncludes includes) => TryApplyIncludes(Query, includes);
 
-        public PaginatedResult<TDataModel> LimitedGet(IDataLimiter<TDataModel> limiter, IDataProjection projection)
+        public PaginatedResult<TDataModel> LimitedGet(IDataLimiter<TDataModel> limiter, IDataIncludes includes)
         {
             Checker.NotNullArgument(limiter, nameof(limiter));
 
-            var (offset, limit, total, result) = QueryPreLimitResult(Query, limiter, projection);
+            var (offset, limit, total, result) = QueryPreLimitResult(Query, limiter, includes);
 
             return new PaginatedResult<TDataModel>(
                 result,
@@ -70,20 +70,20 @@ namespace E5R.Architecture.Data.EntityFrameworkCore
             );
         }
 
-        public IEnumerable<TDataModel> Search(IDataFilter<TDataModel> filter, IDataProjection projection)
+        public IEnumerable<TDataModel> Search(IDataFilter<TDataModel> filter, IDataIncludes includes)
         {
             Checker.NotNullArgument(filter, nameof(filter));
 
-            return QuerySearch(Query, filter, projection);
+            return QuerySearch(Query, filter, includes);
         }
 
         public PaginatedResult<TDataModel> LimitedSearch(IDataFilter<TDataModel> filter,
-            IDataLimiter<TDataModel> limiter, IDataProjection projection)
+            IDataLimiter<TDataModel> limiter, IDataIncludes includes)
         {
             Checker.NotNullArgument(filter, nameof(filter));
             Checker.NotNullArgument(limiter, nameof(limiter));
 
-            var query = QuerySearch(Query, filter, projection);
+            var query = QuerySearch(Query, filter, includes);
 
             // A projeção já foi aplicada em QuerySearch(),
             // por isso não precisa ser repassada aqui
@@ -129,7 +129,7 @@ namespace E5R.Architecture.Data.EntityFrameworkCore
             Checker.NotNullArgument(projection, nameof(projection));
             Checker.NotNullObject(projection.Select, $"{nameof(projection)}.{nameof(projection.Select)}");
 
-            return TryApplyProjection(Query, projection).Select(projection.Select);
+            return TryApplyIncludes(Query, projection).Select(projection.Select);
         }
 
         public PaginatedResult<TSelect> LimitedGet<TSelect>(IDataLimiter<TDataModel> limiter, IDataProjection<TDataModel, TSelect> projection)
@@ -190,7 +190,7 @@ namespace E5R.Architecture.Data.EntityFrameworkCore
             Checker.NotNullObject(projection.Group, $"{nameof(projection)}.{nameof(projection.Group)}");
             Checker.NotNullObject(projection.Select, $"{nameof(projection)}.{nameof(projection.Select)}");
 
-            return TryApplyProjection(Query, projection)
+            return TryApplyIncludes(Query, projection)
                 .GroupBy(projection.Group)
                 .Select(projection.Select);
         }

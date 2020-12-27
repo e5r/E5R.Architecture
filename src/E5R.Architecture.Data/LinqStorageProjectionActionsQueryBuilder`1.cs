@@ -23,7 +23,7 @@ namespace E5R.Architecture.Data
             Checker.NotNullArgument(select, nameof(select));
 
             _rootBuilder = rootBuilder;
-            _projection = new DataProjection<TDataModel, TSelect>(_rootBuilder.Projection._includes, select);
+            _projection = new DataProjection<TDataModel, TSelect>(_rootBuilder.Includes._includes, select);
         }
 
         #region Actions

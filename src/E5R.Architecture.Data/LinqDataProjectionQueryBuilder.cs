@@ -26,7 +26,7 @@ namespace E5R.Architecture.Data
         {
             Checker.NotNullArgument(expression, nameof(expression));
 
-            _storageQueryBuilder.Projection.Include(expression as LambdaExpression);
+            _storageQueryBuilder.Includes.Include(expression as LambdaExpression);
 
             return this;
         }
@@ -36,7 +36,7 @@ namespace E5R.Architecture.Data
         {
             Checker.NotNullArgument(expression, nameof(expression));
 
-            _storageQueryBuilder.Projection.Include(expression as LambdaExpression);
+            _storageQueryBuilder.Includes.Include(expression as LambdaExpression);
 
             return new LinqDataProjectionInnerQueryBuilder<T, TDataModel>(_storageQueryBuilder, this);
         }
@@ -68,7 +68,7 @@ namespace E5R.Architecture.Data
         {
             Checker.NotNullArgument(expression, nameof(expression));
 
-            _storageQueryBuilder.Projection.Include(expression as LambdaExpression);
+            _storageQueryBuilder.Includes.Include(expression as LambdaExpression);
 
             return _root;
         }
@@ -77,7 +77,7 @@ namespace E5R.Architecture.Data
         {
             Checker.NotNullArgument(expression, nameof(expression));
 
-            _storageQueryBuilder.Projection.ThenInclude(expression as LambdaExpression);
+            _storageQueryBuilder.Includes.ThenInclude(expression as LambdaExpression);
 
             return this;
         }
@@ -87,7 +87,7 @@ namespace E5R.Architecture.Data
         {
             Checker.NotNullArgument(expression, nameof(expression));
 
-            _storageQueryBuilder.Projection.ThenInclude(expression as LambdaExpression);
+            _storageQueryBuilder.Includes.ThenInclude(expression as LambdaExpression);
 
             return new LinqDataProjectionInnerQueryBuilder<T, TRootDataModel>(_storageQueryBuilder, _root);
         }

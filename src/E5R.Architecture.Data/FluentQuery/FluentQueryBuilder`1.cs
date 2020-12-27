@@ -16,15 +16,15 @@ namespace E5R.Architecture.Data.FluentQuery
             : base(storage,
                   new DataFilter<TDataModel>(),
                   new DataLimiter<TDataModel>(),
-                  new DataProjection<TDataModel>())
+                  new DataIncludes<TDataModel>())
         { }
 
         internal FluentQueryBuilder(
             IStorageReader<TDataModel> storage,
             DataFilter<TDataModel> filter,
             DataLimiter<TDataModel> limiter,
-            DataProjection<TDataModel> projection)
-            : base(storage, filter, limiter, projection)
+            DataIncludes<TDataModel> includes)
+            : base(storage, filter, limiter, includes)
         { }
 
         FluentQueryBuilderWithProjection<TDataModel> EmptyProjection() => Projection().Project();
@@ -32,7 +32,7 @@ namespace E5R.Architecture.Data.FluentQuery
         #region Makers
 
         public ProjectionRootBuilder<TDataModel> Projection()
-            => new ProjectionRootBuilder<TDataModel>(_storage, _filter, _limiter, _projection);
+            => new ProjectionRootBuilder<TDataModel>(_storage, _filter, _limiter, _includes);
 
         public FluentQueryBuilderWithFilter<TDataModel> Filter(Expression<Func<TDataModel, bool>> filterExpression)
             => EmptyProjection().Filter(filterExpression);

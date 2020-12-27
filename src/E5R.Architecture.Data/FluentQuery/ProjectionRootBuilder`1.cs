@@ -15,15 +15,15 @@ namespace E5R.Architecture.Data.FluentQuery
         internal ProjectionRootBuilder(IStorageReader<TDataModel> storage,
             DataFilter<TDataModel> filter,
             DataLimiter<TDataModel> limiter,
-            DataProjection<TDataModel> projection)
-            : base(storage, filter, limiter, projection)
+            DataIncludes<TDataModel> includes)
+            : base(storage, filter, limiter, includes)
         { }
 
         public ProjectionRootBuilder<TDataModel> Include(Expression<Func<TDataModel, object>> expression)
         {
             Checker.NotNullArgument(expression, nameof(expression));
 
-            _projection.Include(expression as LambdaExpression);
+            _includes.Include(expression as LambdaExpression);
 
             return this;
         }
@@ -33,15 +33,15 @@ namespace E5R.Architecture.Data.FluentQuery
         {
             Checker.NotNullArgument(expression, nameof(expression));
 
-            _projection.Include(expression as LambdaExpression);
+            _includes.Include(expression as LambdaExpression);
 
-            return new ProjectionInnerBuilder<T, TDataModel>(_storage, _filter, _limiter, _projection);
+            return new ProjectionInnerBuilder<T, TDataModel>(_storage, _filter, _limiter, _includes);
         }
 
         public ProjectionRootBuilder<TDataModel, TSelect> Map<TSelect>(Expression<Func<TDataModel, TSelect>> select)
-            => new ProjectionRootBuilder<TDataModel, TSelect>(_storage, _filter, _limiter, _projection, select);
+            => new ProjectionRootBuilder<TDataModel, TSelect>(_storage, _filter, _limiter, _includes, select);
 
         public FluentQueryBuilderWithProjection<TDataModel> Project()
-            => new FluentQueryBuilderWithProjection<TDataModel>(_storage, _filter, _limiter, _projection);
+            => new FluentQueryBuilderWithProjection<TDataModel>(_storage, _filter, _limiter, _includes);
     }
 }

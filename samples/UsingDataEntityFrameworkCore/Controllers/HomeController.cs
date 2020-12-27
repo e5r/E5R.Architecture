@@ -41,7 +41,7 @@ namespace UsingDataEntityFrameworkCore.Controllers
 
             // Equivalentes para GetAll()
             var a1 = _studentStore.GetAll();
-            var a2 = _studentStore.GetAll(new DataProjection<Student>());
+            var a2 = _studentStore.GetAll(new DataIncludes<Student>());
             var a3 = _studentStore.AsFluentQuery().GetAll();
 
             // Equivalentes para GetAll() com Include() e Select()
@@ -68,7 +68,7 @@ namespace UsingDataEntityFrameworkCore.Controllers
                 .GetAll();
 
             // Equivalentes para Find()
-            var b1 = _studentStore.Find(2, new DataProjection<Student>());
+            var b1 = _studentStore.Find(2, new DataIncludes<Student>());
             var b2 = _studentStore.Find(2, null);
             var b3 = _studentStore.Find(2);
             var b4 = _studentStore.AsFluentQuery().Find(2);
