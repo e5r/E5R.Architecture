@@ -26,6 +26,7 @@ namespace UsingDataEntityFrameworkCore.Controllers
 
         public IActionResult Index()
         {
+            // Equivalentes para GetAll() com GroupBy()
             var projection = new DataProjection<Student, int, object>(
                 s => s.EnrollmentDate.Year,
                 g => new
@@ -38,6 +39,19 @@ namespace UsingDataEntityFrameworkCore.Controllers
 
             var result = _studentStore.GetAll(projection);
             var resultList = result.ToList();
+
+            var result2 = _studentStore.AsFluentQuery()
+                .Projection()
+                    .GroupAndMap(s => s.EnrollmentDate.Year, g => new
+                    {
+                        Ano = g.Key,
+                        Total = g.Count(),
+                        MaiorData = g.Max(c => c.EnrollmentDate),
+                        MenorData = g.Min(c => c.EnrollmentDate)
+                    })
+                    .Project()
+                .GetAll();
+            var resultList2 = result2.ToList();
 
             // Equivalentes para GetAll()
             var a1 = _studentStore.GetAll();

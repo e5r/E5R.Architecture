@@ -10,17 +10,28 @@ using E5R.Architecture.Data.Abstractions;
 
 namespace E5R.Architecture.Data.FluentQuery
 {
-    public class ProjectionRootBuilder<TDataModel> : FluentQueryBuilderElements<TDataModel>
+    public class ProjectionRootBuilder<TDataModel, TGroup, TSelect> : FluentQueryBuilderElements<TDataModel>
         where TDataModel : IDataModel
     {
+        private readonly Expression<Func<TDataModel, TGroup>> _group;
+        private readonly Expression<Func<IGrouping<TGroup, TDataModel>, TSelect>> _select;
+
         internal ProjectionRootBuilder(IStorageReader<TDataModel> storage,
             DataFilter<TDataModel> filter,
             DataLimiter<TDataModel> limiter,
-            DataIncludes<TDataModel> includes)
+            DataIncludes<TDataModel> includes,
+            Expression<Func<TDataModel, TGroup>> group,
+            Expression<Func<IGrouping<TGroup, TDataModel>, TSelect>> select)
             : base(storage, filter, limiter, includes)
-        { }
+        {
+            Checker.NotNullArgument(group, nameof(group));
+            Checker.NotNullArgument(select, nameof(select));
 
-        public ProjectionRootBuilder<TDataModel> Include(Expression<Func<TDataModel, object>> expression)
+            _group = group;
+            _select = select;
+        }
+
+        public ProjectionRootBuilder<TDataModel, TGroup, TSelect> Include(Expression<Func<TDataModel, object>> expression)
         {
             Checker.NotNullArgument(expression, nameof(expression));
 
@@ -39,16 +50,7 @@ namespace E5R.Architecture.Data.FluentQuery
             return new ProjectionInnerBuilder<T, TDataModel>(_storage, _filter, _limiter, _includes);
         }
 
-        public ProjectionRootBuilder<TDataModel, TSelect> Map<TSelect>(Expression<Func<TDataModel, TSelect>> select)
-            => new ProjectionRootBuilder<TDataModel, TSelect>(_storage, _filter, _limiter, _includes, select);
-        
-        public ProjectionRootBuilder<TDataModel, TGroup, TSelect>
-            GroupAndMap<TGroup, TSelect>(Expression<Func<TDataModel, TGroup>> group,
-                Expression<Func<IGrouping<TGroup, TDataModel>, TSelect>> select)
-            => new ProjectionRootBuilder<TDataModel, TGroup, TSelect>(_storage,
-                _filter, _limiter, _includes, group, select);
-
-        public FluentQueryBuilderWithProjection<TDataModel> Project()
-            => new FluentQueryBuilderWithProjection<TDataModel>(_storage, _filter, _limiter, _includes);
+        public FluentQueryBuilderWithProjection<TDataModel, TGroup, TSelect> Project()
+            => new FluentQueryBuilderWithProjection<TDataModel, TGroup, TSelect>(_storage, _filter, _limiter, _includes, _group, _select);
     }
 }

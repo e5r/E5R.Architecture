@@ -1,7 +1,5 @@
 v0.x
 ====
-- Implementar extensão de mapeamento a FluentQuery()
-  - Map() e GroupAndMap()
 - Implementar validação de modelo (IModelValidator)
 - Gerenciador de notificações genérico
   > Implementar opção ZeroMQ (ou RabbitMQ)
