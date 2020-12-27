@@ -9,13 +9,6 @@ namespace E5R.Architecture.Data.Abstractions
 {
     public static class IStorageExtensions
     {
-        [Obsolete("This method is obsolete. Call AsFluentQuery() instead.", false)]
-        public static LinqStorageQueryBuilder<TDataModel> Query<TDataModel>(this IStorageReader<TDataModel> storage)
-            where TDataModel : IDataModel
-        {
-            return new LinqStorageQueryBuilder<TDataModel>(storage);
-        }
-
         public static FluentQueryBuilder<TDataModel> AsFluentQuery<TDataModel>(this IStorageReader<TDataModel> storage)
             where TDataModel : IDataModel
         {
