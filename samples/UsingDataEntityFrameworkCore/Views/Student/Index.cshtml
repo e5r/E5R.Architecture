@@ -6,9 +6,9 @@
 
 <h2>Estudantes</h2>
 
-<p>
+@*<p>
     <a asp-action="Create">Criar novo</a>
-</p>
+</p>*@
 <form asp-action="Search">
     <p>
         Nome: <input type="text" name="SearchString" value="@ViewData["SearchString"]">
@@ -43,9 +43,9 @@
                 @Html.DisplayFor(modelItem => item.EnrollmentDate)
             </td>
             <td>
-                <a asp-action="Edit" asp-route-id="@item.ID">Editar</a> |
+                @* <a asp-action="Edit" asp-route-id="@item.ID">Editar</a> | *@
                 <a asp-action="Details" asp-route-id="@item.ID">Detalhes</a> |
-                <a asp-action="Delete" asp-route-id="@item.ID">Deletar</a>
+                @* <a asp-action="Delete" asp-route-id="@item.ID">Deletar</a> *@
             </td>
         </tr>
 }

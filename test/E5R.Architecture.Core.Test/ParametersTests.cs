@@ -17,7 +17,6 @@ namespace E5R.Architecture.Core.Test
             var parameters = new Parameters();
 
             Assert.Empty(parameters);
-            Assert.Equal(0, parameters.Count);
         }
 
         [Fact]
@@ -84,9 +83,9 @@ namespace E5R.Architecture.Core.Test
 
             parameters.Add("key1", obj1);
 
-            Assert.True(parameters.Contains(new KeyValuePair<string, object>("key1", obj1)));
-            Assert.False(parameters.Contains(new KeyValuePair<string, object>("key2", obj1)));
-            Assert.False(parameters.Contains(new KeyValuePair<string, object>("key1", obj2)));
+            Assert.Contains(new KeyValuePair<string, object>("key1", obj1), parameters);
+            Assert.DoesNotContain(new KeyValuePair<string, object>("key2", obj1), parameters);
+            Assert.DoesNotContain(new KeyValuePair<string, object>("key1", obj2), parameters);
         }
 
         [Fact]
@@ -100,7 +99,7 @@ namespace E5R.Architecture.Core.Test
             parameters.Add("key", obj1);
             parameters.Add("key", obj2);
 
-            Assert.Equal(1, parameters.Count);
+            Assert.Single(parameters);
         }
 
         [Fact]
@@ -339,7 +338,6 @@ namespace E5R.Architecture.Core.Test
 
             foreach (var param in parameters)
             {
-                Assert.NotNull(param);
                 Assert.Contains("key", param.Key);
                 Assert.Equal(3, (param.Value as List<object>).Count);
             }
