@@ -23,8 +23,6 @@ namespace E5R.Architecture.Core
             Total = total;
         }
 
-        // TODO: Rever conceito de Offset/Limit e Page
-
         public IEnumerable<TResult> Result { get; private set; }
         public uint Offset { get; private set; }
         public uint Limit { get; private set; }

@@ -9,7 +9,7 @@ using System.Linq;
 
 namespace E5R.Architecture.Core.Exceptions
 {
-    // TODO: Implementar internacionalização para evitar os 2 contrutores
+    // TODO: Implementar i18n/l10n para evitar os 2 contrutores
     public class ViolatedRuleException : Exception
     {
         const string DEFAULT_MESSAGE_TEMPLATE = "Rule violation {0}: {1}";

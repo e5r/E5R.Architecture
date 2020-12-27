@@ -22,7 +22,6 @@ v0.x
       2) Registra o gerente de transformação AutoMapperTransformationManager
       3) Usa-se no construtor (ITransformationManager manager)
          manager.Transform<From, To>()
-- Implementar opção GroupBy para IStorageReader<>
 - Criar documentação conceitual mínima (camada de dados)
   : [x] Find()
   - Obtém um único registro previamente conhecido por seu(s) identificador(es)
@@ -55,11 +54,8 @@ v0.x
   - É uma combinação de Get() + Search()
   - O resultado inclui informações estatísticas de paginação.
 
-
 v1.0
 ====
-- Implementar internacionalização/localização
-- Rever conceito de Offset/Limit e Page
 - Implementar validação
 - Remover necessidade de objetos de assinatura
   > IDataModuleSignature
@@ -70,13 +66,13 @@ v1.0
 - Implementar Data.Dapper
   > Implementar suporte a SQL puro
   > IDataFilter, Sorter, Get(), Find(), Search(), etc.
-- Adicionar suporte a consultas com SQL puro mesmo no EntityFramework
 - Publicar documentação online
   > API
   > Tutoriais
 
 v2.0
 ====
+- Implementar internacionalização/localização
 - Estabilizar conceito de BusinessObject
 - Utilizar operações de Bulk com alguma biblioteca ao invés iteração simples
 

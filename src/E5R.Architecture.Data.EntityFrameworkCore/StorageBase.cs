@@ -29,13 +29,13 @@ namespace E5R.Architecture.Data.EntityFrameworkCore
 
             if (identifiers.Length < 1)
             {
-                // TODO: Aplicar localização
+                // TODO: Implementar i18n/l10n
                 throw new InvalidOperationException("At least one identifier must be informed.");
             }
 
             if (primaryKeys.Count() != identifiers.Count())
             {
-                // TODO: Aplicar localização
+                // TODO: Implementar i18n/l10n
                 throw new InvalidOperationException($"Number of primary keys configured in {typeof(TDataModel)} different than expected.");
             }
 

@@ -55,7 +55,7 @@ namespace E5R.Architecture.Data.Abstractions
         {
             if (currentPage < 1)
             {
-                // TODO: Implementar internacionalização
+                // TODO: Implementar i18n/l10n
                 throw new IndexOutOfRangeException($"The parameter {nameof(currentPage)} must start at 1.");
             }
 
