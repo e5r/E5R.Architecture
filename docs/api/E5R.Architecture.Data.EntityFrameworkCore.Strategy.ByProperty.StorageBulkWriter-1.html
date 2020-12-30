@@ -1,0 +1,300 @@
+﻿<!DOCTYPE html>
+<!--[if IE]><![endif]-->
+<html>
+  
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>Class StorageBulkWriter&lt;TDataModel&gt;
+   | Arquitetura E5R </title>
+    <meta name="viewport" content="width=device-width">
+    <meta name="title" content="Class StorageBulkWriter&lt;TDataModel&gt;
+   | Arquitetura E5R ">
+    <meta name="generator" content="docfx 2.56.6.0">
+    
+    <link rel="shortcut icon" href="../images/favicon.png">
+    <link rel="stylesheet" href="../styles/docfx.vendor.css">
+    <link rel="stylesheet" href="../styles/docfx.css">
+    <link rel="stylesheet" href="../styles/main.css">
+    <meta property="docfx:navrel" content="../toc.html">
+    <meta property="docfx:tocrel" content="toc.html">
+    
+    
+    
+  </head>
+  <body data-spy="scroll" data-target="#affix" data-offset="120">
+    <div id="wrapper">
+      <header>
+        
+        <nav id="autocollapse" class="navbar navbar-inverse ng-scope" role="navigation">
+          <div class="container">
+            <div class="navbar-header">
+              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+              
+              <a class="navbar-brand" href="../index.html">
+                <img id="logo" class="svg" src="../images/logo.png" alt="">
+              </a>
+            </div>
+            <div class="collapse navbar-collapse" id="navbar">
+              <form class="navbar-form navbar-right" role="search" id="search">
+                <div class="form-group">
+                  <input type="text" class="form-control" id="search-query" placeholder="Search" autocomplete="off">
+                </div>
+              </form>
+            </div>
+          </div>
+        </nav>
+        
+        <div class="subnav navbar navbar-default">
+          <div class="container hide-when-search" id="breadcrumb">
+            <ul class="breadcrumb">
+              <li></li>
+            </ul>
+          </div>
+        </div>
+      </header>
+      <div role="main" class="container body-content hide-when-search">
+        
+        <div class="sidenav hide-when-search">
+          <a class="btn toc-toggle collapse" data-toggle="collapse" href="#sidetoggle" aria-expanded="false" aria-controls="sidetoggle">Show / Hide Table of Contents</a>
+          <div class="sidetoggle collapse" id="sidetoggle">
+            <div id="sidetoc"></div>
+          </div>
+        </div>
+        <div class="article row grid-right">
+          <div class="col-md-10">
+            <article class="content wrap" id="_content" data-uid="E5R.Architecture.Data.EntityFrameworkCore.Strategy.ByProperty.StorageBulkWriter`1">
+  
+  
+  <h1 id="E5R_Architecture_Data_EntityFrameworkCore_Strategy_ByProperty_StorageBulkWriter_1" data-uid="E5R.Architecture.Data.EntityFrameworkCore.Strategy.ByProperty.StorageBulkWriter`1" class="text-break">Class StorageBulkWriter&lt;TDataModel&gt;
+  </h1>
+  <div class="markdown level0 summary"></div>
+  <div class="markdown level0 conceptual"></div>
+  <div class="inheritance">
+    <h5>Inheritance</h5>
+    <div class="level0"><span class="xref">System.Object</span></div>
+    <div class="level1"><a class="xref" href="E5R.Architecture.Data.EntityFrameworkCore.StorageBase-1.html">StorageBase</a>&lt;TDataModel&gt;</div>
+    <div class="level2"><a class="xref" href="E5R.Architecture.Data.EntityFrameworkCore.FullStorage-2.html">FullStorage</a>&lt;<span class="xref">DbContext</span>, TDataModel&gt;</div>
+    <div class="level3"><a class="xref" href="E5R.Architecture.Data.EntityFrameworkCore.Strategy.ByProperty.StorageBulkWriter-2.html">StorageBulkWriter</a>&lt;<span class="xref">DbContext</span>, TDataModel&gt;</div>
+    <div class="level4"><span class="xref">StorageBulkWriter&lt;TDataModel&gt;</span></div>
+  </div>
+  <div classs="implements">
+    <h5>Implements</h5>
+    <div><a class="xref" href="E5R.Architecture.Data.Abstractions.IStorageBulkWriter-2.html">IStorageBulkWriter</a>&lt;<span class="xref">DbContext</span>, TDataModel&gt;</div>
+    <div><a class="xref" href="E5R.Architecture.Data.Abstractions.Alias.IRepositoryBulkWriter-2.html">IRepositoryBulkWriter</a>&lt;<span class="xref">DbContext</span>, TDataModel&gt;</div>
+    <div><a class="xref" href="E5R.Architecture.Data.Abstractions.Alias.IRepositoryBulkWriter-1.html">IRepositoryBulkWriter</a>&lt;TDataModel&gt;</div>
+    <div><a class="xref" href="E5R.Architecture.Data.Abstractions.Alias.IStoreBulkWriter-2.html">IStoreBulkWriter</a>&lt;<span class="xref">DbContext</span>, TDataModel&gt;</div>
+    <div><a class="xref" href="E5R.Architecture.Data.Abstractions.Alias.IStoreBulkWriter-1.html">IStoreBulkWriter</a>&lt;TDataModel&gt;</div>
+    <div><a class="xref" href="E5R.Architecture.Data.Abstractions.IStorageBulkWriter-1.html">IStorageBulkWriter</a>&lt;TDataModel&gt;</div>
+    <div><a class="xref" href="E5R.Architecture.Data.Abstractions.IStorageSignature.html">IStorageSignature</a></div>
+  </div>
+  <div class="inheritedMembers">
+    <h5>Inherited Members</h5>
+    <div>
+      <a class="xref" href="E5R.Architecture.Data.EntityFrameworkCore.FullStorage-2.html#E5R_Architecture_Data_EntityFrameworkCore_FullStorage_2_Context">FullStorage&lt;DbContext, TDataModel&gt;.Context</a>
+    </div>
+    <div>
+      <a class="xref" href="E5R.Architecture.Data.EntityFrameworkCore.FullStorage-2.html#E5R_Architecture_Data_EntityFrameworkCore_FullStorage_2_Set">FullStorage&lt;DbContext, TDataModel&gt;.Set</a>
+    </div>
+    <div>
+      <a class="xref" href="E5R.Architecture.Data.EntityFrameworkCore.FullStorage-2.html#E5R_Architecture_Data_EntityFrameworkCore_FullStorage_2_Query">FullStorage&lt;DbContext, TDataModel&gt;.Query</a>
+    </div>
+    <div>
+      <a class="xref" href="E5R.Architecture.Data.EntityFrameworkCore.FullStorage-2.html#E5R_Architecture_Data_EntityFrameworkCore_FullStorage_2_Write">FullStorage&lt;DbContext, TDataModel&gt;.Write</a>
+    </div>
+    <div>
+      <a class="xref" href="E5R.Architecture.Data.EntityFrameworkCore.FullStorage-2.html#E5R_Architecture_Data_EntityFrameworkCore_FullStorage_2_Find__1_E5R_Architecture_Data_Abstractions_IDataIncludes_">FullStorage&lt;DbContext, TDataModel&gt;.Find(TDataModel, IDataIncludes)</a>
+    </div>
+    <div>
+      <a class="xref" href="E5R.Architecture.Data.EntityFrameworkCore.FullStorage-2.html#E5R_Architecture_Data_EntityFrameworkCore_FullStorage_2_Find_System_Object_E5R_Architecture_Data_Abstractions_IDataIncludes_">FullStorage&lt;DbContext, TDataModel&gt;.Find(Object, IDataIncludes)</a>
+    </div>
+    <div>
+      <a class="xref" href="E5R.Architecture.Data.EntityFrameworkCore.FullStorage-2.html#E5R_Architecture_Data_EntityFrameworkCore_FullStorage_2_Find_System_Object___E5R_Architecture_Data_Abstractions_IDataIncludes_">FullStorage&lt;DbContext, TDataModel&gt;.Find(Object[], IDataIncludes)</a>
+    </div>
+    <div>
+      <a class="xref" href="E5R.Architecture.Data.EntityFrameworkCore.FullStorage-2.html#E5R_Architecture_Data_EntityFrameworkCore_FullStorage_2_GetAll_E5R_Architecture_Data_Abstractions_IDataIncludes_">FullStorage&lt;DbContext, TDataModel&gt;.GetAll(IDataIncludes)</a>
+    </div>
+    <div>
+      <a class="xref" href="E5R.Architecture.Data.EntityFrameworkCore.FullStorage-2.html#E5R_Architecture_Data_EntityFrameworkCore_FullStorage_2_LimitedGet_E5R_Architecture_Data_Abstractions_IDataLimiter__1__E5R_Architecture_Data_Abstractions_IDataIncludes_">FullStorage&lt;DbContext, TDataModel&gt;.LimitedGet(IDataLimiter&lt;TDataModel&gt;, IDataIncludes)</a>
+    </div>
+    <div>
+      <a class="xref" href="E5R.Architecture.Data.EntityFrameworkCore.FullStorage-2.html#E5R_Architecture_Data_EntityFrameworkCore_FullStorage_2_Search_E5R_Architecture_Data_Abstractions_IDataFilter__1__E5R_Architecture_Data_Abstractions_IDataIncludes_">FullStorage&lt;DbContext, TDataModel&gt;.Search(IDataFilter&lt;TDataModel&gt;, IDataIncludes)</a>
+    </div>
+    <div>
+      <a class="xref" href="E5R.Architecture.Data.EntityFrameworkCore.FullStorage-2.html#E5R_Architecture_Data_EntityFrameworkCore_FullStorage_2_LimitedSearch_E5R_Architecture_Data_Abstractions_IDataFilter__1__E5R_Architecture_Data_Abstractions_IDataLimiter__1__E5R_Architecture_Data_Abstractions_IDataIncludes_">FullStorage&lt;DbContext, TDataModel&gt;.LimitedSearch(IDataFilter&lt;TDataModel&gt;, IDataLimiter&lt;TDataModel&gt;, IDataIncludes)</a>
+    </div>
+    <div>
+      <a class="xref" href="E5R.Architecture.Data.EntityFrameworkCore.FullStorage-2.html#E5R_Architecture_Data_EntityFrameworkCore_FullStorage_2_Find__1__1_E5R_Architecture_Data_Abstractions_IDataProjection__1___0__">FullStorage&lt;DbContext, TDataModel&gt;.Find&lt;TSelect&gt;(TDataModel, IDataProjection&lt;TDataModel, TSelect&gt;)</a>
+    </div>
+    <div>
+      <a class="xref" href="E5R.Architecture.Data.EntityFrameworkCore.FullStorage-2.html#E5R_Architecture_Data_EntityFrameworkCore_FullStorage_2_Find__1_System_Object_E5R_Architecture_Data_Abstractions_IDataProjection__1___0__">FullStorage&lt;DbContext, TDataModel&gt;.Find&lt;TSelect&gt;(Object, IDataProjection&lt;TDataModel, TSelect&gt;)</a>
+    </div>
+    <div>
+      <a class="xref" href="E5R.Architecture.Data.EntityFrameworkCore.FullStorage-2.html#E5R_Architecture_Data_EntityFrameworkCore_FullStorage_2_Find__1_System_Object___E5R_Architecture_Data_Abstractions_IDataProjection__1___0__">FullStorage&lt;DbContext, TDataModel&gt;.Find&lt;TSelect&gt;(Object[], IDataProjection&lt;TDataModel, TSelect&gt;)</a>
+    </div>
+    <div>
+      <a class="xref" href="E5R.Architecture.Data.EntityFrameworkCore.FullStorage-2.html#E5R_Architecture_Data_EntityFrameworkCore_FullStorage_2_GetAll__1_E5R_Architecture_Data_Abstractions_IDataProjection__1___0__">FullStorage&lt;DbContext, TDataModel&gt;.GetAll&lt;TSelect&gt;(IDataProjection&lt;TDataModel, TSelect&gt;)</a>
+    </div>
+    <div>
+      <a class="xref" href="E5R.Architecture.Data.EntityFrameworkCore.FullStorage-2.html#E5R_Architecture_Data_EntityFrameworkCore_FullStorage_2_LimitedGet__1_E5R_Architecture_Data_Abstractions_IDataLimiter__1__E5R_Architecture_Data_Abstractions_IDataProjection__1___0__">FullStorage&lt;DbContext, TDataModel&gt;.LimitedGet&lt;TSelect&gt;(IDataLimiter&lt;TDataModel&gt;, IDataProjection&lt;TDataModel, TSelect&gt;)</a>
+    </div>
+    <div>
+      <a class="xref" href="E5R.Architecture.Data.EntityFrameworkCore.FullStorage-2.html#E5R_Architecture_Data_EntityFrameworkCore_FullStorage_2_Search__1_E5R_Architecture_Data_Abstractions_IDataFilter__1__E5R_Architecture_Data_Abstractions_IDataProjection__1___0__">FullStorage&lt;DbContext, TDataModel&gt;.Search&lt;TSelect&gt;(IDataFilter&lt;TDataModel&gt;, IDataProjection&lt;TDataModel, TSelect&gt;)</a>
+    </div>
+    <div>
+      <a class="xref" href="E5R.Architecture.Data.EntityFrameworkCore.FullStorage-2.html#E5R_Architecture_Data_EntityFrameworkCore_FullStorage_2_LimitedSearch__1_E5R_Architecture_Data_Abstractions_IDataFilter__1__E5R_Architecture_Data_Abstractions_IDataLimiter__1__E5R_Architecture_Data_Abstractions_IDataProjection__1___0__">FullStorage&lt;DbContext, TDataModel&gt;.LimitedSearch&lt;TSelect&gt;(IDataFilter&lt;TDataModel&gt;, IDataLimiter&lt;TDataModel&gt;, IDataProjection&lt;TDataModel, TSelect&gt;)</a>
+    </div>
+    <div>
+      <a class="xref" href="E5R.Architecture.Data.EntityFrameworkCore.FullStorage-2.html#E5R_Architecture_Data_EntityFrameworkCore_FullStorage_2_GetAll__2_E5R_Architecture_Data_Abstractions_IDataProjection__1___0___1__">FullStorage&lt;DbContext, TDataModel&gt;.GetAll&lt;TGroup, TSelect&gt;(IDataProjection&lt;TDataModel, TGroup, TSelect&gt;)</a>
+    </div>
+    <div>
+      <a class="xref" href="E5R.Architecture.Data.EntityFrameworkCore.FullStorage-2.html#E5R_Architecture_Data_EntityFrameworkCore_FullStorage_2_LimitedGet__2_E5R_Architecture_Data_Abstractions_IDataLimiter__1__E5R_Architecture_Data_Abstractions_IDataProjection__1___0___1__">FullStorage&lt;DbContext, TDataModel&gt;.LimitedGet&lt;TGroup, TSelect&gt;(IDataLimiter&lt;TDataModel&gt;, IDataProjection&lt;TDataModel, TGroup, TSelect&gt;)</a>
+    </div>
+    <div>
+      <a class="xref" href="E5R.Architecture.Data.EntityFrameworkCore.FullStorage-2.html#E5R_Architecture_Data_EntityFrameworkCore_FullStorage_2_Search__2_E5R_Architecture_Data_Abstractions_IDataFilter__1__E5R_Architecture_Data_Abstractions_IDataProjection__1___0___1__">FullStorage&lt;DbContext, TDataModel&gt;.Search&lt;TGroup, TSelect&gt;(IDataFilter&lt;TDataModel&gt;, IDataProjection&lt;TDataModel, TGroup, TSelect&gt;)</a>
+    </div>
+    <div>
+      <a class="xref" href="E5R.Architecture.Data.EntityFrameworkCore.FullStorage-2.html#E5R_Architecture_Data_EntityFrameworkCore_FullStorage_2_LimitedSearch__2_E5R_Architecture_Data_Abstractions_IDataFilter__1__E5R_Architecture_Data_Abstractions_IDataLimiter__1__E5R_Architecture_Data_Abstractions_IDataProjection__1___0___1__">FullStorage&lt;DbContext, TDataModel&gt;.LimitedSearch&lt;TGroup, TSelect&gt;(IDataFilter&lt;TDataModel&gt;, IDataLimiter&lt;TDataModel&gt;, IDataProjection&lt;TDataModel, TGroup, TSelect&gt;)</a>
+    </div>
+    <div>
+      <a class="xref" href="E5R.Architecture.Data.EntityFrameworkCore.FullStorage-2.html#E5R_Architecture_Data_EntityFrameworkCore_FullStorage_2_Create__1_">FullStorage&lt;DbContext, TDataModel&gt;.Create(TDataModel)</a>
+    </div>
+    <div>
+      <a class="xref" href="E5R.Architecture.Data.EntityFrameworkCore.FullStorage-2.html#E5R_Architecture_Data_EntityFrameworkCore_FullStorage_2_Replace__1_">FullStorage&lt;DbContext, TDataModel&gt;.Replace(TDataModel)</a>
+    </div>
+    <div>
+      <a class="xref" href="E5R.Architecture.Data.EntityFrameworkCore.FullStorage-2.html#E5R_Architecture_Data_EntityFrameworkCore_FullStorage_2_Remove__1_">FullStorage&lt;DbContext, TDataModel&gt;.Remove(TDataModel)</a>
+    </div>
+    <div>
+      <a class="xref" href="E5R.Architecture.Data.EntityFrameworkCore.FullStorage-2.html#E5R_Architecture_Data_EntityFrameworkCore_FullStorage_2_BulkCreate_IEnumerable__1__">FullStorage&lt;DbContext, TDataModel&gt;.BulkCreate(IEnumerable&lt;TDataModel&gt;)</a>
+    </div>
+    <div>
+      <a class="xref" href="E5R.Architecture.Data.EntityFrameworkCore.FullStorage-2.html#E5R_Architecture_Data_EntityFrameworkCore_FullStorage_2_BulkReplace_IEnumerable__1__">FullStorage&lt;DbContext, TDataModel&gt;.BulkReplace(IEnumerable&lt;TDataModel&gt;)</a>
+    </div>
+    <div>
+      <a class="xref" href="E5R.Architecture.Data.EntityFrameworkCore.FullStorage-2.html#E5R_Architecture_Data_EntityFrameworkCore_FullStorage_2_BulkRemove_IEnumerable__1__">FullStorage&lt;DbContext, TDataModel&gt;.BulkRemove(IEnumerable&lt;TDataModel&gt;)</a>
+    </div>
+    <div>
+      <a class="xref" href="E5R.Architecture.Data.EntityFrameworkCore.FullStorage-2.html#E5R_Architecture_Data_EntityFrameworkCore_FullStorage_2_BulkRemove_E5R_Architecture_Data_Abstractions_IDataFilter__1__">FullStorage&lt;DbContext, TDataModel&gt;.BulkRemove(IDataFilter&lt;TDataModel&gt;)</a>
+    </div>
+    <div>
+      <a class="xref" href="E5R.Architecture.Data.EntityFrameworkCore.StorageBase-1.html#E5R_Architecture_Data_EntityFrameworkCore_StorageBase_1_QueryFind_IEntityType_IQueryable__0__System_Object___E5R_Architecture_Data_Abstractions_IDataIncludes_">StorageBase&lt;TDataModel&gt;.QueryFind(IEntityType, IQueryable&lt;TDataModel&gt;, Object[], IDataIncludes)</a>
+    </div>
+    <div>
+      <a class="xref" href="E5R.Architecture.Data.EntityFrameworkCore.StorageBase-1.html#E5R_Architecture_Data_EntityFrameworkCore_StorageBase_1_QuerySearch_IQueryable__0__E5R_Architecture_Data_Abstractions_IDataFilter__0__E5R_Architecture_Data_Abstractions_IDataIncludes_">StorageBase&lt;TDataModel&gt;.QuerySearch(IQueryable&lt;TDataModel&gt;, IDataFilter&lt;TDataModel&gt;, IDataIncludes)</a>
+    </div>
+    <div>
+      <a class="xref" href="E5R.Architecture.Data.EntityFrameworkCore.StorageBase-1.html#E5R_Architecture_Data_EntityFrameworkCore_StorageBase_1_QueryPreLimitResult_IQueryable__0__E5R_Architecture_Data_Abstractions_IDataLimiter__0__E5R_Architecture_Data_Abstractions_IDataIncludes_">StorageBase&lt;TDataModel&gt;.QueryPreLimitResult(IQueryable&lt;TDataModel&gt;, IDataLimiter&lt;TDataModel&gt;, IDataIncludes)</a>
+    </div>
+    <div>
+      <a class="xref" href="E5R.Architecture.Data.EntityFrameworkCore.StorageBase-1.html#E5R_Architecture_Data_EntityFrameworkCore_StorageBase_1_TryApplyIncludes_IQueryable__0__E5R_Architecture_Data_Abstractions_IDataIncludes_">StorageBase&lt;TDataModel&gt;.TryApplyIncludes(IQueryable&lt;TDataModel&gt;, IDataIncludes)</a>
+    </div>
+  </div>
+  <h6><strong>Namespace</strong>: <a class="xref" href="E5R.Architecture.Data.EntityFrameworkCore.Strategy.ByProperty.html">E5R.Architecture.Data.EntityFrameworkCore.Strategy.ByProperty</a></h6>
+  <h6><strong>Assembly</strong>: E5R.Architecture.Data.EntityFrameworkCore.dll</h6>
+  <h5 id="E5R_Architecture_Data_EntityFrameworkCore_Strategy_ByProperty_StorageBulkWriter_1_syntax">Syntax</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public class StorageBulkWriter&lt;TDataModel&gt; : StorageBulkWriter&lt;DbContext, TDataModel&gt;, IStorageBulkWriter&lt;DbContext, TDataModel&gt;, IRepositoryBulkWriter&lt;DbContext, TDataModel&gt;, IRepositoryBulkWriter&lt;TDataModel&gt;, IStoreBulkWriter&lt;DbContext, TDataModel&gt;, IStoreBulkWriter&lt;TDataModel&gt;, IStorageBulkWriter&lt;TDataModel&gt;, IStorageSignature where TDataModel : class, IDataModel</code></pre>
+  </div>
+  <h5 class="typeParameters">Type Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="parametername">TDataModel</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h3 id="constructors">Constructors
+  </h3>
+  <a id="E5R_Architecture_Data_EntityFrameworkCore_Strategy_ByProperty_StorageBulkWriter_1__ctor_" data-uid="E5R.Architecture.Data.EntityFrameworkCore.Strategy.ByProperty.StorageBulkWriter`1.#ctor*"></a>
+  <h4 id="E5R_Architecture_Data_EntityFrameworkCore_Strategy_ByProperty_StorageBulkWriter_1__ctor_UnitOfWorkProperty_DbContext__" data-uid="E5R.Architecture.Data.EntityFrameworkCore.Strategy.ByProperty.StorageBulkWriter`1.#ctor(UnitOfWorkProperty{DbContext})">StorageBulkWriter(UnitOfWorkProperty&lt;DbContext&gt;)</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public StorageBulkWriter(UnitOfWorkProperty&lt;DbContext&gt; context)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">UnitOfWorkProperty</span>&lt;<span class="xref">DbContext</span>&gt;</td>
+        <td><span class="parametername">context</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h3 id="implements">Implements</h3>
+  <div>
+      <a class="xref" href="E5R.Architecture.Data.Abstractions.IStorageBulkWriter-2.html">IStorageBulkWriter&lt;TUowProperty, TDataModel&gt;</a>
+  </div>
+  <div>
+      <a class="xref" href="E5R.Architecture.Data.Abstractions.Alias.IRepositoryBulkWriter-2.html">IRepositoryBulkWriter&lt;TUowProperty, TDataModel&gt;</a>
+  </div>
+  <div>
+      <a class="xref" href="E5R.Architecture.Data.Abstractions.Alias.IRepositoryBulkWriter-1.html">IRepositoryBulkWriter&lt;TDataModel&gt;</a>
+  </div>
+  <div>
+      <a class="xref" href="E5R.Architecture.Data.Abstractions.Alias.IStoreBulkWriter-2.html">IStoreBulkWriter&lt;TUowProperty, TDataModel&gt;</a>
+  </div>
+  <div>
+      <a class="xref" href="E5R.Architecture.Data.Abstractions.Alias.IStoreBulkWriter-1.html">IStoreBulkWriter&lt;TDataModel&gt;</a>
+  </div>
+  <div>
+      <a class="xref" href="E5R.Architecture.Data.Abstractions.IStorageBulkWriter-1.html">IStorageBulkWriter&lt;TDataModel&gt;</a>
+  </div>
+  <div>
+      <a class="xref" href="E5R.Architecture.Data.Abstractions.IStorageSignature.html">IStorageSignature</a>
+  </div>
+</article>
+          </div>
+          
+          <div class="hidden-sm col-md-2" role="complementary">
+            <div class="sideaffix">
+              <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">
+                <h5>In This Article</h5>
+                <div></div>
+              </nav>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <footer>
+        <div class="grad-bottom"></div>
+        <div class="footer">
+          <div class="container">
+            <span class="pull-right">
+              <a href="#top">Back to top</a>
+            </span>
+            Copyright (c) 2020 E5R Development Team
+            
+          </div>
+        </div>
+      </footer>
+    </div>
+    
+    <script type="text/javascript" src="../styles/docfx.vendor.js"></script>
+    <script type="text/javascript" src="../styles/docfx.js"></script>
+    <script type="text/javascript" src="../styles/main.js"></script>
+  </body>
+</html>
