@@ -45,4 +45,5 @@ jobs:
         cd .docs-live
         git add .
         git commit -m "$SUBJECT" -m "Original commit: $COMMIT_HASH"
-        git -c http.extraheader="AUTHORIZATION: token $DOC_PAT_TOKEN" push origin HEAD:master
+        git remote set-url origin https://erlimar:$DOC_PAT_TOKEN@github.com/e5r/E5R.Architecture.Docs.git
+        git push origin HEAD:master
