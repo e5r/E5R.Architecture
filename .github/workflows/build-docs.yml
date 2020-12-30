@@ -42,8 +42,7 @@ jobs:
         export GIT_AUTHOR_EMAIL=$(git show -s --format='%ae')
         export COMMIT_HASH=$(git show -s --format='%H')
         export SUBJECT=$(git show -s --format='%s')
-        header=$(echo -n "ad-m:$" | base64)
         cd .docs-live
         git add .
         git commit -m "$SUBJECT" -m "Original commit: $COMMIT_HASH"
-        git -c http.extraheader="AUTHORIZATION: basic $header" push origin HEAD:master
+        git -c http.extraheader="AUTHORIZATION: basic $DOC_PAT_TOKEN" push origin HEAD:master
