@@ -45,4 +45,4 @@ jobs:
         cd .docs-live
         git add .
         git commit -m "$SUBJECT" -m "Original commit: $COMMIT_HASH"
-        git -c http.extraheader="AUTHORIZATION: basic $DOC_PAT_TOKEN" push origin HEAD:master
+        git -c http.extraheader="AUTHORIZATION: token $DOC_PAT_TOKEN" push origin HEAD:master
