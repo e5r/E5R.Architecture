@@ -25,12 +25,14 @@ jobs:
         unzip -d .docfx docfx.zip
     - name: Build docs
       run:  mono .docfx/docfx.exe docs/docfx.json
-    - name: Show E5R.Architecture.Docs
-      run: ls -lha .docs-live/*
+    - name: Show E5R.Architecture.Docs (ANTES)
+      run: ls -lhR .docs-live/*
     - name: Clear E5R.Architecture.Docs docs/
       run: rm -rf .docs-live/docs/*
     - name: Copy docs/_site to E5R.Architecture.Docs docs/
       run: cp -rf docs/_site/* .docs-live/docs/
+    - name: Show E5R.Architecture.Docs (DEPOIS)
+      run: ls -lhR .docs-live/*
     - name: Commit and push to E5R.Architecture.Docs
       if: (github.event_name == 'push' || github.event_name == 'repository_dispatch') && github.repository == 'e5r/E5R.Architecture' && github.ref == 'refs/heads/develop'
       run: |
