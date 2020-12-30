@@ -25,8 +25,8 @@ jobs:
         unzip -d .docfx docfx.zip
     - name: Build docs
       run:  mono .docfx/docfx.exe docs/docfx.json
-    - name: Tree E5R.Architecture.Docs
-      run: tree .docs-live/*
+    - name: Show E5R.Architecture.Docs
+      run: ls -lha .docs-live/*
     - name: Clear E5R.Architecture.Docs docs/
       run: rm -rf .docs-live/docs/*
     - name: Copy docs/_site to E5R.Architecture.Docs docs/
