@@ -15,10 +15,12 @@ jobs:
       with:
         fetch-depth: 1
     - name: Checkout E5R.Architecture.Docs
-      uses: actions/checkout@v2
-      with:
-        repository: e5r/E5R.Architecture.Docs
-        path: .docs-live
+      # uses: actions/checkout@v2
+      # with:
+      #   repository: e5r/E5R.Architecture.Docs
+      #   path: .docs-live
+      run: |
+        git clone https://erlimar:$DOC_PAT_TOKEN@github.com/e5r/E5R.Architecture.Docs .docs-live
     - name: Get docfx
       run: |
         curl -L https://github.com/dotnet/docfx/releases/latest/download/docfx.zip -o docfx.zip
@@ -45,5 +47,5 @@ jobs:
         cd .docs-live
         git add .
         git commit -m "$SUBJECT" -m "Original commit: $COMMIT_HASH"
-        git remote set-url origin https://erlimar:$DOC_PAT_TOKEN@github.com/e5r/E5R.Architecture.Docs.git
+        # git remote set-url origin https://erlimar:$DOC_PAT_TOKEN@github.com/e5r/E5R.Architecture.Docs.git
         git push origin HEAD:master
