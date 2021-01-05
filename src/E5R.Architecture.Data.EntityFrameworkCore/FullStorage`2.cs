@@ -285,6 +285,16 @@ namespace E5R.Architecture.Data.EntityFrameworkCore
             Context.SaveChanges();
         }
 
+        public TDataModel Update<TUpdated>(object identifier, TUpdated updated)
+        {
+            throw new NotImplementedException();
+        }
+
+        public TDataModel Update<TUpdated>(object[] identifiers, TUpdated updated)
+        {
+            throw new NotImplementedException();
+        }
+
         #endregion
 
         #region IBulkStorageWriter
@@ -343,6 +353,7 @@ namespace E5R.Architecture.Data.EntityFrameworkCore
 
         public IEnumerable<TDataModel> BulkUpdate<TUpdated>(IDataFilter<TDataModel> filter, TUpdated updated)
         {
+            throw new NotImplementedException();
         }
 
         #endregion
