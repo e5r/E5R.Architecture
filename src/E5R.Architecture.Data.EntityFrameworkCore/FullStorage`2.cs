@@ -339,24 +339,10 @@ namespace E5R.Architecture.Data.EntityFrameworkCore
         }
 
         public void BulkRemove(IDataFilter<TDataModel> filter)
+            => BulkRemove(QuerySearch(Query, filter, null));
+
+        public IEnumerable<TDataModel> BulkUpdate<TUpdated>(IDataFilter<TDataModel> filter, TUpdated updated)
         {
-            Checker.NotNullArgument(filter, nameof(filter));
-
-            // TODO: Implementar validação
-
-            // TODO: Refatorar com [StorageReader/QuerySearch]
-            var filterList = filter.GetFilter();
-
-            Checker.NotNullObject(filterList, $"filter.{nameof(filter.GetFilter)}()");
-
-            var search = filterList.Aggregate(Query, (q, w) => q.Where(w));
-
-            foreach (var d in search)
-            {
-                Write(d, node => node.Entry.State = EntityState.Deleted);
-            }
-
-            Context.SaveChanges();
         }
 
         #endregion
