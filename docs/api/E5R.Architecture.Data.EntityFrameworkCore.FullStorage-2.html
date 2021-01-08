@@ -103,6 +103,9 @@
     <div>
       <a class="xref" href="E5R.Architecture.Data.EntityFrameworkCore.StorageBase-1.html#E5R_Architecture_Data_EntityFrameworkCore_StorageBase_1_TryApplyIncludes_IQueryable__0__E5R_Architecture_Data_Abstractions_IDataIncludes_">StorageBase&lt;TDataModel&gt;.TryApplyIncludes(IQueryable&lt;TDataModel&gt;, IDataIncludes)</a>
     </div>
+    <div>
+      <a class="xref" href="E5R.Architecture.Data.EntityFrameworkCore.StorageBase-1.html#E5R_Architecture_Data_EntityFrameworkCore_StorageBase_1_CopyProperties__2___0___1_">StorageBase&lt;TDataModel&gt;.CopyProperties&lt;TFrom, TTo&gt;(TFrom, TTo)</a>
+    </div>
   </div>
   <h6><strong>Namespace</strong>: <a class="xref" href="E5R.Architecture.Data.EntityFrameworkCore.html">E5R.Architecture.Data.EntityFrameworkCore</a></h6>
   <h6><strong>Assembly</strong>: E5R.Architecture.Data.EntityFrameworkCore.dll</h6>
@@ -223,29 +226,6 @@
     <tbody>
       <tr>
         <td><span class="xref">DbSet</span>&lt;TDataModel&gt;</td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
-  <a id="E5R_Architecture_Data_EntityFrameworkCore_FullStorage_2_Write_" data-uid="E5R.Architecture.Data.EntityFrameworkCore.FullStorage`2.Write*"></a>
-  <h4 id="E5R_Architecture_Data_EntityFrameworkCore_FullStorage_2_Write" data-uid="E5R.Architecture.Data.EntityFrameworkCore.FullStorage`2.Write">Write</h4>
-  <div class="markdown level1 summary"></div>
-  <div class="markdown level1 conceptual"></div>
-  <h5 class="decalaration">Declaration</h5>
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">protected WriterDelegate Write { get; }</code></pre>
-  </div>
-  <h5 class="propertyValue">Property Value</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="E5R.Architecture.Data.EntityFrameworkCore.WriterDelegate.html">WriterDelegate</a></td>
         <td></td>
       </tr>
     </tbody>
@@ -378,6 +358,126 @@
     <tbody>
       <tr>
         <td><span class="xref">IEnumerable</span>&lt;TDataModel&gt;</td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <a id="E5R_Architecture_Data_EntityFrameworkCore_FullStorage_2_BulkUpdate_" data-uid="E5R.Architecture.Data.EntityFrameworkCore.FullStorage`2.BulkUpdate*"></a>
+  <h4 id="E5R_Architecture_Data_EntityFrameworkCore_FullStorage_2_BulkUpdate__1_E5R_Architecture_Data_Abstractions_IDataFilter__1____0_" data-uid="E5R.Architecture.Data.EntityFrameworkCore.FullStorage`2.BulkUpdate``1(E5R.Architecture.Data.Abstractions.IDataFilter{`1},``0)">BulkUpdate&lt;TUpdated&gt;(IDataFilter&lt;TDataModel&gt;, TUpdated)</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public IEnumerable&lt;TDataModel&gt; BulkUpdate&lt;TUpdated&gt;(IDataFilter&lt;TDataModel&gt; filter, TUpdated updated)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="E5R.Architecture.Data.Abstractions.IDataFilter-1.html">IDataFilter</a>&lt;TDataModel&gt;</td>
+        <td><span class="parametername">filter</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="xref">TUpdated</span></td>
+        <td><span class="parametername">updated</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">IEnumerable</span>&lt;TDataModel&gt;</td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="typeParameters">Type Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="parametername">TUpdated</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <a id="E5R_Architecture_Data_EntityFrameworkCore_FullStorage_2_BulkUpdate_" data-uid="E5R.Architecture.Data.EntityFrameworkCore.FullStorage`2.BulkUpdate*"></a>
+  <h4 id="E5R_Architecture_Data_EntityFrameworkCore_FullStorage_2_BulkUpdate__1_E5R_Architecture_Data_Abstractions_IDataFilter__1__Expression_Func__1___0___" data-uid="E5R.Architecture.Data.EntityFrameworkCore.FullStorage`2.BulkUpdate``1(E5R.Architecture.Data.Abstractions.IDataFilter{`1},Expression{Func{`1,``0}})">BulkUpdate&lt;TUpdated&gt;(IDataFilter&lt;TDataModel&gt;, Expression&lt;Func&lt;TDataModel, TUpdated&gt;&gt;)</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public IEnumerable&lt;TDataModel&gt; BulkUpdate&lt;TUpdated&gt;(IDataFilter&lt;TDataModel&gt; filter, Expression&lt;Func&lt;TDataModel, TUpdated&gt;&gt; updateExpression)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="E5R.Architecture.Data.Abstractions.IDataFilter-1.html">IDataFilter</a>&lt;TDataModel&gt;</td>
+        <td><span class="parametername">filter</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="xref">Expression</span>&lt;<span class="xref">Func</span>&lt;TDataModel, TUpdated&gt;&gt;</td>
+        <td><span class="parametername">updateExpression</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">IEnumerable</span>&lt;TDataModel&gt;</td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="typeParameters">Type Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="parametername">TUpdated</span></td>
         <td></td>
       </tr>
     </tbody>
@@ -1474,6 +1574,246 @@
       </tr>
       <tr>
         <td><span class="parametername">TSelect</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <a id="E5R_Architecture_Data_EntityFrameworkCore_FullStorage_2_Update_" data-uid="E5R.Architecture.Data.EntityFrameworkCore.FullStorage`2.Update*"></a>
+  <h4 id="E5R_Architecture_Data_EntityFrameworkCore_FullStorage_2_Update__1_System_Object___0_" data-uid="E5R.Architecture.Data.EntityFrameworkCore.FullStorage`2.Update``1(System.Object,``0)">Update&lt;TUpdated&gt;(Object, TUpdated)</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public TDataModel Update&lt;TUpdated&gt;(object identifier, TUpdated updated)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Object</span></td>
+        <td><span class="parametername">identifier</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="xref">TUpdated</span></td>
+        <td><span class="parametername">updated</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">TDataModel</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="typeParameters">Type Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="parametername">TUpdated</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <a id="E5R_Architecture_Data_EntityFrameworkCore_FullStorage_2_Update_" data-uid="E5R.Architecture.Data.EntityFrameworkCore.FullStorage`2.Update*"></a>
+  <h4 id="E5R_Architecture_Data_EntityFrameworkCore_FullStorage_2_Update__1_System_Object_Expression_Func__1___0___" data-uid="E5R.Architecture.Data.EntityFrameworkCore.FullStorage`2.Update``1(System.Object,Expression{Func{`1,``0}})">Update&lt;TUpdated&gt;(Object, Expression&lt;Func&lt;TDataModel, TUpdated&gt;&gt;)</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public TDataModel Update&lt;TUpdated&gt;(object identifier, Expression&lt;Func&lt;TDataModel, TUpdated&gt;&gt; updateExpression)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Object</span></td>
+        <td><span class="parametername">identifier</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="xref">Expression</span>&lt;<span class="xref">Func</span>&lt;TDataModel, TUpdated&gt;&gt;</td>
+        <td><span class="parametername">updateExpression</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">TDataModel</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="typeParameters">Type Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="parametername">TUpdated</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <a id="E5R_Architecture_Data_EntityFrameworkCore_FullStorage_2_Update_" data-uid="E5R.Architecture.Data.EntityFrameworkCore.FullStorage`2.Update*"></a>
+  <h4 id="E5R_Architecture_Data_EntityFrameworkCore_FullStorage_2_Update__1_System_Object_____0_" data-uid="E5R.Architecture.Data.EntityFrameworkCore.FullStorage`2.Update``1(System.Object[],``0)">Update&lt;TUpdated&gt;(Object[], TUpdated)</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public TDataModel Update&lt;TUpdated&gt;(object[] identifiers, TUpdated updated)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Object</span>[]</td>
+        <td><span class="parametername">identifiers</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="xref">TUpdated</span></td>
+        <td><span class="parametername">updated</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">TDataModel</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="typeParameters">Type Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="parametername">TUpdated</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <a id="E5R_Architecture_Data_EntityFrameworkCore_FullStorage_2_Update_" data-uid="E5R.Architecture.Data.EntityFrameworkCore.FullStorage`2.Update*"></a>
+  <h4 id="E5R_Architecture_Data_EntityFrameworkCore_FullStorage_2_Update__1_System_Object___Expression_Func__1___0___" data-uid="E5R.Architecture.Data.EntityFrameworkCore.FullStorage`2.Update``1(System.Object[],Expression{Func{`1,``0}})">Update&lt;TUpdated&gt;(Object[], Expression&lt;Func&lt;TDataModel, TUpdated&gt;&gt;)</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public TDataModel Update&lt;TUpdated&gt;(object[] identifiers, Expression&lt;Func&lt;TDataModel, TUpdated&gt;&gt; updateExpression)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Object</span>[]</td>
+        <td><span class="parametername">identifiers</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="xref">Expression</span>&lt;<span class="xref">Func</span>&lt;TDataModel, TUpdated&gt;&gt;</td>
+        <td><span class="parametername">updateExpression</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">TDataModel</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="typeParameters">Type Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="parametername">TUpdated</span></td>
         <td></td>
       </tr>
     </tbody>

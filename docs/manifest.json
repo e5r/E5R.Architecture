@@ -297,7 +297,7 @@
       "output": {
         ".html": {
           "relative_path": "api/E5R.Architecture.Data.Abstractions.Alias.IRepository-1.html",
-          "hash": "vRyTqyMC3DmDoTUYpxOWkw=="
+          "hash": "AsNbp3eViDpWDvi2RgDEvQ=="
         }
       },
       "is_incremental": false,
@@ -309,7 +309,7 @@
       "output": {
         ".html": {
           "relative_path": "api/E5R.Architecture.Data.Abstractions.Alias.IRepository-2.html",
-          "hash": "eJ1fTLp8HV7cIpiKGUvfVw=="
+          "hash": "s/SLbr+F2YBLmKhXvsRklg=="
         }
       },
       "is_incremental": false,
@@ -321,7 +321,7 @@
       "output": {
         ".html": {
           "relative_path": "api/E5R.Architecture.Data.Abstractions.Alias.IRepositoryBulkWriter-1.html",
-          "hash": "F3l0ro9dgJsSy7h7NptnIw=="
+          "hash": "nu21xZLClk9D0dG4FUqtFQ=="
         }
       },
       "is_incremental": false,
@@ -333,7 +333,7 @@
       "output": {
         ".html": {
           "relative_path": "api/E5R.Architecture.Data.Abstractions.Alias.IRepositoryBulkWriter-2.html",
-          "hash": "d6L9QOU8OCTq6xYBdor/RQ=="
+          "hash": "cGdVB1QITLBRICmvX0CwhQ=="
         }
       },
       "is_incremental": false,
@@ -369,7 +369,7 @@
       "output": {
         ".html": {
           "relative_path": "api/E5R.Architecture.Data.Abstractions.Alias.IRepositoryWriter-1.html",
-          "hash": "O+WSyLJy3KsrxdDqiRjPGg=="
+          "hash": "W3Gu0xxRM3WJT7qpYWKZSA=="
         }
       },
       "is_incremental": false,
@@ -381,7 +381,7 @@
       "output": {
         ".html": {
           "relative_path": "api/E5R.Architecture.Data.Abstractions.Alias.IRepositoryWriter-2.html",
-          "hash": "6rl+VQqzsm3YN3hmZvXL1Q=="
+          "hash": "htlYfgfMqSuDR95kjYY3KA=="
         }
       },
       "is_incremental": false,
@@ -393,7 +393,7 @@
       "output": {
         ".html": {
           "relative_path": "api/E5R.Architecture.Data.Abstractions.Alias.IStore-1.html",
-          "hash": "RspZShIiCXwaJklAZdYs4Q=="
+          "hash": "PtJmlu8w6ggY+eh57TUCgA=="
         }
       },
       "is_incremental": false,
@@ -405,7 +405,7 @@
       "output": {
         ".html": {
           "relative_path": "api/E5R.Architecture.Data.Abstractions.Alias.IStore-2.html",
-          "hash": "Ez69dNVT+xoNaL94yr7YLg=="
+          "hash": "XyS8SPVeZ3FXYnh06PbYFQ=="
         }
       },
       "is_incremental": false,
@@ -417,7 +417,7 @@
       "output": {
         ".html": {
           "relative_path": "api/E5R.Architecture.Data.Abstractions.Alias.IStoreBulkWriter-1.html",
-          "hash": "3N0URIZhuQ6+wwDbm3Ip/w=="
+          "hash": "KjH86/mxgiMzz/YQ/BGvMw=="
         }
       },
       "is_incremental": false,
@@ -429,7 +429,7 @@
       "output": {
         ".html": {
           "relative_path": "api/E5R.Architecture.Data.Abstractions.Alias.IStoreBulkWriter-2.html",
-          "hash": "ethD1HpFA/7VgmcZfYaO7A=="
+          "hash": "GGuIvLXz6v7vxBR45Drx8Q=="
         }
       },
       "is_incremental": false,
@@ -465,7 +465,7 @@
       "output": {
         ".html": {
           "relative_path": "api/E5R.Architecture.Data.Abstractions.Alias.IStoreWriter-1.html",
-          "hash": "uBMG7scYQCjYvC90BFfLow=="
+          "hash": "z43khWFw9HAOdk8fRUjYAA=="
         }
       },
       "is_incremental": false,
@@ -477,7 +477,7 @@
       "output": {
         ".html": {
           "relative_path": "api/E5R.Architecture.Data.Abstractions.Alias.IStoreWriter-2.html",
-          "hash": "c+VE4w4+xKCoBL8+Myipag=="
+          "hash": "TtISpL+HNVuRIvFuhjhLFw=="
         }
       },
       "is_incremental": false,
@@ -621,7 +621,7 @@
       "output": {
         ".html": {
           "relative_path": "api/E5R.Architecture.Data.Abstractions.IStorage-1.html",
-          "hash": "kzP4qsjCvTtl/uUxH61Ckg=="
+          "hash": "4Bo3q7cYEXz1RcBYZ6eysQ=="
         }
       },
       "is_incremental": false,
@@ -633,7 +633,7 @@
       "output": {
         ".html": {
           "relative_path": "api/E5R.Architecture.Data.Abstractions.IStorage-2.html",
-          "hash": "oxFQ4GlAzFl+SZjOsfvBmg=="
+          "hash": "r18jS7uhguV0dkjFRlXzcQ=="
         }
       },
       "is_incremental": false,
@@ -645,7 +645,7 @@
       "output": {
         ".html": {
           "relative_path": "api/E5R.Architecture.Data.Abstractions.IStorageBulkWriter-1.html",
-          "hash": "DJorcGpdju49NImn4A6UUQ=="
+          "hash": "fy6BO8mFoDvo6JbSnt3x/w=="
         }
       },
       "is_incremental": false,
@@ -657,7 +657,7 @@
       "output": {
         ".html": {
           "relative_path": "api/E5R.Architecture.Data.Abstractions.IStorageBulkWriter-2.html",
-          "hash": "RgE+08wQPIs85EPlDH78IA=="
+          "hash": "cU/n6KmI8npA9FRv5EgvXA=="
         }
       },
       "is_incremental": false,
@@ -717,7 +717,7 @@
       "output": {
         ".html": {
           "relative_path": "api/E5R.Architecture.Data.Abstractions.IStorageWriter-1.html",
-          "hash": "ahyRma9kdC6STkoZK+qCYQ=="
+          "hash": "KllMZpxPrL3dGz7PN32JSA=="
         }
       },
       "is_incremental": false,
@@ -729,7 +729,7 @@
       "output": {
         ".html": {
           "relative_path": "api/E5R.Architecture.Data.Abstractions.IStorageWriter-2.html",
-          "hash": "eBopmazWaTanxItd5qsLjw=="
+          "hash": "vNVivfcE/V9jWYuPOznCfQ=="
         }
       },
       "is_incremental": false,
@@ -945,7 +945,7 @@
       "output": {
         ".html": {
           "relative_path": "api/E5R.Architecture.Data.EntityFrameworkCore.Alias.RawSqlRideRepository-1.html",
-          "hash": "0v4uj7E5ll56d6CnBbHv5Q=="
+          "hash": "uHeMcV5/GSPwtoxOpT9vEg=="
         }
       },
       "is_incremental": false,
@@ -957,7 +957,7 @@
       "output": {
         ".html": {
           "relative_path": "api/E5R.Architecture.Data.EntityFrameworkCore.Alias.RawSqlRideStore-1.html",
-          "hash": "FwK8Y2gjTXCHlJEp9DGZUg=="
+          "hash": "ctxKYnLmtIZ7cIBoYxK0jA=="
         }
       },
       "is_incremental": false,
@@ -969,7 +969,7 @@
       "output": {
         ".html": {
           "relative_path": "api/E5R.Architecture.Data.EntityFrameworkCore.Alias.RideRepository-1.html",
-          "hash": "f7FyqGlRnu5ksLqGX00ELQ=="
+          "hash": "4Do2DYes4Kav2iC6zvJHbA=="
         }
       },
       "is_incremental": false,
@@ -981,7 +981,7 @@
       "output": {
         ".html": {
           "relative_path": "api/E5R.Architecture.Data.EntityFrameworkCore.Alias.RideStore-1.html",
-          "hash": "fkSPI143AaXxqDRHD2DF8g=="
+          "hash": "UoOUqxiSDTaChusYfbmACQ=="
         }
       },
       "is_incremental": false,
@@ -1005,7 +1005,7 @@
       "output": {
         ".html": {
           "relative_path": "api/E5R.Architecture.Data.EntityFrameworkCore.FullStorage-2.html",
-          "hash": "up/v5eyBuJqLlVFVh1tgpg=="
+          "hash": "xe/fV8tIeRKUWRAAzKdrfQ=="
         }
       },
       "is_incremental": false,
@@ -1017,7 +1017,7 @@
       "output": {
         ".html": {
           "relative_path": "api/E5R.Architecture.Data.EntityFrameworkCore.RawSqlRideStorage-1.html",
-          "hash": "Ti63QCwqNuildxnB0/dcmQ=="
+          "hash": "h8qOMrBt8H1qOR231tv3Rg=="
         }
       },
       "is_incremental": false,
@@ -1029,7 +1029,7 @@
       "output": {
         ".html": {
           "relative_path": "api/E5R.Architecture.Data.EntityFrameworkCore.RideStorage-1.html",
-          "hash": "fnE4QfpJjIa0DeqBv3ZAlA=="
+          "hash": "6VcKsmC67CdtDbec0Hf7tQ=="
         }
       },
       "is_incremental": false,
@@ -1041,7 +1041,7 @@
       "output": {
         ".html": {
           "relative_path": "api/E5R.Architecture.Data.EntityFrameworkCore.StorageBase-1.html",
-          "hash": "qzyyOzrixFa84J3fn9JfZw=="
+          "hash": "iJI8Rnim+UO2vY7ZeDA+Bg=="
         }
       },
       "is_incremental": false,
@@ -1053,7 +1053,7 @@
       "output": {
         ".html": {
           "relative_path": "api/E5R.Architecture.Data.EntityFrameworkCore.Strategy.ByProperty.Storage-1.html",
-          "hash": "fI+MDsF9ud6KG8c5zOXHpg=="
+          "hash": "t3l02woCwxSR7wsk8bpPhg=="
         }
       },
       "is_incremental": false,
@@ -1065,7 +1065,7 @@
       "output": {
         ".html": {
           "relative_path": "api/E5R.Architecture.Data.EntityFrameworkCore.Strategy.ByProperty.Storage-2.html",
-          "hash": "hIfk0Kc4P00/nQusjHVlWg=="
+          "hash": "fEJxVTTA3nI7z6hhpCKdBQ=="
         }
       },
       "is_incremental": false,
@@ -1077,7 +1077,7 @@
       "output": {
         ".html": {
           "relative_path": "api/E5R.Architecture.Data.EntityFrameworkCore.Strategy.ByProperty.StorageBulkWriter-1.html",
-          "hash": "QCnHIObZjA6WGitraC8HrA=="
+          "hash": "KtaUniU+FXDvhYWV/Olhig=="
         }
       },
       "is_incremental": false,
@@ -1089,7 +1089,7 @@
       "output": {
         ".html": {
           "relative_path": "api/E5R.Architecture.Data.EntityFrameworkCore.Strategy.ByProperty.StorageBulkWriter-2.html",
-          "hash": "5tqqINR5ZM2KRTedQPo+JQ=="
+          "hash": "MgBb0t851U4bsqMpGTHRKA=="
         }
       },
       "is_incremental": false,
@@ -1101,7 +1101,7 @@
       "output": {
         ".html": {
           "relative_path": "api/E5R.Architecture.Data.EntityFrameworkCore.Strategy.ByProperty.StorageReader-1.html",
-          "hash": "fjS215Tdkv7H8sVwDaTDUw=="
+          "hash": "E+YRG+ClcV3zs0HmDC6L7Q=="
         }
       },
       "is_incremental": false,
@@ -1113,7 +1113,7 @@
       "output": {
         ".html": {
           "relative_path": "api/E5R.Architecture.Data.EntityFrameworkCore.Strategy.ByProperty.StorageReader-2.html",
-          "hash": "u5Vqh6bTEsuwh4WNweET+g=="
+          "hash": "XhGe9tJPFCqwzI+J3tlpCA=="
         }
       },
       "is_incremental": false,
@@ -1125,7 +1125,7 @@
       "output": {
         ".html": {
           "relative_path": "api/E5R.Architecture.Data.EntityFrameworkCore.Strategy.ByProperty.StorageWriter-1.html",
-          "hash": "XZmoPYAsI9dVWV/Je3uLuw=="
+          "hash": "MGsSOSccZdNCHoWz8lFMPg=="
         }
       },
       "is_incremental": false,
@@ -1137,7 +1137,7 @@
       "output": {
         ".html": {
           "relative_path": "api/E5R.Architecture.Data.EntityFrameworkCore.Strategy.ByProperty.StorageWriter-2.html",
-          "hash": "zEYzzq/lb2tAff9KKIjkUw=="
+          "hash": "qzwT9BJkSD7JBwgjiSWuQg=="
         }
       },
       "is_incremental": false,
@@ -1161,7 +1161,7 @@
       "output": {
         ".html": {
           "relative_path": "api/E5R.Architecture.Data.EntityFrameworkCore.Strategy.TransactionScope.Storage-1.html",
-          "hash": "BLOGcv/1bFTsnDsX4KdoOw=="
+          "hash": "zsgTlNFj6/mTNH6+VDqHnA=="
         }
       },
       "is_incremental": false,
@@ -1173,7 +1173,7 @@
       "output": {
         ".html": {
           "relative_path": "api/E5R.Architecture.Data.EntityFrameworkCore.Strategy.TransactionScope.Storage-2.html",
-          "hash": "Q5lR0wAktg5Laq1QIMSr7A=="
+          "hash": "rhDGOBhzFqL5GodJpLnoow=="
         }
       },
       "is_incremental": false,
@@ -1185,7 +1185,7 @@
       "output": {
         ".html": {
           "relative_path": "api/E5R.Architecture.Data.EntityFrameworkCore.Strategy.TransactionScope.StorageBulkWriter-1.html",
-          "hash": "emgGlCvr5F/zAyoLBDeuIg=="
+          "hash": "8gy+pfyi0Zq+Ff037xO56w=="
         }
       },
       "is_incremental": false,
@@ -1197,7 +1197,7 @@
       "output": {
         ".html": {
           "relative_path": "api/E5R.Architecture.Data.EntityFrameworkCore.Strategy.TransactionScope.StorageBulkWriter-2.html",
-          "hash": "LNeJTw4PuOla36JAjdqYWw=="
+          "hash": "r9znhIPDxTZJX8kuOBhyLA=="
         }
       },
       "is_incremental": false,
@@ -1209,7 +1209,7 @@
       "output": {
         ".html": {
           "relative_path": "api/E5R.Architecture.Data.EntityFrameworkCore.Strategy.TransactionScope.StorageReader-1.html",
-          "hash": "U+qoIWoGUPD3AHXGIELcxg=="
+          "hash": "2hyM3rWbSAjfOjbxqCLjaQ=="
         }
       },
       "is_incremental": false,
@@ -1221,7 +1221,7 @@
       "output": {
         ".html": {
           "relative_path": "api/E5R.Architecture.Data.EntityFrameworkCore.Strategy.TransactionScope.StorageReader-2.html",
-          "hash": "epc+6OBH4EWNpK0BW4tzNw=="
+          "hash": "IsFbopDbhnF3YRlyb21s4A=="
         }
       },
       "is_incremental": false,
@@ -1233,7 +1233,7 @@
       "output": {
         ".html": {
           "relative_path": "api/E5R.Architecture.Data.EntityFrameworkCore.Strategy.TransactionScope.StorageWriter-1.html",
-          "hash": "8V/C0998F6wVqPpX5cTpdQ=="
+          "hash": "VVjXdioI9wMLwXQMxE93Og=="
         }
       },
       "is_incremental": false,
@@ -1245,7 +1245,7 @@
       "output": {
         ".html": {
           "relative_path": "api/E5R.Architecture.Data.EntityFrameworkCore.Strategy.TransactionScope.StorageWriter-2.html",
-          "hash": "ZOlGkXPuZJ4kNjtSTJKw4Q=="
+          "hash": "Tvsbfj/8cTcebSBAErIdIg=="
         }
       },
       "is_incremental": false,
@@ -1265,23 +1265,11 @@
     },
     {
       "type": "ManagedReference",
-      "source_relative_path": "api/E5R.Architecture.Data.EntityFrameworkCore.WriterDelegate.yml",
-      "output": {
-        ".html": {
-          "relative_path": "api/E5R.Architecture.Data.EntityFrameworkCore.WriterDelegate.html",
-          "hash": "DLv3vOHlDQbl7DvVmR0ywg=="
-        }
-      },
-      "is_incremental": false,
-      "version": ""
-    },
-    {
-      "type": "ManagedReference",
       "source_relative_path": "api/E5R.Architecture.Data.EntityFrameworkCore.yml",
       "output": {
         ".html": {
           "relative_path": "api/E5R.Architecture.Data.EntityFrameworkCore.html",
-          "hash": "iw62EdAlTwDcAE/G5SrmGA=="
+          "hash": "A0/7D1MsZC81P2XP/o7BWw=="
         }
       },
       "is_incremental": false,
@@ -1881,7 +1869,7 @@
       "output": {
         ".html": {
           "relative_path": "api/toc.html",
-          "hash": "30m6bLfBRVXLo6JpWiYLzQ=="
+          "hash": "O5X1mBQOdOvD8COhSlRjxQ=="
         }
       },
       "is_incremental": false,
@@ -1978,7 +1966,7 @@
         "ManagedReferenceDocumentProcessor": {
           "can_incremental": false,
           "incrementalPhase": "build",
-          "total_file_count": 155,
+          "total_file_count": 154,
           "skipped_file_count": 0
         },
         "ResourceDocumentProcessor": {

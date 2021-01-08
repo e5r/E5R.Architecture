@@ -2394,6 +2394,33 @@ references:
   fullName.vb: E5R.Architecture.Data.Abstractions.IStorageBulkWriter(Of TDataModel).BulkReplace
   nameWithType: IStorageBulkWriter<TDataModel>.BulkReplace
   nameWithType.vb: IStorageBulkWriter(Of TDataModel).BulkReplace
+- uid: E5R.Architecture.Data.Abstractions.IStorageBulkWriter`1.BulkUpdate*
+  name: BulkUpdate
+  href: api/E5R.Architecture.Data.Abstractions.IStorageBulkWriter-1.html#E5R_Architecture_Data_Abstractions_IStorageBulkWriter_1_BulkUpdate_
+  commentId: Overload:E5R.Architecture.Data.Abstractions.IStorageBulkWriter`1.BulkUpdate
+  isSpec: "True"
+  fullName: E5R.Architecture.Data.Abstractions.IStorageBulkWriter<TDataModel>.BulkUpdate
+  fullName.vb: E5R.Architecture.Data.Abstractions.IStorageBulkWriter(Of TDataModel).BulkUpdate
+  nameWithType: IStorageBulkWriter<TDataModel>.BulkUpdate
+  nameWithType.vb: IStorageBulkWriter(Of TDataModel).BulkUpdate
+- uid: E5R.Architecture.Data.Abstractions.IStorageBulkWriter`1.BulkUpdate``1(E5R.Architecture.Data.Abstractions.IDataFilter{`0},``0)
+  name: BulkUpdate<TUpdated>(IDataFilter<TDataModel>, TUpdated)
+  href: api/E5R.Architecture.Data.Abstractions.IStorageBulkWriter-1.html#E5R_Architecture_Data_Abstractions_IStorageBulkWriter_1_BulkUpdate__1_E5R_Architecture_Data_Abstractions_IDataFilter__0____0_
+  commentId: M:E5R.Architecture.Data.Abstractions.IStorageBulkWriter`1.BulkUpdate``1(E5R.Architecture.Data.Abstractions.IDataFilter{`0},``0)
+  name.vb: BulkUpdate(Of TUpdated)(IDataFilter(Of TDataModel), TUpdated)
+  fullName: E5R.Architecture.Data.Abstractions.IStorageBulkWriter<TDataModel>.BulkUpdate<TUpdated>(E5R.Architecture.Data.Abstractions.IDataFilter<TDataModel>, TUpdated)
+  fullName.vb: E5R.Architecture.Data.Abstractions.IStorageBulkWriter(Of TDataModel).BulkUpdate(Of TUpdated)(E5R.Architecture.Data.Abstractions.IDataFilter(Of TDataModel), TUpdated)
+  nameWithType: IStorageBulkWriter<TDataModel>.BulkUpdate<TUpdated>(IDataFilter<TDataModel>, TUpdated)
+  nameWithType.vb: IStorageBulkWriter(Of TDataModel).BulkUpdate(Of TUpdated)(IDataFilter(Of TDataModel), TUpdated)
+- uid: E5R.Architecture.Data.Abstractions.IStorageBulkWriter`1.BulkUpdate``1(E5R.Architecture.Data.Abstractions.IDataFilter{`0},Expression{Func{`0,``0}})
+  name: BulkUpdate<TUpdated>(IDataFilter<TDataModel>, Expression<Func<TDataModel, TUpdated>>)
+  href: api/E5R.Architecture.Data.Abstractions.IStorageBulkWriter-1.html#E5R_Architecture_Data_Abstractions_IStorageBulkWriter_1_BulkUpdate__1_E5R_Architecture_Data_Abstractions_IDataFilter__0__Expression_Func__0___0___
+  commentId: M:E5R.Architecture.Data.Abstractions.IStorageBulkWriter`1.BulkUpdate``1(E5R.Architecture.Data.Abstractions.IDataFilter{`0},Expression{Func{`0,``0}})
+  name.vb: BulkUpdate(Of TUpdated)(IDataFilter(Of TDataModel), Expression(Of Func(Of TDataModel, TUpdated)))
+  fullName: E5R.Architecture.Data.Abstractions.IStorageBulkWriter<TDataModel>.BulkUpdate<TUpdated>(E5R.Architecture.Data.Abstractions.IDataFilter<TDataModel>, Expression<Func<TDataModel, TUpdated>>)
+  fullName.vb: E5R.Architecture.Data.Abstractions.IStorageBulkWriter(Of TDataModel).BulkUpdate(Of TUpdated)(E5R.Architecture.Data.Abstractions.IDataFilter(Of TDataModel), Expression(Of Func(Of TDataModel, TUpdated)))
+  nameWithType: IStorageBulkWriter<TDataModel>.BulkUpdate<TUpdated>(IDataFilter<TDataModel>, Expression<Func<TDataModel, TUpdated>>)
+  nameWithType.vb: IStorageBulkWriter(Of TDataModel).BulkUpdate(Of TUpdated)(IDataFilter(Of TDataModel), Expression(Of Func(Of TDataModel, TUpdated)))
 - uid: E5R.Architecture.Data.Abstractions.IStorageBulkWriter`2
   name: IStorageBulkWriter<TUowProperty, TDataModel>
   href: api/E5R.Architecture.Data.Abstractions.IStorageBulkWriter-2.html
@@ -2713,6 +2740,51 @@ references:
   fullName.vb: E5R.Architecture.Data.Abstractions.IStorageWriter(Of TDataModel).Replace
   nameWithType: IStorageWriter<TDataModel>.Replace
   nameWithType.vb: IStorageWriter(Of TDataModel).Replace
+- uid: E5R.Architecture.Data.Abstractions.IStorageWriter`1.Update*
+  name: Update
+  href: api/E5R.Architecture.Data.Abstractions.IStorageWriter-1.html#E5R_Architecture_Data_Abstractions_IStorageWriter_1_Update_
+  commentId: Overload:E5R.Architecture.Data.Abstractions.IStorageWriter`1.Update
+  isSpec: "True"
+  fullName: E5R.Architecture.Data.Abstractions.IStorageWriter<TDataModel>.Update
+  fullName.vb: E5R.Architecture.Data.Abstractions.IStorageWriter(Of TDataModel).Update
+  nameWithType: IStorageWriter<TDataModel>.Update
+  nameWithType.vb: IStorageWriter(Of TDataModel).Update
+- uid: E5R.Architecture.Data.Abstractions.IStorageWriter`1.Update``1(System.Object,``0)
+  name: Update<TUpdated>(Object, TUpdated)
+  href: api/E5R.Architecture.Data.Abstractions.IStorageWriter-1.html#E5R_Architecture_Data_Abstractions_IStorageWriter_1_Update__1_System_Object___0_
+  commentId: M:E5R.Architecture.Data.Abstractions.IStorageWriter`1.Update``1(System.Object,``0)
+  name.vb: Update(Of TUpdated)(Object, TUpdated)
+  fullName: E5R.Architecture.Data.Abstractions.IStorageWriter<TDataModel>.Update<TUpdated>(System.Object, TUpdated)
+  fullName.vb: E5R.Architecture.Data.Abstractions.IStorageWriter(Of TDataModel).Update(Of TUpdated)(System.Object, TUpdated)
+  nameWithType: IStorageWriter<TDataModel>.Update<TUpdated>(Object, TUpdated)
+  nameWithType.vb: IStorageWriter(Of TDataModel).Update(Of TUpdated)(Object, TUpdated)
+- uid: E5R.Architecture.Data.Abstractions.IStorageWriter`1.Update``1(System.Object,Expression{Func{`0,``0}})
+  name: Update<TUpdated>(Object, Expression<Func<TDataModel, TUpdated>>)
+  href: api/E5R.Architecture.Data.Abstractions.IStorageWriter-1.html#E5R_Architecture_Data_Abstractions_IStorageWriter_1_Update__1_System_Object_Expression_Func__0___0___
+  commentId: M:E5R.Architecture.Data.Abstractions.IStorageWriter`1.Update``1(System.Object,Expression{Func{`0,``0}})
+  name.vb: Update(Of TUpdated)(Object, Expression(Of Func(Of TDataModel, TUpdated)))
+  fullName: E5R.Architecture.Data.Abstractions.IStorageWriter<TDataModel>.Update<TUpdated>(System.Object, Expression<Func<TDataModel, TUpdated>>)
+  fullName.vb: E5R.Architecture.Data.Abstractions.IStorageWriter(Of TDataModel).Update(Of TUpdated)(System.Object, Expression(Of Func(Of TDataModel, TUpdated)))
+  nameWithType: IStorageWriter<TDataModel>.Update<TUpdated>(Object, Expression<Func<TDataModel, TUpdated>>)
+  nameWithType.vb: IStorageWriter(Of TDataModel).Update(Of TUpdated)(Object, Expression(Of Func(Of TDataModel, TUpdated)))
+- uid: E5R.Architecture.Data.Abstractions.IStorageWriter`1.Update``1(System.Object[],``0)
+  name: Update<TUpdated>(Object[], TUpdated)
+  href: api/E5R.Architecture.Data.Abstractions.IStorageWriter-1.html#E5R_Architecture_Data_Abstractions_IStorageWriter_1_Update__1_System_Object_____0_
+  commentId: M:E5R.Architecture.Data.Abstractions.IStorageWriter`1.Update``1(System.Object[],``0)
+  name.vb: Update(Of TUpdated)(Object(), TUpdated)
+  fullName: E5R.Architecture.Data.Abstractions.IStorageWriter<TDataModel>.Update<TUpdated>(System.Object[], TUpdated)
+  fullName.vb: E5R.Architecture.Data.Abstractions.IStorageWriter(Of TDataModel).Update(Of TUpdated)(System.Object(), TUpdated)
+  nameWithType: IStorageWriter<TDataModel>.Update<TUpdated>(Object[], TUpdated)
+  nameWithType.vb: IStorageWriter(Of TDataModel).Update(Of TUpdated)(Object(), TUpdated)
+- uid: E5R.Architecture.Data.Abstractions.IStorageWriter`1.Update``1(System.Object[],Expression{Func{`0,``0}})
+  name: Update<TUpdated>(Object[], Expression<Func<TDataModel, TUpdated>>)
+  href: api/E5R.Architecture.Data.Abstractions.IStorageWriter-1.html#E5R_Architecture_Data_Abstractions_IStorageWriter_1_Update__1_System_Object___Expression_Func__0___0___
+  commentId: M:E5R.Architecture.Data.Abstractions.IStorageWriter`1.Update``1(System.Object[],Expression{Func{`0,``0}})
+  name.vb: Update(Of TUpdated)(Object(), Expression(Of Func(Of TDataModel, TUpdated)))
+  fullName: E5R.Architecture.Data.Abstractions.IStorageWriter<TDataModel>.Update<TUpdated>(System.Object[], Expression<Func<TDataModel, TUpdated>>)
+  fullName.vb: E5R.Architecture.Data.Abstractions.IStorageWriter(Of TDataModel).Update(Of TUpdated)(System.Object(), Expression(Of Func(Of TDataModel, TUpdated)))
+  nameWithType: IStorageWriter<TDataModel>.Update<TUpdated>(Object[], Expression<Func<TDataModel, TUpdated>>)
+  nameWithType.vb: IStorageWriter(Of TDataModel).Update(Of TUpdated)(Object(), Expression(Of Func(Of TDataModel, TUpdated)))
 - uid: E5R.Architecture.Data.Abstractions.IStorageWriter`2
   name: IStorageWriter<TUowProperty, TDataModel>
   href: api/E5R.Architecture.Data.Abstractions.IStorageWriter-2.html
@@ -4367,6 +4439,33 @@ references:
   fullName.vb: E5R.Architecture.Data.EntityFrameworkCore.FullStorage(Of TDbContext, TDataModel).BulkReplace
   nameWithType: FullStorage<TDbContext, TDataModel>.BulkReplace
   nameWithType.vb: FullStorage(Of TDbContext, TDataModel).BulkReplace
+- uid: E5R.Architecture.Data.EntityFrameworkCore.FullStorage`2.BulkUpdate*
+  name: BulkUpdate
+  href: api/E5R.Architecture.Data.EntityFrameworkCore.FullStorage-2.html#E5R_Architecture_Data_EntityFrameworkCore_FullStorage_2_BulkUpdate_
+  commentId: Overload:E5R.Architecture.Data.EntityFrameworkCore.FullStorage`2.BulkUpdate
+  isSpec: "True"
+  fullName: E5R.Architecture.Data.EntityFrameworkCore.FullStorage<TDbContext, TDataModel>.BulkUpdate
+  fullName.vb: E5R.Architecture.Data.EntityFrameworkCore.FullStorage(Of TDbContext, TDataModel).BulkUpdate
+  nameWithType: FullStorage<TDbContext, TDataModel>.BulkUpdate
+  nameWithType.vb: FullStorage(Of TDbContext, TDataModel).BulkUpdate
+- uid: E5R.Architecture.Data.EntityFrameworkCore.FullStorage`2.BulkUpdate``1(E5R.Architecture.Data.Abstractions.IDataFilter{`1},``0)
+  name: BulkUpdate<TUpdated>(IDataFilter<TDataModel>, TUpdated)
+  href: api/E5R.Architecture.Data.EntityFrameworkCore.FullStorage-2.html#E5R_Architecture_Data_EntityFrameworkCore_FullStorage_2_BulkUpdate__1_E5R_Architecture_Data_Abstractions_IDataFilter__1____0_
+  commentId: M:E5R.Architecture.Data.EntityFrameworkCore.FullStorage`2.BulkUpdate``1(E5R.Architecture.Data.Abstractions.IDataFilter{`1},``0)
+  name.vb: BulkUpdate(Of TUpdated)(IDataFilter(Of TDataModel), TUpdated)
+  fullName: E5R.Architecture.Data.EntityFrameworkCore.FullStorage<TDbContext, TDataModel>.BulkUpdate<TUpdated>(E5R.Architecture.Data.Abstractions.IDataFilter<TDataModel>, TUpdated)
+  fullName.vb: E5R.Architecture.Data.EntityFrameworkCore.FullStorage(Of TDbContext, TDataModel).BulkUpdate(Of TUpdated)(E5R.Architecture.Data.Abstractions.IDataFilter(Of TDataModel), TUpdated)
+  nameWithType: FullStorage<TDbContext, TDataModel>.BulkUpdate<TUpdated>(IDataFilter<TDataModel>, TUpdated)
+  nameWithType.vb: FullStorage(Of TDbContext, TDataModel).BulkUpdate(Of TUpdated)(IDataFilter(Of TDataModel), TUpdated)
+- uid: E5R.Architecture.Data.EntityFrameworkCore.FullStorage`2.BulkUpdate``1(E5R.Architecture.Data.Abstractions.IDataFilter{`1},Expression{Func{`1,``0}})
+  name: BulkUpdate<TUpdated>(IDataFilter<TDataModel>, Expression<Func<TDataModel, TUpdated>>)
+  href: api/E5R.Architecture.Data.EntityFrameworkCore.FullStorage-2.html#E5R_Architecture_Data_EntityFrameworkCore_FullStorage_2_BulkUpdate__1_E5R_Architecture_Data_Abstractions_IDataFilter__1__Expression_Func__1___0___
+  commentId: M:E5R.Architecture.Data.EntityFrameworkCore.FullStorage`2.BulkUpdate``1(E5R.Architecture.Data.Abstractions.IDataFilter{`1},Expression{Func{`1,``0}})
+  name.vb: BulkUpdate(Of TUpdated)(IDataFilter(Of TDataModel), Expression(Of Func(Of TDataModel, TUpdated)))
+  fullName: E5R.Architecture.Data.EntityFrameworkCore.FullStorage<TDbContext, TDataModel>.BulkUpdate<TUpdated>(E5R.Architecture.Data.Abstractions.IDataFilter<TDataModel>, Expression<Func<TDataModel, TUpdated>>)
+  fullName.vb: E5R.Architecture.Data.EntityFrameworkCore.FullStorage(Of TDbContext, TDataModel).BulkUpdate(Of TUpdated)(E5R.Architecture.Data.Abstractions.IDataFilter(Of TDataModel), Expression(Of Func(Of TDataModel, TUpdated)))
+  nameWithType: FullStorage<TDbContext, TDataModel>.BulkUpdate<TUpdated>(IDataFilter<TDataModel>, Expression<Func<TDataModel, TUpdated>>)
+  nameWithType.vb: FullStorage(Of TDbContext, TDataModel).BulkUpdate(Of TUpdated)(IDataFilter(Of TDataModel), Expression(Of Func(Of TDataModel, TUpdated)))
 - uid: E5R.Architecture.Data.EntityFrameworkCore.FullStorage`2.Context
   name: Context
   href: api/E5R.Architecture.Data.EntityFrameworkCore.FullStorage-2.html#E5R_Architecture_Data_EntityFrameworkCore_FullStorage_2_Context
@@ -4673,23 +4772,51 @@ references:
   fullName.vb: E5R.Architecture.Data.EntityFrameworkCore.FullStorage(Of TDbContext, TDataModel).Set
   nameWithType: FullStorage<TDbContext, TDataModel>.Set
   nameWithType.vb: FullStorage(Of TDbContext, TDataModel).Set
-- uid: E5R.Architecture.Data.EntityFrameworkCore.FullStorage`2.Write
-  name: Write
-  href: api/E5R.Architecture.Data.EntityFrameworkCore.FullStorage-2.html#E5R_Architecture_Data_EntityFrameworkCore_FullStorage_2_Write
-  commentId: P:E5R.Architecture.Data.EntityFrameworkCore.FullStorage`2.Write
-  fullName: E5R.Architecture.Data.EntityFrameworkCore.FullStorage<TDbContext, TDataModel>.Write
-  fullName.vb: E5R.Architecture.Data.EntityFrameworkCore.FullStorage(Of TDbContext, TDataModel).Write
-  nameWithType: FullStorage<TDbContext, TDataModel>.Write
-  nameWithType.vb: FullStorage(Of TDbContext, TDataModel).Write
-- uid: E5R.Architecture.Data.EntityFrameworkCore.FullStorage`2.Write*
-  name: Write
-  href: api/E5R.Architecture.Data.EntityFrameworkCore.FullStorage-2.html#E5R_Architecture_Data_EntityFrameworkCore_FullStorage_2_Write_
-  commentId: Overload:E5R.Architecture.Data.EntityFrameworkCore.FullStorage`2.Write
+- uid: E5R.Architecture.Data.EntityFrameworkCore.FullStorage`2.Update*
+  name: Update
+  href: api/E5R.Architecture.Data.EntityFrameworkCore.FullStorage-2.html#E5R_Architecture_Data_EntityFrameworkCore_FullStorage_2_Update_
+  commentId: Overload:E5R.Architecture.Data.EntityFrameworkCore.FullStorage`2.Update
   isSpec: "True"
-  fullName: E5R.Architecture.Data.EntityFrameworkCore.FullStorage<TDbContext, TDataModel>.Write
-  fullName.vb: E5R.Architecture.Data.EntityFrameworkCore.FullStorage(Of TDbContext, TDataModel).Write
-  nameWithType: FullStorage<TDbContext, TDataModel>.Write
-  nameWithType.vb: FullStorage(Of TDbContext, TDataModel).Write
+  fullName: E5R.Architecture.Data.EntityFrameworkCore.FullStorage<TDbContext, TDataModel>.Update
+  fullName.vb: E5R.Architecture.Data.EntityFrameworkCore.FullStorage(Of TDbContext, TDataModel).Update
+  nameWithType: FullStorage<TDbContext, TDataModel>.Update
+  nameWithType.vb: FullStorage(Of TDbContext, TDataModel).Update
+- uid: E5R.Architecture.Data.EntityFrameworkCore.FullStorage`2.Update``1(System.Object,``0)
+  name: Update<TUpdated>(Object, TUpdated)
+  href: api/E5R.Architecture.Data.EntityFrameworkCore.FullStorage-2.html#E5R_Architecture_Data_EntityFrameworkCore_FullStorage_2_Update__1_System_Object___0_
+  commentId: M:E5R.Architecture.Data.EntityFrameworkCore.FullStorage`2.Update``1(System.Object,``0)
+  name.vb: Update(Of TUpdated)(Object, TUpdated)
+  fullName: E5R.Architecture.Data.EntityFrameworkCore.FullStorage<TDbContext, TDataModel>.Update<TUpdated>(System.Object, TUpdated)
+  fullName.vb: E5R.Architecture.Data.EntityFrameworkCore.FullStorage(Of TDbContext, TDataModel).Update(Of TUpdated)(System.Object, TUpdated)
+  nameWithType: FullStorage<TDbContext, TDataModel>.Update<TUpdated>(Object, TUpdated)
+  nameWithType.vb: FullStorage(Of TDbContext, TDataModel).Update(Of TUpdated)(Object, TUpdated)
+- uid: E5R.Architecture.Data.EntityFrameworkCore.FullStorage`2.Update``1(System.Object,Expression{Func{`1,``0}})
+  name: Update<TUpdated>(Object, Expression<Func<TDataModel, TUpdated>>)
+  href: api/E5R.Architecture.Data.EntityFrameworkCore.FullStorage-2.html#E5R_Architecture_Data_EntityFrameworkCore_FullStorage_2_Update__1_System_Object_Expression_Func__1___0___
+  commentId: M:E5R.Architecture.Data.EntityFrameworkCore.FullStorage`2.Update``1(System.Object,Expression{Func{`1,``0}})
+  name.vb: Update(Of TUpdated)(Object, Expression(Of Func(Of TDataModel, TUpdated)))
+  fullName: E5R.Architecture.Data.EntityFrameworkCore.FullStorage<TDbContext, TDataModel>.Update<TUpdated>(System.Object, Expression<Func<TDataModel, TUpdated>>)
+  fullName.vb: E5R.Architecture.Data.EntityFrameworkCore.FullStorage(Of TDbContext, TDataModel).Update(Of TUpdated)(System.Object, Expression(Of Func(Of TDataModel, TUpdated)))
+  nameWithType: FullStorage<TDbContext, TDataModel>.Update<TUpdated>(Object, Expression<Func<TDataModel, TUpdated>>)
+  nameWithType.vb: FullStorage(Of TDbContext, TDataModel).Update(Of TUpdated)(Object, Expression(Of Func(Of TDataModel, TUpdated)))
+- uid: E5R.Architecture.Data.EntityFrameworkCore.FullStorage`2.Update``1(System.Object[],``0)
+  name: Update<TUpdated>(Object[], TUpdated)
+  href: api/E5R.Architecture.Data.EntityFrameworkCore.FullStorage-2.html#E5R_Architecture_Data_EntityFrameworkCore_FullStorage_2_Update__1_System_Object_____0_
+  commentId: M:E5R.Architecture.Data.EntityFrameworkCore.FullStorage`2.Update``1(System.Object[],``0)
+  name.vb: Update(Of TUpdated)(Object(), TUpdated)
+  fullName: E5R.Architecture.Data.EntityFrameworkCore.FullStorage<TDbContext, TDataModel>.Update<TUpdated>(System.Object[], TUpdated)
+  fullName.vb: E5R.Architecture.Data.EntityFrameworkCore.FullStorage(Of TDbContext, TDataModel).Update(Of TUpdated)(System.Object(), TUpdated)
+  nameWithType: FullStorage<TDbContext, TDataModel>.Update<TUpdated>(Object[], TUpdated)
+  nameWithType.vb: FullStorage(Of TDbContext, TDataModel).Update(Of TUpdated)(Object(), TUpdated)
+- uid: E5R.Architecture.Data.EntityFrameworkCore.FullStorage`2.Update``1(System.Object[],Expression{Func{`1,``0}})
+  name: Update<TUpdated>(Object[], Expression<Func<TDataModel, TUpdated>>)
+  href: api/E5R.Architecture.Data.EntityFrameworkCore.FullStorage-2.html#E5R_Architecture_Data_EntityFrameworkCore_FullStorage_2_Update__1_System_Object___Expression_Func__1___0___
+  commentId: M:E5R.Architecture.Data.EntityFrameworkCore.FullStorage`2.Update``1(System.Object[],Expression{Func{`1,``0}})
+  name.vb: Update(Of TUpdated)(Object(), Expression(Of Func(Of TDataModel, TUpdated)))
+  fullName: E5R.Architecture.Data.EntityFrameworkCore.FullStorage<TDbContext, TDataModel>.Update<TUpdated>(System.Object[], Expression<Func<TDataModel, TUpdated>>)
+  fullName.vb: E5R.Architecture.Data.EntityFrameworkCore.FullStorage(Of TDbContext, TDataModel).Update(Of TUpdated)(System.Object(), Expression(Of Func(Of TDataModel, TUpdated)))
+  nameWithType: FullStorage<TDbContext, TDataModel>.Update<TUpdated>(Object[], Expression<Func<TDataModel, TUpdated>>)
+  nameWithType.vb: FullStorage(Of TDbContext, TDataModel).Update(Of TUpdated)(Object(), Expression(Of Func(Of TDataModel, TUpdated)))
 - uid: E5R.Architecture.Data.EntityFrameworkCore.RawSqlRideStorage`1
   name: RawSqlRideStorage<TDataModel>
   href: api/E5R.Architecture.Data.EntityFrameworkCore.RawSqlRideStorage-1.html
@@ -4965,6 +5092,24 @@ references:
   fullName.vb: E5R.Architecture.Data.EntityFrameworkCore.StorageBase(Of TDataModel)
   nameWithType: StorageBase<TDataModel>
   nameWithType.vb: StorageBase(Of TDataModel)
+- uid: E5R.Architecture.Data.EntityFrameworkCore.StorageBase`1.CopyProperties*
+  name: CopyProperties
+  href: api/E5R.Architecture.Data.EntityFrameworkCore.StorageBase-1.html#E5R_Architecture_Data_EntityFrameworkCore_StorageBase_1_CopyProperties_
+  commentId: Overload:E5R.Architecture.Data.EntityFrameworkCore.StorageBase`1.CopyProperties
+  isSpec: "True"
+  fullName: E5R.Architecture.Data.EntityFrameworkCore.StorageBase<TDataModel>.CopyProperties
+  fullName.vb: E5R.Architecture.Data.EntityFrameworkCore.StorageBase(Of TDataModel).CopyProperties
+  nameWithType: StorageBase<TDataModel>.CopyProperties
+  nameWithType.vb: StorageBase(Of TDataModel).CopyProperties
+- uid: E5R.Architecture.Data.EntityFrameworkCore.StorageBase`1.CopyProperties``2(``0,``1)
+  name: CopyProperties<TFrom, TTo>(TFrom, TTo)
+  href: api/E5R.Architecture.Data.EntityFrameworkCore.StorageBase-1.html#E5R_Architecture_Data_EntityFrameworkCore_StorageBase_1_CopyProperties__2___0___1_
+  commentId: M:E5R.Architecture.Data.EntityFrameworkCore.StorageBase`1.CopyProperties``2(``0,``1)
+  name.vb: CopyProperties(Of TFrom, TTo)(TFrom, TTo)
+  fullName: E5R.Architecture.Data.EntityFrameworkCore.StorageBase<TDataModel>.CopyProperties<TFrom, TTo>(TFrom, TTo)
+  fullName.vb: E5R.Architecture.Data.EntityFrameworkCore.StorageBase(Of TDataModel).CopyProperties(Of TFrom, TTo)(TFrom, TTo)
+  nameWithType: StorageBase<TDataModel>.CopyProperties<TFrom, TTo>(TFrom, TTo)
+  nameWithType.vb: StorageBase(Of TDataModel).CopyProperties(Of TFrom, TTo)(TFrom, TTo)
 - uid: E5R.Architecture.Data.EntityFrameworkCore.StorageBase`1.QueryFind(IEntityType,IQueryable{`0},System.Object[],E5R.Architecture.Data.Abstractions.IDataIncludes)
   name: QueryFind(IEntityType, IQueryable<TDataModel>, Object[], IDataIncludes)
   href: api/E5R.Architecture.Data.EntityFrameworkCore.StorageBase-1.html#E5R_Architecture_Data_EntityFrameworkCore_StorageBase_1_QueryFind_IEntityType_IQueryable__0__System_Object___E5R_Architecture_Data_Abstractions_IDataIncludes_
@@ -5473,12 +5618,6 @@ references:
   fullName.vb: E5R.Architecture.Data.EntityFrameworkCore.Strategy.TransactionScope.StorageWriter(Of TDbContext, TDataModel).StorageWriter
   nameWithType: StorageWriter<TDbContext, TDataModel>.StorageWriter
   nameWithType.vb: StorageWriter(Of TDbContext, TDataModel).StorageWriter
-- uid: E5R.Architecture.Data.EntityFrameworkCore.WriterDelegate
-  name: WriterDelegate
-  href: api/E5R.Architecture.Data.EntityFrameworkCore.WriterDelegate.html
-  commentId: T:E5R.Architecture.Data.EntityFrameworkCore.WriterDelegate
-  fullName: E5R.Architecture.Data.EntityFrameworkCore.WriterDelegate
-  nameWithType: WriterDelegate
 - uid: E5R.Architecture.Data.FluentQuery
   name: E5R.Architecture.Data.FluentQuery
   href: api/E5R.Architecture.Data.FluentQuery.html

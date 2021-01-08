@@ -100,7 +100,8 @@
   </h3>
   <a id="E5R_Architecture_Data_Abstractions_IStorageBulkWriter_1_BulkCreate_" data-uid="E5R.Architecture.Data.Abstractions.IStorageBulkWriter`1.BulkCreate*"></a>
   <h4 id="E5R_Architecture_Data_Abstractions_IStorageBulkWriter_1_BulkCreate_IEnumerable__0__" data-uid="E5R.Architecture.Data.Abstractions.IStorageBulkWriter`1.BulkCreate(IEnumerable{`0})">BulkCreate(IEnumerable&lt;TDataModel&gt;)</h4>
-  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 summary"><p>Creates new stored objects in bulk</p>
+</div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
@@ -119,7 +120,8 @@
       <tr>
         <td><span class="xref">IEnumerable</span>&lt;TDataModel&gt;</td>
         <td><span class="parametername">data</span></td>
-        <td></td>
+        <td><p>Object data collection</p>
+</td>
       </tr>
     </tbody>
   </table>
@@ -134,7 +136,8 @@
     <tbody>
       <tr>
         <td><span class="xref">IEnumerable</span>&lt;TDataModel&gt;</td>
-        <td></td>
+        <td><p>Created object instances</p>
+</td>
       </tr>
     </tbody>
   </table>
@@ -165,7 +168,8 @@
   </table>
   <a id="E5R_Architecture_Data_Abstractions_IStorageBulkWriter_1_BulkRemove_" data-uid="E5R.Architecture.Data.Abstractions.IStorageBulkWriter`1.BulkRemove*"></a>
   <h4 id="E5R_Architecture_Data_Abstractions_IStorageBulkWriter_1_BulkRemove_IEnumerable__0__" data-uid="E5R.Architecture.Data.Abstractions.IStorageBulkWriter`1.BulkRemove(IEnumerable{`0})">BulkRemove(IEnumerable&lt;TDataModel&gt;)</h4>
-  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 summary"><p>Removes stored objects in bulk</p>
+</div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
@@ -184,13 +188,15 @@
       <tr>
         <td><span class="xref">IEnumerable</span>&lt;TDataModel&gt;</td>
         <td><span class="parametername">data</span></td>
-        <td></td>
+        <td><p>Object data collection</p>
+</td>
       </tr>
     </tbody>
   </table>
   <a id="E5R_Architecture_Data_Abstractions_IStorageBulkWriter_1_BulkReplace_" data-uid="E5R.Architecture.Data.Abstractions.IStorageBulkWriter`1.BulkReplace*"></a>
   <h4 id="E5R_Architecture_Data_Abstractions_IStorageBulkWriter_1_BulkReplace_IEnumerable__0__" data-uid="E5R.Architecture.Data.Abstractions.IStorageBulkWriter`1.BulkReplace(IEnumerable{`0})">BulkReplace(IEnumerable&lt;TDataModel&gt;)</h4>
-  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 summary"><p>Replaces stored objects in bulk</p>
+</div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
@@ -209,7 +215,8 @@
       <tr>
         <td><span class="xref">IEnumerable</span>&lt;TDataModel&gt;</td>
         <td><span class="parametername">data</span></td>
-        <td></td>
+        <td><p>Object data collection</p>
+</td>
       </tr>
     </tbody>
   </table>
@@ -224,7 +231,138 @@
     <tbody>
       <tr>
         <td><span class="xref">IEnumerable</span>&lt;TDataModel&gt;</td>
-        <td></td>
+        <td><p>Replaced object instances</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <a id="E5R_Architecture_Data_Abstractions_IStorageBulkWriter_1_BulkUpdate_" data-uid="E5R.Architecture.Data.Abstractions.IStorageBulkWriter`1.BulkUpdate*"></a>
+  <h4 id="E5R_Architecture_Data_Abstractions_IStorageBulkWriter_1_BulkUpdate__1_E5R_Architecture_Data_Abstractions_IDataFilter__0____0_" data-uid="E5R.Architecture.Data.Abstractions.IStorageBulkWriter`1.BulkUpdate``1(E5R.Architecture.Data.Abstractions.IDataFilter{`0},``0)">BulkUpdate&lt;TUpdated&gt;(IDataFilter&lt;TDataModel&gt;, TUpdated)</h4>
+  <div class="markdown level1 summary"><p>Updates data from stored objects in bulk</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">IEnumerable&lt;TDataModel&gt; BulkUpdate&lt;TUpdated&gt;(IDataFilter&lt;TDataModel&gt; filter, TUpdated updated)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="E5R.Architecture.Data.Abstractions.IDataFilter-1.html">IDataFilter</a>&lt;TDataModel&gt;</td>
+        <td><span class="parametername">filter</span></td>
+        <td><p>Data filter</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">TUpdated</span></td>
+        <td><span class="parametername">updated</span></td>
+        <td><p>Updated object data</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">IEnumerable</span>&lt;TDataModel&gt;</td>
+        <td><p>Updated object instances</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="typeParameters">Type Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="parametername">TUpdated</span></td>
+        <td><p>Type for the updated data. Usually an anonymous type</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <a id="E5R_Architecture_Data_Abstractions_IStorageBulkWriter_1_BulkUpdate_" data-uid="E5R.Architecture.Data.Abstractions.IStorageBulkWriter`1.BulkUpdate*"></a>
+  <h4 id="E5R_Architecture_Data_Abstractions_IStorageBulkWriter_1_BulkUpdate__1_E5R_Architecture_Data_Abstractions_IDataFilter__0__Expression_Func__0___0___" data-uid="E5R.Architecture.Data.Abstractions.IStorageBulkWriter`1.BulkUpdate``1(E5R.Architecture.Data.Abstractions.IDataFilter{`0},Expression{Func{`0,``0}})">BulkUpdate&lt;TUpdated&gt;(IDataFilter&lt;TDataModel&gt;, Expression&lt;Func&lt;TDataModel, TUpdated&gt;&gt;)</h4>
+  <div class="markdown level1 summary"><p>Updates data from stored objects in bulk</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">IEnumerable&lt;TDataModel&gt; BulkUpdate&lt;TUpdated&gt;(IDataFilter&lt;TDataModel&gt; filter, Expression&lt;Func&lt;TDataModel, TUpdated&gt;&gt; updateExpression)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="E5R.Architecture.Data.Abstractions.IDataFilter-1.html">IDataFilter</a>&lt;TDataModel&gt;</td>
+        <td><span class="parametername">filter</span></td>
+        <td><p>Data filter</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">Expression</span>&lt;<span class="xref">Func</span>&lt;TDataModel, TUpdated&gt;&gt;</td>
+        <td><span class="parametername">updateExpression</span></td>
+        <td><p>Update data expression</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">IEnumerable</span>&lt;TDataModel&gt;</td>
+        <td><p>Updated object instances</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="typeParameters">Type Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="parametername">TUpdated</span></td>
+        <td><p>Type for the updated data. Usually an anonymous type</p>
+</td>
       </tr>
     </tbody>
   </table>
