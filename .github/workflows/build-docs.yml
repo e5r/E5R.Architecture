@@ -1,0 +1,44 @@
+name: Build
+
+on:
+  push:
+    branches:
+      - master
+      - develop
+
+jobs:
+  build:
+    runs-on: ubuntu-20.04
+    steps:
+    - name: Checkout
+      uses: actions/checkout@v2
+      with:
+        fetch-depth: 1
+    - name: Checkout E5R.Architecture.Docs
+      uses: actions/checkout@v2
+      with:
+        ref: doc-live
+        path: .doc-live
+    - name: Get docfx
+      run: |
+        curl -L https://github.com/dotnet/docfx/releases/latest/download/docfx.zip -o docfx.zip
+        unzip -d .docfx docfx.zip
+    - name: Build docs
+      run:  mono .docfx/docfx.exe docs/docfx.json
+    - name: Clear E5R.Architecture.Docs docs/
+      run: rm -rf .doc-live/docs/*
+    - name: Copy docs/_site to E5R.Architecture.Docs docs/
+      run: cp -rf docs/_site/* .doc-live/docs/
+    - name: Commit and push to E5R.Architecture.Docs
+      if: (github.event_name == 'push' || github.event_name == 'repository_dispatch') && github.repository == 'e5r/E5R.Architecture' && github.ref == 'refs/heads/develop'
+      run: |
+        export GIT_COMMITTER_NAME=$(git show -s --format='%cn')
+        export GIT_COMMITTER_EMAIL=$(git show -s --format='%ce')
+        export GIT_AUTHOR_NAME=$(git show -s --format='%an')
+        export GIT_AUTHOR_EMAIL=$(git show -s --format='%ae')
+        export COMMIT_HASH=$(git show -s --format='%H')
+        export SUBJECT=$(git show -s --format='%s')
+        cd .doc-live
+        git add .
+        git commit -m "$SUBJECT" -m "Original commit: $COMMIT_HASH"
+        git push origin HEAD:doc-live

@@ -1,8 +1,8 @@
-﻿using System.Threading.Tasks;
-// Copyright (c) E5R Development Team. All rights reserved.
+﻿// Copyright (c) E5R Development Team. All rights reserved.
 // This file is a part of E5R.Architecture.
 // Licensed under the Apache version 2.0: https://github.com/e5r/licenses/blob/master/license/APACHE-2.0.txt
 
+using System.Threading.Tasks;
 using System.Collections.Generic;
 using E5R.Architecture.Core.Exceptions;
 using System;
@@ -10,21 +10,23 @@ using System;
 namespace E5R.Architecture.Core
 {
     /// <summary>
-    /// Rule for a target model
-    /// <example>
-    /// </example>
+    /// Rule for a **target** model
+    /// </summary>
+    /// <remarks>
+    /// <![CDATA[
     /// Suppose you have a simple model like this:
-    /// <code>
+    /// 
+    /// ```cs
     /// public class MyModel
     /// {
     ///     public int Number { get; set; }
     ///     public string Name { get; set; }
     /// }
-    /// </code>
+    /// ```
     /// 
     /// And according to your rules, the number must be between 1 and 99, and the name
     /// must be "Brazil". You can express this in a rule like this:
-    /// <code>
+    /// ```cs
     /// public class MyRule1 : RuleFor<MyModel>
     /// {
     ///     public MyRule1()
@@ -42,11 +44,11 @@ namespace E5R.Architecture.Core
     ///         return RuleCheckResult.Success;
     ///     }
     /// }
-    /// </code>
+    /// ```
     /// 
     /// Now that you have a defined rule, just use it in your methods
     /// and business objects like this:
-    /// <code>
+    /// ```cs
     /// public class MyBusinessClass
     /// {
     ///     public void MyMethod1(MyModel model)
@@ -54,9 +56,10 @@ namespace E5R.Architecture.Core
     ///         new MyRule1().Ensure(model);
     ///     }
     /// }
-    /// </code>
-    /// </summary>
-    /// <typeparam name="TTarget"></typeparam>
+    /// ```
+    /// ]]>
+    /// </remarks>
+    /// <typeparam name="TTarget">Target model class</typeparam>
     public abstract class RuleFor<TTarget> : IRule
         where TTarget : class
     {
