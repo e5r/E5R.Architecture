@@ -2,6 +2,9 @@
 // This file is a part of E5R.Architecture.
 // Licensed under the Apache version 2.0: https://github.com/e5r/licenses/blob/master/license/APACHE-2.0.txt
 
+using System;
+using System.Linq.Expressions;
+
 namespace E5R.Architecture.Data.Abstractions
 {
     public interface IStorageWriter<TUowProperty, TDataModel> : IStorageWriter<TDataModel>
@@ -49,10 +52,28 @@ namespace E5R.Architecture.Data.Abstractions
         /// <summary>
         /// Updates data from a stored object
         /// </summary>
+        /// <param name="identifier">Object identifier</param>
+        /// <param name="updateExpression">Update expression</param>
+        /// <typeparam name="TUpdated">Type for the updated data. Usually an anonymous type</typeparam>
+        /// <returns>Updated object instance</returns>
+        TDataModel Update<TUpdated>(object identifier, Expression<Func<TDataModel, TUpdated>> updateExpression);
+
+        /// <summary>
+        /// Updates data from a stored object
+        /// </summary>
         /// <param name="identifiers">Object identifiers</param>
         /// <param name="updated">Updated object data</param>
         /// <typeparam name="TUpdated">Type for the updated data. Usually an anonymous type</typeparam>
         /// <returns>Updated object instance</returns>
         TDataModel Update<TUpdated>(object[] identifiers, TUpdated updated);
+
+        /// <summary>
+        /// Updates data from a stored object
+        /// </summary>
+        /// <param name="identifiers">Object identifiers</param>
+        /// <param name="updateExpression">Update expression</param>
+        /// <typeparam name="TUpdated">Type for the updated data. Usually an anonymous type</typeparam>
+        /// <returns>Updated object instance</returns>
+        TDataModel Update<TUpdated>(object[] identifiers, Expression<Func<TDataModel, TUpdated>> updateExpression);
     }
 }

@@ -7,6 +7,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Linq.Expressions;
 using E5R.Architecture.Core;
+using E5R.Architecture.Core.Exceptions;
 using E5R.Architecture.Data.Abstractions;
 using Microsoft.EntityFrameworkCore;
 
@@ -19,7 +20,6 @@ namespace E5R.Architecture.Data.EntityFrameworkCore
         protected TDbContext Context { get; private set; }
         protected DbSet<TDataModel> Set { get; private set; }
         protected IQueryable<TDataModel> Query { get; private set; }
-        protected WriterDelegate Write { get; private set; }
 
         public FullStorage(TDbContext context)
         {
@@ -29,7 +29,6 @@ namespace E5R.Architecture.Data.EntityFrameworkCore
 
             Set = Context.Set<TDataModel>();
             Query = Set.AsNoTracking();
-            Write = Context.ChangeTracker.TrackGraph;
         }
 
         #region IStorageReader for TDataModel
@@ -257,8 +256,11 @@ namespace E5R.Architecture.Data.EntityFrameworkCore
 
             // TODO: Implementar validação
 
-            Write(data, node => node.Entry.State = EntityState.Added);
+            Context.Entry(data).State = EntityState.Added;
             Context.SaveChanges();
+
+            // Desanexamos o objeto do contexto após manipulação
+            Context.Entry(data).State = EntityState.Detached;
 
             return data;
         }
@@ -269,8 +271,11 @@ namespace E5R.Architecture.Data.EntityFrameworkCore
 
             // TODO: Implementar validação
 
-            Write(data, node => node.Entry.State = EntityState.Modified);
+            Context.Entry(data).State = EntityState.Modified;
             Context.SaveChanges();
+
+            // Desanexamos o objeto do contexto após manipulação
+            Context.Entry(data).State = EntityState.Detached;
 
             return data;
         }
@@ -281,18 +286,62 @@ namespace E5R.Architecture.Data.EntityFrameworkCore
 
             // TODO: Implementar validação
 
-            Write(data, node => node.Entry.State = EntityState.Deleted);
+            Context.Entry(data).State = EntityState.Deleted;
             Context.SaveChanges();
+
+            // Desanexamos o objeto do contexto após manipulação
+            Context.Entry(data).State = EntityState.Detached;
         }
 
         public TDataModel Update<TUpdated>(object identifier, TUpdated updated)
         {
-            throw new NotImplementedException();
+            Checker.NotNullArgument(identifier, nameof(identifier));
+            Checker.NotNullArgument(updated, nameof(updated));
+
+            return Update<TUpdated>(new[] { identifier }, _ => updated);
+        }
+
+        public TDataModel Update<TUpdated>(object identifier, Expression<Func<TDataModel, TUpdated>> updateExpression)
+        {
+            Checker.NotNullArgument(identifier, nameof(identifier));
+            Checker.NotNullArgument(updateExpression, nameof(updateExpression));
+
+            return Update(new[] { identifier }, updateExpression);
         }
 
         public TDataModel Update<TUpdated>(object[] identifiers, TUpdated updated)
         {
-            throw new NotImplementedException();
+            Checker.NotNullArgument(identifiers, nameof(identifiers));
+            Checker.NotNullArgument(updated, nameof(updated));
+
+            return Update(identifiers, _ => updated);
+        }
+
+        public TDataModel Update<TUpdated>(object[] identifiers, Expression<Func<TDataModel, TUpdated>> updateExpression)
+        {
+            Checker.NotNullArgument(identifiers, nameof(identifiers));
+            Checker.NotNullArgument(updateExpression, nameof(updateExpression));
+
+            var targetData = Find(identifiers, null);
+
+            if (targetData == null)
+            {
+                // TODO: Implementar i18n/l10n
+                throw new DataLayerException("Object to update not found in storage");
+            }
+
+            var updatedFactory = updateExpression.Compile();
+            var updated = updatedFactory(targetData);
+
+            CopyProperties(from: updated, to: targetData);
+
+            Context.Entry(targetData).State = EntityState.Modified;
+            Context.SaveChanges();
+
+            // Desanexamos o objeto do contexto após manipulação
+            Context.Entry(targetData).State = EntityState.Detached;
+
+            return targetData;
         }
 
         #endregion
@@ -305,15 +354,21 @@ namespace E5R.Architecture.Data.EntityFrameworkCore
 
             // TODO: Implementar validação
 
+            var affectedObjects = new List<TDataModel>();
+
             // TODO: Utilizar Bulk com alguma biblioteca ao invés dessa iteração
             foreach (var d in data)
             {
-                Write(d, node => node.Entry.State = EntityState.Added);
+                Context.Entry(d).State = EntityState.Added;
+                affectedObjects.Add(d);
             }
 
             Context.SaveChanges();
 
-            return data;
+            // Desanexamos os objetos do contexto após manipulação
+            affectedObjects.ForEach(_ => Context.Entry(_).State = EntityState.Detached);
+
+            return affectedObjects;
         }
 
         public IEnumerable<TDataModel> BulkReplace(IEnumerable<TDataModel> data)
@@ -322,15 +377,21 @@ namespace E5R.Architecture.Data.EntityFrameworkCore
 
             // TODO: Implementar validação
 
+            var affectedObjects = new List<TDataModel>();
+
             // TODO: Utilizar Bulk com alguma biblioteca ao invés dessa iteração
             foreach (var d in data)
             {
-                Write(d, node => node.Entry.State = EntityState.Modified);
+                Context.Entry(d).State = EntityState.Modified;
+                affectedObjects.Add(d);
             }
 
             Context.SaveChanges();
 
-            return data;
+            // Desanexamos os objetos do contexto após manipulação
+            affectedObjects.ForEach(_ => Context.Entry(_).State = EntityState.Detached);
+
+            return affectedObjects;
         }
 
         public void BulkRemove(IEnumerable<TDataModel> data)
@@ -339,13 +400,19 @@ namespace E5R.Architecture.Data.EntityFrameworkCore
 
             // TODO: Implementar validação
 
+            var affectedObjects = new List<TDataModel>();
+
             // TODO: Utilizar Bulk com alguma biblioteca ao invés dessa iteração
             foreach (var d in data)
             {
-                Write(d, node => node.Entry.State = EntityState.Deleted);
+                Context.Entry(d).State = EntityState.Deleted;
+                affectedObjects.Add(d);
             }
 
             Context.SaveChanges();
+
+            // Desanexamos os objetos do contexto após manipulação
+            affectedObjects.ForEach(_ => Context.Entry(_).State = EntityState.Detached);
         }
 
         public void BulkRemove(IDataFilter<TDataModel> filter)
@@ -353,7 +420,48 @@ namespace E5R.Architecture.Data.EntityFrameworkCore
 
         public IEnumerable<TDataModel> BulkUpdate<TUpdated>(IDataFilter<TDataModel> filter, TUpdated updated)
         {
-            throw new NotImplementedException();
+            Checker.NotNullArgument(filter, nameof(filter));
+            Checker.NotNullArgument(updated, nameof(updated));
+
+            return BulkUpdate(filter, _ => updated);
+        }
+
+        public IEnumerable<TDataModel> BulkUpdate<TUpdated>(IDataFilter<TDataModel> filter, Expression<Func<TDataModel, TUpdated>> updateExpression)
+        {
+            Checker.NotNullArgument(filter, nameof(filter));
+            Checker.NotNullArgument(updateExpression, nameof(updateExpression));
+
+            var searchResult = QuerySearch(Query, filter, null);
+
+            if (!searchResult.Any())
+            {
+                // TODO: Implementar i18n/l10n
+                throw new DataLayerException("No objects found in storage to update");
+            }
+
+            var affectedObjects = new List<TDataModel>();
+            var updatedFactory = updateExpression.Compile();
+
+            foreach (var targetData in searchResult)
+            {
+                // TODO: Usar uma biblioteca de terceiro para obter melhor performance.
+                //       Exemplos de biblioteca de terceiro:
+                //       - https://github.com/borisdj/EFCore.BulkExtensions, ou 
+                //       - https://github.com/zzzprojects/EntityFramework-Plus
+                var updated = updatedFactory(targetData);
+
+                CopyProperties(from: updated, to: targetData);
+
+                Context.Entry(targetData).State = EntityState.Modified;
+                affectedObjects.Add(targetData);
+            }
+
+            Context.SaveChanges();
+
+            // Desanexamos os objetos do contexto após manipulação
+            affectedObjects.ForEach(_ => Context.Entry(_).State = EntityState.Detached);
+
+            return affectedObjects;
         }
 
         #endregion

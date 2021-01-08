@@ -6,6 +6,7 @@ using System;
 using System.Linq;
 using System.Linq.Expressions;
 using E5R.Architecture.Core;
+using E5R.Architecture.Core.Exceptions;
 using E5R.Architecture.Data.Abstractions;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata;
@@ -168,6 +169,38 @@ namespace E5R.Architecture.Data.EntityFrameworkCore
                 return query;
 
             return includes.Includes.Aggregate(query, (q, i) => q.Include(i));
+        }
+
+        protected void CopyProperties<TFrom, TTo>(TFrom from, TTo to)
+        {
+            var fromProperties = typeof(TFrom).GetProperties();
+            var updateableProperties = typeof(TTo).GetProperties().Where(w =>
+                w.CanWrite &&
+                fromProperties.Any(a => a.Name == w.Name && a.PropertyType == w.PropertyType));
+
+            if (!fromProperties.Any() || !updateableProperties.Any())
+            {
+                // TODO: Implementar i18n/l10n
+                throw new DataLayerException("No matching data found for update");
+            }
+
+            updateableProperties
+                .ToList()
+                .ForEach(updateableProp =>
+                {
+                    var fromProp = fromProperties.FirstOrDefault(w => w.Name == updateableProp.Name);
+
+                    // Esta exceção nunca deve ocorrer, mas... "O seguro morreu de velho"
+                    if (fromProp == null)
+                    {
+                        // TODO: Implementar i18n/l10n
+                        throw new DataLayerException($"No matching data was found to update property {fromProp.Name}");
+                    }
+
+                    var fromValue = fromProp.GetValue(from);
+
+                    updateableProp.SetValue(to, fromValue);
+                });
         }
     }
 }

@@ -2,7 +2,9 @@
 // This file is a part of E5R.Architecture.
 // Licensed under the Apache version 2.0: https://github.com/e5r/licenses/blob/master/license/APACHE-2.0.txt
 
+using System;
 using System.Collections.Generic;
+using System.Linq.Expressions;
 
 namespace E5R.Architecture.Data.Abstractions
 {
@@ -50,5 +52,14 @@ namespace E5R.Architecture.Data.Abstractions
         /// <typeparam name="TUpdated">Type for the updated data. Usually an anonymous type</typeparam>
         /// <returns>Updated object instances</returns>
         IEnumerable<TDataModel> BulkUpdate<TUpdated>(IDataFilter<TDataModel> filter, TUpdated updated);
+
+        /// <summary>
+        /// Updates data from stored objects in bulk
+        /// </summary>
+        /// <param name="filter">Data filter</param>
+        /// <param name="updateExpression">Update data expression</param>
+        /// <typeparam name="TUpdated">Type for the updated data. Usually an anonymous type</typeparam>
+        /// <returns>Updated object instances</returns>
+        IEnumerable<TDataModel> BulkUpdate<TUpdated>(IDataFilter<TDataModel> filter, Expression<Func<TDataModel, TUpdated>> updateExpression);
     }
 }
