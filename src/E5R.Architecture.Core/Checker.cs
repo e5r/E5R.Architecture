@@ -12,7 +12,7 @@ namespace E5R.Architecture.Core
         {
             if (argObj == null)
             {
-                // TODO: Implementar internacionalização
+                // TODO: Implementar i18n/l10n
                 throw new ArgumentNullException(argName);
             }
         }
@@ -21,8 +21,26 @@ namespace E5R.Architecture.Core
         {
             if (@object == null)
             {
-                // TODO: Implementar internacionalização
+                // TODO: Implementar i18n/l10n
                 throw new NullReferenceException($"Object {objName} can not be null.");
+            }
+        }
+
+        public static void NotEmptyArgument(string argStr, string argName)
+        {
+            if (string.IsNullOrEmpty(argStr))
+            {
+                // TODO: Implementar i18n/l10n
+                throw new ArgumentNullException(argName);
+            }
+        }
+
+        public static void NotEmptyOrWhiteArgument(string argStr, string argName)
+        {
+            if (string.IsNullOrWhiteSpace(argStr))
+            {
+                // TODO: Implementar i18n/l10n
+                throw new ArgumentNullException(argName);
             }
         }
     }

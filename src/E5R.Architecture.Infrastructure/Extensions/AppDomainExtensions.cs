@@ -4,12 +4,11 @@
 
 using System;
 using System.Linq;
+using E5R.Architecture.Core;
+using E5R.Architecture.Infrastructure.Abstractions;
 
 namespace E5R.Architecture.Infrastructure.Extensions
 {
-    using Core;
-    using Abstractions;
-
     public static class AppDomainExtensions
     {
         public static void DIRegistrar(this AppDomain appDomain, IDIContainer container)

@@ -2,12 +2,11 @@
 // This file is a part of E5R.Architecture.
 // Licensed under the Apache version 2.0: https://github.com/e5r/licenses/blob/master/license/APACHE-2.0.txt
 
-using System;
-using System.Linq.Expressions;
 using Xunit;
 
 namespace E5R.Architecture.Data.Test
 {
+    using System.Collections.Generic;
     using Abstractions;
 
     public class DataLimiterTests
@@ -48,8 +47,7 @@ namespace E5R.Architecture.Data.Test
             public uint? OffsetLimit { get; set; }
             public bool Descending { get; set; }
 
-            public Expression<Func<DataModel<object>, object>> GetSorter()
-                => null;
+            public IEnumerable<IDataSorter<DataModel<object>>> GetSorters() => null;
         }
 
         #endregion

@@ -304,3 +304,6 @@ E5R.Architecture.Samples.*
 *.db-journal
 *.db-wal
 *.db-shm
+
+# DocFX
+_site/

@@ -1,16 +1,18 @@
-﻿using System;
-using System.Collections.Generic;
+using System;
 using System.Data.Common;
 using System.Linq;
 using System.Threading.Tasks;
-using E5R.Architecture.Data;
 using E5R.Architecture.Data.Abstractions;
+using E5R.Architecture.Data.Abstractions.Alias;
+using E5R.Architecture.Data.EntityFrameworkCore.Alias;
 using E5R.Architecture.Infrastructure;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Logging;
 using UsingDataEntityFrameworkCore.Data;
 using UsingDataEntityFrameworkCore.Models;
+using E5R.Architecture.Core;
+using E5R.Architecture.Data;
 
 namespace UsingDataEntityFrameworkCore.Controllers
 {
@@ -22,8 +24,10 @@ namespace UsingDataEntityFrameworkCore.Controllers
         private readonly SchoolContext _context2;
         private readonly DbConnection _connection;
         private readonly DbTransaction _transaction;
-        private readonly IStorageReader<Student> _readerStorage;
-        private readonly IStorageWriter<SchoolContext, Student> _writeStorage;
+        private readonly IStoreReader<Student> _readerStore;
+        private readonly IStoreWriter<SchoolContext, Student> _writerStore;
+        private readonly IStoreBulkWriter<Student> _bulkWriterStore;
+        private readonly IStoreReader<CourseTest> _storeCourseTest;
         private readonly ILogger<StudentController> _logger;
 
         public StudentController(
@@ -32,16 +36,20 @@ namespace UsingDataEntityFrameworkCore.Controllers
             UnitOfWorkProperty<DbConnection> connection,
             UnitOfWorkProperty<DbTransaction> transaction,
             SchoolContext context2,
-            IStorageReader<Student> readerStorage,
-            IStorageWriter<SchoolContext, Student> writeStorage)
+            IStoreReader<Student> readerStore,
+            IStoreWriter<SchoolContext, Student> writerStore,
+            IStoreBulkWriter<Student> bulkWriterStore,
+            IStoreReader<CourseTest> storeCourseTest)
         {
             _logger = logger ?? throw new ArgumentNullException(nameof(logger));
             _context = context ?? throw new ArgumentNullException(nameof(context));
             _connection = connection ?? throw new ArgumentNullException(nameof(connection));
             _transaction = transaction ?? throw new ArgumentNullException(nameof(transaction));
             _context2 = context2 ?? throw new ArgumentNullException(nameof(context2));
-            _readerStorage = readerStorage ?? throw new ArgumentNullException(nameof(readerStorage));
-            _writeStorage = writeStorage ?? throw new ArgumentNullException(nameof(writeStorage));
+            _readerStore = readerStore ?? throw new ArgumentNullException(nameof(readerStore));
+            _writerStore = writerStore ?? throw new ArgumentNullException(nameof(writerStore));
+            _bulkWriterStore = bulkWriterStore ?? throw new ArgumentNullException(nameof(bulkWriterStore));
+            _storeCourseTest = storeCourseTest ?? throw new ArgumentNullException(nameof(storeCourseTest));
         }
 
         public async Task<IActionResult> Index()
@@ -51,47 +59,78 @@ namespace UsingDataEntityFrameworkCore.Controllers
 
             var count = students.Count();
 
-            var dataResult = new DataLimiterResult<Student>(students, 0, (uint)count, count);
+            var dataResult = new PaginatedResult<Student>(students, 0, (uint)count, count);
 
             return View(dataResult);
         }
 
-        public IActionResult Search(string searchString, uint? page)
+        public IActionResult Search(string searchString, string button, uint? page)
         {
             uint pageOffset = Convert.ToUInt32(page.HasValue ? page.Value - 1 : 0);
 
-            // #if !DEBUG
-            // Usando filtro implícito
-            var query = _readerStorage.Query()
-                .OffsetBegin(pageOffset * PAGE_SIZE)
-                .OffsetLimit(5);
+            var query = _readerStore.AsFluentQuery()
+                .Paginate(page ?? 1, 5);
 
-            if (!string.IsNullOrWhiteSpace(searchString))
-            {
-                query.AddFilter(f =>
-                    f.FirstMidName.ToLower().Contains(searchString.ToLower()) ||
-                    f.LastName.ToLower().Contains(searchString.ToLower())
-                );
-            }
-
-            var students = query.LimitedSearch();
-            // #else
-            //             // Usando filtro explícito
-            //             var filter = new LinqDataFilter<Student>();
-
-            //             if (!string.IsNullOrWhiteSpace(searchString))
-            //             {
-            //                 filter = filter
-            //                     .AddFilter(f =>
-            //                         f.FirstMidName.ToLower().Contains(searchString.ToLower()) ||
-            //                         f.LastName.ToLower().Contains(searchString.ToLower())
-            //                     );
-            //             }
-
-            //             var students = _readerStorage.Search(filter);
-            // #endif
+            PaginatedResult<Student> students = !string.IsNullOrWhiteSpace(searchString)
+                ? query
+                    .Filter(f =>
+                        f.FirstMidName.ToLower().Contains(searchString.ToLower()) ||
+                        f.LastName.ToLower().Contains(searchString.ToLower()))
+                    .LimitedSearch()
+                : query.LimitedGet();
 
             ViewData["SearchString"] = searchString;
+
+            // Caso o botão clicado seja "FiltrarAtualizar" nós
+            // atualizamos o último nome de cada estudante encontrado
+            // com o nome fake composto por um número aleatório, só
+            // pra demonstrar o uso de Update() em massa
+            if (!string.IsNullOrWhiteSpace(searchString) && button == "FiltrarAtualizar")
+            {
+                var filter = new DataFilter<Student>()
+                    .AddFilter(f =>
+                        f.FirstMidName.ToLower().Contains(searchString.ToLower()) ||
+                        f.LastName.ToLower().Contains(searchString.ToLower())
+                    );
+
+                // Todos com mesmo segundo nome
+                var random = new Random();
+
+                // Alterando só um
+                var first = students.Result.FirstOrDefault();
+
+                if (first != null)
+                {
+                    var updated1 = _writerStore.Update(first.ID, new
+                    {
+                        LastName = $"LastName ({random.Next()})"
+                    });
+
+                    var updated2 = _writerStore.Update(first.ID, c => new
+                    {
+                        LastName = $"{c.LastName} ({random.Next()})"
+                    });
+                }
+
+                // Alterando a coleção inteira
+                var updatedResult1 = _bulkWriterStore.BulkUpdate(filter, new
+                {
+                    LastName = $"LastName {random.Next()}"
+                });
+
+                // Cada um com seu próprio segundo nome
+                var updatedResult2 = _bulkWriterStore.BulkUpdate(filter, c => new
+                {
+                    LastName = $"{c.LastName} ({random.Next()})"
+                });
+
+                students = new PaginatedResult<Student>(
+                    result: updatedResult2,
+                    offset: students.Offset,
+                    limit: students.Limit,
+                    total: students.Total
+                );
+            }
 
             return View(nameof(Index), students);
         }
@@ -117,26 +156,44 @@ namespace UsingDataEntityFrameworkCore.Controllers
             return View(student);
         }
 
-        public async Task<IActionResult> Details2(int? id)
+        public IActionResult Details2(int? id)
         {
             if (id == null)
             {
                 return NotFound();
             }
 
-            // TODO: Incluir projeção
-            var student = _readerStorage.Find(new Student { ID = id.Value });
+            var student = _readerStore.AsFluentQuery()
+                .Projection()
+                    .Include<Enrollment>(i => i.Enrollments)
+                        .ThenInclude<Course>(i => i.Course)
+                    .Project()
+                .Filter(w => w.ID == id)
+                .Search()
+                .FirstOrDefault();
+
+            var studentResume = _readerStore.AsFluentQuery()
+                .Projection()
+                    .Include(i => i.Enrollments)
+                    .Map(m => new
+                    {
+                        m.FirstMidName,
+                        m.LastName
+                    })
+                    .Project()
+                .Filter(w => w.Enrollments.Any())
+                .Sort(s => s.FirstMidName)
+                .LimitedSearch().Result;
+
+            foreach (var sr in studentResume)
+            {
+                _logger.LogDebug("First name: {0}, Last name: {1}", sr.FirstMidName, sr.LastName);
+            }
 
             if (student == null)
             {
                 return NotFound();
             }
-
-            // NOTE: Com as projeções diretamente no IStorage, este trecho será desnecessário
-            student.Enrollments = await _context.Enrollments
-                .Where(w => w.StudentID == student.ID)
-                .Include(i => i.Course)
-                .ToListAsync();
 
             return View(nameof(Details), student);
         }
@@ -148,14 +205,19 @@ namespace UsingDataEntityFrameworkCore.Controllers
                 return NotFound();
             }
 
-            var student = _readerStorage.Find(new Student { ID = id.Value });
+            var student = _readerStore.AsFluentQuery()
+                .Projection()
+                    .Include<Enrollment>(i => i.Enrollments)
+                        .ThenInclude<Course>(i => i.Course)
+                    .Project()
+                .Find(id);
 
             if (student == null)
             {
                 return NotFound();
             }
 
-            var createdStudent = _writeStorage.Create(new Student
+            var createdStudent = _writerStore.Create(new Student
             {
                 FirstMidName = student.FirstMidName + " (copy)",
                 LastName = student.LastName,
@@ -163,6 +225,25 @@ namespace UsingDataEntityFrameworkCore.Controllers
             });
 
             _logger.LogDebug($"Novo estudante criado com ID: {createdStudent.ID}");
+
+            var allCoursesTests = _storeCourseTest.AsFluentQuery()
+                .GetAll();
+
+            foreach (var courseTest in allCoursesTests)
+            {
+                var reload = _storeCourseTest.Find(courseTest.IdentifierValues);
+                _logger.LogDebug($"CourseTest {{ CourseID: {reload.CourseID}, CourseGUID: {reload.CourseGUID} }}");
+            }
+
+            var allCoursesTests2 = new RawSqlRideRepository<CourseTest>(_context, "SELECT * FROM course_test")
+                .AsFluentQuery()
+                .GetAll();
+
+            foreach (var courseTest in allCoursesTests)
+            {
+                var reload = _storeCourseTest.Find(courseTest.IdentifierValues);
+                _logger.LogDebug($"CourseTest {{ CourseID: {reload.CourseID}, CourseGUID: {reload.CourseGUID} }}");
+            }
 
             throw new NotImplementedException("Isso deve gerar um IUnitOfWork.DiscardWork()");
         }

@@ -1,4 +1,4 @@
-﻿@model E5R.Architecture.Data.DataLimiterResult<UsingDataEntityFrameworkCore.Models.Student>
+﻿@model E5R.Architecture.Core.PaginatedResult<UsingDataEntityFrameworkCore.Models.Student>
 
 @{
     ViewData["Title"] = "Estudantes";
@@ -6,13 +6,14 @@
 
 <h2>Estudantes</h2>
 
-<p>
+@*<p>
     <a asp-action="Create">Criar novo</a>
-</p>
+</p>*@
 <form asp-action="Search">
     <p>
         Nome: <input type="text" name="SearchString" value="@ViewData["SearchString"]">
-        <input type="submit" value="Filtrar" />
+        <input type="submit" name="Button" value="Filtrar" />
+        <input type="submit" name="Button" value="FiltrarAtualizar" />
     </p>
 </form>
 <table class="table">
@@ -43,9 +44,9 @@
                 @Html.DisplayFor(modelItem => item.EnrollmentDate)
             </td>
             <td>
-                <a asp-action="Edit" asp-route-id="@item.ID">Editar</a> |
+                @* <a asp-action="Edit" asp-route-id="@item.ID">Editar</a> | *@
                 <a asp-action="Details" asp-route-id="@item.ID">Detalhes</a> |
-                <a asp-action="Delete" asp-route-id="@item.ID">Deletar</a>
+                @* <a asp-action="Delete" asp-route-id="@item.ID">Deletar</a> *@
             </td>
         </tr>
 }

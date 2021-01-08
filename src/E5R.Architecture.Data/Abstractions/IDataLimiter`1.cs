@@ -2,18 +2,17 @@
 // This file is a part of E5R.Architecture.
 // Licensed under the Apache version 2.0: https://github.com/e5r/licenses/blob/master/license/APACHE-2.0.txt
 
-using System;
-using System.Linq.Expressions;
+using System.Collections.Generic;
 
 namespace E5R.Architecture.Data.Abstractions
 {
     /// <inheritdoc />
-    public interface IDataLimiter<TDataModel> : IDataSorter<TDataModel>
+    public interface IDataLimiter<TDataModel>
         where TDataModel : IDataModel
     {
         uint? OffsetBegin { get; }
         uint? OffsetLimit { get; }
-        bool Descending { get; }
-        Expression<Func<TDataModel, object>> GetSorter();
+
+        IEnumerable<IDataSorter<TDataModel>> GetSorters();
     }
 }

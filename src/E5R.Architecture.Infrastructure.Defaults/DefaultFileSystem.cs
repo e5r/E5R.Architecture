@@ -22,6 +22,13 @@ namespace E5R.Architecture.Infrastructure.Defaults
             return File.Exists(path);
         }
 
+        public bool DirectoryExists(string path)
+        {
+            Checker.NotNullArgument(path, nameof(path));
+
+            return Directory.Exists(path);
+        }
+
         public string GetCurrentDirectory()
         {
             try
@@ -60,6 +67,13 @@ namespace E5R.Architecture.Infrastructure.Defaults
             {
                 throw new IOException(exception.Message, exception);
             }
+        }
+
+        public void CreateDirectory(string path)
+        {
+            Checker.NotNullArgument(path, nameof(path));
+
+            Directory.CreateDirectory(path);
         }
     }
 }

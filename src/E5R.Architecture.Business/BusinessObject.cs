@@ -37,7 +37,7 @@ namespace E5R.Architecture.Business
 
             if (_originType == null || _originType != expectedType)
             {
-                // TODO: Implementar internacionalização
+                // TODO: Implementar i18n/l10n
                 throw new BusinessLayerException(
                     $"This operation requires a business object created from the [{expectedType.Name}] model.");
             }

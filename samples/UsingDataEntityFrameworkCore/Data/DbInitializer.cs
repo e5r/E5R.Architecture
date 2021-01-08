@@ -65,6 +65,20 @@ namespace UsingDataEntityFrameworkCore.Data
                 context.Enrollments.Add(enrollment);
             }
             context.SaveChanges();
+
+            foreach (var course in new CourseTest[]{
+                new CourseTest{CourseID=1050,Title="Chemistry",CourseGUID=Guid.NewGuid().ToString("N")},
+                new CourseTest{CourseID=4022,Title="Microeconomics",CourseGUID=Guid.NewGuid().ToString("N")},
+                new CourseTest{CourseID=4041,Title="Macroeconomics",CourseGUID=Guid.NewGuid().ToString("N")},
+                new CourseTest{CourseID=1045,Title="Calculus",CourseGUID=Guid.NewGuid().ToString("N")},
+                new CourseTest{CourseID=3141,Title="Trigonometry",CourseGUID=Guid.NewGuid().ToString("N")},
+                new CourseTest{CourseID=2021,Title="Composition",CourseGUID=Guid.NewGuid().ToString("N")},
+                new CourseTest{CourseID=2042,Title="Literature",CourseGUID=Guid.NewGuid().ToString("N")}
+            })
+            {
+                context.CoursesTest.Add(course);
+            }
+            context.SaveChanges();
         }
     }
 }

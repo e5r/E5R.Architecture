@@ -11,8 +11,6 @@ namespace E5R.Architecture.Core.Exceptions
     {
         private const string OwnerHelpLink = "https://github.com/e5r/E5R.Architecture.Docs";
 
-        private readonly ArchitectureLayerIdentifier _layerId;
-
         public ArchitectureLayerException(ArchitectureLayerIdentifier layerId, string message)
             : this(layerId, new Exception(message))
         {
@@ -27,8 +25,7 @@ namespace E5R.Architecture.Core.Exceptions
         public ArchitectureLayerException(ArchitectureLayerIdentifier layerId, Exception exception)
             : base(exception.Message, exception.InnerException)
         {
-            _layerId = layerId;
-
+            Identifier = layerId;
             ComponentInfo = ComponentInformation.MakeFromAssembly(GetCallingAssembly());
         }
 
@@ -36,5 +33,6 @@ namespace E5R.Architecture.Core.Exceptions
 
         public ComponentInformation ComponentInfo { get; private set; }
 
+        public ArchitectureLayerIdentifier Identifier { get; private set; }
     }
 }

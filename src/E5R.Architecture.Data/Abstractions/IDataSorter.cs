@@ -22,7 +22,6 @@ namespace E5R.Architecture.Data.Abstractions
         /// <summary>
         /// Get a sorter expression (OrderBy)
         /// </summary>
-        /// <returns>List of sorter expression</returns>
-        Expression<Func<TDataModel, object>> GetSorter();
+        Expression<Func<TDataModel, object>> Sorter { get; }
     }
 }

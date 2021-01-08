@@ -3,7 +3,9 @@
 // Licensed under the Apache version 2.0: https://github.com/e5r/licenses/blob/master/license/APACHE-2.0.txt
 
 using E5R.Architecture.Data.Abstractions;
-using E5R.Architecture.Data.EntityFrameworkCore;
+using E5R.Architecture.Data.Abstractions.Alias;
+using ByProperty = E5R.Architecture.Data.EntityFrameworkCore.Strategy.ByProperty;
+using TransactionScope = E5R.Architecture.Data.EntityFrameworkCore.Strategy.TransactionScope;
 
 namespace Microsoft.Extensions.DependencyInjection
 {
@@ -11,15 +13,76 @@ namespace Microsoft.Extensions.DependencyInjection
     {
         public static IServiceCollection AddStoragePropertyStrategy(this IServiceCollection serviceCollection)
         {
-            serviceCollection.AddScoped(typeof(IStorage<>), typeof(StorageByProperty<>));
-            serviceCollection.AddScoped(typeof(IStorageReader<>), typeof(StorageReaderByProperty<>));
-            serviceCollection.AddScoped(typeof(IStorageWriter<>), typeof(StorageWriterByProperty<>));
-            serviceCollection.AddScoped(typeof(IBulkStorageWriter<>), typeof(BulkStorageWriterByProperty<>));
+            // Objetos de armazenamento principais
+            serviceCollection.AddScoped(typeof(IStorage<>), typeof(ByProperty.Storage<>));
+            serviceCollection.AddScoped(typeof(IStorageReader<>), typeof(ByProperty.StorageReader<>));
+            serviceCollection.AddScoped(typeof(IStorageWriter<>), typeof(ByProperty.StorageWriter<>));
+            serviceCollection.AddScoped(typeof(IStorageBulkWriter<>), typeof(ByProperty.StorageBulkWriter<>));
 
-            serviceCollection.AddScoped(typeof(IStorage<,>), typeof(StorageByProperty<,>));
-            serviceCollection.AddScoped(typeof(IStorageReader<,>), typeof(StorageReaderByProperty<,>));
-            serviceCollection.AddScoped(typeof(IStorageWriter<,>), typeof(StorageWriterByProperty<,>));
-            serviceCollection.AddScoped(typeof(IBulkStorageWriter<,>), typeof(BulkStorageWriterByProperty<,>));
+            serviceCollection.AddScoped(typeof(IStorage<,>), typeof(ByProperty.Storage<,>));
+            serviceCollection.AddScoped(typeof(IStorageReader<,>), typeof(ByProperty.StorageReader<,>));
+            serviceCollection.AddScoped(typeof(IStorageWriter<,>), typeof(ByProperty.StorageWriter<,>));
+            serviceCollection.AddScoped(typeof(IStorageBulkWriter<,>), typeof(ByProperty.StorageBulkWriter<,>));
+
+            // Alias [Repository] dos objetos de armazenamento
+            serviceCollection.AddScoped(typeof(IRepository<>), typeof(ByProperty.Storage<>));
+            serviceCollection.AddScoped(typeof(IRepositoryReader<>), typeof(ByProperty.StorageReader<>));
+            serviceCollection.AddScoped(typeof(IRepositoryWriter<>), typeof(ByProperty.StorageWriter<>));
+            serviceCollection.AddScoped(typeof(IRepositoryBulkWriter<>), typeof(ByProperty.StorageBulkWriter<>));
+
+            serviceCollection.AddScoped(typeof(IRepository<,>), typeof(ByProperty.Storage<,>));
+            serviceCollection.AddScoped(typeof(IRepositoryReader<,>), typeof(ByProperty.StorageReader<,>));
+            serviceCollection.AddScoped(typeof(IRepositoryWriter<,>), typeof(ByProperty.StorageWriter<,>));
+            serviceCollection.AddScoped(typeof(IRepositoryBulkWriter<,>), typeof(ByProperty.StorageBulkWriter<,>));
+
+            // Alias [Store] dos objetos de armazenamento
+            serviceCollection.AddScoped(typeof(IStore<>), typeof(ByProperty.Storage<>));
+            serviceCollection.AddScoped(typeof(IStoreReader<>), typeof(ByProperty.StorageReader<>));
+            serviceCollection.AddScoped(typeof(IStoreWriter<>), typeof(ByProperty.StorageWriter<>));
+            serviceCollection.AddScoped(typeof(IStoreBulkWriter<>), typeof(ByProperty.StorageBulkWriter<>));
+
+            serviceCollection.AddScoped(typeof(IStore<,>), typeof(ByProperty.Storage<,>));
+            serviceCollection.AddScoped(typeof(IStoreReader<,>), typeof(ByProperty.StorageReader<,>));
+            serviceCollection.AddScoped(typeof(IStoreWriter<,>), typeof(ByProperty.StorageWriter<,>));
+            serviceCollection.AddScoped(typeof(IStoreBulkWriter<,>), typeof(ByProperty.StorageBulkWriter<,>));
+
+            return serviceCollection;
+        }
+
+        public static IServiceCollection AddStorageTransactionScopeStrategy(this IServiceCollection serviceCollection)
+        {
+            // Objetos de armazenamento principais
+            serviceCollection.AddScoped(typeof(IStorage<>), typeof(TransactionScope.Storage<>));
+            serviceCollection.AddScoped(typeof(IStorageReader<>), typeof(TransactionScope.StorageReader<>));
+            serviceCollection.AddScoped(typeof(IStorageWriter<>), typeof(TransactionScope.StorageWriter<>));
+            serviceCollection.AddScoped(typeof(IStorageBulkWriter<>), typeof(TransactionScope.StorageBulkWriter<>));
+
+            serviceCollection.AddScoped(typeof(IStorage<,>), typeof(TransactionScope.Storage<,>));
+            serviceCollection.AddScoped(typeof(IStorageReader<,>), typeof(TransactionScope.StorageReader<,>));
+            serviceCollection.AddScoped(typeof(IStorageWriter<,>), typeof(TransactionScope.StorageWriter<,>));
+            serviceCollection.AddScoped(typeof(IStorageBulkWriter<,>), typeof(TransactionScope.StorageBulkWriter<,>));
+
+            // Alias [Repository] dos objetos de armazenamento
+            serviceCollection.AddScoped(typeof(IRepository<>), typeof(TransactionScope.Storage<>));
+            serviceCollection.AddScoped(typeof(IRepositoryReader<>), typeof(TransactionScope.StorageReader<>));
+            serviceCollection.AddScoped(typeof(IRepositoryWriter<>), typeof(TransactionScope.StorageWriter<>));
+            serviceCollection.AddScoped(typeof(IRepositoryBulkWriter<>), typeof(TransactionScope.StorageBulkWriter<>));
+
+            serviceCollection.AddScoped(typeof(IRepository<,>), typeof(TransactionScope.Storage<,>));
+            serviceCollection.AddScoped(typeof(IRepositoryReader<,>), typeof(TransactionScope.StorageReader<,>));
+            serviceCollection.AddScoped(typeof(IRepositoryWriter<,>), typeof(TransactionScope.StorageWriter<,>));
+            serviceCollection.AddScoped(typeof(IRepositoryBulkWriter<,>), typeof(TransactionScope.StorageBulkWriter<,>));
+
+            // Alias [Store] dos objetos de armazenamento
+            serviceCollection.AddScoped(typeof(IStore<>), typeof(TransactionScope.Storage<>));
+            serviceCollection.AddScoped(typeof(IStoreReader<>), typeof(TransactionScope.StorageReader<>));
+            serviceCollection.AddScoped(typeof(IStoreWriter<>), typeof(TransactionScope.StorageWriter<>));
+            serviceCollection.AddScoped(typeof(IStoreBulkWriter<>), typeof(TransactionScope.StorageBulkWriter<>));
+
+            serviceCollection.AddScoped(typeof(IStore<,>), typeof(TransactionScope.Storage<,>));
+            serviceCollection.AddScoped(typeof(IStoreReader<,>), typeof(TransactionScope.StorageReader<,>));
+            serviceCollection.AddScoped(typeof(IStoreWriter<,>), typeof(TransactionScope.StorageWriter<,>));
+            serviceCollection.AddScoped(typeof(IStoreBulkWriter<,>), typeof(TransactionScope.StorageBulkWriter<,>));
 
             return serviceCollection;
         }
