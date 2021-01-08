@@ -9,6 +9,7 @@ on:
 
 jobs:
   build:
+    name: Build
     runs-on: ubuntu-20.04
     steps:
     - name: Checkout
@@ -30,10 +31,33 @@ jobs:
       run: rm -rf .doc-live/docs/*
     - name: Copy docs/_site to .doc-live/docs/
       run: cp -rf docs/_site/* .doc-live/docs/
-    - name: Show "github.ref"
-      run: echo ""
+
+  publish:
+    name: Publish
+    needs: build
+    if: startsWith(github.ref, 'refs/tags/')
+    runs-on: ubuntu-20.04
+    steps:
+    - name: Checkout
+      uses: actions/checkout@v2
+      with:
+        fetch-depth: 1
+    - name: Checkout "doc-live" branch
+      uses: actions/checkout@v2
+      with:
+        ref: doc-live
+        path: .doc-live
+    - name: Get docfx
+      run: |
+        curl -L https://github.com/dotnet/docfx/releases/latest/download/docfx.zip -o docfx.zip
+        unzip -d .docfx docfx.zip
+    - name: Build docs
+      run:  mono .docfx/docfx.exe docs/docfx.json
+    - name: Clear .doc-live/docs/*
+      run: rm -rf .doc-live/docs/*
+    - name: Copy docs/_site to .doc-live/docs/
+      run: cp -rf docs/_site/* .doc-live/docs/
     - name: Commit and push to "doc-live" branch
-      if: startsWith(github.ref, 'refs/tags/')
       run: |
         export GIT_COMMITTER_NAME=$(git show -s --format='%cn')
         export GIT_COMMITTER_EMAIL=$(git show -s --format='%ce')
