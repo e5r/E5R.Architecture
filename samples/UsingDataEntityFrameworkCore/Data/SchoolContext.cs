@@ -25,6 +25,8 @@ namespace UsingDataEntityFrameworkCore.Data
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
             optionsBuilder.UseLoggerFactory(_loggerFactory);
+            optionsBuilder.EnableDetailedErrors(true);
+            optionsBuilder.EnableSensitiveDataLogging(true);
         }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)

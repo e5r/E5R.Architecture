@@ -12,6 +12,7 @@ using Microsoft.Extensions.Logging;
 using UsingDataEntityFrameworkCore.Data;
 using UsingDataEntityFrameworkCore.Models;
 using E5R.Architecture.Core;
+using E5R.Architecture.Data;
 
 namespace UsingDataEntityFrameworkCore.Controllers
 {
@@ -25,6 +26,7 @@ namespace UsingDataEntityFrameworkCore.Controllers
         private readonly DbTransaction _transaction;
         private readonly IStoreReader<Student> _readerStore;
         private readonly IStoreWriter<SchoolContext, Student> _writerStore;
+        private readonly IStoreBulkWriter<Student> _bulkWriterStore;
         private readonly IStoreReader<CourseTest> _storeCourseTest;
         private readonly ILogger<StudentController> _logger;
 
@@ -36,6 +38,7 @@ namespace UsingDataEntityFrameworkCore.Controllers
             SchoolContext context2,
             IStoreReader<Student> readerStore,
             IStoreWriter<SchoolContext, Student> writerStore,
+            IStoreBulkWriter<Student> bulkWriterStore,
             IStoreReader<CourseTest> storeCourseTest)
         {
             _logger = logger ?? throw new ArgumentNullException(nameof(logger));
@@ -45,6 +48,7 @@ namespace UsingDataEntityFrameworkCore.Controllers
             _context2 = context2 ?? throw new ArgumentNullException(nameof(context2));
             _readerStore = readerStore ?? throw new ArgumentNullException(nameof(readerStore));
             _writerStore = writerStore ?? throw new ArgumentNullException(nameof(writerStore));
+            _bulkWriterStore = bulkWriterStore ?? throw new ArgumentNullException(nameof(bulkWriterStore));
             _storeCourseTest = storeCourseTest ?? throw new ArgumentNullException(nameof(storeCourseTest));
         }
 
@@ -60,15 +64,12 @@ namespace UsingDataEntityFrameworkCore.Controllers
             return View(dataResult);
         }
 
-        public IActionResult Search(string searchString, uint? page)
+        public IActionResult Search(string searchString, string button, uint? page)
         {
             uint pageOffset = Convert.ToUInt32(page.HasValue ? page.Value - 1 : 0);
 
-            // #if !DEBUG
-            // Usando filtro implícito
             var query = _readerStore.AsFluentQuery()
-                .OffsetBegin(pageOffset * PAGE_SIZE)
-                .OffsetLimit(5);
+                .Paginate(page ?? 1, 5);
 
             PaginatedResult<Student> students = !string.IsNullOrWhiteSpace(searchString)
                 ? query
@@ -77,23 +78,59 @@ namespace UsingDataEntityFrameworkCore.Controllers
                         f.LastName.ToLower().Contains(searchString.ToLower()))
                     .LimitedSearch()
                 : query.LimitedGet();
-            // #else
-            //             // Usando filtro explícito
-            //             var filter = new LinqDataFilter<Student>();
-
-            //             if (!string.IsNullOrWhiteSpace(searchString))
-            //             {
-            //                 filter = filter
-            //                     .AddFilter(f =>
-            //                         f.FirstMidName.ToLower().Contains(searchString.ToLower()) ||
-            //                         f.LastName.ToLower().Contains(searchString.ToLower())
-            //                     );
-            //             }
-
-            //             var students = _readerStore.Search(filter);
-            // #endif
 
             ViewData["SearchString"] = searchString;
+
+            // Caso o botão clicado seja "FiltrarAtualizar" nós
+            // atualizamos o último nome de cada estudante encontrado
+            // com o nome fake composto por um número aleatório, só
+            // pra demonstrar o uso de Update() em massa
+            if (!string.IsNullOrWhiteSpace(searchString) && button == "FiltrarAtualizar")
+            {
+                var filter = new DataFilter<Student>()
+                    .AddFilter(f =>
+                        f.FirstMidName.ToLower().Contains(searchString.ToLower()) ||
+                        f.LastName.ToLower().Contains(searchString.ToLower())
+                    );
+
+                // Todos com mesmo segundo nome
+                var random = new Random();
+
+                // Alterando só um
+                var first = students.Result.FirstOrDefault();
+
+                if (first != null)
+                {
+                    var updated1 = _writerStore.Update(first.ID, new
+                    {
+                        LastName = $"LastName ({random.Next()})"
+                    });
+
+                    var updated2 = _writerStore.Update(first.ID, c => new
+                    {
+                        LastName = $"{c.LastName} ({random.Next()})"
+                    });
+                }
+
+                // Alterando a coleção inteira
+                var updatedResult1 = _bulkWriterStore.BulkUpdate(filter, new
+                {
+                    LastName = $"LastName {random.Next()}"
+                });
+
+                // Cada um com seu próprio segundo nome
+                var updatedResult2 = _bulkWriterStore.BulkUpdate(filter, c => new
+                {
+                    LastName = $"{c.LastName} ({random.Next()})"
+                });
+
+                students = new PaginatedResult<Student>(
+                    result: updatedResult2,
+                    offset: students.Offset,
+                    limit: students.Limit,
+                    total: students.Total
+                );
+            }
 
             return View(nameof(Index), students);
         }
