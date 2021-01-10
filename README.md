@@ -22,4 +22,4 @@ E5R.Architecture.Infrastructure | [![NuGet](https://img.shields.io/nuget/v/E5R.A
 E5R.Architecture.Infrastructure.Defaults | [![NuGet](https://img.shields.io/nuget/v/E5R.Architecture.Infrastructure.Defaults.png?style=flat-square)](https://www.nuget.org/packages/E5R.Architecture.Infrastructure.Defaults) | [![NuGet RC](https://img.shields.io/nuget/vpre/E5R.Architecture.Infrastructure.Defaults.png?style=flat-square)](https://www.nuget.org/packages/E5R.Architecture.Infrastructure.Defaults)
 E5R.Architecture.Infrastructure.AspNetCore | [![NuGet](https://img.shields.io/nuget/v/E5R.Architecture.Infrastructure.AspNetCore.png?style=flat-square)](https://www.nuget.org/packages/E5R.Architecture.Infrastructure.AspNetCore) | [![NuGet RC](https://img.shields.io/nuget/vpre/E5R.Architecture.Infrastructure.AspNetCore.png?style=flat-square)](https://www.nuget.org/packages/E5R.Architecture.Infrastructure.AspNetCore)
 
-Acompanhe as novidades em [NEWS.md](NEWS.md)
+Nossa documentação está disponível em https://e5r.github.io/E5R.Architecture.

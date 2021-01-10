@@ -280,6 +280,36 @@ namespace E5R.Architecture.Data.EntityFrameworkCore
             return data;
         }
 
+        public void Remove(object identifier)
+        {
+            Checker.NotNullArgument(identifier, nameof(identifier));
+
+            var targetData = Find(identifier, null);
+
+            if (targetData == null)
+            {
+                // TODO: Implementar i18n/l10n
+                throw new DataLayerException("Object to remove not found in storage");
+            }
+
+            Remove(targetData);
+        }
+
+        public void Remove(object[] identifiers)
+        {
+            Checker.NotNullArgument(identifiers, nameof(identifiers));
+
+            var targetData = Find(identifiers, null);
+
+            if (targetData == null)
+            {
+                // TODO: Implementar i18n/l10n
+                throw new DataLayerException("Object to remove not found in storage");
+            }
+
+            Remove(targetData);
+        }
+
         public void Remove(TDataModel data)
         {
             Checker.NotNullArgument(data, nameof(data));
