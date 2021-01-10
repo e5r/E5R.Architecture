@@ -32,6 +32,7 @@ v0.x
       public T Value => _provider.GetRequiredService<T>();
   }
   ```
+- Mover este TODO.txt para um projeto no GitHub
 
 v1.0
 ====
