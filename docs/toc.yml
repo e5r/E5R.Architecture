@@ -3,3 +3,5 @@
 - name: Documentação da API
   href: api/
   homepage: api/index.md
+- name: Notas de Lançamento
+  href: release-notes.md
