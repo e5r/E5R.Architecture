@@ -16,21 +16,12 @@ jobs:
       uses: actions/checkout@v2
       with:
         fetch-depth: 1
-    - name: Checkout "doc-live" branch
-      uses: actions/checkout@v2
-      with:
-        ref: doc-live
-        path: .doc-live
     - name: Get docfx
       run: |
         curl -L https://github.com/dotnet/docfx/releases/latest/download/docfx.zip -o docfx.zip
         unzip -d .docfx docfx.zip
     - name: Build docs
       run:  mono .docfx/docfx.exe docs/docfx.json
-    - name: Clear .doc-live/docs/*
-      run: rm -rf .doc-live/docs/*
-    - name: Copy docs/_site to .doc-live/docs/
-      run: cp -rf docs/_site/* .doc-live/docs/
 
   publish:
     name: Publish
