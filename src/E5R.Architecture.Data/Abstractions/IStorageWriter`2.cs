@@ -34,6 +34,18 @@ namespace E5R.Architecture.Data.Abstractions
         /// <summary>
         /// Removes a stored object
         /// </summary>
+        /// <param name="identifier">Object identifier</param>
+        void Remove(object identifier);
+
+        /// <summary>
+        /// Removes a stored object
+        /// </summary>
+        /// <param name="identifiers">Object identifiers</param>
+        void Remove(object[] identifiers);
+
+        /// <summary>
+        /// Removes a stored object
+        /// </summary>
         /// <remarks>
         /// The object to be replaced is defined according to the value of <see cref="TDataModel.IdentifierValues" />.
         /// </remarks
