@@ -1,0 +1,162 @@
+﻿<!DOCTYPE html>
+<!--[if IE]><![endif]-->
+<html>
+  
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>Vis&#227;o Geral | Arquitetura E5R </title>
+    <meta name="viewport" content="width=device-width">
+    <meta name="title" content="Vis&#227;o Geral | Arquitetura E5R ">
+    <meta name="generator" content="docfx 2.56.6.0">
+    
+    <link rel="shortcut icon" href="../images/favicon.png">
+    <link rel="stylesheet" href="../styles/docfx.vendor.css">
+    <link rel="stylesheet" href="../styles/docfx.css">
+    <link rel="stylesheet" href="../styles/main.css">
+    <meta property="docfx:navrel" content="../toc.html">
+    <meta property="docfx:tocrel" content="toc.html">
+    
+    
+    
+  </head>
+  <body data-spy="scroll" data-target="#affix" data-offset="120">
+    <div id="wrapper">
+      <header>
+        
+        <nav id="autocollapse" class="navbar navbar-inverse ng-scope" role="navigation">
+          <div class="container">
+            <div class="navbar-header">
+              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+              
+              <a class="navbar-brand" href="../index.html">
+                <img id="logo" class="svg" src="../images/logo.png" alt="">
+              </a>
+            </div>
+            <div class="collapse navbar-collapse" id="navbar">
+              <form class="navbar-form navbar-right" role="search" id="search">
+                <div class="form-group">
+                  <input type="text" class="form-control" id="search-query" placeholder="Search" autocomplete="off">
+                </div>
+              </form>
+            </div>
+          </div>
+        </nav>
+        
+        <div class="subnav navbar navbar-default">
+          <div class="container hide-when-search" id="breadcrumb">
+            <ul class="breadcrumb">
+              <li></li>
+            </ul>
+          </div>
+        </div>
+      </header>
+      <div role="main" class="container body-content hide-when-search">
+        
+        <div class="sidenav hide-when-search">
+          <a class="btn toc-toggle collapse" data-toggle="collapse" href="#sidetoggle" aria-expanded="false" aria-controls="sidetoggle">Show / Hide Table of Contents</a>
+          <div class="sidetoggle collapse" id="sidetoggle">
+            <div id="sidetoc"></div>
+          </div>
+        </div>
+        <div class="article row grid-right">
+          <div class="col-md-10">
+            <article class="content wrap" id="_content" data-uid="">
+<h1 id="arquitetura-e5r">Arquitetura E5R</h1>
+
+<p>A <em>Arquitetura E5R</em> é basicamente a forma como eu <a href="https://github.com/erlimar">Erlimar</a>
+costumo organizar meus projetos <a href="https://dot.net">.NET</a>, e também reúne uma <em>&quot;meia dúzia&quot;</em> de utilitários,
+extensões, genéricos e outras classes úteis. Então podemos dizer que
+<strong>E5R.Architecture</strong> é uma <code>especificação + alguns utilitários</code> que ajudam você a
+implementar uma arquitetura de software <a href="https://dot.net">.NET</a>.</p>
+<p>Basicamente, este projeto começou com uma série de utilitários e genéricos que uso para abstrair o
+acesso ao banco de dados nas aplicações <a href="https://dot.net">.NET</a> que tenho trabalhado, e mais especificamente
+usando o <a href="https://github.com/dotnet/efcore">EntityFramework</a>, mas também incluía algumas outras <em>&quot;coisinhas&quot;</em>
+para auxiliar na forma como implemento essas aplicações seguindo os princípios de <a href="https://martinfowler.com/tags/domain%20driven%20design.html">DDD</a>.</p>
+<p>Além das idéias de organização em si (que iremos discutir nos próximos tutoriais),
+estão disponíveis os seguintes componentes que podem ser obtidos via <a href="https://www.nuget.org/packages?q=e5r.architecture">NuGet</a>.</p>
+<table>
+<thead>
+<tr>
+<th>Componente</th>
+<th style="text-align: left;"> </th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>E5R.Architecture.Business</td>
+<td style="text-align: left;"><a href="https://www.nuget.org/packages/E5R.Architecture.Business"><img src="https://img.shields.io/nuget/v/E5R.Architecture.Business.png?style=flat-square&amp;logo=nuget&amp;color=blue" alt="NuGet"></a></td>
+</tr>
+<tr>
+<td>E5R.Architecture.Core</td>
+<td style="text-align: left;"><a href="https://www.nuget.org/packages/E5R.Architecture.Core"><img src="https://img.shields.io/nuget/v/E5R.Architecture.Core.png?style=flat-square&amp;logo=nuget&amp;color=blue" alt="NuGet"></a></td>
+</tr>
+<tr>
+<td>E5R.Architecture.Data</td>
+<td style="text-align: left;"><a href="https://www.nuget.org/packages/E5R.Architecture.Data"><img src="https://img.shields.io/nuget/v/E5R.Architecture.Data.png?style=flat-square&amp;logo=nuget&amp;color=blue" alt="NuGet"></a></td>
+</tr>
+<tr>
+<td>E5R.Architecture.Data.Dapper</td>
+<td style="text-align: left;"><a href="https://www.nuget.org/packages/E5R.Architecture.Data.Dapper"><img src="https://img.shields.io/nuget/v/E5R.Architecture.Data.Dapper.png?style=flat-square&amp;logo=nuget&amp;color=blue" alt="NuGet"></a></td>
+</tr>
+<tr>
+<td>E5R.Architecture.Data.EntityFrameworkCore</td>
+<td style="text-align: left;"><a href="https://www.nuget.org/packages/E5R.Architecture.Data.EntityFrameworkCore"><img src="https://img.shields.io/nuget/v/E5R.Architecture.Data.EntityFrameworkCore.png?style=flat-square&amp;logo=nuget&amp;color=blue" alt="NuGet"></a></td>
+</tr>
+<tr>
+<td>E5R.Architecture.Infrastructure</td>
+<td style="text-align: left;"><a href="https://www.nuget.org/packages/E5R.Architecture.Infrastructure"><img src="https://img.shields.io/nuget/v/E5R.Architecture.Infrastructure.png?style=flat-square&amp;logo=nuget&amp;color=blue" alt="NuGet"></a></td>
+</tr>
+<tr>
+<td>E5R.Architecture.Infrastructure.Defaults</td>
+<td style="text-align: left;"><a href="https://www.nuget.org/packages/E5R.Architecture.Infrastructure.Defaults"><img src="https://img.shields.io/nuget/v/E5R.Architecture.Infrastructure.Defaults.png?style=flat-square&amp;logo=nuget&amp;color=blue" alt="NuGet"></a></td>
+</tr>
+<tr>
+<td>E5R.Architecture.Infrastructure.AspNetCore</td>
+<td style="text-align: left;"><a href="HTTPS://WWW.NUGET.ORG/PACKAGES/E5R.ARCHITECTURE.INFRASTRUCTURE.ASPNETCORE"><img src="https://img.shields.io/nuget/v/E5R.Architecture.Infrastructure.AspNetCore.png?style=flat-square&amp;logo=nuget&amp;color=blue" alt="NuGet"></a></td>
+</tr>
+</tbody>
+</table>
+<p><strong>E5R Architecture</strong> é código aberto, o <a href="https://github.com/e5r/e5r.architecture">código fonte está disponível no GitHub</a>,
+e toda contribuição é bem vinda.</p>
+<p>E como tudo começou pensando nos utilitários e genéricos para abstrair a forma como
+acessamos o banco de dados, minha dica é: comece pela leitura do tutorial
+<a href="data-intro.html">Introdução a manipulação de dados</a>.</p>
+</article>
+          </div>
+          
+          <div class="hidden-sm col-md-2" role="complementary">
+            <div class="sideaffix">
+              <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">
+                <h5>In This Article</h5>
+                <div></div>
+              </nav>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <footer>
+        <div class="grad-bottom"></div>
+        <div class="footer">
+          <div class="container">
+            <span class="pull-right">
+              <a href="#top">Back to top</a>
+            </span>
+            Copyright (c) 2020 E5R Development Team
+            
+          </div>
+        </div>
+      </footer>
+    </div>
+    
+    <script type="text/javascript" src="../styles/docfx.vendor.js"></script>
+    <script type="text/javascript" src="../styles/docfx.js"></script>
+    <script type="text/javascript" src="../styles/main.js"></script>
+  </body>
+</html>

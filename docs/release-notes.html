@@ -1,0 +1,207 @@
+﻿<!DOCTYPE html>
+<!--[if IE]><![endif]-->
+<html>
+  
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>Notas de Lan&#231;amento | Arquitetura E5R </title>
+    <meta name="viewport" content="width=device-width">
+    <meta name="title" content="Notas de Lan&#231;amento | Arquitetura E5R ">
+    <meta name="generator" content="docfx 2.56.6.0">
+    
+    <link rel="shortcut icon" href="images/favicon.png">
+    <link rel="stylesheet" href="styles/docfx.vendor.css">
+    <link rel="stylesheet" href="styles/docfx.css">
+    <link rel="stylesheet" href="styles/main.css">
+    <meta property="docfx:navrel" content="toc.html">
+    <meta property="docfx:tocrel" content="toc.html">
+    
+    
+    
+  </head>
+  <body data-spy="scroll" data-target="#affix" data-offset="120">
+    <div id="wrapper">
+      <header>
+        
+        <nav id="autocollapse" class="navbar navbar-inverse ng-scope" role="navigation">
+          <div class="container">
+            <div class="navbar-header">
+              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+              
+              <a class="navbar-brand" href="index.html">
+                <img id="logo" class="svg" src="images/logo.png" alt="">
+              </a>
+            </div>
+            <div class="collapse navbar-collapse" id="navbar">
+              <form class="navbar-form navbar-right" role="search" id="search">
+                <div class="form-group">
+                  <input type="text" class="form-control" id="search-query" placeholder="Search" autocomplete="off">
+                </div>
+              </form>
+            </div>
+          </div>
+        </nav>
+        
+        <div class="subnav navbar navbar-default">
+          <div class="container hide-when-search" id="breadcrumb">
+            <ul class="breadcrumb">
+              <li></li>
+            </ul>
+          </div>
+        </div>
+      </header>
+      <div role="main" class="container body-content hide-when-search">
+        <div class="article row grid">
+          <div class="col-md-10">
+            <article class="content wrap" id="_content" data-uid="">
+<h1 id="notas-de-lançamento">Notas de Lançamento</h1>
+
+<h2 id="040">0.4.0</h2>
+<p>Adiciona novas assinaturas a IDataStorage.Remove()</p>
+<ul>
+<li>Remove(object identifier);</li>
+<li>Remove(object[] identifiers);</li>
+</ul>
+<p>Cria tutorial &quot;Introdução a manipulação de dados&quot; na documentação oficial:</p>
+<p><a href="https://e5r.github.io/E5R.Architecture">https://e5r.github.io/E5R.Architecture</a></p>
+<h2 id="030">0.3.0</h2>
+<p>Nesta versão temos tantas novidades que não dá pra detalhar tanto, então ficam algumas notas.</p>
+<ul>
+<li>Adicionamos o conceito de <code>IRule</code> ao &quot;core&quot;</li>
+<li>Adicionamos o conceito de <code>NotificationManage</code> ao &quot;core</li>
+<li>PaginatedResult&lt;&gt; result agora está no &quot;Core&quot; e é usado no lugar de <code>DataLimiterResult&lt;&gt;</code></li>
+<li>Agora temos um local para documentação ao vivo (<a href="https://e5r.github.io/E5R.Architecture">https://e5r.github.io/E5R.Architecture</a>)</li>
+<li>UnitOfWork agora é implementado usando duas estratégias: <code>ByProperty</code> e <code>TransactionScope</code></li>
+<li>Estabiliza API de <code>IStorageReader&lt;&gt;</code>
+<ul>
+<li>Find()</li>
+<li>GetAll()</li>
+<li>LimitedGet()</li>
+<li>Search()</li>
+<li>LimitedSearch()</li>
+</ul>
+</li>
+<li>Estabiliza API de <code>IStorageWriter&lt;&gt;</code>
+<ul>
+<li>Create()</li>
+<li>Replace()</li>
+<li>Remove()</li>
+<li>Update()</li>
+</ul>
+</li>
+<li>Estabiliza API de <code>IStorageBulkWriter&lt;&gt;</code>
+<ul>
+<li>BulkCreate()</li>
+<li>BulkReplace()</li>
+<li>BulkRemove()</li>
+<li>BulkUpdate()</li>
+</ul>
+</li>
+<li>Adicionamos suporte a FluentQuery nos repositórios genéricos de consulta:</li>
+</ul>
+<pre><code class="lang-cs">var result = _studentStore.AsFluentQuery()
+    .Projection()
+        .Include(i =&gt; i.Enrollments)
+        .Include&lt;Enrollment&gt;(i =&gt; i.Enrollments)
+            .ThenInclude&lt;Course&gt;(i =&gt; i.Course)
+        .Map(m =&gt; new
+        {
+            StudentName = m.FirstMidName,
+            TotalEnrollments = m.Enrollments.Count,
+            Enrollments = m.Enrollments.Select(s =&gt; new
+            {
+                Grade = s.Grade,
+                 Course = s.Course.Title
+            })
+        })
+        .Project()
+    .SortDescending(s =&gt; s.FirstMidName)
+    .LimitedGet();
+</code></pre>
+<ul>
+<li>Adiciona aliases <code>IRepository&lt;&gt;</code> e <code>IStore&lt;&gt;</code> a <code>IStorage&lt;&gt;</code></li>
+<li>Adiciona conceito de <code>RideStorage</code> e <code>RawSqlRideStorage</code> para componente <code>Data.EntityFrameworkCore</code></li>
+</ul>
+<blockquote>
+<p>Além de várias outras refatorações para limpeza e padronização de código.</p>
+</blockquote>
+<h2 id="020">0.2.0</h2>
+<p>O Suporte a UnitOfWork está completo usando a estratégia de propriedades.</p>
+<p>Várias outras refatorações foram feitas:</p>
+<ul>
+<li>Conceito de reducer passa a ser filter</li>
+<li>Conceito de IoC passa a ser DI</li>
+<li>ComponentInformation é obtido via dados do Assembly</li>
+<li>Exceções agora estão centralizadas no componente Core</li>
+<li>DataFilter e DataLimiter ganham uma implementação padrão em Linq</li>
+</ul>
+<p>O suporte a <code>E5R.Architecture.Core.Formatters</code> foi removido</p>
+<blockquote>
+<p>Além de várias outras refatorações para limpeza e padronização de código.</p>
+</blockquote>
+<h2 id="010-alpha">0.1.0-alpha</h2>
+<ul>
+<li>classe E5R.Architecture.Core.<strong>SemVer</strong> básica</li>
+<li>classe E5R.Architecture.Data.<strong>Data</strong> temporária</li>
+<li>Formatador de string CPF</li>
+</ul>
+<pre><code class="lang-csharp">using E5R.Architecture.Core.Formatters;
+
+// code block
+{
+   string cpfFormatado = (FormattedCPF)&quot;12345678901&quot;; 
+}
+
+// output $cpfFormatado =&gt; &quot;123.456.789-01&quot;
+</code></pre>
+<ul>
+<li>Desformatador de string de CPF</li>
+</ul>
+<pre><code class="lang-csharp">using E5R.Architecture.Core.Formatters;
+
+// code block
+{
+   string cpfDesformatado = (UnformattedCPF)&quot;123.456.789-01&quot;; 
+}
+
+// output $cpfDesformatado =&gt; &quot;12345678901&quot;
+</code></pre>
+</article>
+          </div>
+          
+          <div class="hidden-sm col-md-2" role="complementary">
+            <div class="sideaffix">
+              <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">
+                <h5>In This Article</h5>
+                <div></div>
+              </nav>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <footer>
+        <div class="grad-bottom"></div>
+        <div class="footer">
+          <div class="container">
+            <span class="pull-right">
+              <a href="#top">Back to top</a>
+            </span>
+            Copyright (c) 2020 E5R Development Team
+            
+          </div>
+        </div>
+      </footer>
+    </div>
+    
+    <script type="text/javascript" src="styles/docfx.vendor.js"></script>
+    <script type="text/javascript" src="styles/docfx.js"></script>
+    <script type="text/javascript" src="styles/main.js"></script>
+  </body>
+</html>

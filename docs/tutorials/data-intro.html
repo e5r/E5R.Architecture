@@ -1,0 +1,356 @@
+﻿<!DOCTYPE html>
+<!--[if IE]><![endif]-->
+<html>
+  
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>Tutorial - Introdu&#231;&#227;o a manipula&#231;&#227;o de dados | Arquitetura E5R </title>
+    <meta name="viewport" content="width=device-width">
+    <meta name="title" content="Tutorial - Introdu&#231;&#227;o a manipula&#231;&#227;o de dados | Arquitetura E5R ">
+    <meta name="generator" content="docfx 2.56.6.0">
+    
+    <link rel="shortcut icon" href="../images/favicon.png">
+    <link rel="stylesheet" href="../styles/docfx.vendor.css">
+    <link rel="stylesheet" href="../styles/docfx.css">
+    <link rel="stylesheet" href="../styles/main.css">
+    <meta property="docfx:navrel" content="../toc.html">
+    <meta property="docfx:tocrel" content="toc.html">
+    
+    
+    
+  </head>
+  <body data-spy="scroll" data-target="#affix" data-offset="120">
+    <div id="wrapper">
+      <header>
+        
+        <nav id="autocollapse" class="navbar navbar-inverse ng-scope" role="navigation">
+          <div class="container">
+            <div class="navbar-header">
+              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+              
+              <a class="navbar-brand" href="../index.html">
+                <img id="logo" class="svg" src="../images/logo.png" alt="">
+              </a>
+            </div>
+            <div class="collapse navbar-collapse" id="navbar">
+              <form class="navbar-form navbar-right" role="search" id="search">
+                <div class="form-group">
+                  <input type="text" class="form-control" id="search-query" placeholder="Search" autocomplete="off">
+                </div>
+              </form>
+            </div>
+          </div>
+        </nav>
+        
+        <div class="subnav navbar navbar-default">
+          <div class="container hide-when-search" id="breadcrumb">
+            <ul class="breadcrumb">
+              <li></li>
+            </ul>
+          </div>
+        </div>
+      </header>
+      <div role="main" class="container body-content hide-when-search">
+        
+        <div class="sidenav hide-when-search">
+          <a class="btn toc-toggle collapse" data-toggle="collapse" href="#sidetoggle" aria-expanded="false" aria-controls="sidetoggle">Show / Hide Table of Contents</a>
+          <div class="sidetoggle collapse" id="sidetoggle">
+            <div id="sidetoc"></div>
+          </div>
+        </div>
+        <div class="article row grid-right">
+          <div class="col-md-10">
+            <article class="content wrap" id="_content" data-uid="">
+<h1 id="introdução-a-manipulação-de-dados">Introdução a manipulação de dados</h1>
+
+<p>Para acompanhar este tutorial, sugiro que você tenha uma aplicação qualquer
+que esteja utilizando o <a href="https://github.com/dotnet/efcore">EntityFrameworkCore</a>,
+você também precisará instalar o componente <code>E5R.Architecture.Data.EntityFrameworkCore</code>
+nesse seu projeto.</p>
+<blockquote>
+<p>Normalmente utilizamos o acesso ao banco seguindo o padrão <a href="https://martinfowler.com/eaaCatalog/unitOfWork.html">Unit Of Work</a>
+mas aqui vamos nos concentrar somente nos métodos de acesso e manipulação
+dos dados em si. Em outro tutorial podemos falar sobre o conceito de
+<a href="unit-of-work-intro.html">Unit Of Work</a> conforme costumamos abordar nessa arquitetura.</p>
+</blockquote>
+<h2 id="operações-crud">Operações CRUD</h2>
+<p>As operações de CRUD estão disparadas na frente como sendo as partes de código
+que mais passamos tempo escrevendo em nossas aplicações corporativas de software.
+E normalmente costumamos realizar essas operações seguindo o padrão <a href="https://martinfowler.com/eaaCatalog/repository.html">Repository</a>.</p>
+<p>O nome <strong>CRUD</strong> é uma sigla formada pela junção das palavras:</p>
+<ul>
+<li><strong>C</strong>reate - Para criar novos objetos</li>
+<li><strong>R</strong>ead - Para ler (ou carregar) objetos armazenados</li>
+<li><strong>U</strong>pdate - Para atualizar (alterar ou substituir) objetos armazenados</li>
+<li><strong>D</strong>elete - Para remover (apagar, ou <em>deletar</em>) objetos armazenados</li>
+</ul>
+<p>O componente gernérico <code>IStorage&lt;TDataModel&gt;</code> que se encontra no namespace <code>E5R.Architecture.Data.Abstractions</code>
+nos fornece algumas funcionalidades convenientes para tornar essa tarefa mais fácil.
+Aqui no exemplo vamos utilizar a implementação para <a href="https://github.com/dotnet/efcore">EntityFrameworkCore</a>
+que é fornecida pelo componente <code>E5R.Architecture.Data.EntityFrameworkCore</code>.</p>
+<p>E antes de mais nada, para que daqui em diante possamos nos concentrar mais no código
+do exemplo em si e menos nos outros detalhes, vamos combinar que os exemplos de código apresentados
+residem em uma ação qualquer de uma controller padrão do <a href="https://github.com/dotnet/aspnetcore">ASP.NET</a>,
+e que as dependências foram injetadas por parâmetro (<a href="https://martinfowler.com/articles/injection.html#FormsOfDependencyInjection">Injeção de Dependências</a>).</p>
+<p>Então segue aqui nosso esboço com controlador e um modelo de dado:</p>
+<pre><code class="lang-cs">// AlunoController.cs
+public class AlunoController : Controller
+{
+    private ILogger&lt;AlunoController&gt; _logger;
+    private readonly IStorage&lt;AlunoDataModel&gt; _storage;
+
+    public AlunoController(ILogger&lt;AlunoController&gt; logger, IStorage&lt;Aluno&gt; storage)
+    {
+        Checker.NotNullArgument(logger, nameof(logger));
+        Checker.NotNullArgument(storage, nameof(storage));
+
+        _logger_ = logger;
+        _storage = storage;
+    }
+
+    public IActionResult MyAction()
+    {
+        // Nosso código de exemplo aqui
+    }
+}
+
+// AlunoDataModel.cs
+public class AlunoDataModel : IDataModel
+{
+    public int AlunoId { get; set; }
+    public string Nome { get; set; }
+    public string Sobrenome { get; set; }
+    public DateTime DataInscricao { get; set; }
+
+    public object[] IdentifierValues =&gt; new[] { (object)AlunoId };
+}
+</code></pre>
+<h2 id="create-criar">Create (Criar)</h2>
+<p>A primeira operação que vamos executar é <strong>criar</strong> um novo objeto em nosso
+armazenamento, isso seria um <em>INSERT</em> a nível de banco de dados relacional.</p>
+<p>Então você pode criar um novo aluno assim:</p>
+<pre><code class="lang-cs">var alunoCriado = _storage.Create(new Aluno
+    {
+        Nome = &quot;Erlimar&quot;,
+        Sobrenome = &quot;Silva Campos&quot;,
+        DataInscricao = DateTime.Now
+    });
+
+_logger.LogDebug($&quot;Novo aluno criado com ID: {alunoCriado.AlunoId}&quot;);
+</code></pre>
+<p>Essa é a assinatura de nosso método <code>Create()</code>:</p>
+<pre><code class="lang-csharp">TDataModel Create(TDataModel data);
+</code></pre>
+<p>Sem mais <em>delongas</em> e é isso aí! Você acaba de criar um aluno no armazenamento.</p>
+<h2 id="read-ler">Read (Ler)</h2>
+<p>Agora que já temos um aluno criado, podemos recuperá-lo a qualquer momento
+de forma direta, desde que saibamos seu identificador, no caso, o campo <strong>AlunoId</strong>.
+Vamos supor que o aluno que acabamos de criar tem o identificador <code>1</code>.</p>
+<p>Recupere-o simplesmente assim:</p>
+<pre><code class="lang-cs">var aluno = _storage.Find(1);
+
+if (aluno == null)
+{
+    _logger.LogDebug(&quot;Aluno não encontrado!&quot;);
+}
+
+_logger.LogDebug($&quot;Encontramos o aluno {aluno.Nome} {aluno.Sobrenome&quot;);
+</code></pre>
+<p>Essas são as assinaturas de nosso método <code>Find()</code>:</p>
+<pre><code class="lang-csharp">TDataModel Find(object identifier, IDataIncludes includes = null);
+TDataModel Find(object[] identifiers, IDataIncludes includes = null);
+TDataModel Find(TDataModel data, IDataIncludes includes = null);
+</code></pre>
+<blockquote>
+<p>Ignore por enquanto o parâmetro <code>IDataIncludes includes</code>, até porque ele é opcional,
+e também porque estaremos vendo sobre isso em outro tutorial.</p>
+</blockquote>
+<p>A primeira opção (<code>Find(object identifier)</code>) é bem mais simples, por isso a usamos, e não tem porque
+não usá-la sempre que possível. Mas você ainda poderia recuperá-lo de outras formas sabendo o
+identificador. Essas outras alternativas estão aí para te ajudar em cenários específicos.</p>
+<p>Por exemplo, quando você tem um dado com <a href="https://pt.wikipedia.org/wiki/Chave_prim%C3%A1ria">chave composta</a>
+faz sentido usar a lista de chaves:</p>
+<pre><code class="lang-cs">// Passando um array com os identificadores
+_storage.Find(new[] { 2, 7 });
+</code></pre>
+<p>Se forem muitas chaves, esse código talvez fique não muito claro:</p>
+<pre><code class="lang-cs">_storage.Find(new[] { 2, 7, 8, 12 });
+</code></pre>
+<p>Nesse caso talvez faça sentido usar a assinatura que usa o modelo:</p>
+<pre><code class="lang-cs">// Passando um modelo de dados com o campo (ou campos) de identificação preenchidos
+_storage.Find(new MatriculaDataModel
+{
+    AlunoId = 2,
+    CursoId = 7,
+    PeriodoId = 8,
+    InscricaoId = 12
+});
+</code></pre>
+<p>Obviamente a parte <strong>Read</strong> do <em>CRUD</em> é a mais extensa que temos para tratar,
+porque dificilmente você irá ler objetos somente de forma direta por seu
+<em>identificador</em>, natualmente você estará listando todos os registros para formar
+uma lista; ou estará fazendo uma pesquisa e então necessitará filtrar os registros;
+e ainda tem ordenamento, agrupamento, inclusão de dados relacionados, paginação e etc.</p>
+<p>Não vou tratar de todos esses detalhes neste tutorial para não deixá-lo extenso
+demais, vamos focar nas coisas mais básicas e em outros tutoriais continuamos nos
+aprofundando em cada uma das possibilidades.</p>
+<p>Mas para não ficar somente no <code>Find()</code>, vamos ver pelo menos mais uma última opção.
+Então, se você quiser listar todos os alunos, pode fazê-lo assim:</p>
+<pre><code class="lang-cs">var todosAlunos = _storage.GetAll();
+</code></pre>
+<p>O método <code>GetAll()</code> retorna um enumerável contendo todos os alunos contidos no
+armazenamento.</p>
+<p>E essa é a assinatura do método <code>GetAll()</code>:</p>
+<pre><code class="lang-csharp">IEnumerable&lt;TDataModel&gt; GetAll(IDataIncludes includes = null);
+</code></pre>
+<blockquote>
+<p>Mais uma vez desconsideremos o parâmetro <code>IDataIncludes includes</code> por enquanto.</p>
+</blockquote>
+<p>Veremos as outras opções em outros tutoriais, por enquanto você já sabe como
+obter um objeto específico por seu identificador, e também já consegue listar
+todos os objetos armazenados, ou seja, já sabe ler objetos.</p>
+<h2 id="update-atualizar">Update (Atualizar)</h2>
+<p>Quando nos referimos a <strong>Update</strong> ao falar sobre <strong>CRUD</strong> na verdade queremos dizer
+alguma das duas opções:</p>
+<ol>
+<li><p><strong>Atualizar</strong> as informações, e isso quer dizer que iremos alterar <em>parte</em> dos dados,
+o que nos leva a entender que não precisamos informar todos os dados, mas somente
+aqueles que desejamos alterar.</p>
+</li>
+<li><p>Mas também por vezes queremos <strong>Substituir</strong> o objeto inteiro, o que nos leva a
+entender que todas as informações devem ser fornecidas.</p>
+</li>
+</ol>
+<p>Logo, se você quisesse substituir completamente as informações do aluno que criamos
+logo no início deste tutorial, poderia fazê-lo assim:</p>
+<pre><code class="lang-cs">var aluno = _storage.Replace(new Aluno
+    {
+        AlunoId = 1,
+        Nome = &quot;Erlimar&quot;,
+        Sobrenome = &quot;Campos&quot;,
+        DataInscricao = DateTime.Now
+    });
+
+_logger.LogDebug($&quot;O aluno agora se chama {aluno.Nome} {aluno.Sobrenome}&quot;);
+</code></pre>
+<p>Na prática, essa ação é feita em conjunto com uma consulta anterior para obter um
+objeto no banco, normalmente encontrada por seu identificador, e logo em seguida
+fazemos a substituição. Assim:</p>
+<pre><code class="lang-cs">var aluno = _storage.Find(1);
+
+aluno.Sobrenome = &quot;Campos&quot;;
+aluno.DataInscricao = DateTime.Now;
+
+_storage.Replace(aluno);
+
+_logger.LogDebug($&quot;O aluno agora se chama {aluno.Nome} {aluno.Sobrenome}&quot;);
+</code></pre>
+<p>Observe que no exemplo que acabamos de usar, na prática só estamos alterando o <code>Sobrenome</code>
+do aluno, a <code>DataInscricao</code> não faria sentido alterar aqui. O que indica que na verdade não
+precisaríamos <em>substituir</em> o objeto, mas somente <em>atualizar</em> alguns dados.</p>
+<p>E isso poderia ser feito de forma mais simples, assim:</p>
+<pre><code class="lang-cs">var aluno = _storage.Update(1, new 
+    {
+        Sobrenome = &quot;Campos&quot;
+    });
+
+_logger.LogDebug($&quot;O aluno agora se chama {aluno.Nome} {aluno.Sobrenome}&quot;);
+</code></pre>
+<p>Aqui nós informamos o <strong>identificador</strong> do aluno e em seguida um objeto anônimo contendo
+as propriedades que desejamos atualizar, com isso os dados desnecessários podem ser omitidos.</p>
+<blockquote>
+<p>Vale ressaltar que as propriedades que serão atualizadas devem ser passados com mesmo
+nome e tipo, e caso algum desses detalhes não seja observado o registro não sofrerá
+atualização, e neste caso uma exceção será levantada informando que, não existem dados
+para atualização.</p>
+</blockquote>
+<p>Você também pode compor os dados que serão atualizados com os dados atuais do próprio objeto.
+Imagine a situação onde você tem um objeto <em>conta</em> que representa uma conta bancária
+e que deseja adicionar saldo a ela, e que o saldo em si é um campo numérico, que por sua vez
+já tem um saldo anterior.</p>
+<p>Logo a ação de atualização poderia ser feita assim:</p>
+<pre><code class="lang-cs">var conta = _storage.Find(1);
+
+conta.Saldo += 100.00f;
+
+_storage.Replace(conta);
+</code></pre>
+<p>Ou simplesmente assim:</p>
+<pre><code class="lang-cs">_storage.Update(1, c =&gt; new {
+    Saldo = c.Saldo + 100.00f
+});
+</code></pre>
+<p>Veja as assinaturas dos métodos:</p>
+<pre><code class="lang-csharp">TDataModel Replace(TDataModel data);
+TDataModel Update&lt;TUpdated&gt;(object identifier, TUpdated updated);
+TDataModel Update&lt;TUpdated&gt;(object identifier, Expression&lt;Func&lt;TDataModel, TUpdated&gt;&gt; updateExpression);
+TDataModel Update&lt;TUpdated&gt;(object[] identifiers, TUpdated updated);
+TDataModel Update&lt;TUpdated&gt;(object[] identifiers, Expression&lt;Func&lt;TDataModel, TUpdated&gt;&gt; updateExpression);
+</code></pre><h2 id="delete-remover">Delete (Remover)</h2>
+<p>Por fim, outra coisa que podemos fazer é <strong>Remover</strong> objetos armazenados, o que também
+é conhecido por <em>excluir</em>, <em>apagar</em> e até mesmo <em>deletar</em>, fique a vontade para chamar como
+preferir.</p>
+<p>Para remover um objeto é tão simples quanto escrever a linha abaixo:</p>
+<pre><code class="lang-cs">_storage.Remove(1);
+</code></pre>
+<p>Se você observar bem, seguimos a mesma lógica do método <code>Find()</code>, que na prática, faz sentido
+porque para apagar um objeto ele precisa primeiro existir. Assim, primeiro encontramos um
+objeto armazenado e o removemos em seguida.</p>
+<p>Logo, você tem a mesma assinatura do método <code>Find()</code> e pode usar como preferir. Ou seja,
+se precisar remover um objeto de <a href="https://pt.wikipedia.org/wiki/Chave_prim%C3%A1ria">chave composta</a>:</p>
+<pre><code class="lang-cs">_storage.Remove(new[] { 2, 7 });
+</code></pre>
+<p>Ou, pode apagar usando a assinatura que usa o modelo:</p>
+<pre><code class="lang-cs">_storage.Remove(new MatriculaDataModel
+{
+    AlunoId = 2,
+    CursoId = 7,
+    PeriodoId = 8,
+    InscricaoId = 12
+});
+</code></pre>
+<h2 id="conclusão">Conclusão</h2>
+<p>Por enquanto isso é suficiente para os propósitos deste tutorial. Agora você
+já pode fazer um CRUD simples utilizando os utilitários fornecidos por <strong>E5R Architecture</strong>.</p>
+<p>Ainda tem muitos detalhes que precisamos falar só quanto a persistência de dados,
+sem falar em vários outros assuntos que a ferramenta nos auxilia e as próprias idéias
+de organização em si, mas deixemos isso para outros tutoriais.</p>
+</article>
+          </div>
+          
+          <div class="hidden-sm col-md-2" role="complementary">
+            <div class="sideaffix">
+              <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">
+                <h5>In This Article</h5>
+                <div></div>
+              </nav>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <footer>
+        <div class="grad-bottom"></div>
+        <div class="footer">
+          <div class="container">
+            <span class="pull-right">
+              <a href="#top">Back to top</a>
+            </span>
+            Copyright (c) 2020 E5R Development Team
+            
+          </div>
+        </div>
+      </footer>
+    </div>
+    
+    <script type="text/javascript" src="../styles/docfx.vendor.js"></script>
+    <script type="text/javascript" src="../styles/docfx.js"></script>
+    <script type="text/javascript" src="../styles/main.js"></script>
+  </body>
+</html>

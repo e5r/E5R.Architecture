@@ -2714,6 +2714,23 @@ references:
   fullName.vb: E5R.Architecture.Data.Abstractions.IStorageWriter(Of TDataModel).Remove(TDataModel)
   nameWithType: IStorageWriter<TDataModel>.Remove(TDataModel)
   nameWithType.vb: IStorageWriter(Of TDataModel).Remove(TDataModel)
+- uid: E5R.Architecture.Data.Abstractions.IStorageWriter`1.Remove(System.Object)
+  name: Remove(Object)
+  href: api/E5R.Architecture.Data.Abstractions.IStorageWriter-1.html#E5R_Architecture_Data_Abstractions_IStorageWriter_1_Remove_System_Object_
+  commentId: M:E5R.Architecture.Data.Abstractions.IStorageWriter`1.Remove(System.Object)
+  fullName: E5R.Architecture.Data.Abstractions.IStorageWriter<TDataModel>.Remove(System.Object)
+  fullName.vb: E5R.Architecture.Data.Abstractions.IStorageWriter(Of TDataModel).Remove(System.Object)
+  nameWithType: IStorageWriter<TDataModel>.Remove(Object)
+  nameWithType.vb: IStorageWriter(Of TDataModel).Remove(Object)
+- uid: E5R.Architecture.Data.Abstractions.IStorageWriter`1.Remove(System.Object[])
+  name: Remove(Object[])
+  href: api/E5R.Architecture.Data.Abstractions.IStorageWriter-1.html#E5R_Architecture_Data_Abstractions_IStorageWriter_1_Remove_System_Object___
+  commentId: M:E5R.Architecture.Data.Abstractions.IStorageWriter`1.Remove(System.Object[])
+  name.vb: Remove(Object())
+  fullName: E5R.Architecture.Data.Abstractions.IStorageWriter<TDataModel>.Remove(System.Object[])
+  fullName.vb: E5R.Architecture.Data.Abstractions.IStorageWriter(Of TDataModel).Remove(System.Object())
+  nameWithType: IStorageWriter<TDataModel>.Remove(Object[])
+  nameWithType.vb: IStorageWriter(Of TDataModel).Remove(Object())
 - uid: E5R.Architecture.Data.Abstractions.IStorageWriter`1.Remove*
   name: Remove
   href: api/E5R.Architecture.Data.Abstractions.IStorageWriter-1.html#E5R_Architecture_Data_Abstractions_IStorageWriter_1_Remove_
@@ -4693,6 +4710,23 @@ references:
   fullName.vb: E5R.Architecture.Data.EntityFrameworkCore.FullStorage(Of TDbContext, TDataModel).Remove(TDataModel)
   nameWithType: FullStorage<TDbContext, TDataModel>.Remove(TDataModel)
   nameWithType.vb: FullStorage(Of TDbContext, TDataModel).Remove(TDataModel)
+- uid: E5R.Architecture.Data.EntityFrameworkCore.FullStorage`2.Remove(System.Object)
+  name: Remove(Object)
+  href: api/E5R.Architecture.Data.EntityFrameworkCore.FullStorage-2.html#E5R_Architecture_Data_EntityFrameworkCore_FullStorage_2_Remove_System_Object_
+  commentId: M:E5R.Architecture.Data.EntityFrameworkCore.FullStorage`2.Remove(System.Object)
+  fullName: E5R.Architecture.Data.EntityFrameworkCore.FullStorage<TDbContext, TDataModel>.Remove(System.Object)
+  fullName.vb: E5R.Architecture.Data.EntityFrameworkCore.FullStorage(Of TDbContext, TDataModel).Remove(System.Object)
+  nameWithType: FullStorage<TDbContext, TDataModel>.Remove(Object)
+  nameWithType.vb: FullStorage(Of TDbContext, TDataModel).Remove(Object)
+- uid: E5R.Architecture.Data.EntityFrameworkCore.FullStorage`2.Remove(System.Object[])
+  name: Remove(Object[])
+  href: api/E5R.Architecture.Data.EntityFrameworkCore.FullStorage-2.html#E5R_Architecture_Data_EntityFrameworkCore_FullStorage_2_Remove_System_Object___
+  commentId: M:E5R.Architecture.Data.EntityFrameworkCore.FullStorage`2.Remove(System.Object[])
+  name.vb: Remove(Object())
+  fullName: E5R.Architecture.Data.EntityFrameworkCore.FullStorage<TDbContext, TDataModel>.Remove(System.Object[])
+  fullName.vb: E5R.Architecture.Data.EntityFrameworkCore.FullStorage(Of TDbContext, TDataModel).Remove(System.Object())
+  nameWithType: FullStorage<TDbContext, TDataModel>.Remove(Object[])
+  nameWithType.vb: FullStorage(Of TDbContext, TDataModel).Remove(Object())
 - uid: E5R.Architecture.Data.EntityFrameworkCore.FullStorage`2.Remove*
   name: Remove
   href: api/E5R.Architecture.Data.EntityFrameworkCore.FullStorage-2.html#E5R_Architecture_Data_EntityFrameworkCore_FullStorage_2_Remove_
