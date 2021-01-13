@@ -21,17 +21,6 @@ v0.x
       3) Usa-se no construtor (ITransformationManager manager)
          manager.Transform<From, To>()
 - Remover abstração própria de DI em favor de Microsoft.Extensions.DependencyInjection.Abstractions
-- Implementar ILazy<> para carregento preguiçoso de objetos nos construtores
-  ```
-  class LazyInjection<T>
-  {
-      private readonly IServiceProvider _provider;
-
-      LazyInjection(IServiceProvider provider){}
-
-      public T Value => _provider.GetRequiredService<T>();
-  }
-  ```
 - Implementar FluentWriter()
   > Em IStorageWriter<> e IStorageBulkWriter<>
   > API sugerida:
@@ -53,7 +42,6 @@ v0.x
           .BulkUpdate(new {}) || BulkUpdate(u => new { Field = u.Field })
           ;
   ```
-  
 - Mover este TODO.txt para um projeto no GitHub
 
 v1.0
