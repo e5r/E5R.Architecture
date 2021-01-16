@@ -39,11 +39,14 @@ namespace E5R.Architecture.Data.Fluent.Writer
 
         #region Storage Actions
 
-        public void Remove() => _storage.Remove(_identifiers);
-        TDataModel Update<TUpdated>(TUpdated updated) => _storage.Update(_identifiers, updated);
+        public void Remove() => _storage.Remove(_identifiers.ToArray());
 
-        TDataModel Update<TUpdated>(Expression<Func<TDataModel, TUpdated>> updateExpression) =>
-            _storage.Update(_identifiers, updateExpression);
+        public TDataModel Update<TUpdated>(TUpdated updated) =>
+            _storage.Update(_identifiers.ToArray(), updated);
+
+        public TDataModel
+            Update<TUpdated>(Expression<Func<TDataModel, TUpdated>> updateExpression) =>
+            _storage.Update(_identifiers.ToArray(), updateExpression);
 
         #endregion
     }
