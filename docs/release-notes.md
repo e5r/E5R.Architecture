@@ -4,6 +4,16 @@ title: Notas de Lançamento
 
 Notas de Lançamento
 ===================
+
+## 0.5.0
+
+Adicionamos alguns novos recursos:
+
+* Lazy loading
+* Atributos de "metatag"
+* Abstração de data e hora do sistema
+* Utilitários de Enum
+
 ## 0.4.0
 
 Adiciona novas assinaturas a IDataStorage.Remove()

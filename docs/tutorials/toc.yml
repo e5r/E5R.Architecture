@@ -2,6 +2,10 @@
   href: ./overview.md
 - name: Introdução a manipulação de dados
   href: ./data-intro.md
+- name: Lazy loading - Carregamento preguiçoso
+  href: ./lazy-loading.md
+- name: Atributos de Metatags
+  href: ./metatag-attributes.md
 - name: Lendo objetos armazenados
   href: ./storage-reader.md
 - name: Escrevendo objetos armazenados
