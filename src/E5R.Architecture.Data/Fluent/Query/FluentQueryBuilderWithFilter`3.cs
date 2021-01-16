@@ -7,7 +7,7 @@ using System.Collections.Generic;
 using System.Linq.Expressions;
 using E5R.Architecture.Data.Abstractions;
 
-namespace E5R.Architecture.Data.FluentQuery
+namespace E5R.Architecture.Data.Fluent.Query
 {
     public class FluentQueryBuilderWithFilter<TDataModel, TGroup, TSelect> : FluentQueryBuilderElements<TDataModel>
         where TDataModel : IDataModel

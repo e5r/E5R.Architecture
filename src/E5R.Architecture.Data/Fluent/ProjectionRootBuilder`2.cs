@@ -3,35 +3,31 @@
 // Licensed under the Apache version 2.0: https://github.com/e5r/manifest/blob/master/license/APACHE-2.0.txt
 
 using System;
-using System.Linq;
 using System.Linq.Expressions;
 using E5R.Architecture.Core;
 using E5R.Architecture.Data.Abstractions;
+using E5R.Architecture.Data.Fluent.Query;
 
-namespace E5R.Architecture.Data.FluentQuery
+namespace E5R.Architecture.Data.Fluent
 {
-    public class ProjectionRootBuilder<TDataModel, TGroup, TSelect> : FluentQueryBuilderElements<TDataModel>
+    public class ProjectionRootBuilder<TDataModel, TSelect> : FluentQueryBuilderElements<TDataModel>
         where TDataModel : IDataModel
     {
-        private readonly Expression<Func<TDataModel, TGroup>> _group;
-        private readonly Expression<Func<IGrouping<TGroup, TDataModel>, TSelect>> _select;
+        private readonly Expression<Func<TDataModel, TSelect>> _select;
 
         internal ProjectionRootBuilder(IStorageReader<TDataModel> storage,
             DataFilter<TDataModel> filter,
             DataLimiter<TDataModel> limiter,
             DataIncludes<TDataModel> includes,
-            Expression<Func<TDataModel, TGroup>> group,
-            Expression<Func<IGrouping<TGroup, TDataModel>, TSelect>> select)
+            Expression<Func<TDataModel, TSelect>> select)
             : base(storage, filter, limiter, includes)
         {
-            Checker.NotNullArgument(group, nameof(group));
             Checker.NotNullArgument(select, nameof(select));
 
-            _group = group;
             _select = select;
         }
 
-        public ProjectionRootBuilder<TDataModel, TGroup, TSelect> Include(Expression<Func<TDataModel, object>> expression)
+        public ProjectionRootBuilder<TDataModel, TSelect> Include(Expression<Func<TDataModel, object>> expression)
         {
             Checker.NotNullArgument(expression, nameof(expression));
 
@@ -50,7 +46,7 @@ namespace E5R.Architecture.Data.FluentQuery
             return new ProjectionInnerBuilder<T, TDataModel>(_storage, _filter, _limiter, _includes);
         }
 
-        public FluentQueryBuilderWithProjection<TDataModel, TGroup, TSelect> Project()
-            => new FluentQueryBuilderWithProjection<TDataModel, TGroup, TSelect>(_storage, _filter, _limiter, _includes, _group, _select);
+        public FluentQueryBuilderWithProjection<TDataModel, TSelect> Project()
+            => new FluentQueryBuilderWithProjection<TDataModel, TSelect>(_storage, _filter, _limiter, _includes, _select);
     }
 }
