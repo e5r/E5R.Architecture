@@ -10,7 +10,7 @@ namespace E5R.Architecture.Core
     public class MetaTagAttribute : Attribute
     {
         public const string DescriptionKey = "Description";
-        public const string CustomValueKey = "CustomValue";
+        public const string CustomIdKey = "CustomId";
         
         public MetaTagAttribute(string tagKey, string tagValue)
         {

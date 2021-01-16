@@ -11,18 +11,21 @@ namespace E5R.Architecture.Core.Extensions
 {
     public static class MetaTagAttributeExtensions
     {
-        public static ICollection<MetaTagAttribute> GetMetaTags(this MemberInfo m)
+        public static IDictionary<string, string> GetMetaTags(this MemberInfo m)
         {
-            return  (MetaTagAttribute[])m.GetCustomAttributes(typeof(MetaTagAttribute), true);
+            var metatags =
+                (MetaTagAttribute[]) m.GetCustomAttributes(typeof(MetaTagAttribute), true);
+
+            return metatags.ToDictionary(meta => meta.TagKey, meta => meta.TagValue);
         }
         
         public static ICollection<string> GetTags(this MemberInfo m)
-            => GetMetaTags(m)?.Select(s => s.TagKey).ToArray();
+            => GetMetaTags(m)?.Select(s => s.Key).ToArray();
 
         public static string GetTag(this MemberInfo m, string tagName)
-            => GetMetaTags(m)?.FirstOrDefault(w => w.TagKey == tagName)?.TagValue;
-        
-        public static ICollection<MetaTagAttribute> GetMetaTags(this Enum e)
+            => GetMetaTags(m)?.FirstOrDefault(w => w.Key == tagName).Value;
+
+        public static IDictionary<string, string> GetMetaTags(this Enum e)
         {
             var fieldInfo = e.GetType().GetField(e.ToString());
 
@@ -35,42 +38,51 @@ namespace E5R.Architecture.Core.Extensions
         }
 
         public static ICollection<string> GetTags(this Enum e)
-            => GetMetaTags(e)?.Select(s => s.TagKey).ToArray();
+            => GetMetaTags(e)?.Select(s => s.Key).ToArray();
 
         public static string GetTag(this Enum e, string tagName)
-            => GetMetaTags(e)?.FirstOrDefault(w => w.TagKey == tagName)?.TagValue;
+            => GetMetaTags(e)?.FirstOrDefault(w => w.Key == tagName).Value;
 
-        public static ICollection<MetaTagAttribute> GetMetaTags(this Assembly a)
+        public static Dictionary<string, string> GetMetaTags(this Assembly a)
         {
-            return  (MetaTagAttribute[])a.GetCustomAttributes(typeof(MetaTagAttribute), true);
+            var metatags =
+                (MetaTagAttribute[]) a.GetCustomAttributes(typeof(MetaTagAttribute), true);
+
+            return metatags.ToDictionary(meta => meta.TagKey, meta => meta.TagValue);
         }
         
         public static ICollection<string> GetTags(this Assembly a)
-            => GetMetaTags(a)?.Select(s => s.TagKey).ToArray();
+            => GetMetaTags(a)?.Select(s => s.Key).ToArray();
 
         public static string GetTag(this Assembly a, string tagName)
-            => GetMetaTags(a)?.FirstOrDefault(w => w.TagKey == tagName)?.TagValue;
+            => GetMetaTags(a)?.FirstOrDefault(w => w.Key == tagName).Value;
         
-        public static ICollection<MetaTagAttribute> GetMetaTags(this Module m)
+        public static Dictionary<string, string> GetMetaTags(this Module m)
         {
-            return  (MetaTagAttribute[])m.GetCustomAttributes(typeof(MetaTagAttribute), true);
+            var metatags =
+                (MetaTagAttribute[]) m.GetCustomAttributes(typeof(MetaTagAttribute), true);
+
+            return metatags.ToDictionary(meta => meta.TagKey, meta => meta.TagValue);
         }
         
         public static ICollection<string> GetTags(this Module m)
-            => GetMetaTags(m)?.Select(s => s.TagKey).ToArray();
+            => GetMetaTags(m)?.Select(s => s.Key).ToArray();
 
         public static string GetTag(this Module m, string tagName)
-            => GetMetaTags(m)?.FirstOrDefault(w => w.TagKey == tagName)?.TagValue;
+            => GetMetaTags(m)?.FirstOrDefault(w => w.Key == tagName).Value;
         
-        public static ICollection<MetaTagAttribute> GetMetaTags(this Type t)
+        public static Dictionary<string, string> GetMetaTags(this Type t)
         {
-            return  (MetaTagAttribute[])t.GetCustomAttributes(typeof(MetaTagAttribute), true);
+            var metatags =
+                (MetaTagAttribute[]) t.GetCustomAttributes(typeof(MetaTagAttribute), true);
+
+            return metatags.ToDictionary(meta => meta.TagKey, meta => meta.TagValue);
         }
         
         public static ICollection<string> GetTags(this Type t)
-            => GetMetaTags(t)?.Select(s => s.TagKey).ToArray();
+            => GetMetaTags(t)?.Select(s => s.Key).ToArray();
 
         public static string GetTag(this Type t, string tagName)
-            => GetMetaTags(t)?.FirstOrDefault(w => w.TagKey == tagName)?.TagValue;
+            => GetMetaTags(t)?.FirstOrDefault(w => w.Key == tagName).Value;
     }
 }
