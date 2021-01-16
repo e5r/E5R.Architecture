@@ -14,8 +14,7 @@ namespace E5R.Architecture.Data.Fluent.Writer
         where TDataModel : IDataModel
     {
         internal FluentWriterBuilderWithIdentifier(IStorageWriter<TDataModel> storage,
-            List<object> identifiers, DataFilter<TDataModel> filter) : base(storage, identifiers,
-            filter)
+            List<object> identifiers) : base(storage, identifiers)
         { }
 
         public FluentWriterBuilderWithIdentifier<TDataModel> Identifier(object identifier)

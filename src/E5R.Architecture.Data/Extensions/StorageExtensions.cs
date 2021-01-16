@@ -22,5 +22,12 @@ namespace E5R.Architecture.Data.Abstractions
         {
             return new FluentWriterBuilder<TDataModel>(storage);
         }
+        
+        public static FluentBulkWriterBuilder<TDataModel> AsFluentBulkWriter<TDataModel>(
+            this IStorageBulkWriter<TDataModel> storage)
+            where TDataModel : IDataModel
+        {
+            return new FluentBulkWriterBuilder<TDataModel>(storage);
+        }
     }
 }

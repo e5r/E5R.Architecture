@@ -11,21 +11,20 @@ namespace E5R.Architecture.Data.Fluent.Writer
         where TDataModel : IDataModel
     {
         public FluentWriterBuilder(IStorageWriter<TDataModel> storage) : base(storage,
-            new List<object>(), new DataFilter<TDataModel>())
+            new List<object>())
         { }
 
-        internal FluentWriterBuilder(IStorageWriter<TDataModel> storage, List<object> identifiers,
-            DataFilter<TDataModel> filter) : base(storage, identifiers, filter)
+        internal FluentWriterBuilder(IStorageWriter<TDataModel> storage, List<object> identifiers) : base(storage, identifiers)
         { }
 
         #region Makers
 
         public FluentWriterBuilderWithIdentifier<TDataModel> Identifier(object identifier)
-            => new FluentWriterBuilderWithIdentifier<TDataModel>(_storage, _identifiers, _filter)
+            => new FluentWriterBuilderWithIdentifier<TDataModel>(_storage, _identifiers)
                 .Identifier(identifier);
         
         public FluentWriterBuilderWithIdentifier<TDataModel> Identifiers(object[] identifiers)
-            => new FluentWriterBuilderWithIdentifier<TDataModel>(_storage, _identifiers, _filter)
+            => new FluentWriterBuilderWithIdentifier<TDataModel>(_storage, _identifiers)
                 .Identifiers(identifiers);
 
         #endregion
