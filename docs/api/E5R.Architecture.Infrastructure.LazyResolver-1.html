@@ -5,10 +5,10 @@
   <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-    <title>Class DILifetimeExtensions
+    <title>Class LazyResolver&lt;TTarget&gt;
    | Arquitetura E5R </title>
     <meta name="viewport" content="width=device-width">
-    <meta name="title" content="Class DILifetimeExtensions
+    <meta name="title" content="Class LazyResolver&lt;TTarget&gt;
    | Arquitetura E5R ">
     <meta name="generator" content="docfx 2.56.6.0">
     
@@ -68,33 +68,54 @@
         </div>
         <div class="article row grid-right">
           <div class="col-md-10">
-            <article class="content wrap" id="_content" data-uid="E5R.Architecture.Infrastructure.Abstractions.DILifetimeExtensions">
+            <article class="content wrap" id="_content" data-uid="E5R.Architecture.Infrastructure.LazyResolver`1">
   
   
-  <h1 id="E5R_Architecture_Infrastructure_Abstractions_DILifetimeExtensions" data-uid="E5R.Architecture.Infrastructure.Abstractions.DILifetimeExtensions" class="text-break">Class DILifetimeExtensions
+  <h1 id="E5R_Architecture_Infrastructure_LazyResolver_1" data-uid="E5R.Architecture.Infrastructure.LazyResolver`1" class="text-break">Class LazyResolver&lt;TTarget&gt;
   </h1>
-  <div class="markdown level0 summary"></div>
+  <div class="markdown level0 summary"><p>Implements lazy loading based on an <see cref="!:IServiceProvider"></see></p>
+</div>
   <div class="markdown level0 conceptual"></div>
   <div class="inheritance">
     <h5>Inheritance</h5>
     <div class="level0"><span class="xref">System.Object</span></div>
-    <div class="level1"><span class="xref">DILifetimeExtensions</span></div>
+    <div class="level1"><span class="xref">LazyResolver&lt;TTarget&gt;</span></div>
   </div>
-  <h6><strong>Namespace</strong>: <a class="xref" href="E5R.Architecture.Infrastructure.Abstractions.html">E5R.Architecture.Infrastructure.Abstractions</a></h6>
+  <div classs="implements">
+    <h5>Implements</h5>
+    <div><a class="xref" href="E5R.Architecture.Core.ILazy-1.html">ILazy</a>&lt;TTarget&gt;</div>
+  </div>
+  <h6><strong>Namespace</strong>: <a class="xref" href="E5R.Architecture.Infrastructure.html">E5R.Architecture.Infrastructure</a></h6>
   <h6><strong>Assembly</strong>: E5R.Architecture.Infrastructure.dll</h6>
-  <h5 id="E5R_Architecture_Infrastructure_Abstractions_DILifetimeExtensions_syntax">Syntax</h5>
+  <h5 id="E5R_Architecture_Infrastructure_LazyResolver_1_syntax">Syntax</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public static class DILifetimeExtensions : object</code></pre>
+    <pre><code class="lang-csharp hljs">public class LazyResolver&lt;TTarget&gt; : object, ILazy&lt;TTarget&gt;</code></pre>
   </div>
-  <h3 id="methods">Methods
+  <h5 class="typeParameters">Type Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="parametername">TTarget</span></td>
+        <td><p>Target type</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h3 id="constructors">Constructors
   </h3>
-  <a id="E5R_Architecture_Infrastructure_Abstractions_DILifetimeExtensions_ToServiceLifetime_" data-uid="E5R.Architecture.Infrastructure.Abstractions.DILifetimeExtensions.ToServiceLifetime*"></a>
-  <h4 id="E5R_Architecture_Infrastructure_Abstractions_DILifetimeExtensions_ToServiceLifetime_E5R_Architecture_Infrastructure_Abstractions_DILifetime_" data-uid="E5R.Architecture.Infrastructure.Abstractions.DILifetimeExtensions.ToServiceLifetime(E5R.Architecture.Infrastructure.Abstractions.DILifetime)">ToServiceLifetime(DILifetime)</h4>
+  <a id="E5R_Architecture_Infrastructure_LazyResolver_1__ctor_" data-uid="E5R.Architecture.Infrastructure.LazyResolver`1.#ctor*"></a>
+  <h4 id="E5R_Architecture_Infrastructure_LazyResolver_1__ctor_IServiceProvider_" data-uid="E5R.Architecture.Infrastructure.LazyResolver`1.#ctor(IServiceProvider)">LazyResolver(IServiceProvider)</h4>
   <div class="markdown level1 summary"></div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public static ServiceLifetime ToServiceLifetime(this DILifetime lifetime)</code></pre>
+    <pre><code class="lang-csharp hljs">public LazyResolver(IServiceProvider serviceProvider)</code></pre>
   </div>
   <h5 class="parameters">Parameters</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -107,13 +128,23 @@
     </thead>
     <tbody>
       <tr>
-        <td><a class="xref" href="E5R.Architecture.Infrastructure.Abstractions.DILifetime.html">DILifetime</a></td>
-        <td><span class="parametername">lifetime</span></td>
+        <td><span class="xref">IServiceProvider</span></td>
+        <td><span class="parametername">serviceProvider</span></td>
         <td></td>
       </tr>
     </tbody>
   </table>
-  <h5 class="returns">Returns</h5>
+  <h3 id="properties">Properties
+  </h3>
+  <a id="E5R_Architecture_Infrastructure_LazyResolver_1_Value_" data-uid="E5R.Architecture.Infrastructure.LazyResolver`1.Value*"></a>
+  <h4 id="E5R_Architecture_Infrastructure_LazyResolver_1_Value" data-uid="E5R.Architecture.Infrastructure.LazyResolver`1.Value">Value</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public TTarget Value { get; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
   <table class="table table-bordered table-striped table-condensed">
     <thead>
       <tr>
@@ -123,11 +154,15 @@
     </thead>
     <tbody>
       <tr>
-        <td><span class="xref">ServiceLifetime</span></td>
+        <td><span class="xref">TTarget</span></td>
         <td></td>
       </tr>
     </tbody>
   </table>
+  <h3 id="implements">Implements</h3>
+  <div>
+      <a class="xref" href="E5R.Architecture.Core.ILazy-1.html">ILazy&lt;TTarget&gt;</a>
+  </div>
 </article>
           </div>
           

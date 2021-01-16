@@ -5,10 +5,10 @@
   <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-    <title>Class ServiceCollectionDIContainer
+    <title>Class MetaTagAttribute
    | Arquitetura E5R </title>
     <meta name="viewport" content="width=device-width">
-    <meta name="title" content="Class ServiceCollectionDIContainer
+    <meta name="title" content="Class MetaTagAttribute
    | Arquitetura E5R ">
     <meta name="generator" content="docfx 2.56.6.0">
     
@@ -68,37 +68,33 @@
         </div>
         <div class="article row grid-right">
           <div class="col-md-10">
-            <article class="content wrap" id="_content" data-uid="E5R.Architecture.Infrastructure.AspNetCore.ServiceCollectionDIContainer">
+            <article class="content wrap" id="_content" data-uid="E5R.Architecture.Core.MetaTagAttribute">
   
   
-  <h1 id="E5R_Architecture_Infrastructure_AspNetCore_ServiceCollectionDIContainer" data-uid="E5R.Architecture.Infrastructure.AspNetCore.ServiceCollectionDIContainer" class="text-break">Class ServiceCollectionDIContainer
+  <h1 id="E5R_Architecture_Core_MetaTagAttribute" data-uid="E5R.Architecture.Core.MetaTagAttribute" class="text-break">Class MetaTagAttribute
   </h1>
   <div class="markdown level0 summary"></div>
   <div class="markdown level0 conceptual"></div>
   <div class="inheritance">
     <h5>Inheritance</h5>
     <div class="level0"><span class="xref">System.Object</span></div>
-    <div class="level1"><span class="xref">ServiceCollectionDIContainer</span></div>
+    <div class="level1"><span class="xref">MetaTagAttribute</span></div>
   </div>
-  <div classs="implements">
-    <h5>Implements</h5>
-    <div><a class="xref" href="E5R.Architecture.Infrastructure.Abstractions.IDIContainer.html">IDIContainer</a></div>
-  </div>
-  <h6><strong>Namespace</strong>: <a class="xref" href="E5R.Architecture.Infrastructure.AspNetCore.html">E5R.Architecture.Infrastructure.AspNetCore</a></h6>
-  <h6><strong>Assembly</strong>: E5R.Architecture.Infrastructure.AspNetCore.dll</h6>
-  <h5 id="E5R_Architecture_Infrastructure_AspNetCore_ServiceCollectionDIContainer_syntax">Syntax</h5>
+  <h6><strong>Namespace</strong>: <a class="xref" href="E5R.Architecture.Core.html">E5R.Architecture.Core</a></h6>
+  <h6><strong>Assembly</strong>: E5R.Architecture.Core.dll</h6>
+  <h5 id="E5R_Architecture_Core_MetaTagAttribute_syntax">Syntax</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public class ServiceCollectionDIContainer : object, IDIContainer</code></pre>
+    <pre><code class="lang-csharp hljs">public class MetaTagAttribute : Attribute</code></pre>
   </div>
   <h3 id="constructors">Constructors
   </h3>
-  <a id="E5R_Architecture_Infrastructure_AspNetCore_ServiceCollectionDIContainer__ctor_" data-uid="E5R.Architecture.Infrastructure.AspNetCore.ServiceCollectionDIContainer.#ctor*"></a>
-  <h4 id="E5R_Architecture_Infrastructure_AspNetCore_ServiceCollectionDIContainer__ctor_IServiceCollection_" data-uid="E5R.Architecture.Infrastructure.AspNetCore.ServiceCollectionDIContainer.#ctor(IServiceCollection)">ServiceCollectionDIContainer(IServiceCollection)</h4>
+  <a id="E5R_Architecture_Core_MetaTagAttribute__ctor_" data-uid="E5R.Architecture.Core.MetaTagAttribute.#ctor*"></a>
+  <h4 id="E5R_Architecture_Core_MetaTagAttribute__ctor_System_String_System_String_" data-uid="E5R.Architecture.Core.MetaTagAttribute.#ctor(System.String,System.String)">MetaTagAttribute(String, String)</h4>
   <div class="markdown level1 summary"></div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public ServiceCollectionDIContainer(IServiceCollection serviceCollection)</code></pre>
+    <pre><code class="lang-csharp hljs">public MetaTagAttribute(string tagKey, string tagValue)</code></pre>
   </div>
   <h5 class="parameters">Parameters</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -111,118 +107,111 @@
     </thead>
     <tbody>
       <tr>
-        <td><span class="xref">IServiceCollection</span></td>
-        <td><span class="parametername">serviceCollection</span></td>
+        <td><span class="xref">System.String</span></td>
+        <td><span class="parametername">tagKey</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><span class="parametername">tagValue</span></td>
         <td></td>
       </tr>
     </tbody>
   </table>
-  <h3 id="methods">Methods
+  <h3 id="fields">Fields
   </h3>
-  <a id="E5R_Architecture_Infrastructure_AspNetCore_ServiceCollectionDIContainer_Register_" data-uid="E5R.Architecture.Infrastructure.AspNetCore.ServiceCollectionDIContainer.Register*"></a>
-  <h4 id="E5R_Architecture_Infrastructure_AspNetCore_ServiceCollectionDIContainer_Register_E5R_Architecture_Infrastructure_Abstractions_DILifetime_Type_" data-uid="E5R.Architecture.Infrastructure.AspNetCore.ServiceCollectionDIContainer.Register(E5R.Architecture.Infrastructure.Abstractions.DILifetime,Type)">Register(DILifetime, Type)</h4>
+  <h4 id="E5R_Architecture_Core_MetaTagAttribute_CustomIdKey" data-uid="E5R.Architecture.Core.MetaTagAttribute.CustomIdKey">CustomIdKey</h4>
   <div class="markdown level1 summary"></div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public void Register(DILifetime lifetime, Type implementationType)</code></pre>
+    <pre><code class="lang-csharp hljs">public const string CustomIdKey = null</code></pre>
   </div>
-  <h5 class="parameters">Parameters</h5>
+  <h5 class="fieldValue">Field Value</h5>
   <table class="table table-bordered table-striped table-condensed">
     <thead>
       <tr>
         <th>Type</th>
-        <th>Name</th>
         <th>Description</th>
       </tr>
     </thead>
     <tbody>
       <tr>
-        <td><a class="xref" href="E5R.Architecture.Infrastructure.Abstractions.DILifetime.html">DILifetime</a></td>
-        <td><span class="parametername">lifetime</span></td>
-        <td></td>
-      </tr>
-      <tr>
-        <td><span class="xref">Type</span></td>
-        <td><span class="parametername">implementationType</span></td>
+        <td><span class="xref">System.String</span></td>
         <td></td>
       </tr>
     </tbody>
   </table>
-  <a id="E5R_Architecture_Infrastructure_AspNetCore_ServiceCollectionDIContainer_Register_" data-uid="E5R.Architecture.Infrastructure.AspNetCore.ServiceCollectionDIContainer.Register*"></a>
-  <h4 id="E5R_Architecture_Infrastructure_AspNetCore_ServiceCollectionDIContainer_Register_E5R_Architecture_Infrastructure_Abstractions_DILifetime_Type_Func_System_Object__" data-uid="E5R.Architecture.Infrastructure.AspNetCore.ServiceCollectionDIContainer.Register(E5R.Architecture.Infrastructure.Abstractions.DILifetime,Type,Func{System.Object})">Register(DILifetime, Type, Func&lt;Object&gt;)</h4>
+  <h4 id="E5R_Architecture_Core_MetaTagAttribute_DescriptionKey" data-uid="E5R.Architecture.Core.MetaTagAttribute.DescriptionKey">DescriptionKey</h4>
   <div class="markdown level1 summary"></div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public void Register(DILifetime lifetime, Type baseType, Func&lt;object&gt; implementationFactory)</code></pre>
+    <pre><code class="lang-csharp hljs">public const string DescriptionKey = null</code></pre>
   </div>
-  <h5 class="parameters">Parameters</h5>
+  <h5 class="fieldValue">Field Value</h5>
   <table class="table table-bordered table-striped table-condensed">
     <thead>
       <tr>
         <th>Type</th>
-        <th>Name</th>
         <th>Description</th>
       </tr>
     </thead>
     <tbody>
       <tr>
-        <td><a class="xref" href="E5R.Architecture.Infrastructure.Abstractions.DILifetime.html">DILifetime</a></td>
-        <td><span class="parametername">lifetime</span></td>
-        <td></td>
-      </tr>
-      <tr>
-        <td><span class="xref">Type</span></td>
-        <td><span class="parametername">baseType</span></td>
-        <td></td>
-      </tr>
-      <tr>
-        <td><span class="xref">Func</span>&lt;<span class="xref">System.Object</span>&gt;</td>
-        <td><span class="parametername">implementationFactory</span></td>
+        <td><span class="xref">System.String</span></td>
         <td></td>
       </tr>
     </tbody>
   </table>
-  <a id="E5R_Architecture_Infrastructure_AspNetCore_ServiceCollectionDIContainer_Register_" data-uid="E5R.Architecture.Infrastructure.AspNetCore.ServiceCollectionDIContainer.Register*"></a>
-  <h4 id="E5R_Architecture_Infrastructure_AspNetCore_ServiceCollectionDIContainer_Register_E5R_Architecture_Infrastructure_Abstractions_DILifetime_Type_Type_" data-uid="E5R.Architecture.Infrastructure.AspNetCore.ServiceCollectionDIContainer.Register(E5R.Architecture.Infrastructure.Abstractions.DILifetime,Type,Type)">Register(DILifetime, Type, Type)</h4>
+  <h3 id="properties">Properties
+  </h3>
+  <a id="E5R_Architecture_Core_MetaTagAttribute_TagKey_" data-uid="E5R.Architecture.Core.MetaTagAttribute.TagKey*"></a>
+  <h4 id="E5R_Architecture_Core_MetaTagAttribute_TagKey" data-uid="E5R.Architecture.Core.MetaTagAttribute.TagKey">TagKey</h4>
   <div class="markdown level1 summary"></div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public void Register(DILifetime lifetime, Type baseType, Type implementationType)</code></pre>
+    <pre><code class="lang-csharp hljs">public string TagKey { get; }</code></pre>
   </div>
-  <h5 class="parameters">Parameters</h5>
+  <h5 class="propertyValue">Property Value</h5>
   <table class="table table-bordered table-striped table-condensed">
     <thead>
       <tr>
         <th>Type</th>
-        <th>Name</th>
         <th>Description</th>
       </tr>
     </thead>
     <tbody>
       <tr>
-        <td><a class="xref" href="E5R.Architecture.Infrastructure.Abstractions.DILifetime.html">DILifetime</a></td>
-        <td><span class="parametername">lifetime</span></td>
-        <td></td>
-      </tr>
-      <tr>
-        <td><span class="xref">Type</span></td>
-        <td><span class="parametername">baseType</span></td>
-        <td></td>
-      </tr>
-      <tr>
-        <td><span class="xref">Type</span></td>
-        <td><span class="parametername">implementationType</span></td>
+        <td><span class="xref">System.String</span></td>
         <td></td>
       </tr>
     </tbody>
   </table>
-  <h3 id="implements">Implements</h3>
-  <div>
-      <a class="xref" href="E5R.Architecture.Infrastructure.Abstractions.IDIContainer.html">IDIContainer</a>
+  <a id="E5R_Architecture_Core_MetaTagAttribute_TagValue_" data-uid="E5R.Architecture.Core.MetaTagAttribute.TagValue*"></a>
+  <h4 id="E5R_Architecture_Core_MetaTagAttribute_TagValue" data-uid="E5R.Architecture.Core.MetaTagAttribute.TagValue">TagValue</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public string TagValue { get; }</code></pre>
   </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
 </article>
           </div>
           

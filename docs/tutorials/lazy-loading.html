@@ -5,9 +5,9 @@
   <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-    <title>Tutorial - Proje&#231;&#227;o de dados | Arquitetura E5R </title>
+    <title>Tutorial - Lazy loading - Carregamento pregui&#231;oso | Arquitetura E5R </title>
     <meta name="viewport" content="width=device-width">
-    <meta name="title" content="Tutorial - Proje&#231;&#227;o de dados | Arquitetura E5R ">
+    <meta name="title" content="Tutorial - Lazy loading - Carregamento pregui&#231;oso | Arquitetura E5R ">
     <meta name="generator" content="docfx 2.56.6.0">
     
     <link rel="shortcut icon" href="../images/favicon.png">
@@ -67,10 +67,45 @@
         <div class="article row grid-right">
           <div class="col-md-10">
             <article class="content wrap" id="_content" data-uid="">
-<h1 id="projeção-de-dados">Projeção de dados</h1>
+<h1 id="lazy-loading---carregamento-preguiçoso">Lazy loading - Carregamento preguiçoso</h1>
 
+<p>Você pode injetar suas dependências e elas serão carregadas preguiçosamente,
+se você usar o genérico <code>ILazy</code>. Basicamente o que muda é isso:</p>
+<pre><code class="lang-c#">public class MyService
+{
+    // Ao invés de usar isso:
+    public MyService(IMyRepository myRepository, IStorage&lt;Person&gt; personStorage)
+    {
+        // ...
+    }
+    
+    // Passe a usar isso:
+    public MyService(ILazy&lt;IMyRepository&gt; myRepository, ILazy&lt;IStorage&lt;Person&gt;&gt; personStorage)
+    {
+        // ...
+    }
+}
+</code></pre>
+<p>Com essa assinatura o serviço em si só será carregado quando solicitado, o que nos lembra
+que também temos uma pequena mudança na hora de utilizar as dependências:</p>
+<pre><code class="lang-c#">// Antes
+public MyMethod()
+{
+    var myData = myRepository.MyGetData();
+}
+
+// Depois
+public MyMethod()
+{
+    var myData = myRepository.Value.MyGetData();
+}
+</code></pre>
+<p>O problema principal que queremos evitar é o fato de carregar dependências desnecessariamente,
+e que é bem descrito por <a href="https://dev.to/hypercodeplace">Aleksei Ananev</a> no artigo
+<a href="https://dev.to/hypercodeplace/lazy-dependency-injection-37en">Lazy Dependency Injection for .NET</a>.</p>
 <blockquote>
-<p>TODO...</p>
+<p>TODO: Explicar melhor o benefício para quando há muitas dependências
+nos construtores</p>
 </blockquote>
 </article>
           </div>

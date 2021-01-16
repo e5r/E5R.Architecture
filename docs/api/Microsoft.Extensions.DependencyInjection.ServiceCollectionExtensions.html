@@ -81,20 +81,20 @@
     <div class="level1"><span class="xref">ServiceCollectionExtensions</span></div>
   </div>
   <h6><strong>Namespace</strong>: <a class="xref" href="Microsoft.Extensions.DependencyInjection.html">Microsoft.Extensions.DependencyInjection</a></h6>
-  <h6><strong>Assembly</strong>: E5R.Architecture.Data.EntityFrameworkCore.dll</h6>
+  <h6><strong>Assembly</strong>: E5R.Architecture.Infrastructure.dll</h6>
   <h5 id="Microsoft_Extensions_DependencyInjection_ServiceCollectionExtensions_syntax">Syntax</h5>
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">public static class ServiceCollectionExtensions : object</code></pre>
   </div>
   <h3 id="methods">Methods
   </h3>
-  <a id="Microsoft_Extensions_DependencyInjection_ServiceCollectionExtensions_AddStoragePropertyStrategy_" data-uid="Microsoft.Extensions.DependencyInjection.ServiceCollectionExtensions.AddStoragePropertyStrategy*"></a>
-  <h4 id="Microsoft_Extensions_DependencyInjection_ServiceCollectionExtensions_AddStoragePropertyStrategy_IServiceCollection_" data-uid="Microsoft.Extensions.DependencyInjection.ServiceCollectionExtensions.AddStoragePropertyStrategy(IServiceCollection)">AddStoragePropertyStrategy(IServiceCollection)</h4>
+  <a id="Microsoft_Extensions_DependencyInjection_ServiceCollectionExtensions_AddInfrastructure_" data-uid="Microsoft.Extensions.DependencyInjection.ServiceCollectionExtensions.AddInfrastructure*"></a>
+  <h4 id="Microsoft_Extensions_DependencyInjection_ServiceCollectionExtensions_AddInfrastructure_IServiceCollection_System_String___" data-uid="Microsoft.Extensions.DependencyInjection.ServiceCollectionExtensions.AddInfrastructure(IServiceCollection,System.String[])">AddInfrastructure(IServiceCollection, String[])</h4>
   <div class="markdown level1 summary"></div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public static IServiceCollection AddStoragePropertyStrategy(this IServiceCollection serviceCollection)</code></pre>
+    <pre><code class="lang-csharp hljs">public static IServiceCollection AddInfrastructure(this IServiceCollection serviceCollection, string[] customServiceAssemblies = null)</code></pre>
   </div>
   <h5 class="parameters">Parameters</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -109,6 +109,11 @@
       <tr>
         <td><span class="xref">IServiceCollection</span></td>
         <td><span class="parametername">serviceCollection</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.String</span>[]</td>
+        <td><span class="parametername">customServiceAssemblies</span></td>
         <td></td>
       </tr>
     </tbody>
@@ -128,13 +133,119 @@
       </tr>
     </tbody>
   </table>
-  <a id="Microsoft_Extensions_DependencyInjection_ServiceCollectionExtensions_AddStorageTransactionScopeStrategy_" data-uid="Microsoft.Extensions.DependencyInjection.ServiceCollectionExtensions.AddStorageTransactionScopeStrategy*"></a>
-  <h4 id="Microsoft_Extensions_DependencyInjection_ServiceCollectionExtensions_AddStorageTransactionScopeStrategy_IServiceCollection_" data-uid="Microsoft.Extensions.DependencyInjection.ServiceCollectionExtensions.AddStorageTransactionScopeStrategy(IServiceCollection)">AddStorageTransactionScopeStrategy(IServiceCollection)</h4>
+  <a id="Microsoft_Extensions_DependencyInjection_ServiceCollectionExtensions_AddUnitOfWorkPropertyStrategy_" data-uid="Microsoft.Extensions.DependencyInjection.ServiceCollectionExtensions.AddUnitOfWorkPropertyStrategy*"></a>
+  <h4 id="Microsoft_Extensions_DependencyInjection_ServiceCollectionExtensions_AddUnitOfWorkPropertyStrategy_IServiceCollection_Action_E5R_Architecture_Infrastructure_UnitOfWorkPropertyStrategyBuilderOptions__" data-uid="Microsoft.Extensions.DependencyInjection.ServiceCollectionExtensions.AddUnitOfWorkPropertyStrategy(IServiceCollection,Action{E5R.Architecture.Infrastructure.UnitOfWorkPropertyStrategyBuilderOptions})">AddUnitOfWorkPropertyStrategy(IServiceCollection, Action&lt;UnitOfWorkPropertyStrategyBuilderOptions&gt;)</h4>
   <div class="markdown level1 summary"></div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public static IServiceCollection AddStorageTransactionScopeStrategy(this IServiceCollection serviceCollection)</code></pre>
+    <pre><code class="lang-csharp hljs">public static IServiceCollection AddUnitOfWorkPropertyStrategy(this IServiceCollection serviceCollection, Action&lt;UnitOfWorkPropertyStrategyBuilderOptions&gt; config)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">IServiceCollection</span></td>
+        <td><span class="parametername">serviceCollection</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="xref">Action</span>&lt;<a class="xref" href="E5R.Architecture.Infrastructure.UnitOfWorkPropertyStrategyBuilderOptions.html">UnitOfWorkPropertyStrategyBuilderOptions</a>&gt;</td>
+        <td><span class="parametername">config</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">IServiceCollection</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <a id="Microsoft_Extensions_DependencyInjection_ServiceCollectionExtensions_AddUnitOfWorkPropertyStrategy_" data-uid="Microsoft.Extensions.DependencyInjection.ServiceCollectionExtensions.AddUnitOfWorkPropertyStrategy*"></a>
+  <h4 id="Microsoft_Extensions_DependencyInjection_ServiceCollectionExtensions_AddUnitOfWorkPropertyStrategy__1_IServiceCollection_Action_E5R_Architecture_Infrastructure_UnitOfWorkPropertyStrategyBuilderOptions__" data-uid="Microsoft.Extensions.DependencyInjection.ServiceCollectionExtensions.AddUnitOfWorkPropertyStrategy``1(IServiceCollection,Action{E5R.Architecture.Infrastructure.UnitOfWorkPropertyStrategyBuilderOptions})">AddUnitOfWorkPropertyStrategy&lt;TAppUnitOfWork&gt;(IServiceCollection, Action&lt;UnitOfWorkPropertyStrategyBuilderOptions&gt;)</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static IServiceCollection AddUnitOfWorkPropertyStrategy&lt;TAppUnitOfWork&gt;(this IServiceCollection serviceCollection, Action&lt;UnitOfWorkPropertyStrategyBuilderOptions&gt; config)
+    where TAppUnitOfWork : UnitOfWorkByProperty</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">IServiceCollection</span></td>
+        <td><span class="parametername">serviceCollection</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="xref">Action</span>&lt;<a class="xref" href="E5R.Architecture.Infrastructure.UnitOfWorkPropertyStrategyBuilderOptions.html">UnitOfWorkPropertyStrategyBuilderOptions</a>&gt;</td>
+        <td><span class="parametername">config</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">IServiceCollection</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="typeParameters">Type Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="parametername">TAppUnitOfWork</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <a id="Microsoft_Extensions_DependencyInjection_ServiceCollectionExtensions_AddUnitOfWorkTransactionScopeStrategy_" data-uid="Microsoft.Extensions.DependencyInjection.ServiceCollectionExtensions.AddUnitOfWorkTransactionScopeStrategy*"></a>
+  <h4 id="Microsoft_Extensions_DependencyInjection_ServiceCollectionExtensions_AddUnitOfWorkTransactionScopeStrategy_IServiceCollection_" data-uid="Microsoft.Extensions.DependencyInjection.ServiceCollectionExtensions.AddUnitOfWorkTransactionScopeStrategy(IServiceCollection)">AddUnitOfWorkTransactionScopeStrategy(IServiceCollection)</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static IServiceCollection AddUnitOfWorkTransactionScopeStrategy(this IServiceCollection serviceCollection)</code></pre>
   </div>
   <h5 class="parameters">Parameters</h5>
   <table class="table table-bordered table-striped table-condensed">

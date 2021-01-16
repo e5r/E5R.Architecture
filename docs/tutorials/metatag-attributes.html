@@ -1,0 +1,355 @@
+﻿<!DOCTYPE html>
+<!--[if IE]><![endif]-->
+<html>
+  
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>Tutorial - Atributos de Metatags | Arquitetura E5R </title>
+    <meta name="viewport" content="width=device-width">
+    <meta name="title" content="Tutorial - Atributos de Metatags | Arquitetura E5R ">
+    <meta name="generator" content="docfx 2.56.6.0">
+    
+    <link rel="shortcut icon" href="../images/favicon.png">
+    <link rel="stylesheet" href="../styles/docfx.vendor.css">
+    <link rel="stylesheet" href="../styles/docfx.css">
+    <link rel="stylesheet" href="../styles/main.css">
+    <meta property="docfx:navrel" content="../toc.html">
+    <meta property="docfx:tocrel" content="toc.html">
+    
+    
+    
+  </head>
+  <body data-spy="scroll" data-target="#affix" data-offset="120">
+    <div id="wrapper">
+      <header>
+        
+        <nav id="autocollapse" class="navbar navbar-inverse ng-scope" role="navigation">
+          <div class="container">
+            <div class="navbar-header">
+              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+              
+              <a class="navbar-brand" href="../index.html">
+                <img id="logo" class="svg" src="../images/logo.png" alt="">
+              </a>
+            </div>
+            <div class="collapse navbar-collapse" id="navbar">
+              <form class="navbar-form navbar-right" role="search" id="search">
+                <div class="form-group">
+                  <input type="text" class="form-control" id="search-query" placeholder="Search" autocomplete="off">
+                </div>
+              </form>
+            </div>
+          </div>
+        </nav>
+        
+        <div class="subnav navbar navbar-default">
+          <div class="container hide-when-search" id="breadcrumb">
+            <ul class="breadcrumb">
+              <li></li>
+            </ul>
+          </div>
+        </div>
+      </header>
+      <div role="main" class="container body-content hide-when-search">
+        
+        <div class="sidenav hide-when-search">
+          <a class="btn toc-toggle collapse" data-toggle="collapse" href="#sidetoggle" aria-expanded="false" aria-controls="sidetoggle">Show / Hide Table of Contents</a>
+          <div class="sidetoggle collapse" id="sidetoggle">
+            <div id="sidetoc"></div>
+          </div>
+        </div>
+        <div class="article row grid-right">
+          <div class="col-md-10">
+            <article class="content wrap" id="_content" data-uid="">
+<h1 id="atributos-de-metatags">Atributos de Metatags</h1>
+
+<p>Com os atributos de metatag's você pode anotar qualquer objeto do seu código:</p>
+<pre><code class="lang-c#">using E5R.Architecture.Core;
+using Tag = E5R.Architecture.Core.MetaTagAttribute;
+
+[MetaTag(Tag.DescriptionKey, &quot;Descrição de minha classe&quot;)]
+public class MinhaClasse
+{
+    [MetaTag(Tag.CustomIdKey, &quot;001&quot;)]
+    public int CampoInterno { get; set; }
+    
+    [MetaTag(&quot;Tipo&quot;, &quot;Construtor&quot;)]
+    public MinhaClasse() { }
+}
+</code></pre>
+<p>Agora você pode usar os recursos de reflexão do <em>.NET</em> junto as extensões <em>E5R</em> para
+recuperar  essas tags:</p>
+<pre><code class="lang-c#">using E5R.Architecture.Core;
+using E5R.Architecture.Core.Extensions;
+using Tag = E5R.Architecture.Core.MetaTagAttribute;
+
+var classType = typeof(MinhaClasse);
+
+// Todas as tags de um tipo
+var classTags = classType.GetMetaTags();
+
+// Só os nomes das tags
+var classTagNames = classType.GetTags();
+
+// O valor de uma tag específica
+var classDescription = classType.GetTag(Tag.DescriptionKey);
+
+// O valor de uma tag específica de um campo
+var fieldCustomId = classType.GetField(&quot;CampoInterno&quot;).GetTag(Tag.CustomIdKey);
+
+// O valor de uma tag específica de um construtor
+var tipoConstrutor = classType.GetConstructor(new Type[0]).GetTag(&quot;Tipo&quot;);
+</code></pre>
+<p>Mas um bom uso dessa funcionalidade está relacionada ao manuseio de <em>Enum's</em>.
+Por exemplo, suponha que você tenha um <em>Enum</em> pra representar uma situação qualquer, e que
+essa situação é utilizada em algumas rotas de sua API:</p>
+<pre><code class="lang-c#">public enum MinhaSituacao
+{
+    Aguardando,
+    EmProcessamento,
+    CanceladoManualmente,
+    CanceladoPeloSistema,
+    FinalizadoComSucesso,
+    FinalizadoComFalha
+}
+
+public class ObterSituacaoViewModel
+{
+    public int CodigoProcesso { get; set; }
+    public MinhaSituacao Situacao { get; set; }
+}
+
+public class AlterarSituacaoViewModel
+{
+    public int CodigoProcesso { get; set; }
+    public MinhaSituacao NovaSituacao { get; set; }
+}
+</code></pre>
+<p>Quando você serializar/desserializar o objeto entre o front-end, você terá por exemplo
+um JSON assim:</p>
+<pre><code class="lang-json">{
+    &quot;ObterSituacaoViewModel&quot;: {
+        &quot;codigoProcesso&quot;: 123, 
+        &quot;situacao&quot;: 3
+    },
+    
+    &quot;Alterar situação&quot;: {
+        &quot;codigoProcesso&quot;: 456,
+        &quot;novaSituacao&quot;: 5
+    }
+}
+</code></pre>
+<p>Isso não fica tão intuitivo para o usuário final que usa a API, então seria bem melhor
+algo como:</p>
+<pre><code class="lang-json">{
+    &quot;ObterSituacaoViewModel&quot;: {
+        &quot;codigoProcesso&quot;: 123, 
+        &quot;situacao&quot;: &quot;CS&quot;
+    },
+    
+    &quot;Alterar situação&quot;: {
+        &quot;codigoProcesso&quot;: 456,
+        &quot;novaSituacao&quot;: &quot;FF&quot;
+    }
+}
+</code></pre>
+<p>Ou ainda:</p>
+<pre><code class="lang-json">{
+    &quot;Obter situação&quot;: {
+        &quot;codigoProcesso&quot;: 123, 
+        &quot;situacao&quot;: {
+            &quot;id&quot;: &quot;CS&quot;,
+            &quot;description&quot;: &quot;Cancelado pelo sistema&quot;
+        }
+    },
+    
+    &quot;Alterar situação&quot;: {
+        &quot;codigoProcesso&quot;: 456,
+        &quot;novaSituacao&quot;: {
+            &quot;id&quot;: &quot;FF&quot;,
+            &quot;description&quot;: &quot;Finalizado com Falha&quot;
+        }
+    }
+}
+</code></pre>
+<p>Com isso você pode imaginar uma melhor descrição de seus <em>enum's</em>.</p>
+<p>Representação em <code>JSON</code>:</p>
+<pre><code class="lang-json">{
+    &quot;MinhaSituacao&quot;: [
+        { &quot;id&quot;: 0, &quot;description&quot;: &quot;Aguardando&quot; },
+        { &quot;id&quot;: 1, &quot;description&quot;: &quot;EmProcessamento&quot; },
+        { &quot;id&quot;: 2, &quot;description&quot;: &quot;CanceladoManualmente&quot; },
+        { &quot;id&quot;: 3, &quot;description&quot;: &quot;CanceladoPeloSistema&quot; },
+        { &quot;id&quot;: 4, &quot;description&quot;: &quot;FinalizadoComSucesso&quot; },
+        { &quot;id&quot;: 5, &quot;description&quot;: &quot;FinalizadoComFalha&quot; }
+    ]
+}
+</code></pre>
+<p>Ou ainda:</p>
+<pre><code class="lang-json">{
+    &quot;MinhaSituacao&quot;: [
+        { &quot;id&quot;: &quot;AG&quot;, &quot;description&quot;: &quot;Aguardando&quot; },
+        { &quot;id&quot;: &quot;EP&quot;, &quot;description&quot;: &quot;Em processamento&quot; },
+        { &quot;id&quot;: &quot;CM&quot;, &quot;description&quot;: &quot;Cancelado manualmente&quot; },
+        { &quot;id&quot;: &quot;CS&quot;, &quot;description&quot;: &quot;Cancelado pelo sistema&quot; },
+        { &quot;id&quot;: &quot;FS&quot;, &quot;description&quot;: &quot;Finalizado com sucesso&quot; },
+        { &quot;id&quot;: &quot;FF&quot;, &quot;description&quot;: &quot;Finalizado com falha&quot; }
+    ]
+}
+</code></pre>
+<p>Você consegue esse resultado se aproveitando do novo recurso de <em>metatag's</em> junto a um punhado
+de alguns utilitários.</p>
+<blockquote>
+<p>Vale ressaltar que seus <em>Enum's</em> não serão convertidos automaticamente &quot;de&quot; e &quot;para&quot;
+essas visões e representações JSON. Mas você consegue esse resultado escrevendo filtros,
+middleware, e outros componentes da sua pilha de desenvolvimento (ex: ASP.NET), e esses
+por sua vez podem utilizar a funcionalidade de <em>metatag's</em> e os utilitários apresentados
+para alcançar tal resultado.</p>
+</blockquote>
+<p>Vejamos então como usar.</p>
+<p>Anote seu enum com <em>metatag's</em>:</p>
+<pre><code class="lang-c#">public enum MinhaSituacao
+{
+    [MetaTag(Tag.DescriptionKey, &quot;Aguardando&quot;)]
+    [MetaTag(Tag.CustomIdKey, &quot;AG&quot;)]
+    Aguardando,
+    
+    [MetaTag(Tag.DescriptionKey, &quot;Em processamento&quot;)]
+    [MetaTag(Tag.CustomIdKey, &quot;EP&quot;)]
+    EmProcessamento,
+    
+    [MetaTag(Tag.DescriptionKey, &quot;Cancelado manualmente&quot;)]
+    [MetaTag(Tag.CustomIdKey, &quot;CM&quot;)]
+    CanceladoManualmente,
+    
+    [MetaTag(Tag.DescriptionKey, &quot;Cancelado pelo sistema&quot;)]
+    [MetaTag(Tag.CustomIdKey, &quot;CS&quot;)]
+    CanceladoPeloSistema,
+    
+    [MetaTag(Tag.DescriptionKey, &quot;Finalizado com sucesso&quot;)]
+    [MetaTag(Tag.CustomIdKey, &quot;FS&quot;)]
+    FinalizadoComSucesso,
+    
+    [MetaTag(Tag.DescriptionKey, &quot;Finalizado com falha&quot;)]
+    [MetaTag(Tag.CustomIdKey, &quot;FF&quot;)]
+    FinalizadoComFalha
+}
+</code></pre>
+<p>Quando for entregar nas suas ViewModel's, ao invés de usar o próprio <em>enum</em>, você
+pode usar o modelo geral EnumModel.</p>
+<pre><code class="lang-c#">using E5R.Architecture.Core.Models;
+
+public class ObterSituacaoViewModel
+{
+    public int CodigoProcesso { get; set; }
+    public EnumModel Situacao { get; set; }
+}
+
+public class AlterarSituacaoViewModel
+{
+    public int CodigoProcesso { get; set; }
+    public EnumModel NovaSituacao { get; set; }
+}
+</code></pre>
+<p>E quando for entregar seus objetos na API:</p>
+<pre><code class="lang-c#">using E5R.Architecture.Core;
+using E5R.Architecture.Core.Models;
+
+public class MyController
+{
+    public ObterSituacaoViewModel Get()
+    {
+        return new ObterSituacaoViewModel
+        {
+            CodigoProcesso = 1,
+            
+            // Aqui o Enum é convertido implicitamente para um EnumModel
+            Situacao = MinhaSituacao.EmProcessamento
+        };
+        
+        // resulta no mesmo que:
+        return new ObterSituacaoViewModel
+        {
+            CodigoProcesso = 1,
+            Situacao = new EnumModel
+            {
+                Id = &quot;EP&quot;,
+                Description: &quot;Em processamento&quot;
+            }
+        };
+    }
+}
+</code></pre>
+<p>E quando receber seus objetos da API, supondo que foi-lhe enviado o <code>JSON</code>:</p>
+<pre><code class="lang-json">{
+    &quot;codigoProcesso&quot;: 1,
+    &quot;novaSituacao&quot;: {
+        &quot;id&quot;: &quot;CM&quot;
+    }
+}
+</code></pre>
+<pre><code class="lang-c#">using E5R.Architecture.Core;
+using E5R.Architecture.Core.Models;
+using E5R.Architecture.Core.Utils;
+using E5R.Architecture.Core.Extensions;
+
+public class MyController
+{
+    public void Alterar(AlterarSituacaoViewModel model)
+    {
+        MinhaSituacao situacao = model.NovaSituacao.ToEnum&lt;MinhaSituacao&gt;();
+        
+        // Sua ação com enum MinhaSituacao...
+    }
+}
+</code></pre>
+<p>Além disso você também pode obter uma lista de <em>enum's</em> já tipada:</p>
+<pre><code class="lang-c#">using E5R.Architecture.Core.Utils;
+
+MinhaSituacao[] situacoes = EnumUtil.GetValues&lt;MinhaSituacao&gt;();
+</code></pre>
+<p>Ou, se preferir uma lista de EnumModel do <em>Enum</em> correspondente:</p>
+<pre><code class="lang-c#">using E5R.Architecture.Core.Utils;
+using E5R.Architecture.Core.Models;
+
+EnumModel[] modelos = EnumUtil.GetModels&lt;MinhaSituacao&gt;();
+</code></pre>
+</article>
+          </div>
+          
+          <div class="hidden-sm col-md-2" role="complementary">
+            <div class="sideaffix">
+              <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">
+                <h5>In This Article</h5>
+                <div></div>
+              </nav>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <footer>
+        <div class="grad-bottom"></div>
+        <div class="footer">
+          <div class="container">
+            <span class="pull-right">
+              <a href="#top">Back to top</a>
+            </span>
+            Copyright (c) 2020 E5R Development Team
+            
+          </div>
+        </div>
+      </footer>
+    </div>
+    
+    <script type="text/javascript" src="../styles/docfx.vendor.js"></script>
+    <script type="text/javascript" src="../styles/docfx.js"></script>
+    <script type="text/javascript" src="../styles/main.js"></script>
+  </body>
+</html>

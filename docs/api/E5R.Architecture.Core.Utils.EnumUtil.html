@@ -5,10 +5,10 @@
   <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-    <title>Class DILifetimeExtensions
+    <title>Class EnumUtil
    | Arquitetura E5R </title>
     <meta name="viewport" content="width=device-width">
-    <meta name="title" content="Class DILifetimeExtensions
+    <meta name="title" content="Class EnumUtil
    | Arquitetura E5R ">
     <meta name="generator" content="docfx 2.56.6.0">
     
@@ -68,51 +68,37 @@
         </div>
         <div class="article row grid-right">
           <div class="col-md-10">
-            <article class="content wrap" id="_content" data-uid="E5R.Architecture.Infrastructure.Abstractions.DILifetimeExtensions">
+            <article class="content wrap" id="_content" data-uid="E5R.Architecture.Core.Utils.EnumUtil">
   
   
-  <h1 id="E5R_Architecture_Infrastructure_Abstractions_DILifetimeExtensions" data-uid="E5R.Architecture.Infrastructure.Abstractions.DILifetimeExtensions" class="text-break">Class DILifetimeExtensions
+  <h1 id="E5R_Architecture_Core_Utils_EnumUtil" data-uid="E5R.Architecture.Core.Utils.EnumUtil" class="text-break">Class EnumUtil
   </h1>
-  <div class="markdown level0 summary"></div>
+  <div class="markdown level0 summary"><p>Enum utils</p>
+</div>
   <div class="markdown level0 conceptual"></div>
   <div class="inheritance">
     <h5>Inheritance</h5>
     <div class="level0"><span class="xref">System.Object</span></div>
-    <div class="level1"><span class="xref">DILifetimeExtensions</span></div>
+    <div class="level1"><span class="xref">EnumUtil</span></div>
   </div>
-  <h6><strong>Namespace</strong>: <a class="xref" href="E5R.Architecture.Infrastructure.Abstractions.html">E5R.Architecture.Infrastructure.Abstractions</a></h6>
-  <h6><strong>Assembly</strong>: E5R.Architecture.Infrastructure.dll</h6>
-  <h5 id="E5R_Architecture_Infrastructure_Abstractions_DILifetimeExtensions_syntax">Syntax</h5>
+  <h6><strong>Namespace</strong>: <a class="xref" href="E5R.Architecture.Core.Utils.html">E5R.Architecture.Core.Utils</a></h6>
+  <h6><strong>Assembly</strong>: E5R.Architecture.Core.dll</h6>
+  <h5 id="E5R_Architecture_Core_Utils_EnumUtil_syntax">Syntax</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public static class DILifetimeExtensions : object</code></pre>
+    <pre><code class="lang-csharp hljs">public static class EnumUtil : object</code></pre>
   </div>
   <h3 id="methods">Methods
   </h3>
-  <a id="E5R_Architecture_Infrastructure_Abstractions_DILifetimeExtensions_ToServiceLifetime_" data-uid="E5R.Architecture.Infrastructure.Abstractions.DILifetimeExtensions.ToServiceLifetime*"></a>
-  <h4 id="E5R_Architecture_Infrastructure_Abstractions_DILifetimeExtensions_ToServiceLifetime_E5R_Architecture_Infrastructure_Abstractions_DILifetime_" data-uid="E5R.Architecture.Infrastructure.Abstractions.DILifetimeExtensions.ToServiceLifetime(E5R.Architecture.Infrastructure.Abstractions.DILifetime)">ToServiceLifetime(DILifetime)</h4>
-  <div class="markdown level1 summary"></div>
+  <a id="E5R_Architecture_Core_Utils_EnumUtil_GetModels_" data-uid="E5R.Architecture.Core.Utils.EnumUtil.GetModels*"></a>
+  <h4 id="E5R_Architecture_Core_Utils_EnumUtil_GetModels__1" data-uid="E5R.Architecture.Core.Utils.EnumUtil.GetModels``1">GetModels&lt;TEnum&gt;()</h4>
+  <div class="markdown level1 summary"><p>Get a enum values on <a class="xref" href="E5R.Architecture.Core.Models.EnumModel.html">EnumModel</a> format</p>
+</div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public static ServiceLifetime ToServiceLifetime(this DILifetime lifetime)</code></pre>
+    <pre><code class="lang-csharp hljs">public static EnumModel[] GetModels&lt;TEnum&gt;()
+    where TEnum : Enum</code></pre>
   </div>
-  <h5 class="parameters">Parameters</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Name</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="E5R.Architecture.Infrastructure.Abstractions.DILifetime.html">DILifetime</a></td>
-        <td><span class="parametername">lifetime</span></td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
   <h5 class="returns">Returns</h5>
   <table class="table table-bordered table-striped table-condensed">
     <thead>
@@ -123,8 +109,67 @@
     </thead>
     <tbody>
       <tr>
-        <td><span class="xref">ServiceLifetime</span></td>
-        <td></td>
+        <td><a class="xref" href="E5R.Architecture.Core.Models.EnumModel.html">EnumModel</a>[]</td>
+        <td><p>Array of <a class="xref" href="E5R.Architecture.Core.Models.EnumModel.html">EnumModel</a></p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="typeParameters">Type Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="parametername">TEnum</span></td>
+        <td><p>The enum type</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <a id="E5R_Architecture_Core_Utils_EnumUtil_GetValues_" data-uid="E5R.Architecture.Core.Utils.EnumUtil.GetValues*"></a>
+  <h4 id="E5R_Architecture_Core_Utils_EnumUtil_GetValues__1" data-uid="E5R.Architecture.Core.Utils.EnumUtil.GetValues``1">GetValues&lt;TEnum&gt;()</h4>
+  <div class="markdown level1 summary"><p>Get a enum values</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static TEnum[] GetValues&lt;TEnum&gt;()
+    where TEnum : Enum</code></pre>
+  </div>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>TEnum[]</td>
+        <td><p>Array of enum values</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="typeParameters">Type Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="parametername">TEnum</span></td>
+        <td><p>The enum type</p>
+</td>
       </tr>
     </tbody>
   </table>

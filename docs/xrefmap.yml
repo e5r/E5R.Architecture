@@ -722,6 +722,155 @@ references:
   isSpec: "True"
   fullName: E5R.Architecture.Core.Exceptions.ViolatedRuleException.Unconformities
   nameWithType: ViolatedRuleException.Unconformities
+- uid: E5R.Architecture.Core.Extensions
+  name: E5R.Architecture.Core.Extensions
+  href: api/E5R.Architecture.Core.Extensions.html
+  commentId: N:E5R.Architecture.Core.Extensions
+  fullName: E5R.Architecture.Core.Extensions
+  nameWithType: E5R.Architecture.Core.Extensions
+- uid: E5R.Architecture.Core.Extensions.MetaTagAttributeExtensions
+  name: MetaTagAttributeExtensions
+  href: api/E5R.Architecture.Core.Extensions.MetaTagAttributeExtensions.html
+  commentId: T:E5R.Architecture.Core.Extensions.MetaTagAttributeExtensions
+  fullName: E5R.Architecture.Core.Extensions.MetaTagAttributeExtensions
+  nameWithType: MetaTagAttributeExtensions
+- uid: E5R.Architecture.Core.Extensions.MetaTagAttributeExtensions.GetMetaTags(Assembly)
+  name: GetMetaTags(Assembly)
+  href: api/E5R.Architecture.Core.Extensions.MetaTagAttributeExtensions.html#E5R_Architecture_Core_Extensions_MetaTagAttributeExtensions_GetMetaTags_Assembly_
+  commentId: M:E5R.Architecture.Core.Extensions.MetaTagAttributeExtensions.GetMetaTags(Assembly)
+  fullName: E5R.Architecture.Core.Extensions.MetaTagAttributeExtensions.GetMetaTags(Assembly)
+  nameWithType: MetaTagAttributeExtensions.GetMetaTags(Assembly)
+- uid: E5R.Architecture.Core.Extensions.MetaTagAttributeExtensions.GetMetaTags(Enum)
+  name: GetMetaTags(Enum)
+  href: api/E5R.Architecture.Core.Extensions.MetaTagAttributeExtensions.html#E5R_Architecture_Core_Extensions_MetaTagAttributeExtensions_GetMetaTags_Enum_
+  commentId: M:E5R.Architecture.Core.Extensions.MetaTagAttributeExtensions.GetMetaTags(Enum)
+  fullName: E5R.Architecture.Core.Extensions.MetaTagAttributeExtensions.GetMetaTags(Enum)
+  nameWithType: MetaTagAttributeExtensions.GetMetaTags(Enum)
+- uid: E5R.Architecture.Core.Extensions.MetaTagAttributeExtensions.GetMetaTags(MemberInfo)
+  name: GetMetaTags(MemberInfo)
+  href: api/E5R.Architecture.Core.Extensions.MetaTagAttributeExtensions.html#E5R_Architecture_Core_Extensions_MetaTagAttributeExtensions_GetMetaTags_MemberInfo_
+  commentId: M:E5R.Architecture.Core.Extensions.MetaTagAttributeExtensions.GetMetaTags(MemberInfo)
+  fullName: E5R.Architecture.Core.Extensions.MetaTagAttributeExtensions.GetMetaTags(MemberInfo)
+  nameWithType: MetaTagAttributeExtensions.GetMetaTags(MemberInfo)
+- uid: E5R.Architecture.Core.Extensions.MetaTagAttributeExtensions.GetMetaTags(Module)
+  name: GetMetaTags(Module)
+  href: api/E5R.Architecture.Core.Extensions.MetaTagAttributeExtensions.html#E5R_Architecture_Core_Extensions_MetaTagAttributeExtensions_GetMetaTags_Module_
+  commentId: M:E5R.Architecture.Core.Extensions.MetaTagAttributeExtensions.GetMetaTags(Module)
+  fullName: E5R.Architecture.Core.Extensions.MetaTagAttributeExtensions.GetMetaTags(Module)
+  nameWithType: MetaTagAttributeExtensions.GetMetaTags(Module)
+- uid: E5R.Architecture.Core.Extensions.MetaTagAttributeExtensions.GetMetaTags(Type)
+  name: GetMetaTags(Type)
+  href: api/E5R.Architecture.Core.Extensions.MetaTagAttributeExtensions.html#E5R_Architecture_Core_Extensions_MetaTagAttributeExtensions_GetMetaTags_Type_
+  commentId: M:E5R.Architecture.Core.Extensions.MetaTagAttributeExtensions.GetMetaTags(Type)
+  fullName: E5R.Architecture.Core.Extensions.MetaTagAttributeExtensions.GetMetaTags(Type)
+  nameWithType: MetaTagAttributeExtensions.GetMetaTags(Type)
+- uid: E5R.Architecture.Core.Extensions.MetaTagAttributeExtensions.GetMetaTags*
+  name: GetMetaTags
+  href: api/E5R.Architecture.Core.Extensions.MetaTagAttributeExtensions.html#E5R_Architecture_Core_Extensions_MetaTagAttributeExtensions_GetMetaTags_
+  commentId: Overload:E5R.Architecture.Core.Extensions.MetaTagAttributeExtensions.GetMetaTags
+  isSpec: "True"
+  fullName: E5R.Architecture.Core.Extensions.MetaTagAttributeExtensions.GetMetaTags
+  nameWithType: MetaTagAttributeExtensions.GetMetaTags
+- uid: E5R.Architecture.Core.Extensions.MetaTagAttributeExtensions.GetTag(Assembly,System.String)
+  name: GetTag(Assembly, String)
+  href: api/E5R.Architecture.Core.Extensions.MetaTagAttributeExtensions.html#E5R_Architecture_Core_Extensions_MetaTagAttributeExtensions_GetTag_Assembly_System_String_
+  commentId: M:E5R.Architecture.Core.Extensions.MetaTagAttributeExtensions.GetTag(Assembly,System.String)
+  fullName: E5R.Architecture.Core.Extensions.MetaTagAttributeExtensions.GetTag(Assembly, System.String)
+  nameWithType: MetaTagAttributeExtensions.GetTag(Assembly, String)
+- uid: E5R.Architecture.Core.Extensions.MetaTagAttributeExtensions.GetTag(Enum,System.String)
+  name: GetTag(Enum, String)
+  href: api/E5R.Architecture.Core.Extensions.MetaTagAttributeExtensions.html#E5R_Architecture_Core_Extensions_MetaTagAttributeExtensions_GetTag_Enum_System_String_
+  commentId: M:E5R.Architecture.Core.Extensions.MetaTagAttributeExtensions.GetTag(Enum,System.String)
+  fullName: E5R.Architecture.Core.Extensions.MetaTagAttributeExtensions.GetTag(Enum, System.String)
+  nameWithType: MetaTagAttributeExtensions.GetTag(Enum, String)
+- uid: E5R.Architecture.Core.Extensions.MetaTagAttributeExtensions.GetTag(MemberInfo,System.String)
+  name: GetTag(MemberInfo, String)
+  href: api/E5R.Architecture.Core.Extensions.MetaTagAttributeExtensions.html#E5R_Architecture_Core_Extensions_MetaTagAttributeExtensions_GetTag_MemberInfo_System_String_
+  commentId: M:E5R.Architecture.Core.Extensions.MetaTagAttributeExtensions.GetTag(MemberInfo,System.String)
+  fullName: E5R.Architecture.Core.Extensions.MetaTagAttributeExtensions.GetTag(MemberInfo, System.String)
+  nameWithType: MetaTagAttributeExtensions.GetTag(MemberInfo, String)
+- uid: E5R.Architecture.Core.Extensions.MetaTagAttributeExtensions.GetTag(Module,System.String)
+  name: GetTag(Module, String)
+  href: api/E5R.Architecture.Core.Extensions.MetaTagAttributeExtensions.html#E5R_Architecture_Core_Extensions_MetaTagAttributeExtensions_GetTag_Module_System_String_
+  commentId: M:E5R.Architecture.Core.Extensions.MetaTagAttributeExtensions.GetTag(Module,System.String)
+  fullName: E5R.Architecture.Core.Extensions.MetaTagAttributeExtensions.GetTag(Module, System.String)
+  nameWithType: MetaTagAttributeExtensions.GetTag(Module, String)
+- uid: E5R.Architecture.Core.Extensions.MetaTagAttributeExtensions.GetTag(Type,System.String)
+  name: GetTag(Type, String)
+  href: api/E5R.Architecture.Core.Extensions.MetaTagAttributeExtensions.html#E5R_Architecture_Core_Extensions_MetaTagAttributeExtensions_GetTag_Type_System_String_
+  commentId: M:E5R.Architecture.Core.Extensions.MetaTagAttributeExtensions.GetTag(Type,System.String)
+  fullName: E5R.Architecture.Core.Extensions.MetaTagAttributeExtensions.GetTag(Type, System.String)
+  nameWithType: MetaTagAttributeExtensions.GetTag(Type, String)
+- uid: E5R.Architecture.Core.Extensions.MetaTagAttributeExtensions.GetTag*
+  name: GetTag
+  href: api/E5R.Architecture.Core.Extensions.MetaTagAttributeExtensions.html#E5R_Architecture_Core_Extensions_MetaTagAttributeExtensions_GetTag_
+  commentId: Overload:E5R.Architecture.Core.Extensions.MetaTagAttributeExtensions.GetTag
+  isSpec: "True"
+  fullName: E5R.Architecture.Core.Extensions.MetaTagAttributeExtensions.GetTag
+  nameWithType: MetaTagAttributeExtensions.GetTag
+- uid: E5R.Architecture.Core.Extensions.MetaTagAttributeExtensions.GetTags(Assembly)
+  name: GetTags(Assembly)
+  href: api/E5R.Architecture.Core.Extensions.MetaTagAttributeExtensions.html#E5R_Architecture_Core_Extensions_MetaTagAttributeExtensions_GetTags_Assembly_
+  commentId: M:E5R.Architecture.Core.Extensions.MetaTagAttributeExtensions.GetTags(Assembly)
+  fullName: E5R.Architecture.Core.Extensions.MetaTagAttributeExtensions.GetTags(Assembly)
+  nameWithType: MetaTagAttributeExtensions.GetTags(Assembly)
+- uid: E5R.Architecture.Core.Extensions.MetaTagAttributeExtensions.GetTags(Enum)
+  name: GetTags(Enum)
+  href: api/E5R.Architecture.Core.Extensions.MetaTagAttributeExtensions.html#E5R_Architecture_Core_Extensions_MetaTagAttributeExtensions_GetTags_Enum_
+  commentId: M:E5R.Architecture.Core.Extensions.MetaTagAttributeExtensions.GetTags(Enum)
+  fullName: E5R.Architecture.Core.Extensions.MetaTagAttributeExtensions.GetTags(Enum)
+  nameWithType: MetaTagAttributeExtensions.GetTags(Enum)
+- uid: E5R.Architecture.Core.Extensions.MetaTagAttributeExtensions.GetTags(MemberInfo)
+  name: GetTags(MemberInfo)
+  href: api/E5R.Architecture.Core.Extensions.MetaTagAttributeExtensions.html#E5R_Architecture_Core_Extensions_MetaTagAttributeExtensions_GetTags_MemberInfo_
+  commentId: M:E5R.Architecture.Core.Extensions.MetaTagAttributeExtensions.GetTags(MemberInfo)
+  fullName: E5R.Architecture.Core.Extensions.MetaTagAttributeExtensions.GetTags(MemberInfo)
+  nameWithType: MetaTagAttributeExtensions.GetTags(MemberInfo)
+- uid: E5R.Architecture.Core.Extensions.MetaTagAttributeExtensions.GetTags(Module)
+  name: GetTags(Module)
+  href: api/E5R.Architecture.Core.Extensions.MetaTagAttributeExtensions.html#E5R_Architecture_Core_Extensions_MetaTagAttributeExtensions_GetTags_Module_
+  commentId: M:E5R.Architecture.Core.Extensions.MetaTagAttributeExtensions.GetTags(Module)
+  fullName: E5R.Architecture.Core.Extensions.MetaTagAttributeExtensions.GetTags(Module)
+  nameWithType: MetaTagAttributeExtensions.GetTags(Module)
+- uid: E5R.Architecture.Core.Extensions.MetaTagAttributeExtensions.GetTags(Type)
+  name: GetTags(Type)
+  href: api/E5R.Architecture.Core.Extensions.MetaTagAttributeExtensions.html#E5R_Architecture_Core_Extensions_MetaTagAttributeExtensions_GetTags_Type_
+  commentId: M:E5R.Architecture.Core.Extensions.MetaTagAttributeExtensions.GetTags(Type)
+  fullName: E5R.Architecture.Core.Extensions.MetaTagAttributeExtensions.GetTags(Type)
+  nameWithType: MetaTagAttributeExtensions.GetTags(Type)
+- uid: E5R.Architecture.Core.Extensions.MetaTagAttributeExtensions.GetTags*
+  name: GetTags
+  href: api/E5R.Architecture.Core.Extensions.MetaTagAttributeExtensions.html#E5R_Architecture_Core_Extensions_MetaTagAttributeExtensions_GetTags_
+  commentId: Overload:E5R.Architecture.Core.Extensions.MetaTagAttributeExtensions.GetTags
+  isSpec: "True"
+  fullName: E5R.Architecture.Core.Extensions.MetaTagAttributeExtensions.GetTags
+  nameWithType: MetaTagAttributeExtensions.GetTags
+- uid: E5R.Architecture.Core.ILazy`1
+  name: ILazy<TTarget>
+  href: api/E5R.Architecture.Core.ILazy-1.html
+  commentId: T:E5R.Architecture.Core.ILazy`1
+  name.vb: ILazy(Of TTarget)
+  fullName: E5R.Architecture.Core.ILazy<TTarget>
+  fullName.vb: E5R.Architecture.Core.ILazy(Of TTarget)
+  nameWithType: ILazy<TTarget>
+  nameWithType.vb: ILazy(Of TTarget)
+- uid: E5R.Architecture.Core.ILazy`1.Value
+  name: Value
+  href: api/E5R.Architecture.Core.ILazy-1.html#E5R_Architecture_Core_ILazy_1_Value
+  commentId: P:E5R.Architecture.Core.ILazy`1.Value
+  fullName: E5R.Architecture.Core.ILazy<TTarget>.Value
+  fullName.vb: E5R.Architecture.Core.ILazy(Of TTarget).Value
+  nameWithType: ILazy<TTarget>.Value
+  nameWithType.vb: ILazy(Of TTarget).Value
+- uid: E5R.Architecture.Core.ILazy`1.Value*
+  name: Value
+  href: api/E5R.Architecture.Core.ILazy-1.html#E5R_Architecture_Core_ILazy_1_Value_
+  commentId: Overload:E5R.Architecture.Core.ILazy`1.Value
+  isSpec: "True"
+  fullName: E5R.Architecture.Core.ILazy<TTarget>.Value
+  fullName.vb: E5R.Architecture.Core.ILazy(Of TTarget).Value
+  nameWithType: ILazy<TTarget>.Value
+  nameWithType.vb: ILazy(Of TTarget).Value
 - uid: E5R.Architecture.Core.INotificationDispatcher`1
   name: INotificationDispatcher<TEnum>
   href: api/E5R.Architecture.Core.INotificationDispatcher-1.html
@@ -799,6 +948,136 @@ references:
   isSpec: "True"
   fullName: E5R.Architecture.Core.IRule.Description
   nameWithType: IRule.Description
+- uid: E5R.Architecture.Core.MetaTagAttribute
+  name: MetaTagAttribute
+  href: api/E5R.Architecture.Core.MetaTagAttribute.html
+  commentId: T:E5R.Architecture.Core.MetaTagAttribute
+  fullName: E5R.Architecture.Core.MetaTagAttribute
+  nameWithType: MetaTagAttribute
+- uid: E5R.Architecture.Core.MetaTagAttribute.#ctor(System.String,System.String)
+  name: MetaTagAttribute(String, String)
+  href: api/E5R.Architecture.Core.MetaTagAttribute.html#E5R_Architecture_Core_MetaTagAttribute__ctor_System_String_System_String_
+  commentId: M:E5R.Architecture.Core.MetaTagAttribute.#ctor(System.String,System.String)
+  fullName: E5R.Architecture.Core.MetaTagAttribute.MetaTagAttribute(System.String, System.String)
+  nameWithType: MetaTagAttribute.MetaTagAttribute(String, String)
+- uid: E5R.Architecture.Core.MetaTagAttribute.#ctor*
+  name: MetaTagAttribute
+  href: api/E5R.Architecture.Core.MetaTagAttribute.html#E5R_Architecture_Core_MetaTagAttribute__ctor_
+  commentId: Overload:E5R.Architecture.Core.MetaTagAttribute.#ctor
+  isSpec: "True"
+  fullName: E5R.Architecture.Core.MetaTagAttribute.MetaTagAttribute
+  nameWithType: MetaTagAttribute.MetaTagAttribute
+- uid: E5R.Architecture.Core.MetaTagAttribute.CustomIdKey
+  name: CustomIdKey
+  href: api/E5R.Architecture.Core.MetaTagAttribute.html#E5R_Architecture_Core_MetaTagAttribute_CustomIdKey
+  commentId: F:E5R.Architecture.Core.MetaTagAttribute.CustomIdKey
+  fullName: E5R.Architecture.Core.MetaTagAttribute.CustomIdKey
+  nameWithType: MetaTagAttribute.CustomIdKey
+- uid: E5R.Architecture.Core.MetaTagAttribute.DescriptionKey
+  name: DescriptionKey
+  href: api/E5R.Architecture.Core.MetaTagAttribute.html#E5R_Architecture_Core_MetaTagAttribute_DescriptionKey
+  commentId: F:E5R.Architecture.Core.MetaTagAttribute.DescriptionKey
+  fullName: E5R.Architecture.Core.MetaTagAttribute.DescriptionKey
+  nameWithType: MetaTagAttribute.DescriptionKey
+- uid: E5R.Architecture.Core.MetaTagAttribute.TagKey
+  name: TagKey
+  href: api/E5R.Architecture.Core.MetaTagAttribute.html#E5R_Architecture_Core_MetaTagAttribute_TagKey
+  commentId: P:E5R.Architecture.Core.MetaTagAttribute.TagKey
+  fullName: E5R.Architecture.Core.MetaTagAttribute.TagKey
+  nameWithType: MetaTagAttribute.TagKey
+- uid: E5R.Architecture.Core.MetaTagAttribute.TagKey*
+  name: TagKey
+  href: api/E5R.Architecture.Core.MetaTagAttribute.html#E5R_Architecture_Core_MetaTagAttribute_TagKey_
+  commentId: Overload:E5R.Architecture.Core.MetaTagAttribute.TagKey
+  isSpec: "True"
+  fullName: E5R.Architecture.Core.MetaTagAttribute.TagKey
+  nameWithType: MetaTagAttribute.TagKey
+- uid: E5R.Architecture.Core.MetaTagAttribute.TagValue
+  name: TagValue
+  href: api/E5R.Architecture.Core.MetaTagAttribute.html#E5R_Architecture_Core_MetaTagAttribute_TagValue
+  commentId: P:E5R.Architecture.Core.MetaTagAttribute.TagValue
+  fullName: E5R.Architecture.Core.MetaTagAttribute.TagValue
+  nameWithType: MetaTagAttribute.TagValue
+- uid: E5R.Architecture.Core.MetaTagAttribute.TagValue*
+  name: TagValue
+  href: api/E5R.Architecture.Core.MetaTagAttribute.html#E5R_Architecture_Core_MetaTagAttribute_TagValue_
+  commentId: Overload:E5R.Architecture.Core.MetaTagAttribute.TagValue
+  isSpec: "True"
+  fullName: E5R.Architecture.Core.MetaTagAttribute.TagValue
+  nameWithType: MetaTagAttribute.TagValue
+- uid: E5R.Architecture.Core.Models
+  name: E5R.Architecture.Core.Models
+  href: api/E5R.Architecture.Core.Models.html
+  commentId: N:E5R.Architecture.Core.Models
+  fullName: E5R.Architecture.Core.Models
+  nameWithType: E5R.Architecture.Core.Models
+- uid: E5R.Architecture.Core.Models.EnumModel
+  name: EnumModel
+  href: api/E5R.Architecture.Core.Models.EnumModel.html
+  commentId: T:E5R.Architecture.Core.Models.EnumModel
+  fullName: E5R.Architecture.Core.Models.EnumModel
+  nameWithType: EnumModel
+- uid: E5R.Architecture.Core.Models.EnumModel.Description
+  name: Description
+  href: api/E5R.Architecture.Core.Models.EnumModel.html#E5R_Architecture_Core_Models_EnumModel_Description
+  commentId: P:E5R.Architecture.Core.Models.EnumModel.Description
+  fullName: E5R.Architecture.Core.Models.EnumModel.Description
+  nameWithType: EnumModel.Description
+- uid: E5R.Architecture.Core.Models.EnumModel.Description*
+  name: Description
+  href: api/E5R.Architecture.Core.Models.EnumModel.html#E5R_Architecture_Core_Models_EnumModel_Description_
+  commentId: Overload:E5R.Architecture.Core.Models.EnumModel.Description
+  isSpec: "True"
+  fullName: E5R.Architecture.Core.Models.EnumModel.Description
+  nameWithType: EnumModel.Description
+- uid: E5R.Architecture.Core.Models.EnumModel.Id
+  name: Id
+  href: api/E5R.Architecture.Core.Models.EnumModel.html#E5R_Architecture_Core_Models_EnumModel_Id
+  commentId: P:E5R.Architecture.Core.Models.EnumModel.Id
+  fullName: E5R.Architecture.Core.Models.EnumModel.Id
+  nameWithType: EnumModel.Id
+- uid: E5R.Architecture.Core.Models.EnumModel.Id*
+  name: Id
+  href: api/E5R.Architecture.Core.Models.EnumModel.html#E5R_Architecture_Core_Models_EnumModel_Id_
+  commentId: Overload:E5R.Architecture.Core.Models.EnumModel.Id
+  isSpec: "True"
+  fullName: E5R.Architecture.Core.Models.EnumModel.Id
+  nameWithType: EnumModel.Id
+- uid: E5R.Architecture.Core.Models.EnumModel.op_Implicit(Enum)~E5R.Architecture.Core.Models.EnumModel
+  name: Implicit(Enum to EnumModel)
+  href: api/E5R.Architecture.Core.Models.EnumModel.html#E5R_Architecture_Core_Models_EnumModel_op_Implicit_Enum__E5R_Architecture_Core_Models_EnumModel
+  commentId: M:E5R.Architecture.Core.Models.EnumModel.op_Implicit(Enum)~E5R.Architecture.Core.Models.EnumModel
+  name.vb: Widening(Enum to EnumModel)
+  fullName: E5R.Architecture.Core.Models.EnumModel.Implicit(Enum to E5R.Architecture.Core.Models.EnumModel)
+  fullName.vb: E5R.Architecture.Core.Models.EnumModel.Widening(Enum to E5R.Architecture.Core.Models.EnumModel)
+  nameWithType: EnumModel.Implicit(Enum to EnumModel)
+  nameWithType.vb: EnumModel.Widening(Enum to EnumModel)
+- uid: E5R.Architecture.Core.Models.EnumModel.op_Implicit*
+  name: Implicit
+  href: api/E5R.Architecture.Core.Models.EnumModel.html#E5R_Architecture_Core_Models_EnumModel_op_Implicit_
+  commentId: Overload:E5R.Architecture.Core.Models.EnumModel.op_Implicit
+  isSpec: "True"
+  name.vb: Widening
+  fullName: E5R.Architecture.Core.Models.EnumModel.Implicit
+  fullName.vb: E5R.Architecture.Core.Models.EnumModel.Widening
+  nameWithType: EnumModel.Implicit
+  nameWithType.vb: EnumModel.Widening
+- uid: E5R.Architecture.Core.Models.EnumModel.ToEnum*
+  name: ToEnum
+  href: api/E5R.Architecture.Core.Models.EnumModel.html#E5R_Architecture_Core_Models_EnumModel_ToEnum_
+  commentId: Overload:E5R.Architecture.Core.Models.EnumModel.ToEnum
+  isSpec: "True"
+  fullName: E5R.Architecture.Core.Models.EnumModel.ToEnum
+  nameWithType: EnumModel.ToEnum
+- uid: E5R.Architecture.Core.Models.EnumModel.ToEnum``1
+  name: ToEnum<TEnum>()
+  href: api/E5R.Architecture.Core.Models.EnumModel.html#E5R_Architecture_Core_Models_EnumModel_ToEnum__1
+  commentId: M:E5R.Architecture.Core.Models.EnumModel.ToEnum``1
+  name.vb: ToEnum(Of TEnum)()
+  fullName: E5R.Architecture.Core.Models.EnumModel.ToEnum<TEnum>()
+  fullName.vb: E5R.Architecture.Core.Models.EnumModel.ToEnum(Of TEnum)()
+  nameWithType: EnumModel.ToEnum<TEnum>()
+  nameWithType.vb: EnumModel.ToEnum(Of TEnum)()
 - uid: E5R.Architecture.Core.NotificationManager`1
   name: NotificationManager<TEnum>
   href: api/E5R.Architecture.Core.NotificationManager-1.html
@@ -1668,6 +1947,50 @@ references:
   isSpec: "True"
   fullName: E5R.Architecture.Core.SemVer.ToString
   nameWithType: SemVer.ToString
+- uid: E5R.Architecture.Core.Utils
+  name: E5R.Architecture.Core.Utils
+  href: api/E5R.Architecture.Core.Utils.html
+  commentId: N:E5R.Architecture.Core.Utils
+  fullName: E5R.Architecture.Core.Utils
+  nameWithType: E5R.Architecture.Core.Utils
+- uid: E5R.Architecture.Core.Utils.EnumUtil
+  name: EnumUtil
+  href: api/E5R.Architecture.Core.Utils.EnumUtil.html
+  commentId: T:E5R.Architecture.Core.Utils.EnumUtil
+  fullName: E5R.Architecture.Core.Utils.EnumUtil
+  nameWithType: EnumUtil
+- uid: E5R.Architecture.Core.Utils.EnumUtil.GetModels*
+  name: GetModels
+  href: api/E5R.Architecture.Core.Utils.EnumUtil.html#E5R_Architecture_Core_Utils_EnumUtil_GetModels_
+  commentId: Overload:E5R.Architecture.Core.Utils.EnumUtil.GetModels
+  isSpec: "True"
+  fullName: E5R.Architecture.Core.Utils.EnumUtil.GetModels
+  nameWithType: EnumUtil.GetModels
+- uid: E5R.Architecture.Core.Utils.EnumUtil.GetModels``1
+  name: GetModels<TEnum>()
+  href: api/E5R.Architecture.Core.Utils.EnumUtil.html#E5R_Architecture_Core_Utils_EnumUtil_GetModels__1
+  commentId: M:E5R.Architecture.Core.Utils.EnumUtil.GetModels``1
+  name.vb: GetModels(Of TEnum)()
+  fullName: E5R.Architecture.Core.Utils.EnumUtil.GetModels<TEnum>()
+  fullName.vb: E5R.Architecture.Core.Utils.EnumUtil.GetModels(Of TEnum)()
+  nameWithType: EnumUtil.GetModels<TEnum>()
+  nameWithType.vb: EnumUtil.GetModels(Of TEnum)()
+- uid: E5R.Architecture.Core.Utils.EnumUtil.GetValues*
+  name: GetValues
+  href: api/E5R.Architecture.Core.Utils.EnumUtil.html#E5R_Architecture_Core_Utils_EnumUtil_GetValues_
+  commentId: Overload:E5R.Architecture.Core.Utils.EnumUtil.GetValues
+  isSpec: "True"
+  fullName: E5R.Architecture.Core.Utils.EnumUtil.GetValues
+  nameWithType: EnumUtil.GetValues
+- uid: E5R.Architecture.Core.Utils.EnumUtil.GetValues``1
+  name: GetValues<TEnum>()
+  href: api/E5R.Architecture.Core.Utils.EnumUtil.html#E5R_Architecture_Core_Utils_EnumUtil_GetValues__1
+  commentId: M:E5R.Architecture.Core.Utils.EnumUtil.GetValues``1
+  name.vb: GetValues(Of TEnum)()
+  fullName: E5R.Architecture.Core.Utils.EnumUtil.GetValues<TEnum>()
+  fullName.vb: E5R.Architecture.Core.Utils.EnumUtil.GetValues(Of TEnum)()
+  nameWithType: EnumUtil.GetValues<TEnum>()
+  nameWithType.vb: EnumUtil.GetValues(Of TEnum)()
 - uid: E5R.Architecture.Data
   name: E5R.Architecture.Data
   href: api/E5R.Architecture.Data.html
@@ -8143,6 +8466,121 @@ references:
   isSpec: "True"
   fullName: E5R.Architecture.Infrastructure.Abstractions.IFileSystem.GetCurrentDirectory
   nameWithType: IFileSystem.GetCurrentDirectory
+- uid: E5R.Architecture.Infrastructure.Abstractions.ISystemClock
+  name: ISystemClock
+  href: api/E5R.Architecture.Infrastructure.Abstractions.ISystemClock.html
+  commentId: T:E5R.Architecture.Infrastructure.Abstractions.ISystemClock
+  fullName: E5R.Architecture.Infrastructure.Abstractions.ISystemClock
+  nameWithType: ISystemClock
+- uid: E5R.Architecture.Infrastructure.Abstractions.ISystemClock.GetCurrentTimeZone
+  name: GetCurrentTimeZone()
+  href: api/E5R.Architecture.Infrastructure.Abstractions.ISystemClock.html#E5R_Architecture_Infrastructure_Abstractions_ISystemClock_GetCurrentTimeZone
+  commentId: M:E5R.Architecture.Infrastructure.Abstractions.ISystemClock.GetCurrentTimeZone
+  fullName: E5R.Architecture.Infrastructure.Abstractions.ISystemClock.GetCurrentTimeZone()
+  nameWithType: ISystemClock.GetCurrentTimeZone()
+- uid: E5R.Architecture.Infrastructure.Abstractions.ISystemClock.GetCurrentTimeZone*
+  name: GetCurrentTimeZone
+  href: api/E5R.Architecture.Infrastructure.Abstractions.ISystemClock.html#E5R_Architecture_Infrastructure_Abstractions_ISystemClock_GetCurrentTimeZone_
+  commentId: Overload:E5R.Architecture.Infrastructure.Abstractions.ISystemClock.GetCurrentTimeZone
+  isSpec: "True"
+  fullName: E5R.Architecture.Infrastructure.Abstractions.ISystemClock.GetCurrentTimeZone
+  nameWithType: ISystemClock.GetCurrentTimeZone
+- uid: E5R.Architecture.Infrastructure.Abstractions.ISystemClock.GetNow
+  name: GetNow()
+  href: api/E5R.Architecture.Infrastructure.Abstractions.ISystemClock.html#E5R_Architecture_Infrastructure_Abstractions_ISystemClock_GetNow
+  commentId: M:E5R.Architecture.Infrastructure.Abstractions.ISystemClock.GetNow
+  fullName: E5R.Architecture.Infrastructure.Abstractions.ISystemClock.GetNow()
+  nameWithType: ISystemClock.GetNow()
+- uid: E5R.Architecture.Infrastructure.Abstractions.ISystemClock.GetNow(TimeZoneInfo)
+  name: GetNow(TimeZoneInfo)
+  href: api/E5R.Architecture.Infrastructure.Abstractions.ISystemClock.html#E5R_Architecture_Infrastructure_Abstractions_ISystemClock_GetNow_TimeZoneInfo_
+  commentId: M:E5R.Architecture.Infrastructure.Abstractions.ISystemClock.GetNow(TimeZoneInfo)
+  fullName: E5R.Architecture.Infrastructure.Abstractions.ISystemClock.GetNow(TimeZoneInfo)
+  nameWithType: ISystemClock.GetNow(TimeZoneInfo)
+- uid: E5R.Architecture.Infrastructure.Abstractions.ISystemClock.GetNow*
+  name: GetNow
+  href: api/E5R.Architecture.Infrastructure.Abstractions.ISystemClock.html#E5R_Architecture_Infrastructure_Abstractions_ISystemClock_GetNow_
+  commentId: Overload:E5R.Architecture.Infrastructure.Abstractions.ISystemClock.GetNow
+  isSpec: "True"
+  fullName: E5R.Architecture.Infrastructure.Abstractions.ISystemClock.GetNow
+  nameWithType: ISystemClock.GetNow
+- uid: E5R.Architecture.Infrastructure.Abstractions.ISystemClock.GetNowUtc
+  name: GetNowUtc()
+  href: api/E5R.Architecture.Infrastructure.Abstractions.ISystemClock.html#E5R_Architecture_Infrastructure_Abstractions_ISystemClock_GetNowUtc
+  commentId: M:E5R.Architecture.Infrastructure.Abstractions.ISystemClock.GetNowUtc
+  fullName: E5R.Architecture.Infrastructure.Abstractions.ISystemClock.GetNowUtc()
+  nameWithType: ISystemClock.GetNowUtc()
+- uid: E5R.Architecture.Infrastructure.Abstractions.ISystemClock.GetNowUtc*
+  name: GetNowUtc
+  href: api/E5R.Architecture.Infrastructure.Abstractions.ISystemClock.html#E5R_Architecture_Infrastructure_Abstractions_ISystemClock_GetNowUtc_
+  commentId: Overload:E5R.Architecture.Infrastructure.Abstractions.ISystemClock.GetNowUtc
+  isSpec: "True"
+  fullName: E5R.Architecture.Infrastructure.Abstractions.ISystemClock.GetNowUtc
+  nameWithType: ISystemClock.GetNowUtc
+- uid: E5R.Architecture.Infrastructure.Abstractions.ISystemClock.GetTimeNow
+  name: GetTimeNow()
+  href: api/E5R.Architecture.Infrastructure.Abstractions.ISystemClock.html#E5R_Architecture_Infrastructure_Abstractions_ISystemClock_GetTimeNow
+  commentId: M:E5R.Architecture.Infrastructure.Abstractions.ISystemClock.GetTimeNow
+  fullName: E5R.Architecture.Infrastructure.Abstractions.ISystemClock.GetTimeNow()
+  nameWithType: ISystemClock.GetTimeNow()
+- uid: E5R.Architecture.Infrastructure.Abstractions.ISystemClock.GetTimeNow(TimeZoneInfo)
+  name: GetTimeNow(TimeZoneInfo)
+  href: api/E5R.Architecture.Infrastructure.Abstractions.ISystemClock.html#E5R_Architecture_Infrastructure_Abstractions_ISystemClock_GetTimeNow_TimeZoneInfo_
+  commentId: M:E5R.Architecture.Infrastructure.Abstractions.ISystemClock.GetTimeNow(TimeZoneInfo)
+  fullName: E5R.Architecture.Infrastructure.Abstractions.ISystemClock.GetTimeNow(TimeZoneInfo)
+  nameWithType: ISystemClock.GetTimeNow(TimeZoneInfo)
+- uid: E5R.Architecture.Infrastructure.Abstractions.ISystemClock.GetTimeNow*
+  name: GetTimeNow
+  href: api/E5R.Architecture.Infrastructure.Abstractions.ISystemClock.html#E5R_Architecture_Infrastructure_Abstractions_ISystemClock_GetTimeNow_
+  commentId: Overload:E5R.Architecture.Infrastructure.Abstractions.ISystemClock.GetTimeNow
+  isSpec: "True"
+  fullName: E5R.Architecture.Infrastructure.Abstractions.ISystemClock.GetTimeNow
+  nameWithType: ISystemClock.GetTimeNow
+- uid: E5R.Architecture.Infrastructure.Abstractions.ISystemClock.GetTimeNowUtc
+  name: GetTimeNowUtc()
+  href: api/E5R.Architecture.Infrastructure.Abstractions.ISystemClock.html#E5R_Architecture_Infrastructure_Abstractions_ISystemClock_GetTimeNowUtc
+  commentId: M:E5R.Architecture.Infrastructure.Abstractions.ISystemClock.GetTimeNowUtc
+  fullName: E5R.Architecture.Infrastructure.Abstractions.ISystemClock.GetTimeNowUtc()
+  nameWithType: ISystemClock.GetTimeNowUtc()
+- uid: E5R.Architecture.Infrastructure.Abstractions.ISystemClock.GetTimeNowUtc*
+  name: GetTimeNowUtc
+  href: api/E5R.Architecture.Infrastructure.Abstractions.ISystemClock.html#E5R_Architecture_Infrastructure_Abstractions_ISystemClock_GetTimeNowUtc_
+  commentId: Overload:E5R.Architecture.Infrastructure.Abstractions.ISystemClock.GetTimeNowUtc
+  isSpec: "True"
+  fullName: E5R.Architecture.Infrastructure.Abstractions.ISystemClock.GetTimeNowUtc
+  nameWithType: ISystemClock.GetTimeNowUtc
+- uid: E5R.Architecture.Infrastructure.Abstractions.ISystemClock.GetToday
+  name: GetToday()
+  href: api/E5R.Architecture.Infrastructure.Abstractions.ISystemClock.html#E5R_Architecture_Infrastructure_Abstractions_ISystemClock_GetToday
+  commentId: M:E5R.Architecture.Infrastructure.Abstractions.ISystemClock.GetToday
+  fullName: E5R.Architecture.Infrastructure.Abstractions.ISystemClock.GetToday()
+  nameWithType: ISystemClock.GetToday()
+- uid: E5R.Architecture.Infrastructure.Abstractions.ISystemClock.GetToday(TimeZoneInfo)
+  name: GetToday(TimeZoneInfo)
+  href: api/E5R.Architecture.Infrastructure.Abstractions.ISystemClock.html#E5R_Architecture_Infrastructure_Abstractions_ISystemClock_GetToday_TimeZoneInfo_
+  commentId: M:E5R.Architecture.Infrastructure.Abstractions.ISystemClock.GetToday(TimeZoneInfo)
+  fullName: E5R.Architecture.Infrastructure.Abstractions.ISystemClock.GetToday(TimeZoneInfo)
+  nameWithType: ISystemClock.GetToday(TimeZoneInfo)
+- uid: E5R.Architecture.Infrastructure.Abstractions.ISystemClock.GetToday*
+  name: GetToday
+  href: api/E5R.Architecture.Infrastructure.Abstractions.ISystemClock.html#E5R_Architecture_Infrastructure_Abstractions_ISystemClock_GetToday_
+  commentId: Overload:E5R.Architecture.Infrastructure.Abstractions.ISystemClock.GetToday
+  isSpec: "True"
+  fullName: E5R.Architecture.Infrastructure.Abstractions.ISystemClock.GetToday
+  nameWithType: ISystemClock.GetToday
+- uid: E5R.Architecture.Infrastructure.Abstractions.ISystemClock.GetTodayUtc
+  name: GetTodayUtc()
+  href: api/E5R.Architecture.Infrastructure.Abstractions.ISystemClock.html#E5R_Architecture_Infrastructure_Abstractions_ISystemClock_GetTodayUtc
+  commentId: M:E5R.Architecture.Infrastructure.Abstractions.ISystemClock.GetTodayUtc
+  fullName: E5R.Architecture.Infrastructure.Abstractions.ISystemClock.GetTodayUtc()
+  nameWithType: ISystemClock.GetTodayUtc()
+- uid: E5R.Architecture.Infrastructure.Abstractions.ISystemClock.GetTodayUtc*
+  name: GetTodayUtc
+  href: api/E5R.Architecture.Infrastructure.Abstractions.ISystemClock.html#E5R_Architecture_Infrastructure_Abstractions_ISystemClock_GetTodayUtc_
+  commentId: Overload:E5R.Architecture.Infrastructure.Abstractions.ISystemClock.GetTodayUtc
+  isSpec: "True"
+  fullName: E5R.Architecture.Infrastructure.Abstractions.ISystemClock.GetTodayUtc
+  nameWithType: ISystemClock.GetTodayUtc
 - uid: E5R.Architecture.Infrastructure.Abstractions.IUnitOfWork
   name: IUnitOfWork
   href: api/E5R.Architecture.Infrastructure.Abstractions.IUnitOfWork.html
@@ -8181,53 +8619,6 @@ references:
   commentId: N:E5R.Architecture.Infrastructure.AspNetCore
   fullName: E5R.Architecture.Infrastructure.AspNetCore
   nameWithType: E5R.Architecture.Infrastructure.AspNetCore
-- uid: E5R.Architecture.Infrastructure.AspNetCore.ServiceCollectionDIContainer
-  name: ServiceCollectionDIContainer
-  href: api/E5R.Architecture.Infrastructure.AspNetCore.ServiceCollectionDIContainer.html
-  commentId: T:E5R.Architecture.Infrastructure.AspNetCore.ServiceCollectionDIContainer
-  fullName: E5R.Architecture.Infrastructure.AspNetCore.ServiceCollectionDIContainer
-  nameWithType: ServiceCollectionDIContainer
-- uid: E5R.Architecture.Infrastructure.AspNetCore.ServiceCollectionDIContainer.#ctor(IServiceCollection)
-  name: ServiceCollectionDIContainer(IServiceCollection)
-  href: api/E5R.Architecture.Infrastructure.AspNetCore.ServiceCollectionDIContainer.html#E5R_Architecture_Infrastructure_AspNetCore_ServiceCollectionDIContainer__ctor_IServiceCollection_
-  commentId: M:E5R.Architecture.Infrastructure.AspNetCore.ServiceCollectionDIContainer.#ctor(IServiceCollection)
-  fullName: E5R.Architecture.Infrastructure.AspNetCore.ServiceCollectionDIContainer.ServiceCollectionDIContainer(IServiceCollection)
-  nameWithType: ServiceCollectionDIContainer.ServiceCollectionDIContainer(IServiceCollection)
-- uid: E5R.Architecture.Infrastructure.AspNetCore.ServiceCollectionDIContainer.#ctor*
-  name: ServiceCollectionDIContainer
-  href: api/E5R.Architecture.Infrastructure.AspNetCore.ServiceCollectionDIContainer.html#E5R_Architecture_Infrastructure_AspNetCore_ServiceCollectionDIContainer__ctor_
-  commentId: Overload:E5R.Architecture.Infrastructure.AspNetCore.ServiceCollectionDIContainer.#ctor
-  isSpec: "True"
-  fullName: E5R.Architecture.Infrastructure.AspNetCore.ServiceCollectionDIContainer.ServiceCollectionDIContainer
-  nameWithType: ServiceCollectionDIContainer.ServiceCollectionDIContainer
-- uid: E5R.Architecture.Infrastructure.AspNetCore.ServiceCollectionDIContainer.Register(E5R.Architecture.Infrastructure.Abstractions.DILifetime,Type)
-  name: Register(DILifetime, Type)
-  href: api/E5R.Architecture.Infrastructure.AspNetCore.ServiceCollectionDIContainer.html#E5R_Architecture_Infrastructure_AspNetCore_ServiceCollectionDIContainer_Register_E5R_Architecture_Infrastructure_Abstractions_DILifetime_Type_
-  commentId: M:E5R.Architecture.Infrastructure.AspNetCore.ServiceCollectionDIContainer.Register(E5R.Architecture.Infrastructure.Abstractions.DILifetime,Type)
-  fullName: E5R.Architecture.Infrastructure.AspNetCore.ServiceCollectionDIContainer.Register(E5R.Architecture.Infrastructure.Abstractions.DILifetime, Type)
-  nameWithType: ServiceCollectionDIContainer.Register(DILifetime, Type)
-- uid: E5R.Architecture.Infrastructure.AspNetCore.ServiceCollectionDIContainer.Register(E5R.Architecture.Infrastructure.Abstractions.DILifetime,Type,Func{System.Object})
-  name: Register(DILifetime, Type, Func<Object>)
-  href: api/E5R.Architecture.Infrastructure.AspNetCore.ServiceCollectionDIContainer.html#E5R_Architecture_Infrastructure_AspNetCore_ServiceCollectionDIContainer_Register_E5R_Architecture_Infrastructure_Abstractions_DILifetime_Type_Func_System_Object__
-  commentId: M:E5R.Architecture.Infrastructure.AspNetCore.ServiceCollectionDIContainer.Register(E5R.Architecture.Infrastructure.Abstractions.DILifetime,Type,Func{System.Object})
-  name.vb: Register(DILifetime, Type, Func(Of Object))
-  fullName: E5R.Architecture.Infrastructure.AspNetCore.ServiceCollectionDIContainer.Register(E5R.Architecture.Infrastructure.Abstractions.DILifetime, Type, Func<System.Object>)
-  fullName.vb: E5R.Architecture.Infrastructure.AspNetCore.ServiceCollectionDIContainer.Register(E5R.Architecture.Infrastructure.Abstractions.DILifetime, Type, Func(Of System.Object))
-  nameWithType: ServiceCollectionDIContainer.Register(DILifetime, Type, Func<Object>)
-  nameWithType.vb: ServiceCollectionDIContainer.Register(DILifetime, Type, Func(Of Object))
-- uid: E5R.Architecture.Infrastructure.AspNetCore.ServiceCollectionDIContainer.Register(E5R.Architecture.Infrastructure.Abstractions.DILifetime,Type,Type)
-  name: Register(DILifetime, Type, Type)
-  href: api/E5R.Architecture.Infrastructure.AspNetCore.ServiceCollectionDIContainer.html#E5R_Architecture_Infrastructure_AspNetCore_ServiceCollectionDIContainer_Register_E5R_Architecture_Infrastructure_Abstractions_DILifetime_Type_Type_
-  commentId: M:E5R.Architecture.Infrastructure.AspNetCore.ServiceCollectionDIContainer.Register(E5R.Architecture.Infrastructure.Abstractions.DILifetime,Type,Type)
-  fullName: E5R.Architecture.Infrastructure.AspNetCore.ServiceCollectionDIContainer.Register(E5R.Architecture.Infrastructure.Abstractions.DILifetime, Type, Type)
-  nameWithType: ServiceCollectionDIContainer.Register(DILifetime, Type, Type)
-- uid: E5R.Architecture.Infrastructure.AspNetCore.ServiceCollectionDIContainer.Register*
-  name: Register
-  href: api/E5R.Architecture.Infrastructure.AspNetCore.ServiceCollectionDIContainer.html#E5R_Architecture_Infrastructure_AspNetCore_ServiceCollectionDIContainer_Register_
-  commentId: Overload:E5R.Architecture.Infrastructure.AspNetCore.ServiceCollectionDIContainer.Register
-  isSpec: "True"
-  fullName: E5R.Architecture.Infrastructure.AspNetCore.ServiceCollectionDIContainer.Register
-  nameWithType: ServiceCollectionDIContainer.Register
 - uid: E5R.Architecture.Infrastructure.AspNetCore.UnitOfWorkMiddleware
   name: UnitOfWorkMiddleware
   href: api/E5R.Architecture.Infrastructure.AspNetCore.UnitOfWorkMiddleware.html
@@ -8260,75 +8651,6 @@ references:
   isSpec: "True"
   fullName: E5R.Architecture.Infrastructure.AspNetCore.UnitOfWorkMiddleware.InvokeAsync
   nameWithType: UnitOfWorkMiddleware.InvokeAsync
-- uid: E5R.Architecture.Infrastructure.AspNetCore.UnitOfWorkPropertyStrategyBuilderOptions
-  name: UnitOfWorkPropertyStrategyBuilderOptions
-  href: api/E5R.Architecture.Infrastructure.AspNetCore.UnitOfWorkPropertyStrategyBuilderOptions.html
-  commentId: T:E5R.Architecture.Infrastructure.AspNetCore.UnitOfWorkPropertyStrategyBuilderOptions
-  fullName: E5R.Architecture.Infrastructure.AspNetCore.UnitOfWorkPropertyStrategyBuilderOptions
-  nameWithType: UnitOfWorkPropertyStrategyBuilderOptions
-- uid: E5R.Architecture.Infrastructure.AspNetCore.UnitOfWorkPropertyStrategyBuilderOptions.AddProperty*
-  name: AddProperty
-  href: api/E5R.Architecture.Infrastructure.AspNetCore.UnitOfWorkPropertyStrategyBuilderOptions.html#E5R_Architecture_Infrastructure_AspNetCore_UnitOfWorkPropertyStrategyBuilderOptions_AddProperty_
-  commentId: Overload:E5R.Architecture.Infrastructure.AspNetCore.UnitOfWorkPropertyStrategyBuilderOptions.AddProperty
-  isSpec: "True"
-  fullName: E5R.Architecture.Infrastructure.AspNetCore.UnitOfWorkPropertyStrategyBuilderOptions.AddProperty
-  nameWithType: UnitOfWorkPropertyStrategyBuilderOptions.AddProperty
-- uid: E5R.Architecture.Infrastructure.AspNetCore.UnitOfWorkPropertyStrategyBuilderOptions.AddProperty``1
-  name: AddProperty<TType>()
-  href: api/E5R.Architecture.Infrastructure.AspNetCore.UnitOfWorkPropertyStrategyBuilderOptions.html#E5R_Architecture_Infrastructure_AspNetCore_UnitOfWorkPropertyStrategyBuilderOptions_AddProperty__1
-  commentId: M:E5R.Architecture.Infrastructure.AspNetCore.UnitOfWorkPropertyStrategyBuilderOptions.AddProperty``1
-  name.vb: AddProperty(Of TType)()
-  fullName: E5R.Architecture.Infrastructure.AspNetCore.UnitOfWorkPropertyStrategyBuilderOptions.AddProperty<TType>()
-  fullName.vb: E5R.Architecture.Infrastructure.AspNetCore.UnitOfWorkPropertyStrategyBuilderOptions.AddProperty(Of TType)()
-  nameWithType: UnitOfWorkPropertyStrategyBuilderOptions.AddProperty<TType>()
-  nameWithType.vb: UnitOfWorkPropertyStrategyBuilderOptions.AddProperty(Of TType)()
-- uid: E5R.Architecture.Infrastructure.AspNetCore.UnitOfWorkPropertyStrategyBuilderOptions.AddProperty``1(Action{E5R.Architecture.Infrastructure.UnitOfWorkByProperty,``0})
-  name: AddProperty<TType>(Action<UnitOfWorkByProperty, TType>)
-  href: api/E5R.Architecture.Infrastructure.AspNetCore.UnitOfWorkPropertyStrategyBuilderOptions.html#E5R_Architecture_Infrastructure_AspNetCore_UnitOfWorkPropertyStrategyBuilderOptions_AddProperty__1_Action_E5R_Architecture_Infrastructure_UnitOfWorkByProperty___0__
-  commentId: M:E5R.Architecture.Infrastructure.AspNetCore.UnitOfWorkPropertyStrategyBuilderOptions.AddProperty``1(Action{E5R.Architecture.Infrastructure.UnitOfWorkByProperty,``0})
-  name.vb: AddProperty(Of TType)(Action(Of UnitOfWorkByProperty, TType))
-  fullName: E5R.Architecture.Infrastructure.AspNetCore.UnitOfWorkPropertyStrategyBuilderOptions.AddProperty<TType>(Action<E5R.Architecture.Infrastructure.UnitOfWorkByProperty, TType>)
-  fullName.vb: E5R.Architecture.Infrastructure.AspNetCore.UnitOfWorkPropertyStrategyBuilderOptions.AddProperty(Of TType)(Action(Of E5R.Architecture.Infrastructure.UnitOfWorkByProperty, TType))
-  nameWithType: UnitOfWorkPropertyStrategyBuilderOptions.AddProperty<TType>(Action<UnitOfWorkByProperty, TType>)
-  nameWithType.vb: UnitOfWorkPropertyStrategyBuilderOptions.AddProperty(Of TType)(Action(Of UnitOfWorkByProperty, TType))
-- uid: E5R.Architecture.Infrastructure.AspNetCore.UnitOfWorkPropertyStrategyBuilderOptions.Properties
-  name: Properties
-  href: api/E5R.Architecture.Infrastructure.AspNetCore.UnitOfWorkPropertyStrategyBuilderOptions.html#E5R_Architecture_Infrastructure_AspNetCore_UnitOfWorkPropertyStrategyBuilderOptions_Properties
-  commentId: P:E5R.Architecture.Infrastructure.AspNetCore.UnitOfWorkPropertyStrategyBuilderOptions.Properties
-  fullName: E5R.Architecture.Infrastructure.AspNetCore.UnitOfWorkPropertyStrategyBuilderOptions.Properties
-  nameWithType: UnitOfWorkPropertyStrategyBuilderOptions.Properties
-- uid: E5R.Architecture.Infrastructure.AspNetCore.UnitOfWorkPropertyStrategyBuilderOptions.Properties*
-  name: Properties
-  href: api/E5R.Architecture.Infrastructure.AspNetCore.UnitOfWorkPropertyStrategyBuilderOptions.html#E5R_Architecture_Infrastructure_AspNetCore_UnitOfWorkPropertyStrategyBuilderOptions_Properties_
-  commentId: Overload:E5R.Architecture.Infrastructure.AspNetCore.UnitOfWorkPropertyStrategyBuilderOptions.Properties
-  isSpec: "True"
-  fullName: E5R.Architecture.Infrastructure.AspNetCore.UnitOfWorkPropertyStrategyBuilderOptions.Properties
-  nameWithType: UnitOfWorkPropertyStrategyBuilderOptions.Properties
-- uid: E5R.Architecture.Infrastructure.AspNetCore.UnitOfWorkPropertyStrategyBuilderOptions.TryAddProperty*
-  name: TryAddProperty
-  href: api/E5R.Architecture.Infrastructure.AspNetCore.UnitOfWorkPropertyStrategyBuilderOptions.html#E5R_Architecture_Infrastructure_AspNetCore_UnitOfWorkPropertyStrategyBuilderOptions_TryAddProperty_
-  commentId: Overload:E5R.Architecture.Infrastructure.AspNetCore.UnitOfWorkPropertyStrategyBuilderOptions.TryAddProperty
-  isSpec: "True"
-  fullName: E5R.Architecture.Infrastructure.AspNetCore.UnitOfWorkPropertyStrategyBuilderOptions.TryAddProperty
-  nameWithType: UnitOfWorkPropertyStrategyBuilderOptions.TryAddProperty
-- uid: E5R.Architecture.Infrastructure.AspNetCore.UnitOfWorkPropertyStrategyBuilderOptions.TryAddProperty``1
-  name: TryAddProperty<TType>()
-  href: api/E5R.Architecture.Infrastructure.AspNetCore.UnitOfWorkPropertyStrategyBuilderOptions.html#E5R_Architecture_Infrastructure_AspNetCore_UnitOfWorkPropertyStrategyBuilderOptions_TryAddProperty__1
-  commentId: M:E5R.Architecture.Infrastructure.AspNetCore.UnitOfWorkPropertyStrategyBuilderOptions.TryAddProperty``1
-  name.vb: TryAddProperty(Of TType)()
-  fullName: E5R.Architecture.Infrastructure.AspNetCore.UnitOfWorkPropertyStrategyBuilderOptions.TryAddProperty<TType>()
-  fullName.vb: E5R.Architecture.Infrastructure.AspNetCore.UnitOfWorkPropertyStrategyBuilderOptions.TryAddProperty(Of TType)()
-  nameWithType: UnitOfWorkPropertyStrategyBuilderOptions.TryAddProperty<TType>()
-  nameWithType.vb: UnitOfWorkPropertyStrategyBuilderOptions.TryAddProperty(Of TType)()
-- uid: E5R.Architecture.Infrastructure.AspNetCore.UnitOfWorkPropertyStrategyBuilderOptions.TryAddProperty``1(Action{E5R.Architecture.Infrastructure.UnitOfWorkByProperty,``0})
-  name: TryAddProperty<TType>(Action<UnitOfWorkByProperty, TType>)
-  href: api/E5R.Architecture.Infrastructure.AspNetCore.UnitOfWorkPropertyStrategyBuilderOptions.html#E5R_Architecture_Infrastructure_AspNetCore_UnitOfWorkPropertyStrategyBuilderOptions_TryAddProperty__1_Action_E5R_Architecture_Infrastructure_UnitOfWorkByProperty___0__
-  commentId: M:E5R.Architecture.Infrastructure.AspNetCore.UnitOfWorkPropertyStrategyBuilderOptions.TryAddProperty``1(Action{E5R.Architecture.Infrastructure.UnitOfWorkByProperty,``0})
-  name.vb: TryAddProperty(Of TType)(Action(Of UnitOfWorkByProperty, TType))
-  fullName: E5R.Architecture.Infrastructure.AspNetCore.UnitOfWorkPropertyStrategyBuilderOptions.TryAddProperty<TType>(Action<E5R.Architecture.Infrastructure.UnitOfWorkByProperty, TType>)
-  fullName.vb: E5R.Architecture.Infrastructure.AspNetCore.UnitOfWorkPropertyStrategyBuilderOptions.TryAddProperty(Of TType)(Action(Of E5R.Architecture.Infrastructure.UnitOfWorkByProperty, TType))
-  nameWithType: UnitOfWorkPropertyStrategyBuilderOptions.TryAddProperty<TType>(Action<UnitOfWorkByProperty, TType>)
-  nameWithType.vb: UnitOfWorkPropertyStrategyBuilderOptions.TryAddProperty(Of TType)(Action(Of UnitOfWorkByProperty, TType))
 - uid: E5R.Architecture.Infrastructure.DbTransactionUnitOfWork
   name: DbTransactionUnitOfWork
   href: api/E5R.Architecture.Infrastructure.DbTransactionUnitOfWork.html
@@ -8451,6 +8773,121 @@ references:
   isSpec: "True"
   fullName: E5R.Architecture.Infrastructure.Defaults.DefaultFileSystem.GetCurrentDirectory
   nameWithType: DefaultFileSystem.GetCurrentDirectory
+- uid: E5R.Architecture.Infrastructure.Defaults.DefaultSystemClock
+  name: DefaultSystemClock
+  href: api/E5R.Architecture.Infrastructure.Defaults.DefaultSystemClock.html
+  commentId: T:E5R.Architecture.Infrastructure.Defaults.DefaultSystemClock
+  fullName: E5R.Architecture.Infrastructure.Defaults.DefaultSystemClock
+  nameWithType: DefaultSystemClock
+- uid: E5R.Architecture.Infrastructure.Defaults.DefaultSystemClock.GetCurrentTimeZone
+  name: GetCurrentTimeZone()
+  href: api/E5R.Architecture.Infrastructure.Defaults.DefaultSystemClock.html#E5R_Architecture_Infrastructure_Defaults_DefaultSystemClock_GetCurrentTimeZone
+  commentId: M:E5R.Architecture.Infrastructure.Defaults.DefaultSystemClock.GetCurrentTimeZone
+  fullName: E5R.Architecture.Infrastructure.Defaults.DefaultSystemClock.GetCurrentTimeZone()
+  nameWithType: DefaultSystemClock.GetCurrentTimeZone()
+- uid: E5R.Architecture.Infrastructure.Defaults.DefaultSystemClock.GetCurrentTimeZone*
+  name: GetCurrentTimeZone
+  href: api/E5R.Architecture.Infrastructure.Defaults.DefaultSystemClock.html#E5R_Architecture_Infrastructure_Defaults_DefaultSystemClock_GetCurrentTimeZone_
+  commentId: Overload:E5R.Architecture.Infrastructure.Defaults.DefaultSystemClock.GetCurrentTimeZone
+  isSpec: "True"
+  fullName: E5R.Architecture.Infrastructure.Defaults.DefaultSystemClock.GetCurrentTimeZone
+  nameWithType: DefaultSystemClock.GetCurrentTimeZone
+- uid: E5R.Architecture.Infrastructure.Defaults.DefaultSystemClock.GetNow
+  name: GetNow()
+  href: api/E5R.Architecture.Infrastructure.Defaults.DefaultSystemClock.html#E5R_Architecture_Infrastructure_Defaults_DefaultSystemClock_GetNow
+  commentId: M:E5R.Architecture.Infrastructure.Defaults.DefaultSystemClock.GetNow
+  fullName: E5R.Architecture.Infrastructure.Defaults.DefaultSystemClock.GetNow()
+  nameWithType: DefaultSystemClock.GetNow()
+- uid: E5R.Architecture.Infrastructure.Defaults.DefaultSystemClock.GetNow(TimeZoneInfo)
+  name: GetNow(TimeZoneInfo)
+  href: api/E5R.Architecture.Infrastructure.Defaults.DefaultSystemClock.html#E5R_Architecture_Infrastructure_Defaults_DefaultSystemClock_GetNow_TimeZoneInfo_
+  commentId: M:E5R.Architecture.Infrastructure.Defaults.DefaultSystemClock.GetNow(TimeZoneInfo)
+  fullName: E5R.Architecture.Infrastructure.Defaults.DefaultSystemClock.GetNow(TimeZoneInfo)
+  nameWithType: DefaultSystemClock.GetNow(TimeZoneInfo)
+- uid: E5R.Architecture.Infrastructure.Defaults.DefaultSystemClock.GetNow*
+  name: GetNow
+  href: api/E5R.Architecture.Infrastructure.Defaults.DefaultSystemClock.html#E5R_Architecture_Infrastructure_Defaults_DefaultSystemClock_GetNow_
+  commentId: Overload:E5R.Architecture.Infrastructure.Defaults.DefaultSystemClock.GetNow
+  isSpec: "True"
+  fullName: E5R.Architecture.Infrastructure.Defaults.DefaultSystemClock.GetNow
+  nameWithType: DefaultSystemClock.GetNow
+- uid: E5R.Architecture.Infrastructure.Defaults.DefaultSystemClock.GetNowUtc
+  name: GetNowUtc()
+  href: api/E5R.Architecture.Infrastructure.Defaults.DefaultSystemClock.html#E5R_Architecture_Infrastructure_Defaults_DefaultSystemClock_GetNowUtc
+  commentId: M:E5R.Architecture.Infrastructure.Defaults.DefaultSystemClock.GetNowUtc
+  fullName: E5R.Architecture.Infrastructure.Defaults.DefaultSystemClock.GetNowUtc()
+  nameWithType: DefaultSystemClock.GetNowUtc()
+- uid: E5R.Architecture.Infrastructure.Defaults.DefaultSystemClock.GetNowUtc*
+  name: GetNowUtc
+  href: api/E5R.Architecture.Infrastructure.Defaults.DefaultSystemClock.html#E5R_Architecture_Infrastructure_Defaults_DefaultSystemClock_GetNowUtc_
+  commentId: Overload:E5R.Architecture.Infrastructure.Defaults.DefaultSystemClock.GetNowUtc
+  isSpec: "True"
+  fullName: E5R.Architecture.Infrastructure.Defaults.DefaultSystemClock.GetNowUtc
+  nameWithType: DefaultSystemClock.GetNowUtc
+- uid: E5R.Architecture.Infrastructure.Defaults.DefaultSystemClock.GetTimeNow
+  name: GetTimeNow()
+  href: api/E5R.Architecture.Infrastructure.Defaults.DefaultSystemClock.html#E5R_Architecture_Infrastructure_Defaults_DefaultSystemClock_GetTimeNow
+  commentId: M:E5R.Architecture.Infrastructure.Defaults.DefaultSystemClock.GetTimeNow
+  fullName: E5R.Architecture.Infrastructure.Defaults.DefaultSystemClock.GetTimeNow()
+  nameWithType: DefaultSystemClock.GetTimeNow()
+- uid: E5R.Architecture.Infrastructure.Defaults.DefaultSystemClock.GetTimeNow(TimeZoneInfo)
+  name: GetTimeNow(TimeZoneInfo)
+  href: api/E5R.Architecture.Infrastructure.Defaults.DefaultSystemClock.html#E5R_Architecture_Infrastructure_Defaults_DefaultSystemClock_GetTimeNow_TimeZoneInfo_
+  commentId: M:E5R.Architecture.Infrastructure.Defaults.DefaultSystemClock.GetTimeNow(TimeZoneInfo)
+  fullName: E5R.Architecture.Infrastructure.Defaults.DefaultSystemClock.GetTimeNow(TimeZoneInfo)
+  nameWithType: DefaultSystemClock.GetTimeNow(TimeZoneInfo)
+- uid: E5R.Architecture.Infrastructure.Defaults.DefaultSystemClock.GetTimeNow*
+  name: GetTimeNow
+  href: api/E5R.Architecture.Infrastructure.Defaults.DefaultSystemClock.html#E5R_Architecture_Infrastructure_Defaults_DefaultSystemClock_GetTimeNow_
+  commentId: Overload:E5R.Architecture.Infrastructure.Defaults.DefaultSystemClock.GetTimeNow
+  isSpec: "True"
+  fullName: E5R.Architecture.Infrastructure.Defaults.DefaultSystemClock.GetTimeNow
+  nameWithType: DefaultSystemClock.GetTimeNow
+- uid: E5R.Architecture.Infrastructure.Defaults.DefaultSystemClock.GetTimeNowUtc
+  name: GetTimeNowUtc()
+  href: api/E5R.Architecture.Infrastructure.Defaults.DefaultSystemClock.html#E5R_Architecture_Infrastructure_Defaults_DefaultSystemClock_GetTimeNowUtc
+  commentId: M:E5R.Architecture.Infrastructure.Defaults.DefaultSystemClock.GetTimeNowUtc
+  fullName: E5R.Architecture.Infrastructure.Defaults.DefaultSystemClock.GetTimeNowUtc()
+  nameWithType: DefaultSystemClock.GetTimeNowUtc()
+- uid: E5R.Architecture.Infrastructure.Defaults.DefaultSystemClock.GetTimeNowUtc*
+  name: GetTimeNowUtc
+  href: api/E5R.Architecture.Infrastructure.Defaults.DefaultSystemClock.html#E5R_Architecture_Infrastructure_Defaults_DefaultSystemClock_GetTimeNowUtc_
+  commentId: Overload:E5R.Architecture.Infrastructure.Defaults.DefaultSystemClock.GetTimeNowUtc
+  isSpec: "True"
+  fullName: E5R.Architecture.Infrastructure.Defaults.DefaultSystemClock.GetTimeNowUtc
+  nameWithType: DefaultSystemClock.GetTimeNowUtc
+- uid: E5R.Architecture.Infrastructure.Defaults.DefaultSystemClock.GetToday
+  name: GetToday()
+  href: api/E5R.Architecture.Infrastructure.Defaults.DefaultSystemClock.html#E5R_Architecture_Infrastructure_Defaults_DefaultSystemClock_GetToday
+  commentId: M:E5R.Architecture.Infrastructure.Defaults.DefaultSystemClock.GetToday
+  fullName: E5R.Architecture.Infrastructure.Defaults.DefaultSystemClock.GetToday()
+  nameWithType: DefaultSystemClock.GetToday()
+- uid: E5R.Architecture.Infrastructure.Defaults.DefaultSystemClock.GetToday(TimeZoneInfo)
+  name: GetToday(TimeZoneInfo)
+  href: api/E5R.Architecture.Infrastructure.Defaults.DefaultSystemClock.html#E5R_Architecture_Infrastructure_Defaults_DefaultSystemClock_GetToday_TimeZoneInfo_
+  commentId: M:E5R.Architecture.Infrastructure.Defaults.DefaultSystemClock.GetToday(TimeZoneInfo)
+  fullName: E5R.Architecture.Infrastructure.Defaults.DefaultSystemClock.GetToday(TimeZoneInfo)
+  nameWithType: DefaultSystemClock.GetToday(TimeZoneInfo)
+- uid: E5R.Architecture.Infrastructure.Defaults.DefaultSystemClock.GetToday*
+  name: GetToday
+  href: api/E5R.Architecture.Infrastructure.Defaults.DefaultSystemClock.html#E5R_Architecture_Infrastructure_Defaults_DefaultSystemClock_GetToday_
+  commentId: Overload:E5R.Architecture.Infrastructure.Defaults.DefaultSystemClock.GetToday
+  isSpec: "True"
+  fullName: E5R.Architecture.Infrastructure.Defaults.DefaultSystemClock.GetToday
+  nameWithType: DefaultSystemClock.GetToday
+- uid: E5R.Architecture.Infrastructure.Defaults.DefaultSystemClock.GetTodayUtc
+  name: GetTodayUtc()
+  href: api/E5R.Architecture.Infrastructure.Defaults.DefaultSystemClock.html#E5R_Architecture_Infrastructure_Defaults_DefaultSystemClock_GetTodayUtc
+  commentId: M:E5R.Architecture.Infrastructure.Defaults.DefaultSystemClock.GetTodayUtc
+  fullName: E5R.Architecture.Infrastructure.Defaults.DefaultSystemClock.GetTodayUtc()
+  nameWithType: DefaultSystemClock.GetTodayUtc()
+- uid: E5R.Architecture.Infrastructure.Defaults.DefaultSystemClock.GetTodayUtc*
+  name: GetTodayUtc
+  href: api/E5R.Architecture.Infrastructure.Defaults.DefaultSystemClock.html#E5R_Architecture_Infrastructure_Defaults_DefaultSystemClock_GetTodayUtc_
+  commentId: Overload:E5R.Architecture.Infrastructure.Defaults.DefaultSystemClock.GetTodayUtc
+  isSpec: "True"
+  fullName: E5R.Architecture.Infrastructure.Defaults.DefaultSystemClock.GetTodayUtc
+  nameWithType: DefaultSystemClock.GetTodayUtc
 - uid: E5R.Architecture.Infrastructure.Extensions
   name: E5R.Architecture.Infrastructure.Extensions
   href: api/E5R.Architecture.Infrastructure.Extensions.html
@@ -8603,6 +9040,96 @@ references:
   fullName.vb: E5R.Architecture.Infrastructure.Extensions.IDIContainerExtensions.RegisterTransient(Of TBase, TImplementation)(E5R.Architecture.Infrastructure.Abstractions.IDIContainer)
   nameWithType: IDIContainerExtensions.RegisterTransient<TBase, TImplementation>(IDIContainer)
   nameWithType.vb: IDIContainerExtensions.RegisterTransient(Of TBase, TImplementation)(IDIContainer)
+- uid: E5R.Architecture.Infrastructure.LazyResolver`1
+  name: LazyResolver<TTarget>
+  href: api/E5R.Architecture.Infrastructure.LazyResolver-1.html
+  commentId: T:E5R.Architecture.Infrastructure.LazyResolver`1
+  name.vb: LazyResolver(Of TTarget)
+  fullName: E5R.Architecture.Infrastructure.LazyResolver<TTarget>
+  fullName.vb: E5R.Architecture.Infrastructure.LazyResolver(Of TTarget)
+  nameWithType: LazyResolver<TTarget>
+  nameWithType.vb: LazyResolver(Of TTarget)
+- uid: E5R.Architecture.Infrastructure.LazyResolver`1.#ctor(IServiceProvider)
+  name: LazyResolver(IServiceProvider)
+  href: api/E5R.Architecture.Infrastructure.LazyResolver-1.html#E5R_Architecture_Infrastructure_LazyResolver_1__ctor_IServiceProvider_
+  commentId: M:E5R.Architecture.Infrastructure.LazyResolver`1.#ctor(IServiceProvider)
+  fullName: E5R.Architecture.Infrastructure.LazyResolver<TTarget>.LazyResolver(IServiceProvider)
+  fullName.vb: E5R.Architecture.Infrastructure.LazyResolver(Of TTarget).LazyResolver(IServiceProvider)
+  nameWithType: LazyResolver<TTarget>.LazyResolver(IServiceProvider)
+  nameWithType.vb: LazyResolver(Of TTarget).LazyResolver(IServiceProvider)
+- uid: E5R.Architecture.Infrastructure.LazyResolver`1.#ctor*
+  name: LazyResolver
+  href: api/E5R.Architecture.Infrastructure.LazyResolver-1.html#E5R_Architecture_Infrastructure_LazyResolver_1__ctor_
+  commentId: Overload:E5R.Architecture.Infrastructure.LazyResolver`1.#ctor
+  isSpec: "True"
+  fullName: E5R.Architecture.Infrastructure.LazyResolver<TTarget>.LazyResolver
+  fullName.vb: E5R.Architecture.Infrastructure.LazyResolver(Of TTarget).LazyResolver
+  nameWithType: LazyResolver<TTarget>.LazyResolver
+  nameWithType.vb: LazyResolver(Of TTarget).LazyResolver
+- uid: E5R.Architecture.Infrastructure.LazyResolver`1.Value
+  name: Value
+  href: api/E5R.Architecture.Infrastructure.LazyResolver-1.html#E5R_Architecture_Infrastructure_LazyResolver_1_Value
+  commentId: P:E5R.Architecture.Infrastructure.LazyResolver`1.Value
+  fullName: E5R.Architecture.Infrastructure.LazyResolver<TTarget>.Value
+  fullName.vb: E5R.Architecture.Infrastructure.LazyResolver(Of TTarget).Value
+  nameWithType: LazyResolver<TTarget>.Value
+  nameWithType.vb: LazyResolver(Of TTarget).Value
+- uid: E5R.Architecture.Infrastructure.LazyResolver`1.Value*
+  name: Value
+  href: api/E5R.Architecture.Infrastructure.LazyResolver-1.html#E5R_Architecture_Infrastructure_LazyResolver_1_Value_
+  commentId: Overload:E5R.Architecture.Infrastructure.LazyResolver`1.Value
+  isSpec: "True"
+  fullName: E5R.Architecture.Infrastructure.LazyResolver<TTarget>.Value
+  fullName.vb: E5R.Architecture.Infrastructure.LazyResolver(Of TTarget).Value
+  nameWithType: LazyResolver<TTarget>.Value
+  nameWithType.vb: LazyResolver(Of TTarget).Value
+- uid: E5R.Architecture.Infrastructure.ServiceCollectionDIContainer
+  name: ServiceCollectionDIContainer
+  href: api/E5R.Architecture.Infrastructure.ServiceCollectionDIContainer.html
+  commentId: T:E5R.Architecture.Infrastructure.ServiceCollectionDIContainer
+  fullName: E5R.Architecture.Infrastructure.ServiceCollectionDIContainer
+  nameWithType: ServiceCollectionDIContainer
+- uid: E5R.Architecture.Infrastructure.ServiceCollectionDIContainer.#ctor(IServiceCollection)
+  name: ServiceCollectionDIContainer(IServiceCollection)
+  href: api/E5R.Architecture.Infrastructure.ServiceCollectionDIContainer.html#E5R_Architecture_Infrastructure_ServiceCollectionDIContainer__ctor_IServiceCollection_
+  commentId: M:E5R.Architecture.Infrastructure.ServiceCollectionDIContainer.#ctor(IServiceCollection)
+  fullName: E5R.Architecture.Infrastructure.ServiceCollectionDIContainer.ServiceCollectionDIContainer(IServiceCollection)
+  nameWithType: ServiceCollectionDIContainer.ServiceCollectionDIContainer(IServiceCollection)
+- uid: E5R.Architecture.Infrastructure.ServiceCollectionDIContainer.#ctor*
+  name: ServiceCollectionDIContainer
+  href: api/E5R.Architecture.Infrastructure.ServiceCollectionDIContainer.html#E5R_Architecture_Infrastructure_ServiceCollectionDIContainer__ctor_
+  commentId: Overload:E5R.Architecture.Infrastructure.ServiceCollectionDIContainer.#ctor
+  isSpec: "True"
+  fullName: E5R.Architecture.Infrastructure.ServiceCollectionDIContainer.ServiceCollectionDIContainer
+  nameWithType: ServiceCollectionDIContainer.ServiceCollectionDIContainer
+- uid: E5R.Architecture.Infrastructure.ServiceCollectionDIContainer.Register(E5R.Architecture.Infrastructure.Abstractions.DILifetime,Type)
+  name: Register(DILifetime, Type)
+  href: api/E5R.Architecture.Infrastructure.ServiceCollectionDIContainer.html#E5R_Architecture_Infrastructure_ServiceCollectionDIContainer_Register_E5R_Architecture_Infrastructure_Abstractions_DILifetime_Type_
+  commentId: M:E5R.Architecture.Infrastructure.ServiceCollectionDIContainer.Register(E5R.Architecture.Infrastructure.Abstractions.DILifetime,Type)
+  fullName: E5R.Architecture.Infrastructure.ServiceCollectionDIContainer.Register(E5R.Architecture.Infrastructure.Abstractions.DILifetime, Type)
+  nameWithType: ServiceCollectionDIContainer.Register(DILifetime, Type)
+- uid: E5R.Architecture.Infrastructure.ServiceCollectionDIContainer.Register(E5R.Architecture.Infrastructure.Abstractions.DILifetime,Type,Func{System.Object})
+  name: Register(DILifetime, Type, Func<Object>)
+  href: api/E5R.Architecture.Infrastructure.ServiceCollectionDIContainer.html#E5R_Architecture_Infrastructure_ServiceCollectionDIContainer_Register_E5R_Architecture_Infrastructure_Abstractions_DILifetime_Type_Func_System_Object__
+  commentId: M:E5R.Architecture.Infrastructure.ServiceCollectionDIContainer.Register(E5R.Architecture.Infrastructure.Abstractions.DILifetime,Type,Func{System.Object})
+  name.vb: Register(DILifetime, Type, Func(Of Object))
+  fullName: E5R.Architecture.Infrastructure.ServiceCollectionDIContainer.Register(E5R.Architecture.Infrastructure.Abstractions.DILifetime, Type, Func<System.Object>)
+  fullName.vb: E5R.Architecture.Infrastructure.ServiceCollectionDIContainer.Register(E5R.Architecture.Infrastructure.Abstractions.DILifetime, Type, Func(Of System.Object))
+  nameWithType: ServiceCollectionDIContainer.Register(DILifetime, Type, Func<Object>)
+  nameWithType.vb: ServiceCollectionDIContainer.Register(DILifetime, Type, Func(Of Object))
+- uid: E5R.Architecture.Infrastructure.ServiceCollectionDIContainer.Register(E5R.Architecture.Infrastructure.Abstractions.DILifetime,Type,Type)
+  name: Register(DILifetime, Type, Type)
+  href: api/E5R.Architecture.Infrastructure.ServiceCollectionDIContainer.html#E5R_Architecture_Infrastructure_ServiceCollectionDIContainer_Register_E5R_Architecture_Infrastructure_Abstractions_DILifetime_Type_Type_
+  commentId: M:E5R.Architecture.Infrastructure.ServiceCollectionDIContainer.Register(E5R.Architecture.Infrastructure.Abstractions.DILifetime,Type,Type)
+  fullName: E5R.Architecture.Infrastructure.ServiceCollectionDIContainer.Register(E5R.Architecture.Infrastructure.Abstractions.DILifetime, Type, Type)
+  nameWithType: ServiceCollectionDIContainer.Register(DILifetime, Type, Type)
+- uid: E5R.Architecture.Infrastructure.ServiceCollectionDIContainer.Register*
+  name: Register
+  href: api/E5R.Architecture.Infrastructure.ServiceCollectionDIContainer.html#E5R_Architecture_Infrastructure_ServiceCollectionDIContainer_Register_
+  commentId: Overload:E5R.Architecture.Infrastructure.ServiceCollectionDIContainer.Register
+  isSpec: "True"
+  fullName: E5R.Architecture.Infrastructure.ServiceCollectionDIContainer.Register
+  nameWithType: ServiceCollectionDIContainer.Register
 - uid: E5R.Architecture.Infrastructure.UnitOfWorkByProperty
   name: UnitOfWorkByProperty
   href: api/E5R.Architecture.Infrastructure.UnitOfWorkByProperty.html
@@ -8763,6 +9290,75 @@ references:
   fullName.vb: E5R.Architecture.Infrastructure.UnitOfWorkProperty(Of TProperty).Widening
   nameWithType: UnitOfWorkProperty<TProperty>.Implicit
   nameWithType.vb: UnitOfWorkProperty(Of TProperty).Widening
+- uid: E5R.Architecture.Infrastructure.UnitOfWorkPropertyStrategyBuilderOptions
+  name: UnitOfWorkPropertyStrategyBuilderOptions
+  href: api/E5R.Architecture.Infrastructure.UnitOfWorkPropertyStrategyBuilderOptions.html
+  commentId: T:E5R.Architecture.Infrastructure.UnitOfWorkPropertyStrategyBuilderOptions
+  fullName: E5R.Architecture.Infrastructure.UnitOfWorkPropertyStrategyBuilderOptions
+  nameWithType: UnitOfWorkPropertyStrategyBuilderOptions
+- uid: E5R.Architecture.Infrastructure.UnitOfWorkPropertyStrategyBuilderOptions.AddProperty*
+  name: AddProperty
+  href: api/E5R.Architecture.Infrastructure.UnitOfWorkPropertyStrategyBuilderOptions.html#E5R_Architecture_Infrastructure_UnitOfWorkPropertyStrategyBuilderOptions_AddProperty_
+  commentId: Overload:E5R.Architecture.Infrastructure.UnitOfWorkPropertyStrategyBuilderOptions.AddProperty
+  isSpec: "True"
+  fullName: E5R.Architecture.Infrastructure.UnitOfWorkPropertyStrategyBuilderOptions.AddProperty
+  nameWithType: UnitOfWorkPropertyStrategyBuilderOptions.AddProperty
+- uid: E5R.Architecture.Infrastructure.UnitOfWorkPropertyStrategyBuilderOptions.AddProperty``1
+  name: AddProperty<TType>()
+  href: api/E5R.Architecture.Infrastructure.UnitOfWorkPropertyStrategyBuilderOptions.html#E5R_Architecture_Infrastructure_UnitOfWorkPropertyStrategyBuilderOptions_AddProperty__1
+  commentId: M:E5R.Architecture.Infrastructure.UnitOfWorkPropertyStrategyBuilderOptions.AddProperty``1
+  name.vb: AddProperty(Of TType)()
+  fullName: E5R.Architecture.Infrastructure.UnitOfWorkPropertyStrategyBuilderOptions.AddProperty<TType>()
+  fullName.vb: E5R.Architecture.Infrastructure.UnitOfWorkPropertyStrategyBuilderOptions.AddProperty(Of TType)()
+  nameWithType: UnitOfWorkPropertyStrategyBuilderOptions.AddProperty<TType>()
+  nameWithType.vb: UnitOfWorkPropertyStrategyBuilderOptions.AddProperty(Of TType)()
+- uid: E5R.Architecture.Infrastructure.UnitOfWorkPropertyStrategyBuilderOptions.AddProperty``1(Action{E5R.Architecture.Infrastructure.UnitOfWorkByProperty,``0})
+  name: AddProperty<TType>(Action<UnitOfWorkByProperty, TType>)
+  href: api/E5R.Architecture.Infrastructure.UnitOfWorkPropertyStrategyBuilderOptions.html#E5R_Architecture_Infrastructure_UnitOfWorkPropertyStrategyBuilderOptions_AddProperty__1_Action_E5R_Architecture_Infrastructure_UnitOfWorkByProperty___0__
+  commentId: M:E5R.Architecture.Infrastructure.UnitOfWorkPropertyStrategyBuilderOptions.AddProperty``1(Action{E5R.Architecture.Infrastructure.UnitOfWorkByProperty,``0})
+  name.vb: AddProperty(Of TType)(Action(Of UnitOfWorkByProperty, TType))
+  fullName: E5R.Architecture.Infrastructure.UnitOfWorkPropertyStrategyBuilderOptions.AddProperty<TType>(Action<E5R.Architecture.Infrastructure.UnitOfWorkByProperty, TType>)
+  fullName.vb: E5R.Architecture.Infrastructure.UnitOfWorkPropertyStrategyBuilderOptions.AddProperty(Of TType)(Action(Of E5R.Architecture.Infrastructure.UnitOfWorkByProperty, TType))
+  nameWithType: UnitOfWorkPropertyStrategyBuilderOptions.AddProperty<TType>(Action<UnitOfWorkByProperty, TType>)
+  nameWithType.vb: UnitOfWorkPropertyStrategyBuilderOptions.AddProperty(Of TType)(Action(Of UnitOfWorkByProperty, TType))
+- uid: E5R.Architecture.Infrastructure.UnitOfWorkPropertyStrategyBuilderOptions.Properties
+  name: Properties
+  href: api/E5R.Architecture.Infrastructure.UnitOfWorkPropertyStrategyBuilderOptions.html#E5R_Architecture_Infrastructure_UnitOfWorkPropertyStrategyBuilderOptions_Properties
+  commentId: P:E5R.Architecture.Infrastructure.UnitOfWorkPropertyStrategyBuilderOptions.Properties
+  fullName: E5R.Architecture.Infrastructure.UnitOfWorkPropertyStrategyBuilderOptions.Properties
+  nameWithType: UnitOfWorkPropertyStrategyBuilderOptions.Properties
+- uid: E5R.Architecture.Infrastructure.UnitOfWorkPropertyStrategyBuilderOptions.Properties*
+  name: Properties
+  href: api/E5R.Architecture.Infrastructure.UnitOfWorkPropertyStrategyBuilderOptions.html#E5R_Architecture_Infrastructure_UnitOfWorkPropertyStrategyBuilderOptions_Properties_
+  commentId: Overload:E5R.Architecture.Infrastructure.UnitOfWorkPropertyStrategyBuilderOptions.Properties
+  isSpec: "True"
+  fullName: E5R.Architecture.Infrastructure.UnitOfWorkPropertyStrategyBuilderOptions.Properties
+  nameWithType: UnitOfWorkPropertyStrategyBuilderOptions.Properties
+- uid: E5R.Architecture.Infrastructure.UnitOfWorkPropertyStrategyBuilderOptions.TryAddProperty*
+  name: TryAddProperty
+  href: api/E5R.Architecture.Infrastructure.UnitOfWorkPropertyStrategyBuilderOptions.html#E5R_Architecture_Infrastructure_UnitOfWorkPropertyStrategyBuilderOptions_TryAddProperty_
+  commentId: Overload:E5R.Architecture.Infrastructure.UnitOfWorkPropertyStrategyBuilderOptions.TryAddProperty
+  isSpec: "True"
+  fullName: E5R.Architecture.Infrastructure.UnitOfWorkPropertyStrategyBuilderOptions.TryAddProperty
+  nameWithType: UnitOfWorkPropertyStrategyBuilderOptions.TryAddProperty
+- uid: E5R.Architecture.Infrastructure.UnitOfWorkPropertyStrategyBuilderOptions.TryAddProperty``1
+  name: TryAddProperty<TType>()
+  href: api/E5R.Architecture.Infrastructure.UnitOfWorkPropertyStrategyBuilderOptions.html#E5R_Architecture_Infrastructure_UnitOfWorkPropertyStrategyBuilderOptions_TryAddProperty__1
+  commentId: M:E5R.Architecture.Infrastructure.UnitOfWorkPropertyStrategyBuilderOptions.TryAddProperty``1
+  name.vb: TryAddProperty(Of TType)()
+  fullName: E5R.Architecture.Infrastructure.UnitOfWorkPropertyStrategyBuilderOptions.TryAddProperty<TType>()
+  fullName.vb: E5R.Architecture.Infrastructure.UnitOfWorkPropertyStrategyBuilderOptions.TryAddProperty(Of TType)()
+  nameWithType: UnitOfWorkPropertyStrategyBuilderOptions.TryAddProperty<TType>()
+  nameWithType.vb: UnitOfWorkPropertyStrategyBuilderOptions.TryAddProperty(Of TType)()
+- uid: E5R.Architecture.Infrastructure.UnitOfWorkPropertyStrategyBuilderOptions.TryAddProperty``1(Action{E5R.Architecture.Infrastructure.UnitOfWorkByProperty,``0})
+  name: TryAddProperty<TType>(Action<UnitOfWorkByProperty, TType>)
+  href: api/E5R.Architecture.Infrastructure.UnitOfWorkPropertyStrategyBuilderOptions.html#E5R_Architecture_Infrastructure_UnitOfWorkPropertyStrategyBuilderOptions_TryAddProperty__1_Action_E5R_Architecture_Infrastructure_UnitOfWorkByProperty___0__
+  commentId: M:E5R.Architecture.Infrastructure.UnitOfWorkPropertyStrategyBuilderOptions.TryAddProperty``1(Action{E5R.Architecture.Infrastructure.UnitOfWorkByProperty,``0})
+  name.vb: TryAddProperty(Of TType)(Action(Of UnitOfWorkByProperty, TType))
+  fullName: E5R.Architecture.Infrastructure.UnitOfWorkPropertyStrategyBuilderOptions.TryAddProperty<TType>(Action<E5R.Architecture.Infrastructure.UnitOfWorkByProperty, TType>)
+  fullName.vb: E5R.Architecture.Infrastructure.UnitOfWorkPropertyStrategyBuilderOptions.TryAddProperty(Of TType)(Action(Of E5R.Architecture.Infrastructure.UnitOfWorkByProperty, TType))
+  nameWithType: UnitOfWorkPropertyStrategyBuilderOptions.TryAddProperty<TType>(Action<UnitOfWorkByProperty, TType>)
+  nameWithType.vb: UnitOfWorkPropertyStrategyBuilderOptions.TryAddProperty(Of TType)(Action(Of UnitOfWorkByProperty, TType))
 - uid: Microsoft.AspNetCore.Builder
   name: Microsoft.AspNetCore.Builder
   href: api/Microsoft.AspNetCore.Builder.html
@@ -8800,29 +9396,57 @@ references:
   commentId: T:Microsoft.Extensions.DependencyInjection.ServiceCollectionExtensions
   fullName: Microsoft.Extensions.DependencyInjection.ServiceCollectionExtensions
   nameWithType: ServiceCollectionExtensions
-- uid: Microsoft.Extensions.DependencyInjection.ServiceCollectionExtensions.AddStoragePropertyStrategy(IServiceCollection)
-  name: AddStoragePropertyStrategy(IServiceCollection)
-  href: api/Microsoft.Extensions.DependencyInjection.ServiceCollectionExtensions.html#Microsoft_Extensions_DependencyInjection_ServiceCollectionExtensions_AddStoragePropertyStrategy_IServiceCollection_
-  commentId: M:Microsoft.Extensions.DependencyInjection.ServiceCollectionExtensions.AddStoragePropertyStrategy(IServiceCollection)
-  fullName: Microsoft.Extensions.DependencyInjection.ServiceCollectionExtensions.AddStoragePropertyStrategy(IServiceCollection)
-  nameWithType: ServiceCollectionExtensions.AddStoragePropertyStrategy(IServiceCollection)
-- uid: Microsoft.Extensions.DependencyInjection.ServiceCollectionExtensions.AddStoragePropertyStrategy*
-  name: AddStoragePropertyStrategy
-  href: api/Microsoft.Extensions.DependencyInjection.ServiceCollectionExtensions.html#Microsoft_Extensions_DependencyInjection_ServiceCollectionExtensions_AddStoragePropertyStrategy_
-  commentId: Overload:Microsoft.Extensions.DependencyInjection.ServiceCollectionExtensions.AddStoragePropertyStrategy
+- uid: Microsoft.Extensions.DependencyInjection.ServiceCollectionExtensions.AddInfrastructure(IServiceCollection,System.String[])
+  name: AddInfrastructure(IServiceCollection, String[])
+  href: api/Microsoft.Extensions.DependencyInjection.ServiceCollectionExtensions.html#Microsoft_Extensions_DependencyInjection_ServiceCollectionExtensions_AddInfrastructure_IServiceCollection_System_String___
+  commentId: M:Microsoft.Extensions.DependencyInjection.ServiceCollectionExtensions.AddInfrastructure(IServiceCollection,System.String[])
+  name.vb: AddInfrastructure(IServiceCollection, String())
+  fullName: Microsoft.Extensions.DependencyInjection.ServiceCollectionExtensions.AddInfrastructure(IServiceCollection, System.String[])
+  fullName.vb: Microsoft.Extensions.DependencyInjection.ServiceCollectionExtensions.AddInfrastructure(IServiceCollection, System.String())
+  nameWithType: ServiceCollectionExtensions.AddInfrastructure(IServiceCollection, String[])
+  nameWithType.vb: ServiceCollectionExtensions.AddInfrastructure(IServiceCollection, String())
+- uid: Microsoft.Extensions.DependencyInjection.ServiceCollectionExtensions.AddInfrastructure*
+  name: AddInfrastructure
+  href: api/Microsoft.Extensions.DependencyInjection.ServiceCollectionExtensions.html#Microsoft_Extensions_DependencyInjection_ServiceCollectionExtensions_AddInfrastructure_
+  commentId: Overload:Microsoft.Extensions.DependencyInjection.ServiceCollectionExtensions.AddInfrastructure
   isSpec: "True"
-  fullName: Microsoft.Extensions.DependencyInjection.ServiceCollectionExtensions.AddStoragePropertyStrategy
-  nameWithType: ServiceCollectionExtensions.AddStoragePropertyStrategy
-- uid: Microsoft.Extensions.DependencyInjection.ServiceCollectionExtensions.AddStorageTransactionScopeStrategy(IServiceCollection)
-  name: AddStorageTransactionScopeStrategy(IServiceCollection)
-  href: api/Microsoft.Extensions.DependencyInjection.ServiceCollectionExtensions.html#Microsoft_Extensions_DependencyInjection_ServiceCollectionExtensions_AddStorageTransactionScopeStrategy_IServiceCollection_
-  commentId: M:Microsoft.Extensions.DependencyInjection.ServiceCollectionExtensions.AddStorageTransactionScopeStrategy(IServiceCollection)
-  fullName: Microsoft.Extensions.DependencyInjection.ServiceCollectionExtensions.AddStorageTransactionScopeStrategy(IServiceCollection)
-  nameWithType: ServiceCollectionExtensions.AddStorageTransactionScopeStrategy(IServiceCollection)
-- uid: Microsoft.Extensions.DependencyInjection.ServiceCollectionExtensions.AddStorageTransactionScopeStrategy*
-  name: AddStorageTransactionScopeStrategy
-  href: api/Microsoft.Extensions.DependencyInjection.ServiceCollectionExtensions.html#Microsoft_Extensions_DependencyInjection_ServiceCollectionExtensions_AddStorageTransactionScopeStrategy_
-  commentId: Overload:Microsoft.Extensions.DependencyInjection.ServiceCollectionExtensions.AddStorageTransactionScopeStrategy
+  fullName: Microsoft.Extensions.DependencyInjection.ServiceCollectionExtensions.AddInfrastructure
+  nameWithType: ServiceCollectionExtensions.AddInfrastructure
+- uid: Microsoft.Extensions.DependencyInjection.ServiceCollectionExtensions.AddUnitOfWorkPropertyStrategy(IServiceCollection,Action{E5R.Architecture.Infrastructure.UnitOfWorkPropertyStrategyBuilderOptions})
+  name: AddUnitOfWorkPropertyStrategy(IServiceCollection, Action<UnitOfWorkPropertyStrategyBuilderOptions>)
+  href: api/Microsoft.Extensions.DependencyInjection.ServiceCollectionExtensions.html#Microsoft_Extensions_DependencyInjection_ServiceCollectionExtensions_AddUnitOfWorkPropertyStrategy_IServiceCollection_Action_E5R_Architecture_Infrastructure_UnitOfWorkPropertyStrategyBuilderOptions__
+  commentId: M:Microsoft.Extensions.DependencyInjection.ServiceCollectionExtensions.AddUnitOfWorkPropertyStrategy(IServiceCollection,Action{E5R.Architecture.Infrastructure.UnitOfWorkPropertyStrategyBuilderOptions})
+  name.vb: AddUnitOfWorkPropertyStrategy(IServiceCollection, Action(Of UnitOfWorkPropertyStrategyBuilderOptions))
+  fullName: Microsoft.Extensions.DependencyInjection.ServiceCollectionExtensions.AddUnitOfWorkPropertyStrategy(IServiceCollection, Action<E5R.Architecture.Infrastructure.UnitOfWorkPropertyStrategyBuilderOptions>)
+  fullName.vb: Microsoft.Extensions.DependencyInjection.ServiceCollectionExtensions.AddUnitOfWorkPropertyStrategy(IServiceCollection, Action(Of E5R.Architecture.Infrastructure.UnitOfWorkPropertyStrategyBuilderOptions))
+  nameWithType: ServiceCollectionExtensions.AddUnitOfWorkPropertyStrategy(IServiceCollection, Action<UnitOfWorkPropertyStrategyBuilderOptions>)
+  nameWithType.vb: ServiceCollectionExtensions.AddUnitOfWorkPropertyStrategy(IServiceCollection, Action(Of UnitOfWorkPropertyStrategyBuilderOptions))
+- uid: Microsoft.Extensions.DependencyInjection.ServiceCollectionExtensions.AddUnitOfWorkPropertyStrategy*
+  name: AddUnitOfWorkPropertyStrategy
+  href: api/Microsoft.Extensions.DependencyInjection.ServiceCollectionExtensions.html#Microsoft_Extensions_DependencyInjection_ServiceCollectionExtensions_AddUnitOfWorkPropertyStrategy_
+  commentId: Overload:Microsoft.Extensions.DependencyInjection.ServiceCollectionExtensions.AddUnitOfWorkPropertyStrategy
   isSpec: "True"
-  fullName: Microsoft.Extensions.DependencyInjection.ServiceCollectionExtensions.AddStorageTransactionScopeStrategy
-  nameWithType: ServiceCollectionExtensions.AddStorageTransactionScopeStrategy
+  fullName: Microsoft.Extensions.DependencyInjection.ServiceCollectionExtensions.AddUnitOfWorkPropertyStrategy
+  nameWithType: ServiceCollectionExtensions.AddUnitOfWorkPropertyStrategy
+- uid: Microsoft.Extensions.DependencyInjection.ServiceCollectionExtensions.AddUnitOfWorkPropertyStrategy``1(IServiceCollection,Action{E5R.Architecture.Infrastructure.UnitOfWorkPropertyStrategyBuilderOptions})
+  name: AddUnitOfWorkPropertyStrategy<TAppUnitOfWork>(IServiceCollection, Action<UnitOfWorkPropertyStrategyBuilderOptions>)
+  href: api/Microsoft.Extensions.DependencyInjection.ServiceCollectionExtensions.html#Microsoft_Extensions_DependencyInjection_ServiceCollectionExtensions_AddUnitOfWorkPropertyStrategy__1_IServiceCollection_Action_E5R_Architecture_Infrastructure_UnitOfWorkPropertyStrategyBuilderOptions__
+  commentId: M:Microsoft.Extensions.DependencyInjection.ServiceCollectionExtensions.AddUnitOfWorkPropertyStrategy``1(IServiceCollection,Action{E5R.Architecture.Infrastructure.UnitOfWorkPropertyStrategyBuilderOptions})
+  name.vb: AddUnitOfWorkPropertyStrategy(Of TAppUnitOfWork)(IServiceCollection, Action(Of UnitOfWorkPropertyStrategyBuilderOptions))
+  fullName: Microsoft.Extensions.DependencyInjection.ServiceCollectionExtensions.AddUnitOfWorkPropertyStrategy<TAppUnitOfWork>(IServiceCollection, Action<E5R.Architecture.Infrastructure.UnitOfWorkPropertyStrategyBuilderOptions>)
+  fullName.vb: Microsoft.Extensions.DependencyInjection.ServiceCollectionExtensions.AddUnitOfWorkPropertyStrategy(Of TAppUnitOfWork)(IServiceCollection, Action(Of E5R.Architecture.Infrastructure.UnitOfWorkPropertyStrategyBuilderOptions))
+  nameWithType: ServiceCollectionExtensions.AddUnitOfWorkPropertyStrategy<TAppUnitOfWork>(IServiceCollection, Action<UnitOfWorkPropertyStrategyBuilderOptions>)
+  nameWithType.vb: ServiceCollectionExtensions.AddUnitOfWorkPropertyStrategy(Of TAppUnitOfWork)(IServiceCollection, Action(Of UnitOfWorkPropertyStrategyBuilderOptions))
+- uid: Microsoft.Extensions.DependencyInjection.ServiceCollectionExtensions.AddUnitOfWorkTransactionScopeStrategy(IServiceCollection)
+  name: AddUnitOfWorkTransactionScopeStrategy(IServiceCollection)
+  href: api/Microsoft.Extensions.DependencyInjection.ServiceCollectionExtensions.html#Microsoft_Extensions_DependencyInjection_ServiceCollectionExtensions_AddUnitOfWorkTransactionScopeStrategy_IServiceCollection_
+  commentId: M:Microsoft.Extensions.DependencyInjection.ServiceCollectionExtensions.AddUnitOfWorkTransactionScopeStrategy(IServiceCollection)
+  fullName: Microsoft.Extensions.DependencyInjection.ServiceCollectionExtensions.AddUnitOfWorkTransactionScopeStrategy(IServiceCollection)
+  nameWithType: ServiceCollectionExtensions.AddUnitOfWorkTransactionScopeStrategy(IServiceCollection)
+- uid: Microsoft.Extensions.DependencyInjection.ServiceCollectionExtensions.AddUnitOfWorkTransactionScopeStrategy*
+  name: AddUnitOfWorkTransactionScopeStrategy
+  href: api/Microsoft.Extensions.DependencyInjection.ServiceCollectionExtensions.html#Microsoft_Extensions_DependencyInjection_ServiceCollectionExtensions_AddUnitOfWorkTransactionScopeStrategy_
+  commentId: Overload:Microsoft.Extensions.DependencyInjection.ServiceCollectionExtensions.AddUnitOfWorkTransactionScopeStrategy
+  isSpec: "True"
+  fullName: Microsoft.Extensions.DependencyInjection.ServiceCollectionExtensions.AddUnitOfWorkTransactionScopeStrategy
+  nameWithType: ServiceCollectionExtensions.AddUnitOfWorkTransactionScopeStrategy
