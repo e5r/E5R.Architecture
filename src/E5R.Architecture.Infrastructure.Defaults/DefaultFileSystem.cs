@@ -4,12 +4,11 @@
 
 using System;
 using System.IO;
+using E5R.Architecture.Core;
+using E5R.Architecture.Infrastructure.Abstractions;
 
 namespace E5R.Architecture.Infrastructure.Defaults
 {
-    using Abstractions;
-    using E5R.Architecture.Core;
-
     /// <summary>
     /// Default implementation of <see cref="IFileSystem"/>
     /// </summary>
