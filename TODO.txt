@@ -21,32 +21,10 @@ v0.x
       3) Usa-se no construtor (ITransformationManager manager)
          manager.Transform<From, To>()
 - Remover abstração própria de DI em favor de Microsoft.Extensions.DependencyInjection.Abstractions
-- Implementar FluentWriter()
-  > Em IStorageWriter<> e IStorageBulkWriter<>
-  > API sugerida:
-  ```
-  _storage.FluentWriter()
-          .Create(new DataModel{}) || Replace(new DataModel{}) || Remove(new DataModel{})
-          .BulkCreate(new[] {newDataModel{}}) || BulkReplace(new[] {new DataModel{}}) || BulkRemove(new[]{new DataModel{}})
-          ;
-         
-  _storage.FluentWriter()
-          .Identifier(1) || Identifier(new[] { 1, 2 })
-          .Remove()
-          .Update(new {}) || Update(u => new { Field = u.Field })
-          ;
-         
-  _storage.FluentWriter()
-          .Filter(f => w.Field == 2)
-          .BulkRemove()
-          .BulkUpdate(new {}) || BulkUpdate(u => new { Field = u.Field })
-          ;
-  ```
 - Mover este TODO.txt para um projeto no GitHub
 
 v1.0
 ====
-- Implementar validação
 - Remover necessidade de objetos de assinatura
   > IDataModuleSignature
   > IStorageSignature
