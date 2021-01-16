@@ -38,7 +38,7 @@ namespace UsingDataEntityFrameworkCore
                 options.UseSqlite(conn);
             });
 
-            services.AddScoped<DbContext>(ServiceProvider => ServiceProvider.GetRequiredService<SchoolContext>());
+            services.AddScoped<DbContext>(serviceProvider => serviceProvider.GetRequiredService<SchoolContext>());
 
             services.AddUnitOfWorkPropertyStrategy(options =>
             {
@@ -54,6 +54,7 @@ namespace UsingDataEntityFrameworkCore
             });
 
             services.AddStoragePropertyStrategy();
+            services.AddInfrastructure();
 
             // Strategy.TransactionScope
             //services.AddDbContext<SchoolContext>((serviceProvider, options) =>

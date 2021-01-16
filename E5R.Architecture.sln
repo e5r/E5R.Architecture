@@ -22,7 +22,6 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "_files", "_files", "{159216
 		appveyor.yml = appveyor.yml
 		codecov.yml = codecov.yml
 		LICENSE.txt = LICENSE.txt
-		NEWS.md = NEWS.md
 		packages.props = packages.props
 		README.md = README.md
 		TODO.txt = TODO.txt
