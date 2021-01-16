@@ -25,18 +25,21 @@ v0.x
   > Em IStorageWriter<> e IStorageBulkWriter<>
   > API sugerida:
   ```
-  _storage.FluentWriter()
+  _storage.AsFluentWriter()
           .Create(new DataModel{}) || Replace(new DataModel{}) || Remove(new DataModel{})
-          .BulkCreate(new[] {newDataModel{}}) || BulkReplace(new[] {new DataModel{}}) || BulkRemove(new[]{new DataModel{}})
           ;
          
-  _storage.FluentWriter()
-          .Identifier(1) || Identifier(new[] { 1, 2 })
+  _storage.AsFluentWriter()
+          .Identifier(1) || Identifiers(new[] { 1, 2 })
           .Remove()
           .Update(new {}) || Update(u => new { Field = u.Field })
           ;
+          
+  _storage.AsFluentBulkWriter()
+          .BulkCreate(new[] {newDataModel{}}) || BulkReplace(new[] {new DataModel{}}) || BulkRemove(new[]{new DataModel{}})
+          ;
          
-  _storage.FluentWriter()
+  _storage.AsFluentBulkWriter()
           .Filter(f => w.Field == 2)
           .BulkRemove()
           .BulkUpdate(new {}) || BulkUpdate(u => new { Field = u.Field })
