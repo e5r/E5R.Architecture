@@ -1,8 +1,5 @@
 v0.x
 ====
-- Implementar validação de modelo (IModelValidator)
-- Gerenciador de notificações genérico
-  > Implementar opção ZeroMQ (ou RabbitMQ)
 - Implementar mecanismo de transformação
   > Modelo genérico simples
     - Mesmo papel do AutoMapper, porém genérico e independente apesar de simples
@@ -10,6 +7,9 @@ v0.x
       1) Cria-se uma classe que implementa ITransformer<From, To>
       2) Registra o gerente de transformação genérico GenericTransformationManager
          services.AddGenericTransformationManager();
+         - Por padrão procura-se por ITransformer<> em todos os assembles do domínio
+         - Pode-se adicionar outros assembles a procurar com uma sobrecarga:
+         services.AddGenericTransformationManager(new[]{"Meu.Outro", "Assemble.Novo"});
       3) Usa-se no construtor (ITransformationManager manager)
          manager.Transform<From, To>()
   > Modelo baseado em AutoMapper
@@ -20,11 +20,11 @@ v0.x
       2) Registra o gerente de transformação AutoMapperTransformationManager
       3) Usa-se no construtor (ITransformationManager manager)
          manager.Transform<From, To>()
-- Remover abstração própria de DI em favor de Microsoft.Extensions.DependencyInjection.Abstractions
-- Mover este TODO.txt para um projeto no GitHub
+- Implementar validação de modelo (IModelValidator)
 
 v1.0
 ====
+- Remover abstração própria de DI em favor de Microsoft.Extensions.DependencyInjection.Abstractions
 - Remover necessidade de objetos de assinatura
   > IDataModuleSignature
   > IStorageSignature
@@ -34,9 +34,7 @@ v1.0
 - Implementar Data.Dapper
   > Implementar suporte a SQL puro
   > IDataFilter, Sorter, Get(), Find(), Search(), etc.
-- Publicar documentação online
-  > API
-  > Tutoriais
+- Mover este TODO.txt para um projeto no GitHub
 
 v2.0
 ====
