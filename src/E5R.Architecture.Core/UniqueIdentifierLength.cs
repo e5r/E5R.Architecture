@@ -5,9 +5,9 @@
 namespace E5R.Architecture.Core
 {
     /// <summary>
-    /// Unique identifier size
+    /// Unique identifier lengths
     /// </summary>
-    public enum UniqueIdLength
+    public enum UniqueIdentifierLength
     {
         Length40,
         Length64,

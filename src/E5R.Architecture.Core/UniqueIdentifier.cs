@@ -9,12 +9,12 @@ using System.Security.Cryptography;
 namespace E5R.Architecture.Core
 {
     /// <summary>
-    /// Unique identifier
+    /// A unique identifier optimizer for <see cref="String"/>.
     /// </summary>
-    public class UniqueId
+    public class UniqueIdentifier
     {
         private static readonly string InvalidCastErrorMessage =
-            $"The string could not be converted to a valid {nameof(UniqueId)}";
+            $"The string could not be converted to a valid {nameof(UniqueIdentifier)}";
 
         private static readonly char[] ValidHexadecimalChars = new char[]
         {
@@ -25,26 +25,26 @@ namespace E5R.Architecture.Core
 
         private string StringId { get; }
 
-        public UniqueId() : this(UniqueIdLength.Length64)
+        public UniqueIdentifier() : this(UniqueIdentifierLength.Length64)
         { }
 
-        public UniqueId(UniqueIdLength length)
+        public UniqueIdentifier(UniqueIdentifierLength length)
         {
             switch (length)
             {
-                case UniqueIdLength.Length40:
+                case UniqueIdentifierLength.Length40:
                     StringId = ComputeHash(SHA1.Create(), Guid.NewGuid().ToByteArray());
                     break;
                 
-                case UniqueIdLength.Length64:
+                case UniqueIdentifierLength.Length64:
                     StringId = ComputeHash(SHA256.Create(), Guid.NewGuid().ToByteArray());
                     break;
                 
-                case UniqueIdLength.Length96:
+                case UniqueIdentifierLength.Length96:
                     StringId = ComputeHash(SHA384.Create(), Guid.NewGuid().ToByteArray());
                     break;
                 
-                case UniqueIdLength.Length128:
+                case UniqueIdentifierLength.Length128:
                     StringId = ComputeHash(SHA512.Create(), Guid.NewGuid().ToByteArray());
                     break;
                 
@@ -53,7 +53,7 @@ namespace E5R.Architecture.Core
             }
         }
 
-        public UniqueId(string stringId)
+        public UniqueIdentifier(string stringId)
         {
             Checker.NotEmptyOrWhiteArgument(stringId, nameof(stringId));
             
@@ -65,10 +65,10 @@ namespace E5R.Architecture.Core
 
         public override string ToString() => StringId;
 
-        public static implicit operator string(UniqueId uid) => uid?.StringId;
+        public static implicit operator string(UniqueIdentifier uid) => uid?.StringId;
 
-        public static implicit operator UniqueId(string stringId) =>
-            stringId != null ? new UniqueId(stringId) : null;
+        public static implicit operator UniqueIdentifier(string stringId) =>
+            stringId != null ? new UniqueIdentifier(stringId) : null;
 
         void EnsureLength(string stringId)
         {

@@ -5,18 +5,17 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Security.Cryptography;
 using Xunit;
 
 namespace E5R.Architecture.Core.Test
 {
-    public class UniqueIdTests
+    public class UniqueIdentifierTests
     {
         [Fact]
         public void Generate_NewId_With64Chars_OnInstantiate()
         {
-            var uid1 = new UniqueId();
-            var uid2 = new UniqueId();
+            var uid1 = new UniqueIdentifier();
+            var uid2 = new UniqueIdentifier();
 
             Assert.NotNull(uid1);
             Assert.NotNull(uid2);
@@ -29,10 +28,10 @@ namespace E5R.Architecture.Core.Test
         [Fact]
         public void AllowsYouTo_ChooseThe_LengthOf_TheId()
         {
-            var uid40 = new UniqueId(UniqueIdLength.Length40);
-            var uid64 = new UniqueId(UniqueIdLength.Length64);
-            var uid96 = new UniqueId(UniqueIdLength.Length96);
-            var uid128 = new UniqueId(UniqueIdLength.Length128);
+            var uid40 = new UniqueIdentifier(UniqueIdentifierLength.Length40);
+            var uid64 = new UniqueIdentifier(UniqueIdentifierLength.Length64);
+            var uid96 = new UniqueIdentifier(UniqueIdentifierLength.Length96);
+            var uid128 = new UniqueIdentifier(UniqueIdentifierLength.Length128);
             
             Assert.NotNull(uid40);
             Assert.Equal(40, uid40.ToString().Length);
@@ -52,7 +51,7 @@ namespace E5R.Architecture.Core.Test
         {
             var ex = Assert.Throws<ArgumentOutOfRangeException>(() =>
             {
-                new UniqueId((UniqueIdLength)(-1));
+                new UniqueIdentifier((UniqueIdentifierLength)(-1));
             });
             
             Assert.Equal("length", ex.ParamName);
@@ -63,17 +62,17 @@ namespace E5R.Architecture.Core.Test
         {
             var ex1 = Assert.Throws<ArgumentNullException>(() =>
             {
-                new UniqueId(null);
+                new UniqueIdentifier(null);
             });
             
             var ex2 = Assert.Throws<ArgumentNullException>(() =>
             {
-                new UniqueId(string.Empty);
+                new UniqueIdentifier(string.Empty);
             });
             
             var ex3 = Assert.Throws<ArgumentNullException>(() =>
             {
-                new UniqueId("         ");
+                new UniqueIdentifier("         ");
             });
             
             Assert.Equal("stringId", ex1.ParamName);
@@ -87,22 +86,22 @@ namespace E5R.Architecture.Core.Test
             var ex1 = Assert.Throws<InvalidCastException>(() =>
             {
                 // Length: 39
-                new UniqueId("010101010101010101010101010101010101010");
+                new UniqueIdentifier("010101010101010101010101010101010101010");
             });
             
             var ex2 = Assert.Throws<InvalidCastException>(() =>
             {
                 // Length: 129
-                new UniqueId("010101010101010101010101010101010101010101010101010101010101010101010101010101010101010101010101010101010101010101010101010101010");
+                new UniqueIdentifier("010101010101010101010101010101010101010101010101010101010101010101010101010101010101010101010101010101010101010101010101010101010");
             });
 
-            var ok40 = new UniqueId("0000000000000000000000000000000000000000");
-            var ok64 = new UniqueId("0000000000000000000000000000000000000000111111111111111111111111");
-            var ok96 = new UniqueId("000000000000000000000000000000000000000011111111111111110000000000000000000000000000000000000000");
-            var ok128 = new UniqueId("00000000000000000000000000000000000000001111111111111111111111111111111111111111000000000000000000000000000000000000000011111111");
+            var ok40 = new UniqueIdentifier("0000000000000000000000000000000000000000");
+            var ok64 = new UniqueIdentifier("0000000000000000000000000000000000000000111111111111111111111111");
+            var ok96 = new UniqueIdentifier("000000000000000000000000000000000000000011111111111111110000000000000000000000000000000000000000");
+            var ok128 = new UniqueIdentifier("00000000000000000000000000000000000000001111111111111111111111111111111111111111000000000000000000000000000000000000000011111111");
             
-            Assert.Equal("The string could not be converted to a valid UniqueId", ex1.Message);
-            Assert.Equal("The string could not be converted to a valid UniqueId", ex2.Message);
+            Assert.Equal("The string could not be converted to a valid UniqueIdentifier", ex1.Message);
+            Assert.Equal("The string could not be converted to a valid UniqueIdentifier", ex2.Message);
             Assert.NotNull(ok40);
             Assert.NotNull(ok64);
             Assert.NotNull(ok96);
@@ -114,10 +113,10 @@ namespace E5R.Architecture.Core.Test
         {
             var ex = Assert.Throws<InvalidCastException>(() =>
             {
-                new UniqueId("aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa-");
+                new UniqueIdentifier("aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa-");
             });
             
-            Assert.Equal("The string could not be converted to a valid UniqueId", ex.Message);
+            Assert.Equal("The string could not be converted to a valid UniqueIdentifier", ex.Message);
         }
         
         public static IEnumerable<object[]> ValidHexadecimalChars()
@@ -151,13 +150,13 @@ namespace E5R.Architecture.Core.Test
         [Fact]
         public void ConvertsImplicitly_To_String()
         {
-            UniqueId uidNull = null;
-            var uid = new UniqueId();
+            UniqueIdentifier uidNull = null;
+            var uid = new UniqueIdentifier();
             var uidString1 = (string) uid;
             var uidStringNull = (string) uidNull;
             
             string uidString2 = uid;
-            string uidString3 = new UniqueId();
+            string uidString3 = new UniqueIdentifier();
 
             Assert.NotNull(uid);
             Assert.Null(uidStringNull);
@@ -172,13 +171,13 @@ namespace E5R.Architecture.Core.Test
         [Fact]
         public void ConvertsImplicitly_From_String()
         {
-            var uid1 = (UniqueId)"0000000000111111111100000000001111111111";
-            UniqueId uid2 = "0000000000111111111100000000001111111111";
-            var uidNull = (UniqueId) (string) null;
+            var uid1 = (UniqueIdentifier)"0000000000111111111100000000001111111111";
+            UniqueIdentifier uid2 = "0000000000111111111100000000001111111111";
+            var uidNull = (UniqueIdentifier) (string) null;
             
             string uidString1 = uid1;
             var uidString2 = (string)uid1;
-            string uidString3 = new UniqueId();
+            string uidString3 = new UniqueIdentifier();
 
             Assert.NotNull(uid1);
             Assert.NotNull(uid2);
