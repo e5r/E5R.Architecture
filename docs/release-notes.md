@@ -5,6 +5,15 @@ title: Notas de Lançamento
 Notas de Lançamento
 ===================
 
+## 0.6.0 (dev)
+
+Novos recursos:
+
+* Api fluente para gravar dados armazenados
+  - Leia o tutorial [Escrevendo dados com API Fluente](tutorials/writing-with-fluent-api.md)
+* UniqueId é um novo objeto do core para geração de identificadores únicos
+  - Leia o tutorial [Identificadores únicos](tutorials/uid.md)
+
 ## 0.5.0
 
 Adicionamos alguns novos recursos:
