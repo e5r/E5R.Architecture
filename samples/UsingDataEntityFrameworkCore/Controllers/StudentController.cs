@@ -1,6 +1,7 @@
 using System;
 using System.Data.Common;
 using System.Linq;
+using System.Linq.Expressions;
 using System.Threading.Tasks;
 using E5R.Architecture.Data.Abstractions;
 using E5R.Architecture.Data.Abstractions.Alias;
@@ -87,11 +88,12 @@ namespace UsingDataEntityFrameworkCore.Controllers
             // pra demonstrar o uso de Update() em massa
             if (!string.IsNullOrWhiteSpace(searchString) && button == "FiltrarAtualizar")
             {
+                Expression<Func<Student, bool>> filterExpression = f =>
+                    f.FirstMidName.ToLower().Contains(searchString.ToLower()) ||
+                    f.LastName.ToLower().Contains(searchString.ToLower());
+
                 var filter = new DataFilter<Student>()
-                    .AddFilter(f =>
-                        f.FirstMidName.ToLower().Contains(searchString.ToLower()) ||
-                        f.LastName.ToLower().Contains(searchString.ToLower())
-                    );
+                    .AddFilter(filterExpression);
 
                 // Todos com mesmo segundo nome
                 var random = new Random();
@@ -101,28 +103,36 @@ namespace UsingDataEntityFrameworkCore.Controllers
 
                 if (first != null)
                 {
-                    var updated1 = _writerStore.Update(first.ID, new
-                    {
-                        LastName = $"LastName ({random.Next()})"
-                    });
+                    var updated1 = _writerStore.AsFluentWriter()
+                        .Identifier(first.ID)
+                        .Update(new
+                        {
+                            LastName = $"LastName ({random.Next()})"
+                        });
 
-                    var updated2 = _writerStore.Update(first.ID, c => new
-                    {
-                        LastName = $"{c.LastName} ({random.Next()})"
-                    });
+                    var updated2 = _writerStore.AsFluentWriter()
+                        .Identifier(first.ID)
+                        .Update(c => new
+                        {
+                            LastName = $"{c.LastName} ({random.Next()})"
+                        });
                 }
 
                 // Alterando a coleção inteira
-                var updatedResult1 = _bulkWriterStore.BulkUpdate(filter, new
-                {
-                    LastName = $"LastName {random.Next()}"
-                });
+                var updatedResult1 = _bulkWriterStore.AsFluentBulkWriter()
+                    .Filter(filterExpression)
+                    .BulkUpdate(new
+                    {
+                        LastName = $"LastName {random.Next()}"
+                    });
 
                 // Cada um com seu próprio segundo nome
-                var updatedResult2 = _bulkWriterStore.BulkUpdate(filter, c => new
-                {
-                    LastName = $"{c.LastName} ({random.Next()})"
-                });
+                var updatedResult2 = _bulkWriterStore.AsFluentBulkWriter()
+                    .Filter(filterExpression)
+                    .BulkUpdate(c => new
+                    {
+                        LastName = $"{c.LastName} ({random.Next()})"
+                    });
 
                 students = new PaginatedResult<Student>(
                     result: updatedResult2,

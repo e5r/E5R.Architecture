@@ -108,5 +108,9 @@ namespace Microsoft.Extensions.DependencyInjection
 
             return serviceCollection;
         }
+
+        public static IServiceCollection AddTransformationManager(
+            this IServiceCollection serviceCollection)
+            => serviceCollection.AddScoped<ITransformationManager, TransformationManager>();
     }
 }

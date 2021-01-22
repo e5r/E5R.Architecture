@@ -3,10 +3,9 @@
 // Licensed under the Apache version 2.0: https://github.com/e5r/manifest/blob/master/license/APACHE-2.0.txt
 
 using System;
-using E5R.Architecture.Core;
 using E5R.Architecture.Core.Exceptions;
 
-namespace E5R.Architecture.Infrastructure
+namespace E5R.Architecture.Core
 {
     /// <summary>
     /// Implements lazy loading based on an <see cref="IServiceProvider"/> 
@@ -36,7 +35,8 @@ namespace E5R.Architecture.Infrastructure
                     if (instance == null)
                     {
                         // TODO: Implementar i18n/l10n
-                        throw new InfrastructureLayerException($"Type {targetType.FullName} could not be resolved");
+                        throw new InfrastructureLayerException(
+                            $"Type {targetType.FullName} could not be resolved");
                     }
                     
                     _instance = (TTarget) instance;

@@ -6,6 +6,8 @@
   href: ./lazy-loading.md
 - name: Atributos de Metatags
   href: ./metatag-attributes.md
+- name: Transformando dados entre tipos
+  href: ./transformer-intro.md
 - name: Lendo objetos armazenados
   href: ./storage-reader.md
 - name: Escrevendo objetos armazenados
@@ -14,3 +16,10 @@
   href: ./storage-projection.md
 - name: Introdução a Unit Of Work
   href: ./unit-of-work-intro.md
+- name: Lendo dados com API Fluente
+  href: ./reading-with-fluent-api.md
+- name: Identificadores únicos
+  href: ./uid.md
+- name: Escrevendo dados com API Fluente
+  href: ./writing-with-fluent-api.md
+

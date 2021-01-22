@@ -23,3 +23,12 @@ E5R.Architecture.Infrastructure.Defaults | [![NuGet](https://img.shields.io/nuge
 E5R.Architecture.Infrastructure.AspNetCore | [![NuGet](https://img.shields.io/nuget/v/E5R.Architecture.Infrastructure.AspNetCore.png?style=flat-square)](https://www.nuget.org/packages/E5R.Architecture.Infrastructure.AspNetCore) | [![NuGet RC](https://img.shields.io/nuget/vpre/E5R.Architecture.Infrastructure.AspNetCore.png?style=flat-square)](https://www.nuget.org/packages/E5R.Architecture.Infrastructure.AspNetCore)
 
 Nossa documentação está disponível em https://e5r.github.io/E5R.Architecture.
+
+### Agradecimentos
+
+[JetBrains](https://www.jetbrains.com/?from=E5R) gentilmente fornece ao *E5R Development Team* uma licença de código aberto para várias
+de suas ferramentas, e nós usamos muito o **Rider** no nosso dia a dia.
+
+- **Rider** é uma IDE multi-plataforma, rápida e poderosa.
+
+![image](https://upload.wikimedia.org/wikipedia/commons/thumb/1/1a/JetBrains_Logo_2016.svg/121px-JetBrains_Logo_2016.svg.png)

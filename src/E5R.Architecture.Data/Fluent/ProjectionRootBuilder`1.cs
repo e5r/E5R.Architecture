@@ -7,8 +7,9 @@ using System.Linq;
 using System.Linq.Expressions;
 using E5R.Architecture.Core;
 using E5R.Architecture.Data.Abstractions;
+using E5R.Architecture.Data.Fluent.Query;
 
-namespace E5R.Architecture.Data.FluentQuery
+namespace E5R.Architecture.Data.Fluent
 {
     public class ProjectionRootBuilder<TDataModel> : FluentQueryBuilderElements<TDataModel>
         where TDataModel : IDataModel
