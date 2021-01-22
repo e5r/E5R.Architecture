@@ -5,10 +5,10 @@
   <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-    <title>Class ProjectionRootBuilder&lt;TDataModel, TSelect&gt;
+    <title>Class FluentBulkWriterBuilderWithFilter&lt;TDataModel&gt;
    | Arquitetura E5R </title>
     <meta name="viewport" content="width=device-width">
-    <meta name="title" content="Class ProjectionRootBuilder&lt;TDataModel, TSelect&gt;
+    <meta name="title" content="Class FluentBulkWriterBuilderWithFilter&lt;TDataModel&gt;
    | Arquitetura E5R ">
     <meta name="generator" content="docfx 2.56.6.0">
     
@@ -68,24 +68,24 @@
         </div>
         <div class="article row grid-right">
           <div class="col-md-10">
-            <article class="content wrap" id="_content" data-uid="E5R.Architecture.Data.FluentQuery.ProjectionRootBuilder`2">
+            <article class="content wrap" id="_content" data-uid="E5R.Architecture.Data.Fluent.Writer.FluentBulkWriterBuilderWithFilter`1">
   
   
-  <h1 id="E5R_Architecture_Data_FluentQuery_ProjectionRootBuilder_2" data-uid="E5R.Architecture.Data.FluentQuery.ProjectionRootBuilder`2" class="text-break">Class ProjectionRootBuilder&lt;TDataModel, TSelect&gt;
+  <h1 id="E5R_Architecture_Data_Fluent_Writer_FluentBulkWriterBuilderWithFilter_1" data-uid="E5R.Architecture.Data.Fluent.Writer.FluentBulkWriterBuilderWithFilter`1" class="text-break">Class FluentBulkWriterBuilderWithFilter&lt;TDataModel&gt;
   </h1>
   <div class="markdown level0 summary"></div>
   <div class="markdown level0 conceptual"></div>
   <div class="inheritance">
     <h5>Inheritance</h5>
     <div class="level0"><span class="xref">System.Object</span></div>
-    <div class="level1"><a class="xref" href="E5R.Architecture.Data.FluentQuery.FluentQueryBuilderElements-1.html">FluentQueryBuilderElements</a>&lt;TDataModel&gt;</div>
-    <div class="level2"><span class="xref">ProjectionRootBuilder&lt;TDataModel, TSelect&gt;</span></div>
+    <div class="level1"><a class="xref" href="E5R.Architecture.Data.Fluent.Writer.FluentBulkWriterBuilderElements-1.html">FluentBulkWriterBuilderElements</a>&lt;TDataModel&gt;</div>
+    <div class="level2"><span class="xref">FluentBulkWriterBuilderWithFilter&lt;TDataModel&gt;</span></div>
   </div>
-  <h6><strong>Namespace</strong>: <a class="xref" href="E5R.Architecture.Data.FluentQuery.html">E5R.Architecture.Data.FluentQuery</a></h6>
+  <h6><strong>Namespace</strong>: <a class="xref" href="E5R.Architecture.Data.Fluent.Writer.html">E5R.Architecture.Data.Fluent.Writer</a></h6>
   <h6><strong>Assembly</strong>: E5R.Architecture.Data.dll</h6>
-  <h5 id="E5R_Architecture_Data_FluentQuery_ProjectionRootBuilder_2_syntax">Syntax</h5>
+  <h5 id="E5R_Architecture_Data_Fluent_Writer_FluentBulkWriterBuilderWithFilter_1_syntax">Syntax</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public class ProjectionRootBuilder&lt;TDataModel, TSelect&gt; : FluentQueryBuilderElements&lt;TDataModel&gt; where TDataModel : IDataModel</code></pre>
+    <pre><code class="lang-csharp hljs">public class FluentBulkWriterBuilderWithFilter&lt;TDataModel&gt; : FluentBulkWriterBuilderElements&lt;TDataModel&gt; where TDataModel : IDataModel</code></pre>
   </div>
   <h5 class="typeParameters">Type Parameters</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -100,21 +100,25 @@
         <td><span class="parametername">TDataModel</span></td>
         <td></td>
       </tr>
-      <tr>
-        <td><span class="parametername">TSelect</span></td>
-        <td></td>
-      </tr>
     </tbody>
   </table>
   <h3 id="methods">Methods
   </h3>
-  <a id="E5R_Architecture_Data_FluentQuery_ProjectionRootBuilder_2_Include_" data-uid="E5R.Architecture.Data.FluentQuery.ProjectionRootBuilder`2.Include*"></a>
-  <h4 id="E5R_Architecture_Data_FluentQuery_ProjectionRootBuilder_2_Include_Expression_Func__0_System_Object___" data-uid="E5R.Architecture.Data.FluentQuery.ProjectionRootBuilder`2.Include(Expression{Func{`0,System.Object}})">Include(Expression&lt;Func&lt;TDataModel, Object&gt;&gt;)</h4>
+  <a id="E5R_Architecture_Data_Fluent_Writer_FluentBulkWriterBuilderWithFilter_1_BulkRemove_" data-uid="E5R.Architecture.Data.Fluent.Writer.FluentBulkWriterBuilderWithFilter`1.BulkRemove*"></a>
+  <h4 id="E5R_Architecture_Data_Fluent_Writer_FluentBulkWriterBuilderWithFilter_1_BulkRemove" data-uid="E5R.Architecture.Data.Fluent.Writer.FluentBulkWriterBuilderWithFilter`1.BulkRemove">BulkRemove()</h4>
   <div class="markdown level1 summary"></div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public ProjectionRootBuilder&lt;TDataModel, TSelect&gt; Include(Expression&lt;Func&lt;TDataModel, object&gt;&gt; expression)</code></pre>
+    <pre><code class="lang-csharp hljs">public void BulkRemove()</code></pre>
+  </div>
+  <a id="E5R_Architecture_Data_Fluent_Writer_FluentBulkWriterBuilderWithFilter_1_BulkUpdate_" data-uid="E5R.Architecture.Data.Fluent.Writer.FluentBulkWriterBuilderWithFilter`1.BulkUpdate*"></a>
+  <h4 id="E5R_Architecture_Data_Fluent_Writer_FluentBulkWriterBuilderWithFilter_1_BulkUpdate__1___0_" data-uid="E5R.Architecture.Data.Fluent.Writer.FluentBulkWriterBuilderWithFilter`1.BulkUpdate``1(``0)">BulkUpdate&lt;TUpdated&gt;(TUpdated)</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public IEnumerable&lt;TDataModel&gt; BulkUpdate&lt;TUpdated&gt;(TUpdated updated)</code></pre>
   </div>
   <h5 class="parameters">Parameters</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -127,8 +131,8 @@
     </thead>
     <tbody>
       <tr>
-        <td><span class="xref">Expression</span>&lt;<span class="xref">Func</span>&lt;TDataModel, <span class="xref">System.Object</span>&gt;&gt;</td>
-        <td><span class="parametername">expression</span></td>
+        <td><span class="xref">TUpdated</span></td>
+        <td><span class="parametername">updated</span></td>
         <td></td>
       </tr>
     </tbody>
@@ -143,48 +147,7 @@
     </thead>
     <tbody>
       <tr>
-        <td><a class="xref" href="E5R.Architecture.Data.FluentQuery.ProjectionRootBuilder-2.html">ProjectionRootBuilder</a>&lt;TDataModel, TSelect&gt;</td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
-  <a id="E5R_Architecture_Data_FluentQuery_ProjectionRootBuilder_2_Include_" data-uid="E5R.Architecture.Data.FluentQuery.ProjectionRootBuilder`2.Include*"></a>
-  <h4 id="E5R_Architecture_Data_FluentQuery_ProjectionRootBuilder_2_Include__1_Expression_Func__0_System_Object___" data-uid="E5R.Architecture.Data.FluentQuery.ProjectionRootBuilder`2.Include``1(Expression{Func{`0,System.Object}})">Include&lt;T&gt;(Expression&lt;Func&lt;TDataModel, Object&gt;&gt;)</h4>
-  <div class="markdown level1 summary"></div>
-  <div class="markdown level1 conceptual"></div>
-  <h5 class="decalaration">Declaration</h5>
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public ProjectionInnerBuilder&lt;T, TDataModel&gt; Include&lt;T&gt;(Expression&lt;Func&lt;TDataModel, object&gt;&gt; expression)
-    where T : IDataModel</code></pre>
-  </div>
-  <h5 class="parameters">Parameters</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Name</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><span class="xref">Expression</span>&lt;<span class="xref">Func</span>&lt;TDataModel, <span class="xref">System.Object</span>&gt;&gt;</td>
-        <td><span class="parametername">expression</span></td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
-  <h5 class="returns">Returns</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="E5R.Architecture.Data.FluentQuery.ProjectionInnerBuilder-2.html">ProjectionInnerBuilder</a>&lt;T, TDataModel&gt;</td>
+        <td><span class="xref">IEnumerable</span>&lt;TDataModel&gt;</td>
         <td></td>
       </tr>
     </tbody>
@@ -199,19 +162,36 @@
     </thead>
     <tbody>
       <tr>
-        <td><span class="parametername">T</span></td>
+        <td><span class="parametername">TUpdated</span></td>
         <td></td>
       </tr>
     </tbody>
   </table>
-  <a id="E5R_Architecture_Data_FluentQuery_ProjectionRootBuilder_2_Project_" data-uid="E5R.Architecture.Data.FluentQuery.ProjectionRootBuilder`2.Project*"></a>
-  <h4 id="E5R_Architecture_Data_FluentQuery_ProjectionRootBuilder_2_Project" data-uid="E5R.Architecture.Data.FluentQuery.ProjectionRootBuilder`2.Project">Project()</h4>
+  <a id="E5R_Architecture_Data_Fluent_Writer_FluentBulkWriterBuilderWithFilter_1_BulkUpdate_" data-uid="E5R.Architecture.Data.Fluent.Writer.FluentBulkWriterBuilderWithFilter`1.BulkUpdate*"></a>
+  <h4 id="E5R_Architecture_Data_Fluent_Writer_FluentBulkWriterBuilderWithFilter_1_BulkUpdate__1_Expression_Func__0___0___" data-uid="E5R.Architecture.Data.Fluent.Writer.FluentBulkWriterBuilderWithFilter`1.BulkUpdate``1(Expression{Func{`0,``0}})">BulkUpdate&lt;TUpdated&gt;(Expression&lt;Func&lt;TDataModel, TUpdated&gt;&gt;)</h4>
   <div class="markdown level1 summary"></div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public FluentQueryBuilderWithProjection&lt;TDataModel, TSelect&gt; Project()</code></pre>
+    <pre><code class="lang-csharp hljs">public IEnumerable&lt;TDataModel&gt; BulkUpdate&lt;TUpdated&gt;(Expression&lt;Func&lt;TDataModel, TUpdated&gt;&gt; updateExpression)</code></pre>
   </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">Expression</span>&lt;<span class="xref">Func</span>&lt;TDataModel, TUpdated&gt;&gt;</td>
+        <td><span class="parametername">updateExpression</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
   <h5 class="returns">Returns</h5>
   <table class="table table-bordered table-striped table-condensed">
     <thead>
@@ -222,7 +202,62 @@
     </thead>
     <tbody>
       <tr>
-        <td><a class="xref" href="E5R.Architecture.Data.FluentQuery.FluentQueryBuilderWithProjection-2.html">FluentQueryBuilderWithProjection</a>&lt;TDataModel, TSelect&gt;</td>
+        <td><span class="xref">IEnumerable</span>&lt;TDataModel&gt;</td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="typeParameters">Type Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="parametername">TUpdated</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <a id="E5R_Architecture_Data_Fluent_Writer_FluentBulkWriterBuilderWithFilter_1_Filter_" data-uid="E5R.Architecture.Data.Fluent.Writer.FluentBulkWriterBuilderWithFilter`1.Filter*"></a>
+  <h4 id="E5R_Architecture_Data_Fluent_Writer_FluentBulkWriterBuilderWithFilter_1_Filter_Expression_Func__0_System_Boolean___" data-uid="E5R.Architecture.Data.Fluent.Writer.FluentBulkWriterBuilderWithFilter`1.Filter(Expression{Func{`0,System.Boolean}})">Filter(Expression&lt;Func&lt;TDataModel, Boolean&gt;&gt;)</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public FluentBulkWriterBuilderWithFilter&lt;TDataModel&gt; Filter(Expression&lt;Func&lt;TDataModel, bool&gt;&gt; filterExpression)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">Expression</span>&lt;<span class="xref">Func</span>&lt;TDataModel, <span class="xref">System.Boolean</span>&gt;&gt;</td>
+        <td><span class="parametername">filterExpression</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="E5R.Architecture.Data.Fluent.Writer.FluentBulkWriterBuilderWithFilter-1.html">FluentBulkWriterBuilderWithFilter</a>&lt;TDataModel&gt;</td>
         <td></td>
       </tr>
     </tbody>

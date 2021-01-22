@@ -221,6 +221,54 @@
     },
     {
       "type": "ManagedReference",
+      "source_relative_path": "api/E5R.Architecture.Core.ITransformationManager.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/E5R.Architecture.Core.ITransformationManager.html",
+          "hash": "/rnAQrQSS+eC05Z4AJjy2g=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/E5R.Architecture.Core.ITransformer-2.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/E5R.Architecture.Core.ITransformer-2.html",
+          "hash": "sAekTNm9v3t6++MxB6z7hw=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/E5R.Architecture.Core.ITransformer-3.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/E5R.Architecture.Core.ITransformer-3.html",
+          "hash": "Zdk77txmULURohTZVIPdJw=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/E5R.Architecture.Core.LazyResolver-1.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/E5R.Architecture.Core.LazyResolver-1.html",
+          "hash": "2WSMJRV91/i7kilJsdPsEQ=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
       "source_relative_path": "api/E5R.Architecture.Core.MetaTagAttribute.yml",
       "output": {
         ".html": {
@@ -353,6 +401,42 @@
     },
     {
       "type": "ManagedReference",
+      "source_relative_path": "api/E5R.Architecture.Core.TransformationManager.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/E5R.Architecture.Core.TransformationManager.html",
+          "hash": "CABsv7Fk4r1sZk67jwAA/w=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/E5R.Architecture.Core.UniqueIdentifier.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/E5R.Architecture.Core.UniqueIdentifier.html",
+          "hash": "RQ8RVDQGtTWqJzFRDvg4bQ=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/E5R.Architecture.Core.UniqueIdentifierLength.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/E5R.Architecture.Core.UniqueIdentifierLength.html",
+          "hash": "i1RyjF9XhNVY8IKuOjMbtg=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
       "source_relative_path": "api/E5R.Architecture.Core.Utils.EnumUtil.yml",
       "output": {
         ".html": {
@@ -381,7 +465,7 @@
       "output": {
         ".html": {
           "relative_path": "api/E5R.Architecture.Core.html",
-          "hash": "LoCODhE5UhmB1du7zl3qqw=="
+          "hash": "3wlTz/SQG0qCg/5PZ3+AFQ=="
         }
       },
       "is_incremental": false,
@@ -761,18 +845,6 @@
     },
     {
       "type": "ManagedReference",
-      "source_relative_path": "api/E5R.Architecture.Data.Abstractions.IStorageExtensions.yml",
-      "output": {
-        ".html": {
-          "relative_path": "api/E5R.Architecture.Data.Abstractions.IStorageExtensions.html",
-          "hash": "/Gk8QLV2Qz9E0YeEiOIGjg=="
-        }
-      },
-      "is_incremental": false,
-      "version": ""
-    },
-    {
-      "type": "ManagedReference",
       "source_relative_path": "api/E5R.Architecture.Data.Abstractions.IStorageReader-1.yml",
       "output": {
         ".html": {
@@ -833,11 +905,23 @@
     },
     {
       "type": "ManagedReference",
+      "source_relative_path": "api/E5R.Architecture.Data.Abstractions.StorageExtensions.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/E5R.Architecture.Data.Abstractions.StorageExtensions.html",
+          "hash": "P/QvzkmmgpLkTz9ki/GMmA=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
       "source_relative_path": "api/E5R.Architecture.Data.Abstractions.yml",
       "output": {
         ".html": {
           "relative_path": "api/E5R.Architecture.Data.Abstractions.html",
-          "hash": "vH8KpIs0w5uWnA1yvLH18w=="
+          "hash": "JYW5xU1Sw5vQyBW+0aMP6A=="
         }
       },
       "is_incremental": false,
@@ -1373,11 +1457,11 @@
     },
     {
       "type": "ManagedReference",
-      "source_relative_path": "api/E5R.Architecture.Data.FluentQuery.FluentQueryBuilder-1.yml",
+      "source_relative_path": "api/E5R.Architecture.Data.Fluent.ProjectionInnerBuilder-2.yml",
       "output": {
         ".html": {
-          "relative_path": "api/E5R.Architecture.Data.FluentQuery.FluentQueryBuilder-1.html",
-          "hash": "rzlwwWPsh0w+j7L2wKI7ag=="
+          "relative_path": "api/E5R.Architecture.Data.Fluent.ProjectionInnerBuilder-2.html",
+          "hash": "IykZNyzsLf8GBw/NfdqdWA=="
         }
       },
       "is_incremental": false,
@@ -1385,11 +1469,11 @@
     },
     {
       "type": "ManagedReference",
-      "source_relative_path": "api/E5R.Architecture.Data.FluentQuery.FluentQueryBuilderElements-1.yml",
+      "source_relative_path": "api/E5R.Architecture.Data.Fluent.ProjectionInnerBuilder-3.yml",
       "output": {
         ".html": {
-          "relative_path": "api/E5R.Architecture.Data.FluentQuery.FluentQueryBuilderElements-1.html",
-          "hash": "hPDex7nnC2RHeQyu8LDLvA=="
+          "relative_path": "api/E5R.Architecture.Data.Fluent.ProjectionInnerBuilder-3.html",
+          "hash": "N5oXbtfCb8WM4l3bO3Azdw=="
         }
       },
       "is_incremental": false,
@@ -1397,11 +1481,11 @@
     },
     {
       "type": "ManagedReference",
-      "source_relative_path": "api/E5R.Architecture.Data.FluentQuery.FluentQueryBuilderWithFilter-1.yml",
+      "source_relative_path": "api/E5R.Architecture.Data.Fluent.ProjectionInnerBuilder-4.yml",
       "output": {
         ".html": {
-          "relative_path": "api/E5R.Architecture.Data.FluentQuery.FluentQueryBuilderWithFilter-1.html",
-          "hash": "HtcZ8SaOD19Z3cSDhBmMYA=="
+          "relative_path": "api/E5R.Architecture.Data.Fluent.ProjectionInnerBuilder-4.html",
+          "hash": "SmTQRl9Z1lAhCN0T8ottGQ=="
         }
       },
       "is_incremental": false,
@@ -1409,11 +1493,11 @@
     },
     {
       "type": "ManagedReference",
-      "source_relative_path": "api/E5R.Architecture.Data.FluentQuery.FluentQueryBuilderWithFilter-2.yml",
+      "source_relative_path": "api/E5R.Architecture.Data.Fluent.ProjectionRootBuilder-1.yml",
       "output": {
         ".html": {
-          "relative_path": "api/E5R.Architecture.Data.FluentQuery.FluentQueryBuilderWithFilter-2.html",
-          "hash": "QzgYa+PQR+PQm2s87gMsSg=="
+          "relative_path": "api/E5R.Architecture.Data.Fluent.ProjectionRootBuilder-1.html",
+          "hash": "KhaTATpRodqJRH6Xly85kA=="
         }
       },
       "is_incremental": false,
@@ -1421,11 +1505,11 @@
     },
     {
       "type": "ManagedReference",
-      "source_relative_path": "api/E5R.Architecture.Data.FluentQuery.FluentQueryBuilderWithFilter-3.yml",
+      "source_relative_path": "api/E5R.Architecture.Data.Fluent.ProjectionRootBuilder-2.yml",
       "output": {
         ".html": {
-          "relative_path": "api/E5R.Architecture.Data.FluentQuery.FluentQueryBuilderWithFilter-3.html",
-          "hash": "PZNjpuv2x7bbUIkQhB5rLg=="
+          "relative_path": "api/E5R.Architecture.Data.Fluent.ProjectionRootBuilder-2.html",
+          "hash": "Z6mBW0s6hi24a6NjGq8FPw=="
         }
       },
       "is_incremental": false,
@@ -1433,11 +1517,11 @@
     },
     {
       "type": "ManagedReference",
-      "source_relative_path": "api/E5R.Architecture.Data.FluentQuery.FluentQueryBuilderWithLimiter-1.yml",
+      "source_relative_path": "api/E5R.Architecture.Data.Fluent.ProjectionRootBuilder-3.yml",
       "output": {
         ".html": {
-          "relative_path": "api/E5R.Architecture.Data.FluentQuery.FluentQueryBuilderWithLimiter-1.html",
-          "hash": "FoSYe2eGqt/EfCsZVNnvFw=="
+          "relative_path": "api/E5R.Architecture.Data.Fluent.ProjectionRootBuilder-3.html",
+          "hash": "0z3K2Ojs5/UnlhEzvylRVA=="
         }
       },
       "is_incremental": false,
@@ -1445,11 +1529,11 @@
     },
     {
       "type": "ManagedReference",
-      "source_relative_path": "api/E5R.Architecture.Data.FluentQuery.FluentQueryBuilderWithLimiter-2.yml",
+      "source_relative_path": "api/E5R.Architecture.Data.Fluent.Query.FluentQueryBuilder-1.yml",
       "output": {
         ".html": {
-          "relative_path": "api/E5R.Architecture.Data.FluentQuery.FluentQueryBuilderWithLimiter-2.html",
-          "hash": "5UlNce4h6EFAdMhC41Sm7A=="
+          "relative_path": "api/E5R.Architecture.Data.Fluent.Query.FluentQueryBuilder-1.html",
+          "hash": "r1dTE3mu2CDBC1jC/OeJAw=="
         }
       },
       "is_incremental": false,
@@ -1457,11 +1541,11 @@
     },
     {
       "type": "ManagedReference",
-      "source_relative_path": "api/E5R.Architecture.Data.FluentQuery.FluentQueryBuilderWithLimiter-3.yml",
+      "source_relative_path": "api/E5R.Architecture.Data.Fluent.Query.FluentQueryBuilderElements-1.yml",
       "output": {
         ".html": {
-          "relative_path": "api/E5R.Architecture.Data.FluentQuery.FluentQueryBuilderWithLimiter-3.html",
-          "hash": "qwGPTXxZFtDMGSf8qn9qdw=="
+          "relative_path": "api/E5R.Architecture.Data.Fluent.Query.FluentQueryBuilderElements-1.html",
+          "hash": "TtKjuM8hhICn+X4+dutUTA=="
         }
       },
       "is_incremental": false,
@@ -1469,11 +1553,11 @@
     },
     {
       "type": "ManagedReference",
-      "source_relative_path": "api/E5R.Architecture.Data.FluentQuery.FluentQueryBuilderWithLimiterAndFilter-1.yml",
+      "source_relative_path": "api/E5R.Architecture.Data.Fluent.Query.FluentQueryBuilderWithFilter-1.yml",
       "output": {
         ".html": {
-          "relative_path": "api/E5R.Architecture.Data.FluentQuery.FluentQueryBuilderWithLimiterAndFilter-1.html",
-          "hash": "QV9fhULVnBxL3uHXNhVc0Q=="
+          "relative_path": "api/E5R.Architecture.Data.Fluent.Query.FluentQueryBuilderWithFilter-1.html",
+          "hash": "xIcdY/4e6mJRA7WfY2ME3A=="
         }
       },
       "is_incremental": false,
@@ -1481,11 +1565,11 @@
     },
     {
       "type": "ManagedReference",
-      "source_relative_path": "api/E5R.Architecture.Data.FluentQuery.FluentQueryBuilderWithLimiterAndFilter-2.yml",
+      "source_relative_path": "api/E5R.Architecture.Data.Fluent.Query.FluentQueryBuilderWithFilter-2.yml",
       "output": {
         ".html": {
-          "relative_path": "api/E5R.Architecture.Data.FluentQuery.FluentQueryBuilderWithLimiterAndFilter-2.html",
-          "hash": "nokdd2iQLOq3oWJ/IWUY9Q=="
+          "relative_path": "api/E5R.Architecture.Data.Fluent.Query.FluentQueryBuilderWithFilter-2.html",
+          "hash": "Bx2ZMJC81j7qPCcl2uR+OQ=="
         }
       },
       "is_incremental": false,
@@ -1493,11 +1577,11 @@
     },
     {
       "type": "ManagedReference",
-      "source_relative_path": "api/E5R.Architecture.Data.FluentQuery.FluentQueryBuilderWithLimiterAndFilter-3.yml",
+      "source_relative_path": "api/E5R.Architecture.Data.Fluent.Query.FluentQueryBuilderWithFilter-3.yml",
       "output": {
         ".html": {
-          "relative_path": "api/E5R.Architecture.Data.FluentQuery.FluentQueryBuilderWithLimiterAndFilter-3.html",
-          "hash": "0McLwn3Y7TqBDhC5Pc9nLA=="
+          "relative_path": "api/E5R.Architecture.Data.Fluent.Query.FluentQueryBuilderWithFilter-3.html",
+          "hash": "GOtZFa2PD8ya482FEHt87w=="
         }
       },
       "is_incremental": false,
@@ -1505,11 +1589,11 @@
     },
     {
       "type": "ManagedReference",
-      "source_relative_path": "api/E5R.Architecture.Data.FluentQuery.FluentQueryBuilderWithProjection-1.yml",
+      "source_relative_path": "api/E5R.Architecture.Data.Fluent.Query.FluentQueryBuilderWithLimiter-1.yml",
       "output": {
         ".html": {
-          "relative_path": "api/E5R.Architecture.Data.FluentQuery.FluentQueryBuilderWithProjection-1.html",
-          "hash": "yHug0pjgmA/IB4DUX0mL+w=="
+          "relative_path": "api/E5R.Architecture.Data.Fluent.Query.FluentQueryBuilderWithLimiter-1.html",
+          "hash": "lTqas49gsiNB5KrKoBht3w=="
         }
       },
       "is_incremental": false,
@@ -1517,11 +1601,11 @@
     },
     {
       "type": "ManagedReference",
-      "source_relative_path": "api/E5R.Architecture.Data.FluentQuery.FluentQueryBuilderWithProjection-2.yml",
+      "source_relative_path": "api/E5R.Architecture.Data.Fluent.Query.FluentQueryBuilderWithLimiter-2.yml",
       "output": {
         ".html": {
-          "relative_path": "api/E5R.Architecture.Data.FluentQuery.FluentQueryBuilderWithProjection-2.html",
-          "hash": "SW5Ok1igbFcfVWoiecgIUg=="
+          "relative_path": "api/E5R.Architecture.Data.Fluent.Query.FluentQueryBuilderWithLimiter-2.html",
+          "hash": "GJ/RhIoF0NGr7Er4OWYfxQ=="
         }
       },
       "is_incremental": false,
@@ -1529,11 +1613,11 @@
     },
     {
       "type": "ManagedReference",
-      "source_relative_path": "api/E5R.Architecture.Data.FluentQuery.FluentQueryBuilderWithProjection-3.yml",
+      "source_relative_path": "api/E5R.Architecture.Data.Fluent.Query.FluentQueryBuilderWithLimiter-3.yml",
       "output": {
         ".html": {
-          "relative_path": "api/E5R.Architecture.Data.FluentQuery.FluentQueryBuilderWithProjection-3.html",
-          "hash": "9K5PmTjcHX9Vz9+TLZLDLA=="
+          "relative_path": "api/E5R.Architecture.Data.Fluent.Query.FluentQueryBuilderWithLimiter-3.html",
+          "hash": "uf42SVGwmYyTI5oU/gj2qg=="
         }
       },
       "is_incremental": false,
@@ -1541,11 +1625,11 @@
     },
     {
       "type": "ManagedReference",
-      "source_relative_path": "api/E5R.Architecture.Data.FluentQuery.ProjectionInnerBuilder-2.yml",
+      "source_relative_path": "api/E5R.Architecture.Data.Fluent.Query.FluentQueryBuilderWithLimiterAndFilter-1.yml",
       "output": {
         ".html": {
-          "relative_path": "api/E5R.Architecture.Data.FluentQuery.ProjectionInnerBuilder-2.html",
-          "hash": "BJytmbG455lzmRNigsa28Q=="
+          "relative_path": "api/E5R.Architecture.Data.Fluent.Query.FluentQueryBuilderWithLimiterAndFilter-1.html",
+          "hash": "AARzY4Y4HWefRHNLvVb8+w=="
         }
       },
       "is_incremental": false,
@@ -1553,11 +1637,11 @@
     },
     {
       "type": "ManagedReference",
-      "source_relative_path": "api/E5R.Architecture.Data.FluentQuery.ProjectionInnerBuilder-3.yml",
+      "source_relative_path": "api/E5R.Architecture.Data.Fluent.Query.FluentQueryBuilderWithLimiterAndFilter-2.yml",
       "output": {
         ".html": {
-          "relative_path": "api/E5R.Architecture.Data.FluentQuery.ProjectionInnerBuilder-3.html",
-          "hash": "5TOM3Mzn2zoWsTrXviXDRg=="
+          "relative_path": "api/E5R.Architecture.Data.Fluent.Query.FluentQueryBuilderWithLimiterAndFilter-2.html",
+          "hash": "UVxolt1yVTnDjh7uvd9HMQ=="
         }
       },
       "is_incremental": false,
@@ -1565,11 +1649,11 @@
     },
     {
       "type": "ManagedReference",
-      "source_relative_path": "api/E5R.Architecture.Data.FluentQuery.ProjectionInnerBuilder-4.yml",
+      "source_relative_path": "api/E5R.Architecture.Data.Fluent.Query.FluentQueryBuilderWithLimiterAndFilter-3.yml",
       "output": {
         ".html": {
-          "relative_path": "api/E5R.Architecture.Data.FluentQuery.ProjectionInnerBuilder-4.html",
-          "hash": "qaADdEUTnWCGvWmooHZqWg=="
+          "relative_path": "api/E5R.Architecture.Data.Fluent.Query.FluentQueryBuilderWithLimiterAndFilter-3.html",
+          "hash": "mXkwar0GI/wWVdCvfF4eCQ=="
         }
       },
       "is_incremental": false,
@@ -1577,11 +1661,11 @@
     },
     {
       "type": "ManagedReference",
-      "source_relative_path": "api/E5R.Architecture.Data.FluentQuery.ProjectionRootBuilder-1.yml",
+      "source_relative_path": "api/E5R.Architecture.Data.Fluent.Query.FluentQueryBuilderWithProjection-1.yml",
       "output": {
         ".html": {
-          "relative_path": "api/E5R.Architecture.Data.FluentQuery.ProjectionRootBuilder-1.html",
-          "hash": "VT6R86T3NmiJgMSKtCQmJA=="
+          "relative_path": "api/E5R.Architecture.Data.Fluent.Query.FluentQueryBuilderWithProjection-1.html",
+          "hash": "e5skSnfHZ5DRLEpckVp7Eg=="
         }
       },
       "is_incremental": false,
@@ -1589,11 +1673,11 @@
     },
     {
       "type": "ManagedReference",
-      "source_relative_path": "api/E5R.Architecture.Data.FluentQuery.ProjectionRootBuilder-2.yml",
+      "source_relative_path": "api/E5R.Architecture.Data.Fluent.Query.FluentQueryBuilderWithProjection-2.yml",
       "output": {
         ".html": {
-          "relative_path": "api/E5R.Architecture.Data.FluentQuery.ProjectionRootBuilder-2.html",
-          "hash": "Bqb8ziOEaBcUQbjVbYNu4Q=="
+          "relative_path": "api/E5R.Architecture.Data.Fluent.Query.FluentQueryBuilderWithProjection-2.html",
+          "hash": "7vDr0a0ABT0V7p0HApMzvw=="
         }
       },
       "is_incremental": false,
@@ -1601,11 +1685,11 @@
     },
     {
       "type": "ManagedReference",
-      "source_relative_path": "api/E5R.Architecture.Data.FluentQuery.ProjectionRootBuilder-3.yml",
+      "source_relative_path": "api/E5R.Architecture.Data.Fluent.Query.FluentQueryBuilderWithProjection-3.yml",
       "output": {
         ".html": {
-          "relative_path": "api/E5R.Architecture.Data.FluentQuery.ProjectionRootBuilder-3.html",
-          "hash": "RM6+ZFsWxCNwmeYKTb5A1w=="
+          "relative_path": "api/E5R.Architecture.Data.Fluent.Query.FluentQueryBuilderWithProjection-3.html",
+          "hash": "oIzNsCUhmuHTONphlVsjCA=="
         }
       },
       "is_incremental": false,
@@ -1613,11 +1697,107 @@
     },
     {
       "type": "ManagedReference",
-      "source_relative_path": "api/E5R.Architecture.Data.FluentQuery.yml",
+      "source_relative_path": "api/E5R.Architecture.Data.Fluent.Query.yml",
       "output": {
         ".html": {
-          "relative_path": "api/E5R.Architecture.Data.FluentQuery.html",
-          "hash": "7O3GY5b2SBfbqFB9DYTBmg=="
+          "relative_path": "api/E5R.Architecture.Data.Fluent.Query.html",
+          "hash": "SV2whpaM2bZkGfy9Vr7XkQ=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/E5R.Architecture.Data.Fluent.Writer.FluentBulkWriterBuilder-1.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/E5R.Architecture.Data.Fluent.Writer.FluentBulkWriterBuilder-1.html",
+          "hash": "5qFQSwHXjluUdXuBkbyIvA=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/E5R.Architecture.Data.Fluent.Writer.FluentBulkWriterBuilderElements-1.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/E5R.Architecture.Data.Fluent.Writer.FluentBulkWriterBuilderElements-1.html",
+          "hash": "GDsMmgx0uyhfyRPIBa+oYg=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/E5R.Architecture.Data.Fluent.Writer.FluentBulkWriterBuilderWithFilter-1.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/E5R.Architecture.Data.Fluent.Writer.FluentBulkWriterBuilderWithFilter-1.html",
+          "hash": "gqJnwfhx8wm63AeFq7JtCg=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/E5R.Architecture.Data.Fluent.Writer.FluentWriterBuilder-1.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/E5R.Architecture.Data.Fluent.Writer.FluentWriterBuilder-1.html",
+          "hash": "pEPC5DQxWngUqHlErzRbLA=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/E5R.Architecture.Data.Fluent.Writer.FluentWriterBuilderElements-1.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/E5R.Architecture.Data.Fluent.Writer.FluentWriterBuilderElements-1.html",
+          "hash": "5BGxmfk7S01G4aNpp2WPjg=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/E5R.Architecture.Data.Fluent.Writer.FluentWriterBuilderWithIdentifier-1.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/E5R.Architecture.Data.Fluent.Writer.FluentWriterBuilderWithIdentifier-1.html",
+          "hash": "wXi55VK/IQDec8n4r+vrDg=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/E5R.Architecture.Data.Fluent.Writer.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/E5R.Architecture.Data.Fluent.Writer.html",
+          "hash": "1beRAeeaXXd3DIJfNUo6/Q=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/E5R.Architecture.Data.Fluent.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/E5R.Architecture.Data.Fluent.html",
+          "hash": "JtZoTNkny5aWj8DkMsJ7EQ=="
         }
       },
       "is_incremental": false,
@@ -1853,18 +2033,6 @@
     },
     {
       "type": "ManagedReference",
-      "source_relative_path": "api/E5R.Architecture.Infrastructure.LazyResolver-1.yml",
-      "output": {
-        ".html": {
-          "relative_path": "api/E5R.Architecture.Infrastructure.LazyResolver-1.html",
-          "hash": "LPUw575ul9ICr/ozvhviwg=="
-        }
-      },
-      "is_incremental": false,
-      "version": ""
-    },
-    {
-      "type": "ManagedReference",
       "source_relative_path": "api/E5R.Architecture.Infrastructure.ServiceCollectionDIContainer.yml",
       "output": {
         ".html": {
@@ -1929,7 +2097,7 @@
       "output": {
         ".html": {
           "relative_path": "api/E5R.Architecture.Infrastructure.html",
-          "hash": "xLOEen9MgmjTTnfsvGKFOA=="
+          "hash": "lEkAR8qk6CY7B6Y/VXBlVw=="
         }
       },
       "is_incremental": false,
@@ -1965,7 +2133,7 @@
       "output": {
         ".html": {
           "relative_path": "api/Microsoft.Extensions.DependencyInjection.ServiceCollectionExtensions.html",
-          "hash": "8ooeb6HJCOOi6RqT1Ub7+g=="
+          "hash": "9fXBiitL+KhCjqs0kO8TWA=="
         }
       },
       "is_incremental": false,
@@ -2001,7 +2169,7 @@
       "output": {
         ".html": {
           "relative_path": "api/toc.html",
-          "hash": "vF78r/lnbo7dFZ4WdWddlw=="
+          "hash": "tvPoC2tvoQsSpvupoVxKPg=="
         }
       },
       "is_incremental": false,
@@ -2047,7 +2215,7 @@
       "output": {
         ".html": {
           "relative_path": "release-notes.html",
-          "hash": "63UoYp8Eyc9y3cFL128rhg=="
+          "hash": "5M3O9Esf1tRbQulx7ALIyA=="
         }
       },
       "is_incremental": false,
@@ -2115,6 +2283,18 @@
     },
     {
       "type": "Conceptual",
+      "source_relative_path": "tutorials/reading-with-fluent-api.md",
+      "output": {
+        ".html": {
+          "relative_path": "tutorials/reading-with-fluent-api.html",
+          "hash": "GFbh1y0XdtRl9T0m9ND1Ow=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
       "source_relative_path": "tutorials/storage-projection.md",
       "output": {
         ".html": {
@@ -2155,7 +2335,31 @@
       "output": {
         ".html": {
           "relative_path": "tutorials/toc.html",
-          "hash": "uWxFFEW7yy2Ja2HcBlCoIw=="
+          "hash": "1XXxl4gKsv4D+vCD/VshYg=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "tutorials/transformer-intro.md",
+      "output": {
+        ".html": {
+          "relative_path": "tutorials/transformer-intro.html",
+          "hash": "HWdbFFizgcj3+1GNx7zPVg=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "tutorials/uid.md",
+      "output": {
+        ".html": {
+          "relative_path": "tutorials/uid.html",
+          "hash": "OskKGfrLc9CrbGvct6vlOQ=="
         }
       },
       "is_incremental": false,
@@ -2168,6 +2372,18 @@
         ".html": {
           "relative_path": "tutorials/unit-of-work-intro.html",
           "hash": "YkkbCeNaPNRWDJwGmOjaeg=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "tutorials/writing-with-fluent-api.md",
+      "output": {
+        ".html": {
+          "relative_path": "tutorials/writing-with-fluent-api.html",
+          "hash": "ZNSYOrOMxbnHhAb59iBDwg=="
         }
       },
       "is_incremental": false,
@@ -2188,13 +2404,13 @@
         "ConceptualDocumentProcessor": {
           "can_incremental": false,
           "incrementalPhase": "build",
-          "total_file_count": 11,
+          "total_file_count": 15,
           "skipped_file_count": 0
         },
         "ManagedReferenceDocumentProcessor": {
           "can_incremental": false,
           "incrementalPhase": "build",
-          "total_file_count": 165,
+          "total_file_count": 179,
           "skipped_file_count": 0
         },
         "ResourceDocumentProcessor": {

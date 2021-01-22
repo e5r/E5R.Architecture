@@ -5,10 +5,10 @@
   <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-    <title>Class LazyResolver&lt;TTarget&gt;
+    <title>Class TransformationManager
    | Arquitetura E5R </title>
     <meta name="viewport" content="width=device-width">
-    <meta name="title" content="Class LazyResolver&lt;TTarget&gt;
+    <meta name="title" content="Class TransformationManager
    | Arquitetura E5R ">
     <meta name="generator" content="docfx 2.56.6.0">
     
@@ -68,54 +68,38 @@
         </div>
         <div class="article row grid-right">
           <div class="col-md-10">
-            <article class="content wrap" id="_content" data-uid="E5R.Architecture.Infrastructure.LazyResolver`1">
+            <article class="content wrap" id="_content" data-uid="E5R.Architecture.Core.TransformationManager">
   
   
-  <h1 id="E5R_Architecture_Infrastructure_LazyResolver_1" data-uid="E5R.Architecture.Infrastructure.LazyResolver`1" class="text-break">Class LazyResolver&lt;TTarget&gt;
+  <h1 id="E5R_Architecture_Core_TransformationManager" data-uid="E5R.Architecture.Core.TransformationManager" class="text-break">Class TransformationManager
   </h1>
-  <div class="markdown level0 summary"><p>Implements lazy loading based on an <see cref="!:IServiceProvider"></see></p>
+  <div class="markdown level0 summary"><p>Default simple transformation manager</p>
 </div>
   <div class="markdown level0 conceptual"></div>
   <div class="inheritance">
     <h5>Inheritance</h5>
     <div class="level0"><span class="xref">System.Object</span></div>
-    <div class="level1"><span class="xref">LazyResolver&lt;TTarget&gt;</span></div>
+    <div class="level1"><span class="xref">TransformationManager</span></div>
   </div>
   <div classs="implements">
     <h5>Implements</h5>
-    <div><a class="xref" href="E5R.Architecture.Core.ILazy-1.html">ILazy</a>&lt;TTarget&gt;</div>
+    <div><a class="xref" href="E5R.Architecture.Core.ITransformationManager.html">ITransformationManager</a></div>
   </div>
-  <h6><strong>Namespace</strong>: <a class="xref" href="E5R.Architecture.Infrastructure.html">E5R.Architecture.Infrastructure</a></h6>
-  <h6><strong>Assembly</strong>: E5R.Architecture.Infrastructure.dll</h6>
-  <h5 id="E5R_Architecture_Infrastructure_LazyResolver_1_syntax">Syntax</h5>
+  <h6><strong>Namespace</strong>: <a class="xref" href="E5R.Architecture.Core.html">E5R.Architecture.Core</a></h6>
+  <h6><strong>Assembly</strong>: E5R.Architecture.Core.dll</h6>
+  <h5 id="E5R_Architecture_Core_TransformationManager_syntax">Syntax</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public class LazyResolver&lt;TTarget&gt; : object, ILazy&lt;TTarget&gt;</code></pre>
+    <pre><code class="lang-csharp hljs">public class TransformationManager : object, ITransformationManager</code></pre>
   </div>
-  <h5 class="typeParameters">Type Parameters</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Name</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><span class="parametername">TTarget</span></td>
-        <td><p>Target type</p>
-</td>
-      </tr>
-    </tbody>
-  </table>
   <h3 id="constructors">Constructors
   </h3>
-  <a id="E5R_Architecture_Infrastructure_LazyResolver_1__ctor_" data-uid="E5R.Architecture.Infrastructure.LazyResolver`1.#ctor*"></a>
-  <h4 id="E5R_Architecture_Infrastructure_LazyResolver_1__ctor_IServiceProvider_" data-uid="E5R.Architecture.Infrastructure.LazyResolver`1.#ctor(IServiceProvider)">LazyResolver(IServiceProvider)</h4>
+  <a id="E5R_Architecture_Core_TransformationManager__ctor_" data-uid="E5R.Architecture.Core.TransformationManager.#ctor*"></a>
+  <h4 id="E5R_Architecture_Core_TransformationManager__ctor_IServiceProvider_" data-uid="E5R.Architecture.Core.TransformationManager.#ctor(IServiceProvider)">TransformationManager(IServiceProvider)</h4>
   <div class="markdown level1 summary"></div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public LazyResolver(IServiceProvider serviceProvider)</code></pre>
+    <pre><code class="lang-csharp hljs">public TransformationManager(IServiceProvider serviceProvider)</code></pre>
   </div>
   <h5 class="parameters">Parameters</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -134,17 +118,35 @@
       </tr>
     </tbody>
   </table>
-  <h3 id="properties">Properties
+  <h3 id="methods">Methods
   </h3>
-  <a id="E5R_Architecture_Infrastructure_LazyResolver_1_Value_" data-uid="E5R.Architecture.Infrastructure.LazyResolver`1.Value*"></a>
-  <h4 id="E5R_Architecture_Infrastructure_LazyResolver_1_Value" data-uid="E5R.Architecture.Infrastructure.LazyResolver`1.Value">Value</h4>
+  <a id="E5R_Architecture_Core_TransformationManager_Transform_" data-uid="E5R.Architecture.Core.TransformationManager.Transform*"></a>
+  <h4 id="E5R_Architecture_Core_TransformationManager_Transform__2___0_" data-uid="E5R.Architecture.Core.TransformationManager.Transform``2(``0)">Transform&lt;TFrom, TTo&gt;(TFrom)</h4>
   <div class="markdown level1 summary"></div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public TTarget Value { get; }</code></pre>
+    <pre><code class="lang-csharp hljs">public TTo Transform&lt;TFrom, TTo&gt;(TFrom from)
+    where TTo : new()</code></pre>
   </div>
-  <h5 class="propertyValue">Property Value</h5>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">TFrom</span></td>
+        <td><span class="parametername">from</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
   <table class="table table-bordered table-striped table-condensed">
     <thead>
       <tr>
@@ -154,14 +156,103 @@
     </thead>
     <tbody>
       <tr>
-        <td><span class="xref">TTarget</span></td>
+        <td><span class="xref">TTo</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="typeParameters">Type Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="parametername">TFrom</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="parametername">TTo</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <a id="E5R_Architecture_Core_TransformationManager_Transform_" data-uid="E5R.Architecture.Core.TransformationManager.Transform*"></a>
+  <h4 id="E5R_Architecture_Core_TransformationManager_Transform__3___0___2_" data-uid="E5R.Architecture.Core.TransformationManager.Transform``3(``0,``2)">Transform&lt;TFrom, TTo, TOperation&gt;(TFrom, TOperation)</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public TTo Transform&lt;TFrom, TTo, TOperation&gt;(TFrom from, TOperation operation)
+    where TTo : new()
+    where TOperation : Enum</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">TFrom</span></td>
+        <td><span class="parametername">from</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="xref">TOperation</span></td>
+        <td><span class="parametername">operation</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">TTo</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="typeParameters">Type Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="parametername">TFrom</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="parametername">TTo</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="parametername">TOperation</span></td>
         <td></td>
       </tr>
     </tbody>
   </table>
   <h3 id="implements">Implements</h3>
   <div>
-      <a class="xref" href="E5R.Architecture.Core.ILazy-1.html">ILazy&lt;TTarget&gt;</a>
+      <a class="xref" href="E5R.Architecture.Core.ITransformationManager.html">ITransformationManager</a>
   </div>
 </article>
           </div>

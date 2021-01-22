@@ -1,0 +1,279 @@
+﻿<!DOCTYPE html>
+<!--[if IE]><![endif]-->
+<html>
+  
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>Tutorial - Transformando dados entre tipos | Arquitetura E5R </title>
+    <meta name="viewport" content="width=device-width">
+    <meta name="title" content="Tutorial - Transformando dados entre tipos | Arquitetura E5R ">
+    <meta name="generator" content="docfx 2.56.6.0">
+    
+    <link rel="shortcut icon" href="../images/favicon.png">
+    <link rel="stylesheet" href="../styles/docfx.vendor.css">
+    <link rel="stylesheet" href="../styles/docfx.css">
+    <link rel="stylesheet" href="../styles/main.css">
+    <meta property="docfx:navrel" content="../toc.html">
+    <meta property="docfx:tocrel" content="toc.html">
+    
+    
+    
+  </head>
+  <body data-spy="scroll" data-target="#affix" data-offset="120">
+    <div id="wrapper">
+      <header>
+        
+        <nav id="autocollapse" class="navbar navbar-inverse ng-scope" role="navigation">
+          <div class="container">
+            <div class="navbar-header">
+              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+              
+              <a class="navbar-brand" href="../index.html">
+                <img id="logo" class="svg" src="../images/logo.png" alt="">
+              </a>
+            </div>
+            <div class="collapse navbar-collapse" id="navbar">
+              <form class="navbar-form navbar-right" role="search" id="search">
+                <div class="form-group">
+                  <input type="text" class="form-control" id="search-query" placeholder="Search" autocomplete="off">
+                </div>
+              </form>
+            </div>
+          </div>
+        </nav>
+        
+        <div class="subnav navbar navbar-default">
+          <div class="container hide-when-search" id="breadcrumb">
+            <ul class="breadcrumb">
+              <li></li>
+            </ul>
+          </div>
+        </div>
+      </header>
+      <div role="main" class="container body-content hide-when-search">
+        
+        <div class="sidenav hide-when-search">
+          <a class="btn toc-toggle collapse" data-toggle="collapse" href="#sidetoggle" aria-expanded="false" aria-controls="sidetoggle">Show / Hide Table of Contents</a>
+          <div class="sidetoggle collapse" id="sidetoggle">
+            <div id="sidetoc"></div>
+          </div>
+        </div>
+        <div class="article row grid-right">
+          <div class="col-md-10">
+            <article class="content wrap" id="_content" data-uid="">
+<h1 id="transformando-dados-entre-tipos">Transformando dados entre tipos</h1>
+
+<p>No tipo de arquitetura que estamos propondo aqui e que de certa forma você já deve estar acostumado
+a trabalhor, costumamos ter muitas camadas da aplicação, e fazemos isso para abstrair e assim
+conseguir garantir o desacoplamento da solução como um todo.</p>
+<p>Porém uma das atividades que nos pegamos fazendo o tempo todo é transformar dados de um tipo para
+outro. Transformamos <em>View Model's</em> para <em>DTO's</em> e/ou <em>DTO's</em> para <em>Domain Model's</em>, além de
+<em>Domain Model's</em> para <em>Data Model's</em>, e vice-versa.</p>
+<p>Obviamente temos várias bibliotecas já disponíveis no mercado para conseguir fazer isso de forma
+bem simples, e também vários plugins de IDE que nos ajudam muito.
+Sabemos que não há dificuldade alguma em fazer essas transformações usando tais bibliotecas ou
+plugins.</p>
+<p>Só pra ilustrar, vamos listar aqui algumas dessas ferramentas.</p>
+<ul>
+<li><a href="https://github.com/omuleanu/ValueInjecter">ValueInjecter</a></li>
+<li><a href="https://github.com/Dotnet-Boxed/Framework">Boxed.Mapping</a></li>
+<li><a href="https://github.com/cezarypiatek/MappingGenerator">MappingGenerator</a></li>
+<li><a href="https://github.com/fluentsprings/ExpressMapper">ExpressMapper</a></li>
+<li><a href="https://github.com/agileobjects/AgileMapper">AgileMapper</a></li>
+<li><a href="https://github.com/AutoMapper/AutoMapper">AutoMapper</a></li>
+</ul>
+<blockquote>
+<p>Dessas, talvez a ferramenta mais conhecida de todas seja a <a href="https://github.com/AutoMapper/AutoMapper">AutoMapper</a></p>
+</blockquote>
+<p>Mas entendemos aqui também que não devemos <em>inchar</em> nossos projetos com todo tipo de
+bibliotecas, por isso fornecemos uma funcionalidade mínima para ajudá-lo nesse processo de
+transformação de um tipo de dado para outro, então se você precisar e quiser, o recurso está
+aí a mão, basta usá-lo.</p>
+<div class="NOTE">
+<h5>Note</h5>
+<p>Perceba que usamos o termo <strong>Transformar</strong> ao invés de <strong>Mapear</strong>. Fazemos assim para
+deixar claro que estamos transformando um certo tipo de dado em outro, e isso porque
+por vezes (nem sempre isso é verdade) o que fazemos é criar uma nova instância de um tipo
+de dado à partir de uma outra instância já existente mas de outro tipo de dado.
+Obviamente que parte desse trabalho de transformação consiste em fazer um &quot;de/para&quot;, ou
+seja, mapear e copiar propriedades de um para outro objeto.
+Então não se sinta confuso com os termos <strong>Transformar</strong> e <strong>Mapear</strong>, aqui eles são
+quase equivalentes.</p>
+</div>
+<h2 id="mão-na-massa">Mão na massa</h2>
+<p>Então para transformar seus dados você vai precisar fazer o seguite:</p>
+<p>Imagine que você tem essas duas classes:</p>
+<pre><code class="lang-c#">public class MyFrom
+{
+    public int Id { get; set; }
+    public string FirstName { get; set; }
+    public string LastName { get; set; }
+    public DateTime DateOfBirth { get; set; }
+}
+
+public class MyTo
+{
+    public int Identifier { get; set; }
+    public string Name { get; set; }
+    public int Age { get; set; }
+}
+</code></pre>
+<blockquote>
+<p>Vamos supor que se trata de uma aplicação <a href="https://asp.net">ASP.NET</a> ou uma
+aplicação <a href="https://dot.net">.NET</a> qualquer que usa os recursos de
+<a href="https://docs.microsoft.com/pt-br/dotnet/core/extensions/dependency-injection">injeção de dependência</a>.</p>
+</blockquote>
+<p>Primeiro registre o gerente de transformações em sua classe <code>Startup</code>:</p>
+<pre><code class="lang-c#">public class Startup
+{
+    public void ConfigureServices(IServiceCollection services)
+    {
+        services.AddTransformationManager();
+    }
+}
+</code></pre>
+<div class="WARNING">
+<h5>Warning</h5>
+<p>Você precisará do componente <code>E5R.Architecture.Infrastructure</code> para isso.</p>
+</div>
+<p>Agora você precisa declarar sua classe de transformação:</p>
+<pre><code class="lang-c#">public class MyFromToTransformer : ITransformer&lt;MyFrom, MyTo&gt;
+{
+    public MyTo Transform(MyFrom @from)
+    {
+        return new MyTo
+        {
+            Identifier = @from.Id,
+            Name = $&quot;{@from.LastName}, {@from.FirstName}&quot;,
+            Age = CalculateAge(@from.DateOfBirth, DateTime.Now)
+        }
+    }
+}
+</code></pre>
+<div class="WARNING">
+<h5>Warning</h5>
+<p>Você precisrá registrar esse transformador para o tipo <code>ITransformer&lt;MyFrom, MyTo&gt;</code>, porque
+internamente o <code>TransformationManager</code> (implementação padrão para <code>ITransformationManager</code>)
+usa o <code>IServiceProvider</code> para resolver os transformadores.</p>
+</div>
+<p>Pronto, agora quando precisar esses transformar dados, basta usar:</p>
+<pre><code class="lang-c#">public class MyService
+{
+    private readonly ITransformationManager _transformer;
+    
+    public MyService(ITransformationManager transformer)
+    {
+        _transformer = transformer;
+    }
+    
+    public void MyMethod(MyFrom myFrom)
+    {
+        var myTo = _transformer.Transform&lt;MyTo&gt;(myFrom);
+    }
+}
+</code></pre>
+<p>Uma outra coisa que você pode fazer, é transformar os dados de forma personalizada de
+acordo com alguma operação específica. Essa operação pode ser definida através de um
+enum.</p>
+<p>Imagine que você vai transformar o dado de um tipo para outro, mas dependendo de onde
+vai usar o objeto resultante, você precisará de umas propriedades e outras não, ou
+até poderá escolher entre tipos derivados diferentes.</p>
+<p>Então imagine as seguintes operações:</p>
+<pre><code class="lang-c#">public enum MyOperation
+{
+    Create,
+    Remove,
+    Update
+}
+</code></pre>
+<p>Como exemplo imagine, quando for criar (<code>Create</code>) um novo dado, você precisará
+dos dados <em>Name</em> e <em>Age</em> mas não precisará de <em>Identifier</em>, quando for atualizar
+(<code>Update</code>) precisará de todos os dados, mas quando for remover (<code>Remove</code>) somente
+o <em>Identifier</em> é necessário.</p>
+<p>Aqui nós iremos declarar nossa classe um pouco diferente:</p>
+<pre><code class="lang-c#">public class MyFromToTransformer : ITransformer&lt;MyFrom, MyTo, MyOperation&gt;
+{
+    public MyTo Transform(MyFrom @from, MyOperation op)
+    {
+        switch (op)
+        {
+            case MyOperation.Create:
+                return new MyTo
+                {
+                    Name = $&quot;{@from.LastName}, {@from.FirstName}&quot;,
+                    Age = CalculateAge(@from.DateOfBirth, DateTime.Now)
+                };
+                
+            case MyOperation.Remove:
+                return new MyTo {
+                    Identifier = @from.Id
+                };
+                
+           case MyOperation.Update:
+           default:
+                return new MyTo
+                {
+                    Identifier = @from.Id,
+                    Name = $&quot;{@from.LastName}, {@from.FirstName}&quot;,
+                    Age = CalculateAge(@from.DateOfBirth, DateTime.Now)
+                };
+        }
+    }
+}
+</code></pre>
+<p>E por fim, para utilizar:</p>
+<pre><code class="lang-c#">public class MyService
+{
+    private readonly ITransformationManager _transformer;
+    
+    public MyService(ITransformationManager transformer)
+    {
+        _transformer = transformer;
+    }
+    
+    public void MyMethod(MyFrom myFrom)
+    {
+        MyTo myTo = _transformer.Transform(myFrom, MyOperation.Update);
+    }
+}
+</code></pre>
+<p>E é isso aí! Futuramente podemos melhorar os textos e exemplos, mas por enquanto é só.</p>
+</article>
+          </div>
+          
+          <div class="hidden-sm col-md-2" role="complementary">
+            <div class="sideaffix">
+              <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">
+                <h5>In This Article</h5>
+                <div></div>
+              </nav>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <footer>
+        <div class="grad-bottom"></div>
+        <div class="footer">
+          <div class="container">
+            <span class="pull-right">
+              <a href="#top">Back to top</a>
+            </span>
+            Copyright (c) 2020 E5R Development Team
+            
+          </div>
+        </div>
+      </footer>
+    </div>
+    
+    <script type="text/javascript" src="../styles/docfx.vendor.js"></script>
+    <script type="text/javascript" src="../styles/docfx.js"></script>
+    <script type="text/javascript" src="../styles/main.js"></script>
+  </body>
+</html>

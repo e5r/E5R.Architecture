@@ -5,10 +5,10 @@
   <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-    <title>Class IStorageExtensions
+    <title>Interface ITransformer&lt;TFrom, TTo&gt;
    | Arquitetura E5R </title>
     <meta name="viewport" content="width=device-width">
-    <meta name="title" content="Class IStorageExtensions
+    <meta name="title" content="Interface ITransformer&lt;TFrom, TTo&gt;
    | Arquitetura E5R ">
     <meta name="generator" content="docfx 2.56.6.0">
     
@@ -68,34 +68,52 @@
         </div>
         <div class="article row grid-right">
           <div class="col-md-10">
-            <article class="content wrap" id="_content" data-uid="E5R.Architecture.Data.Abstractions.IStorageExtensions">
+            <article class="content wrap" id="_content" data-uid="E5R.Architecture.Core.ITransformer`2">
   
   
-  <h1 id="E5R_Architecture_Data_Abstractions_IStorageExtensions" data-uid="E5R.Architecture.Data.Abstractions.IStorageExtensions" class="text-break">Class IStorageExtensions
+  <h1 id="E5R_Architecture_Core_ITransformer_2" data-uid="E5R.Architecture.Core.ITransformer`2" class="text-break">Interface ITransformer&lt;TFrom, TTo&gt;
   </h1>
-  <div class="markdown level0 summary"></div>
+  <div class="markdown level0 summary"><p>Abstract data transformer</p>
+</div>
   <div class="markdown level0 conceptual"></div>
-  <div class="inheritance">
-    <h5>Inheritance</h5>
-    <div class="level0"><span class="xref">System.Object</span></div>
-    <div class="level1"><span class="xref">IStorageExtensions</span></div>
-  </div>
-  <h6><strong>Namespace</strong>: <a class="xref" href="E5R.Architecture.Data.Abstractions.html">E5R.Architecture.Data.Abstractions</a></h6>
-  <h6><strong>Assembly</strong>: E5R.Architecture.Data.dll</h6>
-  <h5 id="E5R_Architecture_Data_Abstractions_IStorageExtensions_syntax">Syntax</h5>
+  <h6><strong>Namespace</strong>: <a class="xref" href="E5R.Architecture.Core.html">E5R.Architecture.Core</a></h6>
+  <h6><strong>Assembly</strong>: E5R.Architecture.Core.dll</h6>
+  <h5 id="E5R_Architecture_Core_ITransformer_2_syntax">Syntax</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public static class IStorageExtensions : object</code></pre>
+    <pre><code class="lang-csharp hljs">public interface ITransformer&lt;TFrom, TTo&gt;
+    where TTo : new()</code></pre>
   </div>
+  <h5 class="typeParameters">Type Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="parametername">TFrom</span></td>
+        <td><p>From data type</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="parametername">TTo</span></td>
+        <td><p>To data type</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
   <h3 id="methods">Methods
   </h3>
-  <a id="E5R_Architecture_Data_Abstractions_IStorageExtensions_AsFluentQuery_" data-uid="E5R.Architecture.Data.Abstractions.IStorageExtensions.AsFluentQuery*"></a>
-  <h4 id="E5R_Architecture_Data_Abstractions_IStorageExtensions_AsFluentQuery__1_E5R_Architecture_Data_Abstractions_IStorageReader___0__" data-uid="E5R.Architecture.Data.Abstractions.IStorageExtensions.AsFluentQuery``1(E5R.Architecture.Data.Abstractions.IStorageReader{``0})">AsFluentQuery&lt;TDataModel&gt;(IStorageReader&lt;TDataModel&gt;)</h4>
-  <div class="markdown level1 summary"></div>
+  <a id="E5R_Architecture_Core_ITransformer_2_Transform_" data-uid="E5R.Architecture.Core.ITransformer`2.Transform*"></a>
+  <h4 id="E5R_Architecture_Core_ITransformer_2_Transform__0_" data-uid="E5R.Architecture.Core.ITransformer`2.Transform(`0)">Transform(TFrom)</h4>
+  <div class="markdown level1 summary"><p>Create new instance of <see cref="!:TTo"></see> based on <see cref="!:TFrom"></see> instance.</p>
+</div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public static FluentQueryBuilder&lt;TDataModel&gt; AsFluentQuery&lt;TDataModel&gt;(this IStorageReader&lt;TDataModel&gt; storage)
-    where TDataModel : IDataModel</code></pre>
+    <pre><code class="lang-csharp hljs">TTo Transform(TFrom from)</code></pre>
   </div>
   <h5 class="parameters">Parameters</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -108,9 +126,10 @@
     </thead>
     <tbody>
       <tr>
-        <td><a class="xref" href="E5R.Architecture.Data.Abstractions.IStorageReader-1.html">IStorageReader</a>&lt;TDataModel&gt;</td>
-        <td><span class="parametername">storage</span></td>
-        <td></td>
+        <td><span class="xref">TFrom</span></td>
+        <td><span class="parametername">from</span></td>
+        <td><p>Origin data</p>
+</td>
       </tr>
     </tbody>
   </table>
@@ -124,23 +143,9 @@
     </thead>
     <tbody>
       <tr>
-        <td><a class="xref" href="E5R.Architecture.Data.FluentQuery.FluentQueryBuilder-1.html">FluentQueryBuilder</a>&lt;TDataModel&gt;</td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
-  <h5 class="typeParameters">Type Parameters</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Name</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><span class="parametername">TDataModel</span></td>
-        <td></td>
+        <td><span class="xref">TTo</span></td>
+        <td><p>Instance of <see cref="!:TTo"></see></p>
+</td>
       </tr>
     </tbody>
   </table>

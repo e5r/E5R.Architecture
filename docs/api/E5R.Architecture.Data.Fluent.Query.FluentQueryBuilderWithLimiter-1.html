@@ -5,10 +5,10 @@
   <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-    <title>Class FluentQueryBuilderWithProjection&lt;TDataModel&gt;
+    <title>Class FluentQueryBuilderWithLimiter&lt;TDataModel&gt;
    | Arquitetura E5R </title>
     <meta name="viewport" content="width=device-width">
-    <meta name="title" content="Class FluentQueryBuilderWithProjection&lt;TDataModel&gt;
+    <meta name="title" content="Class FluentQueryBuilderWithLimiter&lt;TDataModel&gt;
    | Arquitetura E5R ">
     <meta name="generator" content="docfx 2.56.6.0">
     
@@ -68,24 +68,24 @@
         </div>
         <div class="article row grid-right">
           <div class="col-md-10">
-            <article class="content wrap" id="_content" data-uid="E5R.Architecture.Data.FluentQuery.FluentQueryBuilderWithProjection`1">
+            <article class="content wrap" id="_content" data-uid="E5R.Architecture.Data.Fluent.Query.FluentQueryBuilderWithLimiter`1">
   
   
-  <h1 id="E5R_Architecture_Data_FluentQuery_FluentQueryBuilderWithProjection_1" data-uid="E5R.Architecture.Data.FluentQuery.FluentQueryBuilderWithProjection`1" class="text-break">Class FluentQueryBuilderWithProjection&lt;TDataModel&gt;
+  <h1 id="E5R_Architecture_Data_Fluent_Query_FluentQueryBuilderWithLimiter_1" data-uid="E5R.Architecture.Data.Fluent.Query.FluentQueryBuilderWithLimiter`1" class="text-break">Class FluentQueryBuilderWithLimiter&lt;TDataModel&gt;
   </h1>
   <div class="markdown level0 summary"></div>
   <div class="markdown level0 conceptual"></div>
   <div class="inheritance">
     <h5>Inheritance</h5>
     <div class="level0"><span class="xref">System.Object</span></div>
-    <div class="level1"><a class="xref" href="E5R.Architecture.Data.FluentQuery.FluentQueryBuilderElements-1.html">FluentQueryBuilderElements</a>&lt;TDataModel&gt;</div>
-    <div class="level2"><span class="xref">FluentQueryBuilderWithProjection&lt;TDataModel&gt;</span></div>
+    <div class="level1"><a class="xref" href="E5R.Architecture.Data.Fluent.Query.FluentQueryBuilderElements-1.html">FluentQueryBuilderElements</a>&lt;TDataModel&gt;</div>
+    <div class="level2"><span class="xref">FluentQueryBuilderWithLimiter&lt;TDataModel&gt;</span></div>
   </div>
-  <h6><strong>Namespace</strong>: <a class="xref" href="E5R.Architecture.Data.FluentQuery.html">E5R.Architecture.Data.FluentQuery</a></h6>
+  <h6><strong>Namespace</strong>: <a class="xref" href="E5R.Architecture.Data.Fluent.Query.html">E5R.Architecture.Data.Fluent.Query</a></h6>
   <h6><strong>Assembly</strong>: E5R.Architecture.Data.dll</h6>
-  <h5 id="E5R_Architecture_Data_FluentQuery_FluentQueryBuilderWithProjection_1_syntax">Syntax</h5>
+  <h5 id="E5R_Architecture_Data_Fluent_Query_FluentQueryBuilderWithLimiter_1_syntax">Syntax</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public class FluentQueryBuilderWithProjection&lt;TDataModel&gt; : FluentQueryBuilderElements&lt;TDataModel&gt; where TDataModel : IDataModel</code></pre>
+    <pre><code class="lang-csharp hljs">public class FluentQueryBuilderWithLimiter&lt;TDataModel&gt; : FluentQueryBuilderElements&lt;TDataModel&gt; where TDataModel : IDataModel</code></pre>
   </div>
   <h5 class="typeParameters">Type Parameters</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -104,13 +104,13 @@
   </table>
   <h3 id="methods">Methods
   </h3>
-  <a id="E5R_Architecture_Data_FluentQuery_FluentQueryBuilderWithProjection_1_Filter_" data-uid="E5R.Architecture.Data.FluentQuery.FluentQueryBuilderWithProjection`1.Filter*"></a>
-  <h4 id="E5R_Architecture_Data_FluentQuery_FluentQueryBuilderWithProjection_1_Filter_Expression_Func__0_System_Boolean___" data-uid="E5R.Architecture.Data.FluentQuery.FluentQueryBuilderWithProjection`1.Filter(Expression{Func{`0,System.Boolean}})">Filter(Expression&lt;Func&lt;TDataModel, Boolean&gt;&gt;)</h4>
+  <a id="E5R_Architecture_Data_Fluent_Query_FluentQueryBuilderWithLimiter_1_Filter_" data-uid="E5R.Architecture.Data.Fluent.Query.FluentQueryBuilderWithLimiter`1.Filter*"></a>
+  <h4 id="E5R_Architecture_Data_Fluent_Query_FluentQueryBuilderWithLimiter_1_Filter_Expression_Func__0_System_Boolean___" data-uid="E5R.Architecture.Data.Fluent.Query.FluentQueryBuilderWithLimiter`1.Filter(Expression{Func{`0,System.Boolean}})">Filter(Expression&lt;Func&lt;TDataModel, Boolean&gt;&gt;)</h4>
   <div class="markdown level1 summary"></div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public FluentQueryBuilderWithFilter&lt;TDataModel&gt; Filter(Expression&lt;Func&lt;TDataModel, bool&gt;&gt; filterExpression)</code></pre>
+    <pre><code class="lang-csharp hljs">public FluentQueryBuilderWithLimiterAndFilter&lt;TDataModel&gt; Filter(Expression&lt;Func&lt;TDataModel, bool&gt;&gt; filter)</code></pre>
   </div>
   <h5 class="parameters">Parameters</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -124,7 +124,7 @@
     <tbody>
       <tr>
         <td><span class="xref">Expression</span>&lt;<span class="xref">Func</span>&lt;TDataModel, <span class="xref">System.Boolean</span>&gt;&gt;</td>
-        <td><span class="parametername">filterExpression</span></td>
+        <td><span class="parametername">filter</span></td>
         <td></td>
       </tr>
     </tbody>
@@ -139,138 +139,18 @@
     </thead>
     <tbody>
       <tr>
-        <td><a class="xref" href="E5R.Architecture.Data.FluentQuery.FluentQueryBuilderWithFilter-1.html">FluentQueryBuilderWithFilter</a>&lt;TDataModel&gt;</td>
+        <td><a class="xref" href="E5R.Architecture.Data.Fluent.Query.FluentQueryBuilderWithLimiterAndFilter-1.html">FluentQueryBuilderWithLimiterAndFilter</a>&lt;TDataModel&gt;</td>
         <td></td>
       </tr>
     </tbody>
   </table>
-  <a id="E5R_Architecture_Data_FluentQuery_FluentQueryBuilderWithProjection_1_Find_" data-uid="E5R.Architecture.Data.FluentQuery.FluentQueryBuilderWithProjection`1.Find*"></a>
-  <h4 id="E5R_Architecture_Data_FluentQuery_FluentQueryBuilderWithProjection_1_Find__0_" data-uid="E5R.Architecture.Data.FluentQuery.FluentQueryBuilderWithProjection`1.Find(`0)">Find(TDataModel)</h4>
+  <a id="E5R_Architecture_Data_Fluent_Query_FluentQueryBuilderWithLimiter_1_LimitedGet_" data-uid="E5R.Architecture.Data.Fluent.Query.FluentQueryBuilderWithLimiter`1.LimitedGet*"></a>
+  <h4 id="E5R_Architecture_Data_Fluent_Query_FluentQueryBuilderWithLimiter_1_LimitedGet" data-uid="E5R.Architecture.Data.Fluent.Query.FluentQueryBuilderWithLimiter`1.LimitedGet">LimitedGet()</h4>
   <div class="markdown level1 summary"></div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public TDataModel Find(TDataModel data)</code></pre>
-  </div>
-  <h5 class="parameters">Parameters</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Name</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><span class="xref">TDataModel</span></td>
-        <td><span class="parametername">data</span></td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
-  <h5 class="returns">Returns</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><span class="xref">TDataModel</span></td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
-  <a id="E5R_Architecture_Data_FluentQuery_FluentQueryBuilderWithProjection_1_Find_" data-uid="E5R.Architecture.Data.FluentQuery.FluentQueryBuilderWithProjection`1.Find*"></a>
-  <h4 id="E5R_Architecture_Data_FluentQuery_FluentQueryBuilderWithProjection_1_Find_System_Object_" data-uid="E5R.Architecture.Data.FluentQuery.FluentQueryBuilderWithProjection`1.Find(System.Object)">Find(Object)</h4>
-  <div class="markdown level1 summary"></div>
-  <div class="markdown level1 conceptual"></div>
-  <h5 class="decalaration">Declaration</h5>
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public TDataModel Find(object identifier)</code></pre>
-  </div>
-  <h5 class="parameters">Parameters</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Name</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><span class="xref">System.Object</span></td>
-        <td><span class="parametername">identifier</span></td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
-  <h5 class="returns">Returns</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><span class="xref">TDataModel</span></td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
-  <a id="E5R_Architecture_Data_FluentQuery_FluentQueryBuilderWithProjection_1_Find_" data-uid="E5R.Architecture.Data.FluentQuery.FluentQueryBuilderWithProjection`1.Find*"></a>
-  <h4 id="E5R_Architecture_Data_FluentQuery_FluentQueryBuilderWithProjection_1_Find_System_Object___" data-uid="E5R.Architecture.Data.FluentQuery.FluentQueryBuilderWithProjection`1.Find(System.Object[])">Find(Object[])</h4>
-  <div class="markdown level1 summary"></div>
-  <div class="markdown level1 conceptual"></div>
-  <h5 class="decalaration">Declaration</h5>
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public TDataModel Find(object[] identifiers)</code></pre>
-  </div>
-  <h5 class="parameters">Parameters</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Name</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><span class="xref">System.Object</span>[]</td>
-        <td><span class="parametername">identifiers</span></td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
-  <h5 class="returns">Returns</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><span class="xref">TDataModel</span></td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
-  <a id="E5R_Architecture_Data_FluentQuery_FluentQueryBuilderWithProjection_1_GetAll_" data-uid="E5R.Architecture.Data.FluentQuery.FluentQueryBuilderWithProjection`1.GetAll*"></a>
-  <h4 id="E5R_Architecture_Data_FluentQuery_FluentQueryBuilderWithProjection_1_GetAll" data-uid="E5R.Architecture.Data.FluentQuery.FluentQueryBuilderWithProjection`1.GetAll">GetAll()</h4>
-  <div class="markdown level1 summary"></div>
-  <div class="markdown level1 conceptual"></div>
-  <h5 class="decalaration">Declaration</h5>
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public IEnumerable&lt;TDataModel&gt; GetAll()</code></pre>
+    <pre><code class="lang-csharp hljs">public PaginatedResult&lt;TDataModel&gt; LimitedGet()</code></pre>
   </div>
   <h5 class="returns">Returns</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -282,18 +162,18 @@
     </thead>
     <tbody>
       <tr>
-        <td><span class="xref">IEnumerable</span>&lt;TDataModel&gt;</td>
+        <td><a class="xref" href="E5R.Architecture.Core.PaginatedResult-1.html">PaginatedResult</a>&lt;TDataModel&gt;</td>
         <td></td>
       </tr>
     </tbody>
   </table>
-  <a id="E5R_Architecture_Data_FluentQuery_FluentQueryBuilderWithProjection_1_OffsetBegin_" data-uid="E5R.Architecture.Data.FluentQuery.FluentQueryBuilderWithProjection`1.OffsetBegin*"></a>
-  <h4 id="E5R_Architecture_Data_FluentQuery_FluentQueryBuilderWithProjection_1_OffsetBegin_System_UInt32_" data-uid="E5R.Architecture.Data.FluentQuery.FluentQueryBuilderWithProjection`1.OffsetBegin(System.UInt32)">OffsetBegin(UInt32)</h4>
+  <a id="E5R_Architecture_Data_Fluent_Query_FluentQueryBuilderWithLimiter_1_OffsetBegin_" data-uid="E5R.Architecture.Data.Fluent.Query.FluentQueryBuilderWithLimiter`1.OffsetBegin*"></a>
+  <h4 id="E5R_Architecture_Data_Fluent_Query_FluentQueryBuilderWithLimiter_1_OffsetBegin_System_UInt32_" data-uid="E5R.Architecture.Data.Fluent.Query.FluentQueryBuilderWithLimiter`1.OffsetBegin(System.UInt32)">OffsetBegin(UInt32)</h4>
   <div class="markdown level1 summary"></div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public FluentQueryBuilderWithLimiter&lt;TDataModel&gt; OffsetBegin(uint offsetBegin)</code></pre>
+    <pre><code class="lang-csharp hljs">public FluentQueryBuilderWithLimiter&lt;TDataModel&gt; OffsetBegin(uint offset)</code></pre>
   </div>
   <h5 class="parameters">Parameters</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -307,7 +187,7 @@
     <tbody>
       <tr>
         <td><span class="xref">System.UInt32</span></td>
-        <td><span class="parametername">offsetBegin</span></td>
+        <td><span class="parametername">offset</span></td>
         <td></td>
       </tr>
     </tbody>
@@ -322,13 +202,13 @@
     </thead>
     <tbody>
       <tr>
-        <td><a class="xref" href="E5R.Architecture.Data.FluentQuery.FluentQueryBuilderWithLimiter-1.html">FluentQueryBuilderWithLimiter</a>&lt;TDataModel&gt;</td>
+        <td><a class="xref" href="E5R.Architecture.Data.Fluent.Query.FluentQueryBuilderWithLimiter-1.html">FluentQueryBuilderWithLimiter</a>&lt;TDataModel&gt;</td>
         <td></td>
       </tr>
     </tbody>
   </table>
-  <a id="E5R_Architecture_Data_FluentQuery_FluentQueryBuilderWithProjection_1_OffsetLimit_" data-uid="E5R.Architecture.Data.FluentQuery.FluentQueryBuilderWithProjection`1.OffsetLimit*"></a>
-  <h4 id="E5R_Architecture_Data_FluentQuery_FluentQueryBuilderWithProjection_1_OffsetLimit_System_UInt32_" data-uid="E5R.Architecture.Data.FluentQuery.FluentQueryBuilderWithProjection`1.OffsetLimit(System.UInt32)">OffsetLimit(UInt32)</h4>
+  <a id="E5R_Architecture_Data_Fluent_Query_FluentQueryBuilderWithLimiter_1_OffsetLimit_" data-uid="E5R.Architecture.Data.Fluent.Query.FluentQueryBuilderWithLimiter`1.OffsetLimit*"></a>
+  <h4 id="E5R_Architecture_Data_Fluent_Query_FluentQueryBuilderWithLimiter_1_OffsetLimit_System_UInt32_" data-uid="E5R.Architecture.Data.Fluent.Query.FluentQueryBuilderWithLimiter`1.OffsetLimit(System.UInt32)">OffsetLimit(UInt32)</h4>
   <div class="markdown level1 summary"></div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
@@ -362,13 +242,13 @@
     </thead>
     <tbody>
       <tr>
-        <td><a class="xref" href="E5R.Architecture.Data.FluentQuery.FluentQueryBuilderWithLimiter-1.html">FluentQueryBuilderWithLimiter</a>&lt;TDataModel&gt;</td>
+        <td><a class="xref" href="E5R.Architecture.Data.Fluent.Query.FluentQueryBuilderWithLimiter-1.html">FluentQueryBuilderWithLimiter</a>&lt;TDataModel&gt;</td>
         <td></td>
       </tr>
     </tbody>
   </table>
-  <a id="E5R_Architecture_Data_FluentQuery_FluentQueryBuilderWithProjection_1_Paginate_" data-uid="E5R.Architecture.Data.FluentQuery.FluentQueryBuilderWithProjection`1.Paginate*"></a>
-  <h4 id="E5R_Architecture_Data_FluentQuery_FluentQueryBuilderWithProjection_1_Paginate_System_UInt32_System_UInt32_" data-uid="E5R.Architecture.Data.FluentQuery.FluentQueryBuilderWithProjection`1.Paginate(System.UInt32,System.UInt32)">Paginate(UInt32, UInt32)</h4>
+  <a id="E5R_Architecture_Data_Fluent_Query_FluentQueryBuilderWithLimiter_1_Paginate_" data-uid="E5R.Architecture.Data.Fluent.Query.FluentQueryBuilderWithLimiter`1.Paginate*"></a>
+  <h4 id="E5R_Architecture_Data_Fluent_Query_FluentQueryBuilderWithLimiter_1_Paginate_System_UInt32_System_UInt32_" data-uid="E5R.Architecture.Data.Fluent.Query.FluentQueryBuilderWithLimiter`1.Paginate(System.UInt32,System.UInt32)">Paginate(UInt32, UInt32)</h4>
   <div class="markdown level1 summary"></div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
@@ -407,18 +287,18 @@
     </thead>
     <tbody>
       <tr>
-        <td><a class="xref" href="E5R.Architecture.Data.FluentQuery.FluentQueryBuilderWithLimiter-1.html">FluentQueryBuilderWithLimiter</a>&lt;TDataModel&gt;</td>
+        <td><a class="xref" href="E5R.Architecture.Data.Fluent.Query.FluentQueryBuilderWithLimiter-1.html">FluentQueryBuilderWithLimiter</a>&lt;TDataModel&gt;</td>
         <td></td>
       </tr>
     </tbody>
   </table>
-  <a id="E5R_Architecture_Data_FluentQuery_FluentQueryBuilderWithProjection_1_Sort_" data-uid="E5R.Architecture.Data.FluentQuery.FluentQueryBuilderWithProjection`1.Sort*"></a>
-  <h4 id="E5R_Architecture_Data_FluentQuery_FluentQueryBuilderWithProjection_1_Sort_Expression_Func__0_System_Object___" data-uid="E5R.Architecture.Data.FluentQuery.FluentQueryBuilderWithProjection`1.Sort(Expression{Func{`0,System.Object}})">Sort(Expression&lt;Func&lt;TDataModel, Object&gt;&gt;)</h4>
+  <a id="E5R_Architecture_Data_Fluent_Query_FluentQueryBuilderWithLimiter_1_Sort_" data-uid="E5R.Architecture.Data.Fluent.Query.FluentQueryBuilderWithLimiter`1.Sort*"></a>
+  <h4 id="E5R_Architecture_Data_Fluent_Query_FluentQueryBuilderWithLimiter_1_Sort_Expression_Func__0_System_Object___" data-uid="E5R.Architecture.Data.Fluent.Query.FluentQueryBuilderWithLimiter`1.Sort(Expression{Func{`0,System.Object}})">Sort(Expression&lt;Func&lt;TDataModel, Object&gt;&gt;)</h4>
   <div class="markdown level1 summary"></div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public FluentQueryBuilderWithLimiter&lt;TDataModel&gt; Sort(Expression&lt;Func&lt;TDataModel, object&gt;&gt; sortExpression)</code></pre>
+    <pre><code class="lang-csharp hljs">public FluentQueryBuilderWithLimiter&lt;TDataModel&gt; Sort(Expression&lt;Func&lt;TDataModel, object&gt;&gt; sorter)</code></pre>
   </div>
   <h5 class="parameters">Parameters</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -432,7 +312,7 @@
     <tbody>
       <tr>
         <td><span class="xref">Expression</span>&lt;<span class="xref">Func</span>&lt;TDataModel, <span class="xref">System.Object</span>&gt;&gt;</td>
-        <td><span class="parametername">sortExpression</span></td>
+        <td><span class="parametername">sorter</span></td>
         <td></td>
       </tr>
     </tbody>
@@ -447,18 +327,18 @@
     </thead>
     <tbody>
       <tr>
-        <td><a class="xref" href="E5R.Architecture.Data.FluentQuery.FluentQueryBuilderWithLimiter-1.html">FluentQueryBuilderWithLimiter</a>&lt;TDataModel&gt;</td>
+        <td><a class="xref" href="E5R.Architecture.Data.Fluent.Query.FluentQueryBuilderWithLimiter-1.html">FluentQueryBuilderWithLimiter</a>&lt;TDataModel&gt;</td>
         <td></td>
       </tr>
     </tbody>
   </table>
-  <a id="E5R_Architecture_Data_FluentQuery_FluentQueryBuilderWithProjection_1_SortDescending_" data-uid="E5R.Architecture.Data.FluentQuery.FluentQueryBuilderWithProjection`1.SortDescending*"></a>
-  <h4 id="E5R_Architecture_Data_FluentQuery_FluentQueryBuilderWithProjection_1_SortDescending_Expression_Func__0_System_Object___" data-uid="E5R.Architecture.Data.FluentQuery.FluentQueryBuilderWithProjection`1.SortDescending(Expression{Func{`0,System.Object}})">SortDescending(Expression&lt;Func&lt;TDataModel, Object&gt;&gt;)</h4>
+  <a id="E5R_Architecture_Data_Fluent_Query_FluentQueryBuilderWithLimiter_1_SortDescending_" data-uid="E5R.Architecture.Data.Fluent.Query.FluentQueryBuilderWithLimiter`1.SortDescending*"></a>
+  <h4 id="E5R_Architecture_Data_Fluent_Query_FluentQueryBuilderWithLimiter_1_SortDescending_Expression_Func__0_System_Object___" data-uid="E5R.Architecture.Data.Fluent.Query.FluentQueryBuilderWithLimiter`1.SortDescending(Expression{Func{`0,System.Object}})">SortDescending(Expression&lt;Func&lt;TDataModel, Object&gt;&gt;)</h4>
   <div class="markdown level1 summary"></div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public FluentQueryBuilderWithLimiter&lt;TDataModel&gt; SortDescending(Expression&lt;Func&lt;TDataModel, object&gt;&gt; sortExpression)</code></pre>
+    <pre><code class="lang-csharp hljs">public FluentQueryBuilderWithLimiter&lt;TDataModel&gt; SortDescending(Expression&lt;Func&lt;TDataModel, object&gt;&gt; sorter)</code></pre>
   </div>
   <h5 class="parameters">Parameters</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -472,7 +352,7 @@
     <tbody>
       <tr>
         <td><span class="xref">Expression</span>&lt;<span class="xref">Func</span>&lt;TDataModel, <span class="xref">System.Object</span>&gt;&gt;</td>
-        <td><span class="parametername">sortExpression</span></td>
+        <td><span class="parametername">sorter</span></td>
         <td></td>
       </tr>
     </tbody>
@@ -487,7 +367,7 @@
     </thead>
     <tbody>
       <tr>
-        <td><a class="xref" href="E5R.Architecture.Data.FluentQuery.FluentQueryBuilderWithLimiter-1.html">FluentQueryBuilderWithLimiter</a>&lt;TDataModel&gt;</td>
+        <td><a class="xref" href="E5R.Architecture.Data.Fluent.Query.FluentQueryBuilderWithLimiter-1.html">FluentQueryBuilderWithLimiter</a>&lt;TDataModel&gt;</td>
         <td></td>
       </tr>
     </tbody>
