@@ -35,7 +35,8 @@ namespace E5R.Architecture.Core
                     if (instance == null)
                     {
                         // TODO: Implementar i18n/l10n
-                        throw new InfrastructureLayerException($"Type {targetType.FullName} could not be resolved");
+                        throw new InfrastructureLayerException(
+                            $"Type {targetType.FullName} could not be resolved");
                     }
                     
                     _instance = (TTarget) instance;
