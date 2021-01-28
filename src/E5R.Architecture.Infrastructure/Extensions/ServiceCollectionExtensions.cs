@@ -93,16 +93,22 @@ namespace Microsoft.Extensions.DependencyInjection
             // Habilita "lazy loading"
             serviceCollection.AddScoped(typeof(ILazy<>), typeof(LazyResolver<>));
             
-            // Habilita "cross cutting"
+            // Habilita "cross cutting" e "rule for"
             var container = new ServiceCollectionDIContainer(serviceCollection);
+
+            serviceCollection.AddScoped(typeof(RuleSet<>));
             
             AppDomain.CurrentDomain.DIRegistrar(container);
+            AppDomain.CurrentDomain.AddAllRules(serviceCollection);
             
             if (customServiceAssemblies != null && customServiceAssemblies.Length > 0)
             {
                 customServiceAssemblies.ToList().ForEach(assemblyName =>
                 {
-                    Assembly.Load(assemblyName).DIRegistrar(container);
+                    var assembly = Assembly.Load(assemblyName);
+
+                    assembly.DIRegistrar(container);
+                    assembly.AddAllRules(serviceCollection);
                 });
             }
 

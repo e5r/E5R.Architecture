@@ -14,7 +14,7 @@ namespace E5R.Architecture.Core
         public RuleCheckResult(bool success, IDictionary<string, string> unconformities = null)
         {
             IsSuccess = success;
-            unconformities = unconformities ?? new Dictionary<string, string>();
+            Unconformities = unconformities ?? new Dictionary<string, string>();
         }
 
         public bool IsSuccess { get; }

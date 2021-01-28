@@ -7,7 +7,11 @@ Notas de Lançamento
 
 ## 0.7.0 (dev)
 
-> TODO: ...
+Refatorações:
+
+* RuleFor<> agora aceita injeção de dependências
+* RuleSet<>  reformulado para agrupar regras via injeção de dependência
+* NotificationManager agora valida as mensagens de acordo com RuleSet<>
 
 ## 0.6.0
 

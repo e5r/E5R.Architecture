@@ -25,6 +25,15 @@ namespace E5R.Architecture.Core
                 throw new NullReferenceException($"Object {objName} can not be null.");
             }
         }
+        
+        public static void NotNullOrEmptyArgument<T>(T[] argArray, string argName)
+        {
+            if (argArray == null || argArray.Length < 1)
+            {
+                // TODO: Implementar i18n/l10n
+                throw new ArgumentNullException(argName);
+            }
+        }
 
         public static void NotEmptyArgument(string argStr, string argName)
         {
