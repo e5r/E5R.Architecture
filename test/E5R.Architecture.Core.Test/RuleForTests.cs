@@ -9,7 +9,7 @@ using Xunit;
 
 namespace E5R.Architecture.Core.Test
 {
-    public class RuleTests
+    public class RuleForTests
     {
         [Theory]
         [InlineData("RN1", "My businness rule 1")]

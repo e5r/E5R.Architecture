@@ -85,7 +85,7 @@ namespace UsingInfrastructure
 
         public override Task<RuleCheckResult> CheckAsync(MyModel target) => Task.Run(() =>
         {
-            if (target?.Number >= 35 && target?.Number <= 80)
+            if (target?.Number >= 35 && target.Number <= 80)
                 return Success;
 
             return _fail.GetFail();

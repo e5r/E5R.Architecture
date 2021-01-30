@@ -33,6 +33,7 @@ v2.0
 ====
 - Implementar internacionalização/localização
 - Estabilizar conceito de BusinessObject
+  > Conferir ideia em https://gist.github.com/erlimar/b63ccf7780b1e5bdf51dc29ffd5d80de
 - Utilizar operações de Bulk com alguma biblioteca ao invés iteração simples
 
 vNext
