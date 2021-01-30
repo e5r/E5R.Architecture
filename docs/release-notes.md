@@ -13,6 +13,48 @@ Refatorações:
 * RuleSet<>  reformulado para agrupar regras via injeção de dependência
 * NotificationManager agora valida as mensagens de acordo com RuleSet<>
 
+Breaking changes:
+
+* RuleSet<> não é mais para agrupar manualmente regras
+```c#
+// Antes: Você instanciava RuleSet<> e adicionava
+//        as regras que queria estar em conformidade, e,
+//        logo em seguida garantir a conformidade.
+public class MyBusinessClass
+{
+    public void MyMethod1(MyModel model)
+    {
+        var rules = new RuleSet<MyModel>()
+            .Conform<MyRule2>()
+            .Conform<MyRule3>();
+            
+        rules.Ensure(model);
+    }
+}
+
+// Agora: Você injeta IRuleSet<> de um modelo e todas as
+//        regras criadas para aquele modelo serão avaliadas
+//        automaticamente
+public class MyBusinessClass
+{
+    public MyBusinessClass(IRuleSet<MyModel> ruleSet)
+    { }
+    
+    public void MyMethod1(MyModel model)
+    {
+        ruleSet.Ensure(model);
+    }
+    
+    // Caso queira avaliar só uma ou outra regra específica
+    // você ainda pode fazer um filtro por códigos das
+    // regras pretendidas antes da avaliação
+    public void MyMethod1(MyModel model)
+    {
+        ruleSet.ByCode(new[]{"R2", "R3"}).Ensure(model);
+    }
+}
+```
+
 ## 0.6.0
 
 Novos recursos:
