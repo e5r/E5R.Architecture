@@ -21,7 +21,7 @@ namespace E5R.Architecture.Core
             _serviceProvider = serviceProvider;
         }
 
-        public TTo Transform<TFrom, TTo>(TFrom @from) where TTo : new()
+        public TTo Transform<TFrom, TTo>(TFrom @from)
             => ResolveType<ITransformer<TFrom, TTo>>().Transform(@from);
 
 

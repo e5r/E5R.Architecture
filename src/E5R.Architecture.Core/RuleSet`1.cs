@@ -4,70 +4,201 @@
 
 using System;
 using System.Collections.Generic;
+using System.Linq;
+using System.Threading.Tasks;
+using E5R.Architecture.Core.Exceptions;
+using static E5R.Architecture.Core.RuleCheckResult;
 
 namespace E5R.Architecture.Core
 {
-    /// <summary>
-    /// Rule set for a target model
-    /// <example>
-    /// You can create a base class that encapsulates all the necessary rules.
-    /// <code>
-    /// public class MyRuleSet1 : RuleSet<MyModel>
-    /// {
-    ///     public MyRuleSet1()
-    ///     {
-    ///         Conform<MyRule1>();
-    ///         Conform<MyRule2>();
-    ///         Conform<MyRule3>();
-    ///     }
-    /// }
-    /// </code>
-    /// 
-    /// You can now use this class to check the rules on any object.
-    /// <code>
-    /// public class MyBusinessClass
-    /// {
-    ///     public void MyMethod1(MyModel model)
-    ///     {
-    ///         new MyRuleSet1().Ensure(model);
-    ///     }
-    /// }
-    /// </code>
-    /// 
-    /// If you prefer, you can create an <see cref="RuleSet{}" /> and
-    /// use it immediately with the rules you prefer.
-    /// <code>
-    /// public class MyBusinessClass
-    /// {
-    ///     public void MyMethod1(MyModel model)
-    ///     {
-    ///         var rules = new RuleSet<MyModel>()
-    ///             .Conform<MyRule2>()
-    ///             .Conform<MyRule3>();
-    ///
-    ///         rules.Ensure(model);
-    ///     }
-    /// }
-    /// </code>
-    /// </example>
-    /// </summary>
-    /// <typeparam name="TTarget">Type that must comply with the rules</typeparam>
-    public class RuleSet<TTarget>
-        where TTarget : class
+    public class RuleSet<TTarget> : IRuleSet<TTarget> where TTarget : class
     {
-        private readonly List<RuleFor<TTarget>> _rules = new List<RuleFor<TTarget>>();
-
-        public RuleSet<TTarget> Conform<TRule>()
-            where TRule : RuleFor<TTarget>, new()
+        public RuleSet(IServiceProvider serviceProvider)
         {
-            _rules.Add(
-                Activator.CreateInstance(typeof(TRule)) as RuleFor<TTarget>
-            );
+            Checker.NotNullArgument(serviceProvider, nameof(serviceProvider));
 
-            return this;
+            var services = serviceProvider.GetService(typeof(IEnumerable<IRuleFor<TTarget>>));
+
+            Rules = services as IEnumerable<IRuleFor<TTarget>> ?? Enumerable.Empty<IRuleFor<TTarget>>();
+        }
+
+        private RuleSet(IEnumerable<IRuleFor<TTarget>> rules)
+        {
+            Checker.NotNullArgument(rules, nameof(rules));
+
+            Rules = rules;
+        }
+        
+        private IEnumerable<IRuleFor<TTarget>> Rules { get; set; }
+
+        public IRuleSet<TTarget> ByCode(string code)
+        {
+            Checker.NotEmptyOrWhiteArgument(code, nameof(code));
+
+            return ByCode(new[] {code});
+        }
+
+        public IRuleSet<TTarget> ByCode(string[] codes)
+        {
+            Checker.NotNullOrEmptyArgument(codes, nameof(codes));
+            
+            var allMatchedRules = new List<IRuleFor<TTarget>>();
+            var matchedCodes = new List<string>();
+
+            codes.ToList().ForEach(code =>
+            {
+                var matchedRules = Rules
+                    .Where(w => string.Equals(w.Code, code))
+                    .ToList();
+
+                if (matchedRules.Any())
+                {
+                    matchedCodes.Add(code);
+                }
+
+                allMatchedRules.AddRange(matchedRules);
+            });
+
+            if (matchedCodes.Count != codes.Length)
+            {
+                var noMatchedCodes = codes.Where(c => !matchedCodes.Contains(c));
+                    
+                // TODO: Implementar i18n/l10n
+                throw new InfrastructureLayerException(
+                    $"No matches found for {string.Join(", ", noMatchedCodes)}");
+            }
+
+            return new RuleSet<TTarget>(allMatchedRules);
+        }
+
+        public IRuleSet<TTarget> ByDefaultCategory() => ByCategory(null);
+        
+        public IRuleSet<TTarget> ByCategory(string category)
+        {
+            // Não validamos se o parâmetro é nulo propositalmente porque
+            // uma categoria nula é considerada categoria padrão
+            
+            var matchedRules = Rules
+                .Where(w => string.Equals(w.Category, category))
+                .ToList();
+
+            if (!matchedRules.Any())
+            {
+                // TODO: Implementar i18n/l10n
+                throw new InfrastructureLayerException(
+                    $"No matches found for {category ?? "default"} category");
+            }
+
+            return new RuleSet<TTarget>(matchedRules);
+        }
+
+        public async Task<RuleCheckResult> CheckAsync(TTarget target)
+        {
+            var unconformities = new Dictionary<string, string>();
+
+            foreach (var rule in Rules)
+            {
+                try
+                {
+                    var result = await rule.CheckAsync(target);
+
+                    if (!result.IsSuccess)
+                    {
+                        if (result.Unconformities != null && result.Unconformities.Any())
+                        {
+                            result.Unconformities
+                                .ToList()
+                                .ForEach(u => unconformities.Add($"{rule.Code}:{u.Key}", u.Value));
+                        }
+                        else
+                        {
+                            unconformities.Add($"{rule.Code}", nameof(Fail));
+                        }
+                    }
+                }
+                catch (Exception ex)
+                {
+                    unconformities.Add($"{rule.Code}:$exception", ex.Message);
+                }
+            }
+
+            if (!unconformities.Any())
+            {
+                return Success;
+            }
+
+            return new RuleCheckResult(false, unconformities);
+        }
+
+        public RuleCheckResult Check(TTarget target)
+        {
+            try
+            {
+                var task = CheckAsync(target);
+
+                task.Wait();
+
+                return task.Result;
+            }
+            catch (Exception ex)
+            {
+                return new RuleCheckResult(false, new Dictionary<string, string>
+                {
+                    {"$exception", ex.Message}
+                });
+            }
         }
 
         public void Ensure(TTarget target, string exceptionMessageTemplate = null)
-            => _rules.ForEach(r => r.Ensure(target, exceptionMessageTemplate));
+            => EnsureAsync(target, exceptionMessageTemplate).Wait();
+
+        public async Task EnsureAsync(TTarget target, string exceptionMessageTemplate = null)
+        {
+            var exceptions = new List<Exception>();
+
+            foreach (var rule in Rules)
+            {
+                try
+                {
+                    await EnsureRuleAsync(rule, target, exceptionMessageTemplate);
+                }
+                catch (Exception ex)
+                {
+                    exceptions.Add(ex);
+                }
+            }
+
+            if (exceptions.Any())
+            {
+                throw new AggregateException(exceptions);
+            }
+        }
+        
+        private async Task EnsureRuleAsync(IRuleFor<TTarget> rule, TTarget target,
+            string exceptionMessageTemplate = null)
+        {
+            RuleCheckResult result = null;
+
+            try
+            {
+                result = await rule.CheckAsync(target);
+            }
+            catch (Exception ex)
+            {
+                result = new RuleCheckResult(false, new Dictionary<string, string>
+                {
+                    {"$exception", ex.Message}
+                });
+            }
+
+            if (result.IsSuccess)
+            {
+                return;
+            }
+
+            throw !string.IsNullOrWhiteSpace(exceptionMessageTemplate)
+                ? new ViolatedRuleException(rule, result.Unconformities, exceptionMessageTemplate)
+                : new ViolatedRuleException(rule, result.Unconformities);
+        }
     }
 }

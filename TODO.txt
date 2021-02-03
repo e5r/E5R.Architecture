@@ -1,7 +1,10 @@
 v0.x
 ====
+- Mover alguns itens de Infrastructure para Core
+  > service.AddArchitectureCore();
 - Implementar validação de modelo (IModelValidator)
   > Será possível algum tipo de relacionamento com IRule, RuleFor<> e RuleSet<>?
+  > Revisar RuleFor<> e RuleSet<> para ver se talvez nem seja prciso de um IModelValidator
 
 v1.0
 ====
@@ -9,6 +12,8 @@ v1.0
 - Remover necessidade de objetos de assinatura
   > IDataModuleSignature
   > IStorageSignature
+  > IBusinessFeatureSignature
+  > IBusinessFacadeSignature
 - Repensar DataModule<>. Talvez usar a idéia de BusinessService e DataService?
   (ou StorageService, PersistenceService)
 - Renomear Storage para Store?
@@ -29,8 +34,9 @@ v1.0
 v2.0
 ====
 - Implementar internacionalização/localização
-- Estabilizar conceito de BusinessObject
 - Utilizar operações de Bulk com alguma biblioteca ao invés iteração simples
+- Padronizar nomes de componentes principais (UnitOfWork, Rule, RuleFor, RuleSet, BusinessFeature, etc)
+  para condizer com "padrões de projeto" conhecidos (design pattern)
 
 vNext
 =====

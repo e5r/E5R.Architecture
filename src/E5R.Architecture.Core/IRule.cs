@@ -7,6 +7,8 @@ namespace E5R.Architecture.Core
     public interface IRule
     {
         string Code { get; }
+        
+        string Category { get; }
 
         string Description { get; }
     }

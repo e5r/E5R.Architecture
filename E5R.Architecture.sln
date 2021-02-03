@@ -29,9 +29,9 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "_files", "_files", "{159216
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "samples", "samples", "{02D85B61-3F4D-4FDD-B5D5-AB0589447E01}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "UsingCore", "samples\UsingCore\UsingCore.csproj", "{D4C8D0D4-7564-4EF5-AD70-3F90ED847797}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "UsingInfrastructure", "samples\UsingInfrastructure\UsingInfrastructure.csproj", "{D4C8D0D4-7564-4EF5-AD70-3F90ED847797}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "UsingData", "samples\UsingData\UsingData.csproj", "{CF08BC21-5D53-493B-ABA9-29DEC1D0A350}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "UsingBusiness", "samples\UsingBusiness\UsingBusiness.csproj", "{CF08BC21-5D53-493B-ABA9-29DEC1D0A350}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "E5R.Architecture.Data.EntityFrameworkCore", "src\E5R.Architecture.Data.EntityFrameworkCore\E5R.Architecture.Data.EntityFrameworkCore.csproj", "{B6524EEE-E9F5-4DFE-BD49-D04346B84F3E}"
 EndProject

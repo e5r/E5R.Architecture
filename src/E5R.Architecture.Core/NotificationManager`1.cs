@@ -10,17 +10,17 @@ namespace E5R.Architecture.Core
     public class NotificationManager<TEnum>
         where TEnum : Enum
     {
-        private readonly RuleFor<NotificationMessage<TEnum>> _validationRule;
+        private readonly IRuleSet<NotificationMessage<TEnum>> _ruleSet;
         private readonly INotificationDispatcher<TEnum> _dispatcher;
 
         public NotificationManager(
-            RuleFor<NotificationMessage<TEnum>> validationRule,
+            IRuleSet<NotificationMessage<TEnum>> ruleSet,
             INotificationDispatcher<TEnum> dispatcher)
         {
-            Checker.NotNullArgument(validationRule, nameof(validationRule));
+            Checker.NotNullArgument(ruleSet, nameof(ruleSet));
             Checker.NotNullArgument(dispatcher, nameof(dispatcher));
 
-            _validationRule = validationRule;
+            _ruleSet = ruleSet;
             _dispatcher = dispatcher;
         }
 
@@ -32,10 +32,11 @@ namespace E5R.Architecture.Core
             Checker.NotNullArgument(type, nameof(type));
 
             parameters = parameters ?? new Parameters();
-
+            
             var message = new NotificationMessage<TEnum>(type, body, parameters);
 
-            await _validationRule.EnsureAsync(message);
+            // TODO: O que fazer com exceptionMessageTemplate aqui?
+            await _ruleSet.EnsureAsync(message);
             await _dispatcher.DispatchAsync(message);
         }
     }

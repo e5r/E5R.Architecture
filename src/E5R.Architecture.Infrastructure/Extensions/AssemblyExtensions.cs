@@ -7,6 +7,8 @@ using System.Linq;
 using System.Reflection;
 using E5R.Architecture.Core;
 using E5R.Architecture.Infrastructure.Abstractions;
+using Microsoft.Extensions.DependencyInjection;
+using Microsoft.Extensions.DependencyInjection.Extensions;
 
 namespace E5R.Architecture.Infrastructure.Extensions
 {
@@ -22,6 +24,33 @@ namespace E5R.Architecture.Infrastructure.Extensions
                 .Select(t => Activate(t.AsType()))
                 .ToList()
                 .ForEach(f => f.Register(container));
+        }
+        
+        public static void AddAllRules(this Assembly assembly, IServiceCollection services)
+        {
+            Checker.NotNullArgument(assembly, nameof(assembly));
+            Checker.NotNullArgument(services, nameof(services));
+            
+            var typeOfRuleFor = typeof(RuleFor<>);
+            var typeOfIRuleFor = typeof(IRuleFor<>);
+
+            assembly.DefinedTypes
+                .Where(t =>
+                    t.BaseType != null && t.BaseType.IsGenericType &&
+                    t.BaseType.GetGenericTypeDefinition() == typeOfRuleFor
+                    && t.GetInterfaces().Any(tt =>
+                        tt.IsGenericType &&
+                        tt.GetGenericTypeDefinition() == typeOfIRuleFor))
+                .ToList()
+                .ForEach(ruleType =>
+                {
+                    if (ruleType.BaseType is null) return;
+                    var serviceType =
+                        typeOfIRuleFor.MakeGenericType(
+                            ruleType.BaseType.GetGenericArguments());
+
+                    services.TryAddScoped(serviceType, ruleType);
+                });
         }
 
         private static IDIRegistrar Activate(Type type)
