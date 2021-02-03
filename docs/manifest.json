@@ -5,11 +5,251 @@
   "files": [
     {
       "type": "ManagedReference",
-      "source_relative_path": "api/E5R.Architecture.Business.BusinessObject-2.yml",
+      "source_relative_path": "api/E5R.Architecture.Business.BusinessFacade-1.yml",
       "output": {
         ".html": {
-          "relative_path": "api/E5R.Architecture.Business.BusinessObject-2.html",
-          "hash": "5ftZdQH6ukCKnyKqbWESrA=="
+          "relative_path": "api/E5R.Architecture.Business.BusinessFacade-1.html",
+          "hash": "7dSEaUNsdDaB215YggB3Gw=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/E5R.Architecture.Business.BusinessFacade-10.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/E5R.Architecture.Business.BusinessFacade-10.html",
+          "hash": "35hNl+hUp7qwZAPcnb1VBA=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/E5R.Architecture.Business.BusinessFacade-2.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/E5R.Architecture.Business.BusinessFacade-2.html",
+          "hash": "DuAZXbZWygs5n8CHqZ4ihA=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/E5R.Architecture.Business.BusinessFacade-3.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/E5R.Architecture.Business.BusinessFacade-3.html",
+          "hash": "3Vcgtu+DKM7tX2eBH7pYMQ=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/E5R.Architecture.Business.BusinessFacade-4.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/E5R.Architecture.Business.BusinessFacade-4.html",
+          "hash": "pJiPcH9jbYu1m0/gTX5O3A=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/E5R.Architecture.Business.BusinessFacade-5.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/E5R.Architecture.Business.BusinessFacade-5.html",
+          "hash": "hNNCZuxR/nvFCwurGDDF0w=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/E5R.Architecture.Business.BusinessFacade-6.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/E5R.Architecture.Business.BusinessFacade-6.html",
+          "hash": "irHdYwHdJ0OEruQOPCMPpw=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/E5R.Architecture.Business.BusinessFacade-7.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/E5R.Architecture.Business.BusinessFacade-7.html",
+          "hash": "/YKwcwwX0saUCo9u0VJMJw=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/E5R.Architecture.Business.BusinessFacade-8.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/E5R.Architecture.Business.BusinessFacade-8.html",
+          "hash": "Zm6VAY9dKOLjBO8b6op0Rw=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/E5R.Architecture.Business.BusinessFacade-9.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/E5R.Architecture.Business.BusinessFacade-9.html",
+          "hash": "WWHFruYJ7FbLEHx1JxQsVw=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/E5R.Architecture.Business.BusinessFeature-2.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/E5R.Architecture.Business.BusinessFeature-2.html",
+          "hash": "PudxyyA7T4myc39ub/5XSw=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/E5R.Architecture.Business.BusinessFeature.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/E5R.Architecture.Business.BusinessFeature.html",
+          "hash": "Ib5xBjEVyA/FpXYFAgJsUg=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/E5R.Architecture.Business.Extensions.AppDomainExtensions.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/E5R.Architecture.Business.Extensions.AppDomainExtensions.html",
+          "hash": "yyq5pLNKA1EEFzRbtqUOcA=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/E5R.Architecture.Business.Extensions.AssemblyExtensions.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/E5R.Architecture.Business.Extensions.AssemblyExtensions.html",
+          "hash": "8pUrGLwzhKG+A4DCtLcvcw=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/E5R.Architecture.Business.Extensions.ServiceCollectionExtensions.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/E5R.Architecture.Business.Extensions.ServiceCollectionExtensions.html",
+          "hash": "YkaI0oWDwOAy+fOgxNjBzQ=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/E5R.Architecture.Business.Extensions.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/E5R.Architecture.Business.Extensions.html",
+          "hash": "H5qlYDapI+5t4QC73juL6Q=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/E5R.Architecture.Business.IBusinessFacadeSignature.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/E5R.Architecture.Business.IBusinessFacadeSignature.html",
+          "hash": "iQdpqwyLZ2hvWVlbAsnhCg=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/E5R.Architecture.Business.IBusinessFeatureSignature.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/E5R.Architecture.Business.IBusinessFeatureSignature.html",
+          "hash": "AveP4cPyX0aa+VGp877uuw=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/E5R.Architecture.Business.InputBasedBusinessFeature-1.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/E5R.Architecture.Business.InputBasedBusinessFeature-1.html",
+          "hash": "y/s3doFak9kIwDj1+EwWOw=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/E5R.Architecture.Business.InputOnlyBusinessFeature-1.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/E5R.Architecture.Business.InputOnlyBusinessFeature-1.html",
+          "hash": "k7Fcr4PeYo0NObiT+O5mPQ=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/E5R.Architecture.Business.OutputOnlyBusinessFeature-1.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/E5R.Architecture.Business.OutputOnlyBusinessFeature-1.html",
+          "hash": "IBP3rORHD/91pE25S7lGag=="
         }
       },
       "is_incremental": false,
@@ -21,7 +261,7 @@
       "output": {
         ".html": {
           "relative_path": "api/E5R.Architecture.Business.html",
-          "hash": "jsvP2P5EgjDpWxox5xl1Sg=="
+          "hash": "oTp+pXb+qedDNPiz6Y3uIw=="
         }
       },
       "is_incremental": false,
@@ -45,7 +285,7 @@
       "output": {
         ".html": {
           "relative_path": "api/E5R.Architecture.Core.Checker.html",
-          "hash": "8D/qxd8T11x8YJNjWysxlQ=="
+          "hash": "MpBsdFYHLDPX2u/I6sv05g=="
         }
       },
       "is_incremental": false,
@@ -201,7 +441,7 @@
       "output": {
         ".html": {
           "relative_path": "api/E5R.Architecture.Core.INotificationDispatcher-1.html",
-          "hash": "uWSuHS57eAK8p1jrgFcicQ=="
+          "hash": "70uiRX6RU+qVeyXXL3+UZw=="
         }
       },
       "is_incremental": false,
@@ -213,7 +453,31 @@
       "output": {
         ".html": {
           "relative_path": "api/E5R.Architecture.Core.IRule.html",
-          "hash": "Sej3XBW0R0akEaIKkHVRDw=="
+          "hash": "OBRXGQ7NZviEAhm8pJKsRw=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/E5R.Architecture.Core.IRuleFor-1.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/E5R.Architecture.Core.IRuleFor-1.html",
+          "hash": "DRl8gkTF5fQdQJS0Q4tQfA=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/E5R.Architecture.Core.IRuleSet-1.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/E5R.Architecture.Core.IRuleSet-1.html",
+          "hash": "ZOoHGhF2uUNJ2feJnZx08A=="
         }
       },
       "is_incremental": false,
@@ -225,7 +489,7 @@
       "output": {
         ".html": {
           "relative_path": "api/E5R.Architecture.Core.ITransformationManager.html",
-          "hash": "/rnAQrQSS+eC05Z4AJjy2g=="
+          "hash": "EOp/oZSEoqxKSwSjdD6gOw=="
         }
       },
       "is_incremental": false,
@@ -237,7 +501,7 @@
       "output": {
         ".html": {
           "relative_path": "api/E5R.Architecture.Core.ITransformer-2.html",
-          "hash": "sAekTNm9v3t6++MxB6z7hw=="
+          "hash": "vc+h2cWu74WEjBpKZKRaCA=="
         }
       },
       "is_incremental": false,
@@ -309,7 +573,7 @@
       "output": {
         ".html": {
           "relative_path": "api/E5R.Architecture.Core.NotificationManager-1.html",
-          "hash": "AuKxsT90tiC8chbBRzM0cQ=="
+          "hash": "kaXfBTxq0fa/ttxXJvlEAA=="
         }
       },
       "is_incremental": false,
@@ -369,7 +633,7 @@
       "output": {
         ".html": {
           "relative_path": "api/E5R.Architecture.Core.RuleFor-1.html",
-          "hash": "50dJP38ZER0uvwb8iggLnA=="
+          "hash": "aoj4hgKX9YWYD+0ZpE0BkQ=="
         }
       },
       "is_incremental": false,
@@ -381,7 +645,7 @@
       "output": {
         ".html": {
           "relative_path": "api/E5R.Architecture.Core.RuleSet-1.html",
-          "hash": "i9G58SKwiW1KP2DVap0gAA=="
+          "hash": "XOS+63WKHsYt8vea8VBJqQ=="
         }
       },
       "is_incremental": false,
@@ -405,7 +669,7 @@
       "output": {
         ".html": {
           "relative_path": "api/E5R.Architecture.Core.TransformationManager.html",
-          "hash": "CABsv7Fk4r1sZk67jwAA/w=="
+          "hash": "a9NVGpwjGQ0XKrJDivFIxA=="
         }
       },
       "is_incremental": false,
@@ -465,7 +729,7 @@
       "output": {
         ".html": {
           "relative_path": "api/E5R.Architecture.Core.html",
-          "hash": "3wlTz/SQG0qCg/5PZ3+AFQ=="
+          "hash": "USCmVd28afjho3pp8AMRcQ=="
         }
       },
       "is_incremental": false,
@@ -1989,7 +2253,7 @@
       "output": {
         ".html": {
           "relative_path": "api/E5R.Architecture.Infrastructure.Extensions.AppDomainExtensions.html",
-          "hash": "dFPs317Xz5liEFecZNlKXw=="
+          "hash": "fJBZbmAwObWfbaRXfdnAQw=="
         }
       },
       "is_incremental": false,
@@ -2001,7 +2265,7 @@
       "output": {
         ".html": {
           "relative_path": "api/E5R.Architecture.Infrastructure.Extensions.AssemblyExtensions.html",
-          "hash": "KPamvQcenDDmViUTiRIirQ=="
+          "hash": "/t20auRWRY8/YJS7R9cRJA=="
         }
       },
       "is_incremental": false,
@@ -2169,7 +2433,7 @@
       "output": {
         ".html": {
           "relative_path": "api/toc.html",
-          "hash": "tvPoC2tvoQsSpvupoVxKPg=="
+          "hash": "C18wB0l2ea10F4VxBPEVmg=="
         }
       },
       "is_incremental": false,
@@ -2215,7 +2479,7 @@
       "output": {
         ".html": {
           "relative_path": "release-notes.html",
-          "hash": "5M3O9Esf1tRbQulx7ALIyA=="
+          "hash": "K36heGdT4+hRe7ja0Wt5Yg=="
         }
       },
       "is_incremental": false,
@@ -2335,7 +2599,7 @@
       "output": {
         ".html": {
           "relative_path": "tutorials/toc.html",
-          "hash": "1XXxl4gKsv4D+vCD/VshYg=="
+          "hash": "2x7JfnjVJk7Cjc9B2yudrg=="
         }
       },
       "is_incremental": false,
@@ -2379,6 +2643,18 @@
     },
     {
       "type": "Conceptual",
+      "source_relative_path": "tutorials/writing-business-feature.md",
+      "output": {
+        ".html": {
+          "relative_path": "tutorials/writing-business-feature.html",
+          "hash": "Ae0ipyk76FkClT3DYQTGMw=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
       "source_relative_path": "tutorials/writing-with-fluent-api.md",
       "output": {
         ".html": {
@@ -2404,13 +2680,13 @@
         "ConceptualDocumentProcessor": {
           "can_incremental": false,
           "incrementalPhase": "build",
-          "total_file_count": 15,
+          "total_file_count": 16,
           "skipped_file_count": 0
         },
         "ManagedReferenceDocumentProcessor": {
           "can_incremental": false,
           "incrementalPhase": "build",
-          "total_file_count": 179,
+          "total_file_count": 201,
           "skipped_file_count": 0
         },
         "ResourceDocumentProcessor": {

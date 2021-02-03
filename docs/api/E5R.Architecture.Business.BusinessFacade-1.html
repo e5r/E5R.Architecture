@@ -5,10 +5,10 @@
   <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-    <title>Interface IRule
+    <title>Class BusinessFacade&lt;TFeature1&gt;
    | Arquitetura E5R </title>
     <meta name="viewport" content="width=device-width">
-    <meta name="title" content="Interface IRule
+    <meta name="title" content="Class BusinessFacade&lt;TFeature1&gt;
    | Arquitetura E5R ">
     <meta name="generator" content="docfx 2.56.6.0">
     
@@ -68,28 +68,79 @@
         </div>
         <div class="article row grid-right">
           <div class="col-md-10">
-            <article class="content wrap" id="_content" data-uid="E5R.Architecture.Core.IRule">
+            <article class="content wrap" id="_content" data-uid="E5R.Architecture.Business.BusinessFacade`1">
   
   
-  <h1 id="E5R_Architecture_Core_IRule" data-uid="E5R.Architecture.Core.IRule" class="text-break">Interface IRule
+  <h1 id="E5R_Architecture_Business_BusinessFacade_1" data-uid="E5R.Architecture.Business.BusinessFacade`1" class="text-break">Class BusinessFacade&lt;TFeature1&gt;
   </h1>
   <div class="markdown level0 summary"></div>
   <div class="markdown level0 conceptual"></div>
-  <h6><strong>Namespace</strong>: <a class="xref" href="E5R.Architecture.Core.html">E5R.Architecture.Core</a></h6>
-  <h6><strong>Assembly</strong>: E5R.Architecture.Core.dll</h6>
-  <h5 id="E5R_Architecture_Core_IRule_syntax">Syntax</h5>
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public interface IRule</code></pre>
+  <div class="inheritance">
+    <h5>Inheritance</h5>
+    <div class="level0"><span class="xref">System.Object</span></div>
+    <div class="level1"><span class="xref">BusinessFacade&lt;TFeature1&gt;</span></div>
   </div>
+  <div classs="implements">
+    <h5>Implements</h5>
+    <div><a class="xref" href="E5R.Architecture.Business.IBusinessFacadeSignature.html">IBusinessFacadeSignature</a></div>
+  </div>
+  <h6><strong>Namespace</strong>: <a class="xref" href="E5R.Architecture.Business.html">E5R.Architecture.Business</a></h6>
+  <h6><strong>Assembly</strong>: E5R.Architecture.Business.dll</h6>
+  <h5 id="E5R_Architecture_Business_BusinessFacade_1_syntax">Syntax</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public class BusinessFacade&lt;TFeature1&gt; : object, IBusinessFacadeSignature where TFeature1 : IBusinessFeatureSignature</code></pre>
+  </div>
+  <h5 class="typeParameters">Type Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="parametername">TFeature1</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h3 id="constructors">Constructors
+  </h3>
+  <a id="E5R_Architecture_Business_BusinessFacade_1__ctor_" data-uid="E5R.Architecture.Business.BusinessFacade`1.#ctor*"></a>
+  <h4 id="E5R_Architecture_Business_BusinessFacade_1__ctor_ILazy__0__" data-uid="E5R.Architecture.Business.BusinessFacade`1.#ctor(ILazy{`0})">BusinessFacade(ILazy&lt;TFeature1&gt;)</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public BusinessFacade(ILazy&lt;TFeature1&gt; feature1)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">ILazy</span>&lt;TFeature1&gt;</td>
+        <td><span class="parametername">feature1</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
   <h3 id="properties">Properties
   </h3>
-  <a id="E5R_Architecture_Core_IRule_Category_" data-uid="E5R.Architecture.Core.IRule.Category*"></a>
-  <h4 id="E5R_Architecture_Core_IRule_Category" data-uid="E5R.Architecture.Core.IRule.Category">Category</h4>
+  <a id="E5R_Architecture_Business_BusinessFacade_1_Feature1_" data-uid="E5R.Architecture.Business.BusinessFacade`1.Feature1*"></a>
+  <h4 id="E5R_Architecture_Business_BusinessFacade_1_Feature1" data-uid="E5R.Architecture.Business.BusinessFacade`1.Feature1">Feature1</h4>
   <div class="markdown level1 summary"></div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">string Category { get; }</code></pre>
+    <pre><code class="lang-csharp hljs">protected TFeature1 Feature1 { get; }</code></pre>
   </div>
   <h5 class="propertyValue">Property Value</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -101,57 +152,15 @@
     </thead>
     <tbody>
       <tr>
-        <td><span class="xref">System.String</span></td>
+        <td><span class="xref">TFeature1</span></td>
         <td></td>
       </tr>
     </tbody>
   </table>
-  <a id="E5R_Architecture_Core_IRule_Code_" data-uid="E5R.Architecture.Core.IRule.Code*"></a>
-  <h4 id="E5R_Architecture_Core_IRule_Code" data-uid="E5R.Architecture.Core.IRule.Code">Code</h4>
-  <div class="markdown level1 summary"></div>
-  <div class="markdown level1 conceptual"></div>
-  <h5 class="decalaration">Declaration</h5>
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">string Code { get; }</code></pre>
+  <h3 id="implements">Implements</h3>
+  <div>
+      <a class="xref" href="E5R.Architecture.Business.IBusinessFacadeSignature.html">IBusinessFacadeSignature</a>
   </div>
-  <h5 class="propertyValue">Property Value</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><span class="xref">System.String</span></td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
-  <a id="E5R_Architecture_Core_IRule_Description_" data-uid="E5R.Architecture.Core.IRule.Description*"></a>
-  <h4 id="E5R_Architecture_Core_IRule_Description" data-uid="E5R.Architecture.Core.IRule.Description">Description</h4>
-  <div class="markdown level1 summary"></div>
-  <div class="markdown level1 conceptual"></div>
-  <h5 class="decalaration">Declaration</h5>
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">string Description { get; }</code></pre>
-  </div>
-  <h5 class="propertyValue">Property Value</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><span class="xref">System.String</span></td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
 </article>
           </div>
           

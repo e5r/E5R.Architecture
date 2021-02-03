@@ -62,6 +62,62 @@
             <article class="content wrap" id="_content" data-uid="">
 <h1 id="notas-de-lançamento">Notas de Lançamento</h1>
 
+<h2 id="070">0.7.0</h2>
+<p>Novos recursos:</p>
+<ul>
+<li>Adiciona conceito de <code>BusinessFeature</code> e <code>BusinessFacade</code>
+<ul>
+<li>Leia o tutorial <a href="tutorials/writing-business-feature.html">Escrevendo características de negócio</a></li>
+</ul>
+</li>
+</ul>
+<p>Refatorações:</p>
+<ul>
+<li>RuleFor&lt;&gt; agora aceita injeção de dependências</li>
+<li>RuleSet&lt;&gt;  reformulado para agrupar regras via injeção de dependência</li>
+<li>NotificationManager agora valida as mensagens de acordo com RuleSet&lt;&gt;</li>
+</ul>
+<p>Breaking changes:</p>
+<ul>
+<li>RuleSet&lt;&gt; não é mais para agrupar manualmente regras</li>
+</ul>
+<pre><code class="lang-c#">// Antes: Você instanciava RuleSet&lt;&gt; e adicionava
+//        as regras que queria estar em conformidade, e,
+//        logo em seguida garantir a conformidade.
+public class MyBusinessClass
+{
+    public void MyMethod1(MyModel model)
+    {
+        var rules = new RuleSet&lt;MyModel&gt;()
+            .Conform&lt;MyRule2&gt;()
+            .Conform&lt;MyRule3&gt;();
+            
+        rules.Ensure(model);
+    }
+}
+
+// Agora: Você injeta IRuleSet&lt;&gt; de um modelo e todas as
+//        regras criadas para aquele modelo serão avaliadas
+//        automaticamente
+public class MyBusinessClass
+{
+    public MyBusinessClass(IRuleSet&lt;MyModel&gt; ruleSet)
+    { }
+    
+    public void MyMethod1(MyModel model)
+    {
+        ruleSet.Ensure(model);
+    }
+    
+    // Caso queira avaliar só uma ou outra regra específica
+    // você ainda pode fazer um filtro por códigos das
+    // regras pretendidas antes da avaliação
+    public void MyMethod1(MyModel model)
+    {
+        ruleSet.ByCode(new[]{&quot;R2&quot;, &quot;R3&quot;}).Ensure(model);
+    }
+}
+</code></pre>
 <h2 id="060">0.6.0</h2>
 <p>Novos recursos:</p>
 <ul>

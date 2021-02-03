@@ -7,111 +7,1546 @@ references:
   commentId: N:E5R.Architecture.Business
   fullName: E5R.Architecture.Business
   nameWithType: E5R.Architecture.Business
-- uid: E5R.Architecture.Business.BusinessObject`2
-  name: BusinessObject<TObject, TModule>
-  href: api/E5R.Architecture.Business.BusinessObject-2.html
-  commentId: T:E5R.Architecture.Business.BusinessObject`2
-  name.vb: BusinessObject(Of TObject, TModule)
-  fullName: E5R.Architecture.Business.BusinessObject<TObject, TModule>
-  fullName.vb: E5R.Architecture.Business.BusinessObject(Of TObject, TModule)
-  nameWithType: BusinessObject<TObject, TModule>
-  nameWithType.vb: BusinessObject(Of TObject, TModule)
-- uid: E5R.Architecture.Business.BusinessObject`2.#ctor(System.Object)
-  name: BusinessObject(Object)
-  href: api/E5R.Architecture.Business.BusinessObject-2.html#E5R_Architecture_Business_BusinessObject_2__ctor_System_Object_
-  commentId: M:E5R.Architecture.Business.BusinessObject`2.#ctor(System.Object)
-  fullName: E5R.Architecture.Business.BusinessObject<TObject, TModule>.BusinessObject(System.Object)
-  fullName.vb: E5R.Architecture.Business.BusinessObject(Of TObject, TModule).BusinessObject(System.Object)
-  nameWithType: BusinessObject<TObject, TModule>.BusinessObject(Object)
-  nameWithType.vb: BusinessObject(Of TObject, TModule).BusinessObject(Object)
-- uid: E5R.Architecture.Business.BusinessObject`2.#ctor*
-  name: BusinessObject
-  href: api/E5R.Architecture.Business.BusinessObject-2.html#E5R_Architecture_Business_BusinessObject_2__ctor_
-  commentId: Overload:E5R.Architecture.Business.BusinessObject`2.#ctor
+- uid: E5R.Architecture.Business.BusinessFacade`1
+  name: BusinessFacade<TFeature1>
+  href: api/E5R.Architecture.Business.BusinessFacade-1.html
+  commentId: T:E5R.Architecture.Business.BusinessFacade`1
+  name.vb: BusinessFacade(Of TFeature1)
+  fullName: E5R.Architecture.Business.BusinessFacade<TFeature1>
+  fullName.vb: E5R.Architecture.Business.BusinessFacade(Of TFeature1)
+  nameWithType: BusinessFacade<TFeature1>
+  nameWithType.vb: BusinessFacade(Of TFeature1)
+- uid: E5R.Architecture.Business.BusinessFacade`1.#ctor(ILazy{`0})
+  name: BusinessFacade(ILazy<TFeature1>)
+  href: api/E5R.Architecture.Business.BusinessFacade-1.html#E5R_Architecture_Business_BusinessFacade_1__ctor_ILazy__0__
+  commentId: M:E5R.Architecture.Business.BusinessFacade`1.#ctor(ILazy{`0})
+  name.vb: BusinessFacade(ILazy(Of TFeature1))
+  fullName: E5R.Architecture.Business.BusinessFacade<TFeature1>.BusinessFacade(ILazy<TFeature1>)
+  fullName.vb: E5R.Architecture.Business.BusinessFacade(Of TFeature1).BusinessFacade(ILazy(Of TFeature1))
+  nameWithType: BusinessFacade<TFeature1>.BusinessFacade(ILazy<TFeature1>)
+  nameWithType.vb: BusinessFacade(Of TFeature1).BusinessFacade(ILazy(Of TFeature1))
+- uid: E5R.Architecture.Business.BusinessFacade`1.#ctor*
+  name: BusinessFacade
+  href: api/E5R.Architecture.Business.BusinessFacade-1.html#E5R_Architecture_Business_BusinessFacade_1__ctor_
+  commentId: Overload:E5R.Architecture.Business.BusinessFacade`1.#ctor
   isSpec: "True"
-  fullName: E5R.Architecture.Business.BusinessObject<TObject, TModule>.BusinessObject
-  fullName.vb: E5R.Architecture.Business.BusinessObject(Of TObject, TModule).BusinessObject
-  nameWithType: BusinessObject<TObject, TModule>.BusinessObject
-  nameWithType.vb: BusinessObject(Of TObject, TModule).BusinessObject
-- uid: E5R.Architecture.Business.BusinessObject`2.Anchor(`1)
-  name: Anchor(TModule)
-  href: api/E5R.Architecture.Business.BusinessObject-2.html#E5R_Architecture_Business_BusinessObject_2_Anchor__1_
-  commentId: M:E5R.Architecture.Business.BusinessObject`2.Anchor(`1)
-  fullName: E5R.Architecture.Business.BusinessObject<TObject, TModule>.Anchor(TModule)
-  fullName.vb: E5R.Architecture.Business.BusinessObject(Of TObject, TModule).Anchor(TModule)
-  nameWithType: BusinessObject<TObject, TModule>.Anchor(TModule)
-  nameWithType.vb: BusinessObject(Of TObject, TModule).Anchor(TModule)
-- uid: E5R.Architecture.Business.BusinessObject`2.Anchor*
-  name: Anchor
-  href: api/E5R.Architecture.Business.BusinessObject-2.html#E5R_Architecture_Business_BusinessObject_2_Anchor_
-  commentId: Overload:E5R.Architecture.Business.BusinessObject`2.Anchor
+  fullName: E5R.Architecture.Business.BusinessFacade<TFeature1>.BusinessFacade
+  fullName.vb: E5R.Architecture.Business.BusinessFacade(Of TFeature1).BusinessFacade
+  nameWithType: BusinessFacade<TFeature1>.BusinessFacade
+  nameWithType.vb: BusinessFacade(Of TFeature1).BusinessFacade
+- uid: E5R.Architecture.Business.BusinessFacade`1.Feature1
+  name: Feature1
+  href: api/E5R.Architecture.Business.BusinessFacade-1.html#E5R_Architecture_Business_BusinessFacade_1_Feature1
+  commentId: P:E5R.Architecture.Business.BusinessFacade`1.Feature1
+  fullName: E5R.Architecture.Business.BusinessFacade<TFeature1>.Feature1
+  fullName.vb: E5R.Architecture.Business.BusinessFacade(Of TFeature1).Feature1
+  nameWithType: BusinessFacade<TFeature1>.Feature1
+  nameWithType.vb: BusinessFacade(Of TFeature1).Feature1
+- uid: E5R.Architecture.Business.BusinessFacade`1.Feature1*
+  name: Feature1
+  href: api/E5R.Architecture.Business.BusinessFacade-1.html#E5R_Architecture_Business_BusinessFacade_1_Feature1_
+  commentId: Overload:E5R.Architecture.Business.BusinessFacade`1.Feature1
   isSpec: "True"
-  fullName: E5R.Architecture.Business.BusinessObject<TObject, TModule>.Anchor
-  fullName.vb: E5R.Architecture.Business.BusinessObject(Of TObject, TModule).Anchor
-  nameWithType: BusinessObject<TObject, TModule>.Anchor
-  nameWithType.vb: BusinessObject(Of TObject, TModule).Anchor
-- uid: E5R.Architecture.Business.BusinessObject`2.EnsureOrigin*
-  name: EnsureOrigin
-  href: api/E5R.Architecture.Business.BusinessObject-2.html#E5R_Architecture_Business_BusinessObject_2_EnsureOrigin_
-  commentId: Overload:E5R.Architecture.Business.BusinessObject`2.EnsureOrigin
+  fullName: E5R.Architecture.Business.BusinessFacade<TFeature1>.Feature1
+  fullName.vb: E5R.Architecture.Business.BusinessFacade(Of TFeature1).Feature1
+  nameWithType: BusinessFacade<TFeature1>.Feature1
+  nameWithType.vb: BusinessFacade(Of TFeature1).Feature1
+- uid: E5R.Architecture.Business.BusinessFacade`10
+  name: BusinessFacade<TFeature1, TFeature2, TFeature3, TFeature4, TFeature5, TFeature6, TFeature7, TFeature8, TFeature9, TFeature10>
+  href: api/E5R.Architecture.Business.BusinessFacade-10.html
+  commentId: T:E5R.Architecture.Business.BusinessFacade`10
+  name.vb: BusinessFacade(Of TFeature1, TFeature2, TFeature3, TFeature4, TFeature5, TFeature6, TFeature7, TFeature8, TFeature9, TFeature10)
+  fullName: E5R.Architecture.Business.BusinessFacade<TFeature1, TFeature2, TFeature3, TFeature4, TFeature5, TFeature6, TFeature7, TFeature8, TFeature9, TFeature10>
+  fullName.vb: E5R.Architecture.Business.BusinessFacade(Of TFeature1, TFeature2, TFeature3, TFeature4, TFeature5, TFeature6, TFeature7, TFeature8, TFeature9, TFeature10)
+  nameWithType: BusinessFacade<TFeature1, TFeature2, TFeature3, TFeature4, TFeature5, TFeature6, TFeature7, TFeature8, TFeature9, TFeature10>
+  nameWithType.vb: BusinessFacade(Of TFeature1, TFeature2, TFeature3, TFeature4, TFeature5, TFeature6, TFeature7, TFeature8, TFeature9, TFeature10)
+- uid: E5R.Architecture.Business.BusinessFacade`10.#ctor(ILazy{`0},ILazy{`1},ILazy{`2},ILazy{`3},ILazy{`4},ILazy{`5},ILazy{`6},ILazy{`7},ILazy{`8},ILazy{`9})
+  name: BusinessFacade(ILazy<TFeature1>, ILazy<TFeature2>, ILazy<TFeature3>, ILazy<TFeature4>, ILazy<TFeature5>, ILazy<TFeature6>, ILazy<TFeature7>, ILazy<TFeature8>, ILazy<TFeature9>, ILazy<TFeature10>)
+  href: api/E5R.Architecture.Business.BusinessFacade-10.html#E5R_Architecture_Business_BusinessFacade_10__ctor_ILazy__0__ILazy__1__ILazy__2__ILazy__3__ILazy__4__ILazy__5__ILazy__6__ILazy__7__ILazy__8__ILazy__9__
+  commentId: M:E5R.Architecture.Business.BusinessFacade`10.#ctor(ILazy{`0},ILazy{`1},ILazy{`2},ILazy{`3},ILazy{`4},ILazy{`5},ILazy{`6},ILazy{`7},ILazy{`8},ILazy{`9})
+  name.vb: BusinessFacade(ILazy(Of TFeature1), ILazy(Of TFeature2), ILazy(Of TFeature3), ILazy(Of TFeature4), ILazy(Of TFeature5), ILazy(Of TFeature6), ILazy(Of TFeature7), ILazy(Of TFeature8), ILazy(Of TFeature9), ILazy(Of TFeature10))
+  fullName: E5R.Architecture.Business.BusinessFacade<TFeature1, TFeature2, TFeature3, TFeature4, TFeature5, TFeature6, TFeature7, TFeature8, TFeature9, TFeature10>.BusinessFacade(ILazy<TFeature1>, ILazy<TFeature2>, ILazy<TFeature3>, ILazy<TFeature4>, ILazy<TFeature5>, ILazy<TFeature6>, ILazy<TFeature7>, ILazy<TFeature8>, ILazy<TFeature9>, ILazy<TFeature10>)
+  fullName.vb: E5R.Architecture.Business.BusinessFacade(Of TFeature1, TFeature2, TFeature3, TFeature4, TFeature5, TFeature6, TFeature7, TFeature8, TFeature9, TFeature10).BusinessFacade(ILazy(Of TFeature1), ILazy(Of TFeature2), ILazy(Of TFeature3), ILazy(Of TFeature4), ILazy(Of TFeature5), ILazy(Of TFeature6), ILazy(Of TFeature7), ILazy(Of TFeature8), ILazy(Of TFeature9), ILazy(Of TFeature10))
+  nameWithType: BusinessFacade<TFeature1, TFeature2, TFeature3, TFeature4, TFeature5, TFeature6, TFeature7, TFeature8, TFeature9, TFeature10>.BusinessFacade(ILazy<TFeature1>, ILazy<TFeature2>, ILazy<TFeature3>, ILazy<TFeature4>, ILazy<TFeature5>, ILazy<TFeature6>, ILazy<TFeature7>, ILazy<TFeature8>, ILazy<TFeature9>, ILazy<TFeature10>)
+  nameWithType.vb: BusinessFacade(Of TFeature1, TFeature2, TFeature3, TFeature4, TFeature5, TFeature6, TFeature7, TFeature8, TFeature9, TFeature10).BusinessFacade(ILazy(Of TFeature1), ILazy(Of TFeature2), ILazy(Of TFeature3), ILazy(Of TFeature4), ILazy(Of TFeature5), ILazy(Of TFeature6), ILazy(Of TFeature7), ILazy(Of TFeature8), ILazy(Of TFeature9), ILazy(Of TFeature10))
+- uid: E5R.Architecture.Business.BusinessFacade`10.#ctor*
+  name: BusinessFacade
+  href: api/E5R.Architecture.Business.BusinessFacade-10.html#E5R_Architecture_Business_BusinessFacade_10__ctor_
+  commentId: Overload:E5R.Architecture.Business.BusinessFacade`10.#ctor
   isSpec: "True"
-  fullName: E5R.Architecture.Business.BusinessObject<TObject, TModule>.EnsureOrigin
-  fullName.vb: E5R.Architecture.Business.BusinessObject(Of TObject, TModule).EnsureOrigin
-  nameWithType: BusinessObject<TObject, TModule>.EnsureOrigin
-  nameWithType.vb: BusinessObject(Of TObject, TModule).EnsureOrigin
-- uid: E5R.Architecture.Business.BusinessObject`2.EnsureOrigin``1
-  name: EnsureOrigin<TOrigin>()
-  href: api/E5R.Architecture.Business.BusinessObject-2.html#E5R_Architecture_Business_BusinessObject_2_EnsureOrigin__1
-  commentId: M:E5R.Architecture.Business.BusinessObject`2.EnsureOrigin``1
-  name.vb: EnsureOrigin(Of TOrigin)()
-  fullName: E5R.Architecture.Business.BusinessObject<TObject, TModule>.EnsureOrigin<TOrigin>()
-  fullName.vb: E5R.Architecture.Business.BusinessObject(Of TObject, TModule).EnsureOrigin(Of TOrigin)()
-  nameWithType: BusinessObject<TObject, TModule>.EnsureOrigin<TOrigin>()
-  nameWithType.vb: BusinessObject(Of TObject, TModule).EnsureOrigin(Of TOrigin)()
-- uid: E5R.Architecture.Business.BusinessObject`2.Module
-  name: Module
-  href: api/E5R.Architecture.Business.BusinessObject-2.html#E5R_Architecture_Business_BusinessObject_2_Module
-  commentId: P:E5R.Architecture.Business.BusinessObject`2.Module
-  fullName: E5R.Architecture.Business.BusinessObject<TObject, TModule>.Module
-  fullName.vb: E5R.Architecture.Business.BusinessObject(Of TObject, TModule).Module
-  nameWithType: BusinessObject<TObject, TModule>.Module
-  nameWithType.vb: BusinessObject(Of TObject, TModule).Module
-- uid: E5R.Architecture.Business.BusinessObject`2.Module*
-  name: Module
-  href: api/E5R.Architecture.Business.BusinessObject-2.html#E5R_Architecture_Business_BusinessObject_2_Module_
-  commentId: Overload:E5R.Architecture.Business.BusinessObject`2.Module
+  fullName: E5R.Architecture.Business.BusinessFacade<TFeature1, TFeature2, TFeature3, TFeature4, TFeature5, TFeature6, TFeature7, TFeature8, TFeature9, TFeature10>.BusinessFacade
+  fullName.vb: E5R.Architecture.Business.BusinessFacade(Of TFeature1, TFeature2, TFeature3, TFeature4, TFeature5, TFeature6, TFeature7, TFeature8, TFeature9, TFeature10).BusinessFacade
+  nameWithType: BusinessFacade<TFeature1, TFeature2, TFeature3, TFeature4, TFeature5, TFeature6, TFeature7, TFeature8, TFeature9, TFeature10>.BusinessFacade
+  nameWithType.vb: BusinessFacade(Of TFeature1, TFeature2, TFeature3, TFeature4, TFeature5, TFeature6, TFeature7, TFeature8, TFeature9, TFeature10).BusinessFacade
+- uid: E5R.Architecture.Business.BusinessFacade`10.Feature1
+  name: Feature1
+  href: api/E5R.Architecture.Business.BusinessFacade-10.html#E5R_Architecture_Business_BusinessFacade_10_Feature1
+  commentId: P:E5R.Architecture.Business.BusinessFacade`10.Feature1
+  fullName: E5R.Architecture.Business.BusinessFacade<TFeature1, TFeature2, TFeature3, TFeature4, TFeature5, TFeature6, TFeature7, TFeature8, TFeature9, TFeature10>.Feature1
+  fullName.vb: E5R.Architecture.Business.BusinessFacade(Of TFeature1, TFeature2, TFeature3, TFeature4, TFeature5, TFeature6, TFeature7, TFeature8, TFeature9, TFeature10).Feature1
+  nameWithType: BusinessFacade<TFeature1, TFeature2, TFeature3, TFeature4, TFeature5, TFeature6, TFeature7, TFeature8, TFeature9, TFeature10>.Feature1
+  nameWithType.vb: BusinessFacade(Of TFeature1, TFeature2, TFeature3, TFeature4, TFeature5, TFeature6, TFeature7, TFeature8, TFeature9, TFeature10).Feature1
+- uid: E5R.Architecture.Business.BusinessFacade`10.Feature1*
+  name: Feature1
+  href: api/E5R.Architecture.Business.BusinessFacade-10.html#E5R_Architecture_Business_BusinessFacade_10_Feature1_
+  commentId: Overload:E5R.Architecture.Business.BusinessFacade`10.Feature1
   isSpec: "True"
-  fullName: E5R.Architecture.Business.BusinessObject<TObject, TModule>.Module
-  fullName.vb: E5R.Architecture.Business.BusinessObject(Of TObject, TModule).Module
-  nameWithType: BusinessObject<TObject, TModule>.Module
-  nameWithType.vb: BusinessObject(Of TObject, TModule).Module
-- uid: E5R.Architecture.Business.BusinessObject`2.RunWithEnsureOriginAsync*
-  name: RunWithEnsureOriginAsync
-  href: api/E5R.Architecture.Business.BusinessObject-2.html#E5R_Architecture_Business_BusinessObject_2_RunWithEnsureOriginAsync_
-  commentId: Overload:E5R.Architecture.Business.BusinessObject`2.RunWithEnsureOriginAsync
+  fullName: E5R.Architecture.Business.BusinessFacade<TFeature1, TFeature2, TFeature3, TFeature4, TFeature5, TFeature6, TFeature7, TFeature8, TFeature9, TFeature10>.Feature1
+  fullName.vb: E5R.Architecture.Business.BusinessFacade(Of TFeature1, TFeature2, TFeature3, TFeature4, TFeature5, TFeature6, TFeature7, TFeature8, TFeature9, TFeature10).Feature1
+  nameWithType: BusinessFacade<TFeature1, TFeature2, TFeature3, TFeature4, TFeature5, TFeature6, TFeature7, TFeature8, TFeature9, TFeature10>.Feature1
+  nameWithType.vb: BusinessFacade(Of TFeature1, TFeature2, TFeature3, TFeature4, TFeature5, TFeature6, TFeature7, TFeature8, TFeature9, TFeature10).Feature1
+- uid: E5R.Architecture.Business.BusinessFacade`10.Feature10
+  name: Feature10
+  href: api/E5R.Architecture.Business.BusinessFacade-10.html#E5R_Architecture_Business_BusinessFacade_10_Feature10
+  commentId: P:E5R.Architecture.Business.BusinessFacade`10.Feature10
+  fullName: E5R.Architecture.Business.BusinessFacade<TFeature1, TFeature2, TFeature3, TFeature4, TFeature5, TFeature6, TFeature7, TFeature8, TFeature9, TFeature10>.Feature10
+  fullName.vb: E5R.Architecture.Business.BusinessFacade(Of TFeature1, TFeature2, TFeature3, TFeature4, TFeature5, TFeature6, TFeature7, TFeature8, TFeature9, TFeature10).Feature10
+  nameWithType: BusinessFacade<TFeature1, TFeature2, TFeature3, TFeature4, TFeature5, TFeature6, TFeature7, TFeature8, TFeature9, TFeature10>.Feature10
+  nameWithType.vb: BusinessFacade(Of TFeature1, TFeature2, TFeature3, TFeature4, TFeature5, TFeature6, TFeature7, TFeature8, TFeature9, TFeature10).Feature10
+- uid: E5R.Architecture.Business.BusinessFacade`10.Feature10*
+  name: Feature10
+  href: api/E5R.Architecture.Business.BusinessFacade-10.html#E5R_Architecture_Business_BusinessFacade_10_Feature10_
+  commentId: Overload:E5R.Architecture.Business.BusinessFacade`10.Feature10
   isSpec: "True"
-  fullName: E5R.Architecture.Business.BusinessObject<TObject, TModule>.RunWithEnsureOriginAsync
-  fullName.vb: E5R.Architecture.Business.BusinessObject(Of TObject, TModule).RunWithEnsureOriginAsync
-  nameWithType: BusinessObject<TObject, TModule>.RunWithEnsureOriginAsync
-  nameWithType.vb: BusinessObject(Of TObject, TModule).RunWithEnsureOriginAsync
-- uid: E5R.Architecture.Business.BusinessObject`2.RunWithEnsureOriginAsync``1(Action)
-  name: RunWithEnsureOriginAsync<TOrigin>(Action)
-  href: api/E5R.Architecture.Business.BusinessObject-2.html#E5R_Architecture_Business_BusinessObject_2_RunWithEnsureOriginAsync__1_Action_
-  commentId: M:E5R.Architecture.Business.BusinessObject`2.RunWithEnsureOriginAsync``1(Action)
-  name.vb: RunWithEnsureOriginAsync(Of TOrigin)(Action)
-  fullName: E5R.Architecture.Business.BusinessObject<TObject, TModule>.RunWithEnsureOriginAsync<TOrigin>(Action)
-  fullName.vb: E5R.Architecture.Business.BusinessObject(Of TObject, TModule).RunWithEnsureOriginAsync(Of TOrigin)(Action)
-  nameWithType: BusinessObject<TObject, TModule>.RunWithEnsureOriginAsync<TOrigin>(Action)
-  nameWithType.vb: BusinessObject(Of TObject, TModule).RunWithEnsureOriginAsync(Of TOrigin)(Action)
-- uid: E5R.Architecture.Business.BusinessObject`2.RunWithEnsureOriginAsync``2(Func{``1})
-  name: RunWithEnsureOriginAsync<TOrigin, TResult>(Func<TResult>)
-  href: api/E5R.Architecture.Business.BusinessObject-2.html#E5R_Architecture_Business_BusinessObject_2_RunWithEnsureOriginAsync__2_Func___1__
-  commentId: M:E5R.Architecture.Business.BusinessObject`2.RunWithEnsureOriginAsync``2(Func{``1})
-  name.vb: RunWithEnsureOriginAsync(Of TOrigin, TResult)(Func(Of TResult))
-  fullName: E5R.Architecture.Business.BusinessObject<TObject, TModule>.RunWithEnsureOriginAsync<TOrigin, TResult>(Func<TResult>)
-  fullName.vb: E5R.Architecture.Business.BusinessObject(Of TObject, TModule).RunWithEnsureOriginAsync(Of TOrigin, TResult)(Func(Of TResult))
-  nameWithType: BusinessObject<TObject, TModule>.RunWithEnsureOriginAsync<TOrigin, TResult>(Func<TResult>)
-  nameWithType.vb: BusinessObject(Of TObject, TModule).RunWithEnsureOriginAsync(Of TOrigin, TResult)(Func(Of TResult))
+  fullName: E5R.Architecture.Business.BusinessFacade<TFeature1, TFeature2, TFeature3, TFeature4, TFeature5, TFeature6, TFeature7, TFeature8, TFeature9, TFeature10>.Feature10
+  fullName.vb: E5R.Architecture.Business.BusinessFacade(Of TFeature1, TFeature2, TFeature3, TFeature4, TFeature5, TFeature6, TFeature7, TFeature8, TFeature9, TFeature10).Feature10
+  nameWithType: BusinessFacade<TFeature1, TFeature2, TFeature3, TFeature4, TFeature5, TFeature6, TFeature7, TFeature8, TFeature9, TFeature10>.Feature10
+  nameWithType.vb: BusinessFacade(Of TFeature1, TFeature2, TFeature3, TFeature4, TFeature5, TFeature6, TFeature7, TFeature8, TFeature9, TFeature10).Feature10
+- uid: E5R.Architecture.Business.BusinessFacade`10.Feature2
+  name: Feature2
+  href: api/E5R.Architecture.Business.BusinessFacade-10.html#E5R_Architecture_Business_BusinessFacade_10_Feature2
+  commentId: P:E5R.Architecture.Business.BusinessFacade`10.Feature2
+  fullName: E5R.Architecture.Business.BusinessFacade<TFeature1, TFeature2, TFeature3, TFeature4, TFeature5, TFeature6, TFeature7, TFeature8, TFeature9, TFeature10>.Feature2
+  fullName.vb: E5R.Architecture.Business.BusinessFacade(Of TFeature1, TFeature2, TFeature3, TFeature4, TFeature5, TFeature6, TFeature7, TFeature8, TFeature9, TFeature10).Feature2
+  nameWithType: BusinessFacade<TFeature1, TFeature2, TFeature3, TFeature4, TFeature5, TFeature6, TFeature7, TFeature8, TFeature9, TFeature10>.Feature2
+  nameWithType.vb: BusinessFacade(Of TFeature1, TFeature2, TFeature3, TFeature4, TFeature5, TFeature6, TFeature7, TFeature8, TFeature9, TFeature10).Feature2
+- uid: E5R.Architecture.Business.BusinessFacade`10.Feature2*
+  name: Feature2
+  href: api/E5R.Architecture.Business.BusinessFacade-10.html#E5R_Architecture_Business_BusinessFacade_10_Feature2_
+  commentId: Overload:E5R.Architecture.Business.BusinessFacade`10.Feature2
+  isSpec: "True"
+  fullName: E5R.Architecture.Business.BusinessFacade<TFeature1, TFeature2, TFeature3, TFeature4, TFeature5, TFeature6, TFeature7, TFeature8, TFeature9, TFeature10>.Feature2
+  fullName.vb: E5R.Architecture.Business.BusinessFacade(Of TFeature1, TFeature2, TFeature3, TFeature4, TFeature5, TFeature6, TFeature7, TFeature8, TFeature9, TFeature10).Feature2
+  nameWithType: BusinessFacade<TFeature1, TFeature2, TFeature3, TFeature4, TFeature5, TFeature6, TFeature7, TFeature8, TFeature9, TFeature10>.Feature2
+  nameWithType.vb: BusinessFacade(Of TFeature1, TFeature2, TFeature3, TFeature4, TFeature5, TFeature6, TFeature7, TFeature8, TFeature9, TFeature10).Feature2
+- uid: E5R.Architecture.Business.BusinessFacade`10.Feature3
+  name: Feature3
+  href: api/E5R.Architecture.Business.BusinessFacade-10.html#E5R_Architecture_Business_BusinessFacade_10_Feature3
+  commentId: P:E5R.Architecture.Business.BusinessFacade`10.Feature3
+  fullName: E5R.Architecture.Business.BusinessFacade<TFeature1, TFeature2, TFeature3, TFeature4, TFeature5, TFeature6, TFeature7, TFeature8, TFeature9, TFeature10>.Feature3
+  fullName.vb: E5R.Architecture.Business.BusinessFacade(Of TFeature1, TFeature2, TFeature3, TFeature4, TFeature5, TFeature6, TFeature7, TFeature8, TFeature9, TFeature10).Feature3
+  nameWithType: BusinessFacade<TFeature1, TFeature2, TFeature3, TFeature4, TFeature5, TFeature6, TFeature7, TFeature8, TFeature9, TFeature10>.Feature3
+  nameWithType.vb: BusinessFacade(Of TFeature1, TFeature2, TFeature3, TFeature4, TFeature5, TFeature6, TFeature7, TFeature8, TFeature9, TFeature10).Feature3
+- uid: E5R.Architecture.Business.BusinessFacade`10.Feature3*
+  name: Feature3
+  href: api/E5R.Architecture.Business.BusinessFacade-10.html#E5R_Architecture_Business_BusinessFacade_10_Feature3_
+  commentId: Overload:E5R.Architecture.Business.BusinessFacade`10.Feature3
+  isSpec: "True"
+  fullName: E5R.Architecture.Business.BusinessFacade<TFeature1, TFeature2, TFeature3, TFeature4, TFeature5, TFeature6, TFeature7, TFeature8, TFeature9, TFeature10>.Feature3
+  fullName.vb: E5R.Architecture.Business.BusinessFacade(Of TFeature1, TFeature2, TFeature3, TFeature4, TFeature5, TFeature6, TFeature7, TFeature8, TFeature9, TFeature10).Feature3
+  nameWithType: BusinessFacade<TFeature1, TFeature2, TFeature3, TFeature4, TFeature5, TFeature6, TFeature7, TFeature8, TFeature9, TFeature10>.Feature3
+  nameWithType.vb: BusinessFacade(Of TFeature1, TFeature2, TFeature3, TFeature4, TFeature5, TFeature6, TFeature7, TFeature8, TFeature9, TFeature10).Feature3
+- uid: E5R.Architecture.Business.BusinessFacade`10.Feature4
+  name: Feature4
+  href: api/E5R.Architecture.Business.BusinessFacade-10.html#E5R_Architecture_Business_BusinessFacade_10_Feature4
+  commentId: P:E5R.Architecture.Business.BusinessFacade`10.Feature4
+  fullName: E5R.Architecture.Business.BusinessFacade<TFeature1, TFeature2, TFeature3, TFeature4, TFeature5, TFeature6, TFeature7, TFeature8, TFeature9, TFeature10>.Feature4
+  fullName.vb: E5R.Architecture.Business.BusinessFacade(Of TFeature1, TFeature2, TFeature3, TFeature4, TFeature5, TFeature6, TFeature7, TFeature8, TFeature9, TFeature10).Feature4
+  nameWithType: BusinessFacade<TFeature1, TFeature2, TFeature3, TFeature4, TFeature5, TFeature6, TFeature7, TFeature8, TFeature9, TFeature10>.Feature4
+  nameWithType.vb: BusinessFacade(Of TFeature1, TFeature2, TFeature3, TFeature4, TFeature5, TFeature6, TFeature7, TFeature8, TFeature9, TFeature10).Feature4
+- uid: E5R.Architecture.Business.BusinessFacade`10.Feature4*
+  name: Feature4
+  href: api/E5R.Architecture.Business.BusinessFacade-10.html#E5R_Architecture_Business_BusinessFacade_10_Feature4_
+  commentId: Overload:E5R.Architecture.Business.BusinessFacade`10.Feature4
+  isSpec: "True"
+  fullName: E5R.Architecture.Business.BusinessFacade<TFeature1, TFeature2, TFeature3, TFeature4, TFeature5, TFeature6, TFeature7, TFeature8, TFeature9, TFeature10>.Feature4
+  fullName.vb: E5R.Architecture.Business.BusinessFacade(Of TFeature1, TFeature2, TFeature3, TFeature4, TFeature5, TFeature6, TFeature7, TFeature8, TFeature9, TFeature10).Feature4
+  nameWithType: BusinessFacade<TFeature1, TFeature2, TFeature3, TFeature4, TFeature5, TFeature6, TFeature7, TFeature8, TFeature9, TFeature10>.Feature4
+  nameWithType.vb: BusinessFacade(Of TFeature1, TFeature2, TFeature3, TFeature4, TFeature5, TFeature6, TFeature7, TFeature8, TFeature9, TFeature10).Feature4
+- uid: E5R.Architecture.Business.BusinessFacade`10.Feature5
+  name: Feature5
+  href: api/E5R.Architecture.Business.BusinessFacade-10.html#E5R_Architecture_Business_BusinessFacade_10_Feature5
+  commentId: P:E5R.Architecture.Business.BusinessFacade`10.Feature5
+  fullName: E5R.Architecture.Business.BusinessFacade<TFeature1, TFeature2, TFeature3, TFeature4, TFeature5, TFeature6, TFeature7, TFeature8, TFeature9, TFeature10>.Feature5
+  fullName.vb: E5R.Architecture.Business.BusinessFacade(Of TFeature1, TFeature2, TFeature3, TFeature4, TFeature5, TFeature6, TFeature7, TFeature8, TFeature9, TFeature10).Feature5
+  nameWithType: BusinessFacade<TFeature1, TFeature2, TFeature3, TFeature4, TFeature5, TFeature6, TFeature7, TFeature8, TFeature9, TFeature10>.Feature5
+  nameWithType.vb: BusinessFacade(Of TFeature1, TFeature2, TFeature3, TFeature4, TFeature5, TFeature6, TFeature7, TFeature8, TFeature9, TFeature10).Feature5
+- uid: E5R.Architecture.Business.BusinessFacade`10.Feature5*
+  name: Feature5
+  href: api/E5R.Architecture.Business.BusinessFacade-10.html#E5R_Architecture_Business_BusinessFacade_10_Feature5_
+  commentId: Overload:E5R.Architecture.Business.BusinessFacade`10.Feature5
+  isSpec: "True"
+  fullName: E5R.Architecture.Business.BusinessFacade<TFeature1, TFeature2, TFeature3, TFeature4, TFeature5, TFeature6, TFeature7, TFeature8, TFeature9, TFeature10>.Feature5
+  fullName.vb: E5R.Architecture.Business.BusinessFacade(Of TFeature1, TFeature2, TFeature3, TFeature4, TFeature5, TFeature6, TFeature7, TFeature8, TFeature9, TFeature10).Feature5
+  nameWithType: BusinessFacade<TFeature1, TFeature2, TFeature3, TFeature4, TFeature5, TFeature6, TFeature7, TFeature8, TFeature9, TFeature10>.Feature5
+  nameWithType.vb: BusinessFacade(Of TFeature1, TFeature2, TFeature3, TFeature4, TFeature5, TFeature6, TFeature7, TFeature8, TFeature9, TFeature10).Feature5
+- uid: E5R.Architecture.Business.BusinessFacade`10.Feature6
+  name: Feature6
+  href: api/E5R.Architecture.Business.BusinessFacade-10.html#E5R_Architecture_Business_BusinessFacade_10_Feature6
+  commentId: P:E5R.Architecture.Business.BusinessFacade`10.Feature6
+  fullName: E5R.Architecture.Business.BusinessFacade<TFeature1, TFeature2, TFeature3, TFeature4, TFeature5, TFeature6, TFeature7, TFeature8, TFeature9, TFeature10>.Feature6
+  fullName.vb: E5R.Architecture.Business.BusinessFacade(Of TFeature1, TFeature2, TFeature3, TFeature4, TFeature5, TFeature6, TFeature7, TFeature8, TFeature9, TFeature10).Feature6
+  nameWithType: BusinessFacade<TFeature1, TFeature2, TFeature3, TFeature4, TFeature5, TFeature6, TFeature7, TFeature8, TFeature9, TFeature10>.Feature6
+  nameWithType.vb: BusinessFacade(Of TFeature1, TFeature2, TFeature3, TFeature4, TFeature5, TFeature6, TFeature7, TFeature8, TFeature9, TFeature10).Feature6
+- uid: E5R.Architecture.Business.BusinessFacade`10.Feature6*
+  name: Feature6
+  href: api/E5R.Architecture.Business.BusinessFacade-10.html#E5R_Architecture_Business_BusinessFacade_10_Feature6_
+  commentId: Overload:E5R.Architecture.Business.BusinessFacade`10.Feature6
+  isSpec: "True"
+  fullName: E5R.Architecture.Business.BusinessFacade<TFeature1, TFeature2, TFeature3, TFeature4, TFeature5, TFeature6, TFeature7, TFeature8, TFeature9, TFeature10>.Feature6
+  fullName.vb: E5R.Architecture.Business.BusinessFacade(Of TFeature1, TFeature2, TFeature3, TFeature4, TFeature5, TFeature6, TFeature7, TFeature8, TFeature9, TFeature10).Feature6
+  nameWithType: BusinessFacade<TFeature1, TFeature2, TFeature3, TFeature4, TFeature5, TFeature6, TFeature7, TFeature8, TFeature9, TFeature10>.Feature6
+  nameWithType.vb: BusinessFacade(Of TFeature1, TFeature2, TFeature3, TFeature4, TFeature5, TFeature6, TFeature7, TFeature8, TFeature9, TFeature10).Feature6
+- uid: E5R.Architecture.Business.BusinessFacade`10.Feature7
+  name: Feature7
+  href: api/E5R.Architecture.Business.BusinessFacade-10.html#E5R_Architecture_Business_BusinessFacade_10_Feature7
+  commentId: P:E5R.Architecture.Business.BusinessFacade`10.Feature7
+  fullName: E5R.Architecture.Business.BusinessFacade<TFeature1, TFeature2, TFeature3, TFeature4, TFeature5, TFeature6, TFeature7, TFeature8, TFeature9, TFeature10>.Feature7
+  fullName.vb: E5R.Architecture.Business.BusinessFacade(Of TFeature1, TFeature2, TFeature3, TFeature4, TFeature5, TFeature6, TFeature7, TFeature8, TFeature9, TFeature10).Feature7
+  nameWithType: BusinessFacade<TFeature1, TFeature2, TFeature3, TFeature4, TFeature5, TFeature6, TFeature7, TFeature8, TFeature9, TFeature10>.Feature7
+  nameWithType.vb: BusinessFacade(Of TFeature1, TFeature2, TFeature3, TFeature4, TFeature5, TFeature6, TFeature7, TFeature8, TFeature9, TFeature10).Feature7
+- uid: E5R.Architecture.Business.BusinessFacade`10.Feature7*
+  name: Feature7
+  href: api/E5R.Architecture.Business.BusinessFacade-10.html#E5R_Architecture_Business_BusinessFacade_10_Feature7_
+  commentId: Overload:E5R.Architecture.Business.BusinessFacade`10.Feature7
+  isSpec: "True"
+  fullName: E5R.Architecture.Business.BusinessFacade<TFeature1, TFeature2, TFeature3, TFeature4, TFeature5, TFeature6, TFeature7, TFeature8, TFeature9, TFeature10>.Feature7
+  fullName.vb: E5R.Architecture.Business.BusinessFacade(Of TFeature1, TFeature2, TFeature3, TFeature4, TFeature5, TFeature6, TFeature7, TFeature8, TFeature9, TFeature10).Feature7
+  nameWithType: BusinessFacade<TFeature1, TFeature2, TFeature3, TFeature4, TFeature5, TFeature6, TFeature7, TFeature8, TFeature9, TFeature10>.Feature7
+  nameWithType.vb: BusinessFacade(Of TFeature1, TFeature2, TFeature3, TFeature4, TFeature5, TFeature6, TFeature7, TFeature8, TFeature9, TFeature10).Feature7
+- uid: E5R.Architecture.Business.BusinessFacade`10.Feature8
+  name: Feature8
+  href: api/E5R.Architecture.Business.BusinessFacade-10.html#E5R_Architecture_Business_BusinessFacade_10_Feature8
+  commentId: P:E5R.Architecture.Business.BusinessFacade`10.Feature8
+  fullName: E5R.Architecture.Business.BusinessFacade<TFeature1, TFeature2, TFeature3, TFeature4, TFeature5, TFeature6, TFeature7, TFeature8, TFeature9, TFeature10>.Feature8
+  fullName.vb: E5R.Architecture.Business.BusinessFacade(Of TFeature1, TFeature2, TFeature3, TFeature4, TFeature5, TFeature6, TFeature7, TFeature8, TFeature9, TFeature10).Feature8
+  nameWithType: BusinessFacade<TFeature1, TFeature2, TFeature3, TFeature4, TFeature5, TFeature6, TFeature7, TFeature8, TFeature9, TFeature10>.Feature8
+  nameWithType.vb: BusinessFacade(Of TFeature1, TFeature2, TFeature3, TFeature4, TFeature5, TFeature6, TFeature7, TFeature8, TFeature9, TFeature10).Feature8
+- uid: E5R.Architecture.Business.BusinessFacade`10.Feature8*
+  name: Feature8
+  href: api/E5R.Architecture.Business.BusinessFacade-10.html#E5R_Architecture_Business_BusinessFacade_10_Feature8_
+  commentId: Overload:E5R.Architecture.Business.BusinessFacade`10.Feature8
+  isSpec: "True"
+  fullName: E5R.Architecture.Business.BusinessFacade<TFeature1, TFeature2, TFeature3, TFeature4, TFeature5, TFeature6, TFeature7, TFeature8, TFeature9, TFeature10>.Feature8
+  fullName.vb: E5R.Architecture.Business.BusinessFacade(Of TFeature1, TFeature2, TFeature3, TFeature4, TFeature5, TFeature6, TFeature7, TFeature8, TFeature9, TFeature10).Feature8
+  nameWithType: BusinessFacade<TFeature1, TFeature2, TFeature3, TFeature4, TFeature5, TFeature6, TFeature7, TFeature8, TFeature9, TFeature10>.Feature8
+  nameWithType.vb: BusinessFacade(Of TFeature1, TFeature2, TFeature3, TFeature4, TFeature5, TFeature6, TFeature7, TFeature8, TFeature9, TFeature10).Feature8
+- uid: E5R.Architecture.Business.BusinessFacade`10.Feature9
+  name: Feature9
+  href: api/E5R.Architecture.Business.BusinessFacade-10.html#E5R_Architecture_Business_BusinessFacade_10_Feature9
+  commentId: P:E5R.Architecture.Business.BusinessFacade`10.Feature9
+  fullName: E5R.Architecture.Business.BusinessFacade<TFeature1, TFeature2, TFeature3, TFeature4, TFeature5, TFeature6, TFeature7, TFeature8, TFeature9, TFeature10>.Feature9
+  fullName.vb: E5R.Architecture.Business.BusinessFacade(Of TFeature1, TFeature2, TFeature3, TFeature4, TFeature5, TFeature6, TFeature7, TFeature8, TFeature9, TFeature10).Feature9
+  nameWithType: BusinessFacade<TFeature1, TFeature2, TFeature3, TFeature4, TFeature5, TFeature6, TFeature7, TFeature8, TFeature9, TFeature10>.Feature9
+  nameWithType.vb: BusinessFacade(Of TFeature1, TFeature2, TFeature3, TFeature4, TFeature5, TFeature6, TFeature7, TFeature8, TFeature9, TFeature10).Feature9
+- uid: E5R.Architecture.Business.BusinessFacade`10.Feature9*
+  name: Feature9
+  href: api/E5R.Architecture.Business.BusinessFacade-10.html#E5R_Architecture_Business_BusinessFacade_10_Feature9_
+  commentId: Overload:E5R.Architecture.Business.BusinessFacade`10.Feature9
+  isSpec: "True"
+  fullName: E5R.Architecture.Business.BusinessFacade<TFeature1, TFeature2, TFeature3, TFeature4, TFeature5, TFeature6, TFeature7, TFeature8, TFeature9, TFeature10>.Feature9
+  fullName.vb: E5R.Architecture.Business.BusinessFacade(Of TFeature1, TFeature2, TFeature3, TFeature4, TFeature5, TFeature6, TFeature7, TFeature8, TFeature9, TFeature10).Feature9
+  nameWithType: BusinessFacade<TFeature1, TFeature2, TFeature3, TFeature4, TFeature5, TFeature6, TFeature7, TFeature8, TFeature9, TFeature10>.Feature9
+  nameWithType.vb: BusinessFacade(Of TFeature1, TFeature2, TFeature3, TFeature4, TFeature5, TFeature6, TFeature7, TFeature8, TFeature9, TFeature10).Feature9
+- uid: E5R.Architecture.Business.BusinessFacade`2
+  name: BusinessFacade<TFeature1, TFeature2>
+  href: api/E5R.Architecture.Business.BusinessFacade-2.html
+  commentId: T:E5R.Architecture.Business.BusinessFacade`2
+  name.vb: BusinessFacade(Of TFeature1, TFeature2)
+  fullName: E5R.Architecture.Business.BusinessFacade<TFeature1, TFeature2>
+  fullName.vb: E5R.Architecture.Business.BusinessFacade(Of TFeature1, TFeature2)
+  nameWithType: BusinessFacade<TFeature1, TFeature2>
+  nameWithType.vb: BusinessFacade(Of TFeature1, TFeature2)
+- uid: E5R.Architecture.Business.BusinessFacade`2.#ctor(ILazy{`0},ILazy{`1})
+  name: BusinessFacade(ILazy<TFeature1>, ILazy<TFeature2>)
+  href: api/E5R.Architecture.Business.BusinessFacade-2.html#E5R_Architecture_Business_BusinessFacade_2__ctor_ILazy__0__ILazy__1__
+  commentId: M:E5R.Architecture.Business.BusinessFacade`2.#ctor(ILazy{`0},ILazy{`1})
+  name.vb: BusinessFacade(ILazy(Of TFeature1), ILazy(Of TFeature2))
+  fullName: E5R.Architecture.Business.BusinessFacade<TFeature1, TFeature2>.BusinessFacade(ILazy<TFeature1>, ILazy<TFeature2>)
+  fullName.vb: E5R.Architecture.Business.BusinessFacade(Of TFeature1, TFeature2).BusinessFacade(ILazy(Of TFeature1), ILazy(Of TFeature2))
+  nameWithType: BusinessFacade<TFeature1, TFeature2>.BusinessFacade(ILazy<TFeature1>, ILazy<TFeature2>)
+  nameWithType.vb: BusinessFacade(Of TFeature1, TFeature2).BusinessFacade(ILazy(Of TFeature1), ILazy(Of TFeature2))
+- uid: E5R.Architecture.Business.BusinessFacade`2.#ctor*
+  name: BusinessFacade
+  href: api/E5R.Architecture.Business.BusinessFacade-2.html#E5R_Architecture_Business_BusinessFacade_2__ctor_
+  commentId: Overload:E5R.Architecture.Business.BusinessFacade`2.#ctor
+  isSpec: "True"
+  fullName: E5R.Architecture.Business.BusinessFacade<TFeature1, TFeature2>.BusinessFacade
+  fullName.vb: E5R.Architecture.Business.BusinessFacade(Of TFeature1, TFeature2).BusinessFacade
+  nameWithType: BusinessFacade<TFeature1, TFeature2>.BusinessFacade
+  nameWithType.vb: BusinessFacade(Of TFeature1, TFeature2).BusinessFacade
+- uid: E5R.Architecture.Business.BusinessFacade`2.Feature1
+  name: Feature1
+  href: api/E5R.Architecture.Business.BusinessFacade-2.html#E5R_Architecture_Business_BusinessFacade_2_Feature1
+  commentId: P:E5R.Architecture.Business.BusinessFacade`2.Feature1
+  fullName: E5R.Architecture.Business.BusinessFacade<TFeature1, TFeature2>.Feature1
+  fullName.vb: E5R.Architecture.Business.BusinessFacade(Of TFeature1, TFeature2).Feature1
+  nameWithType: BusinessFacade<TFeature1, TFeature2>.Feature1
+  nameWithType.vb: BusinessFacade(Of TFeature1, TFeature2).Feature1
+- uid: E5R.Architecture.Business.BusinessFacade`2.Feature1*
+  name: Feature1
+  href: api/E5R.Architecture.Business.BusinessFacade-2.html#E5R_Architecture_Business_BusinessFacade_2_Feature1_
+  commentId: Overload:E5R.Architecture.Business.BusinessFacade`2.Feature1
+  isSpec: "True"
+  fullName: E5R.Architecture.Business.BusinessFacade<TFeature1, TFeature2>.Feature1
+  fullName.vb: E5R.Architecture.Business.BusinessFacade(Of TFeature1, TFeature2).Feature1
+  nameWithType: BusinessFacade<TFeature1, TFeature2>.Feature1
+  nameWithType.vb: BusinessFacade(Of TFeature1, TFeature2).Feature1
+- uid: E5R.Architecture.Business.BusinessFacade`2.Feature2
+  name: Feature2
+  href: api/E5R.Architecture.Business.BusinessFacade-2.html#E5R_Architecture_Business_BusinessFacade_2_Feature2
+  commentId: P:E5R.Architecture.Business.BusinessFacade`2.Feature2
+  fullName: E5R.Architecture.Business.BusinessFacade<TFeature1, TFeature2>.Feature2
+  fullName.vb: E5R.Architecture.Business.BusinessFacade(Of TFeature1, TFeature2).Feature2
+  nameWithType: BusinessFacade<TFeature1, TFeature2>.Feature2
+  nameWithType.vb: BusinessFacade(Of TFeature1, TFeature2).Feature2
+- uid: E5R.Architecture.Business.BusinessFacade`2.Feature2*
+  name: Feature2
+  href: api/E5R.Architecture.Business.BusinessFacade-2.html#E5R_Architecture_Business_BusinessFacade_2_Feature2_
+  commentId: Overload:E5R.Architecture.Business.BusinessFacade`2.Feature2
+  isSpec: "True"
+  fullName: E5R.Architecture.Business.BusinessFacade<TFeature1, TFeature2>.Feature2
+  fullName.vb: E5R.Architecture.Business.BusinessFacade(Of TFeature1, TFeature2).Feature2
+  nameWithType: BusinessFacade<TFeature1, TFeature2>.Feature2
+  nameWithType.vb: BusinessFacade(Of TFeature1, TFeature2).Feature2
+- uid: E5R.Architecture.Business.BusinessFacade`3
+  name: BusinessFacade<TFeature1, TFeature2, TFeature3>
+  href: api/E5R.Architecture.Business.BusinessFacade-3.html
+  commentId: T:E5R.Architecture.Business.BusinessFacade`3
+  name.vb: BusinessFacade(Of TFeature1, TFeature2, TFeature3)
+  fullName: E5R.Architecture.Business.BusinessFacade<TFeature1, TFeature2, TFeature3>
+  fullName.vb: E5R.Architecture.Business.BusinessFacade(Of TFeature1, TFeature2, TFeature3)
+  nameWithType: BusinessFacade<TFeature1, TFeature2, TFeature3>
+  nameWithType.vb: BusinessFacade(Of TFeature1, TFeature2, TFeature3)
+- uid: E5R.Architecture.Business.BusinessFacade`3.#ctor(ILazy{`0},ILazy{`1},ILazy{`2})
+  name: BusinessFacade(ILazy<TFeature1>, ILazy<TFeature2>, ILazy<TFeature3>)
+  href: api/E5R.Architecture.Business.BusinessFacade-3.html#E5R_Architecture_Business_BusinessFacade_3__ctor_ILazy__0__ILazy__1__ILazy__2__
+  commentId: M:E5R.Architecture.Business.BusinessFacade`3.#ctor(ILazy{`0},ILazy{`1},ILazy{`2})
+  name.vb: BusinessFacade(ILazy(Of TFeature1), ILazy(Of TFeature2), ILazy(Of TFeature3))
+  fullName: E5R.Architecture.Business.BusinessFacade<TFeature1, TFeature2, TFeature3>.BusinessFacade(ILazy<TFeature1>, ILazy<TFeature2>, ILazy<TFeature3>)
+  fullName.vb: E5R.Architecture.Business.BusinessFacade(Of TFeature1, TFeature2, TFeature3).BusinessFacade(ILazy(Of TFeature1), ILazy(Of TFeature2), ILazy(Of TFeature3))
+  nameWithType: BusinessFacade<TFeature1, TFeature2, TFeature3>.BusinessFacade(ILazy<TFeature1>, ILazy<TFeature2>, ILazy<TFeature3>)
+  nameWithType.vb: BusinessFacade(Of TFeature1, TFeature2, TFeature3).BusinessFacade(ILazy(Of TFeature1), ILazy(Of TFeature2), ILazy(Of TFeature3))
+- uid: E5R.Architecture.Business.BusinessFacade`3.#ctor*
+  name: BusinessFacade
+  href: api/E5R.Architecture.Business.BusinessFacade-3.html#E5R_Architecture_Business_BusinessFacade_3__ctor_
+  commentId: Overload:E5R.Architecture.Business.BusinessFacade`3.#ctor
+  isSpec: "True"
+  fullName: E5R.Architecture.Business.BusinessFacade<TFeature1, TFeature2, TFeature3>.BusinessFacade
+  fullName.vb: E5R.Architecture.Business.BusinessFacade(Of TFeature1, TFeature2, TFeature3).BusinessFacade
+  nameWithType: BusinessFacade<TFeature1, TFeature2, TFeature3>.BusinessFacade
+  nameWithType.vb: BusinessFacade(Of TFeature1, TFeature2, TFeature3).BusinessFacade
+- uid: E5R.Architecture.Business.BusinessFacade`3.Feature1
+  name: Feature1
+  href: api/E5R.Architecture.Business.BusinessFacade-3.html#E5R_Architecture_Business_BusinessFacade_3_Feature1
+  commentId: P:E5R.Architecture.Business.BusinessFacade`3.Feature1
+  fullName: E5R.Architecture.Business.BusinessFacade<TFeature1, TFeature2, TFeature3>.Feature1
+  fullName.vb: E5R.Architecture.Business.BusinessFacade(Of TFeature1, TFeature2, TFeature3).Feature1
+  nameWithType: BusinessFacade<TFeature1, TFeature2, TFeature3>.Feature1
+  nameWithType.vb: BusinessFacade(Of TFeature1, TFeature2, TFeature3).Feature1
+- uid: E5R.Architecture.Business.BusinessFacade`3.Feature1*
+  name: Feature1
+  href: api/E5R.Architecture.Business.BusinessFacade-3.html#E5R_Architecture_Business_BusinessFacade_3_Feature1_
+  commentId: Overload:E5R.Architecture.Business.BusinessFacade`3.Feature1
+  isSpec: "True"
+  fullName: E5R.Architecture.Business.BusinessFacade<TFeature1, TFeature2, TFeature3>.Feature1
+  fullName.vb: E5R.Architecture.Business.BusinessFacade(Of TFeature1, TFeature2, TFeature3).Feature1
+  nameWithType: BusinessFacade<TFeature1, TFeature2, TFeature3>.Feature1
+  nameWithType.vb: BusinessFacade(Of TFeature1, TFeature2, TFeature3).Feature1
+- uid: E5R.Architecture.Business.BusinessFacade`3.Feature2
+  name: Feature2
+  href: api/E5R.Architecture.Business.BusinessFacade-3.html#E5R_Architecture_Business_BusinessFacade_3_Feature2
+  commentId: P:E5R.Architecture.Business.BusinessFacade`3.Feature2
+  fullName: E5R.Architecture.Business.BusinessFacade<TFeature1, TFeature2, TFeature3>.Feature2
+  fullName.vb: E5R.Architecture.Business.BusinessFacade(Of TFeature1, TFeature2, TFeature3).Feature2
+  nameWithType: BusinessFacade<TFeature1, TFeature2, TFeature3>.Feature2
+  nameWithType.vb: BusinessFacade(Of TFeature1, TFeature2, TFeature3).Feature2
+- uid: E5R.Architecture.Business.BusinessFacade`3.Feature2*
+  name: Feature2
+  href: api/E5R.Architecture.Business.BusinessFacade-3.html#E5R_Architecture_Business_BusinessFacade_3_Feature2_
+  commentId: Overload:E5R.Architecture.Business.BusinessFacade`3.Feature2
+  isSpec: "True"
+  fullName: E5R.Architecture.Business.BusinessFacade<TFeature1, TFeature2, TFeature3>.Feature2
+  fullName.vb: E5R.Architecture.Business.BusinessFacade(Of TFeature1, TFeature2, TFeature3).Feature2
+  nameWithType: BusinessFacade<TFeature1, TFeature2, TFeature3>.Feature2
+  nameWithType.vb: BusinessFacade(Of TFeature1, TFeature2, TFeature3).Feature2
+- uid: E5R.Architecture.Business.BusinessFacade`3.Feature3
+  name: Feature3
+  href: api/E5R.Architecture.Business.BusinessFacade-3.html#E5R_Architecture_Business_BusinessFacade_3_Feature3
+  commentId: P:E5R.Architecture.Business.BusinessFacade`3.Feature3
+  fullName: E5R.Architecture.Business.BusinessFacade<TFeature1, TFeature2, TFeature3>.Feature3
+  fullName.vb: E5R.Architecture.Business.BusinessFacade(Of TFeature1, TFeature2, TFeature3).Feature3
+  nameWithType: BusinessFacade<TFeature1, TFeature2, TFeature3>.Feature3
+  nameWithType.vb: BusinessFacade(Of TFeature1, TFeature2, TFeature3).Feature3
+- uid: E5R.Architecture.Business.BusinessFacade`3.Feature3*
+  name: Feature3
+  href: api/E5R.Architecture.Business.BusinessFacade-3.html#E5R_Architecture_Business_BusinessFacade_3_Feature3_
+  commentId: Overload:E5R.Architecture.Business.BusinessFacade`3.Feature3
+  isSpec: "True"
+  fullName: E5R.Architecture.Business.BusinessFacade<TFeature1, TFeature2, TFeature3>.Feature3
+  fullName.vb: E5R.Architecture.Business.BusinessFacade(Of TFeature1, TFeature2, TFeature3).Feature3
+  nameWithType: BusinessFacade<TFeature1, TFeature2, TFeature3>.Feature3
+  nameWithType.vb: BusinessFacade(Of TFeature1, TFeature2, TFeature3).Feature3
+- uid: E5R.Architecture.Business.BusinessFacade`4
+  name: BusinessFacade<TFeature1, TFeature2, TFeature3, TFeature4>
+  href: api/E5R.Architecture.Business.BusinessFacade-4.html
+  commentId: T:E5R.Architecture.Business.BusinessFacade`4
+  name.vb: BusinessFacade(Of TFeature1, TFeature2, TFeature3, TFeature4)
+  fullName: E5R.Architecture.Business.BusinessFacade<TFeature1, TFeature2, TFeature3, TFeature4>
+  fullName.vb: E5R.Architecture.Business.BusinessFacade(Of TFeature1, TFeature2, TFeature3, TFeature4)
+  nameWithType: BusinessFacade<TFeature1, TFeature2, TFeature3, TFeature4>
+  nameWithType.vb: BusinessFacade(Of TFeature1, TFeature2, TFeature3, TFeature4)
+- uid: E5R.Architecture.Business.BusinessFacade`4.#ctor(ILazy{`0},ILazy{`1},ILazy{`2},ILazy{`3})
+  name: BusinessFacade(ILazy<TFeature1>, ILazy<TFeature2>, ILazy<TFeature3>, ILazy<TFeature4>)
+  href: api/E5R.Architecture.Business.BusinessFacade-4.html#E5R_Architecture_Business_BusinessFacade_4__ctor_ILazy__0__ILazy__1__ILazy__2__ILazy__3__
+  commentId: M:E5R.Architecture.Business.BusinessFacade`4.#ctor(ILazy{`0},ILazy{`1},ILazy{`2},ILazy{`3})
+  name.vb: BusinessFacade(ILazy(Of TFeature1), ILazy(Of TFeature2), ILazy(Of TFeature3), ILazy(Of TFeature4))
+  fullName: E5R.Architecture.Business.BusinessFacade<TFeature1, TFeature2, TFeature3, TFeature4>.BusinessFacade(ILazy<TFeature1>, ILazy<TFeature2>, ILazy<TFeature3>, ILazy<TFeature4>)
+  fullName.vb: E5R.Architecture.Business.BusinessFacade(Of TFeature1, TFeature2, TFeature3, TFeature4).BusinessFacade(ILazy(Of TFeature1), ILazy(Of TFeature2), ILazy(Of TFeature3), ILazy(Of TFeature4))
+  nameWithType: BusinessFacade<TFeature1, TFeature2, TFeature3, TFeature4>.BusinessFacade(ILazy<TFeature1>, ILazy<TFeature2>, ILazy<TFeature3>, ILazy<TFeature4>)
+  nameWithType.vb: BusinessFacade(Of TFeature1, TFeature2, TFeature3, TFeature4).BusinessFacade(ILazy(Of TFeature1), ILazy(Of TFeature2), ILazy(Of TFeature3), ILazy(Of TFeature4))
+- uid: E5R.Architecture.Business.BusinessFacade`4.#ctor*
+  name: BusinessFacade
+  href: api/E5R.Architecture.Business.BusinessFacade-4.html#E5R_Architecture_Business_BusinessFacade_4__ctor_
+  commentId: Overload:E5R.Architecture.Business.BusinessFacade`4.#ctor
+  isSpec: "True"
+  fullName: E5R.Architecture.Business.BusinessFacade<TFeature1, TFeature2, TFeature3, TFeature4>.BusinessFacade
+  fullName.vb: E5R.Architecture.Business.BusinessFacade(Of TFeature1, TFeature2, TFeature3, TFeature4).BusinessFacade
+  nameWithType: BusinessFacade<TFeature1, TFeature2, TFeature3, TFeature4>.BusinessFacade
+  nameWithType.vb: BusinessFacade(Of TFeature1, TFeature2, TFeature3, TFeature4).BusinessFacade
+- uid: E5R.Architecture.Business.BusinessFacade`4.Feature1
+  name: Feature1
+  href: api/E5R.Architecture.Business.BusinessFacade-4.html#E5R_Architecture_Business_BusinessFacade_4_Feature1
+  commentId: P:E5R.Architecture.Business.BusinessFacade`4.Feature1
+  fullName: E5R.Architecture.Business.BusinessFacade<TFeature1, TFeature2, TFeature3, TFeature4>.Feature1
+  fullName.vb: E5R.Architecture.Business.BusinessFacade(Of TFeature1, TFeature2, TFeature3, TFeature4).Feature1
+  nameWithType: BusinessFacade<TFeature1, TFeature2, TFeature3, TFeature4>.Feature1
+  nameWithType.vb: BusinessFacade(Of TFeature1, TFeature2, TFeature3, TFeature4).Feature1
+- uid: E5R.Architecture.Business.BusinessFacade`4.Feature1*
+  name: Feature1
+  href: api/E5R.Architecture.Business.BusinessFacade-4.html#E5R_Architecture_Business_BusinessFacade_4_Feature1_
+  commentId: Overload:E5R.Architecture.Business.BusinessFacade`4.Feature1
+  isSpec: "True"
+  fullName: E5R.Architecture.Business.BusinessFacade<TFeature1, TFeature2, TFeature3, TFeature4>.Feature1
+  fullName.vb: E5R.Architecture.Business.BusinessFacade(Of TFeature1, TFeature2, TFeature3, TFeature4).Feature1
+  nameWithType: BusinessFacade<TFeature1, TFeature2, TFeature3, TFeature4>.Feature1
+  nameWithType.vb: BusinessFacade(Of TFeature1, TFeature2, TFeature3, TFeature4).Feature1
+- uid: E5R.Architecture.Business.BusinessFacade`4.Feature2
+  name: Feature2
+  href: api/E5R.Architecture.Business.BusinessFacade-4.html#E5R_Architecture_Business_BusinessFacade_4_Feature2
+  commentId: P:E5R.Architecture.Business.BusinessFacade`4.Feature2
+  fullName: E5R.Architecture.Business.BusinessFacade<TFeature1, TFeature2, TFeature3, TFeature4>.Feature2
+  fullName.vb: E5R.Architecture.Business.BusinessFacade(Of TFeature1, TFeature2, TFeature3, TFeature4).Feature2
+  nameWithType: BusinessFacade<TFeature1, TFeature2, TFeature3, TFeature4>.Feature2
+  nameWithType.vb: BusinessFacade(Of TFeature1, TFeature2, TFeature3, TFeature4).Feature2
+- uid: E5R.Architecture.Business.BusinessFacade`4.Feature2*
+  name: Feature2
+  href: api/E5R.Architecture.Business.BusinessFacade-4.html#E5R_Architecture_Business_BusinessFacade_4_Feature2_
+  commentId: Overload:E5R.Architecture.Business.BusinessFacade`4.Feature2
+  isSpec: "True"
+  fullName: E5R.Architecture.Business.BusinessFacade<TFeature1, TFeature2, TFeature3, TFeature4>.Feature2
+  fullName.vb: E5R.Architecture.Business.BusinessFacade(Of TFeature1, TFeature2, TFeature3, TFeature4).Feature2
+  nameWithType: BusinessFacade<TFeature1, TFeature2, TFeature3, TFeature4>.Feature2
+  nameWithType.vb: BusinessFacade(Of TFeature1, TFeature2, TFeature3, TFeature4).Feature2
+- uid: E5R.Architecture.Business.BusinessFacade`4.Feature3
+  name: Feature3
+  href: api/E5R.Architecture.Business.BusinessFacade-4.html#E5R_Architecture_Business_BusinessFacade_4_Feature3
+  commentId: P:E5R.Architecture.Business.BusinessFacade`4.Feature3
+  fullName: E5R.Architecture.Business.BusinessFacade<TFeature1, TFeature2, TFeature3, TFeature4>.Feature3
+  fullName.vb: E5R.Architecture.Business.BusinessFacade(Of TFeature1, TFeature2, TFeature3, TFeature4).Feature3
+  nameWithType: BusinessFacade<TFeature1, TFeature2, TFeature3, TFeature4>.Feature3
+  nameWithType.vb: BusinessFacade(Of TFeature1, TFeature2, TFeature3, TFeature4).Feature3
+- uid: E5R.Architecture.Business.BusinessFacade`4.Feature3*
+  name: Feature3
+  href: api/E5R.Architecture.Business.BusinessFacade-4.html#E5R_Architecture_Business_BusinessFacade_4_Feature3_
+  commentId: Overload:E5R.Architecture.Business.BusinessFacade`4.Feature3
+  isSpec: "True"
+  fullName: E5R.Architecture.Business.BusinessFacade<TFeature1, TFeature2, TFeature3, TFeature4>.Feature3
+  fullName.vb: E5R.Architecture.Business.BusinessFacade(Of TFeature1, TFeature2, TFeature3, TFeature4).Feature3
+  nameWithType: BusinessFacade<TFeature1, TFeature2, TFeature3, TFeature4>.Feature3
+  nameWithType.vb: BusinessFacade(Of TFeature1, TFeature2, TFeature3, TFeature4).Feature3
+- uid: E5R.Architecture.Business.BusinessFacade`4.Feature4
+  name: Feature4
+  href: api/E5R.Architecture.Business.BusinessFacade-4.html#E5R_Architecture_Business_BusinessFacade_4_Feature4
+  commentId: P:E5R.Architecture.Business.BusinessFacade`4.Feature4
+  fullName: E5R.Architecture.Business.BusinessFacade<TFeature1, TFeature2, TFeature3, TFeature4>.Feature4
+  fullName.vb: E5R.Architecture.Business.BusinessFacade(Of TFeature1, TFeature2, TFeature3, TFeature4).Feature4
+  nameWithType: BusinessFacade<TFeature1, TFeature2, TFeature3, TFeature4>.Feature4
+  nameWithType.vb: BusinessFacade(Of TFeature1, TFeature2, TFeature3, TFeature4).Feature4
+- uid: E5R.Architecture.Business.BusinessFacade`4.Feature4*
+  name: Feature4
+  href: api/E5R.Architecture.Business.BusinessFacade-4.html#E5R_Architecture_Business_BusinessFacade_4_Feature4_
+  commentId: Overload:E5R.Architecture.Business.BusinessFacade`4.Feature4
+  isSpec: "True"
+  fullName: E5R.Architecture.Business.BusinessFacade<TFeature1, TFeature2, TFeature3, TFeature4>.Feature4
+  fullName.vb: E5R.Architecture.Business.BusinessFacade(Of TFeature1, TFeature2, TFeature3, TFeature4).Feature4
+  nameWithType: BusinessFacade<TFeature1, TFeature2, TFeature3, TFeature4>.Feature4
+  nameWithType.vb: BusinessFacade(Of TFeature1, TFeature2, TFeature3, TFeature4).Feature4
+- uid: E5R.Architecture.Business.BusinessFacade`5
+  name: BusinessFacade<TFeature1, TFeature2, TFeature3, TFeature4, TFeature5>
+  href: api/E5R.Architecture.Business.BusinessFacade-5.html
+  commentId: T:E5R.Architecture.Business.BusinessFacade`5
+  name.vb: BusinessFacade(Of TFeature1, TFeature2, TFeature3, TFeature4, TFeature5)
+  fullName: E5R.Architecture.Business.BusinessFacade<TFeature1, TFeature2, TFeature3, TFeature4, TFeature5>
+  fullName.vb: E5R.Architecture.Business.BusinessFacade(Of TFeature1, TFeature2, TFeature3, TFeature4, TFeature5)
+  nameWithType: BusinessFacade<TFeature1, TFeature2, TFeature3, TFeature4, TFeature5>
+  nameWithType.vb: BusinessFacade(Of TFeature1, TFeature2, TFeature3, TFeature4, TFeature5)
+- uid: E5R.Architecture.Business.BusinessFacade`5.#ctor(ILazy{`0},ILazy{`1},ILazy{`2},ILazy{`3},ILazy{`4})
+  name: BusinessFacade(ILazy<TFeature1>, ILazy<TFeature2>, ILazy<TFeature3>, ILazy<TFeature4>, ILazy<TFeature5>)
+  href: api/E5R.Architecture.Business.BusinessFacade-5.html#E5R_Architecture_Business_BusinessFacade_5__ctor_ILazy__0__ILazy__1__ILazy__2__ILazy__3__ILazy__4__
+  commentId: M:E5R.Architecture.Business.BusinessFacade`5.#ctor(ILazy{`0},ILazy{`1},ILazy{`2},ILazy{`3},ILazy{`4})
+  name.vb: BusinessFacade(ILazy(Of TFeature1), ILazy(Of TFeature2), ILazy(Of TFeature3), ILazy(Of TFeature4), ILazy(Of TFeature5))
+  fullName: E5R.Architecture.Business.BusinessFacade<TFeature1, TFeature2, TFeature3, TFeature4, TFeature5>.BusinessFacade(ILazy<TFeature1>, ILazy<TFeature2>, ILazy<TFeature3>, ILazy<TFeature4>, ILazy<TFeature5>)
+  fullName.vb: E5R.Architecture.Business.BusinessFacade(Of TFeature1, TFeature2, TFeature3, TFeature4, TFeature5).BusinessFacade(ILazy(Of TFeature1), ILazy(Of TFeature2), ILazy(Of TFeature3), ILazy(Of TFeature4), ILazy(Of TFeature5))
+  nameWithType: BusinessFacade<TFeature1, TFeature2, TFeature3, TFeature4, TFeature5>.BusinessFacade(ILazy<TFeature1>, ILazy<TFeature2>, ILazy<TFeature3>, ILazy<TFeature4>, ILazy<TFeature5>)
+  nameWithType.vb: BusinessFacade(Of TFeature1, TFeature2, TFeature3, TFeature4, TFeature5).BusinessFacade(ILazy(Of TFeature1), ILazy(Of TFeature2), ILazy(Of TFeature3), ILazy(Of TFeature4), ILazy(Of TFeature5))
+- uid: E5R.Architecture.Business.BusinessFacade`5.#ctor*
+  name: BusinessFacade
+  href: api/E5R.Architecture.Business.BusinessFacade-5.html#E5R_Architecture_Business_BusinessFacade_5__ctor_
+  commentId: Overload:E5R.Architecture.Business.BusinessFacade`5.#ctor
+  isSpec: "True"
+  fullName: E5R.Architecture.Business.BusinessFacade<TFeature1, TFeature2, TFeature3, TFeature4, TFeature5>.BusinessFacade
+  fullName.vb: E5R.Architecture.Business.BusinessFacade(Of TFeature1, TFeature2, TFeature3, TFeature4, TFeature5).BusinessFacade
+  nameWithType: BusinessFacade<TFeature1, TFeature2, TFeature3, TFeature4, TFeature5>.BusinessFacade
+  nameWithType.vb: BusinessFacade(Of TFeature1, TFeature2, TFeature3, TFeature4, TFeature5).BusinessFacade
+- uid: E5R.Architecture.Business.BusinessFacade`5.Feature1
+  name: Feature1
+  href: api/E5R.Architecture.Business.BusinessFacade-5.html#E5R_Architecture_Business_BusinessFacade_5_Feature1
+  commentId: P:E5R.Architecture.Business.BusinessFacade`5.Feature1
+  fullName: E5R.Architecture.Business.BusinessFacade<TFeature1, TFeature2, TFeature3, TFeature4, TFeature5>.Feature1
+  fullName.vb: E5R.Architecture.Business.BusinessFacade(Of TFeature1, TFeature2, TFeature3, TFeature4, TFeature5).Feature1
+  nameWithType: BusinessFacade<TFeature1, TFeature2, TFeature3, TFeature4, TFeature5>.Feature1
+  nameWithType.vb: BusinessFacade(Of TFeature1, TFeature2, TFeature3, TFeature4, TFeature5).Feature1
+- uid: E5R.Architecture.Business.BusinessFacade`5.Feature1*
+  name: Feature1
+  href: api/E5R.Architecture.Business.BusinessFacade-5.html#E5R_Architecture_Business_BusinessFacade_5_Feature1_
+  commentId: Overload:E5R.Architecture.Business.BusinessFacade`5.Feature1
+  isSpec: "True"
+  fullName: E5R.Architecture.Business.BusinessFacade<TFeature1, TFeature2, TFeature3, TFeature4, TFeature5>.Feature1
+  fullName.vb: E5R.Architecture.Business.BusinessFacade(Of TFeature1, TFeature2, TFeature3, TFeature4, TFeature5).Feature1
+  nameWithType: BusinessFacade<TFeature1, TFeature2, TFeature3, TFeature4, TFeature5>.Feature1
+  nameWithType.vb: BusinessFacade(Of TFeature1, TFeature2, TFeature3, TFeature4, TFeature5).Feature1
+- uid: E5R.Architecture.Business.BusinessFacade`5.Feature2
+  name: Feature2
+  href: api/E5R.Architecture.Business.BusinessFacade-5.html#E5R_Architecture_Business_BusinessFacade_5_Feature2
+  commentId: P:E5R.Architecture.Business.BusinessFacade`5.Feature2
+  fullName: E5R.Architecture.Business.BusinessFacade<TFeature1, TFeature2, TFeature3, TFeature4, TFeature5>.Feature2
+  fullName.vb: E5R.Architecture.Business.BusinessFacade(Of TFeature1, TFeature2, TFeature3, TFeature4, TFeature5).Feature2
+  nameWithType: BusinessFacade<TFeature1, TFeature2, TFeature3, TFeature4, TFeature5>.Feature2
+  nameWithType.vb: BusinessFacade(Of TFeature1, TFeature2, TFeature3, TFeature4, TFeature5).Feature2
+- uid: E5R.Architecture.Business.BusinessFacade`5.Feature2*
+  name: Feature2
+  href: api/E5R.Architecture.Business.BusinessFacade-5.html#E5R_Architecture_Business_BusinessFacade_5_Feature2_
+  commentId: Overload:E5R.Architecture.Business.BusinessFacade`5.Feature2
+  isSpec: "True"
+  fullName: E5R.Architecture.Business.BusinessFacade<TFeature1, TFeature2, TFeature3, TFeature4, TFeature5>.Feature2
+  fullName.vb: E5R.Architecture.Business.BusinessFacade(Of TFeature1, TFeature2, TFeature3, TFeature4, TFeature5).Feature2
+  nameWithType: BusinessFacade<TFeature1, TFeature2, TFeature3, TFeature4, TFeature5>.Feature2
+  nameWithType.vb: BusinessFacade(Of TFeature1, TFeature2, TFeature3, TFeature4, TFeature5).Feature2
+- uid: E5R.Architecture.Business.BusinessFacade`5.Feature3
+  name: Feature3
+  href: api/E5R.Architecture.Business.BusinessFacade-5.html#E5R_Architecture_Business_BusinessFacade_5_Feature3
+  commentId: P:E5R.Architecture.Business.BusinessFacade`5.Feature3
+  fullName: E5R.Architecture.Business.BusinessFacade<TFeature1, TFeature2, TFeature3, TFeature4, TFeature5>.Feature3
+  fullName.vb: E5R.Architecture.Business.BusinessFacade(Of TFeature1, TFeature2, TFeature3, TFeature4, TFeature5).Feature3
+  nameWithType: BusinessFacade<TFeature1, TFeature2, TFeature3, TFeature4, TFeature5>.Feature3
+  nameWithType.vb: BusinessFacade(Of TFeature1, TFeature2, TFeature3, TFeature4, TFeature5).Feature3
+- uid: E5R.Architecture.Business.BusinessFacade`5.Feature3*
+  name: Feature3
+  href: api/E5R.Architecture.Business.BusinessFacade-5.html#E5R_Architecture_Business_BusinessFacade_5_Feature3_
+  commentId: Overload:E5R.Architecture.Business.BusinessFacade`5.Feature3
+  isSpec: "True"
+  fullName: E5R.Architecture.Business.BusinessFacade<TFeature1, TFeature2, TFeature3, TFeature4, TFeature5>.Feature3
+  fullName.vb: E5R.Architecture.Business.BusinessFacade(Of TFeature1, TFeature2, TFeature3, TFeature4, TFeature5).Feature3
+  nameWithType: BusinessFacade<TFeature1, TFeature2, TFeature3, TFeature4, TFeature5>.Feature3
+  nameWithType.vb: BusinessFacade(Of TFeature1, TFeature2, TFeature3, TFeature4, TFeature5).Feature3
+- uid: E5R.Architecture.Business.BusinessFacade`5.Feature4
+  name: Feature4
+  href: api/E5R.Architecture.Business.BusinessFacade-5.html#E5R_Architecture_Business_BusinessFacade_5_Feature4
+  commentId: P:E5R.Architecture.Business.BusinessFacade`5.Feature4
+  fullName: E5R.Architecture.Business.BusinessFacade<TFeature1, TFeature2, TFeature3, TFeature4, TFeature5>.Feature4
+  fullName.vb: E5R.Architecture.Business.BusinessFacade(Of TFeature1, TFeature2, TFeature3, TFeature4, TFeature5).Feature4
+  nameWithType: BusinessFacade<TFeature1, TFeature2, TFeature3, TFeature4, TFeature5>.Feature4
+  nameWithType.vb: BusinessFacade(Of TFeature1, TFeature2, TFeature3, TFeature4, TFeature5).Feature4
+- uid: E5R.Architecture.Business.BusinessFacade`5.Feature4*
+  name: Feature4
+  href: api/E5R.Architecture.Business.BusinessFacade-5.html#E5R_Architecture_Business_BusinessFacade_5_Feature4_
+  commentId: Overload:E5R.Architecture.Business.BusinessFacade`5.Feature4
+  isSpec: "True"
+  fullName: E5R.Architecture.Business.BusinessFacade<TFeature1, TFeature2, TFeature3, TFeature4, TFeature5>.Feature4
+  fullName.vb: E5R.Architecture.Business.BusinessFacade(Of TFeature1, TFeature2, TFeature3, TFeature4, TFeature5).Feature4
+  nameWithType: BusinessFacade<TFeature1, TFeature2, TFeature3, TFeature4, TFeature5>.Feature4
+  nameWithType.vb: BusinessFacade(Of TFeature1, TFeature2, TFeature3, TFeature4, TFeature5).Feature4
+- uid: E5R.Architecture.Business.BusinessFacade`5.Feature5
+  name: Feature5
+  href: api/E5R.Architecture.Business.BusinessFacade-5.html#E5R_Architecture_Business_BusinessFacade_5_Feature5
+  commentId: P:E5R.Architecture.Business.BusinessFacade`5.Feature5
+  fullName: E5R.Architecture.Business.BusinessFacade<TFeature1, TFeature2, TFeature3, TFeature4, TFeature5>.Feature5
+  fullName.vb: E5R.Architecture.Business.BusinessFacade(Of TFeature1, TFeature2, TFeature3, TFeature4, TFeature5).Feature5
+  nameWithType: BusinessFacade<TFeature1, TFeature2, TFeature3, TFeature4, TFeature5>.Feature5
+  nameWithType.vb: BusinessFacade(Of TFeature1, TFeature2, TFeature3, TFeature4, TFeature5).Feature5
+- uid: E5R.Architecture.Business.BusinessFacade`5.Feature5*
+  name: Feature5
+  href: api/E5R.Architecture.Business.BusinessFacade-5.html#E5R_Architecture_Business_BusinessFacade_5_Feature5_
+  commentId: Overload:E5R.Architecture.Business.BusinessFacade`5.Feature5
+  isSpec: "True"
+  fullName: E5R.Architecture.Business.BusinessFacade<TFeature1, TFeature2, TFeature3, TFeature4, TFeature5>.Feature5
+  fullName.vb: E5R.Architecture.Business.BusinessFacade(Of TFeature1, TFeature2, TFeature3, TFeature4, TFeature5).Feature5
+  nameWithType: BusinessFacade<TFeature1, TFeature2, TFeature3, TFeature4, TFeature5>.Feature5
+  nameWithType.vb: BusinessFacade(Of TFeature1, TFeature2, TFeature3, TFeature4, TFeature5).Feature5
+- uid: E5R.Architecture.Business.BusinessFacade`6
+  name: BusinessFacade<TFeature1, TFeature2, TFeature3, TFeature4, TFeature5, TFeature6>
+  href: api/E5R.Architecture.Business.BusinessFacade-6.html
+  commentId: T:E5R.Architecture.Business.BusinessFacade`6
+  name.vb: BusinessFacade(Of TFeature1, TFeature2, TFeature3, TFeature4, TFeature5, TFeature6)
+  fullName: E5R.Architecture.Business.BusinessFacade<TFeature1, TFeature2, TFeature3, TFeature4, TFeature5, TFeature6>
+  fullName.vb: E5R.Architecture.Business.BusinessFacade(Of TFeature1, TFeature2, TFeature3, TFeature4, TFeature5, TFeature6)
+  nameWithType: BusinessFacade<TFeature1, TFeature2, TFeature3, TFeature4, TFeature5, TFeature6>
+  nameWithType.vb: BusinessFacade(Of TFeature1, TFeature2, TFeature3, TFeature4, TFeature5, TFeature6)
+- uid: E5R.Architecture.Business.BusinessFacade`6.#ctor(ILazy{`0},ILazy{`1},ILazy{`2},ILazy{`3},ILazy{`4},ILazy{`5})
+  name: BusinessFacade(ILazy<TFeature1>, ILazy<TFeature2>, ILazy<TFeature3>, ILazy<TFeature4>, ILazy<TFeature5>, ILazy<TFeature6>)
+  href: api/E5R.Architecture.Business.BusinessFacade-6.html#E5R_Architecture_Business_BusinessFacade_6__ctor_ILazy__0__ILazy__1__ILazy__2__ILazy__3__ILazy__4__ILazy__5__
+  commentId: M:E5R.Architecture.Business.BusinessFacade`6.#ctor(ILazy{`0},ILazy{`1},ILazy{`2},ILazy{`3},ILazy{`4},ILazy{`5})
+  name.vb: BusinessFacade(ILazy(Of TFeature1), ILazy(Of TFeature2), ILazy(Of TFeature3), ILazy(Of TFeature4), ILazy(Of TFeature5), ILazy(Of TFeature6))
+  fullName: E5R.Architecture.Business.BusinessFacade<TFeature1, TFeature2, TFeature3, TFeature4, TFeature5, TFeature6>.BusinessFacade(ILazy<TFeature1>, ILazy<TFeature2>, ILazy<TFeature3>, ILazy<TFeature4>, ILazy<TFeature5>, ILazy<TFeature6>)
+  fullName.vb: E5R.Architecture.Business.BusinessFacade(Of TFeature1, TFeature2, TFeature3, TFeature4, TFeature5, TFeature6).BusinessFacade(ILazy(Of TFeature1), ILazy(Of TFeature2), ILazy(Of TFeature3), ILazy(Of TFeature4), ILazy(Of TFeature5), ILazy(Of TFeature6))
+  nameWithType: BusinessFacade<TFeature1, TFeature2, TFeature3, TFeature4, TFeature5, TFeature6>.BusinessFacade(ILazy<TFeature1>, ILazy<TFeature2>, ILazy<TFeature3>, ILazy<TFeature4>, ILazy<TFeature5>, ILazy<TFeature6>)
+  nameWithType.vb: BusinessFacade(Of TFeature1, TFeature2, TFeature3, TFeature4, TFeature5, TFeature6).BusinessFacade(ILazy(Of TFeature1), ILazy(Of TFeature2), ILazy(Of TFeature3), ILazy(Of TFeature4), ILazy(Of TFeature5), ILazy(Of TFeature6))
+- uid: E5R.Architecture.Business.BusinessFacade`6.#ctor*
+  name: BusinessFacade
+  href: api/E5R.Architecture.Business.BusinessFacade-6.html#E5R_Architecture_Business_BusinessFacade_6__ctor_
+  commentId: Overload:E5R.Architecture.Business.BusinessFacade`6.#ctor
+  isSpec: "True"
+  fullName: E5R.Architecture.Business.BusinessFacade<TFeature1, TFeature2, TFeature3, TFeature4, TFeature5, TFeature6>.BusinessFacade
+  fullName.vb: E5R.Architecture.Business.BusinessFacade(Of TFeature1, TFeature2, TFeature3, TFeature4, TFeature5, TFeature6).BusinessFacade
+  nameWithType: BusinessFacade<TFeature1, TFeature2, TFeature3, TFeature4, TFeature5, TFeature6>.BusinessFacade
+  nameWithType.vb: BusinessFacade(Of TFeature1, TFeature2, TFeature3, TFeature4, TFeature5, TFeature6).BusinessFacade
+- uid: E5R.Architecture.Business.BusinessFacade`6.Feature1
+  name: Feature1
+  href: api/E5R.Architecture.Business.BusinessFacade-6.html#E5R_Architecture_Business_BusinessFacade_6_Feature1
+  commentId: P:E5R.Architecture.Business.BusinessFacade`6.Feature1
+  fullName: E5R.Architecture.Business.BusinessFacade<TFeature1, TFeature2, TFeature3, TFeature4, TFeature5, TFeature6>.Feature1
+  fullName.vb: E5R.Architecture.Business.BusinessFacade(Of TFeature1, TFeature2, TFeature3, TFeature4, TFeature5, TFeature6).Feature1
+  nameWithType: BusinessFacade<TFeature1, TFeature2, TFeature3, TFeature4, TFeature5, TFeature6>.Feature1
+  nameWithType.vb: BusinessFacade(Of TFeature1, TFeature2, TFeature3, TFeature4, TFeature5, TFeature6).Feature1
+- uid: E5R.Architecture.Business.BusinessFacade`6.Feature1*
+  name: Feature1
+  href: api/E5R.Architecture.Business.BusinessFacade-6.html#E5R_Architecture_Business_BusinessFacade_6_Feature1_
+  commentId: Overload:E5R.Architecture.Business.BusinessFacade`6.Feature1
+  isSpec: "True"
+  fullName: E5R.Architecture.Business.BusinessFacade<TFeature1, TFeature2, TFeature3, TFeature4, TFeature5, TFeature6>.Feature1
+  fullName.vb: E5R.Architecture.Business.BusinessFacade(Of TFeature1, TFeature2, TFeature3, TFeature4, TFeature5, TFeature6).Feature1
+  nameWithType: BusinessFacade<TFeature1, TFeature2, TFeature3, TFeature4, TFeature5, TFeature6>.Feature1
+  nameWithType.vb: BusinessFacade(Of TFeature1, TFeature2, TFeature3, TFeature4, TFeature5, TFeature6).Feature1
+- uid: E5R.Architecture.Business.BusinessFacade`6.Feature2
+  name: Feature2
+  href: api/E5R.Architecture.Business.BusinessFacade-6.html#E5R_Architecture_Business_BusinessFacade_6_Feature2
+  commentId: P:E5R.Architecture.Business.BusinessFacade`6.Feature2
+  fullName: E5R.Architecture.Business.BusinessFacade<TFeature1, TFeature2, TFeature3, TFeature4, TFeature5, TFeature6>.Feature2
+  fullName.vb: E5R.Architecture.Business.BusinessFacade(Of TFeature1, TFeature2, TFeature3, TFeature4, TFeature5, TFeature6).Feature2
+  nameWithType: BusinessFacade<TFeature1, TFeature2, TFeature3, TFeature4, TFeature5, TFeature6>.Feature2
+  nameWithType.vb: BusinessFacade(Of TFeature1, TFeature2, TFeature3, TFeature4, TFeature5, TFeature6).Feature2
+- uid: E5R.Architecture.Business.BusinessFacade`6.Feature2*
+  name: Feature2
+  href: api/E5R.Architecture.Business.BusinessFacade-6.html#E5R_Architecture_Business_BusinessFacade_6_Feature2_
+  commentId: Overload:E5R.Architecture.Business.BusinessFacade`6.Feature2
+  isSpec: "True"
+  fullName: E5R.Architecture.Business.BusinessFacade<TFeature1, TFeature2, TFeature3, TFeature4, TFeature5, TFeature6>.Feature2
+  fullName.vb: E5R.Architecture.Business.BusinessFacade(Of TFeature1, TFeature2, TFeature3, TFeature4, TFeature5, TFeature6).Feature2
+  nameWithType: BusinessFacade<TFeature1, TFeature2, TFeature3, TFeature4, TFeature5, TFeature6>.Feature2
+  nameWithType.vb: BusinessFacade(Of TFeature1, TFeature2, TFeature3, TFeature4, TFeature5, TFeature6).Feature2
+- uid: E5R.Architecture.Business.BusinessFacade`6.Feature3
+  name: Feature3
+  href: api/E5R.Architecture.Business.BusinessFacade-6.html#E5R_Architecture_Business_BusinessFacade_6_Feature3
+  commentId: P:E5R.Architecture.Business.BusinessFacade`6.Feature3
+  fullName: E5R.Architecture.Business.BusinessFacade<TFeature1, TFeature2, TFeature3, TFeature4, TFeature5, TFeature6>.Feature3
+  fullName.vb: E5R.Architecture.Business.BusinessFacade(Of TFeature1, TFeature2, TFeature3, TFeature4, TFeature5, TFeature6).Feature3
+  nameWithType: BusinessFacade<TFeature1, TFeature2, TFeature3, TFeature4, TFeature5, TFeature6>.Feature3
+  nameWithType.vb: BusinessFacade(Of TFeature1, TFeature2, TFeature3, TFeature4, TFeature5, TFeature6).Feature3
+- uid: E5R.Architecture.Business.BusinessFacade`6.Feature3*
+  name: Feature3
+  href: api/E5R.Architecture.Business.BusinessFacade-6.html#E5R_Architecture_Business_BusinessFacade_6_Feature3_
+  commentId: Overload:E5R.Architecture.Business.BusinessFacade`6.Feature3
+  isSpec: "True"
+  fullName: E5R.Architecture.Business.BusinessFacade<TFeature1, TFeature2, TFeature3, TFeature4, TFeature5, TFeature6>.Feature3
+  fullName.vb: E5R.Architecture.Business.BusinessFacade(Of TFeature1, TFeature2, TFeature3, TFeature4, TFeature5, TFeature6).Feature3
+  nameWithType: BusinessFacade<TFeature1, TFeature2, TFeature3, TFeature4, TFeature5, TFeature6>.Feature3
+  nameWithType.vb: BusinessFacade(Of TFeature1, TFeature2, TFeature3, TFeature4, TFeature5, TFeature6).Feature3
+- uid: E5R.Architecture.Business.BusinessFacade`6.Feature4
+  name: Feature4
+  href: api/E5R.Architecture.Business.BusinessFacade-6.html#E5R_Architecture_Business_BusinessFacade_6_Feature4
+  commentId: P:E5R.Architecture.Business.BusinessFacade`6.Feature4
+  fullName: E5R.Architecture.Business.BusinessFacade<TFeature1, TFeature2, TFeature3, TFeature4, TFeature5, TFeature6>.Feature4
+  fullName.vb: E5R.Architecture.Business.BusinessFacade(Of TFeature1, TFeature2, TFeature3, TFeature4, TFeature5, TFeature6).Feature4
+  nameWithType: BusinessFacade<TFeature1, TFeature2, TFeature3, TFeature4, TFeature5, TFeature6>.Feature4
+  nameWithType.vb: BusinessFacade(Of TFeature1, TFeature2, TFeature3, TFeature4, TFeature5, TFeature6).Feature4
+- uid: E5R.Architecture.Business.BusinessFacade`6.Feature4*
+  name: Feature4
+  href: api/E5R.Architecture.Business.BusinessFacade-6.html#E5R_Architecture_Business_BusinessFacade_6_Feature4_
+  commentId: Overload:E5R.Architecture.Business.BusinessFacade`6.Feature4
+  isSpec: "True"
+  fullName: E5R.Architecture.Business.BusinessFacade<TFeature1, TFeature2, TFeature3, TFeature4, TFeature5, TFeature6>.Feature4
+  fullName.vb: E5R.Architecture.Business.BusinessFacade(Of TFeature1, TFeature2, TFeature3, TFeature4, TFeature5, TFeature6).Feature4
+  nameWithType: BusinessFacade<TFeature1, TFeature2, TFeature3, TFeature4, TFeature5, TFeature6>.Feature4
+  nameWithType.vb: BusinessFacade(Of TFeature1, TFeature2, TFeature3, TFeature4, TFeature5, TFeature6).Feature4
+- uid: E5R.Architecture.Business.BusinessFacade`6.Feature5
+  name: Feature5
+  href: api/E5R.Architecture.Business.BusinessFacade-6.html#E5R_Architecture_Business_BusinessFacade_6_Feature5
+  commentId: P:E5R.Architecture.Business.BusinessFacade`6.Feature5
+  fullName: E5R.Architecture.Business.BusinessFacade<TFeature1, TFeature2, TFeature3, TFeature4, TFeature5, TFeature6>.Feature5
+  fullName.vb: E5R.Architecture.Business.BusinessFacade(Of TFeature1, TFeature2, TFeature3, TFeature4, TFeature5, TFeature6).Feature5
+  nameWithType: BusinessFacade<TFeature1, TFeature2, TFeature3, TFeature4, TFeature5, TFeature6>.Feature5
+  nameWithType.vb: BusinessFacade(Of TFeature1, TFeature2, TFeature3, TFeature4, TFeature5, TFeature6).Feature5
+- uid: E5R.Architecture.Business.BusinessFacade`6.Feature5*
+  name: Feature5
+  href: api/E5R.Architecture.Business.BusinessFacade-6.html#E5R_Architecture_Business_BusinessFacade_6_Feature5_
+  commentId: Overload:E5R.Architecture.Business.BusinessFacade`6.Feature5
+  isSpec: "True"
+  fullName: E5R.Architecture.Business.BusinessFacade<TFeature1, TFeature2, TFeature3, TFeature4, TFeature5, TFeature6>.Feature5
+  fullName.vb: E5R.Architecture.Business.BusinessFacade(Of TFeature1, TFeature2, TFeature3, TFeature4, TFeature5, TFeature6).Feature5
+  nameWithType: BusinessFacade<TFeature1, TFeature2, TFeature3, TFeature4, TFeature5, TFeature6>.Feature5
+  nameWithType.vb: BusinessFacade(Of TFeature1, TFeature2, TFeature3, TFeature4, TFeature5, TFeature6).Feature5
+- uid: E5R.Architecture.Business.BusinessFacade`6.Feature6
+  name: Feature6
+  href: api/E5R.Architecture.Business.BusinessFacade-6.html#E5R_Architecture_Business_BusinessFacade_6_Feature6
+  commentId: P:E5R.Architecture.Business.BusinessFacade`6.Feature6
+  fullName: E5R.Architecture.Business.BusinessFacade<TFeature1, TFeature2, TFeature3, TFeature4, TFeature5, TFeature6>.Feature6
+  fullName.vb: E5R.Architecture.Business.BusinessFacade(Of TFeature1, TFeature2, TFeature3, TFeature4, TFeature5, TFeature6).Feature6
+  nameWithType: BusinessFacade<TFeature1, TFeature2, TFeature3, TFeature4, TFeature5, TFeature6>.Feature6
+  nameWithType.vb: BusinessFacade(Of TFeature1, TFeature2, TFeature3, TFeature4, TFeature5, TFeature6).Feature6
+- uid: E5R.Architecture.Business.BusinessFacade`6.Feature6*
+  name: Feature6
+  href: api/E5R.Architecture.Business.BusinessFacade-6.html#E5R_Architecture_Business_BusinessFacade_6_Feature6_
+  commentId: Overload:E5R.Architecture.Business.BusinessFacade`6.Feature6
+  isSpec: "True"
+  fullName: E5R.Architecture.Business.BusinessFacade<TFeature1, TFeature2, TFeature3, TFeature4, TFeature5, TFeature6>.Feature6
+  fullName.vb: E5R.Architecture.Business.BusinessFacade(Of TFeature1, TFeature2, TFeature3, TFeature4, TFeature5, TFeature6).Feature6
+  nameWithType: BusinessFacade<TFeature1, TFeature2, TFeature3, TFeature4, TFeature5, TFeature6>.Feature6
+  nameWithType.vb: BusinessFacade(Of TFeature1, TFeature2, TFeature3, TFeature4, TFeature5, TFeature6).Feature6
+- uid: E5R.Architecture.Business.BusinessFacade`7
+  name: BusinessFacade<TFeature1, TFeature2, TFeature3, TFeature4, TFeature5, TFeature6, TFeature7>
+  href: api/E5R.Architecture.Business.BusinessFacade-7.html
+  commentId: T:E5R.Architecture.Business.BusinessFacade`7
+  name.vb: BusinessFacade(Of TFeature1, TFeature2, TFeature3, TFeature4, TFeature5, TFeature6, TFeature7)
+  fullName: E5R.Architecture.Business.BusinessFacade<TFeature1, TFeature2, TFeature3, TFeature4, TFeature5, TFeature6, TFeature7>
+  fullName.vb: E5R.Architecture.Business.BusinessFacade(Of TFeature1, TFeature2, TFeature3, TFeature4, TFeature5, TFeature6, TFeature7)
+  nameWithType: BusinessFacade<TFeature1, TFeature2, TFeature3, TFeature4, TFeature5, TFeature6, TFeature7>
+  nameWithType.vb: BusinessFacade(Of TFeature1, TFeature2, TFeature3, TFeature4, TFeature5, TFeature6, TFeature7)
+- uid: E5R.Architecture.Business.BusinessFacade`7.#ctor(ILazy{`0},ILazy{`1},ILazy{`2},ILazy{`3},ILazy{`4},ILazy{`5},ILazy{`6})
+  name: BusinessFacade(ILazy<TFeature1>, ILazy<TFeature2>, ILazy<TFeature3>, ILazy<TFeature4>, ILazy<TFeature5>, ILazy<TFeature6>, ILazy<TFeature7>)
+  href: api/E5R.Architecture.Business.BusinessFacade-7.html#E5R_Architecture_Business_BusinessFacade_7__ctor_ILazy__0__ILazy__1__ILazy__2__ILazy__3__ILazy__4__ILazy__5__ILazy__6__
+  commentId: M:E5R.Architecture.Business.BusinessFacade`7.#ctor(ILazy{`0},ILazy{`1},ILazy{`2},ILazy{`3},ILazy{`4},ILazy{`5},ILazy{`6})
+  name.vb: BusinessFacade(ILazy(Of TFeature1), ILazy(Of TFeature2), ILazy(Of TFeature3), ILazy(Of TFeature4), ILazy(Of TFeature5), ILazy(Of TFeature6), ILazy(Of TFeature7))
+  fullName: E5R.Architecture.Business.BusinessFacade<TFeature1, TFeature2, TFeature3, TFeature4, TFeature5, TFeature6, TFeature7>.BusinessFacade(ILazy<TFeature1>, ILazy<TFeature2>, ILazy<TFeature3>, ILazy<TFeature4>, ILazy<TFeature5>, ILazy<TFeature6>, ILazy<TFeature7>)
+  fullName.vb: E5R.Architecture.Business.BusinessFacade(Of TFeature1, TFeature2, TFeature3, TFeature4, TFeature5, TFeature6, TFeature7).BusinessFacade(ILazy(Of TFeature1), ILazy(Of TFeature2), ILazy(Of TFeature3), ILazy(Of TFeature4), ILazy(Of TFeature5), ILazy(Of TFeature6), ILazy(Of TFeature7))
+  nameWithType: BusinessFacade<TFeature1, TFeature2, TFeature3, TFeature4, TFeature5, TFeature6, TFeature7>.BusinessFacade(ILazy<TFeature1>, ILazy<TFeature2>, ILazy<TFeature3>, ILazy<TFeature4>, ILazy<TFeature5>, ILazy<TFeature6>, ILazy<TFeature7>)
+  nameWithType.vb: BusinessFacade(Of TFeature1, TFeature2, TFeature3, TFeature4, TFeature5, TFeature6, TFeature7).BusinessFacade(ILazy(Of TFeature1), ILazy(Of TFeature2), ILazy(Of TFeature3), ILazy(Of TFeature4), ILazy(Of TFeature5), ILazy(Of TFeature6), ILazy(Of TFeature7))
+- uid: E5R.Architecture.Business.BusinessFacade`7.#ctor*
+  name: BusinessFacade
+  href: api/E5R.Architecture.Business.BusinessFacade-7.html#E5R_Architecture_Business_BusinessFacade_7__ctor_
+  commentId: Overload:E5R.Architecture.Business.BusinessFacade`7.#ctor
+  isSpec: "True"
+  fullName: E5R.Architecture.Business.BusinessFacade<TFeature1, TFeature2, TFeature3, TFeature4, TFeature5, TFeature6, TFeature7>.BusinessFacade
+  fullName.vb: E5R.Architecture.Business.BusinessFacade(Of TFeature1, TFeature2, TFeature3, TFeature4, TFeature5, TFeature6, TFeature7).BusinessFacade
+  nameWithType: BusinessFacade<TFeature1, TFeature2, TFeature3, TFeature4, TFeature5, TFeature6, TFeature7>.BusinessFacade
+  nameWithType.vb: BusinessFacade(Of TFeature1, TFeature2, TFeature3, TFeature4, TFeature5, TFeature6, TFeature7).BusinessFacade
+- uid: E5R.Architecture.Business.BusinessFacade`7.Feature1
+  name: Feature1
+  href: api/E5R.Architecture.Business.BusinessFacade-7.html#E5R_Architecture_Business_BusinessFacade_7_Feature1
+  commentId: P:E5R.Architecture.Business.BusinessFacade`7.Feature1
+  fullName: E5R.Architecture.Business.BusinessFacade<TFeature1, TFeature2, TFeature3, TFeature4, TFeature5, TFeature6, TFeature7>.Feature1
+  fullName.vb: E5R.Architecture.Business.BusinessFacade(Of TFeature1, TFeature2, TFeature3, TFeature4, TFeature5, TFeature6, TFeature7).Feature1
+  nameWithType: BusinessFacade<TFeature1, TFeature2, TFeature3, TFeature4, TFeature5, TFeature6, TFeature7>.Feature1
+  nameWithType.vb: BusinessFacade(Of TFeature1, TFeature2, TFeature3, TFeature4, TFeature5, TFeature6, TFeature7).Feature1
+- uid: E5R.Architecture.Business.BusinessFacade`7.Feature1*
+  name: Feature1
+  href: api/E5R.Architecture.Business.BusinessFacade-7.html#E5R_Architecture_Business_BusinessFacade_7_Feature1_
+  commentId: Overload:E5R.Architecture.Business.BusinessFacade`7.Feature1
+  isSpec: "True"
+  fullName: E5R.Architecture.Business.BusinessFacade<TFeature1, TFeature2, TFeature3, TFeature4, TFeature5, TFeature6, TFeature7>.Feature1
+  fullName.vb: E5R.Architecture.Business.BusinessFacade(Of TFeature1, TFeature2, TFeature3, TFeature4, TFeature5, TFeature6, TFeature7).Feature1
+  nameWithType: BusinessFacade<TFeature1, TFeature2, TFeature3, TFeature4, TFeature5, TFeature6, TFeature7>.Feature1
+  nameWithType.vb: BusinessFacade(Of TFeature1, TFeature2, TFeature3, TFeature4, TFeature5, TFeature6, TFeature7).Feature1
+- uid: E5R.Architecture.Business.BusinessFacade`7.Feature2
+  name: Feature2
+  href: api/E5R.Architecture.Business.BusinessFacade-7.html#E5R_Architecture_Business_BusinessFacade_7_Feature2
+  commentId: P:E5R.Architecture.Business.BusinessFacade`7.Feature2
+  fullName: E5R.Architecture.Business.BusinessFacade<TFeature1, TFeature2, TFeature3, TFeature4, TFeature5, TFeature6, TFeature7>.Feature2
+  fullName.vb: E5R.Architecture.Business.BusinessFacade(Of TFeature1, TFeature2, TFeature3, TFeature4, TFeature5, TFeature6, TFeature7).Feature2
+  nameWithType: BusinessFacade<TFeature1, TFeature2, TFeature3, TFeature4, TFeature5, TFeature6, TFeature7>.Feature2
+  nameWithType.vb: BusinessFacade(Of TFeature1, TFeature2, TFeature3, TFeature4, TFeature5, TFeature6, TFeature7).Feature2
+- uid: E5R.Architecture.Business.BusinessFacade`7.Feature2*
+  name: Feature2
+  href: api/E5R.Architecture.Business.BusinessFacade-7.html#E5R_Architecture_Business_BusinessFacade_7_Feature2_
+  commentId: Overload:E5R.Architecture.Business.BusinessFacade`7.Feature2
+  isSpec: "True"
+  fullName: E5R.Architecture.Business.BusinessFacade<TFeature1, TFeature2, TFeature3, TFeature4, TFeature5, TFeature6, TFeature7>.Feature2
+  fullName.vb: E5R.Architecture.Business.BusinessFacade(Of TFeature1, TFeature2, TFeature3, TFeature4, TFeature5, TFeature6, TFeature7).Feature2
+  nameWithType: BusinessFacade<TFeature1, TFeature2, TFeature3, TFeature4, TFeature5, TFeature6, TFeature7>.Feature2
+  nameWithType.vb: BusinessFacade(Of TFeature1, TFeature2, TFeature3, TFeature4, TFeature5, TFeature6, TFeature7).Feature2
+- uid: E5R.Architecture.Business.BusinessFacade`7.Feature3
+  name: Feature3
+  href: api/E5R.Architecture.Business.BusinessFacade-7.html#E5R_Architecture_Business_BusinessFacade_7_Feature3
+  commentId: P:E5R.Architecture.Business.BusinessFacade`7.Feature3
+  fullName: E5R.Architecture.Business.BusinessFacade<TFeature1, TFeature2, TFeature3, TFeature4, TFeature5, TFeature6, TFeature7>.Feature3
+  fullName.vb: E5R.Architecture.Business.BusinessFacade(Of TFeature1, TFeature2, TFeature3, TFeature4, TFeature5, TFeature6, TFeature7).Feature3
+  nameWithType: BusinessFacade<TFeature1, TFeature2, TFeature3, TFeature4, TFeature5, TFeature6, TFeature7>.Feature3
+  nameWithType.vb: BusinessFacade(Of TFeature1, TFeature2, TFeature3, TFeature4, TFeature5, TFeature6, TFeature7).Feature3
+- uid: E5R.Architecture.Business.BusinessFacade`7.Feature3*
+  name: Feature3
+  href: api/E5R.Architecture.Business.BusinessFacade-7.html#E5R_Architecture_Business_BusinessFacade_7_Feature3_
+  commentId: Overload:E5R.Architecture.Business.BusinessFacade`7.Feature3
+  isSpec: "True"
+  fullName: E5R.Architecture.Business.BusinessFacade<TFeature1, TFeature2, TFeature3, TFeature4, TFeature5, TFeature6, TFeature7>.Feature3
+  fullName.vb: E5R.Architecture.Business.BusinessFacade(Of TFeature1, TFeature2, TFeature3, TFeature4, TFeature5, TFeature6, TFeature7).Feature3
+  nameWithType: BusinessFacade<TFeature1, TFeature2, TFeature3, TFeature4, TFeature5, TFeature6, TFeature7>.Feature3
+  nameWithType.vb: BusinessFacade(Of TFeature1, TFeature2, TFeature3, TFeature4, TFeature5, TFeature6, TFeature7).Feature3
+- uid: E5R.Architecture.Business.BusinessFacade`7.Feature4
+  name: Feature4
+  href: api/E5R.Architecture.Business.BusinessFacade-7.html#E5R_Architecture_Business_BusinessFacade_7_Feature4
+  commentId: P:E5R.Architecture.Business.BusinessFacade`7.Feature4
+  fullName: E5R.Architecture.Business.BusinessFacade<TFeature1, TFeature2, TFeature3, TFeature4, TFeature5, TFeature6, TFeature7>.Feature4
+  fullName.vb: E5R.Architecture.Business.BusinessFacade(Of TFeature1, TFeature2, TFeature3, TFeature4, TFeature5, TFeature6, TFeature7).Feature4
+  nameWithType: BusinessFacade<TFeature1, TFeature2, TFeature3, TFeature4, TFeature5, TFeature6, TFeature7>.Feature4
+  nameWithType.vb: BusinessFacade(Of TFeature1, TFeature2, TFeature3, TFeature4, TFeature5, TFeature6, TFeature7).Feature4
+- uid: E5R.Architecture.Business.BusinessFacade`7.Feature4*
+  name: Feature4
+  href: api/E5R.Architecture.Business.BusinessFacade-7.html#E5R_Architecture_Business_BusinessFacade_7_Feature4_
+  commentId: Overload:E5R.Architecture.Business.BusinessFacade`7.Feature4
+  isSpec: "True"
+  fullName: E5R.Architecture.Business.BusinessFacade<TFeature1, TFeature2, TFeature3, TFeature4, TFeature5, TFeature6, TFeature7>.Feature4
+  fullName.vb: E5R.Architecture.Business.BusinessFacade(Of TFeature1, TFeature2, TFeature3, TFeature4, TFeature5, TFeature6, TFeature7).Feature4
+  nameWithType: BusinessFacade<TFeature1, TFeature2, TFeature3, TFeature4, TFeature5, TFeature6, TFeature7>.Feature4
+  nameWithType.vb: BusinessFacade(Of TFeature1, TFeature2, TFeature3, TFeature4, TFeature5, TFeature6, TFeature7).Feature4
+- uid: E5R.Architecture.Business.BusinessFacade`7.Feature5
+  name: Feature5
+  href: api/E5R.Architecture.Business.BusinessFacade-7.html#E5R_Architecture_Business_BusinessFacade_7_Feature5
+  commentId: P:E5R.Architecture.Business.BusinessFacade`7.Feature5
+  fullName: E5R.Architecture.Business.BusinessFacade<TFeature1, TFeature2, TFeature3, TFeature4, TFeature5, TFeature6, TFeature7>.Feature5
+  fullName.vb: E5R.Architecture.Business.BusinessFacade(Of TFeature1, TFeature2, TFeature3, TFeature4, TFeature5, TFeature6, TFeature7).Feature5
+  nameWithType: BusinessFacade<TFeature1, TFeature2, TFeature3, TFeature4, TFeature5, TFeature6, TFeature7>.Feature5
+  nameWithType.vb: BusinessFacade(Of TFeature1, TFeature2, TFeature3, TFeature4, TFeature5, TFeature6, TFeature7).Feature5
+- uid: E5R.Architecture.Business.BusinessFacade`7.Feature5*
+  name: Feature5
+  href: api/E5R.Architecture.Business.BusinessFacade-7.html#E5R_Architecture_Business_BusinessFacade_7_Feature5_
+  commentId: Overload:E5R.Architecture.Business.BusinessFacade`7.Feature5
+  isSpec: "True"
+  fullName: E5R.Architecture.Business.BusinessFacade<TFeature1, TFeature2, TFeature3, TFeature4, TFeature5, TFeature6, TFeature7>.Feature5
+  fullName.vb: E5R.Architecture.Business.BusinessFacade(Of TFeature1, TFeature2, TFeature3, TFeature4, TFeature5, TFeature6, TFeature7).Feature5
+  nameWithType: BusinessFacade<TFeature1, TFeature2, TFeature3, TFeature4, TFeature5, TFeature6, TFeature7>.Feature5
+  nameWithType.vb: BusinessFacade(Of TFeature1, TFeature2, TFeature3, TFeature4, TFeature5, TFeature6, TFeature7).Feature5
+- uid: E5R.Architecture.Business.BusinessFacade`7.Feature6
+  name: Feature6
+  href: api/E5R.Architecture.Business.BusinessFacade-7.html#E5R_Architecture_Business_BusinessFacade_7_Feature6
+  commentId: P:E5R.Architecture.Business.BusinessFacade`7.Feature6
+  fullName: E5R.Architecture.Business.BusinessFacade<TFeature1, TFeature2, TFeature3, TFeature4, TFeature5, TFeature6, TFeature7>.Feature6
+  fullName.vb: E5R.Architecture.Business.BusinessFacade(Of TFeature1, TFeature2, TFeature3, TFeature4, TFeature5, TFeature6, TFeature7).Feature6
+  nameWithType: BusinessFacade<TFeature1, TFeature2, TFeature3, TFeature4, TFeature5, TFeature6, TFeature7>.Feature6
+  nameWithType.vb: BusinessFacade(Of TFeature1, TFeature2, TFeature3, TFeature4, TFeature5, TFeature6, TFeature7).Feature6
+- uid: E5R.Architecture.Business.BusinessFacade`7.Feature6*
+  name: Feature6
+  href: api/E5R.Architecture.Business.BusinessFacade-7.html#E5R_Architecture_Business_BusinessFacade_7_Feature6_
+  commentId: Overload:E5R.Architecture.Business.BusinessFacade`7.Feature6
+  isSpec: "True"
+  fullName: E5R.Architecture.Business.BusinessFacade<TFeature1, TFeature2, TFeature3, TFeature4, TFeature5, TFeature6, TFeature7>.Feature6
+  fullName.vb: E5R.Architecture.Business.BusinessFacade(Of TFeature1, TFeature2, TFeature3, TFeature4, TFeature5, TFeature6, TFeature7).Feature6
+  nameWithType: BusinessFacade<TFeature1, TFeature2, TFeature3, TFeature4, TFeature5, TFeature6, TFeature7>.Feature6
+  nameWithType.vb: BusinessFacade(Of TFeature1, TFeature2, TFeature3, TFeature4, TFeature5, TFeature6, TFeature7).Feature6
+- uid: E5R.Architecture.Business.BusinessFacade`7.Feature7
+  name: Feature7
+  href: api/E5R.Architecture.Business.BusinessFacade-7.html#E5R_Architecture_Business_BusinessFacade_7_Feature7
+  commentId: P:E5R.Architecture.Business.BusinessFacade`7.Feature7
+  fullName: E5R.Architecture.Business.BusinessFacade<TFeature1, TFeature2, TFeature3, TFeature4, TFeature5, TFeature6, TFeature7>.Feature7
+  fullName.vb: E5R.Architecture.Business.BusinessFacade(Of TFeature1, TFeature2, TFeature3, TFeature4, TFeature5, TFeature6, TFeature7).Feature7
+  nameWithType: BusinessFacade<TFeature1, TFeature2, TFeature3, TFeature4, TFeature5, TFeature6, TFeature7>.Feature7
+  nameWithType.vb: BusinessFacade(Of TFeature1, TFeature2, TFeature3, TFeature4, TFeature5, TFeature6, TFeature7).Feature7
+- uid: E5R.Architecture.Business.BusinessFacade`7.Feature7*
+  name: Feature7
+  href: api/E5R.Architecture.Business.BusinessFacade-7.html#E5R_Architecture_Business_BusinessFacade_7_Feature7_
+  commentId: Overload:E5R.Architecture.Business.BusinessFacade`7.Feature7
+  isSpec: "True"
+  fullName: E5R.Architecture.Business.BusinessFacade<TFeature1, TFeature2, TFeature3, TFeature4, TFeature5, TFeature6, TFeature7>.Feature7
+  fullName.vb: E5R.Architecture.Business.BusinessFacade(Of TFeature1, TFeature2, TFeature3, TFeature4, TFeature5, TFeature6, TFeature7).Feature7
+  nameWithType: BusinessFacade<TFeature1, TFeature2, TFeature3, TFeature4, TFeature5, TFeature6, TFeature7>.Feature7
+  nameWithType.vb: BusinessFacade(Of TFeature1, TFeature2, TFeature3, TFeature4, TFeature5, TFeature6, TFeature7).Feature7
+- uid: E5R.Architecture.Business.BusinessFacade`8
+  name: BusinessFacade<TFeature1, TFeature2, TFeature3, TFeature4, TFeature5, TFeature6, TFeature7, TFeature8>
+  href: api/E5R.Architecture.Business.BusinessFacade-8.html
+  commentId: T:E5R.Architecture.Business.BusinessFacade`8
+  name.vb: BusinessFacade(Of TFeature1, TFeature2, TFeature3, TFeature4, TFeature5, TFeature6, TFeature7, TFeature8)
+  fullName: E5R.Architecture.Business.BusinessFacade<TFeature1, TFeature2, TFeature3, TFeature4, TFeature5, TFeature6, TFeature7, TFeature8>
+  fullName.vb: E5R.Architecture.Business.BusinessFacade(Of TFeature1, TFeature2, TFeature3, TFeature4, TFeature5, TFeature6, TFeature7, TFeature8)
+  nameWithType: BusinessFacade<TFeature1, TFeature2, TFeature3, TFeature4, TFeature5, TFeature6, TFeature7, TFeature8>
+  nameWithType.vb: BusinessFacade(Of TFeature1, TFeature2, TFeature3, TFeature4, TFeature5, TFeature6, TFeature7, TFeature8)
+- uid: E5R.Architecture.Business.BusinessFacade`8.#ctor(ILazy{`0},ILazy{`1},ILazy{`2},ILazy{`3},ILazy{`4},ILazy{`5},ILazy{`6},ILazy{`7})
+  name: BusinessFacade(ILazy<TFeature1>, ILazy<TFeature2>, ILazy<TFeature3>, ILazy<TFeature4>, ILazy<TFeature5>, ILazy<TFeature6>, ILazy<TFeature7>, ILazy<TFeature8>)
+  href: api/E5R.Architecture.Business.BusinessFacade-8.html#E5R_Architecture_Business_BusinessFacade_8__ctor_ILazy__0__ILazy__1__ILazy__2__ILazy__3__ILazy__4__ILazy__5__ILazy__6__ILazy__7__
+  commentId: M:E5R.Architecture.Business.BusinessFacade`8.#ctor(ILazy{`0},ILazy{`1},ILazy{`2},ILazy{`3},ILazy{`4},ILazy{`5},ILazy{`6},ILazy{`7})
+  name.vb: BusinessFacade(ILazy(Of TFeature1), ILazy(Of TFeature2), ILazy(Of TFeature3), ILazy(Of TFeature4), ILazy(Of TFeature5), ILazy(Of TFeature6), ILazy(Of TFeature7), ILazy(Of TFeature8))
+  fullName: E5R.Architecture.Business.BusinessFacade<TFeature1, TFeature2, TFeature3, TFeature4, TFeature5, TFeature6, TFeature7, TFeature8>.BusinessFacade(ILazy<TFeature1>, ILazy<TFeature2>, ILazy<TFeature3>, ILazy<TFeature4>, ILazy<TFeature5>, ILazy<TFeature6>, ILazy<TFeature7>, ILazy<TFeature8>)
+  fullName.vb: E5R.Architecture.Business.BusinessFacade(Of TFeature1, TFeature2, TFeature3, TFeature4, TFeature5, TFeature6, TFeature7, TFeature8).BusinessFacade(ILazy(Of TFeature1), ILazy(Of TFeature2), ILazy(Of TFeature3), ILazy(Of TFeature4), ILazy(Of TFeature5), ILazy(Of TFeature6), ILazy(Of TFeature7), ILazy(Of TFeature8))
+  nameWithType: BusinessFacade<TFeature1, TFeature2, TFeature3, TFeature4, TFeature5, TFeature6, TFeature7, TFeature8>.BusinessFacade(ILazy<TFeature1>, ILazy<TFeature2>, ILazy<TFeature3>, ILazy<TFeature4>, ILazy<TFeature5>, ILazy<TFeature6>, ILazy<TFeature7>, ILazy<TFeature8>)
+  nameWithType.vb: BusinessFacade(Of TFeature1, TFeature2, TFeature3, TFeature4, TFeature5, TFeature6, TFeature7, TFeature8).BusinessFacade(ILazy(Of TFeature1), ILazy(Of TFeature2), ILazy(Of TFeature3), ILazy(Of TFeature4), ILazy(Of TFeature5), ILazy(Of TFeature6), ILazy(Of TFeature7), ILazy(Of TFeature8))
+- uid: E5R.Architecture.Business.BusinessFacade`8.#ctor*
+  name: BusinessFacade
+  href: api/E5R.Architecture.Business.BusinessFacade-8.html#E5R_Architecture_Business_BusinessFacade_8__ctor_
+  commentId: Overload:E5R.Architecture.Business.BusinessFacade`8.#ctor
+  isSpec: "True"
+  fullName: E5R.Architecture.Business.BusinessFacade<TFeature1, TFeature2, TFeature3, TFeature4, TFeature5, TFeature6, TFeature7, TFeature8>.BusinessFacade
+  fullName.vb: E5R.Architecture.Business.BusinessFacade(Of TFeature1, TFeature2, TFeature3, TFeature4, TFeature5, TFeature6, TFeature7, TFeature8).BusinessFacade
+  nameWithType: BusinessFacade<TFeature1, TFeature2, TFeature3, TFeature4, TFeature5, TFeature6, TFeature7, TFeature8>.BusinessFacade
+  nameWithType.vb: BusinessFacade(Of TFeature1, TFeature2, TFeature3, TFeature4, TFeature5, TFeature6, TFeature7, TFeature8).BusinessFacade
+- uid: E5R.Architecture.Business.BusinessFacade`8.Feature1
+  name: Feature1
+  href: api/E5R.Architecture.Business.BusinessFacade-8.html#E5R_Architecture_Business_BusinessFacade_8_Feature1
+  commentId: P:E5R.Architecture.Business.BusinessFacade`8.Feature1
+  fullName: E5R.Architecture.Business.BusinessFacade<TFeature1, TFeature2, TFeature3, TFeature4, TFeature5, TFeature6, TFeature7, TFeature8>.Feature1
+  fullName.vb: E5R.Architecture.Business.BusinessFacade(Of TFeature1, TFeature2, TFeature3, TFeature4, TFeature5, TFeature6, TFeature7, TFeature8).Feature1
+  nameWithType: BusinessFacade<TFeature1, TFeature2, TFeature3, TFeature4, TFeature5, TFeature6, TFeature7, TFeature8>.Feature1
+  nameWithType.vb: BusinessFacade(Of TFeature1, TFeature2, TFeature3, TFeature4, TFeature5, TFeature6, TFeature7, TFeature8).Feature1
+- uid: E5R.Architecture.Business.BusinessFacade`8.Feature1*
+  name: Feature1
+  href: api/E5R.Architecture.Business.BusinessFacade-8.html#E5R_Architecture_Business_BusinessFacade_8_Feature1_
+  commentId: Overload:E5R.Architecture.Business.BusinessFacade`8.Feature1
+  isSpec: "True"
+  fullName: E5R.Architecture.Business.BusinessFacade<TFeature1, TFeature2, TFeature3, TFeature4, TFeature5, TFeature6, TFeature7, TFeature8>.Feature1
+  fullName.vb: E5R.Architecture.Business.BusinessFacade(Of TFeature1, TFeature2, TFeature3, TFeature4, TFeature5, TFeature6, TFeature7, TFeature8).Feature1
+  nameWithType: BusinessFacade<TFeature1, TFeature2, TFeature3, TFeature4, TFeature5, TFeature6, TFeature7, TFeature8>.Feature1
+  nameWithType.vb: BusinessFacade(Of TFeature1, TFeature2, TFeature3, TFeature4, TFeature5, TFeature6, TFeature7, TFeature8).Feature1
+- uid: E5R.Architecture.Business.BusinessFacade`8.Feature2
+  name: Feature2
+  href: api/E5R.Architecture.Business.BusinessFacade-8.html#E5R_Architecture_Business_BusinessFacade_8_Feature2
+  commentId: P:E5R.Architecture.Business.BusinessFacade`8.Feature2
+  fullName: E5R.Architecture.Business.BusinessFacade<TFeature1, TFeature2, TFeature3, TFeature4, TFeature5, TFeature6, TFeature7, TFeature8>.Feature2
+  fullName.vb: E5R.Architecture.Business.BusinessFacade(Of TFeature1, TFeature2, TFeature3, TFeature4, TFeature5, TFeature6, TFeature7, TFeature8).Feature2
+  nameWithType: BusinessFacade<TFeature1, TFeature2, TFeature3, TFeature4, TFeature5, TFeature6, TFeature7, TFeature8>.Feature2
+  nameWithType.vb: BusinessFacade(Of TFeature1, TFeature2, TFeature3, TFeature4, TFeature5, TFeature6, TFeature7, TFeature8).Feature2
+- uid: E5R.Architecture.Business.BusinessFacade`8.Feature2*
+  name: Feature2
+  href: api/E5R.Architecture.Business.BusinessFacade-8.html#E5R_Architecture_Business_BusinessFacade_8_Feature2_
+  commentId: Overload:E5R.Architecture.Business.BusinessFacade`8.Feature2
+  isSpec: "True"
+  fullName: E5R.Architecture.Business.BusinessFacade<TFeature1, TFeature2, TFeature3, TFeature4, TFeature5, TFeature6, TFeature7, TFeature8>.Feature2
+  fullName.vb: E5R.Architecture.Business.BusinessFacade(Of TFeature1, TFeature2, TFeature3, TFeature4, TFeature5, TFeature6, TFeature7, TFeature8).Feature2
+  nameWithType: BusinessFacade<TFeature1, TFeature2, TFeature3, TFeature4, TFeature5, TFeature6, TFeature7, TFeature8>.Feature2
+  nameWithType.vb: BusinessFacade(Of TFeature1, TFeature2, TFeature3, TFeature4, TFeature5, TFeature6, TFeature7, TFeature8).Feature2
+- uid: E5R.Architecture.Business.BusinessFacade`8.Feature3
+  name: Feature3
+  href: api/E5R.Architecture.Business.BusinessFacade-8.html#E5R_Architecture_Business_BusinessFacade_8_Feature3
+  commentId: P:E5R.Architecture.Business.BusinessFacade`8.Feature3
+  fullName: E5R.Architecture.Business.BusinessFacade<TFeature1, TFeature2, TFeature3, TFeature4, TFeature5, TFeature6, TFeature7, TFeature8>.Feature3
+  fullName.vb: E5R.Architecture.Business.BusinessFacade(Of TFeature1, TFeature2, TFeature3, TFeature4, TFeature5, TFeature6, TFeature7, TFeature8).Feature3
+  nameWithType: BusinessFacade<TFeature1, TFeature2, TFeature3, TFeature4, TFeature5, TFeature6, TFeature7, TFeature8>.Feature3
+  nameWithType.vb: BusinessFacade(Of TFeature1, TFeature2, TFeature3, TFeature4, TFeature5, TFeature6, TFeature7, TFeature8).Feature3
+- uid: E5R.Architecture.Business.BusinessFacade`8.Feature3*
+  name: Feature3
+  href: api/E5R.Architecture.Business.BusinessFacade-8.html#E5R_Architecture_Business_BusinessFacade_8_Feature3_
+  commentId: Overload:E5R.Architecture.Business.BusinessFacade`8.Feature3
+  isSpec: "True"
+  fullName: E5R.Architecture.Business.BusinessFacade<TFeature1, TFeature2, TFeature3, TFeature4, TFeature5, TFeature6, TFeature7, TFeature8>.Feature3
+  fullName.vb: E5R.Architecture.Business.BusinessFacade(Of TFeature1, TFeature2, TFeature3, TFeature4, TFeature5, TFeature6, TFeature7, TFeature8).Feature3
+  nameWithType: BusinessFacade<TFeature1, TFeature2, TFeature3, TFeature4, TFeature5, TFeature6, TFeature7, TFeature8>.Feature3
+  nameWithType.vb: BusinessFacade(Of TFeature1, TFeature2, TFeature3, TFeature4, TFeature5, TFeature6, TFeature7, TFeature8).Feature3
+- uid: E5R.Architecture.Business.BusinessFacade`8.Feature4
+  name: Feature4
+  href: api/E5R.Architecture.Business.BusinessFacade-8.html#E5R_Architecture_Business_BusinessFacade_8_Feature4
+  commentId: P:E5R.Architecture.Business.BusinessFacade`8.Feature4
+  fullName: E5R.Architecture.Business.BusinessFacade<TFeature1, TFeature2, TFeature3, TFeature4, TFeature5, TFeature6, TFeature7, TFeature8>.Feature4
+  fullName.vb: E5R.Architecture.Business.BusinessFacade(Of TFeature1, TFeature2, TFeature3, TFeature4, TFeature5, TFeature6, TFeature7, TFeature8).Feature4
+  nameWithType: BusinessFacade<TFeature1, TFeature2, TFeature3, TFeature4, TFeature5, TFeature6, TFeature7, TFeature8>.Feature4
+  nameWithType.vb: BusinessFacade(Of TFeature1, TFeature2, TFeature3, TFeature4, TFeature5, TFeature6, TFeature7, TFeature8).Feature4
+- uid: E5R.Architecture.Business.BusinessFacade`8.Feature4*
+  name: Feature4
+  href: api/E5R.Architecture.Business.BusinessFacade-8.html#E5R_Architecture_Business_BusinessFacade_8_Feature4_
+  commentId: Overload:E5R.Architecture.Business.BusinessFacade`8.Feature4
+  isSpec: "True"
+  fullName: E5R.Architecture.Business.BusinessFacade<TFeature1, TFeature2, TFeature3, TFeature4, TFeature5, TFeature6, TFeature7, TFeature8>.Feature4
+  fullName.vb: E5R.Architecture.Business.BusinessFacade(Of TFeature1, TFeature2, TFeature3, TFeature4, TFeature5, TFeature6, TFeature7, TFeature8).Feature4
+  nameWithType: BusinessFacade<TFeature1, TFeature2, TFeature3, TFeature4, TFeature5, TFeature6, TFeature7, TFeature8>.Feature4
+  nameWithType.vb: BusinessFacade(Of TFeature1, TFeature2, TFeature3, TFeature4, TFeature5, TFeature6, TFeature7, TFeature8).Feature4
+- uid: E5R.Architecture.Business.BusinessFacade`8.Feature5
+  name: Feature5
+  href: api/E5R.Architecture.Business.BusinessFacade-8.html#E5R_Architecture_Business_BusinessFacade_8_Feature5
+  commentId: P:E5R.Architecture.Business.BusinessFacade`8.Feature5
+  fullName: E5R.Architecture.Business.BusinessFacade<TFeature1, TFeature2, TFeature3, TFeature4, TFeature5, TFeature6, TFeature7, TFeature8>.Feature5
+  fullName.vb: E5R.Architecture.Business.BusinessFacade(Of TFeature1, TFeature2, TFeature3, TFeature4, TFeature5, TFeature6, TFeature7, TFeature8).Feature5
+  nameWithType: BusinessFacade<TFeature1, TFeature2, TFeature3, TFeature4, TFeature5, TFeature6, TFeature7, TFeature8>.Feature5
+  nameWithType.vb: BusinessFacade(Of TFeature1, TFeature2, TFeature3, TFeature4, TFeature5, TFeature6, TFeature7, TFeature8).Feature5
+- uid: E5R.Architecture.Business.BusinessFacade`8.Feature5*
+  name: Feature5
+  href: api/E5R.Architecture.Business.BusinessFacade-8.html#E5R_Architecture_Business_BusinessFacade_8_Feature5_
+  commentId: Overload:E5R.Architecture.Business.BusinessFacade`8.Feature5
+  isSpec: "True"
+  fullName: E5R.Architecture.Business.BusinessFacade<TFeature1, TFeature2, TFeature3, TFeature4, TFeature5, TFeature6, TFeature7, TFeature8>.Feature5
+  fullName.vb: E5R.Architecture.Business.BusinessFacade(Of TFeature1, TFeature2, TFeature3, TFeature4, TFeature5, TFeature6, TFeature7, TFeature8).Feature5
+  nameWithType: BusinessFacade<TFeature1, TFeature2, TFeature3, TFeature4, TFeature5, TFeature6, TFeature7, TFeature8>.Feature5
+  nameWithType.vb: BusinessFacade(Of TFeature1, TFeature2, TFeature3, TFeature4, TFeature5, TFeature6, TFeature7, TFeature8).Feature5
+- uid: E5R.Architecture.Business.BusinessFacade`8.Feature6
+  name: Feature6
+  href: api/E5R.Architecture.Business.BusinessFacade-8.html#E5R_Architecture_Business_BusinessFacade_8_Feature6
+  commentId: P:E5R.Architecture.Business.BusinessFacade`8.Feature6
+  fullName: E5R.Architecture.Business.BusinessFacade<TFeature1, TFeature2, TFeature3, TFeature4, TFeature5, TFeature6, TFeature7, TFeature8>.Feature6
+  fullName.vb: E5R.Architecture.Business.BusinessFacade(Of TFeature1, TFeature2, TFeature3, TFeature4, TFeature5, TFeature6, TFeature7, TFeature8).Feature6
+  nameWithType: BusinessFacade<TFeature1, TFeature2, TFeature3, TFeature4, TFeature5, TFeature6, TFeature7, TFeature8>.Feature6
+  nameWithType.vb: BusinessFacade(Of TFeature1, TFeature2, TFeature3, TFeature4, TFeature5, TFeature6, TFeature7, TFeature8).Feature6
+- uid: E5R.Architecture.Business.BusinessFacade`8.Feature6*
+  name: Feature6
+  href: api/E5R.Architecture.Business.BusinessFacade-8.html#E5R_Architecture_Business_BusinessFacade_8_Feature6_
+  commentId: Overload:E5R.Architecture.Business.BusinessFacade`8.Feature6
+  isSpec: "True"
+  fullName: E5R.Architecture.Business.BusinessFacade<TFeature1, TFeature2, TFeature3, TFeature4, TFeature5, TFeature6, TFeature7, TFeature8>.Feature6
+  fullName.vb: E5R.Architecture.Business.BusinessFacade(Of TFeature1, TFeature2, TFeature3, TFeature4, TFeature5, TFeature6, TFeature7, TFeature8).Feature6
+  nameWithType: BusinessFacade<TFeature1, TFeature2, TFeature3, TFeature4, TFeature5, TFeature6, TFeature7, TFeature8>.Feature6
+  nameWithType.vb: BusinessFacade(Of TFeature1, TFeature2, TFeature3, TFeature4, TFeature5, TFeature6, TFeature7, TFeature8).Feature6
+- uid: E5R.Architecture.Business.BusinessFacade`8.Feature7
+  name: Feature7
+  href: api/E5R.Architecture.Business.BusinessFacade-8.html#E5R_Architecture_Business_BusinessFacade_8_Feature7
+  commentId: P:E5R.Architecture.Business.BusinessFacade`8.Feature7
+  fullName: E5R.Architecture.Business.BusinessFacade<TFeature1, TFeature2, TFeature3, TFeature4, TFeature5, TFeature6, TFeature7, TFeature8>.Feature7
+  fullName.vb: E5R.Architecture.Business.BusinessFacade(Of TFeature1, TFeature2, TFeature3, TFeature4, TFeature5, TFeature6, TFeature7, TFeature8).Feature7
+  nameWithType: BusinessFacade<TFeature1, TFeature2, TFeature3, TFeature4, TFeature5, TFeature6, TFeature7, TFeature8>.Feature7
+  nameWithType.vb: BusinessFacade(Of TFeature1, TFeature2, TFeature3, TFeature4, TFeature5, TFeature6, TFeature7, TFeature8).Feature7
+- uid: E5R.Architecture.Business.BusinessFacade`8.Feature7*
+  name: Feature7
+  href: api/E5R.Architecture.Business.BusinessFacade-8.html#E5R_Architecture_Business_BusinessFacade_8_Feature7_
+  commentId: Overload:E5R.Architecture.Business.BusinessFacade`8.Feature7
+  isSpec: "True"
+  fullName: E5R.Architecture.Business.BusinessFacade<TFeature1, TFeature2, TFeature3, TFeature4, TFeature5, TFeature6, TFeature7, TFeature8>.Feature7
+  fullName.vb: E5R.Architecture.Business.BusinessFacade(Of TFeature1, TFeature2, TFeature3, TFeature4, TFeature5, TFeature6, TFeature7, TFeature8).Feature7
+  nameWithType: BusinessFacade<TFeature1, TFeature2, TFeature3, TFeature4, TFeature5, TFeature6, TFeature7, TFeature8>.Feature7
+  nameWithType.vb: BusinessFacade(Of TFeature1, TFeature2, TFeature3, TFeature4, TFeature5, TFeature6, TFeature7, TFeature8).Feature7
+- uid: E5R.Architecture.Business.BusinessFacade`8.Feature8
+  name: Feature8
+  href: api/E5R.Architecture.Business.BusinessFacade-8.html#E5R_Architecture_Business_BusinessFacade_8_Feature8
+  commentId: P:E5R.Architecture.Business.BusinessFacade`8.Feature8
+  fullName: E5R.Architecture.Business.BusinessFacade<TFeature1, TFeature2, TFeature3, TFeature4, TFeature5, TFeature6, TFeature7, TFeature8>.Feature8
+  fullName.vb: E5R.Architecture.Business.BusinessFacade(Of TFeature1, TFeature2, TFeature3, TFeature4, TFeature5, TFeature6, TFeature7, TFeature8).Feature8
+  nameWithType: BusinessFacade<TFeature1, TFeature2, TFeature3, TFeature4, TFeature5, TFeature6, TFeature7, TFeature8>.Feature8
+  nameWithType.vb: BusinessFacade(Of TFeature1, TFeature2, TFeature3, TFeature4, TFeature5, TFeature6, TFeature7, TFeature8).Feature8
+- uid: E5R.Architecture.Business.BusinessFacade`8.Feature8*
+  name: Feature8
+  href: api/E5R.Architecture.Business.BusinessFacade-8.html#E5R_Architecture_Business_BusinessFacade_8_Feature8_
+  commentId: Overload:E5R.Architecture.Business.BusinessFacade`8.Feature8
+  isSpec: "True"
+  fullName: E5R.Architecture.Business.BusinessFacade<TFeature1, TFeature2, TFeature3, TFeature4, TFeature5, TFeature6, TFeature7, TFeature8>.Feature8
+  fullName.vb: E5R.Architecture.Business.BusinessFacade(Of TFeature1, TFeature2, TFeature3, TFeature4, TFeature5, TFeature6, TFeature7, TFeature8).Feature8
+  nameWithType: BusinessFacade<TFeature1, TFeature2, TFeature3, TFeature4, TFeature5, TFeature6, TFeature7, TFeature8>.Feature8
+  nameWithType.vb: BusinessFacade(Of TFeature1, TFeature2, TFeature3, TFeature4, TFeature5, TFeature6, TFeature7, TFeature8).Feature8
+- uid: E5R.Architecture.Business.BusinessFacade`9
+  name: BusinessFacade<TFeature1, TFeature2, TFeature3, TFeature4, TFeature5, TFeature6, TFeature7, TFeature8, TFeature9>
+  href: api/E5R.Architecture.Business.BusinessFacade-9.html
+  commentId: T:E5R.Architecture.Business.BusinessFacade`9
+  name.vb: BusinessFacade(Of TFeature1, TFeature2, TFeature3, TFeature4, TFeature5, TFeature6, TFeature7, TFeature8, TFeature9)
+  fullName: E5R.Architecture.Business.BusinessFacade<TFeature1, TFeature2, TFeature3, TFeature4, TFeature5, TFeature6, TFeature7, TFeature8, TFeature9>
+  fullName.vb: E5R.Architecture.Business.BusinessFacade(Of TFeature1, TFeature2, TFeature3, TFeature4, TFeature5, TFeature6, TFeature7, TFeature8, TFeature9)
+  nameWithType: BusinessFacade<TFeature1, TFeature2, TFeature3, TFeature4, TFeature5, TFeature6, TFeature7, TFeature8, TFeature9>
+  nameWithType.vb: BusinessFacade(Of TFeature1, TFeature2, TFeature3, TFeature4, TFeature5, TFeature6, TFeature7, TFeature8, TFeature9)
+- uid: E5R.Architecture.Business.BusinessFacade`9.#ctor(ILazy{`0},ILazy{`1},ILazy{`2},ILazy{`3},ILazy{`4},ILazy{`5},ILazy{`6},ILazy{`7},ILazy{`8})
+  name: BusinessFacade(ILazy<TFeature1>, ILazy<TFeature2>, ILazy<TFeature3>, ILazy<TFeature4>, ILazy<TFeature5>, ILazy<TFeature6>, ILazy<TFeature7>, ILazy<TFeature8>, ILazy<TFeature9>)
+  href: api/E5R.Architecture.Business.BusinessFacade-9.html#E5R_Architecture_Business_BusinessFacade_9__ctor_ILazy__0__ILazy__1__ILazy__2__ILazy__3__ILazy__4__ILazy__5__ILazy__6__ILazy__7__ILazy__8__
+  commentId: M:E5R.Architecture.Business.BusinessFacade`9.#ctor(ILazy{`0},ILazy{`1},ILazy{`2},ILazy{`3},ILazy{`4},ILazy{`5},ILazy{`6},ILazy{`7},ILazy{`8})
+  name.vb: BusinessFacade(ILazy(Of TFeature1), ILazy(Of TFeature2), ILazy(Of TFeature3), ILazy(Of TFeature4), ILazy(Of TFeature5), ILazy(Of TFeature6), ILazy(Of TFeature7), ILazy(Of TFeature8), ILazy(Of TFeature9))
+  fullName: E5R.Architecture.Business.BusinessFacade<TFeature1, TFeature2, TFeature3, TFeature4, TFeature5, TFeature6, TFeature7, TFeature8, TFeature9>.BusinessFacade(ILazy<TFeature1>, ILazy<TFeature2>, ILazy<TFeature3>, ILazy<TFeature4>, ILazy<TFeature5>, ILazy<TFeature6>, ILazy<TFeature7>, ILazy<TFeature8>, ILazy<TFeature9>)
+  fullName.vb: E5R.Architecture.Business.BusinessFacade(Of TFeature1, TFeature2, TFeature3, TFeature4, TFeature5, TFeature6, TFeature7, TFeature8, TFeature9).BusinessFacade(ILazy(Of TFeature1), ILazy(Of TFeature2), ILazy(Of TFeature3), ILazy(Of TFeature4), ILazy(Of TFeature5), ILazy(Of TFeature6), ILazy(Of TFeature7), ILazy(Of TFeature8), ILazy(Of TFeature9))
+  nameWithType: BusinessFacade<TFeature1, TFeature2, TFeature3, TFeature4, TFeature5, TFeature6, TFeature7, TFeature8, TFeature9>.BusinessFacade(ILazy<TFeature1>, ILazy<TFeature2>, ILazy<TFeature3>, ILazy<TFeature4>, ILazy<TFeature5>, ILazy<TFeature6>, ILazy<TFeature7>, ILazy<TFeature8>, ILazy<TFeature9>)
+  nameWithType.vb: BusinessFacade(Of TFeature1, TFeature2, TFeature3, TFeature4, TFeature5, TFeature6, TFeature7, TFeature8, TFeature9).BusinessFacade(ILazy(Of TFeature1), ILazy(Of TFeature2), ILazy(Of TFeature3), ILazy(Of TFeature4), ILazy(Of TFeature5), ILazy(Of TFeature6), ILazy(Of TFeature7), ILazy(Of TFeature8), ILazy(Of TFeature9))
+- uid: E5R.Architecture.Business.BusinessFacade`9.#ctor*
+  name: BusinessFacade
+  href: api/E5R.Architecture.Business.BusinessFacade-9.html#E5R_Architecture_Business_BusinessFacade_9__ctor_
+  commentId: Overload:E5R.Architecture.Business.BusinessFacade`9.#ctor
+  isSpec: "True"
+  fullName: E5R.Architecture.Business.BusinessFacade<TFeature1, TFeature2, TFeature3, TFeature4, TFeature5, TFeature6, TFeature7, TFeature8, TFeature9>.BusinessFacade
+  fullName.vb: E5R.Architecture.Business.BusinessFacade(Of TFeature1, TFeature2, TFeature3, TFeature4, TFeature5, TFeature6, TFeature7, TFeature8, TFeature9).BusinessFacade
+  nameWithType: BusinessFacade<TFeature1, TFeature2, TFeature3, TFeature4, TFeature5, TFeature6, TFeature7, TFeature8, TFeature9>.BusinessFacade
+  nameWithType.vb: BusinessFacade(Of TFeature1, TFeature2, TFeature3, TFeature4, TFeature5, TFeature6, TFeature7, TFeature8, TFeature9).BusinessFacade
+- uid: E5R.Architecture.Business.BusinessFacade`9.Feature1
+  name: Feature1
+  href: api/E5R.Architecture.Business.BusinessFacade-9.html#E5R_Architecture_Business_BusinessFacade_9_Feature1
+  commentId: P:E5R.Architecture.Business.BusinessFacade`9.Feature1
+  fullName: E5R.Architecture.Business.BusinessFacade<TFeature1, TFeature2, TFeature3, TFeature4, TFeature5, TFeature6, TFeature7, TFeature8, TFeature9>.Feature1
+  fullName.vb: E5R.Architecture.Business.BusinessFacade(Of TFeature1, TFeature2, TFeature3, TFeature4, TFeature5, TFeature6, TFeature7, TFeature8, TFeature9).Feature1
+  nameWithType: BusinessFacade<TFeature1, TFeature2, TFeature3, TFeature4, TFeature5, TFeature6, TFeature7, TFeature8, TFeature9>.Feature1
+  nameWithType.vb: BusinessFacade(Of TFeature1, TFeature2, TFeature3, TFeature4, TFeature5, TFeature6, TFeature7, TFeature8, TFeature9).Feature1
+- uid: E5R.Architecture.Business.BusinessFacade`9.Feature1*
+  name: Feature1
+  href: api/E5R.Architecture.Business.BusinessFacade-9.html#E5R_Architecture_Business_BusinessFacade_9_Feature1_
+  commentId: Overload:E5R.Architecture.Business.BusinessFacade`9.Feature1
+  isSpec: "True"
+  fullName: E5R.Architecture.Business.BusinessFacade<TFeature1, TFeature2, TFeature3, TFeature4, TFeature5, TFeature6, TFeature7, TFeature8, TFeature9>.Feature1
+  fullName.vb: E5R.Architecture.Business.BusinessFacade(Of TFeature1, TFeature2, TFeature3, TFeature4, TFeature5, TFeature6, TFeature7, TFeature8, TFeature9).Feature1
+  nameWithType: BusinessFacade<TFeature1, TFeature2, TFeature3, TFeature4, TFeature5, TFeature6, TFeature7, TFeature8, TFeature9>.Feature1
+  nameWithType.vb: BusinessFacade(Of TFeature1, TFeature2, TFeature3, TFeature4, TFeature5, TFeature6, TFeature7, TFeature8, TFeature9).Feature1
+- uid: E5R.Architecture.Business.BusinessFacade`9.Feature2
+  name: Feature2
+  href: api/E5R.Architecture.Business.BusinessFacade-9.html#E5R_Architecture_Business_BusinessFacade_9_Feature2
+  commentId: P:E5R.Architecture.Business.BusinessFacade`9.Feature2
+  fullName: E5R.Architecture.Business.BusinessFacade<TFeature1, TFeature2, TFeature3, TFeature4, TFeature5, TFeature6, TFeature7, TFeature8, TFeature9>.Feature2
+  fullName.vb: E5R.Architecture.Business.BusinessFacade(Of TFeature1, TFeature2, TFeature3, TFeature4, TFeature5, TFeature6, TFeature7, TFeature8, TFeature9).Feature2
+  nameWithType: BusinessFacade<TFeature1, TFeature2, TFeature3, TFeature4, TFeature5, TFeature6, TFeature7, TFeature8, TFeature9>.Feature2
+  nameWithType.vb: BusinessFacade(Of TFeature1, TFeature2, TFeature3, TFeature4, TFeature5, TFeature6, TFeature7, TFeature8, TFeature9).Feature2
+- uid: E5R.Architecture.Business.BusinessFacade`9.Feature2*
+  name: Feature2
+  href: api/E5R.Architecture.Business.BusinessFacade-9.html#E5R_Architecture_Business_BusinessFacade_9_Feature2_
+  commentId: Overload:E5R.Architecture.Business.BusinessFacade`9.Feature2
+  isSpec: "True"
+  fullName: E5R.Architecture.Business.BusinessFacade<TFeature1, TFeature2, TFeature3, TFeature4, TFeature5, TFeature6, TFeature7, TFeature8, TFeature9>.Feature2
+  fullName.vb: E5R.Architecture.Business.BusinessFacade(Of TFeature1, TFeature2, TFeature3, TFeature4, TFeature5, TFeature6, TFeature7, TFeature8, TFeature9).Feature2
+  nameWithType: BusinessFacade<TFeature1, TFeature2, TFeature3, TFeature4, TFeature5, TFeature6, TFeature7, TFeature8, TFeature9>.Feature2
+  nameWithType.vb: BusinessFacade(Of TFeature1, TFeature2, TFeature3, TFeature4, TFeature5, TFeature6, TFeature7, TFeature8, TFeature9).Feature2
+- uid: E5R.Architecture.Business.BusinessFacade`9.Feature3
+  name: Feature3
+  href: api/E5R.Architecture.Business.BusinessFacade-9.html#E5R_Architecture_Business_BusinessFacade_9_Feature3
+  commentId: P:E5R.Architecture.Business.BusinessFacade`9.Feature3
+  fullName: E5R.Architecture.Business.BusinessFacade<TFeature1, TFeature2, TFeature3, TFeature4, TFeature5, TFeature6, TFeature7, TFeature8, TFeature9>.Feature3
+  fullName.vb: E5R.Architecture.Business.BusinessFacade(Of TFeature1, TFeature2, TFeature3, TFeature4, TFeature5, TFeature6, TFeature7, TFeature8, TFeature9).Feature3
+  nameWithType: BusinessFacade<TFeature1, TFeature2, TFeature3, TFeature4, TFeature5, TFeature6, TFeature7, TFeature8, TFeature9>.Feature3
+  nameWithType.vb: BusinessFacade(Of TFeature1, TFeature2, TFeature3, TFeature4, TFeature5, TFeature6, TFeature7, TFeature8, TFeature9).Feature3
+- uid: E5R.Architecture.Business.BusinessFacade`9.Feature3*
+  name: Feature3
+  href: api/E5R.Architecture.Business.BusinessFacade-9.html#E5R_Architecture_Business_BusinessFacade_9_Feature3_
+  commentId: Overload:E5R.Architecture.Business.BusinessFacade`9.Feature3
+  isSpec: "True"
+  fullName: E5R.Architecture.Business.BusinessFacade<TFeature1, TFeature2, TFeature3, TFeature4, TFeature5, TFeature6, TFeature7, TFeature8, TFeature9>.Feature3
+  fullName.vb: E5R.Architecture.Business.BusinessFacade(Of TFeature1, TFeature2, TFeature3, TFeature4, TFeature5, TFeature6, TFeature7, TFeature8, TFeature9).Feature3
+  nameWithType: BusinessFacade<TFeature1, TFeature2, TFeature3, TFeature4, TFeature5, TFeature6, TFeature7, TFeature8, TFeature9>.Feature3
+  nameWithType.vb: BusinessFacade(Of TFeature1, TFeature2, TFeature3, TFeature4, TFeature5, TFeature6, TFeature7, TFeature8, TFeature9).Feature3
+- uid: E5R.Architecture.Business.BusinessFacade`9.Feature4
+  name: Feature4
+  href: api/E5R.Architecture.Business.BusinessFacade-9.html#E5R_Architecture_Business_BusinessFacade_9_Feature4
+  commentId: P:E5R.Architecture.Business.BusinessFacade`9.Feature4
+  fullName: E5R.Architecture.Business.BusinessFacade<TFeature1, TFeature2, TFeature3, TFeature4, TFeature5, TFeature6, TFeature7, TFeature8, TFeature9>.Feature4
+  fullName.vb: E5R.Architecture.Business.BusinessFacade(Of TFeature1, TFeature2, TFeature3, TFeature4, TFeature5, TFeature6, TFeature7, TFeature8, TFeature9).Feature4
+  nameWithType: BusinessFacade<TFeature1, TFeature2, TFeature3, TFeature4, TFeature5, TFeature6, TFeature7, TFeature8, TFeature9>.Feature4
+  nameWithType.vb: BusinessFacade(Of TFeature1, TFeature2, TFeature3, TFeature4, TFeature5, TFeature6, TFeature7, TFeature8, TFeature9).Feature4
+- uid: E5R.Architecture.Business.BusinessFacade`9.Feature4*
+  name: Feature4
+  href: api/E5R.Architecture.Business.BusinessFacade-9.html#E5R_Architecture_Business_BusinessFacade_9_Feature4_
+  commentId: Overload:E5R.Architecture.Business.BusinessFacade`9.Feature4
+  isSpec: "True"
+  fullName: E5R.Architecture.Business.BusinessFacade<TFeature1, TFeature2, TFeature3, TFeature4, TFeature5, TFeature6, TFeature7, TFeature8, TFeature9>.Feature4
+  fullName.vb: E5R.Architecture.Business.BusinessFacade(Of TFeature1, TFeature2, TFeature3, TFeature4, TFeature5, TFeature6, TFeature7, TFeature8, TFeature9).Feature4
+  nameWithType: BusinessFacade<TFeature1, TFeature2, TFeature3, TFeature4, TFeature5, TFeature6, TFeature7, TFeature8, TFeature9>.Feature4
+  nameWithType.vb: BusinessFacade(Of TFeature1, TFeature2, TFeature3, TFeature4, TFeature5, TFeature6, TFeature7, TFeature8, TFeature9).Feature4
+- uid: E5R.Architecture.Business.BusinessFacade`9.Feature5
+  name: Feature5
+  href: api/E5R.Architecture.Business.BusinessFacade-9.html#E5R_Architecture_Business_BusinessFacade_9_Feature5
+  commentId: P:E5R.Architecture.Business.BusinessFacade`9.Feature5
+  fullName: E5R.Architecture.Business.BusinessFacade<TFeature1, TFeature2, TFeature3, TFeature4, TFeature5, TFeature6, TFeature7, TFeature8, TFeature9>.Feature5
+  fullName.vb: E5R.Architecture.Business.BusinessFacade(Of TFeature1, TFeature2, TFeature3, TFeature4, TFeature5, TFeature6, TFeature7, TFeature8, TFeature9).Feature5
+  nameWithType: BusinessFacade<TFeature1, TFeature2, TFeature3, TFeature4, TFeature5, TFeature6, TFeature7, TFeature8, TFeature9>.Feature5
+  nameWithType.vb: BusinessFacade(Of TFeature1, TFeature2, TFeature3, TFeature4, TFeature5, TFeature6, TFeature7, TFeature8, TFeature9).Feature5
+- uid: E5R.Architecture.Business.BusinessFacade`9.Feature5*
+  name: Feature5
+  href: api/E5R.Architecture.Business.BusinessFacade-9.html#E5R_Architecture_Business_BusinessFacade_9_Feature5_
+  commentId: Overload:E5R.Architecture.Business.BusinessFacade`9.Feature5
+  isSpec: "True"
+  fullName: E5R.Architecture.Business.BusinessFacade<TFeature1, TFeature2, TFeature3, TFeature4, TFeature5, TFeature6, TFeature7, TFeature8, TFeature9>.Feature5
+  fullName.vb: E5R.Architecture.Business.BusinessFacade(Of TFeature1, TFeature2, TFeature3, TFeature4, TFeature5, TFeature6, TFeature7, TFeature8, TFeature9).Feature5
+  nameWithType: BusinessFacade<TFeature1, TFeature2, TFeature3, TFeature4, TFeature5, TFeature6, TFeature7, TFeature8, TFeature9>.Feature5
+  nameWithType.vb: BusinessFacade(Of TFeature1, TFeature2, TFeature3, TFeature4, TFeature5, TFeature6, TFeature7, TFeature8, TFeature9).Feature5
+- uid: E5R.Architecture.Business.BusinessFacade`9.Feature6
+  name: Feature6
+  href: api/E5R.Architecture.Business.BusinessFacade-9.html#E5R_Architecture_Business_BusinessFacade_9_Feature6
+  commentId: P:E5R.Architecture.Business.BusinessFacade`9.Feature6
+  fullName: E5R.Architecture.Business.BusinessFacade<TFeature1, TFeature2, TFeature3, TFeature4, TFeature5, TFeature6, TFeature7, TFeature8, TFeature9>.Feature6
+  fullName.vb: E5R.Architecture.Business.BusinessFacade(Of TFeature1, TFeature2, TFeature3, TFeature4, TFeature5, TFeature6, TFeature7, TFeature8, TFeature9).Feature6
+  nameWithType: BusinessFacade<TFeature1, TFeature2, TFeature3, TFeature4, TFeature5, TFeature6, TFeature7, TFeature8, TFeature9>.Feature6
+  nameWithType.vb: BusinessFacade(Of TFeature1, TFeature2, TFeature3, TFeature4, TFeature5, TFeature6, TFeature7, TFeature8, TFeature9).Feature6
+- uid: E5R.Architecture.Business.BusinessFacade`9.Feature6*
+  name: Feature6
+  href: api/E5R.Architecture.Business.BusinessFacade-9.html#E5R_Architecture_Business_BusinessFacade_9_Feature6_
+  commentId: Overload:E5R.Architecture.Business.BusinessFacade`9.Feature6
+  isSpec: "True"
+  fullName: E5R.Architecture.Business.BusinessFacade<TFeature1, TFeature2, TFeature3, TFeature4, TFeature5, TFeature6, TFeature7, TFeature8, TFeature9>.Feature6
+  fullName.vb: E5R.Architecture.Business.BusinessFacade(Of TFeature1, TFeature2, TFeature3, TFeature4, TFeature5, TFeature6, TFeature7, TFeature8, TFeature9).Feature6
+  nameWithType: BusinessFacade<TFeature1, TFeature2, TFeature3, TFeature4, TFeature5, TFeature6, TFeature7, TFeature8, TFeature9>.Feature6
+  nameWithType.vb: BusinessFacade(Of TFeature1, TFeature2, TFeature3, TFeature4, TFeature5, TFeature6, TFeature7, TFeature8, TFeature9).Feature6
+- uid: E5R.Architecture.Business.BusinessFacade`9.Feature7
+  name: Feature7
+  href: api/E5R.Architecture.Business.BusinessFacade-9.html#E5R_Architecture_Business_BusinessFacade_9_Feature7
+  commentId: P:E5R.Architecture.Business.BusinessFacade`9.Feature7
+  fullName: E5R.Architecture.Business.BusinessFacade<TFeature1, TFeature2, TFeature3, TFeature4, TFeature5, TFeature6, TFeature7, TFeature8, TFeature9>.Feature7
+  fullName.vb: E5R.Architecture.Business.BusinessFacade(Of TFeature1, TFeature2, TFeature3, TFeature4, TFeature5, TFeature6, TFeature7, TFeature8, TFeature9).Feature7
+  nameWithType: BusinessFacade<TFeature1, TFeature2, TFeature3, TFeature4, TFeature5, TFeature6, TFeature7, TFeature8, TFeature9>.Feature7
+  nameWithType.vb: BusinessFacade(Of TFeature1, TFeature2, TFeature3, TFeature4, TFeature5, TFeature6, TFeature7, TFeature8, TFeature9).Feature7
+- uid: E5R.Architecture.Business.BusinessFacade`9.Feature7*
+  name: Feature7
+  href: api/E5R.Architecture.Business.BusinessFacade-9.html#E5R_Architecture_Business_BusinessFacade_9_Feature7_
+  commentId: Overload:E5R.Architecture.Business.BusinessFacade`9.Feature7
+  isSpec: "True"
+  fullName: E5R.Architecture.Business.BusinessFacade<TFeature1, TFeature2, TFeature3, TFeature4, TFeature5, TFeature6, TFeature7, TFeature8, TFeature9>.Feature7
+  fullName.vb: E5R.Architecture.Business.BusinessFacade(Of TFeature1, TFeature2, TFeature3, TFeature4, TFeature5, TFeature6, TFeature7, TFeature8, TFeature9).Feature7
+  nameWithType: BusinessFacade<TFeature1, TFeature2, TFeature3, TFeature4, TFeature5, TFeature6, TFeature7, TFeature8, TFeature9>.Feature7
+  nameWithType.vb: BusinessFacade(Of TFeature1, TFeature2, TFeature3, TFeature4, TFeature5, TFeature6, TFeature7, TFeature8, TFeature9).Feature7
+- uid: E5R.Architecture.Business.BusinessFacade`9.Feature8
+  name: Feature8
+  href: api/E5R.Architecture.Business.BusinessFacade-9.html#E5R_Architecture_Business_BusinessFacade_9_Feature8
+  commentId: P:E5R.Architecture.Business.BusinessFacade`9.Feature8
+  fullName: E5R.Architecture.Business.BusinessFacade<TFeature1, TFeature2, TFeature3, TFeature4, TFeature5, TFeature6, TFeature7, TFeature8, TFeature9>.Feature8
+  fullName.vb: E5R.Architecture.Business.BusinessFacade(Of TFeature1, TFeature2, TFeature3, TFeature4, TFeature5, TFeature6, TFeature7, TFeature8, TFeature9).Feature8
+  nameWithType: BusinessFacade<TFeature1, TFeature2, TFeature3, TFeature4, TFeature5, TFeature6, TFeature7, TFeature8, TFeature9>.Feature8
+  nameWithType.vb: BusinessFacade(Of TFeature1, TFeature2, TFeature3, TFeature4, TFeature5, TFeature6, TFeature7, TFeature8, TFeature9).Feature8
+- uid: E5R.Architecture.Business.BusinessFacade`9.Feature8*
+  name: Feature8
+  href: api/E5R.Architecture.Business.BusinessFacade-9.html#E5R_Architecture_Business_BusinessFacade_9_Feature8_
+  commentId: Overload:E5R.Architecture.Business.BusinessFacade`9.Feature8
+  isSpec: "True"
+  fullName: E5R.Architecture.Business.BusinessFacade<TFeature1, TFeature2, TFeature3, TFeature4, TFeature5, TFeature6, TFeature7, TFeature8, TFeature9>.Feature8
+  fullName.vb: E5R.Architecture.Business.BusinessFacade(Of TFeature1, TFeature2, TFeature3, TFeature4, TFeature5, TFeature6, TFeature7, TFeature8, TFeature9).Feature8
+  nameWithType: BusinessFacade<TFeature1, TFeature2, TFeature3, TFeature4, TFeature5, TFeature6, TFeature7, TFeature8, TFeature9>.Feature8
+  nameWithType.vb: BusinessFacade(Of TFeature1, TFeature2, TFeature3, TFeature4, TFeature5, TFeature6, TFeature7, TFeature8, TFeature9).Feature8
+- uid: E5R.Architecture.Business.BusinessFacade`9.Feature9
+  name: Feature9
+  href: api/E5R.Architecture.Business.BusinessFacade-9.html#E5R_Architecture_Business_BusinessFacade_9_Feature9
+  commentId: P:E5R.Architecture.Business.BusinessFacade`9.Feature9
+  fullName: E5R.Architecture.Business.BusinessFacade<TFeature1, TFeature2, TFeature3, TFeature4, TFeature5, TFeature6, TFeature7, TFeature8, TFeature9>.Feature9
+  fullName.vb: E5R.Architecture.Business.BusinessFacade(Of TFeature1, TFeature2, TFeature3, TFeature4, TFeature5, TFeature6, TFeature7, TFeature8, TFeature9).Feature9
+  nameWithType: BusinessFacade<TFeature1, TFeature2, TFeature3, TFeature4, TFeature5, TFeature6, TFeature7, TFeature8, TFeature9>.Feature9
+  nameWithType.vb: BusinessFacade(Of TFeature1, TFeature2, TFeature3, TFeature4, TFeature5, TFeature6, TFeature7, TFeature8, TFeature9).Feature9
+- uid: E5R.Architecture.Business.BusinessFacade`9.Feature9*
+  name: Feature9
+  href: api/E5R.Architecture.Business.BusinessFacade-9.html#E5R_Architecture_Business_BusinessFacade_9_Feature9_
+  commentId: Overload:E5R.Architecture.Business.BusinessFacade`9.Feature9
+  isSpec: "True"
+  fullName: E5R.Architecture.Business.BusinessFacade<TFeature1, TFeature2, TFeature3, TFeature4, TFeature5, TFeature6, TFeature7, TFeature8, TFeature9>.Feature9
+  fullName.vb: E5R.Architecture.Business.BusinessFacade(Of TFeature1, TFeature2, TFeature3, TFeature4, TFeature5, TFeature6, TFeature7, TFeature8, TFeature9).Feature9
+  nameWithType: BusinessFacade<TFeature1, TFeature2, TFeature3, TFeature4, TFeature5, TFeature6, TFeature7, TFeature8, TFeature9>.Feature9
+  nameWithType.vb: BusinessFacade(Of TFeature1, TFeature2, TFeature3, TFeature4, TFeature5, TFeature6, TFeature7, TFeature8, TFeature9).Feature9
+- uid: E5R.Architecture.Business.BusinessFeature
+  name: BusinessFeature
+  href: api/E5R.Architecture.Business.BusinessFeature.html
+  commentId: T:E5R.Architecture.Business.BusinessFeature
+  fullName: E5R.Architecture.Business.BusinessFeature
+  nameWithType: BusinessFeature
+- uid: E5R.Architecture.Business.BusinessFeature.ExecActionAsync
+  name: ExecActionAsync()
+  href: api/E5R.Architecture.Business.BusinessFeature.html#E5R_Architecture_Business_BusinessFeature_ExecActionAsync
+  commentId: M:E5R.Architecture.Business.BusinessFeature.ExecActionAsync
+  fullName: E5R.Architecture.Business.BusinessFeature.ExecActionAsync()
+  nameWithType: BusinessFeature.ExecActionAsync()
+- uid: E5R.Architecture.Business.BusinessFeature.ExecActionAsync*
+  name: ExecActionAsync
+  href: api/E5R.Architecture.Business.BusinessFeature.html#E5R_Architecture_Business_BusinessFeature_ExecActionAsync_
+  commentId: Overload:E5R.Architecture.Business.BusinessFeature.ExecActionAsync
+  isSpec: "True"
+  fullName: E5R.Architecture.Business.BusinessFeature.ExecActionAsync
+  nameWithType: BusinessFeature.ExecActionAsync
+- uid: E5R.Architecture.Business.BusinessFeature.ExecAsync
+  name: ExecAsync()
+  href: api/E5R.Architecture.Business.BusinessFeature.html#E5R_Architecture_Business_BusinessFeature_ExecAsync
+  commentId: M:E5R.Architecture.Business.BusinessFeature.ExecAsync
+  fullName: E5R.Architecture.Business.BusinessFeature.ExecAsync()
+  nameWithType: BusinessFeature.ExecAsync()
+- uid: E5R.Architecture.Business.BusinessFeature.ExecAsync*
+  name: ExecAsync
+  href: api/E5R.Architecture.Business.BusinessFeature.html#E5R_Architecture_Business_BusinessFeature_ExecAsync_
+  commentId: Overload:E5R.Architecture.Business.BusinessFeature.ExecAsync
+  isSpec: "True"
+  fullName: E5R.Architecture.Business.BusinessFeature.ExecAsync
+  nameWithType: BusinessFeature.ExecAsync
+- uid: E5R.Architecture.Business.BusinessFeature`2
+  name: BusinessFeature<TInput, TOutput>
+  href: api/E5R.Architecture.Business.BusinessFeature-2.html
+  commentId: T:E5R.Architecture.Business.BusinessFeature`2
+  name.vb: BusinessFeature(Of TInput, TOutput)
+  fullName: E5R.Architecture.Business.BusinessFeature<TInput, TOutput>
+  fullName.vb: E5R.Architecture.Business.BusinessFeature(Of TInput, TOutput)
+  nameWithType: BusinessFeature<TInput, TOutput>
+  nameWithType.vb: BusinessFeature(Of TInput, TOutput)
+- uid: E5R.Architecture.Business.BusinessFeature`2.#ctor(ITransformationManager)
+  name: BusinessFeature(ITransformationManager)
+  href: api/E5R.Architecture.Business.BusinessFeature-2.html#E5R_Architecture_Business_BusinessFeature_2__ctor_ITransformationManager_
+  commentId: M:E5R.Architecture.Business.BusinessFeature`2.#ctor(ITransformationManager)
+  fullName: E5R.Architecture.Business.BusinessFeature<TInput, TOutput>.BusinessFeature(ITransformationManager)
+  fullName.vb: E5R.Architecture.Business.BusinessFeature(Of TInput, TOutput).BusinessFeature(ITransformationManager)
+  nameWithType: BusinessFeature<TInput, TOutput>.BusinessFeature(ITransformationManager)
+  nameWithType.vb: BusinessFeature(Of TInput, TOutput).BusinessFeature(ITransformationManager)
+- uid: E5R.Architecture.Business.BusinessFeature`2.#ctor*
+  name: BusinessFeature
+  href: api/E5R.Architecture.Business.BusinessFeature-2.html#E5R_Architecture_Business_BusinessFeature_2__ctor_
+  commentId: Overload:E5R.Architecture.Business.BusinessFeature`2.#ctor
+  isSpec: "True"
+  fullName: E5R.Architecture.Business.BusinessFeature<TInput, TOutput>.BusinessFeature
+  fullName.vb: E5R.Architecture.Business.BusinessFeature(Of TInput, TOutput).BusinessFeature
+  nameWithType: BusinessFeature<TInput, TOutput>.BusinessFeature
+  nameWithType.vb: BusinessFeature(Of TInput, TOutput).BusinessFeature
+- uid: E5R.Architecture.Business.BusinessFeature`2.ExecActionAsync(`0)
+  name: ExecActionAsync(TInput)
+  href: api/E5R.Architecture.Business.BusinessFeature-2.html#E5R_Architecture_Business_BusinessFeature_2_ExecActionAsync__0_
+  commentId: M:E5R.Architecture.Business.BusinessFeature`2.ExecActionAsync(`0)
+  fullName: E5R.Architecture.Business.BusinessFeature<TInput, TOutput>.ExecActionAsync(TInput)
+  fullName.vb: E5R.Architecture.Business.BusinessFeature(Of TInput, TOutput).ExecActionAsync(TInput)
+  nameWithType: BusinessFeature<TInput, TOutput>.ExecActionAsync(TInput)
+  nameWithType.vb: BusinessFeature(Of TInput, TOutput).ExecActionAsync(TInput)
+- uid: E5R.Architecture.Business.BusinessFeature`2.ExecActionAsync*
+  name: ExecActionAsync
+  href: api/E5R.Architecture.Business.BusinessFeature-2.html#E5R_Architecture_Business_BusinessFeature_2_ExecActionAsync_
+  commentId: Overload:E5R.Architecture.Business.BusinessFeature`2.ExecActionAsync
+  isSpec: "True"
+  fullName: E5R.Architecture.Business.BusinessFeature<TInput, TOutput>.ExecActionAsync
+  fullName.vb: E5R.Architecture.Business.BusinessFeature(Of TInput, TOutput).ExecActionAsync
+  nameWithType: BusinessFeature<TInput, TOutput>.ExecActionAsync
+  nameWithType.vb: BusinessFeature(Of TInput, TOutput).ExecActionAsync
+- uid: E5R.Architecture.Business.BusinessFeature`2.ExecAsync(`0)
+  name: ExecAsync(TInput)
+  href: api/E5R.Architecture.Business.BusinessFeature-2.html#E5R_Architecture_Business_BusinessFeature_2_ExecAsync__0_
+  commentId: M:E5R.Architecture.Business.BusinessFeature`2.ExecAsync(`0)
+  fullName: E5R.Architecture.Business.BusinessFeature<TInput, TOutput>.ExecAsync(TInput)
+  fullName.vb: E5R.Architecture.Business.BusinessFeature(Of TInput, TOutput).ExecAsync(TInput)
+  nameWithType: BusinessFeature<TInput, TOutput>.ExecAsync(TInput)
+  nameWithType.vb: BusinessFeature(Of TInput, TOutput).ExecAsync(TInput)
+- uid: E5R.Architecture.Business.BusinessFeature`2.ExecAsync*
+  name: ExecAsync
+  href: api/E5R.Architecture.Business.BusinessFeature-2.html#E5R_Architecture_Business_BusinessFeature_2_ExecAsync_
+  commentId: Overload:E5R.Architecture.Business.BusinessFeature`2.ExecAsync
+  isSpec: "True"
+  fullName: E5R.Architecture.Business.BusinessFeature<TInput, TOutput>.ExecAsync
+  fullName.vb: E5R.Architecture.Business.BusinessFeature(Of TInput, TOutput).ExecAsync
+  nameWithType: BusinessFeature<TInput, TOutput>.ExecAsync
+  nameWithType.vb: BusinessFeature(Of TInput, TOutput).ExecAsync
+- uid: E5R.Architecture.Business.BusinessFeature`2.ExecAsync``1(``0)
+  name: ExecAsync<TFrom>(TFrom)
+  href: api/E5R.Architecture.Business.BusinessFeature-2.html#E5R_Architecture_Business_BusinessFeature_2_ExecAsync__1___0_
+  commentId: M:E5R.Architecture.Business.BusinessFeature`2.ExecAsync``1(``0)
+  name.vb: ExecAsync(Of TFrom)(TFrom)
+  fullName: E5R.Architecture.Business.BusinessFeature<TInput, TOutput>.ExecAsync<TFrom>(TFrom)
+  fullName.vb: E5R.Architecture.Business.BusinessFeature(Of TInput, TOutput).ExecAsync(Of TFrom)(TFrom)
+  nameWithType: BusinessFeature<TInput, TOutput>.ExecAsync<TFrom>(TFrom)
+  nameWithType.vb: BusinessFeature(Of TInput, TOutput).ExecAsync(Of TFrom)(TFrom)
+- uid: E5R.Architecture.Business.Extensions
+  name: E5R.Architecture.Business.Extensions
+  href: api/E5R.Architecture.Business.Extensions.html
+  commentId: N:E5R.Architecture.Business.Extensions
+  fullName: E5R.Architecture.Business.Extensions
+  nameWithType: E5R.Architecture.Business.Extensions
+- uid: E5R.Architecture.Business.Extensions.AppDomainExtensions
+  name: AppDomainExtensions
+  href: api/E5R.Architecture.Business.Extensions.AppDomainExtensions.html
+  commentId: T:E5R.Architecture.Business.Extensions.AppDomainExtensions
+  fullName: E5R.Architecture.Business.Extensions.AppDomainExtensions
+  nameWithType: AppDomainExtensions
+- uid: E5R.Architecture.Business.Extensions.AppDomainExtensions.AddBusinessFeatures(AppDomain,IServiceCollection)
+  name: AddBusinessFeatures(AppDomain, IServiceCollection)
+  href: api/E5R.Architecture.Business.Extensions.AppDomainExtensions.html#E5R_Architecture_Business_Extensions_AppDomainExtensions_AddBusinessFeatures_AppDomain_IServiceCollection_
+  commentId: M:E5R.Architecture.Business.Extensions.AppDomainExtensions.AddBusinessFeatures(AppDomain,IServiceCollection)
+  fullName: E5R.Architecture.Business.Extensions.AppDomainExtensions.AddBusinessFeatures(AppDomain, IServiceCollection)
+  nameWithType: AppDomainExtensions.AddBusinessFeatures(AppDomain, IServiceCollection)
+- uid: E5R.Architecture.Business.Extensions.AppDomainExtensions.AddBusinessFeatures*
+  name: AddBusinessFeatures
+  href: api/E5R.Architecture.Business.Extensions.AppDomainExtensions.html#E5R_Architecture_Business_Extensions_AppDomainExtensions_AddBusinessFeatures_
+  commentId: Overload:E5R.Architecture.Business.Extensions.AppDomainExtensions.AddBusinessFeatures
+  isSpec: "True"
+  fullName: E5R.Architecture.Business.Extensions.AppDomainExtensions.AddBusinessFeatures
+  nameWithType: AppDomainExtensions.AddBusinessFeatures
+- uid: E5R.Architecture.Business.Extensions.AssemblyExtensions
+  name: AssemblyExtensions
+  href: api/E5R.Architecture.Business.Extensions.AssemblyExtensions.html
+  commentId: T:E5R.Architecture.Business.Extensions.AssemblyExtensions
+  fullName: E5R.Architecture.Business.Extensions.AssemblyExtensions
+  nameWithType: AssemblyExtensions
+- uid: E5R.Architecture.Business.Extensions.AssemblyExtensions.AddBusinessFeatures(Assembly,IServiceCollection)
+  name: AddBusinessFeatures(Assembly, IServiceCollection)
+  href: api/E5R.Architecture.Business.Extensions.AssemblyExtensions.html#E5R_Architecture_Business_Extensions_AssemblyExtensions_AddBusinessFeatures_Assembly_IServiceCollection_
+  commentId: M:E5R.Architecture.Business.Extensions.AssemblyExtensions.AddBusinessFeatures(Assembly,IServiceCollection)
+  fullName: E5R.Architecture.Business.Extensions.AssemblyExtensions.AddBusinessFeatures(Assembly, IServiceCollection)
+  nameWithType: AssemblyExtensions.AddBusinessFeatures(Assembly, IServiceCollection)
+- uid: E5R.Architecture.Business.Extensions.AssemblyExtensions.AddBusinessFeatures*
+  name: AddBusinessFeatures
+  href: api/E5R.Architecture.Business.Extensions.AssemblyExtensions.html#E5R_Architecture_Business_Extensions_AssemblyExtensions_AddBusinessFeatures_
+  commentId: Overload:E5R.Architecture.Business.Extensions.AssemblyExtensions.AddBusinessFeatures
+  isSpec: "True"
+  fullName: E5R.Architecture.Business.Extensions.AssemblyExtensions.AddBusinessFeatures
+  nameWithType: AssemblyExtensions.AddBusinessFeatures
+- uid: E5R.Architecture.Business.Extensions.ServiceCollectionExtensions
+  name: ServiceCollectionExtensions
+  href: api/E5R.Architecture.Business.Extensions.ServiceCollectionExtensions.html
+  commentId: T:E5R.Architecture.Business.Extensions.ServiceCollectionExtensions
+  fullName: E5R.Architecture.Business.Extensions.ServiceCollectionExtensions
+  nameWithType: ServiceCollectionExtensions
+- uid: E5R.Architecture.Business.Extensions.ServiceCollectionExtensions.AddBusinessFeatures(IServiceCollection,System.String[])
+  name: AddBusinessFeatures(IServiceCollection, String[])
+  href: api/E5R.Architecture.Business.Extensions.ServiceCollectionExtensions.html#E5R_Architecture_Business_Extensions_ServiceCollectionExtensions_AddBusinessFeatures_IServiceCollection_System_String___
+  commentId: M:E5R.Architecture.Business.Extensions.ServiceCollectionExtensions.AddBusinessFeatures(IServiceCollection,System.String[])
+  name.vb: AddBusinessFeatures(IServiceCollection, String())
+  fullName: E5R.Architecture.Business.Extensions.ServiceCollectionExtensions.AddBusinessFeatures(IServiceCollection, System.String[])
+  fullName.vb: E5R.Architecture.Business.Extensions.ServiceCollectionExtensions.AddBusinessFeatures(IServiceCollection, System.String())
+  nameWithType: ServiceCollectionExtensions.AddBusinessFeatures(IServiceCollection, String[])
+  nameWithType.vb: ServiceCollectionExtensions.AddBusinessFeatures(IServiceCollection, String())
+- uid: E5R.Architecture.Business.Extensions.ServiceCollectionExtensions.AddBusinessFeatures*
+  name: AddBusinessFeatures
+  href: api/E5R.Architecture.Business.Extensions.ServiceCollectionExtensions.html#E5R_Architecture_Business_Extensions_ServiceCollectionExtensions_AddBusinessFeatures_
+  commentId: Overload:E5R.Architecture.Business.Extensions.ServiceCollectionExtensions.AddBusinessFeatures
+  isSpec: "True"
+  fullName: E5R.Architecture.Business.Extensions.ServiceCollectionExtensions.AddBusinessFeatures
+  nameWithType: ServiceCollectionExtensions.AddBusinessFeatures
+- uid: E5R.Architecture.Business.IBusinessFacadeSignature
+  name: IBusinessFacadeSignature
+  href: api/E5R.Architecture.Business.IBusinessFacadeSignature.html
+  commentId: T:E5R.Architecture.Business.IBusinessFacadeSignature
+  fullName: E5R.Architecture.Business.IBusinessFacadeSignature
+  nameWithType: IBusinessFacadeSignature
+- uid: E5R.Architecture.Business.IBusinessFeatureSignature
+  name: IBusinessFeatureSignature
+  href: api/E5R.Architecture.Business.IBusinessFeatureSignature.html
+  commentId: T:E5R.Architecture.Business.IBusinessFeatureSignature
+  fullName: E5R.Architecture.Business.IBusinessFeatureSignature
+  nameWithType: IBusinessFeatureSignature
+- uid: E5R.Architecture.Business.InputBasedBusinessFeature`1
+  name: InputBasedBusinessFeature<TInput>
+  href: api/E5R.Architecture.Business.InputBasedBusinessFeature-1.html
+  commentId: T:E5R.Architecture.Business.InputBasedBusinessFeature`1
+  name.vb: InputBasedBusinessFeature(Of TInput)
+  fullName: E5R.Architecture.Business.InputBasedBusinessFeature<TInput>
+  fullName.vb: E5R.Architecture.Business.InputBasedBusinessFeature(Of TInput)
+  nameWithType: InputBasedBusinessFeature<TInput>
+  nameWithType.vb: InputBasedBusinessFeature(Of TInput)
+- uid: E5R.Architecture.Business.InputBasedBusinessFeature`1.#ctor(ITransformationManager)
+  name: InputBasedBusinessFeature(ITransformationManager)
+  href: api/E5R.Architecture.Business.InputBasedBusinessFeature-1.html#E5R_Architecture_Business_InputBasedBusinessFeature_1__ctor_ITransformationManager_
+  commentId: M:E5R.Architecture.Business.InputBasedBusinessFeature`1.#ctor(ITransformationManager)
+  fullName: E5R.Architecture.Business.InputBasedBusinessFeature<TInput>.InputBasedBusinessFeature(ITransformationManager)
+  fullName.vb: E5R.Architecture.Business.InputBasedBusinessFeature(Of TInput).InputBasedBusinessFeature(ITransformationManager)
+  nameWithType: InputBasedBusinessFeature<TInput>.InputBasedBusinessFeature(ITransformationManager)
+  nameWithType.vb: InputBasedBusinessFeature(Of TInput).InputBasedBusinessFeature(ITransformationManager)
+- uid: E5R.Architecture.Business.InputBasedBusinessFeature`1.#ctor*
+  name: InputBasedBusinessFeature
+  href: api/E5R.Architecture.Business.InputBasedBusinessFeature-1.html#E5R_Architecture_Business_InputBasedBusinessFeature_1__ctor_
+  commentId: Overload:E5R.Architecture.Business.InputBasedBusinessFeature`1.#ctor
+  isSpec: "True"
+  fullName: E5R.Architecture.Business.InputBasedBusinessFeature<TInput>.InputBasedBusinessFeature
+  fullName.vb: E5R.Architecture.Business.InputBasedBusinessFeature(Of TInput).InputBasedBusinessFeature
+  nameWithType: InputBasedBusinessFeature<TInput>.InputBasedBusinessFeature
+  nameWithType.vb: InputBasedBusinessFeature(Of TInput).InputBasedBusinessFeature
+- uid: E5R.Architecture.Business.InputBasedBusinessFeature`1.TransformInput*
+  name: TransformInput
+  href: api/E5R.Architecture.Business.InputBasedBusinessFeature-1.html#E5R_Architecture_Business_InputBasedBusinessFeature_1_TransformInput_
+  commentId: Overload:E5R.Architecture.Business.InputBasedBusinessFeature`1.TransformInput
+  isSpec: "True"
+  fullName: E5R.Architecture.Business.InputBasedBusinessFeature<TInput>.TransformInput
+  fullName.vb: E5R.Architecture.Business.InputBasedBusinessFeature(Of TInput).TransformInput
+  nameWithType: InputBasedBusinessFeature<TInput>.TransformInput
+  nameWithType.vb: InputBasedBusinessFeature(Of TInput).TransformInput
+- uid: E5R.Architecture.Business.InputBasedBusinessFeature`1.TransformInput``1(``0)
+  name: TransformInput<TFrom>(TFrom)
+  href: api/E5R.Architecture.Business.InputBasedBusinessFeature-1.html#E5R_Architecture_Business_InputBasedBusinessFeature_1_TransformInput__1___0_
+  commentId: M:E5R.Architecture.Business.InputBasedBusinessFeature`1.TransformInput``1(``0)
+  name.vb: TransformInput(Of TFrom)(TFrom)
+  fullName: E5R.Architecture.Business.InputBasedBusinessFeature<TInput>.TransformInput<TFrom>(TFrom)
+  fullName.vb: E5R.Architecture.Business.InputBasedBusinessFeature(Of TInput).TransformInput(Of TFrom)(TFrom)
+  nameWithType: InputBasedBusinessFeature<TInput>.TransformInput<TFrom>(TFrom)
+  nameWithType.vb: InputBasedBusinessFeature(Of TInput).TransformInput(Of TFrom)(TFrom)
+- uid: E5R.Architecture.Business.InputOnlyBusinessFeature`1
+  name: InputOnlyBusinessFeature<TInput>
+  href: api/E5R.Architecture.Business.InputOnlyBusinessFeature-1.html
+  commentId: T:E5R.Architecture.Business.InputOnlyBusinessFeature`1
+  name.vb: InputOnlyBusinessFeature(Of TInput)
+  fullName: E5R.Architecture.Business.InputOnlyBusinessFeature<TInput>
+  fullName.vb: E5R.Architecture.Business.InputOnlyBusinessFeature(Of TInput)
+  nameWithType: InputOnlyBusinessFeature<TInput>
+  nameWithType.vb: InputOnlyBusinessFeature(Of TInput)
+- uid: E5R.Architecture.Business.InputOnlyBusinessFeature`1.#ctor(ITransformationManager)
+  name: InputOnlyBusinessFeature(ITransformationManager)
+  href: api/E5R.Architecture.Business.InputOnlyBusinessFeature-1.html#E5R_Architecture_Business_InputOnlyBusinessFeature_1__ctor_ITransformationManager_
+  commentId: M:E5R.Architecture.Business.InputOnlyBusinessFeature`1.#ctor(ITransformationManager)
+  fullName: E5R.Architecture.Business.InputOnlyBusinessFeature<TInput>.InputOnlyBusinessFeature(ITransformationManager)
+  fullName.vb: E5R.Architecture.Business.InputOnlyBusinessFeature(Of TInput).InputOnlyBusinessFeature(ITransformationManager)
+  nameWithType: InputOnlyBusinessFeature<TInput>.InputOnlyBusinessFeature(ITransformationManager)
+  nameWithType.vb: InputOnlyBusinessFeature(Of TInput).InputOnlyBusinessFeature(ITransformationManager)
+- uid: E5R.Architecture.Business.InputOnlyBusinessFeature`1.#ctor*
+  name: InputOnlyBusinessFeature
+  href: api/E5R.Architecture.Business.InputOnlyBusinessFeature-1.html#E5R_Architecture_Business_InputOnlyBusinessFeature_1__ctor_
+  commentId: Overload:E5R.Architecture.Business.InputOnlyBusinessFeature`1.#ctor
+  isSpec: "True"
+  fullName: E5R.Architecture.Business.InputOnlyBusinessFeature<TInput>.InputOnlyBusinessFeature
+  fullName.vb: E5R.Architecture.Business.InputOnlyBusinessFeature(Of TInput).InputOnlyBusinessFeature
+  nameWithType: InputOnlyBusinessFeature<TInput>.InputOnlyBusinessFeature
+  nameWithType.vb: InputOnlyBusinessFeature(Of TInput).InputOnlyBusinessFeature
+- uid: E5R.Architecture.Business.InputOnlyBusinessFeature`1.ExecActionAsync(`0)
+  name: ExecActionAsync(TInput)
+  href: api/E5R.Architecture.Business.InputOnlyBusinessFeature-1.html#E5R_Architecture_Business_InputOnlyBusinessFeature_1_ExecActionAsync__0_
+  commentId: M:E5R.Architecture.Business.InputOnlyBusinessFeature`1.ExecActionAsync(`0)
+  fullName: E5R.Architecture.Business.InputOnlyBusinessFeature<TInput>.ExecActionAsync(TInput)
+  fullName.vb: E5R.Architecture.Business.InputOnlyBusinessFeature(Of TInput).ExecActionAsync(TInput)
+  nameWithType: InputOnlyBusinessFeature<TInput>.ExecActionAsync(TInput)
+  nameWithType.vb: InputOnlyBusinessFeature(Of TInput).ExecActionAsync(TInput)
+- uid: E5R.Architecture.Business.InputOnlyBusinessFeature`1.ExecActionAsync*
+  name: ExecActionAsync
+  href: api/E5R.Architecture.Business.InputOnlyBusinessFeature-1.html#E5R_Architecture_Business_InputOnlyBusinessFeature_1_ExecActionAsync_
+  commentId: Overload:E5R.Architecture.Business.InputOnlyBusinessFeature`1.ExecActionAsync
+  isSpec: "True"
+  fullName: E5R.Architecture.Business.InputOnlyBusinessFeature<TInput>.ExecActionAsync
+  fullName.vb: E5R.Architecture.Business.InputOnlyBusinessFeature(Of TInput).ExecActionAsync
+  nameWithType: InputOnlyBusinessFeature<TInput>.ExecActionAsync
+  nameWithType.vb: InputOnlyBusinessFeature(Of TInput).ExecActionAsync
+- uid: E5R.Architecture.Business.InputOnlyBusinessFeature`1.ExecAsync(`0)
+  name: ExecAsync(TInput)
+  href: api/E5R.Architecture.Business.InputOnlyBusinessFeature-1.html#E5R_Architecture_Business_InputOnlyBusinessFeature_1_ExecAsync__0_
+  commentId: M:E5R.Architecture.Business.InputOnlyBusinessFeature`1.ExecAsync(`0)
+  fullName: E5R.Architecture.Business.InputOnlyBusinessFeature<TInput>.ExecAsync(TInput)
+  fullName.vb: E5R.Architecture.Business.InputOnlyBusinessFeature(Of TInput).ExecAsync(TInput)
+  nameWithType: InputOnlyBusinessFeature<TInput>.ExecAsync(TInput)
+  nameWithType.vb: InputOnlyBusinessFeature(Of TInput).ExecAsync(TInput)
+- uid: E5R.Architecture.Business.InputOnlyBusinessFeature`1.ExecAsync*
+  name: ExecAsync
+  href: api/E5R.Architecture.Business.InputOnlyBusinessFeature-1.html#E5R_Architecture_Business_InputOnlyBusinessFeature_1_ExecAsync_
+  commentId: Overload:E5R.Architecture.Business.InputOnlyBusinessFeature`1.ExecAsync
+  isSpec: "True"
+  fullName: E5R.Architecture.Business.InputOnlyBusinessFeature<TInput>.ExecAsync
+  fullName.vb: E5R.Architecture.Business.InputOnlyBusinessFeature(Of TInput).ExecAsync
+  nameWithType: InputOnlyBusinessFeature<TInput>.ExecAsync
+  nameWithType.vb: InputOnlyBusinessFeature(Of TInput).ExecAsync
+- uid: E5R.Architecture.Business.InputOnlyBusinessFeature`1.ExecAsync``1(``0)
+  name: ExecAsync<TFrom>(TFrom)
+  href: api/E5R.Architecture.Business.InputOnlyBusinessFeature-1.html#E5R_Architecture_Business_InputOnlyBusinessFeature_1_ExecAsync__1___0_
+  commentId: M:E5R.Architecture.Business.InputOnlyBusinessFeature`1.ExecAsync``1(``0)
+  name.vb: ExecAsync(Of TFrom)(TFrom)
+  fullName: E5R.Architecture.Business.InputOnlyBusinessFeature<TInput>.ExecAsync<TFrom>(TFrom)
+  fullName.vb: E5R.Architecture.Business.InputOnlyBusinessFeature(Of TInput).ExecAsync(Of TFrom)(TFrom)
+  nameWithType: InputOnlyBusinessFeature<TInput>.ExecAsync<TFrom>(TFrom)
+  nameWithType.vb: InputOnlyBusinessFeature(Of TInput).ExecAsync(Of TFrom)(TFrom)
+- uid: E5R.Architecture.Business.OutputOnlyBusinessFeature`1
+  name: OutputOnlyBusinessFeature<TOutput>
+  href: api/E5R.Architecture.Business.OutputOnlyBusinessFeature-1.html
+  commentId: T:E5R.Architecture.Business.OutputOnlyBusinessFeature`1
+  name.vb: OutputOnlyBusinessFeature(Of TOutput)
+  fullName: E5R.Architecture.Business.OutputOnlyBusinessFeature<TOutput>
+  fullName.vb: E5R.Architecture.Business.OutputOnlyBusinessFeature(Of TOutput)
+  nameWithType: OutputOnlyBusinessFeature<TOutput>
+  nameWithType.vb: OutputOnlyBusinessFeature(Of TOutput)
+- uid: E5R.Architecture.Business.OutputOnlyBusinessFeature`1.ExecActionAsync
+  name: ExecActionAsync()
+  href: api/E5R.Architecture.Business.OutputOnlyBusinessFeature-1.html#E5R_Architecture_Business_OutputOnlyBusinessFeature_1_ExecActionAsync
+  commentId: M:E5R.Architecture.Business.OutputOnlyBusinessFeature`1.ExecActionAsync
+  fullName: E5R.Architecture.Business.OutputOnlyBusinessFeature<TOutput>.ExecActionAsync()
+  fullName.vb: E5R.Architecture.Business.OutputOnlyBusinessFeature(Of TOutput).ExecActionAsync()
+  nameWithType: OutputOnlyBusinessFeature<TOutput>.ExecActionAsync()
+  nameWithType.vb: OutputOnlyBusinessFeature(Of TOutput).ExecActionAsync()
+- uid: E5R.Architecture.Business.OutputOnlyBusinessFeature`1.ExecActionAsync*
+  name: ExecActionAsync
+  href: api/E5R.Architecture.Business.OutputOnlyBusinessFeature-1.html#E5R_Architecture_Business_OutputOnlyBusinessFeature_1_ExecActionAsync_
+  commentId: Overload:E5R.Architecture.Business.OutputOnlyBusinessFeature`1.ExecActionAsync
+  isSpec: "True"
+  fullName: E5R.Architecture.Business.OutputOnlyBusinessFeature<TOutput>.ExecActionAsync
+  fullName.vb: E5R.Architecture.Business.OutputOnlyBusinessFeature(Of TOutput).ExecActionAsync
+  nameWithType: OutputOnlyBusinessFeature<TOutput>.ExecActionAsync
+  nameWithType.vb: OutputOnlyBusinessFeature(Of TOutput).ExecActionAsync
+- uid: E5R.Architecture.Business.OutputOnlyBusinessFeature`1.ExecAsync
+  name: ExecAsync()
+  href: api/E5R.Architecture.Business.OutputOnlyBusinessFeature-1.html#E5R_Architecture_Business_OutputOnlyBusinessFeature_1_ExecAsync
+  commentId: M:E5R.Architecture.Business.OutputOnlyBusinessFeature`1.ExecAsync
+  fullName: E5R.Architecture.Business.OutputOnlyBusinessFeature<TOutput>.ExecAsync()
+  fullName.vb: E5R.Architecture.Business.OutputOnlyBusinessFeature(Of TOutput).ExecAsync()
+  nameWithType: OutputOnlyBusinessFeature<TOutput>.ExecAsync()
+  nameWithType.vb: OutputOnlyBusinessFeature(Of TOutput).ExecAsync()
+- uid: E5R.Architecture.Business.OutputOnlyBusinessFeature`1.ExecAsync*
+  name: ExecAsync
+  href: api/E5R.Architecture.Business.OutputOnlyBusinessFeature-1.html#E5R_Architecture_Business_OutputOnlyBusinessFeature_1_ExecAsync_
+  commentId: Overload:E5R.Architecture.Business.OutputOnlyBusinessFeature`1.ExecAsync
+  isSpec: "True"
+  fullName: E5R.Architecture.Business.OutputOnlyBusinessFeature<TOutput>.ExecAsync
+  fullName.vb: E5R.Architecture.Business.OutputOnlyBusinessFeature(Of TOutput).ExecAsync
+  nameWithType: OutputOnlyBusinessFeature<TOutput>.ExecAsync
+  nameWithType.vb: OutputOnlyBusinessFeature(Of TOutput).ExecAsync
 - uid: E5R.Architecture.Core
   name: E5R.Architecture.Core
   href: api/E5R.Architecture.Core.html
@@ -273,6 +1708,22 @@ references:
   isSpec: "True"
   fullName: E5R.Architecture.Core.Checker.NotNullObject
   nameWithType: Checker.NotNullObject
+- uid: E5R.Architecture.Core.Checker.NotNullOrEmptyArgument*
+  name: NotNullOrEmptyArgument
+  href: api/E5R.Architecture.Core.Checker.html#E5R_Architecture_Core_Checker_NotNullOrEmptyArgument_
+  commentId: Overload:E5R.Architecture.Core.Checker.NotNullOrEmptyArgument
+  isSpec: "True"
+  fullName: E5R.Architecture.Core.Checker.NotNullOrEmptyArgument
+  nameWithType: Checker.NotNullOrEmptyArgument
+- uid: E5R.Architecture.Core.Checker.NotNullOrEmptyArgument``1(``0[],System.String)
+  name: NotNullOrEmptyArgument<T>(T[], String)
+  href: api/E5R.Architecture.Core.Checker.html#E5R_Architecture_Core_Checker_NotNullOrEmptyArgument__1___0___System_String_
+  commentId: M:E5R.Architecture.Core.Checker.NotNullOrEmptyArgument``1(``0[],System.String)
+  name.vb: NotNullOrEmptyArgument(Of T)(T(), String)
+  fullName: E5R.Architecture.Core.Checker.NotNullOrEmptyArgument<T>(T[], System.String)
+  fullName.vb: E5R.Architecture.Core.Checker.NotNullOrEmptyArgument(Of T)(T(), System.String)
+  nameWithType: Checker.NotNullOrEmptyArgument<T>(T[], String)
+  nameWithType.vb: Checker.NotNullOrEmptyArgument(Of T)(T(), String)
 - uid: E5R.Architecture.Core.ComponentInformation
   name: ComponentInformation
   href: api/E5R.Architecture.Core.ComponentInformation.html
@@ -880,24 +2331,6 @@ references:
   fullName.vb: E5R.Architecture.Core.INotificationDispatcher(Of TEnum)
   nameWithType: INotificationDispatcher<TEnum>
   nameWithType.vb: INotificationDispatcher(Of TEnum)
-- uid: E5R.Architecture.Core.INotificationDispatcher`1.Dispatch(E5R.Architecture.Core.NotificationMessage{`0})
-  name: Dispatch(NotificationMessage<TEnum>)
-  href: api/E5R.Architecture.Core.INotificationDispatcher-1.html#E5R_Architecture_Core_INotificationDispatcher_1_Dispatch_E5R_Architecture_Core_NotificationMessage__0__
-  commentId: M:E5R.Architecture.Core.INotificationDispatcher`1.Dispatch(E5R.Architecture.Core.NotificationMessage{`0})
-  name.vb: Dispatch(NotificationMessage(Of TEnum))
-  fullName: E5R.Architecture.Core.INotificationDispatcher<TEnum>.Dispatch(E5R.Architecture.Core.NotificationMessage<TEnum>)
-  fullName.vb: E5R.Architecture.Core.INotificationDispatcher(Of TEnum).Dispatch(E5R.Architecture.Core.NotificationMessage(Of TEnum))
-  nameWithType: INotificationDispatcher<TEnum>.Dispatch(NotificationMessage<TEnum>)
-  nameWithType.vb: INotificationDispatcher(Of TEnum).Dispatch(NotificationMessage(Of TEnum))
-- uid: E5R.Architecture.Core.INotificationDispatcher`1.Dispatch*
-  name: Dispatch
-  href: api/E5R.Architecture.Core.INotificationDispatcher-1.html#E5R_Architecture_Core_INotificationDispatcher_1_Dispatch_
-  commentId: Overload:E5R.Architecture.Core.INotificationDispatcher`1.Dispatch
-  isSpec: "True"
-  fullName: E5R.Architecture.Core.INotificationDispatcher<TEnum>.Dispatch
-  fullName.vb: E5R.Architecture.Core.INotificationDispatcher(Of TEnum).Dispatch
-  nameWithType: INotificationDispatcher<TEnum>.Dispatch
-  nameWithType.vb: INotificationDispatcher(Of TEnum).Dispatch
 - uid: E5R.Architecture.Core.INotificationDispatcher`1.DispatchAsync(E5R.Architecture.Core.NotificationMessage{`0})
   name: DispatchAsync(NotificationMessage<TEnum>)
   href: api/E5R.Architecture.Core.INotificationDispatcher-1.html#E5R_Architecture_Core_INotificationDispatcher_1_DispatchAsync_E5R_Architecture_Core_NotificationMessage__0__
@@ -922,6 +2355,19 @@ references:
   commentId: T:E5R.Architecture.Core.IRule
   fullName: E5R.Architecture.Core.IRule
   nameWithType: IRule
+- uid: E5R.Architecture.Core.IRule.Category
+  name: Category
+  href: api/E5R.Architecture.Core.IRule.html#E5R_Architecture_Core_IRule_Category
+  commentId: P:E5R.Architecture.Core.IRule.Category
+  fullName: E5R.Architecture.Core.IRule.Category
+  nameWithType: IRule.Category
+- uid: E5R.Architecture.Core.IRule.Category*
+  name: Category
+  href: api/E5R.Architecture.Core.IRule.html#E5R_Architecture_Core_IRule_Category_
+  commentId: Overload:E5R.Architecture.Core.IRule.Category
+  isSpec: "True"
+  fullName: E5R.Architecture.Core.IRule.Category
+  nameWithType: IRule.Category
 - uid: E5R.Architecture.Core.IRule.Code
   name: Code
   href: api/E5R.Architecture.Core.IRule.html#E5R_Architecture_Core_IRule_Code
@@ -948,6 +2394,161 @@ references:
   isSpec: "True"
   fullName: E5R.Architecture.Core.IRule.Description
   nameWithType: IRule.Description
+- uid: E5R.Architecture.Core.IRuleFor`1
+  name: IRuleFor<TTarget>
+  href: api/E5R.Architecture.Core.IRuleFor-1.html
+  commentId: T:E5R.Architecture.Core.IRuleFor`1
+  name.vb: IRuleFor(Of TTarget)
+  fullName: E5R.Architecture.Core.IRuleFor<TTarget>
+  fullName.vb: E5R.Architecture.Core.IRuleFor(Of TTarget)
+  nameWithType: IRuleFor<TTarget>
+  nameWithType.vb: IRuleFor(Of TTarget)
+- uid: E5R.Architecture.Core.IRuleFor`1.CheckAsync(`0)
+  name: CheckAsync(TTarget)
+  href: api/E5R.Architecture.Core.IRuleFor-1.html#E5R_Architecture_Core_IRuleFor_1_CheckAsync__0_
+  commentId: M:E5R.Architecture.Core.IRuleFor`1.CheckAsync(`0)
+  fullName: E5R.Architecture.Core.IRuleFor<TTarget>.CheckAsync(TTarget)
+  fullName.vb: E5R.Architecture.Core.IRuleFor(Of TTarget).CheckAsync(TTarget)
+  nameWithType: IRuleFor<TTarget>.CheckAsync(TTarget)
+  nameWithType.vb: IRuleFor(Of TTarget).CheckAsync(TTarget)
+- uid: E5R.Architecture.Core.IRuleFor`1.CheckAsync*
+  name: CheckAsync
+  href: api/E5R.Architecture.Core.IRuleFor-1.html#E5R_Architecture_Core_IRuleFor_1_CheckAsync_
+  commentId: Overload:E5R.Architecture.Core.IRuleFor`1.CheckAsync
+  isSpec: "True"
+  fullName: E5R.Architecture.Core.IRuleFor<TTarget>.CheckAsync
+  fullName.vb: E5R.Architecture.Core.IRuleFor(Of TTarget).CheckAsync
+  nameWithType: IRuleFor<TTarget>.CheckAsync
+  nameWithType.vb: IRuleFor(Of TTarget).CheckAsync
+- uid: E5R.Architecture.Core.IRuleSet`1
+  name: IRuleSet<TTarget>
+  href: api/E5R.Architecture.Core.IRuleSet-1.html
+  commentId: T:E5R.Architecture.Core.IRuleSet`1
+  name.vb: IRuleSet(Of TTarget)
+  fullName: E5R.Architecture.Core.IRuleSet<TTarget>
+  fullName.vb: E5R.Architecture.Core.IRuleSet(Of TTarget)
+  nameWithType: IRuleSet<TTarget>
+  nameWithType.vb: IRuleSet(Of TTarget)
+- uid: E5R.Architecture.Core.IRuleSet`1.ByCategory(System.String)
+  name: ByCategory(String)
+  href: api/E5R.Architecture.Core.IRuleSet-1.html#E5R_Architecture_Core_IRuleSet_1_ByCategory_System_String_
+  commentId: M:E5R.Architecture.Core.IRuleSet`1.ByCategory(System.String)
+  fullName: E5R.Architecture.Core.IRuleSet<TTarget>.ByCategory(System.String)
+  fullName.vb: E5R.Architecture.Core.IRuleSet(Of TTarget).ByCategory(System.String)
+  nameWithType: IRuleSet<TTarget>.ByCategory(String)
+  nameWithType.vb: IRuleSet(Of TTarget).ByCategory(String)
+- uid: E5R.Architecture.Core.IRuleSet`1.ByCategory*
+  name: ByCategory
+  href: api/E5R.Architecture.Core.IRuleSet-1.html#E5R_Architecture_Core_IRuleSet_1_ByCategory_
+  commentId: Overload:E5R.Architecture.Core.IRuleSet`1.ByCategory
+  isSpec: "True"
+  fullName: E5R.Architecture.Core.IRuleSet<TTarget>.ByCategory
+  fullName.vb: E5R.Architecture.Core.IRuleSet(Of TTarget).ByCategory
+  nameWithType: IRuleSet<TTarget>.ByCategory
+  nameWithType.vb: IRuleSet(Of TTarget).ByCategory
+- uid: E5R.Architecture.Core.IRuleSet`1.ByCode(System.String[])
+  name: ByCode(String[])
+  href: api/E5R.Architecture.Core.IRuleSet-1.html#E5R_Architecture_Core_IRuleSet_1_ByCode_System_String___
+  commentId: M:E5R.Architecture.Core.IRuleSet`1.ByCode(System.String[])
+  name.vb: ByCode(String())
+  fullName: E5R.Architecture.Core.IRuleSet<TTarget>.ByCode(System.String[])
+  fullName.vb: E5R.Architecture.Core.IRuleSet(Of TTarget).ByCode(System.String())
+  nameWithType: IRuleSet<TTarget>.ByCode(String[])
+  nameWithType.vb: IRuleSet(Of TTarget).ByCode(String())
+- uid: E5R.Architecture.Core.IRuleSet`1.ByCode*
+  name: ByCode
+  href: api/E5R.Architecture.Core.IRuleSet-1.html#E5R_Architecture_Core_IRuleSet_1_ByCode_
+  commentId: Overload:E5R.Architecture.Core.IRuleSet`1.ByCode
+  isSpec: "True"
+  fullName: E5R.Architecture.Core.IRuleSet<TTarget>.ByCode
+  fullName.vb: E5R.Architecture.Core.IRuleSet(Of TTarget).ByCode
+  nameWithType: IRuleSet<TTarget>.ByCode
+  nameWithType.vb: IRuleSet(Of TTarget).ByCode
+- uid: E5R.Architecture.Core.IRuleSet`1.ByDefaultCategory
+  name: ByDefaultCategory()
+  href: api/E5R.Architecture.Core.IRuleSet-1.html#E5R_Architecture_Core_IRuleSet_1_ByDefaultCategory
+  commentId: M:E5R.Architecture.Core.IRuleSet`1.ByDefaultCategory
+  fullName: E5R.Architecture.Core.IRuleSet<TTarget>.ByDefaultCategory()
+  fullName.vb: E5R.Architecture.Core.IRuleSet(Of TTarget).ByDefaultCategory()
+  nameWithType: IRuleSet<TTarget>.ByDefaultCategory()
+  nameWithType.vb: IRuleSet(Of TTarget).ByDefaultCategory()
+- uid: E5R.Architecture.Core.IRuleSet`1.ByDefaultCategory*
+  name: ByDefaultCategory
+  href: api/E5R.Architecture.Core.IRuleSet-1.html#E5R_Architecture_Core_IRuleSet_1_ByDefaultCategory_
+  commentId: Overload:E5R.Architecture.Core.IRuleSet`1.ByDefaultCategory
+  isSpec: "True"
+  fullName: E5R.Architecture.Core.IRuleSet<TTarget>.ByDefaultCategory
+  fullName.vb: E5R.Architecture.Core.IRuleSet(Of TTarget).ByDefaultCategory
+  nameWithType: IRuleSet<TTarget>.ByDefaultCategory
+  nameWithType.vb: IRuleSet(Of TTarget).ByDefaultCategory
+- uid: E5R.Architecture.Core.IRuleSet`1.Check(`0)
+  name: Check(TTarget)
+  href: api/E5R.Architecture.Core.IRuleSet-1.html#E5R_Architecture_Core_IRuleSet_1_Check__0_
+  commentId: M:E5R.Architecture.Core.IRuleSet`1.Check(`0)
+  fullName: E5R.Architecture.Core.IRuleSet<TTarget>.Check(TTarget)
+  fullName.vb: E5R.Architecture.Core.IRuleSet(Of TTarget).Check(TTarget)
+  nameWithType: IRuleSet<TTarget>.Check(TTarget)
+  nameWithType.vb: IRuleSet(Of TTarget).Check(TTarget)
+- uid: E5R.Architecture.Core.IRuleSet`1.Check*
+  name: Check
+  href: api/E5R.Architecture.Core.IRuleSet-1.html#E5R_Architecture_Core_IRuleSet_1_Check_
+  commentId: Overload:E5R.Architecture.Core.IRuleSet`1.Check
+  isSpec: "True"
+  fullName: E5R.Architecture.Core.IRuleSet<TTarget>.Check
+  fullName.vb: E5R.Architecture.Core.IRuleSet(Of TTarget).Check
+  nameWithType: IRuleSet<TTarget>.Check
+  nameWithType.vb: IRuleSet(Of TTarget).Check
+- uid: E5R.Architecture.Core.IRuleSet`1.CheckAsync(`0)
+  name: CheckAsync(TTarget)
+  href: api/E5R.Architecture.Core.IRuleSet-1.html#E5R_Architecture_Core_IRuleSet_1_CheckAsync__0_
+  commentId: M:E5R.Architecture.Core.IRuleSet`1.CheckAsync(`0)
+  fullName: E5R.Architecture.Core.IRuleSet<TTarget>.CheckAsync(TTarget)
+  fullName.vb: E5R.Architecture.Core.IRuleSet(Of TTarget).CheckAsync(TTarget)
+  nameWithType: IRuleSet<TTarget>.CheckAsync(TTarget)
+  nameWithType.vb: IRuleSet(Of TTarget).CheckAsync(TTarget)
+- uid: E5R.Architecture.Core.IRuleSet`1.CheckAsync*
+  name: CheckAsync
+  href: api/E5R.Architecture.Core.IRuleSet-1.html#E5R_Architecture_Core_IRuleSet_1_CheckAsync_
+  commentId: Overload:E5R.Architecture.Core.IRuleSet`1.CheckAsync
+  isSpec: "True"
+  fullName: E5R.Architecture.Core.IRuleSet<TTarget>.CheckAsync
+  fullName.vb: E5R.Architecture.Core.IRuleSet(Of TTarget).CheckAsync
+  nameWithType: IRuleSet<TTarget>.CheckAsync
+  nameWithType.vb: IRuleSet(Of TTarget).CheckAsync
+- uid: E5R.Architecture.Core.IRuleSet`1.Ensure(`0,System.String)
+  name: Ensure(TTarget, String)
+  href: api/E5R.Architecture.Core.IRuleSet-1.html#E5R_Architecture_Core_IRuleSet_1_Ensure__0_System_String_
+  commentId: M:E5R.Architecture.Core.IRuleSet`1.Ensure(`0,System.String)
+  fullName: E5R.Architecture.Core.IRuleSet<TTarget>.Ensure(TTarget, System.String)
+  fullName.vb: E5R.Architecture.Core.IRuleSet(Of TTarget).Ensure(TTarget, System.String)
+  nameWithType: IRuleSet<TTarget>.Ensure(TTarget, String)
+  nameWithType.vb: IRuleSet(Of TTarget).Ensure(TTarget, String)
+- uid: E5R.Architecture.Core.IRuleSet`1.Ensure*
+  name: Ensure
+  href: api/E5R.Architecture.Core.IRuleSet-1.html#E5R_Architecture_Core_IRuleSet_1_Ensure_
+  commentId: Overload:E5R.Architecture.Core.IRuleSet`1.Ensure
+  isSpec: "True"
+  fullName: E5R.Architecture.Core.IRuleSet<TTarget>.Ensure
+  fullName.vb: E5R.Architecture.Core.IRuleSet(Of TTarget).Ensure
+  nameWithType: IRuleSet<TTarget>.Ensure
+  nameWithType.vb: IRuleSet(Of TTarget).Ensure
+- uid: E5R.Architecture.Core.IRuleSet`1.EnsureAsync(`0,System.String)
+  name: EnsureAsync(TTarget, String)
+  href: api/E5R.Architecture.Core.IRuleSet-1.html#E5R_Architecture_Core_IRuleSet_1_EnsureAsync__0_System_String_
+  commentId: M:E5R.Architecture.Core.IRuleSet`1.EnsureAsync(`0,System.String)
+  fullName: E5R.Architecture.Core.IRuleSet<TTarget>.EnsureAsync(TTarget, System.String)
+  fullName.vb: E5R.Architecture.Core.IRuleSet(Of TTarget).EnsureAsync(TTarget, System.String)
+  nameWithType: IRuleSet<TTarget>.EnsureAsync(TTarget, String)
+  nameWithType.vb: IRuleSet(Of TTarget).EnsureAsync(TTarget, String)
+- uid: E5R.Architecture.Core.IRuleSet`1.EnsureAsync*
+  name: EnsureAsync
+  href: api/E5R.Architecture.Core.IRuleSet-1.html#E5R_Architecture_Core_IRuleSet_1_EnsureAsync_
+  commentId: Overload:E5R.Architecture.Core.IRuleSet`1.EnsureAsync
+  isSpec: "True"
+  fullName: E5R.Architecture.Core.IRuleSet<TTarget>.EnsureAsync
+  fullName.vb: E5R.Architecture.Core.IRuleSet(Of TTarget).EnsureAsync
+  nameWithType: IRuleSet<TTarget>.EnsureAsync
+  nameWithType.vb: IRuleSet(Of TTarget).EnsureAsync
 - uid: E5R.Architecture.Core.ITransformationManager
   name: ITransformationManager
   href: api/E5R.Architecture.Core.ITransformationManager.html
@@ -1213,15 +2814,15 @@ references:
   fullName.vb: E5R.Architecture.Core.NotificationManager(Of TEnum)
   nameWithType: NotificationManager<TEnum>
   nameWithType.vb: NotificationManager(Of TEnum)
-- uid: E5R.Architecture.Core.NotificationManager`1.#ctor(E5R.Architecture.Core.RuleFor{E5R.Architecture.Core.NotificationMessage{`0}},E5R.Architecture.Core.INotificationDispatcher{`0})
-  name: NotificationManager(RuleFor<NotificationMessage<TEnum>>, INotificationDispatcher<TEnum>)
-  href: api/E5R.Architecture.Core.NotificationManager-1.html#E5R_Architecture_Core_NotificationManager_1__ctor_E5R_Architecture_Core_RuleFor_E5R_Architecture_Core_NotificationMessage__0___E5R_Architecture_Core_INotificationDispatcher__0__
-  commentId: M:E5R.Architecture.Core.NotificationManager`1.#ctor(E5R.Architecture.Core.RuleFor{E5R.Architecture.Core.NotificationMessage{`0}},E5R.Architecture.Core.INotificationDispatcher{`0})
-  name.vb: NotificationManager(RuleFor(Of NotificationMessage(Of TEnum)), INotificationDispatcher(Of TEnum))
-  fullName: E5R.Architecture.Core.NotificationManager<TEnum>.NotificationManager(E5R.Architecture.Core.RuleFor<E5R.Architecture.Core.NotificationMessage<TEnum>>, E5R.Architecture.Core.INotificationDispatcher<TEnum>)
-  fullName.vb: E5R.Architecture.Core.NotificationManager(Of TEnum).NotificationManager(E5R.Architecture.Core.RuleFor(Of E5R.Architecture.Core.NotificationMessage(Of TEnum)), E5R.Architecture.Core.INotificationDispatcher(Of TEnum))
-  nameWithType: NotificationManager<TEnum>.NotificationManager(RuleFor<NotificationMessage<TEnum>>, INotificationDispatcher<TEnum>)
-  nameWithType.vb: NotificationManager(Of TEnum).NotificationManager(RuleFor(Of NotificationMessage(Of TEnum)), INotificationDispatcher(Of TEnum))
+- uid: E5R.Architecture.Core.NotificationManager`1.#ctor(E5R.Architecture.Core.IRuleSet{E5R.Architecture.Core.NotificationMessage{`0}},E5R.Architecture.Core.INotificationDispatcher{`0})
+  name: NotificationManager(IRuleSet<NotificationMessage<TEnum>>, INotificationDispatcher<TEnum>)
+  href: api/E5R.Architecture.Core.NotificationManager-1.html#E5R_Architecture_Core_NotificationManager_1__ctor_E5R_Architecture_Core_IRuleSet_E5R_Architecture_Core_NotificationMessage__0___E5R_Architecture_Core_INotificationDispatcher__0__
+  commentId: M:E5R.Architecture.Core.NotificationManager`1.#ctor(E5R.Architecture.Core.IRuleSet{E5R.Architecture.Core.NotificationMessage{`0}},E5R.Architecture.Core.INotificationDispatcher{`0})
+  name.vb: NotificationManager(IRuleSet(Of NotificationMessage(Of TEnum)), INotificationDispatcher(Of TEnum))
+  fullName: E5R.Architecture.Core.NotificationManager<TEnum>.NotificationManager(E5R.Architecture.Core.IRuleSet<E5R.Architecture.Core.NotificationMessage<TEnum>>, E5R.Architecture.Core.INotificationDispatcher<TEnum>)
+  fullName.vb: E5R.Architecture.Core.NotificationManager(Of TEnum).NotificationManager(E5R.Architecture.Core.IRuleSet(Of E5R.Architecture.Core.NotificationMessage(Of TEnum)), E5R.Architecture.Core.INotificationDispatcher(Of TEnum))
+  nameWithType: NotificationManager<TEnum>.NotificationManager(IRuleSet<NotificationMessage<TEnum>>, INotificationDispatcher<TEnum>)
+  nameWithType.vb: NotificationManager(Of TEnum).NotificationManager(IRuleSet(Of NotificationMessage(Of TEnum)), INotificationDispatcher(Of TEnum))
 - uid: E5R.Architecture.Core.NotificationManager`1.#ctor*
   name: NotificationManager
   href: api/E5R.Architecture.Core.NotificationManager-1.html#E5R_Architecture_Core_NotificationManager_1__ctor_
@@ -1864,6 +3465,14 @@ references:
   fullName.vb: E5R.Architecture.Core.RuleFor(Of TTarget).RuleFor(System.String, System.String)
   nameWithType: RuleFor<TTarget>.RuleFor(String, String)
   nameWithType.vb: RuleFor(Of TTarget).RuleFor(String, String)
+- uid: E5R.Architecture.Core.RuleFor`1.#ctor(System.String,System.String,System.String)
+  name: RuleFor(String, String, String)
+  href: api/E5R.Architecture.Core.RuleFor-1.html#E5R_Architecture_Core_RuleFor_1__ctor_System_String_System_String_System_String_
+  commentId: M:E5R.Architecture.Core.RuleFor`1.#ctor(System.String,System.String,System.String)
+  fullName: E5R.Architecture.Core.RuleFor<TTarget>.RuleFor(System.String, System.String, System.String)
+  fullName.vb: E5R.Architecture.Core.RuleFor(Of TTarget).RuleFor(System.String, System.String, System.String)
+  nameWithType: RuleFor<TTarget>.RuleFor(String, String, String)
+  nameWithType.vb: RuleFor(Of TTarget).RuleFor(String, String, String)
 - uid: E5R.Architecture.Core.RuleFor`1.#ctor*
   name: RuleFor
   href: api/E5R.Architecture.Core.RuleFor-1.html#E5R_Architecture_Core_RuleFor_1__ctor_
@@ -1873,6 +3482,40 @@ references:
   fullName.vb: E5R.Architecture.Core.RuleFor(Of TTarget).RuleFor
   nameWithType: RuleFor<TTarget>.RuleFor
   nameWithType.vb: RuleFor(Of TTarget).RuleFor
+- uid: E5R.Architecture.Core.RuleFor`1.Category
+  name: Category
+  href: api/E5R.Architecture.Core.RuleFor-1.html#E5R_Architecture_Core_RuleFor_1_Category
+  commentId: P:E5R.Architecture.Core.RuleFor`1.Category
+  fullName: E5R.Architecture.Core.RuleFor<TTarget>.Category
+  fullName.vb: E5R.Architecture.Core.RuleFor(Of TTarget).Category
+  nameWithType: RuleFor<TTarget>.Category
+  nameWithType.vb: RuleFor(Of TTarget).Category
+- uid: E5R.Architecture.Core.RuleFor`1.Category*
+  name: Category
+  href: api/E5R.Architecture.Core.RuleFor-1.html#E5R_Architecture_Core_RuleFor_1_Category_
+  commentId: Overload:E5R.Architecture.Core.RuleFor`1.Category
+  isSpec: "True"
+  fullName: E5R.Architecture.Core.RuleFor<TTarget>.Category
+  fullName.vb: E5R.Architecture.Core.RuleFor(Of TTarget).Category
+  nameWithType: RuleFor<TTarget>.Category
+  nameWithType.vb: RuleFor(Of TTarget).Category
+- uid: E5R.Architecture.Core.RuleFor`1.Check(`0)
+  name: Check(TTarget)
+  href: api/E5R.Architecture.Core.RuleFor-1.html#E5R_Architecture_Core_RuleFor_1_Check__0_
+  commentId: M:E5R.Architecture.Core.RuleFor`1.Check(`0)
+  fullName: E5R.Architecture.Core.RuleFor<TTarget>.Check(TTarget)
+  fullName.vb: E5R.Architecture.Core.RuleFor(Of TTarget).Check(TTarget)
+  nameWithType: RuleFor<TTarget>.Check(TTarget)
+  nameWithType.vb: RuleFor(Of TTarget).Check(TTarget)
+- uid: E5R.Architecture.Core.RuleFor`1.Check*
+  name: Check
+  href: api/E5R.Architecture.Core.RuleFor-1.html#E5R_Architecture_Core_RuleFor_1_Check_
+  commentId: Overload:E5R.Architecture.Core.RuleFor`1.Check
+  isSpec: "True"
+  fullName: E5R.Architecture.Core.RuleFor<TTarget>.Check
+  fullName.vb: E5R.Architecture.Core.RuleFor(Of TTarget).Check
+  nameWithType: RuleFor<TTarget>.Check
+  nameWithType.vb: RuleFor(Of TTarget).Check
 - uid: E5R.Architecture.Core.RuleFor`1.CheckAsync(`0)
   name: CheckAsync(TTarget)
   href: api/E5R.Architecture.Core.RuleFor-1.html#E5R_Architecture_Core_RuleFor_1_CheckAsync__0_
@@ -1967,24 +3610,117 @@ references:
   fullName.vb: E5R.Architecture.Core.RuleSet(Of TTarget)
   nameWithType: RuleSet<TTarget>
   nameWithType.vb: RuleSet(Of TTarget)
-- uid: E5R.Architecture.Core.RuleSet`1.Conform*
-  name: Conform
-  href: api/E5R.Architecture.Core.RuleSet-1.html#E5R_Architecture_Core_RuleSet_1_Conform_
-  commentId: Overload:E5R.Architecture.Core.RuleSet`1.Conform
+- uid: E5R.Architecture.Core.RuleSet`1.#ctor(IServiceProvider)
+  name: RuleSet(IServiceProvider)
+  href: api/E5R.Architecture.Core.RuleSet-1.html#E5R_Architecture_Core_RuleSet_1__ctor_IServiceProvider_
+  commentId: M:E5R.Architecture.Core.RuleSet`1.#ctor(IServiceProvider)
+  fullName: E5R.Architecture.Core.RuleSet<TTarget>.RuleSet(IServiceProvider)
+  fullName.vb: E5R.Architecture.Core.RuleSet(Of TTarget).RuleSet(IServiceProvider)
+  nameWithType: RuleSet<TTarget>.RuleSet(IServiceProvider)
+  nameWithType.vb: RuleSet(Of TTarget).RuleSet(IServiceProvider)
+- uid: E5R.Architecture.Core.RuleSet`1.#ctor*
+  name: RuleSet
+  href: api/E5R.Architecture.Core.RuleSet-1.html#E5R_Architecture_Core_RuleSet_1__ctor_
+  commentId: Overload:E5R.Architecture.Core.RuleSet`1.#ctor
   isSpec: "True"
-  fullName: E5R.Architecture.Core.RuleSet<TTarget>.Conform
-  fullName.vb: E5R.Architecture.Core.RuleSet(Of TTarget).Conform
-  nameWithType: RuleSet<TTarget>.Conform
-  nameWithType.vb: RuleSet(Of TTarget).Conform
-- uid: E5R.Architecture.Core.RuleSet`1.Conform``1
-  name: Conform<TRule>()
-  href: api/E5R.Architecture.Core.RuleSet-1.html#E5R_Architecture_Core_RuleSet_1_Conform__1
-  commentId: M:E5R.Architecture.Core.RuleSet`1.Conform``1
-  name.vb: Conform(Of TRule)()
-  fullName: E5R.Architecture.Core.RuleSet<TTarget>.Conform<TRule>()
-  fullName.vb: E5R.Architecture.Core.RuleSet(Of TTarget).Conform(Of TRule)()
-  nameWithType: RuleSet<TTarget>.Conform<TRule>()
-  nameWithType.vb: RuleSet(Of TTarget).Conform(Of TRule)()
+  fullName: E5R.Architecture.Core.RuleSet<TTarget>.RuleSet
+  fullName.vb: E5R.Architecture.Core.RuleSet(Of TTarget).RuleSet
+  nameWithType: RuleSet<TTarget>.RuleSet
+  nameWithType.vb: RuleSet(Of TTarget).RuleSet
+- uid: E5R.Architecture.Core.RuleSet`1.ByCategory(System.String)
+  name: ByCategory(String)
+  href: api/E5R.Architecture.Core.RuleSet-1.html#E5R_Architecture_Core_RuleSet_1_ByCategory_System_String_
+  commentId: M:E5R.Architecture.Core.RuleSet`1.ByCategory(System.String)
+  fullName: E5R.Architecture.Core.RuleSet<TTarget>.ByCategory(System.String)
+  fullName.vb: E5R.Architecture.Core.RuleSet(Of TTarget).ByCategory(System.String)
+  nameWithType: RuleSet<TTarget>.ByCategory(String)
+  nameWithType.vb: RuleSet(Of TTarget).ByCategory(String)
+- uid: E5R.Architecture.Core.RuleSet`1.ByCategory*
+  name: ByCategory
+  href: api/E5R.Architecture.Core.RuleSet-1.html#E5R_Architecture_Core_RuleSet_1_ByCategory_
+  commentId: Overload:E5R.Architecture.Core.RuleSet`1.ByCategory
+  isSpec: "True"
+  fullName: E5R.Architecture.Core.RuleSet<TTarget>.ByCategory
+  fullName.vb: E5R.Architecture.Core.RuleSet(Of TTarget).ByCategory
+  nameWithType: RuleSet<TTarget>.ByCategory
+  nameWithType.vb: RuleSet(Of TTarget).ByCategory
+- uid: E5R.Architecture.Core.RuleSet`1.ByCode(System.String)
+  name: ByCode(String)
+  href: api/E5R.Architecture.Core.RuleSet-1.html#E5R_Architecture_Core_RuleSet_1_ByCode_System_String_
+  commentId: M:E5R.Architecture.Core.RuleSet`1.ByCode(System.String)
+  fullName: E5R.Architecture.Core.RuleSet<TTarget>.ByCode(System.String)
+  fullName.vb: E5R.Architecture.Core.RuleSet(Of TTarget).ByCode(System.String)
+  nameWithType: RuleSet<TTarget>.ByCode(String)
+  nameWithType.vb: RuleSet(Of TTarget).ByCode(String)
+- uid: E5R.Architecture.Core.RuleSet`1.ByCode(System.String[])
+  name: ByCode(String[])
+  href: api/E5R.Architecture.Core.RuleSet-1.html#E5R_Architecture_Core_RuleSet_1_ByCode_System_String___
+  commentId: M:E5R.Architecture.Core.RuleSet`1.ByCode(System.String[])
+  name.vb: ByCode(String())
+  fullName: E5R.Architecture.Core.RuleSet<TTarget>.ByCode(System.String[])
+  fullName.vb: E5R.Architecture.Core.RuleSet(Of TTarget).ByCode(System.String())
+  nameWithType: RuleSet<TTarget>.ByCode(String[])
+  nameWithType.vb: RuleSet(Of TTarget).ByCode(String())
+- uid: E5R.Architecture.Core.RuleSet`1.ByCode*
+  name: ByCode
+  href: api/E5R.Architecture.Core.RuleSet-1.html#E5R_Architecture_Core_RuleSet_1_ByCode_
+  commentId: Overload:E5R.Architecture.Core.RuleSet`1.ByCode
+  isSpec: "True"
+  fullName: E5R.Architecture.Core.RuleSet<TTarget>.ByCode
+  fullName.vb: E5R.Architecture.Core.RuleSet(Of TTarget).ByCode
+  nameWithType: RuleSet<TTarget>.ByCode
+  nameWithType.vb: RuleSet(Of TTarget).ByCode
+- uid: E5R.Architecture.Core.RuleSet`1.ByDefaultCategory
+  name: ByDefaultCategory()
+  href: api/E5R.Architecture.Core.RuleSet-1.html#E5R_Architecture_Core_RuleSet_1_ByDefaultCategory
+  commentId: M:E5R.Architecture.Core.RuleSet`1.ByDefaultCategory
+  fullName: E5R.Architecture.Core.RuleSet<TTarget>.ByDefaultCategory()
+  fullName.vb: E5R.Architecture.Core.RuleSet(Of TTarget).ByDefaultCategory()
+  nameWithType: RuleSet<TTarget>.ByDefaultCategory()
+  nameWithType.vb: RuleSet(Of TTarget).ByDefaultCategory()
+- uid: E5R.Architecture.Core.RuleSet`1.ByDefaultCategory*
+  name: ByDefaultCategory
+  href: api/E5R.Architecture.Core.RuleSet-1.html#E5R_Architecture_Core_RuleSet_1_ByDefaultCategory_
+  commentId: Overload:E5R.Architecture.Core.RuleSet`1.ByDefaultCategory
+  isSpec: "True"
+  fullName: E5R.Architecture.Core.RuleSet<TTarget>.ByDefaultCategory
+  fullName.vb: E5R.Architecture.Core.RuleSet(Of TTarget).ByDefaultCategory
+  nameWithType: RuleSet<TTarget>.ByDefaultCategory
+  nameWithType.vb: RuleSet(Of TTarget).ByDefaultCategory
+- uid: E5R.Architecture.Core.RuleSet`1.Check(`0)
+  name: Check(TTarget)
+  href: api/E5R.Architecture.Core.RuleSet-1.html#E5R_Architecture_Core_RuleSet_1_Check__0_
+  commentId: M:E5R.Architecture.Core.RuleSet`1.Check(`0)
+  fullName: E5R.Architecture.Core.RuleSet<TTarget>.Check(TTarget)
+  fullName.vb: E5R.Architecture.Core.RuleSet(Of TTarget).Check(TTarget)
+  nameWithType: RuleSet<TTarget>.Check(TTarget)
+  nameWithType.vb: RuleSet(Of TTarget).Check(TTarget)
+- uid: E5R.Architecture.Core.RuleSet`1.Check*
+  name: Check
+  href: api/E5R.Architecture.Core.RuleSet-1.html#E5R_Architecture_Core_RuleSet_1_Check_
+  commentId: Overload:E5R.Architecture.Core.RuleSet`1.Check
+  isSpec: "True"
+  fullName: E5R.Architecture.Core.RuleSet<TTarget>.Check
+  fullName.vb: E5R.Architecture.Core.RuleSet(Of TTarget).Check
+  nameWithType: RuleSet<TTarget>.Check
+  nameWithType.vb: RuleSet(Of TTarget).Check
+- uid: E5R.Architecture.Core.RuleSet`1.CheckAsync(`0)
+  name: CheckAsync(TTarget)
+  href: api/E5R.Architecture.Core.RuleSet-1.html#E5R_Architecture_Core_RuleSet_1_CheckAsync__0_
+  commentId: M:E5R.Architecture.Core.RuleSet`1.CheckAsync(`0)
+  fullName: E5R.Architecture.Core.RuleSet<TTarget>.CheckAsync(TTarget)
+  fullName.vb: E5R.Architecture.Core.RuleSet(Of TTarget).CheckAsync(TTarget)
+  nameWithType: RuleSet<TTarget>.CheckAsync(TTarget)
+  nameWithType.vb: RuleSet(Of TTarget).CheckAsync(TTarget)
+- uid: E5R.Architecture.Core.RuleSet`1.CheckAsync*
+  name: CheckAsync
+  href: api/E5R.Architecture.Core.RuleSet-1.html#E5R_Architecture_Core_RuleSet_1_CheckAsync_
+  commentId: Overload:E5R.Architecture.Core.RuleSet`1.CheckAsync
+  isSpec: "True"
+  fullName: E5R.Architecture.Core.RuleSet<TTarget>.CheckAsync
+  fullName.vb: E5R.Architecture.Core.RuleSet(Of TTarget).CheckAsync
+  nameWithType: RuleSet<TTarget>.CheckAsync
+  nameWithType.vb: RuleSet(Of TTarget).CheckAsync
 - uid: E5R.Architecture.Core.RuleSet`1.Ensure(`0,System.String)
   name: Ensure(TTarget, String)
   href: api/E5R.Architecture.Core.RuleSet-1.html#E5R_Architecture_Core_RuleSet_1_Ensure__0_System_String_
@@ -2002,6 +3738,23 @@ references:
   fullName.vb: E5R.Architecture.Core.RuleSet(Of TTarget).Ensure
   nameWithType: RuleSet<TTarget>.Ensure
   nameWithType.vb: RuleSet(Of TTarget).Ensure
+- uid: E5R.Architecture.Core.RuleSet`1.EnsureAsync(`0,System.String)
+  name: EnsureAsync(TTarget, String)
+  href: api/E5R.Architecture.Core.RuleSet-1.html#E5R_Architecture_Core_RuleSet_1_EnsureAsync__0_System_String_
+  commentId: M:E5R.Architecture.Core.RuleSet`1.EnsureAsync(`0,System.String)
+  fullName: E5R.Architecture.Core.RuleSet<TTarget>.EnsureAsync(TTarget, System.String)
+  fullName.vb: E5R.Architecture.Core.RuleSet(Of TTarget).EnsureAsync(TTarget, System.String)
+  nameWithType: RuleSet<TTarget>.EnsureAsync(TTarget, String)
+  nameWithType.vb: RuleSet(Of TTarget).EnsureAsync(TTarget, String)
+- uid: E5R.Architecture.Core.RuleSet`1.EnsureAsync*
+  name: EnsureAsync
+  href: api/E5R.Architecture.Core.RuleSet-1.html#E5R_Architecture_Core_RuleSet_1_EnsureAsync_
+  commentId: Overload:E5R.Architecture.Core.RuleSet`1.EnsureAsync
+  isSpec: "True"
+  fullName: E5R.Architecture.Core.RuleSet<TTarget>.EnsureAsync
+  fullName.vb: E5R.Architecture.Core.RuleSet(Of TTarget).EnsureAsync
+  nameWithType: RuleSet<TTarget>.EnsureAsync
+  nameWithType.vb: RuleSet(Of TTarget).EnsureAsync
 - uid: E5R.Architecture.Core.SemVer
   name: SemVer
   href: api/E5R.Architecture.Core.SemVer.html
@@ -9605,6 +11358,19 @@ references:
   commentId: T:E5R.Architecture.Infrastructure.Extensions.AppDomainExtensions
   fullName: E5R.Architecture.Infrastructure.Extensions.AppDomainExtensions
   nameWithType: AppDomainExtensions
+- uid: E5R.Architecture.Infrastructure.Extensions.AppDomainExtensions.AddAllRules(AppDomain,IServiceCollection)
+  name: AddAllRules(AppDomain, IServiceCollection)
+  href: api/E5R.Architecture.Infrastructure.Extensions.AppDomainExtensions.html#E5R_Architecture_Infrastructure_Extensions_AppDomainExtensions_AddAllRules_AppDomain_IServiceCollection_
+  commentId: M:E5R.Architecture.Infrastructure.Extensions.AppDomainExtensions.AddAllRules(AppDomain,IServiceCollection)
+  fullName: E5R.Architecture.Infrastructure.Extensions.AppDomainExtensions.AddAllRules(AppDomain, IServiceCollection)
+  nameWithType: AppDomainExtensions.AddAllRules(AppDomain, IServiceCollection)
+- uid: E5R.Architecture.Infrastructure.Extensions.AppDomainExtensions.AddAllRules*
+  name: AddAllRules
+  href: api/E5R.Architecture.Infrastructure.Extensions.AppDomainExtensions.html#E5R_Architecture_Infrastructure_Extensions_AppDomainExtensions_AddAllRules_
+  commentId: Overload:E5R.Architecture.Infrastructure.Extensions.AppDomainExtensions.AddAllRules
+  isSpec: "True"
+  fullName: E5R.Architecture.Infrastructure.Extensions.AppDomainExtensions.AddAllRules
+  nameWithType: AppDomainExtensions.AddAllRules
 - uid: E5R.Architecture.Infrastructure.Extensions.AppDomainExtensions.DIRegistrar(AppDomain,E5R.Architecture.Infrastructure.Abstractions.IDIContainer)
   name: DIRegistrar(AppDomain, IDIContainer)
   href: api/E5R.Architecture.Infrastructure.Extensions.AppDomainExtensions.html#E5R_Architecture_Infrastructure_Extensions_AppDomainExtensions_DIRegistrar_AppDomain_E5R_Architecture_Infrastructure_Abstractions_IDIContainer_
@@ -9618,12 +11384,38 @@ references:
   isSpec: "True"
   fullName: E5R.Architecture.Infrastructure.Extensions.AppDomainExtensions.DIRegistrar
   nameWithType: AppDomainExtensions.DIRegistrar
+- uid: E5R.Architecture.Infrastructure.Extensions.AppDomainExtensions.GetNonSystemAssemblies(AppDomain)
+  name: GetNonSystemAssemblies(AppDomain)
+  href: api/E5R.Architecture.Infrastructure.Extensions.AppDomainExtensions.html#E5R_Architecture_Infrastructure_Extensions_AppDomainExtensions_GetNonSystemAssemblies_AppDomain_
+  commentId: M:E5R.Architecture.Infrastructure.Extensions.AppDomainExtensions.GetNonSystemAssemblies(AppDomain)
+  fullName: E5R.Architecture.Infrastructure.Extensions.AppDomainExtensions.GetNonSystemAssemblies(AppDomain)
+  nameWithType: AppDomainExtensions.GetNonSystemAssemblies(AppDomain)
+- uid: E5R.Architecture.Infrastructure.Extensions.AppDomainExtensions.GetNonSystemAssemblies*
+  name: GetNonSystemAssemblies
+  href: api/E5R.Architecture.Infrastructure.Extensions.AppDomainExtensions.html#E5R_Architecture_Infrastructure_Extensions_AppDomainExtensions_GetNonSystemAssemblies_
+  commentId: Overload:E5R.Architecture.Infrastructure.Extensions.AppDomainExtensions.GetNonSystemAssemblies
+  isSpec: "True"
+  fullName: E5R.Architecture.Infrastructure.Extensions.AppDomainExtensions.GetNonSystemAssemblies
+  nameWithType: AppDomainExtensions.GetNonSystemAssemblies
 - uid: E5R.Architecture.Infrastructure.Extensions.AssemblyExtensions
   name: AssemblyExtensions
   href: api/E5R.Architecture.Infrastructure.Extensions.AssemblyExtensions.html
   commentId: T:E5R.Architecture.Infrastructure.Extensions.AssemblyExtensions
   fullName: E5R.Architecture.Infrastructure.Extensions.AssemblyExtensions
   nameWithType: AssemblyExtensions
+- uid: E5R.Architecture.Infrastructure.Extensions.AssemblyExtensions.AddAllRules(Assembly,IServiceCollection)
+  name: AddAllRules(Assembly, IServiceCollection)
+  href: api/E5R.Architecture.Infrastructure.Extensions.AssemblyExtensions.html#E5R_Architecture_Infrastructure_Extensions_AssemblyExtensions_AddAllRules_Assembly_IServiceCollection_
+  commentId: M:E5R.Architecture.Infrastructure.Extensions.AssemblyExtensions.AddAllRules(Assembly,IServiceCollection)
+  fullName: E5R.Architecture.Infrastructure.Extensions.AssemblyExtensions.AddAllRules(Assembly, IServiceCollection)
+  nameWithType: AssemblyExtensions.AddAllRules(Assembly, IServiceCollection)
+- uid: E5R.Architecture.Infrastructure.Extensions.AssemblyExtensions.AddAllRules*
+  name: AddAllRules
+  href: api/E5R.Architecture.Infrastructure.Extensions.AssemblyExtensions.html#E5R_Architecture_Infrastructure_Extensions_AssemblyExtensions_AddAllRules_
+  commentId: Overload:E5R.Architecture.Infrastructure.Extensions.AssemblyExtensions.AddAllRules
+  isSpec: "True"
+  fullName: E5R.Architecture.Infrastructure.Extensions.AssemblyExtensions.AddAllRules
+  nameWithType: AssemblyExtensions.AddAllRules
 - uid: E5R.Architecture.Infrastructure.Extensions.AssemblyExtensions.DIRegistrar(Assembly,E5R.Architecture.Infrastructure.Abstractions.IDIContainer)
   name: DIRegistrar(Assembly, IDIContainer)
   href: api/E5R.Architecture.Infrastructure.Extensions.AssemblyExtensions.html#E5R_Architecture_Infrastructure_Extensions_AssemblyExtensions_DIRegistrar_Assembly_E5R_Architecture_Infrastructure_Abstractions_IDIContainer_

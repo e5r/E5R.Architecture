@@ -5,10 +5,10 @@
   <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-    <title>Class RuleFor&lt;TTarget&gt;
+    <title>Class BusinessFacade&lt;TFeature1, TFeature2, TFeature3, TFeature4, TFeature5, TFeature6, TFeature7&gt;
    | Arquitetura E5R </title>
     <meta name="viewport" content="width=device-width">
-    <meta name="title" content="Class RuleFor&lt;TTarget&gt;
+    <meta name="title" content="Class BusinessFacade&lt;TFeature1, TFeature2, TFeature3, TFeature4, TFeature5, TFeature6, TFeature7&gt;
    | Arquitetura E5R ">
     <meta name="generator" content="docfx 2.56.6.0">
     
@@ -68,28 +68,27 @@
         </div>
         <div class="article row grid-right">
           <div class="col-md-10">
-            <article class="content wrap" id="_content" data-uid="E5R.Architecture.Core.RuleFor`1">
+            <article class="content wrap" id="_content" data-uid="E5R.Architecture.Business.BusinessFacade`7">
   
   
-  <h1 id="E5R_Architecture_Core_RuleFor_1" data-uid="E5R.Architecture.Core.RuleFor`1" class="text-break">Class RuleFor&lt;TTarget&gt;
+  <h1 id="E5R_Architecture_Business_BusinessFacade_7" data-uid="E5R.Architecture.Business.BusinessFacade`7" class="text-break">Class BusinessFacade&lt;TFeature1, TFeature2, TFeature3, TFeature4, TFeature5, TFeature6, TFeature7&gt;
   </h1>
   <div class="markdown level0 summary"></div>
   <div class="markdown level0 conceptual"></div>
   <div class="inheritance">
     <h5>Inheritance</h5>
     <div class="level0"><span class="xref">System.Object</span></div>
-    <div class="level1"><span class="xref">RuleFor&lt;TTarget&gt;</span></div>
+    <div class="level1"><span class="xref">BusinessFacade&lt;TFeature1, TFeature2, TFeature3, TFeature4, TFeature5, TFeature6, TFeature7&gt;</span></div>
   </div>
   <div classs="implements">
     <h5>Implements</h5>
-    <div><a class="xref" href="E5R.Architecture.Core.IRuleFor-1.html">IRuleFor</a>&lt;TTarget&gt;</div>
-    <div><a class="xref" href="E5R.Architecture.Core.IRule.html">IRule</a></div>
+    <div><a class="xref" href="E5R.Architecture.Business.IBusinessFacadeSignature.html">IBusinessFacadeSignature</a></div>
   </div>
-  <h6><strong>Namespace</strong>: <a class="xref" href="E5R.Architecture.Core.html">E5R.Architecture.Core</a></h6>
-  <h6><strong>Assembly</strong>: E5R.Architecture.Core.dll</h6>
-  <h5 id="E5R_Architecture_Core_RuleFor_1_syntax">Syntax</h5>
+  <h6><strong>Namespace</strong>: <a class="xref" href="E5R.Architecture.Business.html">E5R.Architecture.Business</a></h6>
+  <h6><strong>Assembly</strong>: E5R.Architecture.Business.dll</h6>
+  <h5 id="E5R_Architecture_Business_BusinessFacade_7_syntax">Syntax</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public abstract class RuleFor&lt;TTarget&gt; : object, IRuleFor&lt;TTarget&gt;, IRule where TTarget : class</code></pre>
+    <pre><code class="lang-csharp hljs">public class BusinessFacade&lt;TFeature1, TFeature2, TFeature3, TFeature4, TFeature5, TFeature6, TFeature7&gt; : object, IBusinessFacadeSignature where TFeature1 : IBusinessFeatureSignature where TFeature2 : IBusinessFeatureSignature where TFeature3 : IBusinessFeatureSignature where TFeature4 : IBusinessFeatureSignature where TFeature5 : IBusinessFeatureSignature where TFeature6 : IBusinessFeatureSignature where TFeature7 : IBusinessFeatureSignature</code></pre>
   </div>
   <h5 class="typeParameters">Type Parameters</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -101,20 +100,44 @@
     </thead>
     <tbody>
       <tr>
-        <td><span class="parametername">TTarget</span></td>
+        <td><span class="parametername">TFeature1</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="parametername">TFeature2</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="parametername">TFeature3</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="parametername">TFeature4</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="parametername">TFeature5</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="parametername">TFeature6</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="parametername">TFeature7</span></td>
         <td></td>
       </tr>
     </tbody>
   </table>
   <h3 id="constructors">Constructors
   </h3>
-  <a id="E5R_Architecture_Core_RuleFor_1__ctor_" data-uid="E5R.Architecture.Core.RuleFor`1.#ctor*"></a>
-  <h4 id="E5R_Architecture_Core_RuleFor_1__ctor_System_String_System_String_" data-uid="E5R.Architecture.Core.RuleFor`1.#ctor(System.String,System.String)">RuleFor(String, String)</h4>
+  <a id="E5R_Architecture_Business_BusinessFacade_7__ctor_" data-uid="E5R.Architecture.Business.BusinessFacade`7.#ctor*"></a>
+  <h4 id="E5R_Architecture_Business_BusinessFacade_7__ctor_ILazy__0__ILazy__1__ILazy__2__ILazy__3__ILazy__4__ILazy__5__ILazy__6__" data-uid="E5R.Architecture.Business.BusinessFacade`7.#ctor(ILazy{`0},ILazy{`1},ILazy{`2},ILazy{`3},ILazy{`4},ILazy{`5},ILazy{`6})">BusinessFacade(ILazy&lt;TFeature1&gt;, ILazy&lt;TFeature2&gt;, ILazy&lt;TFeature3&gt;, ILazy&lt;TFeature4&gt;, ILazy&lt;TFeature5&gt;, ILazy&lt;TFeature6&gt;, ILazy&lt;TFeature7&gt;)</h4>
   <div class="markdown level1 summary"></div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public RuleFor(string code, string description)</code></pre>
+    <pre><code class="lang-csharp hljs">public BusinessFacade(ILazy&lt;TFeature1&gt; feature1, ILazy&lt;TFeature2&gt; feature2, ILazy&lt;TFeature3&gt; feature3, ILazy&lt;TFeature4&gt; feature4, ILazy&lt;TFeature5&gt; feature5, ILazy&lt;TFeature6&gt; feature6, ILazy&lt;TFeature7&gt; feature7)</code></pre>
   </div>
   <h5 class="parameters">Parameters</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -127,61 +150,51 @@
     </thead>
     <tbody>
       <tr>
-        <td><span class="xref">System.String</span></td>
-        <td><span class="parametername">code</span></td>
+        <td><span class="xref">ILazy</span>&lt;TFeature1&gt;</td>
+        <td><span class="parametername">feature1</span></td>
         <td></td>
       </tr>
       <tr>
-        <td><span class="xref">System.String</span></td>
-        <td><span class="parametername">description</span></td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
-  <a id="E5R_Architecture_Core_RuleFor_1__ctor_" data-uid="E5R.Architecture.Core.RuleFor`1.#ctor*"></a>
-  <h4 id="E5R_Architecture_Core_RuleFor_1__ctor_System_String_System_String_System_String_" data-uid="E5R.Architecture.Core.RuleFor`1.#ctor(System.String,System.String,System.String)">RuleFor(String, String, String)</h4>
-  <div class="markdown level1 summary"></div>
-  <div class="markdown level1 conceptual"></div>
-  <h5 class="decalaration">Declaration</h5>
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public RuleFor(string code, string category, string description)</code></pre>
-  </div>
-  <h5 class="parameters">Parameters</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Name</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><span class="xref">System.String</span></td>
-        <td><span class="parametername">code</span></td>
+        <td><span class="xref">ILazy</span>&lt;TFeature2&gt;</td>
+        <td><span class="parametername">feature2</span></td>
         <td></td>
       </tr>
       <tr>
-        <td><span class="xref">System.String</span></td>
-        <td><span class="parametername">category</span></td>
+        <td><span class="xref">ILazy</span>&lt;TFeature3&gt;</td>
+        <td><span class="parametername">feature3</span></td>
         <td></td>
       </tr>
       <tr>
-        <td><span class="xref">System.String</span></td>
-        <td><span class="parametername">description</span></td>
+        <td><span class="xref">ILazy</span>&lt;TFeature4&gt;</td>
+        <td><span class="parametername">feature4</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="xref">ILazy</span>&lt;TFeature5&gt;</td>
+        <td><span class="parametername">feature5</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="xref">ILazy</span>&lt;TFeature6&gt;</td>
+        <td><span class="parametername">feature6</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="xref">ILazy</span>&lt;TFeature7&gt;</td>
+        <td><span class="parametername">feature7</span></td>
         <td></td>
       </tr>
     </tbody>
   </table>
   <h3 id="properties">Properties
   </h3>
-  <a id="E5R_Architecture_Core_RuleFor_1_Category_" data-uid="E5R.Architecture.Core.RuleFor`1.Category*"></a>
-  <h4 id="E5R_Architecture_Core_RuleFor_1_Category" data-uid="E5R.Architecture.Core.RuleFor`1.Category">Category</h4>
+  <a id="E5R_Architecture_Business_BusinessFacade_7_Feature1_" data-uid="E5R.Architecture.Business.BusinessFacade`7.Feature1*"></a>
+  <h4 id="E5R_Architecture_Business_BusinessFacade_7_Feature1" data-uid="E5R.Architecture.Business.BusinessFacade`7.Feature1">Feature1</h4>
   <div class="markdown level1 summary"></div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public string Category { get; }</code></pre>
+    <pre><code class="lang-csharp hljs">protected TFeature1 Feature1 { get; }</code></pre>
   </div>
   <h5 class="propertyValue">Property Value</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -193,18 +206,18 @@
     </thead>
     <tbody>
       <tr>
-        <td><span class="xref">System.String</span></td>
+        <td><span class="xref">TFeature1</span></td>
         <td></td>
       </tr>
     </tbody>
   </table>
-  <a id="E5R_Architecture_Core_RuleFor_1_Code_" data-uid="E5R.Architecture.Core.RuleFor`1.Code*"></a>
-  <h4 id="E5R_Architecture_Core_RuleFor_1_Code" data-uid="E5R.Architecture.Core.RuleFor`1.Code">Code</h4>
+  <a id="E5R_Architecture_Business_BusinessFacade_7_Feature2_" data-uid="E5R.Architecture.Business.BusinessFacade`7.Feature2*"></a>
+  <h4 id="E5R_Architecture_Business_BusinessFacade_7_Feature2" data-uid="E5R.Architecture.Business.BusinessFacade`7.Feature2">Feature2</h4>
   <div class="markdown level1 summary"></div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public string Code { get; }</code></pre>
+    <pre><code class="lang-csharp hljs">protected TFeature2 Feature2 { get; }</code></pre>
   </div>
   <h5 class="propertyValue">Property Value</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -216,18 +229,18 @@
     </thead>
     <tbody>
       <tr>
-        <td><span class="xref">System.String</span></td>
+        <td><span class="xref">TFeature2</span></td>
         <td></td>
       </tr>
     </tbody>
   </table>
-  <a id="E5R_Architecture_Core_RuleFor_1_Description_" data-uid="E5R.Architecture.Core.RuleFor`1.Description*"></a>
-  <h4 id="E5R_Architecture_Core_RuleFor_1_Description" data-uid="E5R.Architecture.Core.RuleFor`1.Description">Description</h4>
+  <a id="E5R_Architecture_Business_BusinessFacade_7_Feature3_" data-uid="E5R.Architecture.Business.BusinessFacade`7.Feature3*"></a>
+  <h4 id="E5R_Architecture_Business_BusinessFacade_7_Feature3" data-uid="E5R.Architecture.Business.BusinessFacade`7.Feature3">Feature3</h4>
   <div class="markdown level1 summary"></div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public string Description { get; }</code></pre>
+    <pre><code class="lang-csharp hljs">protected TFeature3 Feature3 { get; }</code></pre>
   </div>
   <h5 class="propertyValue">Property Value</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -239,39 +252,20 @@
     </thead>
     <tbody>
       <tr>
-        <td><span class="xref">System.String</span></td>
+        <td><span class="xref">TFeature3</span></td>
         <td></td>
       </tr>
     </tbody>
   </table>
-  <h3 id="methods">Methods
-  </h3>
-  <a id="E5R_Architecture_Core_RuleFor_1_Check_" data-uid="E5R.Architecture.Core.RuleFor`1.Check*"></a>
-  <h4 id="E5R_Architecture_Core_RuleFor_1_Check__0_" data-uid="E5R.Architecture.Core.RuleFor`1.Check(`0)">Check(TTarget)</h4>
+  <a id="E5R_Architecture_Business_BusinessFacade_7_Feature4_" data-uid="E5R.Architecture.Business.BusinessFacade`7.Feature4*"></a>
+  <h4 id="E5R_Architecture_Business_BusinessFacade_7_Feature4" data-uid="E5R.Architecture.Business.BusinessFacade`7.Feature4">Feature4</h4>
   <div class="markdown level1 summary"></div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public RuleCheckResult Check(TTarget target)</code></pre>
+    <pre><code class="lang-csharp hljs">protected TFeature4 Feature4 { get; }</code></pre>
   </div>
-  <h5 class="parameters">Parameters</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Name</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><span class="xref">TTarget</span></td>
-        <td><span class="parametername">target</span></td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
-  <h5 class="returns">Returns</h5>
+  <h5 class="propertyValue">Property Value</h5>
   <table class="table table-bordered table-striped table-condensed">
     <thead>
       <tr>
@@ -281,37 +275,20 @@
     </thead>
     <tbody>
       <tr>
-        <td><a class="xref" href="E5R.Architecture.Core.RuleCheckResult.html">RuleCheckResult</a></td>
+        <td><span class="xref">TFeature4</span></td>
         <td></td>
       </tr>
     </tbody>
   </table>
-  <a id="E5R_Architecture_Core_RuleFor_1_CheckAsync_" data-uid="E5R.Architecture.Core.RuleFor`1.CheckAsync*"></a>
-  <h4 id="E5R_Architecture_Core_RuleFor_1_CheckAsync__0_" data-uid="E5R.Architecture.Core.RuleFor`1.CheckAsync(`0)">CheckAsync(TTarget)</h4>
+  <a id="E5R_Architecture_Business_BusinessFacade_7_Feature5_" data-uid="E5R.Architecture.Business.BusinessFacade`7.Feature5*"></a>
+  <h4 id="E5R_Architecture_Business_BusinessFacade_7_Feature5" data-uid="E5R.Architecture.Business.BusinessFacade`7.Feature5">Feature5</h4>
   <div class="markdown level1 summary"></div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public abstract Task&lt;RuleCheckResult&gt; CheckAsync(TTarget target)</code></pre>
+    <pre><code class="lang-csharp hljs">protected TFeature5 Feature5 { get; }</code></pre>
   </div>
-  <h5 class="parameters">Parameters</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Name</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><span class="xref">TTarget</span></td>
-        <td><span class="parametername">target</span></td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
-  <h5 class="returns">Returns</h5>
+  <h5 class="propertyValue">Property Value</h5>
   <table class="table table-bordered table-striped table-condensed">
     <thead>
       <tr>
@@ -321,72 +298,43 @@
     </thead>
     <tbody>
       <tr>
-        <td><span class="xref">Task</span>&lt;<a class="xref" href="E5R.Architecture.Core.RuleCheckResult.html">RuleCheckResult</a>&gt;</td>
+        <td><span class="xref">TFeature5</span></td>
         <td></td>
       </tr>
     </tbody>
   </table>
-  <a id="E5R_Architecture_Core_RuleFor_1_Ensure_" data-uid="E5R.Architecture.Core.RuleFor`1.Ensure*"></a>
-  <h4 id="E5R_Architecture_Core_RuleFor_1_Ensure__0_System_String_" data-uid="E5R.Architecture.Core.RuleFor`1.Ensure(`0,System.String)">Ensure(TTarget, String)</h4>
+  <a id="E5R_Architecture_Business_BusinessFacade_7_Feature6_" data-uid="E5R.Architecture.Business.BusinessFacade`7.Feature6*"></a>
+  <h4 id="E5R_Architecture_Business_BusinessFacade_7_Feature6" data-uid="E5R.Architecture.Business.BusinessFacade`7.Feature6">Feature6</h4>
   <div class="markdown level1 summary"></div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public void Ensure(TTarget target, string exceptionMessageTemplate = null)</code></pre>
+    <pre><code class="lang-csharp hljs">protected TFeature6 Feature6 { get; }</code></pre>
   </div>
-  <h5 class="parameters">Parameters</h5>
+  <h5 class="propertyValue">Property Value</h5>
   <table class="table table-bordered table-striped table-condensed">
     <thead>
       <tr>
         <th>Type</th>
-        <th>Name</th>
         <th>Description</th>
       </tr>
     </thead>
     <tbody>
       <tr>
-        <td><span class="xref">TTarget</span></td>
-        <td><span class="parametername">target</span></td>
-        <td></td>
-      </tr>
-      <tr>
-        <td><span class="xref">System.String</span></td>
-        <td><span class="parametername">exceptionMessageTemplate</span></td>
+        <td><span class="xref">TFeature6</span></td>
         <td></td>
       </tr>
     </tbody>
   </table>
-  <a id="E5R_Architecture_Core_RuleFor_1_EnsureAsync_" data-uid="E5R.Architecture.Core.RuleFor`1.EnsureAsync*"></a>
-  <h4 id="E5R_Architecture_Core_RuleFor_1_EnsureAsync__0_System_String_" data-uid="E5R.Architecture.Core.RuleFor`1.EnsureAsync(`0,System.String)">EnsureAsync(TTarget, String)</h4>
+  <a id="E5R_Architecture_Business_BusinessFacade_7_Feature7_" data-uid="E5R.Architecture.Business.BusinessFacade`7.Feature7*"></a>
+  <h4 id="E5R_Architecture_Business_BusinessFacade_7_Feature7" data-uid="E5R.Architecture.Business.BusinessFacade`7.Feature7">Feature7</h4>
   <div class="markdown level1 summary"></div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public Task EnsureAsync(TTarget target, string exceptionMessageTemplate = null)</code></pre>
+    <pre><code class="lang-csharp hljs">protected TFeature7 Feature7 { get; }</code></pre>
   </div>
-  <h5 class="parameters">Parameters</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Name</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><span class="xref">TTarget</span></td>
-        <td><span class="parametername">target</span></td>
-        <td></td>
-      </tr>
-      <tr>
-        <td><span class="xref">System.String</span></td>
-        <td><span class="parametername">exceptionMessageTemplate</span></td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
-  <h5 class="returns">Returns</h5>
+  <h5 class="propertyValue">Property Value</h5>
   <table class="table table-bordered table-striped table-condensed">
     <thead>
       <tr>
@@ -396,17 +344,14 @@
     </thead>
     <tbody>
       <tr>
-        <td><span class="xref">Task</span></td>
+        <td><span class="xref">TFeature7</span></td>
         <td></td>
       </tr>
     </tbody>
   </table>
   <h3 id="implements">Implements</h3>
   <div>
-      <a class="xref" href="E5R.Architecture.Core.IRuleFor-1.html">IRuleFor&lt;TTarget&gt;</a>
-  </div>
-  <div>
-      <a class="xref" href="E5R.Architecture.Core.IRule.html">IRule</a>
+      <a class="xref" href="E5R.Architecture.Business.IBusinessFacadeSignature.html">IBusinessFacadeSignature</a>
   </div>
 </article>
           </div>
