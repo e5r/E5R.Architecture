@@ -16,7 +16,7 @@ namespace E5R.Architecture.Core
         /// </summary>
         /// <param name="from">Origin data</param>
         /// <returns>Instance of <see cref="TTo"/></returns>
-        TTo Transform<TFrom, TTo>(TFrom from) where TTo : new();
+        TTo Transform<TFrom, TTo>(TFrom from);
         
         /// <summary>
         /// Create new instance of <see cref="TTo"/> based on <see cref="TFrom"/> instance and <see cref="TOperation"/> value.

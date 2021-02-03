@@ -10,10 +10,8 @@
 
   <ItemGroup>
     <ProjectReference Include="..\..\src\E5R.Architecture.Data.EntityFrameworkCore\E5R.Architecture.Data.EntityFrameworkCore.csproj">
-      <GlobalPropertiesToRemove></GlobalPropertiesToRemove>
     </ProjectReference>
     <ProjectReference Include="..\..\src\E5R.Architecture.Infrastructure.AspNetCore\E5R.Architecture.Infrastructure.AspNetCore.csproj">
-      <GlobalPropertiesToRemove></GlobalPropertiesToRemove>
     </ProjectReference>
   </ItemGroup>
 </Project>

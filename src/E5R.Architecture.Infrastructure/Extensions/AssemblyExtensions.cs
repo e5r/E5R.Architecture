@@ -8,6 +8,7 @@ using System.Reflection;
 using E5R.Architecture.Core;
 using E5R.Architecture.Infrastructure.Abstractions;
 using Microsoft.Extensions.DependencyInjection;
+using Microsoft.Extensions.DependencyInjection.Extensions;
 
 namespace E5R.Architecture.Infrastructure.Extensions
 {
@@ -48,7 +49,7 @@ namespace E5R.Architecture.Infrastructure.Extensions
                         typeOfIRuleFor.MakeGenericType(
                             ruleType.BaseType.GetGenericArguments());
 
-                    services.AddScoped(serviceType, ruleType);
+                    services.TryAddScoped(serviceType, ruleType);
                 });
         }
 

@@ -12,6 +12,8 @@ v1.0
 - Remover necessidade de objetos de assinatura
   > IDataModuleSignature
   > IStorageSignature
+  > IBusinessFeatureSignature
+  > IBusinessFacadeSignature
 - Repensar DataModule<>. Talvez usar a idéia de BusinessService e DataService?
   (ou StorageService, PersistenceService)
 - Renomear Storage para Store?
@@ -32,9 +34,9 @@ v1.0
 v2.0
 ====
 - Implementar internacionalização/localização
-- Estabilizar conceito de BusinessObject
-  > Conferir ideia em https://gist.github.com/erlimar/b63ccf7780b1e5bdf51dc29ffd5d80de
 - Utilizar operações de Bulk com alguma biblioteca ao invés iteração simples
+- Padronizar nomes de componentes principais (UnitOfWork, Rule, RuleFor, RuleSet, BusinessFeature, etc)
+  para condizer com "padrões de projeto" conhecidos (design pattern)
 
 vNext
 =====

@@ -9,7 +9,7 @@ namespace E5R.Architecture.Core
     /// </summary>
     /// <typeparam name="TFrom">From data type</typeparam>
     /// <typeparam name="TTo">To data type</typeparam>
-    public interface ITransformer<TFrom, TTo> where TTo : new()
+    public interface ITransformer<TFrom, TTo>
     {
         /// <summary>
         /// Create new instance of <see cref="TTo"/> based on <see cref="TFrom"/> instance.
