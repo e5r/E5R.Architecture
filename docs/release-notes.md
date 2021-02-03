@@ -7,6 +7,11 @@ Notas de Lançamento
 
 ## 0.7.0 (dev)
 
+Novos recursos:
+
+* Adiciona conceito de `BusinessFeature` e `BusinessFacade`
+    - Leia o tutorial [Escrevendo características de negócio](tutorials/writing-business-feature.md)
+
 Refatorações:
 
 * RuleFor<> agora aceita injeção de dependências

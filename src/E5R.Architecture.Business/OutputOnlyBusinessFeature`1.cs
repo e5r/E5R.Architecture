@@ -10,7 +10,7 @@ namespace E5R.Architecture.Business
     /// Abstract business feature with output only
     /// </summary>
     /// <typeparam name="TOutput">The output type</typeparam>
-    public abstract class OutputOnlyBusinessFeature<TOutput>
+    public abstract class OutputOnlyBusinessFeature<TOutput> : IBusinessFeatureSignature
     {
         protected abstract Task<TOutput> ExecActionAsync();
 

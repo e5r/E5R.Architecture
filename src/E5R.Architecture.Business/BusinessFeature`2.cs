@@ -12,7 +12,8 @@ namespace E5R.Architecture.Business
     /// </summary>
     /// <typeparam name="TInput">The input type</typeparam>
     /// <typeparam name="TOutput">The output type</typeparam>
-    public abstract class BusinessFeature<TInput, TOutput> : InputBasedBusinessFeature<TInput>
+    public abstract class BusinessFeature<TInput, TOutput> : InputBasedBusinessFeature<TInput>,
+        IBusinessFeatureSignature
     {
         public BusinessFeature(ITransformationManager transformer) : base(transformer)
         {

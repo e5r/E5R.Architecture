@@ -22,4 +22,5 @@
   href: ./uid.md
 - name: Escrevendo dados com API Fluente
   href: ./writing-with-fluent-api.md
-
+- name: Escrevendo características de negócio
+  href: ./writing-business-feature.md

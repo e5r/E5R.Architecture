@@ -90,33 +90,37 @@ namespace Microsoft.Extensions.DependencyInjection
             this IServiceCollection serviceCollection,
             string[] customServiceAssemblies = null)
         {
+            // Forçamos o carregamento dos assemblies informados.
+            //
+            // NOTE: Isso é necessário porque o otimizador de compiladores como
+            //       Roslyn "removem" referências de objetos não utilizados.
+            //       O efeito colateral disto é que mesmo que você tenha um projeto
+            //       referenciado mas não utilize explicitamente nenhum objeto dessa
+            //       referência, o assembly não estará disponível no AppDomain.
+            //       Com isso, não conseguiríamos encontrar objetos para registrar
+            //       aqui. Por isso, carregamos assemblies customizados.
+            customServiceAssemblies?.ToList().ForEach(n => AppDomain.CurrentDomain.Load(n));
+            
             // Habilita "lazy loading"
-            serviceCollection.AddScoped(typeof(ILazy<>), typeof(LazyResolver<>));
+            serviceCollection.TryAddScoped(typeof(ILazy<>), typeof(LazyResolver<>));
             
             // Habilita "cross cutting" e "rule for"
             var container = new ServiceCollectionDIContainer(serviceCollection);
 
-            serviceCollection.AddScoped(typeof(RuleSet<>));
+            serviceCollection.TryAddScoped(typeof(RuleSet<>));
             
             AppDomain.CurrentDomain.DIRegistrar(container);
             AppDomain.CurrentDomain.AddAllRules(serviceCollection);
-            
-            if (customServiceAssemblies != null && customServiceAssemblies.Length > 0)
-            {
-                customServiceAssemblies.ToList().ForEach(assemblyName =>
-                {
-                    var assembly = Assembly.Load(assemblyName);
-
-                    assembly.DIRegistrar(container);
-                    assembly.AddAllRules(serviceCollection);
-                });
-            }
 
             return serviceCollection;
         }
 
         public static IServiceCollection AddTransformationManager(
             this IServiceCollection serviceCollection)
-            => serviceCollection.AddScoped<ITransformationManager, TransformationManager>();
+        {
+            serviceCollection.TryAddScoped<ITransformationManager, TransformationManager>();
+
+            return serviceCollection;
+        }
     }
 }

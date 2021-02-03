@@ -11,7 +11,8 @@ namespace E5R.Architecture.Business
     /// Abstract business feature with input only
     /// </summary>
     /// <typeparam name="TInput">The input type</typeparam>
-    public abstract class InputOnlyBusinessFeature<TInput> : InputBasedBusinessFeature<TInput>
+    public abstract class InputOnlyBusinessFeature<TInput> : InputBasedBusinessFeature<TInput>,
+        IBusinessFeatureSignature
     {
         public InputOnlyBusinessFeature(ITransformationManager transformer) : base(transformer)
         {
