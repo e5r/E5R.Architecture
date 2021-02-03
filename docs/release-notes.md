@@ -5,6 +5,10 @@ title: Notas de Lançamento
 Notas de Lançamento
 ===================
 
+## 0.8.0 (dev)
+
+> TODO: ...
+
 ## 0.7.0
 
 Novos recursos:
