@@ -14,7 +14,7 @@ namespace E5R.Architecture.Data
     /// </summary>
     /// <typeparam name="TDataModel">Model type</typeparam>
     public class DataSorter<TDataModel> : IDataSorter<TDataModel>
-        where TDataModel : IDataModel
+        where TDataModel : IIdentifiable
     {
         public DataSorter(Expression<Func<TDataModel, object>> sorter, bool descending)
         {

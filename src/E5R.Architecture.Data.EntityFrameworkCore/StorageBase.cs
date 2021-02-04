@@ -14,7 +14,7 @@ using Microsoft.EntityFrameworkCore.Metadata;
 namespace E5R.Architecture.Data.EntityFrameworkCore
 {
     public class StorageBase<TDataModel>
-        where TDataModel : class, IDataModel
+        where TDataModel : class, IIdentifiable
     {
         public IQueryable<TDataModel> QueryFind(
             IEntityType entityType,

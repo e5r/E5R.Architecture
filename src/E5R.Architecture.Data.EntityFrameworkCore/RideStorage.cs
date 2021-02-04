@@ -2,7 +2,6 @@
 // This file is a part of E5R.Architecture.
 // Licensed under the Apache version 2.0: https://github.com/e5r/manifest/blob/master/license/APACHE-2.0.txt
 
-using System;
 using System.Collections.Generic;
 using System.Linq;
 using E5R.Architecture.Core;
@@ -12,7 +11,7 @@ using E5R.Architecture.Data.Abstractions;
 namespace E5R.Architecture.Data.EntityFrameworkCore
 {
     public class RideStorage<TDataModel> : StorageBase<TDataModel>, IStorageReader<TDataModel>
-        where TDataModel : class, IDataModel
+        where TDataModel : class, IIdentifiable
     {
         private readonly IQueryable<TDataModel> _query;
 

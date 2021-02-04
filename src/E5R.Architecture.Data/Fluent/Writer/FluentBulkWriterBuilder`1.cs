@@ -5,12 +5,13 @@
 using System;
 using System.Collections.Generic;
 using System.Linq.Expressions;
+using E5R.Architecture.Core;
 using E5R.Architecture.Data.Abstractions;
 
 namespace E5R.Architecture.Data.Fluent.Writer
 {
     public class FluentBulkWriterBuilder<TDataModel> : FluentBulkWriterBuilderElements<TDataModel>
-        where TDataModel : IDataModel
+        where TDataModel : IIdentifiable
     {
         public FluentBulkWriterBuilder(IStorageBulkWriter<TDataModel> storage) : base(storage,
             new DataFilter<TDataModel>())

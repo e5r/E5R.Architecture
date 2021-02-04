@@ -14,7 +14,7 @@ using Microsoft.EntityFrameworkCore;
 namespace E5R.Architecture.Data.EntityFrameworkCore
 {
     public class FullStorage<TDbContext, TDataModel> : StorageBase<TDataModel>
-        where TDataModel : class, IDataModel
+        where TDataModel : class, IIdentifiable
         where TDbContext : DbContext
     {
         protected TDbContext Context { get; private set; }
@@ -37,7 +37,7 @@ namespace E5R.Architecture.Data.EntityFrameworkCore
         {
             Checker.NotNullArgument(data, nameof(data));
 
-            return Find(data.IdentifierValues, includes);
+            return Find(data.Identifiers, includes);
         }
 
         public TDataModel Find(object identifier, IDataIncludes includes)
@@ -104,7 +104,7 @@ namespace E5R.Architecture.Data.EntityFrameworkCore
         {
             Checker.NotNullArgument(data, nameof(data));
 
-            return Find(data.IdentifierValues, projection);
+            return Find(data.Identifiers, projection);
         }
 
         public TSelect Find<TSelect>(object identifier, IDataProjection<TDataModel, TSelect> projection)

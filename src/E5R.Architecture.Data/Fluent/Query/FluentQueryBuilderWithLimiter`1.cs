@@ -10,7 +10,7 @@ using E5R.Architecture.Data.Abstractions;
 namespace E5R.Architecture.Data.Fluent.Query
 {
     public class FluentQueryBuilderWithLimiter<TDataModel> : FluentQueryBuilderElements<TDataModel>
-        where TDataModel : IDataModel
+        where TDataModel : IIdentifiable
     {
         internal FluentQueryBuilderWithLimiter(IStorageReader<TDataModel> storage,
             DataFilter<TDataModel> filter,

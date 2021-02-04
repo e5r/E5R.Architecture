@@ -3,13 +3,13 @@
 // Licensed under the Apache version 2.0: https://github.com/e5r/manifest/blob/master/license/APACHE-2.0.txt
 
 using System;
+using E5R.Architecture.Core;
 using Microsoft.EntityFrameworkCore;
-using E5R.Architecture.Data.Abstractions;
 
 namespace E5R.Architecture.Data.EntityFrameworkCore.Alias
 {
     public class RawSqlRideRepository<TDataModel> : RawSqlRideStorage<TDataModel>
-        where TDataModel : class, IDataModel
+        where TDataModel : class, IIdentifiable
     {
         public RawSqlRideRepository(DbContext context, string sql, params object[] parameters)
             : base(context, sql, parameters)

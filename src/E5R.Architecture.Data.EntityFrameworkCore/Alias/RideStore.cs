@@ -3,12 +3,12 @@
 // Licensed under the Apache version 2.0: https://github.com/e5r/manifest/blob/master/license/APACHE-2.0.txt
 
 using System.Linq;
-using E5R.Architecture.Data.Abstractions;
+using E5R.Architecture.Core;
 
 namespace E5R.Architecture.Data.EntityFrameworkCore.Alias
 {
     public class RideStore<TDataModel> : RideStorage<TDataModel>
-        where TDataModel : class, IDataModel
+        where TDataModel : class, IIdentifiable
     {
         public RideStore(IQueryable<TDataModel> query)
             : base(query)

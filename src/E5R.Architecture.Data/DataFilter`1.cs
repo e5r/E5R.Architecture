@@ -5,6 +5,7 @@
 using System;
 using System.Collections.Generic;
 using System.Linq.Expressions;
+using E5R.Architecture.Core;
 using E5R.Architecture.Data.Abstractions;
 
 namespace E5R.Architecture.Data
@@ -14,7 +15,7 @@ namespace E5R.Architecture.Data
     /// </summary>
     /// <typeparam name="TDataModel">Model type</typeparam>
     public class DataFilter<TDataModel> : IDataFilter<TDataModel>
-        where TDataModel : IDataModel
+        where TDataModel : IIdentifiable
     {
         private readonly List<Expression<Func<TDataModel, bool>>> _filters
             = new List<Expression<Func<TDataModel, bool>>>();

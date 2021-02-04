@@ -5,6 +5,7 @@
 using System;
 using System.Collections.Generic;
 using System.Linq.Expressions;
+using E5R.Architecture.Core;
 
 namespace E5R.Architecture.Data.Abstractions
 {
@@ -13,7 +14,7 @@ namespace E5R.Architecture.Data.Abstractions
     /// </summary>
     /// <typeparam name="TDataModel">Model type</typeparam>
     public interface IDataFilter<TDataModel>
-        where TDataModel : IDataModel
+        where TDataModel : IIdentifiable
     {
         /// <summary>
         /// Get a filter expression (Where)

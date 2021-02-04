@@ -8,11 +8,11 @@ using E5R.Architecture.Core;
 namespace E5R.Architecture.Data.Abstractions
 {
     public interface IStorageReader<TUowProperty, TDataModel> : IStorageReader<TDataModel>
-        where TDataModel : IDataModel
+        where TDataModel : IIdentifiable
     { }
 
     public interface IStorageReader<TDataModel> : IStorageSignature
-        where TDataModel : IDataModel
+        where TDataModel : IIdentifiable
     {
         #region TDataModel operations
 
