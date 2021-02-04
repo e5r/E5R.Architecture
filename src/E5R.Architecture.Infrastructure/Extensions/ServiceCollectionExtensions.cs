@@ -101,9 +101,6 @@ namespace Microsoft.Extensions.DependencyInjection
             //       aqui. Por isso, carregamos assemblies customizados.
             customServiceAssemblies?.ToList().ForEach(n => AppDomain.CurrentDomain.Load(n));
             
-            // Habilita "lazy loading"
-            serviceCollection.TryAddScoped(typeof(ILazy<>), typeof(LazyResolver<>));
-            
             // Habilita "cross cutting" e "rule for"
             var container = new ServiceCollectionDIContainer(serviceCollection);
 
@@ -111,6 +108,11 @@ namespace Microsoft.Extensions.DependencyInjection
             
             AppDomain.CurrentDomain.DIRegistrar(container);
             AppDomain.CurrentDomain.AddAllRules(serviceCollection);
+            
+            // Habilita "lazy loading"
+            serviceCollection.TryAddScoped(typeof(ILazy<>), typeof(LazyResolver<>));
+
+            AppDomain.CurrentDomain.AddLazyGroups(serviceCollection);
 
             return serviceCollection;
         }

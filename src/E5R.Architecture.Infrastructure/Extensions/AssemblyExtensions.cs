@@ -25,12 +25,12 @@ namespace E5R.Architecture.Infrastructure.Extensions
                 .ToList()
                 .ForEach(f => f.Register(container));
         }
-        
+
         public static void AddAllRules(this Assembly assembly, IServiceCollection services)
         {
             Checker.NotNullArgument(assembly, nameof(assembly));
             Checker.NotNullArgument(services, nameof(services));
-            
+
             var typeOfRuleFor = typeof(RuleFor<>);
             var typeOfIRuleFor = typeof(IRuleFor<>);
 
@@ -51,6 +51,30 @@ namespace E5R.Architecture.Infrastructure.Extensions
 
                     services.TryAddScoped(serviceType, ruleType);
                 });
+        }
+
+        public static void AddLazyGroups(this Assembly assembly, IServiceCollection services)
+        {
+            Checker.NotNullArgument(assembly, nameof(assembly));
+            Checker.NotNullArgument(services, nameof(services));
+
+            var groupTypes = new[]
+            {
+                typeof(LazyGroup<,>),
+                typeof(LazyGroup<,,>),
+                typeof(LazyGroup<,,,>),
+                typeof(LazyGroup<,,,,>),
+                typeof(LazyGroup<,,,,,>),
+                typeof(LazyGroup<,,,,,,>),
+                typeof(LazyGroup<,,,,,,,>),
+                typeof(LazyGroup<,,,,,,,,>),
+                typeof(LazyGroup<,,,,,,,,,>),
+            };
+
+            assembly.DefinedTypes
+                .Where(t => t.BaseType != null && groupTypes.Contains(t.BaseType))
+                .ToList()
+                .ForEach(services.TryAddScoped);
         }
 
         private static IDIRegistrar Activate(Type type)
