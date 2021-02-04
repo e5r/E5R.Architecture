@@ -72,7 +72,9 @@ namespace E5R.Architecture.Infrastructure.Extensions
             };
 
             assembly.DefinedTypes
-                .Where(t => t.BaseType != null && groupTypes.Contains(t.BaseType))
+                .Where(t =>
+                    t.BaseType != null && t.BaseType.IsGenericType &&
+                    groupTypes.Contains(t.BaseType.GetGenericTypeDefinition()))
                 .ToList()
                 .ForEach(services.TryAddScoped);
         }

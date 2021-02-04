@@ -20,24 +20,9 @@ namespace E5R.Architecture.Business.Extensions
             Checker.NotNullArgument(services, nameof(services));
 
             var typeOfFeatureSignature = typeof(IBusinessFeatureSignature);
-            var typeOfFacadeSignature = typeof(IBusinessFacadeSignature);
-            var typesToDiscard = new[]
-            {
-                typeof(BusinessFacade<>),
-                typeof(BusinessFacade<,>),
-                typeof(BusinessFacade<,,>),
-                typeof(BusinessFacade<,,,>),
-                typeof(BusinessFacade<,,,,>),
-                typeof(BusinessFacade<,,,,,>),
-                typeof(BusinessFacade<,,,,,,>),
-                typeof(BusinessFacade<,,,,,,,>),
-                typeof(BusinessFacade<,,,,,,,,>),
-                typeof(BusinessFacade<,,,,,,,,,>),
-            };
 
             assembly.DefinedTypes
-                .Where(t => !t.IsAbstract && (typeOfFeatureSignature.IsAssignableFrom(t) ||
-                                              (typeOfFacadeSignature.IsAssignableFrom(t) && !typesToDiscard.Contains(t))))
+                .Where(t => !t.IsAbstract && typeOfFeatureSignature.IsAssignableFrom(t))
                 .ToList()
                 .ForEach(services.TryAddScoped);
         }

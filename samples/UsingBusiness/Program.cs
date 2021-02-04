@@ -137,12 +137,12 @@ namespace UsingBusiness
     /// Aqui chamamos de módulo de negócio (BusinessModule) mas pode ser qualquer coisa que
     /// você preferir: Service, BusinessService, Module, Facade, etc.
     /// </remarks>
-    public class DadosEntradaBusinessModule : BusinessFacade<
+    public class DadosEntradaBusinessModule : LazyGroup<
         ProcessStringFeature,
         GenerateRandomPasswordFeature>
     {
-        public DadosEntradaBusinessModule(ILazy<ProcessStringFeature> feature1,
-            ILazy<GenerateRandomPasswordFeature> feature2) : base(feature1, feature2)
+        public DadosEntradaBusinessModule(ILazy<ProcessStringFeature> item1,
+            ILazy<GenerateRandomPasswordFeature> item2) : base(item1, item2)
         {
         }
 
@@ -151,21 +151,21 @@ namespace UsingBusiness
         /// </summary>
         /// <param name="inputString">String de entrada</param>
         public async Task ProcessString(string inputString) =>
-            await Feature1.ExecAsync(inputString);
+            await Item1.ExecAsync(inputString);
 
         /// <summary>
         /// Processa dados aleatórios com base em um valor que pode ser convertido em uma string de entrada
         /// </summary>
         /// <param name="from">Objeto que pode ser convertido para uma string</param>
         /// <typeparam name="TFrom">Tipo do objeto de entrada</typeparam>
-        public async Task ProcessString<TFrom>(TFrom @from) => await Feature1.ExecAsync(@from);
+        public async Task ProcessString<TFrom>(TFrom @from) => await Item1.ExecAsync(@from);
 
         /// <summary>
         /// Gera uma senha aleatório com base em uma tupla que informa os caracteres possíveis e o tamanho da senha pretendida
         /// </summary>
         /// <param name="input">Tupla (<see cref="Tuple{T1,T2}"/>) de string com os caracteres possíveis, e int com o tamanho da senha pretendida</param>
         public async Task<string> GenerateRandomPassword((string, int) input) =>
-            await Feature2.ExecAsync(input);
+            await Item2.ExecAsync(input);
 
         /// <summary>
         /// Gera uma senha aleatório com base em um valor que pode ser convertido em uma tupla <see cref="Tuple{T1,T2}"/> de string e int.
@@ -173,7 +173,7 @@ namespace UsingBusiness
         /// <param name="from">Objeto que pode ser convertido para uma tupla de string e int</param>
         /// <typeparam name="TFrom">Tipo do objeto de entrada</typeparam>
         public async Task<string> GenerateRandomPassword<TFrom>(TFrom @from) =>
-            await Feature2.ExecAsync(@from);
+            await Item2.ExecAsync(@from);
     }
 
     /// <summary>
@@ -184,31 +184,31 @@ namespace UsingBusiness
     /// você preferir: Service, BusinessService, Module, Facade, etc.
     /// </remarks>
     public class
-        DadosSaidaBusinessModule : BusinessFacade<GenerateRandomNumberFeature, ProcessStringFeature>
+        DadosSaidaBusinessModule : LazyGroup<GenerateRandomNumberFeature, ProcessStringFeature>
     {
-        public DadosSaidaBusinessModule(ILazy<GenerateRandomNumberFeature> feature1,
-            ILazy<ProcessStringFeature> feature2) : base(feature1, feature2)
+        public DadosSaidaBusinessModule(ILazy<GenerateRandomNumberFeature> item1,
+            ILazy<ProcessStringFeature> item2) : base(item1, item2)
         {
         }
 
         /// <summary>
         /// Gera um número aleatório
         /// </summary>
-        public async Task<int> GenerateRandomNumber() => await Feature1.ExecAsync();
+        public async Task<int> GenerateRandomNumber() => await Item1.ExecAsync();
 
         /// <summary>
         /// Processa dados aleatórios com base em uma string de entrada
         /// </summary>
         /// <param name="inputString">String de entrada</param>
         public async Task ProcessString(string inputString) =>
-            await Feature2.ExecAsync(inputString);
+            await Item2.ExecAsync(inputString);
 
         /// <summary>
         /// Processa dados aleatórios com base em um valor que pode ser convertido em uma string de entrada
         /// </summary>
         /// <param name="from">Objeto que pode ser convertido para uma string</param>
         /// <typeparam name="TFrom">Tipo do objeto de entrada</typeparam>
-        public async Task ProcessString<TFrom>(TFrom @from) => await Feature2.ExecAsync(@from);
+        public async Task ProcessString<TFrom>(TFrom @from) => await Item2.ExecAsync(@from);
     }
 
     /// <summary>
@@ -218,26 +218,26 @@ namespace UsingBusiness
     /// Aqui chamamos de módulo de negócio (BusinessModule) mas pode ser qualquer coisa que
     /// você preferir: Service, BusinessService, Module, Facade, etc.
     /// </remarks>
-    public class TudoJuntoBusinessModule : BusinessFacade<GenerateRandomNumberFeature,
+    public class TudoJuntoBusinessModule : LazyGroup<GenerateRandomNumberFeature,
         GenerateRandomPasswordFeature, ProcessStringFeature, ExecAllFeature>
     {
-        public TudoJuntoBusinessModule(ILazy<GenerateRandomNumberFeature> feature1,
-            ILazy<GenerateRandomPasswordFeature> feature2, ILazy<ProcessStringFeature> feature3,
-            ILazy<ExecAllFeature> feature4) : base(feature1, feature2, feature3, feature4)
+        public TudoJuntoBusinessModule(ILazy<GenerateRandomNumberFeature> item1,
+            ILazy<GenerateRandomPasswordFeature> item2, ILazy<ProcessStringFeature> item3,
+            ILazy<ExecAllFeature> item4) : base(item1, item2, item3, item4)
         {
         }
 
         /// <summary>
         /// Gera um número aleatório
         /// </summary>
-        public async Task<int> GenerateRandomNumber() => await Feature1.ExecAsync();
+        public async Task<int> GenerateRandomNumber() => await Item1.ExecAsync();
 
         /// <summary>
         /// Gera uma senha aleatório com base em uma tupla que informa os caracteres possíveis e o tamanho da senha pretendida
         /// </summary>
         /// <param name="input">Tupla (<see cref="Tuple{T1,T2}"/>) de string com os caracteres possíveis, e int com o tamanho da senha pretendida</param>
         public async Task<string> GenerateRandomPassword((string, int) input) =>
-            await Feature2.ExecAsync(input);
+            await Item2.ExecAsync(input);
 
         /// <summary>
         /// Gera uma senha aleatório com base em um valor que pode ser convertido em uma tupla <see cref="Tuple{T1,T2}"/> de string e int.
@@ -245,27 +245,27 @@ namespace UsingBusiness
         /// <param name="from">Objeto que pode ser convertido para uma tupla de string e int</param>
         /// <typeparam name="TFrom">Tipo do objeto de entrada</typeparam>
         public async Task<string> GenerateRandomPassword<TFrom>(TFrom @from) =>
-            await Feature2.ExecAsync(@from);
+            await Item2.ExecAsync(@from);
 
         /// <summary>
         /// Processa dados aleatórios com base em uma string de entrada
         /// </summary>
         /// <param name="inputString">String de entrada</param>
         public async Task ProcessString(string inputString) =>
-            await Feature3.ExecAsync(inputString);
+            await Item3.ExecAsync(inputString);
 
         /// <summary>
         /// Processa dados aleatórios com base em um valor que pode ser convertido em uma string de entrada
         /// </summary>
         /// <param name="from">Objeto que pode ser convertido para uma string</param>
         /// <typeparam name="TFrom">Tipo do objeto de entrada</typeparam>
-        public async Task ProcessString<TFrom>(TFrom @from) => await Feature3.ExecAsync(@from);
+        public async Task ProcessString<TFrom>(TFrom @from) => await Item3.ExecAsync(@from);
 
         /// <summary>
         /// Executa todas as outras funcionalidades para exemplificar uma característica que não
         /// precisa de parâmetros de entrada, e nem produz resultado de saída.
         /// </summary>
-        public async Task ExecAll() => await Feature4.ExecAsync();
+        public async Task ExecAll() => await Item4.ExecAsync();
     }
 
     public class Program
