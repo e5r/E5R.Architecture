@@ -7,7 +7,17 @@ Notas de Lançamento
 
 ## 0.8.0 (dev)
 
-> TODO: ...
+Novos recursos:
+
+* Adiciona genérico `LazyGroup<>` para agrupar objetos carregados preguiçosamente
+    - Objetiva ser utilizado para construir objetos de fachada
+    - Registra automaticamente objetos que o herdam, se usar `AddInfrastructure()`
+
+Breaking changes:
+
+* `IDataModel` agora é `IIdentifiable` e agora está em `Core` ao invés de `Data`
+    - Também a propriedade com os valores foi renomeada de `IdentifierValues` para `Identifiers` somente
+* O genérico `BusinessFacade<>` foi removido em favor de `LazyGroup<>`
 
 ## 0.7.0
 
@@ -69,11 +79,11 @@ public class MyBusinessClass
 Novos recursos:
 
 * Api fluente para gravar dados armazenados
-  - Leia o tutorial [Escrevendo dados com API Fluente](tutorials/writing-with-fluent-api.md)
+    - Leia o tutorial [Escrevendo dados com API Fluente](tutorials/writing-with-fluent-api.md)
 * UniqueIdentifier é um novo objeto do core para geração de identificadores únicos
-  - Leia o tutorial [Identificadores únicos](tutorials/uid.md)
+    - Leia o tutorial [Identificadores únicos](tutorials/uid.md)
 * Transformação de dados entre tipos
-  - Leia o tutorial [Transformando dados entre tipos](tutorials/transformer-intro.md)
+    - Leia o tutorial [Transformando dados entre tipos](tutorials/transformer-intro.md)
 
 ## 0.5.0
 
@@ -105,21 +115,21 @@ Nesta versão temos tantas novidades que não dá pra detalhar tanto, então fic
 * Agora temos um local para documentação ao vivo (https://e5r.github.io/E5R.Architecture)
 * UnitOfWork agora é implementado usando duas estratégias: `ByProperty` e `TransactionScope`
 * Estabiliza API de `IStorageReader<>`
-  - Find()
-  - GetAll()
-  - LimitedGet()
-  - Search()
-  - LimitedSearch()
+    - Find()
+    - GetAll()
+    - LimitedGet()
+    - Search()
+    - LimitedSearch()
 * Estabiliza API de `IStorageWriter<>`
-  - Create()
-  - Replace()
-  - Remove()
-  - Update()
+    - Create()
+    - Replace()
+    - Remove()
+    - Update()
 * Estabiliza API de `IStorageBulkWriter<>`
-  - BulkCreate()
-  - BulkReplace()
-  - BulkRemove()
-  - BulkUpdate()
+    - BulkCreate()
+    - BulkReplace()
+    - BulkRemove()
+    - BulkUpdate()
 * Adicionamos suporte a FluentQuery nos repositórios genéricos de consulta:
 ```cs
 var result = _studentStore.AsFluentQuery()
@@ -152,11 +162,11 @@ O Suporte a UnitOfWork está completo usando a estratégia de propriedades.
 
 Várias outras refatorações foram feitas:
 
-- Conceito de reducer passa a ser filter
-- Conceito de IoC passa a ser DI
-- ComponentInformation é obtido via dados do Assembly
-- Exceções agora estão centralizadas no componente Core
-- DataFilter e DataLimiter ganham uma implementação padrão em Linq
+* Conceito de reducer passa a ser filter
+* Conceito de IoC passa a ser DI
+* ComponentInformation é obtido via dados do Assembly
+* Exceções agora estão centralizadas no componente Core
+* DataFilter e DataLimiter ganham uma implementação padrão em Linq
 
 O suporte a `E5R.Architecture.Core.Formatters` foi removido
 
