@@ -16,9 +16,10 @@ namespace E5R.Architecture.Business.Test
         [Fact]
         void RequiresITransformationManager_ToBe_Instantiated()
         {
-            var transformerMock = new Mock<ITransformationManager>();
+            var transformerMock = new Mock<ILazy<ITransformationManager>>();
             var feature = new IntegerInputonlyFeature(transformerMock.Object);
-            var exception = Assert.Throws<ArgumentNullException>(() => new IntegerInputonlyFeature(null));
+            var exception =
+                Assert.Throws<ArgumentNullException>(() => new IntegerInputonlyFeature(null));
 
             Assert.NotNull(feature);
             Assert.Equal("transformer", exception.ParamName);
@@ -27,58 +28,65 @@ namespace E5R.Architecture.Business.Test
         [Fact]
         async void ExecRequires_NotNullInput()
         {
-            var transformerMock = new Mock<ITransformationManager>();
+            var transformerMock = new Mock<ILazy<ITransformationManager>>();
             var feature = new IntegerInputonlyFeature(transformerMock.Object);
             var exception =
-                await Assert.ThrowsAsync<ArgumentNullException>(() => feature.ExecAsync((string) null));
+                await Assert.ThrowsAsync<ArgumentNullException>(() =>
+                    feature.ExecAsync((string) null));
 
             Assert.Equal("input", exception.ParamName);
         }
-        
+
         [Fact]
         async void ExecFromRequires_NotNullInput()
         {
-            var transformerMock = new Mock<ITransformationManager>();
+            var transformerMock = new Mock<ILazy<ITransformationManager>>();
             var feature = new IntegerInputonlyFeature(transformerMock.Object);
             var exception =
-                await Assert.ThrowsAsync<ArgumentNullException>(() => feature.ExecAsync<double?>( null));
+                await Assert.ThrowsAsync<ArgumentNullException>(() =>
+                    feature.ExecAsync<double?>(null));
 
             Assert.Equal("from", exception.ParamName);
         }
-        
+
         [Fact]
         async void ExecFrom_DoesNotExecute_WhenInputIsAlreadyOfThe_ExpectedType()
         {
-            var transformerMock = new Mock<ITransformationManager>();
+            var transformerMock = new Mock<ILazy<ITransformationManager>>();
             var feature = new IntegerInputonlyFeature(transformerMock.Object);
             var exception =
-                await Assert.ThrowsAsync<BusinessLayerException>(() => feature.ExecAsync<string>("notnull"));
+                await Assert.ThrowsAsync<BusinessLayerException>(() =>
+                    feature.ExecAsync<string>("notnull"));
 
-            Assert.Equal("The input object is already of the expected type. You should use Exec() instead of Exec<>()", exception.Message);
+            Assert.Equal(
+                "The input object is already of the expected type. You should use Exec() instead of Exec<>()",
+                exception.Message);
         }
-        
+
         [Fact]
         async void ExecFrom_RaisesException_WhenThenTransformer_ReturnsNull()
         {
-            var transformerMock = new Mock<ITransformationManager>();
+            var transformerMock = new Mock<ILazy<ITransformationManager>>();
 
-            transformerMock.Setup(s => s.Transform<int, string>(It.IsAny<int>()))
+            transformerMock.Setup(s => s.Value.Transform<int, string>(It.IsAny<int>()))
                 .Returns((string) null);
-            
+
             var feature = new IntegerInputonlyFeature(transformerMock.Object);
             var exception =
                 await Assert.ThrowsAsync<BusinessLayerException>(() => feature.ExecAsync(0));
 
-            Assert.Equal("The input type cannot be transformed to the expected type properly", exception.Message);
+            Assert.Equal("The input type cannot be transformed to the expected type properly",
+                exception.Message);
         }
-        
+
         [Fact]
         async void ExecFrom_WhenInputIsCorrectlyTransformed_ExecActionIsTriggered()
         {
-            var transformerMock = new Mock<ITransformationManager>();
+            var transformerMock = new Mock<ILazy<ITransformationManager>>();
 
-            transformerMock.Setup(s => s.Transform<string, Int64?>(It.IsAny<string>())).Returns(0);
-            
+            transformerMock.Setup(s => s.Value.Transform<string, Int64?>(It.IsAny<string>()))
+                .Returns(0);
+
             var feature = new IntegerInputonlyFeature(transformerMock.Object);
             var exception =
                 await Assert.ThrowsAsync<NotImplementedException>(() => feature.ExecAsync(""));
@@ -91,7 +99,8 @@ namespace E5R.Architecture.Business.Test
 
     public class IntegerInputonlyFeature : InputOnlyBusinessFeature<string>
     {
-        public IntegerInputonlyFeature(ITransformationManager transformer) : base(transformer)
+        public IntegerInputonlyFeature(ILazy<ITransformationManager> transformer) : base(
+            transformer)
         {
         }
 

@@ -15,7 +15,7 @@ namespace E5R.Architecture.Business
     public abstract class BusinessFeature<TInput, TOutput> : InputBasedBusinessFeature<TInput>,
         IBusinessFeatureSignature
     {
-        public BusinessFeature(ITransformationManager transformer) : base(transformer)
+        public BusinessFeature(ILazy<ITransformationManager> transformer) : base(transformer)
         {
         }
 

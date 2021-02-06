@@ -27,7 +27,7 @@ namespace UsingBusiness
     /// </summary>
     public class ProcessStringFeature : InputOnlyBusinessFeature<string>
     {
-        public ProcessStringFeature(ITransformationManager transformer) : base(transformer)
+        public ProcessStringFeature(ILazy<ITransformationManager> transformer) : base(transformer)
         {
         }
 
@@ -65,7 +65,8 @@ namespace UsingBusiness
     /// </summary>
     public class GenerateRandomPasswordFeature : BusinessFeature<(string, int), string>
     {
-        public GenerateRandomPasswordFeature(ITransformationManager transformer) : base(transformer)
+        public GenerateRandomPasswordFeature(ILazy<ITransformationManager> transformer) : base(
+            transformer)
         {
         }
 

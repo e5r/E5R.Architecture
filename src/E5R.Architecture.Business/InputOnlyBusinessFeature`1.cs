@@ -14,7 +14,8 @@ namespace E5R.Architecture.Business
     public abstract class InputOnlyBusinessFeature<TInput> : InputBasedBusinessFeature<TInput>,
         IBusinessFeatureSignature
     {
-        public InputOnlyBusinessFeature(ITransformationManager transformer) : base(transformer)
+        public InputOnlyBusinessFeature(ILazy<ITransformationManager> transformer) : base(
+            transformer)
         {
         }
 
