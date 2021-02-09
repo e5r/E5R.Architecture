@@ -4,6 +4,7 @@
 
 using System;
 using System.Linq;
+using E5R.Architecture.Core.Extensions;
 using E5R.Architecture.Core.Models;
 
 namespace E5R.Architecture.Core.Utils
@@ -28,5 +29,31 @@ namespace E5R.Architecture.Core.Utils
         /// <returns>Array of enum values</returns>
         public static TEnum[] GetValues<TEnum>() where TEnum : Enum
             => (TEnum[]) Enum.GetValues(typeof(TEnum));
+
+        /// <summary>
+        /// Get a enum value from a tag value
+        /// </summary>
+        /// <param name="tagKey">The tag key</param>
+        /// <param name="tagValue">The tag value</param>
+        /// <typeparam name="TEnum">The enum type</typeparam>
+        /// <returns>Value of enum based on tag</returns>
+        public static TEnum FromTag<TEnum>(string tagKey, string tagValue) where TEnum : Enum
+        {
+            Checker.NotEmptyOrWhiteArgument(tagKey, nameof(tagKey));
+            Checker.NotEmptyOrWhiteArgument(tagValue, nameof(tagValue));
+
+            var values = GetValues<TEnum>().Where(e =>
+                    string.Equals(e.GetTag(tagKey), tagValue, StringComparison.CurrentCulture))
+                .ToArray();
+
+            if (!values.Any())
+            {
+                // TODO: Implementar i18n/l10n
+                throw new InvalidCastException(
+                    "The Enum could not be converted because there is no value signed with the informed tag");
+            }
+
+            return values.First();
+        }
     }
 }

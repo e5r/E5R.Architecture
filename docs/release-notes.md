@@ -12,6 +12,7 @@ Novos recursos:
 * Adiciona genérico `LazyGroup<>` para agrupar objetos carregados preguiçosamente
     - Objetiva ser utilizado para construir objetos de fachada
     - Registra automaticamente objetos que o herdam, se usar `AddInfrastructure()`
+* Agora é possível obter um valor de `Enum` através de um valor de `MetaTag`
 
 Breaking changes:
 
