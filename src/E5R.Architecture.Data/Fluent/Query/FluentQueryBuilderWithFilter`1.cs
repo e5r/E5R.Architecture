@@ -18,38 +18,50 @@ namespace E5R.Architecture.Data.Fluent.Query
             DataLimiter<TDataModel> limiter,
             DataIncludes<TDataModel> includes)
             : base(storage, filter, limiter, includes)
-        { }
+        {
+        }
 
-        public FluentQueryBuilderWithFilter<TDataModel> Filter(Expression<Func<TDataModel, bool>> filter)
+        public FluentQueryBuilderWithFilter<TDataModel> Filter(
+            Expression<Func<TDataModel, bool>> filter)
         {
             _filter.AddFilter(filter);
 
             return this;
         }
 
-        public FluentQueryBuilderWithLimiterAndFilter<TDataModel> Sort(Expression<Func<TDataModel, object>> sorter)
-            => new FluentQueryBuilderWithLimiterAndFilter<TDataModel>(_storage, _filter, _limiter, _includes)
+        public FluentQueryBuilderWithLimiterAndFilter<TDataModel> Sort(
+            Expression<Func<TDataModel, object>> sorter)
+            => new FluentQueryBuilderWithLimiterAndFilter<TDataModel>(_storage, _filter, _limiter,
+                    _includes)
                 .Sort(sorter);
 
-        public FluentQueryBuilderWithLimiterAndFilter<TDataModel> SortDescending(Expression<Func<TDataModel, object>> sorter)
-            => new FluentQueryBuilderWithLimiterAndFilter<TDataModel>(_storage, _filter, _limiter, _includes)
+        public FluentQueryBuilderWithLimiterAndFilter<TDataModel> SortDescending(
+            Expression<Func<TDataModel, object>> sorter)
+            => new FluentQueryBuilderWithLimiterAndFilter<TDataModel>(_storage, _filter, _limiter,
+                    _includes)
                 .SortDescending(sorter);
 
         public FluentQueryBuilderWithLimiterAndFilter<TDataModel> OffsetBegin(uint offset)
-            => new FluentQueryBuilderWithLimiterAndFilter<TDataModel>(_storage, _filter, _limiter, _includes)
+            => new FluentQueryBuilderWithLimiterAndFilter<TDataModel>(_storage, _filter, _limiter,
+                    _includes)
                 .OffsetBegin(offset);
 
         public FluentQueryBuilderWithLimiterAndFilter<TDataModel> OffsetLimit(uint offsetLimit)
-            => new FluentQueryBuilderWithLimiterAndFilter<TDataModel>(_storage, _filter, _limiter, _includes)
+            => new FluentQueryBuilderWithLimiterAndFilter<TDataModel>(_storage, _filter, _limiter,
+                    _includes)
                 .OffsetLimit(offsetLimit);
 
-        public FluentQueryBuilderWithLimiterAndFilter<TDataModel> Paginate(uint currentPage, uint limitPerPage)
-            => new FluentQueryBuilderWithLimiterAndFilter<TDataModel>(_storage, _filter, _limiter, _includes)
+        public FluentQueryBuilderWithLimiterAndFilter<TDataModel> Paginate(uint currentPage,
+            uint limitPerPage)
+            => new FluentQueryBuilderWithLimiterAndFilter<TDataModel>(_storage, _filter, _limiter,
+                    _includes)
                 .Paginate(currentPage, limitPerPage);
 
         #region Storage Actions
 
         public IEnumerable<TDataModel> Search() => _storage.Search(_filter, _includes);
+
+        public int Count() => _storage.Count(_filter);
 
         #endregion
     }

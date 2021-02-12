@@ -19,6 +19,8 @@ namespace E5R.Architecture.Data.Abstractions
         TDataModel Find(object identifier, IDataIncludes includes = null);
         TDataModel Find(object[] identifiers, IDataIncludes includes = null);
         TDataModel Find(TDataModel data, IDataIncludes includes = null);
+        int CountAll();
+        int Count(IDataFilter<TDataModel> filter);
         IEnumerable<TDataModel> GetAll(IDataIncludes includes = null);
         PaginatedResult<TDataModel> LimitedGet(IDataLimiter<TDataModel> limiter, IDataIncludes includes = null);
         IEnumerable<TDataModel> Search(IDataFilter<TDataModel> filter, IDataIncludes includes = null);

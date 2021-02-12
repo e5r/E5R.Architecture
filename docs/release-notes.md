@@ -13,6 +13,10 @@ Novos recursos:
     - Objetiva ser utilizado para construir objetos de fachada
     - Registra automaticamente objetos que o herdam, se usar `AddInfrastructure()`
 * Agora é possível obter um valor de `Enum` através de um valor de `MetaTag`
+* Novos métodos adicionados a interface `IStorage<>`
+    - `int CountAll()` Que retorna o total de registros
+    - `int Count(IDataFilter<> filter)` Que retorna o total de registros que obedeçam a um determinado filtro
+    - Os métodos também estão disponíveis na api fluente `AsFluentQuery()`
 
 Breaking changes:
 

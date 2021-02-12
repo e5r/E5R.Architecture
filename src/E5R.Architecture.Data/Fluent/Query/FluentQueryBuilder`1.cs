@@ -62,6 +62,8 @@ namespace E5R.Architecture.Data.Fluent.Query
         public TDataModel Find(object[] identifiers) => _storage.Find(identifiers, null);
 
         public TDataModel Find(TDataModel data) => _storage.Find(data, null);
+        
+        public int CountAll() => _storage.CountAll();
 
         public IEnumerable<TDataModel> GetAll() => _storage.GetAll(null);
 
