@@ -17,6 +17,24 @@ Novos recursos:
     - `int CountAll()` Que retorna o total de registros
     - `int Count(IDataFilter<> filter)` Que retorna o total de registros que obedeçam a um determinado filtro
     - Os métodos também estão disponíveis na api fluente `AsFluentQuery()`
+* Adiciona utilitários para calcular hash de `byte[]` e `string` na forma de extensões
+```c#
+var myBytes = new byte[]{ 1,2,3,4};
+
+// Sha1(), Sha256(), Sha384(), Sha512()
+byte[] sha256BytesOfBytes = myBytes.Sha256();
+
+// Sha1Hex(), Sha256Hex(), Sha384Hex(), Sha512Hex()
+string sha512HexOfBytes = myBytes.Sha512Hex();
+
+var myString = "My string text";
+
+// Sha1(), Sha256(), Sha384(), Sha512()
+byte[] sha384BytesOfString = myString.Sha384();
+
+// Sha1Hex(), Sha256Hex(), Sha384Hex(), Sha512Hex()
+string sha1HexOfString = myString.Sha1Hex();
+```
 
 Breaking changes:
 
