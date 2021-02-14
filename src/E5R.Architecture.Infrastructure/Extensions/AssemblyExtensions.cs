@@ -26,6 +26,35 @@ namespace E5R.Architecture.Infrastructure.Extensions
                 .ForEach(f => f.Register(container));
         }
 
+        public static void AddNotificationDispatchers(this Assembly assembly,
+            IServiceCollection services)
+        {
+            Checker.NotNullArgument(assembly, nameof(assembly));
+            Checker.NotNullArgument(services, nameof(services));
+
+            var typeOfINotificationDispatcher = typeof(INotificationDispatcher<>);
+
+            assembly.DefinedTypes
+                .Where(t =>
+                    t.GetInterfaces().Any(tt =>
+                        tt.IsGenericType &&
+                        tt.GetGenericTypeDefinition() == typeOfINotificationDispatcher
+                    ))
+                .ToList()
+                .ForEach(dispatcherType =>
+                {
+                    var serviceType = dispatcherType.GetInterfaces().FirstOrDefault(t =>
+                        t.IsGenericType && t.GetGenericTypeDefinition() ==
+                        typeOfINotificationDispatcher);
+
+                    if (services.Any(w =>
+                        w.ServiceType == serviceType && w.ImplementationType == dispatcherType))
+                        return;
+
+                    services.AddScoped(serviceType, dispatcherType);
+                });
+        }
+
         public static void AddAllRules(this Assembly assembly, IServiceCollection services)
         {
             Checker.NotNullArgument(assembly, nameof(assembly));
@@ -49,7 +78,10 @@ namespace E5R.Architecture.Infrastructure.Extensions
                         typeOfIRuleFor.MakeGenericType(
                             ruleType.BaseType.GetGenericArguments());
 
-                    services.TryAddScoped(serviceType, ruleType);
+                    if (services.Any(w =>
+                        w.ServiceType == serviceType && w.ImplementationType == ruleType)) return;
+
+                    services.AddScoped(serviceType, ruleType);
                 });
         }
 

@@ -60,7 +60,7 @@ namespace Microsoft.Extensions.DependencyInjection
 
             return serviceCollection;
         }
-        
+
         public static IServiceCollection AddUnitOfWorkPropertyStrategy(
             this IServiceCollection serviceCollection,
             Action<UnitOfWorkPropertyStrategyBuilderOptions> config)
@@ -81,11 +81,11 @@ namespace Microsoft.Extensions.DependencyInjection
 
             return serviceCollection.AddUnitOfWorkPropertyStrategy<DbTransactionUnitOfWork>(config);
         }
-        
+
         public static IServiceCollection AddUnitOfWorkTransactionScopeStrategy(
             this IServiceCollection serviceCollection)
             => serviceCollection.AddScoped<IUnitOfWork, UnitOfWorkByTransactionScope>();
-        
+
         public static IServiceCollection AddInfrastructure(
             this IServiceCollection serviceCollection,
             string[] customServiceAssemblies = null)
@@ -100,15 +100,20 @@ namespace Microsoft.Extensions.DependencyInjection
             //       Com isso, não conseguiríamos encontrar objetos para registrar
             //       aqui. Por isso, carregamos assemblies customizados.
             customServiceAssemblies?.ToList().ForEach(n => AppDomain.CurrentDomain.Load(n));
-            
+
+            // Habilita "notification manager"
+            serviceCollection.TryAddScoped(typeof(NotificationManager<>));
+
+            AppDomain.CurrentDomain.AddNotificationDispatchers(serviceCollection);
+
             // Habilita "cross cutting" e "rule for"
             var container = new ServiceCollectionDIContainer(serviceCollection);
 
-            serviceCollection.TryAddScoped(typeof(RuleSet<>));
-            
+            serviceCollection.TryAddScoped(typeof(IRuleSet<>), typeof(RuleSet<>));
+
             AppDomain.CurrentDomain.DIRegistrar(container);
             AppDomain.CurrentDomain.AddAllRules(serviceCollection);
-            
+
             // Habilita "lazy loading"
             serviceCollection.TryAddScoped(typeof(ILazy<>), typeof(LazyResolver<>));
 

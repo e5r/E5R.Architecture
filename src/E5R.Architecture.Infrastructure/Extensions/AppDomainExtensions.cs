@@ -33,6 +33,17 @@ namespace E5R.Architecture.Infrastructure.Extensions
                 .ForEach(a => a.DIRegistrar(container));
         }
         
+        public static void AddNotificationDispatchers(this AppDomain appDomain, IServiceCollection services)
+        {
+            Checker.NotNullArgument(appDomain, nameof(appDomain));
+            Checker.NotNullArgument(services, nameof(services));
+
+            appDomain
+                .GetNonSystemAssemblies()
+                .ToList()
+                .ForEach(a => a.AddNotificationDispatchers(services));
+        }
+        
         public static void AddAllRules(this AppDomain appDomain, IServiceCollection services)
         {
             Checker.NotNullArgument(appDomain, nameof(appDomain));
