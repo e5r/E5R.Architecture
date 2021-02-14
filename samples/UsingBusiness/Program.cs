@@ -3,6 +3,7 @@
 // Licensed under the Apache version 2.0: https://github.com/e5r/manifest/blob/master/license/APACHE-2.0.txt
 
 using System;
+using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -10,6 +11,7 @@ using E5R.Architecture.Business;
 using E5R.Architecture.Business.Extensions;
 using E5R.Architecture.Core;
 using Microsoft.Extensions.DependencyInjection;
+using static E5R.Architecture.Core.MetaTagAttribute;
 
 namespace UsingBusiness
 {
@@ -269,22 +271,79 @@ namespace UsingBusiness
         public async Task ExecAll() => await Item4.ExecAsync();
     }
 
+    public enum MyNotifyType
+    {
+        Type1,
+
+        [MetaTag(CustomIdKey, "NTFY-002")] Type2
+    }
+
+    public class MyRuleForNotify : RuleFor<NotificationMessage<MyNotifyType>>
+    {
+        public MyRuleForNotify() : base(nameof(MyNotifyType.Type1), "Confere mensagem Type1")
+        {
+        }
+
+        public override Task<RuleCheckResult>
+            CheckAsync(NotificationMessage<MyNotifyType> target) => Task.Run(() =>
+        {
+            if (!(target.Body is string))
+                return RuleCheckResult.Fail;
+
+            return RuleCheckResult.Success;
+        });
+    }
+
+    public class MyRuleForNotify2 : RuleFor<NotificationMessage<MyNotifyType>>
+    {
+        public MyRuleForNotify2() : base("NTFY-002", "Confere mensagem Type2")
+        {
+        }
+
+        public override Task<RuleCheckResult>
+            CheckAsync(NotificationMessage<MyNotifyType> target) => Task.Run(() =>
+        {
+            if (!(target.Body is float))
+                return RuleCheckResult.Fail;
+
+            if ((float) target.Body >= 7.5)
+                return new RuleCheckResult(false, new Dictionary<string, string>
+                {
+                    {"Numero", "O número era maior que 7.5"}
+                });
+
+            return RuleCheckResult.Success;
+        });
+    }
+
+    public class MyDispatcher : INotificationDispatcher<MyNotifyType>
+    {
+        public Task DispatchAsync(NotificationMessage<MyNotifyType> message)
+        {
+            return Task.CompletedTask;
+        }
+    }
+
     public class Program
     {
         private readonly DadosEntradaBusinessModule _entradaModule;
         private readonly DadosSaidaBusinessModule _saidaModule;
         private readonly TudoJuntoBusinessModule _tudoModule;
+        private readonly NotificationManager<MyNotifyType> _notificator;
 
         public Program(DadosEntradaBusinessModule entradaModule,
-            DadosSaidaBusinessModule saidaModule, TudoJuntoBusinessModule tudoModule)
+            DadosSaidaBusinessModule saidaModule, TudoJuntoBusinessModule tudoModule,
+            NotificationManager<MyNotifyType> notificator)
         {
             Checker.NotNullArgument(entradaModule, nameof(entradaModule));
             Checker.NotNullArgument(saidaModule, nameof(saidaModule));
             Checker.NotNullArgument(tudoModule, nameof(tudoModule));
+            Checker.NotNullArgument(notificator, nameof(notificator));
 
             _entradaModule = entradaModule;
             _saidaModule = saidaModule;
             _tudoModule = tudoModule;
+            _notificator = notificator;
         }
 
         public async Task Run()
@@ -296,6 +355,13 @@ namespace UsingBusiness
             Console.WriteLine($"Número aleatório gerado: {numero}");
 
             await _tudoModule.ExecAll();
+            
+            // Notificando mensagens sem falha
+            _notificator.Notify(MyNotifyType.Type1, "Mensagem 1");
+            _notificator.Notify(MyNotifyType.Type2, 6.0f);
+            
+            // Notificando uma mensagem com falha
+            _notificator.Notify(MyNotifyType.Type2, 7.51f);
         }
 
         private static void Main()

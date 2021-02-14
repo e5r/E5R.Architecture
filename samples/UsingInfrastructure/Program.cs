@@ -94,7 +94,7 @@ namespace UsingInfrastructure
 
     public class Program
     {
-        public Program(RuleSet<MyModel> ruleset)
+        public Program(IRuleSet<MyModel> ruleset)
         {
             var model1 = new MyModel();
             var model2 = new MyModel

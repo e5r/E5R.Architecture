@@ -4,6 +4,9 @@
 
 using System.Threading.Tasks;
 using System;
+using System.Collections.Generic;
+using E5R.Architecture.Core.Extensions;
+using static E5R.Architecture.Core.MetaTagAttribute;
 
 namespace E5R.Architecture.Core
 {
@@ -11,17 +14,18 @@ namespace E5R.Architecture.Core
         where TEnum : Enum
     {
         private readonly IRuleSet<NotificationMessage<TEnum>> _ruleSet;
-        private readonly INotificationDispatcher<TEnum> _dispatcher;
+        private readonly IEnumerable<INotificationDispatcher<TEnum>> _dispatchers;
 
         public NotificationManager(
             IRuleSet<NotificationMessage<TEnum>> ruleSet,
-            INotificationDispatcher<TEnum> dispatcher)
+            IEnumerable<INotificationDispatcher<TEnum>> dispatchers
+        )
         {
             Checker.NotNullArgument(ruleSet, nameof(ruleSet));
-            Checker.NotNullArgument(dispatcher, nameof(dispatcher));
+            Checker.NotNullArgument(dispatchers, nameof(dispatchers));
 
             _ruleSet = ruleSet;
-            _dispatcher = dispatcher;
+            _dispatchers = dispatchers;
         }
 
         public void Notify(TEnum type, object body, Parameters parameters = null)
@@ -32,12 +36,14 @@ namespace E5R.Architecture.Core
             Checker.NotNullArgument(type, nameof(type));
 
             parameters = parameters ?? new Parameters();
-            
+
             var message = new NotificationMessage<TEnum>(type, body, parameters);
+            var ruleCode = type.GetTag(CustomIdKey) ?? type.ToString();
 
             // TODO: O que fazer com exceptionMessageTemplate aqui?
-            await _ruleSet.EnsureAsync(message);
-            await _dispatcher.DispatchAsync(message);
+            await _ruleSet.ByCode(ruleCode).EnsureAsync(message);
+
+            foreach (var dispatcher in _dispatchers) await dispatcher.DispatchAsync(message);
         }
     }
 }
