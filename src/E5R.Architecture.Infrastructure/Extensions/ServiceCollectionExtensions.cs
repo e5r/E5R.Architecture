@@ -104,7 +104,10 @@ namespace Microsoft.Extensions.DependencyInjection
             // Habilita "notification manager"
             serviceCollection.TryAddScoped(typeof(NotificationManager<>));
 
-            AppDomain.CurrentDomain.AddNotificationDispatchers(serviceCollection);
+            AppDomain.CurrentDomain.AddAllNotificationDispatchers(serviceCollection);
+
+            // Habilita "transformers"
+            AppDomain.CurrentDomain.AddAllTransformers(serviceCollection);
 
             // Habilita "cross cutting" e "rule for"
             var container = new ServiceCollectionDIContainer(serviceCollection);
@@ -117,7 +120,7 @@ namespace Microsoft.Extensions.DependencyInjection
             // Habilita "lazy loading"
             serviceCollection.TryAddScoped(typeof(ILazy<>), typeof(LazyResolver<>));
 
-            AppDomain.CurrentDomain.AddLazyGroups(serviceCollection);
+            AppDomain.CurrentDomain.AddAllLazyGroups(serviceCollection);
 
             return serviceCollection;
         }
