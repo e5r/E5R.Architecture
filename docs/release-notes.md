@@ -17,23 +17,37 @@ Novos recursos:
     - `int CountAll()` Que retorna o total de registros
     - `int Count(IDataFilter<> filter)` Que retorna o total de registros que obedeçam a um determinado filtro
     - Os métodos também estão disponíveis na api fluente `AsFluentQuery()`
-* Adiciona utilitários para calcular hash de `byte[]` e `string` na forma de extensões
+* Adiciona utilitários para calcular hash e assinaturas HMAC de `byte[]` e `string` na forma de extensões
 ```c#
+using E5R.Architecture.Core.Extensions;
+
+var myKey = Encoding.Default.GetBytes("secret");
 var myBytes = new byte[]{ 1,2,3,4};
-
-// Sha1(), Sha256(), Sha384(), Sha512()
-byte[] sha256BytesOfBytes = myBytes.Sha256();
-
-// Sha1Hex(), Sha256Hex(), Sha384Hex(), Sha512Hex()
-string sha512HexOfBytes = myBytes.Sha512Hex();
-
 var myString = "My string text";
 
-// Sha1(), Sha256(), Sha384(), Sha512()
-byte[] sha384BytesOfString = myString.Sha384();
+/* Hash e HMAC em bytes obtidos de um array de bytes
 
-// Sha1Hex(), Sha256Hex(), Sha384Hex(), Sha512Hex()
-string sha1HexOfString = myString.Sha1Hex();
+   - Md5(), Sha1(), Sha256(), Sha384(), Sha512()
+   - HmacMd5(), HmacSha1(), HmacSha256(), HmacSha384(), HmacSha512()
+*/
+byte[] hashOfBytes = myBytes.Md5();
+byte[] hmacOfBytes = myBytes.HmacSha1(myKey);
+
+/* Hash e HMAC em string obtidos de um array de bytes
+
+   - Md5Hex(), Sha1Hex(), Sha256Hex(), Sha384Hex(), Sha512Hex()
+   - HmacMd5Hex(), HmacSha1Hex(), HmacSha256Hex(), HmacSha384Hex(), HmacSha512Hex()
+*/
+string hashHexOfBytes = myBytes.Sha256Hex();
+string hmacHexOfBytes = myBytes.HmacSha384Hex(myKey);
+
+/* Hash e HMAC em bytes obtidos de uma string */
+byte[] hashOfString = myBytes.Sha512();
+byte[] hmacOfString = myBytes.HmacMd5(myKey);
+
+/* Hash e HMAC em string obtidos de uma string */
+string hashHexOfString = myBytes.Sha1Hex();
+string hmacHexOfString = myBytes.HmacSha256Hex(myKey);
 ```
 
 Breaking changes:
