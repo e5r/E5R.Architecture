@@ -8,7 +8,7 @@ using System.Security.Cryptography;
 
 namespace E5R.Architecture.Core.Extensions
 {
-    public static class ByteArrayExtensions
+    public static partial class ByteArrayExtensions
     {
         /// <summary>
         /// Computes hash of bytes
@@ -17,7 +17,7 @@ namespace E5R.Architecture.Core.Extensions
         /// <param name="algorithm">Hash algorithm</param>
         /// <returns>The computed hash code</returns>
         /// <exception cref="ArgumentNullException">
-        /// If <paramref name="bytes"/> is null or empty array, or <paramref name="algorithm"/>
+        /// If <paramref name="bytes"/> is null or empty, or <paramref name="algorithm"/>
         /// is null
         /// </exception>
         public static byte[] Hash(this byte[] bytes, HashAlgorithm algorithm)
@@ -37,7 +37,7 @@ namespace E5R.Architecture.Core.Extensions
         /// Hexadecimal <see cref="String"/> representation of the computed hash code
         /// </returns>
         /// <exception cref="ArgumentNullException">
-        /// If <paramref name="bytes"/> is null or empty array, or <paramref name="algorithm"/>
+        /// If <paramref name="bytes"/> is null or empty, or <paramref name="algorithm"/>
         /// is null
         /// </exception>
         public static string HashHex(this byte[] bytes, HashAlgorithm algorithm) =>
@@ -53,7 +53,7 @@ namespace E5R.Architecture.Core.Extensions
         /// Hexadecimal <see cref="String"/> representation of the computed hash code
         /// </returns>
         /// <exception cref="ArgumentNullException">
-        /// If <paramref name="bytes"/> is null or empty array, or <paramref name="algorithm"/>
+        /// If <paramref name="bytes"/> is null or empty, or <paramref name="algorithm"/>
         /// is null
         /// </exception>
         public static string HashHex(this byte[] bytes, HashAlgorithm algorithm,
@@ -69,12 +69,22 @@ namespace E5R.Architecture.Core.Extensions
         #region Byte alias
 
         /// <summary>
+        /// Computes MD5 hash of bytes
+        /// </summary>
+        /// <param name="bytes">Byte array</param>
+        /// <returns>The computed MD5 hash code</returns>
+        /// <exception cref="ArgumentNullException">
+        /// If <paramref name="bytes"/> is null or empty
+        /// </exception>
+        public static byte[] Md5(this byte[] bytes) => Hash(bytes, MD5.Create());
+
+        /// <summary>
         /// Computes SHA-1 hash of bytes
         /// </summary>
         /// <param name="bytes">Byte array</param>
         /// <returns>The computed SHA-1 hash code</returns>
         /// <exception cref="ArgumentNullException">
-        /// If <paramref name="bytes"/> is null or empty array
+        /// If <paramref name="bytes"/> is null or empty
         /// </exception>
         public static byte[] Sha1(this byte[] bytes) => Hash(bytes, SHA1.Create());
 
@@ -84,7 +94,7 @@ namespace E5R.Architecture.Core.Extensions
         /// <param name="bytes">Byte array</param>
         /// <returns>The computed SHA-256 hash code</returns>
         /// <exception cref="ArgumentNullException">
-        /// If <paramref name="bytes"/> is null or empty array
+        /// If <paramref name="bytes"/> is null or empty
         /// </exception>
         public static byte[] Sha256(this byte[] bytes) => Hash(bytes, SHA256.Create());
 
@@ -94,7 +104,7 @@ namespace E5R.Architecture.Core.Extensions
         /// <param name="bytes">Byte array</param>
         /// <returns>The computed SHA-384 hash code</returns>
         /// <exception cref="ArgumentNullException">
-        /// If <paramref name="bytes"/> is null or empty array
+        /// If <paramref name="bytes"/> is null or empty
         /// </exception>
         public static byte[] Sha384(this byte[] bytes) => Hash(bytes, SHA384.Create());
 
@@ -104,7 +114,7 @@ namespace E5R.Architecture.Core.Extensions
         /// <param name="bytes">Byte array</param>
         /// <returns>The computed SHA-512 hash code</returns>
         /// <exception cref="ArgumentNullException">
-        /// If <paramref name="bytes"/> is null or empty array
+        /// If <paramref name="bytes"/> is null or empty
         /// </exception>
         public static byte[] Sha512(this byte[] bytes) => Hash(bytes, SHA512.Create());
 
@@ -113,6 +123,18 @@ namespace E5R.Architecture.Core.Extensions
         #region String lowercase alias
 
         /// <summary>
+        /// Computes MD5 hash of bytes
+        /// </summary>
+        /// <param name="bytes">Byte array</param>
+        /// <returns>
+        /// Hexadecimal <see cref="String"/> representation of the computed hash code
+        /// </returns>
+        /// <exception cref="ArgumentNullException">
+        /// If <paramref name="bytes"/> is null or empty
+        /// </exception>
+        public static string Md5Hex(this byte[] bytes) => HashHex(bytes, MD5.Create(), false);
+        
+        /// <summary>
         /// Computes SHA-1 hash of bytes
         /// </summary>
         /// <param name="bytes">Byte array</param>
@@ -120,7 +142,7 @@ namespace E5R.Architecture.Core.Extensions
         /// Hexadecimal <see cref="String"/> representation of the computed hash code
         /// </returns>
         /// <exception cref="ArgumentNullException">
-        /// If <paramref name="bytes"/> is null or empty array
+        /// If <paramref name="bytes"/> is null or empty
         /// </exception>
         public static string Sha1Hex(this byte[] bytes) => HashHex(bytes, SHA1.Create(), false);
 
@@ -132,7 +154,7 @@ namespace E5R.Architecture.Core.Extensions
         /// Hexadecimal <see cref="String"/> representation of the computed hash code
         /// </returns>
         /// <exception cref="ArgumentNullException">
-        /// If <paramref name="bytes"/> is null or empty array
+        /// If <paramref name="bytes"/> is null or empty
         /// </exception>
         public static string Sha256Hex(this byte[] bytes) => HashHex(bytes, SHA256.Create(), false);
 
@@ -144,7 +166,7 @@ namespace E5R.Architecture.Core.Extensions
         /// Hexadecimal <see cref="String"/> representation of the computed hash code
         /// </returns>
         /// <exception cref="ArgumentNullException">
-        /// If <paramref name="bytes"/> is null or empty array
+        /// If <paramref name="bytes"/> is null or empty
         /// </exception>
         public static string Sha384Hex(this byte[] bytes) => HashHex(bytes, SHA384.Create(), false);
 
@@ -156,13 +178,27 @@ namespace E5R.Architecture.Core.Extensions
         /// Hexadecimal <see cref="String"/> representation of the computed hash code
         /// </returns>
         /// <exception cref="ArgumentNullException">
-        /// If <paramref name="bytes"/> is null or empty array
+        /// If <paramref name="bytes"/> is null or empty
         /// </exception>
         public static string Sha512Hex(this byte[] bytes) => HashHex(bytes, SHA512.Create(), false);
 
         #endregion
 
         #region String alias
+        
+        /// <summary>
+        /// Computes MD5 hash of bytes
+        /// </summary>
+        /// <param name="bytes">Byte array</param>
+        /// <param name="upperCaseOutput">Generate uppercase output</param>
+        /// <returns>
+        /// Hexadecimal <see cref="String"/> representation of the computed hash code
+        /// </returns>
+        /// <exception cref="ArgumentNullException">
+        /// If <paramref name="bytes"/> is null or empty
+        /// </exception>
+        public static string Md5Hex(this byte[] bytes, bool upperCaseOutput) =>
+            HashHex(bytes, MD5.Create(), upperCaseOutput);
 
         /// <summary>
         /// Computes SHA-1 hash of bytes
@@ -173,7 +209,7 @@ namespace E5R.Architecture.Core.Extensions
         /// Hexadecimal <see cref="String"/> representation of the computed hash code
         /// </returns>
         /// <exception cref="ArgumentNullException">
-        /// If <paramref name="bytes"/> is null or empty array
+        /// If <paramref name="bytes"/> is null or empty
         /// </exception>
         public static string Sha1Hex(this byte[] bytes, bool upperCaseOutput) =>
             HashHex(bytes, SHA1.Create(), upperCaseOutput);
@@ -187,7 +223,7 @@ namespace E5R.Architecture.Core.Extensions
         /// Hexadecimal <see cref="String"/> representation of the computed hash code
         /// </returns>
         /// <exception cref="ArgumentNullException">
-        /// If <paramref name="bytes"/> is null or empty array
+        /// If <paramref name="bytes"/> is null or empty
         /// </exception>
         public static string Sha256Hex(this byte[] bytes, bool upperCaseOutput) =>
             HashHex(bytes, SHA256.Create(), upperCaseOutput);
@@ -201,7 +237,7 @@ namespace E5R.Architecture.Core.Extensions
         /// Hexadecimal <see cref="String"/> representation of the computed hash code
         /// </returns>
         /// <exception cref="ArgumentNullException">
-        /// If <paramref name="bytes"/> is null or empty array
+        /// If <paramref name="bytes"/> is null or empty
         /// </exception>
         public static string Sha384Hex(this byte[] bytes, bool upperCaseOutput) =>
             HashHex(bytes, SHA384.Create(), upperCaseOutput);
@@ -215,7 +251,7 @@ namespace E5R.Architecture.Core.Extensions
         /// Hexadecimal <see cref="String"/> representation of the computed hash code
         /// </returns>
         /// <exception cref="ArgumentNullException">
-        /// If <paramref name="bytes"/> is null or empty array
+        /// If <paramref name="bytes"/> is null or empty
         /// </exception>
         public static string Sha512Hex(this byte[] bytes, bool upperCaseOutput) =>
             HashHex(bytes, SHA512.Create(), upperCaseOutput);

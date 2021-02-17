@@ -8,7 +8,7 @@ using System.Text;
 
 namespace E5R.Architecture.Core.Extensions
 {
-    public static class StringExtensions
+    public static partial class StringExtensions
     {
         /// <summary>
         /// Computes hash of <see cref="String"/>
@@ -120,6 +120,16 @@ namespace E5R.Architecture.Core.Extensions
         #region UTF-8 byte alias
 
         /// <summary>
+        /// Computes MD5 hash of <see cref="String"/>
+        /// </summary>
+        /// <param name="inputString">The input <see cref="String"/></param>
+        /// <returns>The computed MD5 hash code</returns>
+        /// <exception cref="ArgumentNullException">
+        /// If <paramref name="inputString"/> is null or empty array
+        /// </exception>
+        public static byte[] Md5(this string inputString) => Hash(inputString, MD5.Create());
+
+        /// <summary>
         /// Computes SHA-1 hash of <see cref="String"/>
         /// </summary>
         /// <param name="inputString">The input <see cref="String"/></param>
@@ -162,6 +172,19 @@ namespace E5R.Architecture.Core.Extensions
         #endregion
 
         #region UTF-8 string lowercase alias
+
+        /// <summary>
+        /// Computes MD5 hash of <see cref="String"/>
+        /// </summary>
+        /// <param name="inputString">The input <see cref="String"/></param>
+        /// <returns>
+        /// Hexadecimal <see cref="String"/> representation of the computed hash code
+        /// </returns>
+        /// <exception cref="ArgumentNullException">
+        /// If <paramref name="inputString"/> is null or empty array
+        /// </exception>
+        public static string Md5Hex(this string inputString) =>
+            HashHex(inputString, MD5.Create(), false);
 
         /// <summary>
         /// Computes SHA-1 hash of <see cref="String"/>
@@ -218,6 +241,20 @@ namespace E5R.Architecture.Core.Extensions
         #endregion
 
         #region UTF-8 string alias
+
+        /// <summary>
+        /// Computes MD5 hash of <see cref="String"/>
+        /// </summary>
+        /// <param name="inputString">The input <see cref="String"/></param>
+        /// <param name="upperCaseOutput">If the output is to be uppercase</param>
+        /// <returns>
+        /// Hexadecimal <see cref="String"/> representation of the computed hash code
+        /// </returns>
+        /// <exception cref="ArgumentNullException">
+        /// If <paramref name="inputString"/> is null or empty array
+        /// </exception>
+        public static string Md5Hex(this string inputString, bool upperCaseOutput) =>
+            HashHex(inputString, MD5.Create(), upperCaseOutput);
 
         /// <summary>
         /// Computes SHA-1 hash of <see cref="String"/>
