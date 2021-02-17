@@ -26,6 +26,10 @@ namespace E5R.Architecture.Core
         {
             switch (length)
             {
+                case UniqueIdentifierLength.Length32:
+                    StringId = Guid.NewGuid().ToByteArray().Md5Hex();
+                    break;
+
                 case UniqueIdentifierLength.Length40:
                     StringId = Guid.NewGuid().ToByteArray().Sha1Hex();
                     break;
@@ -66,7 +70,7 @@ namespace E5R.Architecture.Core
 
         void EnsureLength(string stringId)
         {
-            if (!new[] {40, 64, 96, 128}.Contains(stringId.Length))
+            if (!new[] {32, 40, 64, 96, 128}.Contains(stringId.Length))
                 // TODO: Implementar i18n/l10n
                 throw new InvalidCastException(InvalidCastErrorMessage);
         }
