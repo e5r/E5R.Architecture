@@ -121,13 +121,59 @@ namespace E5R.Architecture.Core.Test
             var inputKey = new byte[] {5, 5, 18};
             var inputE5RBytes = Encoding.UTF8.GetBytes("E5R");
             var algorithm = HMAC.Create(algorithmName);
-            
+
             algorithm.Key = inputKey;
-            
+
             var output = inputE5RBytes.Hash(algorithm);
             var outputString = string.Concat(output.Select(c => c.ToString("x2")));
 
             Assert.Equal(expectedValue, outputString);
+        }
+
+        #endregion
+
+        #region String extensions
+
+        [Fact]
+        public void IntoString_RequiresAllArguments()
+        {
+            var ex1 = Assert.Throws<ArgumentNullException>(() =>
+                ByteArrayExtensions.IntoString(null, Encoding.Default));
+            var ex2 =
+                Assert.Throws<ArgumentNullException>(() => new byte[1].IntoString(null));
+
+            Assert.Equal("bytes", ex1.ParamName);
+            Assert.Equal("encoding", ex2.ParamName);
+        }
+
+        [Fact]
+        public void IntoString_ConvertToCorrectEncodedString()
+        {
+            var phrase = "E5R Development Team";
+            var buffer1 = Encoding.UTF8.GetBytes(phrase);
+            var buffer2 = Encoding.BigEndianUnicode.GetBytes(phrase);
+
+            var convertedPhrase1 = buffer1.IntoString(Encoding.UTF8);
+            var convertedPhrase2 = buffer2.IntoString(Encoding.BigEndianUnicode);
+            var convertedPhrase3 = buffer1.IntoString(Encoding.BigEndianUnicode);
+
+            Assert.Equal(phrase, convertedPhrase1);
+            Assert.Equal(phrase, convertedPhrase2);
+            Assert.NotEqual(phrase, convertedPhrase3);
+        }
+
+        [Fact]
+        public void IntoString_ConvertToDefaultUTF8String()
+        {
+            var phrase = "E5R Development Team";
+            var buffer1 = Encoding.UTF8.GetBytes(phrase);
+            var buffer2 = Encoding.BigEndianUnicode.GetBytes(phrase);
+
+            var convertedPhrase1 = buffer1.IntoString();
+            var convertedPhrase2 = buffer2.IntoString();
+
+            Assert.Equal(phrase, convertedPhrase1);
+            Assert.NotEqual(phrase, convertedPhrase2);
         }
 
         #endregion
