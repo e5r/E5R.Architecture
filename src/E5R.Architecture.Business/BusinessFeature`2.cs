@@ -21,7 +21,7 @@ namespace E5R.Architecture.Business
 
         protected abstract Task<TOutput> ExecActionAsync(TInput input);
 
-        public async Task<TOutput> ExecAsync<TFrom>(TFrom @from)
+        public async Task<TOutput> ExecFromAsync<TFrom>(TFrom @from)
         {
             var input = TransformInput(@from);
 

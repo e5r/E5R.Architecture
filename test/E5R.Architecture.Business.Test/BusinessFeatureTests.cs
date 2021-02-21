@@ -44,7 +44,7 @@ namespace E5R.Architecture.Business.Test
             var feature = new TenInputOutputFeature(transformerMock.Object);
             var exception =
                 await Assert.ThrowsAsync<ArgumentNullException>(() =>
-                    feature.ExecAsync<double?>(null));
+                    feature.ExecFromAsync<double?>(null));
 
             Assert.Equal("from", exception.ParamName);
         }
@@ -56,7 +56,7 @@ namespace E5R.Architecture.Business.Test
             var feature = new TenInputOutputFeature(transformerMock.Object);
             var exception =
                 await Assert.ThrowsAsync<BusinessLayerException>(() =>
-                    feature.ExecAsync<string>("notnull"));
+                    feature.ExecFromAsync<string>("notnull"));
 
             Assert.Equal(
                 "The input object is already of the expected type. You should use Exec() instead of Exec<>()",
@@ -74,7 +74,7 @@ namespace E5R.Architecture.Business.Test
             var feature = new TenInputOutputFeature(transformerMock.Object);
             var exception =
                 await Assert.ThrowsAsync<BusinessLayerException>(() =>
-                    feature.ExecAsync(1));
+                    feature.ExecFromAsync(1));
 
             Assert.Equal("The input type cannot be transformed to the expected type properly",
                 exception.Message);
@@ -89,7 +89,7 @@ namespace E5R.Architecture.Business.Test
                 .Returns("TenLetters");
 
             var feature = new TenInputOutputFeature(transformerMock.Object);
-            int result = await feature.ExecAsync(0);
+            int result = await feature.ExecFromAsync(0);
 
             Assert.Equal(10, result);
         }
