@@ -17,6 +17,15 @@ Novos recursos:
     - `int CountAll()` Que retorna o total de registros
     - `int Count(IDataFilter<> filter)` Que retorna o total de registros que obedeçam a um determinado filtro
     - Os métodos também estão disponíveis na api fluente `AsFluentQuery()`
+* Adiciona capacidade de deduzir nome de parâmetro por expressões no utilitário Checker
+```c#
+void MyMethod(MyClass model)
+{
+    Checker.NotNullObject(model?.Inner?.Prop, () => model.Inner.Prop);
+    // Equivalente a:
+    Checker.NotNullObject(model?.Inner?.Prop, "model.Inner.Prop");
+}
+```
 * Adiciona utilitários para calcular hash e assinaturas HMAC de `byte[]` e `string` na forma de extensões
 ```c#
 using E5R.Architecture.Core.Extensions;
