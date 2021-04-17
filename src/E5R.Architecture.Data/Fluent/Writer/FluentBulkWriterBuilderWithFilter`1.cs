@@ -11,7 +11,7 @@ using E5R.Architecture.Data.Abstractions;
 namespace E5R.Architecture.Data.Fluent.Writer
 {
     public class FluentBulkWriterBuilderWithFilter<TDataModel> : FluentBulkWriterBuilderElements<TDataModel>
-        where TDataModel : IDataModel
+        where TDataModel : IIdentifiable
     {
         internal FluentBulkWriterBuilderWithFilter(IStorageBulkWriter<TDataModel> storage,
             DataFilter<TDataModel> filter) : base(storage, filter)

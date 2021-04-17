@@ -241,7 +241,7 @@ namespace UsingDataEntityFrameworkCore.Controllers
 
             foreach (var courseTest in allCoursesTests)
             {
-                var reload = _storeCourseTest.Find(courseTest.IdentifierValues);
+                var reload = _storeCourseTest.Find(courseTest.Identifiers);
                 _logger.LogDebug($"CourseTest {{ CourseID: {reload.CourseID}, CourseGUID: {reload.CourseGUID} }}");
             }
 
@@ -251,7 +251,7 @@ namespace UsingDataEntityFrameworkCore.Controllers
 
             foreach (var courseTest in allCoursesTests)
             {
-                var reload = _storeCourseTest.Find(courseTest.IdentifierValues);
+                var reload = _storeCourseTest.Find(courseTest.Identifiers);
                 _logger.LogDebug($"CourseTest {{ CourseID: {reload.CourseID}, CourseGUID: {reload.CourseGUID} }}");
             }
 

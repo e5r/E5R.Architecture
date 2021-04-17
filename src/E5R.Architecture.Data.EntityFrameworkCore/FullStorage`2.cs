@@ -14,7 +14,7 @@ using Microsoft.EntityFrameworkCore;
 namespace E5R.Architecture.Data.EntityFrameworkCore
 {
     public class FullStorage<TDbContext, TDataModel> : StorageBase<TDataModel>
-        where TDataModel : class, IDataModel
+        where TDataModel : class, IIdentifiable
         where TDbContext : DbContext
     {
         protected TDbContext Context { get; private set; }
@@ -37,11 +37,11 @@ namespace E5R.Architecture.Data.EntityFrameworkCore
         {
             Checker.NotNullArgument(data, nameof(data));
 
-            return Find(data.IdentifierValues, includes);
+            return Find(data.Identifiers, includes);
         }
 
         public TDataModel Find(object identifier, IDataIncludes includes)
-            => Find(new object[] { identifier }, includes);
+            => Find(new object[] {identifier}, includes);
 
         public TDataModel Find(object[] identifiers, IDataIncludes includes)
         {
@@ -53,9 +53,16 @@ namespace E5R.Architecture.Data.EntityFrameworkCore
                 .FirstOrDefault();
         }
 
-        public IEnumerable<TDataModel> GetAll(IDataIncludes includes) => TryApplyIncludes(Query, includes);
+        public int CountAll() => Query.Count();
 
-        public PaginatedResult<TDataModel> LimitedGet(IDataLimiter<TDataModel> limiter, IDataIncludes includes)
+        public int Count(IDataFilter<TDataModel> filter) =>
+            QuerySearch(Query, filter, null).Count();
+
+        public IEnumerable<TDataModel> GetAll(IDataIncludes includes) =>
+            TryApplyIncludes(Query, includes);
+
+        public PaginatedResult<TDataModel> LimitedGet(IDataLimiter<TDataModel> limiter,
+            IDataIncludes includes)
         {
             Checker.NotNullArgument(limiter, nameof(limiter));
 
@@ -69,7 +76,8 @@ namespace E5R.Architecture.Data.EntityFrameworkCore
             );
         }
 
-        public IEnumerable<TDataModel> Search(IDataFilter<TDataModel> filter, IDataIncludes includes)
+        public IEnumerable<TDataModel> Search(IDataFilter<TDataModel> filter,
+            IDataIncludes includes)
         {
             Checker.NotNullArgument(filter, nameof(filter));
 
@@ -100,21 +108,25 @@ namespace E5R.Architecture.Data.EntityFrameworkCore
 
         #region IStorageReader for TSelect
 
-        public TSelect Find<TSelect>(TDataModel data, IDataProjection<TDataModel, TSelect> projection)
+        public TSelect Find<TSelect>(TDataModel data,
+            IDataProjection<TDataModel, TSelect> projection)
         {
             Checker.NotNullArgument(data, nameof(data));
 
-            return Find(data.IdentifierValues, projection);
+            return Find(data.Identifiers, projection);
         }
 
-        public TSelect Find<TSelect>(object identifier, IDataProjection<TDataModel, TSelect> projection)
-            => Find(new object[] { identifier }, projection);
+        public TSelect Find<TSelect>(object identifier,
+            IDataProjection<TDataModel, TSelect> projection)
+            => Find(new object[] {identifier}, projection);
 
-        public TSelect Find<TSelect>(object[] identifiers, IDataProjection<TDataModel, TSelect> projection)
+        public TSelect Find<TSelect>(object[] identifiers,
+            IDataProjection<TDataModel, TSelect> projection)
         {
             Checker.NotNullArgument(identifiers, nameof(identifiers));
             Checker.NotNullArgument(projection, nameof(projection));
-            Checker.NotNullObject(projection.Select, $"{nameof(projection)}.{nameof(projection.Select)}");
+            Checker.NotNullObject(projection.Select,
+                $"{nameof(projection)}.{nameof(projection.Select)}");
 
             var entityType = Context.Model.FindEntityType(typeof(TDataModel));
 
@@ -126,16 +138,19 @@ namespace E5R.Architecture.Data.EntityFrameworkCore
         public IEnumerable<TSelect> GetAll<TSelect>(IDataProjection<TDataModel, TSelect> projection)
         {
             Checker.NotNullArgument(projection, nameof(projection));
-            Checker.NotNullObject(projection.Select, $"{nameof(projection)}.{nameof(projection.Select)}");
+            Checker.NotNullObject(projection.Select,
+                $"{nameof(projection)}.{nameof(projection.Select)}");
 
             return TryApplyIncludes(Query, projection).Select(projection.Select);
         }
 
-        public PaginatedResult<TSelect> LimitedGet<TSelect>(IDataLimiter<TDataModel> limiter, IDataProjection<TDataModel, TSelect> projection)
+        public PaginatedResult<TSelect> LimitedGet<TSelect>(IDataLimiter<TDataModel> limiter,
+            IDataProjection<TDataModel, TSelect> projection)
         {
             Checker.NotNullArgument(limiter, nameof(limiter));
             Checker.NotNullArgument(projection, nameof(projection));
-            Checker.NotNullObject(projection.Select, $"{nameof(projection)}.{nameof(projection.Select)}");
+            Checker.NotNullObject(projection.Select,
+                $"{nameof(projection)}.{nameof(projection.Select)}");
 
             var (offset, limit, total, result) = QueryPreLimitResult(Query, limiter, projection);
 
@@ -147,11 +162,13 @@ namespace E5R.Architecture.Data.EntityFrameworkCore
             );
         }
 
-        public IEnumerable<TSelect> Search<TSelect>(IDataFilter<TDataModel> filter, IDataProjection<TDataModel, TSelect> projection)
+        public IEnumerable<TSelect> Search<TSelect>(IDataFilter<TDataModel> filter,
+            IDataProjection<TDataModel, TSelect> projection)
         {
             Checker.NotNullArgument(filter, nameof(filter));
             Checker.NotNullArgument(projection, nameof(projection));
-            Checker.NotNullObject(projection.Select, $"{nameof(projection)}.{nameof(projection.Select)}");
+            Checker.NotNullObject(projection.Select,
+                $"{nameof(projection)}.{nameof(projection.Select)}");
 
             return QuerySearch(Query, filter, projection)
                 .Select(projection.Select);
@@ -163,7 +180,8 @@ namespace E5R.Architecture.Data.EntityFrameworkCore
             Checker.NotNullArgument(filter, nameof(filter));
             Checker.NotNullArgument(limiter, nameof(limiter));
             Checker.NotNullArgument(projection, nameof(projection));
-            Checker.NotNullObject(projection.Select, $"{nameof(projection)}.{nameof(projection.Select)}");
+            Checker.NotNullObject(projection.Select,
+                $"{nameof(projection)}.{nameof(projection.Select)}");
 
             var query = QuerySearch(Query, filter, projection);
 
@@ -183,23 +201,30 @@ namespace E5R.Architecture.Data.EntityFrameworkCore
 
         #region IStorageReader for TGroup
 
-        public IEnumerable<TSelect> GetAll<TGroup, TSelect>(IDataProjection<TDataModel, TGroup, TSelect> projection)
+        public IEnumerable<TSelect> GetAll<TGroup, TSelect>(
+            IDataProjection<TDataModel, TGroup, TSelect> projection)
         {
             Checker.NotNullArgument(projection, nameof(projection));
-            Checker.NotNullObject(projection.Group, $"{nameof(projection)}.{nameof(projection.Group)}");
-            Checker.NotNullObject(projection.Select, $"{nameof(projection)}.{nameof(projection.Select)}");
+            Checker.NotNullObject(projection.Group,
+                $"{nameof(projection)}.{nameof(projection.Group)}");
+            Checker.NotNullObject(projection.Select,
+                $"{nameof(projection)}.{nameof(projection.Select)}");
 
             return TryApplyIncludes(Query, projection)
                 .GroupBy(projection.Group)
                 .Select(projection.Select);
         }
 
-        public PaginatedResult<TSelect> LimitedGet<TGroup, TSelect>(IDataLimiter<TDataModel> limiter, IDataProjection<TDataModel, TGroup, TSelect> projection)
+        public PaginatedResult<TSelect> LimitedGet<TGroup, TSelect>(
+            IDataLimiter<TDataModel> limiter,
+            IDataProjection<TDataModel, TGroup, TSelect> projection)
         {
             Checker.NotNullArgument(limiter, nameof(limiter));
             Checker.NotNullArgument(projection, nameof(projection));
-            Checker.NotNullObject(projection.Group, $"{nameof(projection)}.{nameof(projection.Group)}");
-            Checker.NotNullObject(projection.Select, $"{nameof(projection)}.{nameof(projection.Select)}");
+            Checker.NotNullObject(projection.Group,
+                $"{nameof(projection)}.{nameof(projection.Group)}");
+            Checker.NotNullObject(projection.Select,
+                $"{nameof(projection)}.{nameof(projection.Select)}");
 
             var (offset, limit, total, result) = QueryPreLimitResult(Query, limiter, projection);
 
@@ -211,26 +236,33 @@ namespace E5R.Architecture.Data.EntityFrameworkCore
             );
         }
 
-        public IEnumerable<TSelect> Search<TGroup, TSelect>(IDataFilter<TDataModel> filter, IDataProjection<TDataModel, TGroup, TSelect> projection)
+        public IEnumerable<TSelect> Search<TGroup, TSelect>(IDataFilter<TDataModel> filter,
+            IDataProjection<TDataModel, TGroup, TSelect> projection)
         {
             Checker.NotNullArgument(filter, nameof(filter));
             Checker.NotNullArgument(projection, nameof(projection));
-            Checker.NotNullObject(projection.Group, $"{nameof(projection)}.{nameof(projection.Group)}");
-            Checker.NotNullObject(projection.Select, $"{nameof(projection)}.{nameof(projection.Select)}");
+            Checker.NotNullObject(projection.Group,
+                $"{nameof(projection)}.{nameof(projection.Group)}");
+            Checker.NotNullObject(projection.Select,
+                $"{nameof(projection)}.{nameof(projection.Select)}");
 
             return QuerySearch(Query, filter, projection)
                 .GroupBy(projection.Group)
                 .Select(projection.Select);
         }
 
-        public PaginatedResult<TSelect> LimitedSearch<TGroup, TSelect>(IDataFilter<TDataModel> filter,
-            IDataLimiter<TDataModel> limiter, IDataProjection<TDataModel, TGroup, TSelect> projection)
+        public PaginatedResult<TSelect> LimitedSearch<TGroup, TSelect>(
+            IDataFilter<TDataModel> filter,
+            IDataLimiter<TDataModel> limiter,
+            IDataProjection<TDataModel, TGroup, TSelect> projection)
         {
             Checker.NotNullArgument(filter, nameof(filter));
             Checker.NotNullArgument(limiter, nameof(limiter));
             Checker.NotNullArgument(projection, nameof(projection));
-            Checker.NotNullObject(projection.Group, $"{nameof(projection)}.{nameof(projection.Group)}");
-            Checker.NotNullObject(projection.Select, $"{nameof(projection)}.{nameof(projection.Select)}");
+            Checker.NotNullObject(projection.Group,
+                $"{nameof(projection)}.{nameof(projection.Group)}");
+            Checker.NotNullObject(projection.Select,
+                $"{nameof(projection)}.{nameof(projection.Select)}");
 
             var query = QuerySearch(Query, filter, projection);
 
@@ -328,15 +360,16 @@ namespace E5R.Architecture.Data.EntityFrameworkCore
             Checker.NotNullArgument(identifier, nameof(identifier));
             Checker.NotNullArgument(updated, nameof(updated));
 
-            return Update<TUpdated>(new[] { identifier }, _ => updated);
+            return Update<TUpdated>(new[] {identifier}, _ => updated);
         }
 
-        public TDataModel Update<TUpdated>(object identifier, Expression<Func<TDataModel, TUpdated>> updateExpression)
+        public TDataModel Update<TUpdated>(object identifier,
+            Expression<Func<TDataModel, TUpdated>> updateExpression)
         {
             Checker.NotNullArgument(identifier, nameof(identifier));
             Checker.NotNullArgument(updateExpression, nameof(updateExpression));
 
-            return Update(new[] { identifier }, updateExpression);
+            return Update(new[] {identifier}, updateExpression);
         }
 
         public TDataModel Update<TUpdated>(object[] identifiers, TUpdated updated)
@@ -347,7 +380,8 @@ namespace E5R.Architecture.Data.EntityFrameworkCore
             return Update(identifiers, _ => updated);
         }
 
-        public TDataModel Update<TUpdated>(object[] identifiers, Expression<Func<TDataModel, TUpdated>> updateExpression)
+        public TDataModel Update<TUpdated>(object[] identifiers,
+            Expression<Func<TDataModel, TUpdated>> updateExpression)
         {
             Checker.NotNullArgument(identifiers, nameof(identifiers));
             Checker.NotNullArgument(updateExpression, nameof(updateExpression));
@@ -448,7 +482,8 @@ namespace E5R.Architecture.Data.EntityFrameworkCore
         public void BulkRemove(IDataFilter<TDataModel> filter)
             => BulkRemove(QuerySearch(Query, filter, null));
 
-        public IEnumerable<TDataModel> BulkUpdate<TUpdated>(IDataFilter<TDataModel> filter, TUpdated updated)
+        public IEnumerable<TDataModel> BulkUpdate<TUpdated>(IDataFilter<TDataModel> filter,
+            TUpdated updated)
         {
             Checker.NotNullArgument(filter, nameof(filter));
             Checker.NotNullArgument(updated, nameof(updated));
@@ -456,7 +491,8 @@ namespace E5R.Architecture.Data.EntityFrameworkCore
             return BulkUpdate(filter, _ => updated);
         }
 
-        public IEnumerable<TDataModel> BulkUpdate<TUpdated>(IDataFilter<TDataModel> filter, Expression<Func<TDataModel, TUpdated>> updateExpression)
+        public IEnumerable<TDataModel> BulkUpdate<TUpdated>(IDataFilter<TDataModel> filter,
+            Expression<Func<TDataModel, TUpdated>> updateExpression)
         {
             Checker.NotNullArgument(filter, nameof(filter));
             Checker.NotNullArgument(updateExpression, nameof(updateExpression));

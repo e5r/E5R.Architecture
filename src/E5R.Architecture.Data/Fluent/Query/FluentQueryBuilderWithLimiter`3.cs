@@ -10,7 +10,7 @@ using E5R.Architecture.Data.Abstractions;
 namespace E5R.Architecture.Data.Fluent.Query
 {
     public class FluentQueryBuilderWithLimiter<TDataModel, TGroup, TSelect> : FluentQueryBuilderElements<TDataModel>
-        where TDataModel : IDataModel
+        where TDataModel : IIdentifiable
     {
         private readonly DataProjection<TDataModel, TGroup, TSelect> _projection;
 

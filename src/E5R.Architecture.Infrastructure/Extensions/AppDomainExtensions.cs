@@ -28,11 +28,35 @@ namespace E5R.Architecture.Infrastructure.Extensions
             Checker.NotNullArgument(container, nameof(container));
 
             appDomain.GetAssemblies()
-                .Where(a => a.DefinedTypes.Any(t => t.ImplementedInterfaces.Contains(typeof(IDIRegistrar))))
+                .Where(a =>
+                    a.DefinedTypes.Any(t => t.ImplementedInterfaces.Contains(typeof(IDIRegistrar))))
                 .ToList()
                 .ForEach(a => a.DIRegistrar(container));
         }
-        
+
+        public static void AddAllNotificationDispatchers(this AppDomain appDomain,
+            IServiceCollection services)
+        {
+            Checker.NotNullArgument(appDomain, nameof(appDomain));
+            Checker.NotNullArgument(services, nameof(services));
+
+            appDomain
+                .GetNonSystemAssemblies()
+                .ToList()
+                .ForEach(a => a.AddAllNotificationDispatchers(services));
+        }
+
+        public static void AddAllTransformers(this AppDomain appDomain, IServiceCollection services)
+        {
+            Checker.NotNullArgument(appDomain, nameof(appDomain));
+            Checker.NotNullArgument(services, nameof(services));
+
+            appDomain
+                .GetNonSystemAssemblies()
+                .ToList()
+                .ForEach(a => a.AddAllTransformers(services));
+        }
+
         public static void AddAllRules(this AppDomain appDomain, IServiceCollection services)
         {
             Checker.NotNullArgument(appDomain, nameof(appDomain));
@@ -42,6 +66,17 @@ namespace E5R.Architecture.Infrastructure.Extensions
                 .GetNonSystemAssemblies()
                 .ToList()
                 .ForEach(a => a.AddAllRules(services));
+        }
+
+        public static void AddAllLazyGroups(this AppDomain appDomain, IServiceCollection services)
+        {
+            Checker.NotNullArgument(appDomain, nameof(appDomain));
+            Checker.NotNullArgument(services, nameof(services));
+
+            appDomain
+                .GetNonSystemAssemblies()
+                .ToList()
+                .ForEach(a => a.AddAllLazyGroups(services));
         }
     }
 }

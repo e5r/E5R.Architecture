@@ -12,7 +12,7 @@ using E5R.Architecture.Data.Fluent.Query;
 namespace E5R.Architecture.Data.Fluent
 {
     public class ProjectionRootBuilder<TDataModel, TGroup, TSelect> : FluentQueryBuilderElements<TDataModel>
-        where TDataModel : IDataModel
+        where TDataModel : IIdentifiable
     {
         private readonly Expression<Func<TDataModel, TGroup>> _group;
         private readonly Expression<Func<IGrouping<TGroup, TDataModel>, TSelect>> _select;
@@ -42,7 +42,7 @@ namespace E5R.Architecture.Data.Fluent
         }
 
         public ProjectionInnerBuilder<T, TDataModel> Include<T>(Expression<Func<TDataModel, object>> expression)
-            where T : IDataModel
+            where T : IIdentifiable
         {
             Checker.NotNullArgument(expression, nameof(expression));
 

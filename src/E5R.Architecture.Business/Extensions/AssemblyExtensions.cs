@@ -14,30 +14,15 @@ namespace E5R.Architecture.Business.Extensions
 {
     public static class AssemblyExtensions
     {
-        public static void AddBusinessFeatures(this Assembly assembly, IServiceCollection services)
+        public static void AddAllBusinessFeatures(this Assembly assembly, IServiceCollection services)
         {
             Checker.NotNullArgument(assembly, nameof(assembly));
             Checker.NotNullArgument(services, nameof(services));
 
             var typeOfFeatureSignature = typeof(IBusinessFeatureSignature);
-            var typeOfFacadeSignature = typeof(IBusinessFacadeSignature);
-            var typesToDiscard = new[]
-            {
-                typeof(BusinessFacade<>),
-                typeof(BusinessFacade<,>),
-                typeof(BusinessFacade<,,>),
-                typeof(BusinessFacade<,,,>),
-                typeof(BusinessFacade<,,,,>),
-                typeof(BusinessFacade<,,,,,>),
-                typeof(BusinessFacade<,,,,,,>),
-                typeof(BusinessFacade<,,,,,,,>),
-                typeof(BusinessFacade<,,,,,,,,>),
-                typeof(BusinessFacade<,,,,,,,,,>),
-            };
 
             assembly.DefinedTypes
-                .Where(t => !t.IsAbstract && (typeOfFeatureSignature.IsAssignableFrom(t) ||
-                                              (typeOfFacadeSignature.IsAssignableFrom(t) && !typesToDiscard.Contains(t))))
+                .Where(t => !t.IsAbstract && typeOfFeatureSignature.IsAssignableFrom(t))
                 .ToList()
                 .ForEach(services.TryAddScoped);
         }

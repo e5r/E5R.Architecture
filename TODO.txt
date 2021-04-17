@@ -5,6 +5,9 @@ v0.x
 - Implementar validação de modelo (IModelValidator)
   > Será possível algum tipo de relacionamento com IRule, RuleFor<> e RuleSet<>?
   > Revisar RuleFor<> e RuleSet<> para ver se talvez nem seja prciso de um IModelValidator
+- Registrar automaticamente os objetos de transformação via AddInfrastrucure()
+  > Conferir se a operação ficará muito pesada
+  > Seguir mesma idéia de `AddAllRules()` e `AddLazyGroups()`
 
 v1.0
 ====

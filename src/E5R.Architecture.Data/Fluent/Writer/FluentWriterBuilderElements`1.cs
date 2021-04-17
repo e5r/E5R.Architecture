@@ -9,7 +9,7 @@ using E5R.Architecture.Data.Abstractions;
 namespace E5R.Architecture.Data.Fluent.Writer
 {
     public class FluentWriterBuilderElements<TDataModel>
-        where TDataModel : IDataModel
+        where TDataModel : IIdentifiable
     {
         internal readonly IStorageWriter<TDataModel> _storage;
         internal readonly List<object> _identifiers;

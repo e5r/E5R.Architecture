@@ -14,13 +14,14 @@ namespace E5R.Architecture.Business
     public abstract class InputOnlyBusinessFeature<TInput> : InputBasedBusinessFeature<TInput>,
         IBusinessFeatureSignature
     {
-        public InputOnlyBusinessFeature(ITransformationManager transformer) : base(transformer)
+        public InputOnlyBusinessFeature(ILazy<ITransformationManager> transformer) : base(
+            transformer)
         {
         }
 
         protected abstract Task ExecActionAsync(TInput input);
 
-        public async Task ExecAsync<TFrom>(TFrom @from)
+        public async Task ExecFromAsync<TFrom>(TFrom @from)
         {
             var input = TransformInput(@from);
 

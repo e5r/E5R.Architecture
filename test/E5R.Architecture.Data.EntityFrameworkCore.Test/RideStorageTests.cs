@@ -4,10 +4,10 @@
 
 using System;
 using Xunit;
-using E5R.Architecture.Data.Abstractions;
 using E5R.Architecture.Core.Exceptions;
 using System.Collections.Generic;
 using System.Linq;
+using E5R.Architecture.Core;
 using E5R.Architecture.Data.EntityFrameworkCore.Alias;
 
 namespace E5R.Architecture.Data.EntityFrameworkCore.Test
@@ -152,9 +152,9 @@ namespace E5R.Architecture.Data.EntityFrameworkCore.Test
     }
 
     #region Mock
-    public class EmptyDataModel : IDataModel
+    public class EmptyDataModel : IIdentifiable
     {
-        public object[] IdentifierValues => throw new NotImplementedException();
+        public object[] Identifiers => throw new NotImplementedException();
     }
     #endregion
 }

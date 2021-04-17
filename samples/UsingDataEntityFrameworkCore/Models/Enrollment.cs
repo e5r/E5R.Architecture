@@ -1,5 +1,4 @@
-using System;
-using E5R.Architecture.Data.Abstractions;
+using E5R.Architecture.Core;
 
 namespace UsingDataEntityFrameworkCore.Models
 {
@@ -8,7 +7,7 @@ namespace UsingDataEntityFrameworkCore.Models
         A, B, C, D, E, F
     }
 
-    public class Enrollment : IDataModel
+    public class Enrollment : IIdentifiable
     {
         public int EnrollmentID { get; set; }
         public int CourseID { get; set; }
@@ -18,6 +17,6 @@ namespace UsingDataEntityFrameworkCore.Models
         public Course Course { get; set; }
         public Student Student { get; set; }
 
-        public object[] IdentifierValues => new[] { (object)EnrollmentID };
+        public object[] Identifiers => new[] { (object)EnrollmentID };
     }
 }

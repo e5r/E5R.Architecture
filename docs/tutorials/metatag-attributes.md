@@ -287,3 +287,12 @@ using E5R.Architecture.Core.Models;
 
 EnumModel[] modelos = EnumUtil.GetModels<MinhaSituacao>();
 ```
+
+Também podemos recuperar o valor de um enum qualquer com base no valor de uma tag:
+```c#
+var byDescription = EnumUtil.FromTag<MinhaSituacao>(Tag.DescriptionKey, "Finalizado com sucesso");
+var byCustomId = EnumUtil.FromTag<MinhaSituacao>(Tag.CustomIdKey, "FS");
+
+Assert.Equal(MinhaSituacao.FinalizadoComSucesso, byDescription); 
+Assert.Equal(MinhaSituacao.FinalizadoComSucesso, byCustomId);
+```

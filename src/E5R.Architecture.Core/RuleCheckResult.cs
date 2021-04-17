@@ -11,7 +11,7 @@ namespace E5R.Architecture.Core
         static RuleCheckResult _defaultSuccessResult;
         static RuleCheckResult _defaultFailResult;
 
-        public RuleCheckResult(bool success, IDictionary<string, string> unconformities = null)
+        public RuleCheckResult(bool success, IReadOnlyDictionary<string, string> unconformities = null)
         {
             IsSuccess = success;
             Unconformities = unconformities ?? new Dictionary<string, string>();
@@ -19,7 +19,7 @@ namespace E5R.Architecture.Core
 
         public bool IsSuccess { get; }
 
-        public IDictionary<string, string> Unconformities { get; }
+        public IReadOnlyDictionary<string, string> Unconformities { get; }
 
         public static RuleCheckResult Success
         {

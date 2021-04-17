@@ -8,7 +8,7 @@ using E5R.Architecture.Data.Abstractions;
 namespace E5R.Architecture.Data.Fluent.Query
 {
     public class FluentQueryBuilderElements<TDataModel>
-        where TDataModel : IDataModel
+        where TDataModel : IIdentifiable
     {
         internal readonly IStorageReader<TDataModel> _storage;
         internal readonly DataFilter<TDataModel> _filter;

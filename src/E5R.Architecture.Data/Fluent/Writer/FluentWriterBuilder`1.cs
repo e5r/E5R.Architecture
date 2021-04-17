@@ -3,12 +3,13 @@
 // Licensed under the Apache version 2.0: https://github.com/e5r/manifest/blob/master/license/APACHE-2.0.txt
 
 using System.Collections.Generic;
+using E5R.Architecture.Core;
 using E5R.Architecture.Data.Abstractions;
 
 namespace E5R.Architecture.Data.Fluent.Writer
 {
     public class FluentWriterBuilder<TDataModel> : FluentWriterBuilderElements<TDataModel>
-        where TDataModel : IDataModel
+        where TDataModel : IIdentifiable
     {
         public FluentWriterBuilder(IStorageWriter<TDataModel> storage) : base(storage,
             new List<object>())

@@ -4,7 +4,7 @@
 
 using System;
 using System.Linq;
-using System.Security.Cryptography;
+using E5R.Architecture.Core.Extensions;
 
 namespace E5R.Architecture.Core
 {
@@ -16,38 +16,36 @@ namespace E5R.Architecture.Core
         private static readonly string InvalidCastErrorMessage =
             $"The string could not be converted to a valid {nameof(UniqueIdentifier)}";
 
-        private static readonly char[] ValidHexadecimalChars = new char[]
-        {
-            '0', '1', '2', '3', '4', '5', '6', '7', '8', '9',
-            'a', 'b', 'c', 'd', 'e', 'f',
-            'A', 'B', 'C', 'D', 'E', 'F'
-        };
-
         private string StringId { get; }
 
         public UniqueIdentifier() : this(UniqueIdentifierLength.Length64)
-        { }
+        {
+        }
 
         public UniqueIdentifier(UniqueIdentifierLength length)
         {
             switch (length)
             {
+                case UniqueIdentifierLength.Length32:
+                    StringId = Guid.NewGuid().ToByteArray().Md5Hex();
+                    break;
+
                 case UniqueIdentifierLength.Length40:
-                    StringId = ComputeHash(SHA1.Create(), Guid.NewGuid().ToByteArray());
+                    StringId = Guid.NewGuid().ToByteArray().Sha1Hex();
                     break;
-                
+
                 case UniqueIdentifierLength.Length64:
-                    StringId = ComputeHash(SHA256.Create(), Guid.NewGuid().ToByteArray());
+                    StringId = Guid.NewGuid().ToByteArray().Sha256Hex();
                     break;
-                
+
                 case UniqueIdentifierLength.Length96:
-                    StringId = ComputeHash(SHA384.Create(), Guid.NewGuid().ToByteArray());
+                    StringId = Guid.NewGuid().ToByteArray().Sha384Hex();
                     break;
-                
+
                 case UniqueIdentifierLength.Length128:
-                    StringId = ComputeHash(SHA512.Create(), Guid.NewGuid().ToByteArray());
+                    StringId = Guid.NewGuid().ToByteArray().Sha512Hex();
                     break;
-                
+
                 default:
                     throw new ArgumentOutOfRangeException(nameof(length), length, null);
             }
@@ -56,10 +54,10 @@ namespace E5R.Architecture.Core
         public UniqueIdentifier(string stringId)
         {
             Checker.NotEmptyOrWhiteArgument(stringId, nameof(stringId));
-            
+
             EnsureLength(stringId);
             EnsureHexadecimal(stringId);
-            
+
             StringId = stringId;
         }
 
@@ -72,22 +70,15 @@ namespace E5R.Architecture.Core
 
         void EnsureLength(string stringId)
         {
-            if (!new[] {40, 64, 96, 128}.Contains(stringId.Length))
-            {
+            if (!new[] {32, 40, 64, 96, 128}.Contains(stringId.Length))
                 // TODO: Implementar i18n/l10n
                 throw new InvalidCastException(InvalidCastErrorMessage);
-            }
-        }
-        
-        void EnsureHexadecimal(string stringId)
-        {
-            if (!stringId.All(c => ValidHexadecimalChars.Contains(c)))
-            {
-                throw new InvalidCastException(InvalidCastErrorMessage);
-            }
         }
 
-        string ComputeHash(HashAlgorithm hash, byte[] bytes)
-            => string.Concat(hash.ComputeHash(bytes).Select(s => s.ToString("x2")));
+        void EnsureHexadecimal(string stringId)
+        {
+            if (!stringId.All(Uri.IsHexDigit))
+                throw new InvalidCastException(InvalidCastErrorMessage);
+        }
     }
 }

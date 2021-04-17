@@ -17,6 +17,8 @@ namespace E5R.Architecture.Core
 
         Task EnsureAsync(TTarget target, string exceptionMessageTemplate = null);
 
+        IRuleSet<TTarget> ByCode(string code);
+        
         IRuleSet<TTarget> ByCode(string[] codes);
         
         IRuleSet<TTarget> ByDefaultCategory();

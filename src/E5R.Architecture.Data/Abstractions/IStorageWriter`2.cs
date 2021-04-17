@@ -4,15 +4,16 @@
 
 using System;
 using System.Linq.Expressions;
+using E5R.Architecture.Core;
 
 namespace E5R.Architecture.Data.Abstractions
 {
     public interface IStorageWriter<TUowProperty, TDataModel> : IStorageWriter<TDataModel>
-        where TDataModel : IDataModel
+        where TDataModel : IIdentifiable
     { }
 
     public interface IStorageWriter<TDataModel> : IStorageSignature
-        where TDataModel : IDataModel
+        where TDataModel : IIdentifiable
     {
         /// <summary>
         /// Creates a new stored object

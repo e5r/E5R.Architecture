@@ -11,7 +11,7 @@ using E5R.Architecture.Data.Abstractions;
 namespace E5R.Architecture.Data.Fluent.Writer
 {
     public class FluentWriterBuilderWithIdentifier<TDataModel> : FluentWriterBuilderElements<TDataModel>
-        where TDataModel : IDataModel
+        where TDataModel : IIdentifiable
     {
         internal FluentWriterBuilderWithIdentifier(IStorageWriter<TDataModel> storage,
             List<object> identifiers) : base(storage, identifiers)

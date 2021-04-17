@@ -15,7 +15,7 @@ namespace E5R.Architecture.Data
     /// Linq implementation for <see cref="IDataProjection{TDataModel, TGroup, TSelect}" />
     /// </summary>
     public class DataProjection<TDataModel, TGroup, TSelect> : IDataProjection<TDataModel, TGroup, TSelect>
-        where TDataModel : IDataModel
+        where TDataModel : IIdentifiable
     {
         private readonly IList<DataProjectionIncludeMember> _includes;
         private readonly Expression<Func<IGrouping<TGroup, TDataModel>, TSelect>> _select;

@@ -16,9 +16,10 @@ namespace E5R.Architecture.Business.Test
         [Fact]
         void RequiresITransformationManager_ToBe_Instantiated()
         {
-            var transformerMock = new Mock<ITransformationManager>();
+            var transformerMock = new Mock<ILazy<ITransformationManager>>();
             var feature = new TenInputOutputFeature(transformerMock.Object);
-            var exception = Assert.Throws<ArgumentNullException>(() => new TenInputOutputFeature(null));
+            var exception =
+                Assert.Throws<ArgumentNullException>(() => new TenInputOutputFeature(null));
 
             Assert.NotNull(feature);
             Assert.Equal("transformer", exception.ParamName);
@@ -27,63 +28,68 @@ namespace E5R.Architecture.Business.Test
         [Fact]
         async void ExecRequires_NotNullInput()
         {
-            var transformerMock = new Mock<ITransformationManager>();
+            var transformerMock = new Mock<ILazy<ITransformationManager>>();
             var feature = new TenInputOutputFeature(transformerMock.Object);
             var exception =
-                await Assert.ThrowsAsync<ArgumentNullException>(() => feature.ExecAsync((string) null));
+                await Assert.ThrowsAsync<ArgumentNullException>(() =>
+                    feature.ExecAsync((string) null));
 
             Assert.Equal("input", exception.ParamName);
         }
-        
+
         [Fact]
         async void ExecFromRequires_NotNullInput()
         {
-            var transformerMock = new Mock<ITransformationManager>();
+            var transformerMock = new Mock<ILazy<ITransformationManager>>();
             var feature = new TenInputOutputFeature(transformerMock.Object);
             var exception =
-                await Assert.ThrowsAsync<ArgumentNullException>(() => feature.ExecAsync<double?>( null));
+                await Assert.ThrowsAsync<ArgumentNullException>(() =>
+                    feature.ExecFromAsync<double?>(null));
 
             Assert.Equal("from", exception.ParamName);
         }
-        
+
         [Fact]
         async void ExecFrom_DoesNotExecute_WhenInputIsAlreadyOfThe_ExpectedType()
         {
-            var transformerMock = new Mock<ITransformationManager>();
+            var transformerMock = new Mock<ILazy<ITransformationManager>>();
             var feature = new TenInputOutputFeature(transformerMock.Object);
             var exception =
                 await Assert.ThrowsAsync<BusinessLayerException>(() =>
-                    feature.ExecAsync<string>("notnull"));
+                    feature.ExecFromAsync<string>("notnull"));
 
-            Assert.Equal("The input object is already of the expected type. You should use Exec() instead of Exec<>()", exception.Message);
+            Assert.Equal(
+                "The input object is already of the expected type. You should use Exec() instead of Exec<>()",
+                exception.Message);
         }
-        
+
         [Fact]
         async void ExecFrom_RaisesException_WhenThenTransformer_ReturnsNull()
         {
-            var transformerMock = new Mock<ITransformationManager>();
+            var transformerMock = new Mock<ILazy<ITransformationManager>>();
 
-            transformerMock.Setup(s => s.Transform<int, string>(It.IsAny<int>()))
+            transformerMock.Setup(s => s.Value.Transform<int, string>(It.IsAny<int>()))
                 .Returns((string) null);
-            
+
             var feature = new TenInputOutputFeature(transformerMock.Object);
             var exception =
                 await Assert.ThrowsAsync<BusinessLayerException>(() =>
-                    feature.ExecAsync(1));
+                    feature.ExecFromAsync(1));
 
-            Assert.Equal("The input type cannot be transformed to the expected type properly", exception.Message);
+            Assert.Equal("The input type cannot be transformed to the expected type properly",
+                exception.Message);
         }
-        
+
         [Fact]
         async void ExecFrom_WhenInputIsCorrectlyTransformed_ExecActionIsTriggered()
         {
-            var transformerMock = new Mock<ITransformationManager>();
+            var transformerMock = new Mock<ILazy<ITransformationManager>>();
 
-            transformerMock.Setup(s => s.Transform<int, string>(It.IsAny<int>()))
+            transformerMock.Setup(s => s.Value.Transform<int, string>(It.IsAny<int>()))
                 .Returns("TenLetters");
-            
+
             var feature = new TenInputOutputFeature(transformerMock.Object);
-            int result = await feature.ExecAsync(0);
+            int result = await feature.ExecFromAsync(0);
 
             Assert.Equal(10, result);
         }
@@ -93,7 +99,7 @@ namespace E5R.Architecture.Business.Test
 
     public class TenInputOutputFeature : BusinessFeature<string, int>
     {
-        public TenInputOutputFeature(ITransformationManager transformer) : base(transformer)
+        public TenInputOutputFeature(ILazy<ITransformationManager> transformer) : base(transformer)
         {
         }
 

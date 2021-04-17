@@ -27,7 +27,7 @@ namespace E5R.Architecture.Core.Exceptions
         /// </summary>
         /// <param name="rule">Violated rule</param>
         /// <param name="unconformities">Unconformities</param>
-        public ViolatedRuleException(IRule rule, IDictionary<string, string> unconformities)
+        public ViolatedRuleException(IRule rule, IReadOnlyDictionary<string, string> unconformities)
             : this(rule, unconformities, DEFAULT_MESSAGE_TEMPLATE)
         { }
 
@@ -42,7 +42,7 @@ namespace E5R.Architecture.Core.Exceptions
             : this(rule, null, messageTemplate)
         { }
 
-        public ViolatedRuleException(IRule rule, IDictionary<string, string> unconformities, string messageTemplate)
+        public ViolatedRuleException(IRule rule, IReadOnlyDictionary<string, string> unconformities, string messageTemplate)
             : base(string.Format(messageTemplate, rule.Code, rule.Description))
         {
             Rule = rule;
@@ -52,6 +52,6 @@ namespace E5R.Architecture.Core.Exceptions
         public override IDictionary Data => Unconformities.ToDictionary(t => t.Key);
 
         public IRule Rule { get; }
-        public IDictionary<string, string> Unconformities { get; private set; }
+        public IReadOnlyDictionary<string, string> Unconformities { get; private set; }
     }
 }

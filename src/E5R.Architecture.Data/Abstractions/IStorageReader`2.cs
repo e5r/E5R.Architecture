@@ -8,17 +8,19 @@ using E5R.Architecture.Core;
 namespace E5R.Architecture.Data.Abstractions
 {
     public interface IStorageReader<TUowProperty, TDataModel> : IStorageReader<TDataModel>
-        where TDataModel : IDataModel
+        where TDataModel : IIdentifiable
     { }
 
     public interface IStorageReader<TDataModel> : IStorageSignature
-        where TDataModel : IDataModel
+        where TDataModel : IIdentifiable
     {
         #region TDataModel operations
 
         TDataModel Find(object identifier, IDataIncludes includes = null);
         TDataModel Find(object[] identifiers, IDataIncludes includes = null);
         TDataModel Find(TDataModel data, IDataIncludes includes = null);
+        int CountAll();
+        int Count(IDataFilter<TDataModel> filter);
         IEnumerable<TDataModel> GetAll(IDataIncludes includes = null);
         PaginatedResult<TDataModel> LimitedGet(IDataLimiter<TDataModel> limiter, IDataIncludes includes = null);
         IEnumerable<TDataModel> Search(IDataFilter<TDataModel> filter, IDataIncludes includes = null);

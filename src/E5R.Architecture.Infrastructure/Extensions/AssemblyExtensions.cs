@@ -25,12 +25,73 @@ namespace E5R.Architecture.Infrastructure.Extensions
                 .ToList()
                 .ForEach(f => f.Register(container));
         }
-        
+
+        public static void AddAllNotificationDispatchers(this Assembly assembly,
+            IServiceCollection services)
+        {
+            Checker.NotNullArgument(assembly, nameof(assembly));
+            Checker.NotNullArgument(services, nameof(services));
+
+            var typeOfINotificationDispatcher = typeof(INotificationDispatcher<>);
+
+            assembly.DefinedTypes
+                .Where(t =>
+                    t.GetInterfaces().Any(tt =>
+                        tt.IsGenericType &&
+                        tt.GetGenericTypeDefinition() == typeOfINotificationDispatcher
+                    ))
+                .ToList()
+                .ForEach(dispatcherType =>
+                {
+                    var serviceType = dispatcherType.GetInterfaces().FirstOrDefault(t =>
+                        t.IsGenericType && t.GetGenericTypeDefinition() ==
+                        typeOfINotificationDispatcher);
+
+                    if (services.Any(w =>
+                        w.ServiceType == serviceType && w.ImplementationType == dispatcherType))
+                        return;
+
+                    services.AddScoped(serviceType, dispatcherType);
+                });
+        }
+
+        public static void AddAllTransformers(this Assembly assembly,
+            IServiceCollection services)
+        {
+            Checker.NotNullArgument(assembly, nameof(assembly));
+            Checker.NotNullArgument(services, nameof(services));
+
+            var transformerTypes = new[]
+            {
+                typeof(ITransformer<,>),
+                typeof(ITransformer<,,>)
+            };
+
+            assembly.DefinedTypes
+                .Where(t =>
+                    t.GetInterfaces().Any(tt =>
+                        tt.IsGenericType &&
+                        transformerTypes.Contains(tt.GetGenericTypeDefinition())
+                    ))
+                .ToList()
+                .ForEach(transformerType =>
+                {
+                    var serviceType = transformerType.GetInterfaces().FirstOrDefault(t =>
+                        t.IsGenericType && transformerTypes.Contains(t.GetGenericTypeDefinition()));
+
+                    if (services.Any(w =>
+                        w.ServiceType == serviceType && w.ImplementationType == transformerType))
+                        return;
+
+                    services.AddScoped(serviceType, transformerType);
+                });
+        }
+
         public static void AddAllRules(this Assembly assembly, IServiceCollection services)
         {
             Checker.NotNullArgument(assembly, nameof(assembly));
             Checker.NotNullArgument(services, nameof(services));
-            
+
             var typeOfRuleFor = typeof(RuleFor<>);
             var typeOfIRuleFor = typeof(IRuleFor<>);
 
@@ -49,8 +110,37 @@ namespace E5R.Architecture.Infrastructure.Extensions
                         typeOfIRuleFor.MakeGenericType(
                             ruleType.BaseType.GetGenericArguments());
 
-                    services.TryAddScoped(serviceType, ruleType);
+                    if (services.Any(w =>
+                        w.ServiceType == serviceType && w.ImplementationType == ruleType)) return;
+
+                    services.AddScoped(serviceType, ruleType);
                 });
+        }
+
+        public static void AddAllLazyGroups(this Assembly assembly, IServiceCollection services)
+        {
+            Checker.NotNullArgument(assembly, nameof(assembly));
+            Checker.NotNullArgument(services, nameof(services));
+
+            var groupTypes = new[]
+            {
+                typeof(LazyGroup<,>),
+                typeof(LazyGroup<,,>),
+                typeof(LazyGroup<,,,>),
+                typeof(LazyGroup<,,,,>),
+                typeof(LazyGroup<,,,,,>),
+                typeof(LazyGroup<,,,,,,>),
+                typeof(LazyGroup<,,,,,,,>),
+                typeof(LazyGroup<,,,,,,,,>),
+                typeof(LazyGroup<,,,,,,,,,>),
+            };
+
+            assembly.DefinedTypes
+                .Where(t =>
+                    t.BaseType != null && t.BaseType.IsGenericType &&
+                    groupTypes.Contains(t.BaseType.GetGenericTypeDefinition()))
+                .ToList()
+                .ForEach(services.TryAddScoped);
         }
 
         private static IDIRegistrar Activate(Type type)

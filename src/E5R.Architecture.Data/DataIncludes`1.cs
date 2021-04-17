@@ -15,7 +15,7 @@ namespace E5R.Architecture.Data
     /// Linq implementation for IDataIncludes
     /// </summary>
     public class DataIncludes<TDataModel> : IDataIncludes
-        where TDataModel : IDataModel
+        where TDataModel : IIdentifiable
     {
         internal IList<DataProjectionIncludeMember> _includes;
 

@@ -10,15 +10,15 @@ namespace E5R.Architecture.Business
 {
     public class InputBasedBusinessFeature<TInput>
     {
-        private readonly ITransformationManager _transformer;
+        private readonly ILazy<ITransformationManager> _transformer;
 
-        protected InputBasedBusinessFeature(ITransformationManager transformer)
+        protected InputBasedBusinessFeature(ILazy<ITransformationManager> transformer)
         {
             Checker.NotNullArgument(transformer, nameof(transformer));
 
             _transformer = transformer;
         }
-        
+
         protected TInput TransformInput<TFrom>(TFrom @from)
         {
             Checker.NotNullArgument(@from, nameof(@from));
@@ -31,7 +31,7 @@ namespace E5R.Architecture.Business
                 throw new BusinessLayerException(exception);
             }
 
-            var input = _transformer.Transform<TFrom, TInput>(@from);
+            var input = _transformer.Value.Transform<TFrom, TInput>(@from);
 
             if (input == null)
             {

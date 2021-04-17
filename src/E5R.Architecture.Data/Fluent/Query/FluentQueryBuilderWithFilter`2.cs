@@ -5,12 +5,13 @@
 using System;
 using System.Collections.Generic;
 using System.Linq.Expressions;
+using E5R.Architecture.Core;
 using E5R.Architecture.Data.Abstractions;
 
 namespace E5R.Architecture.Data.Fluent.Query
 {
     public class FluentQueryBuilderWithFilter<TDataModel, TSelect> : FluentQueryBuilderElements<TDataModel>
-        where TDataModel : IDataModel
+        where TDataModel : IIdentifiable
     {
         private readonly DataProjection<TDataModel, TSelect> _projection;
 

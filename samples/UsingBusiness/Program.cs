@@ -3,6 +3,7 @@
 // Licensed under the Apache version 2.0: https://github.com/e5r/manifest/blob/master/license/APACHE-2.0.txt
 
 using System;
+using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -10,6 +11,7 @@ using E5R.Architecture.Business;
 using E5R.Architecture.Business.Extensions;
 using E5R.Architecture.Core;
 using Microsoft.Extensions.DependencyInjection;
+using static E5R.Architecture.Core.MetaTagAttribute;
 
 namespace UsingBusiness
 {
@@ -27,7 +29,7 @@ namespace UsingBusiness
     /// </summary>
     public class ProcessStringFeature : InputOnlyBusinessFeature<string>
     {
-        public ProcessStringFeature(ITransformationManager transformer) : base(transformer)
+        public ProcessStringFeature(ILazy<ITransformationManager> transformer) : base(transformer)
         {
         }
 
@@ -65,7 +67,8 @@ namespace UsingBusiness
     /// </summary>
     public class GenerateRandomPasswordFeature : BusinessFeature<(string, int), string>
     {
-        public GenerateRandomPasswordFeature(ITransformationManager transformer) : base(transformer)
+        public GenerateRandomPasswordFeature(ILazy<ITransformationManager> transformer) : base(
+            transformer)
         {
         }
 
@@ -137,12 +140,12 @@ namespace UsingBusiness
     /// Aqui chamamos de módulo de negócio (BusinessModule) mas pode ser qualquer coisa que
     /// você preferir: Service, BusinessService, Module, Facade, etc.
     /// </remarks>
-    public class DadosEntradaBusinessModule : BusinessFacade<
+    public class DadosEntradaBusinessModule : LazyGroup<
         ProcessStringFeature,
         GenerateRandomPasswordFeature>
     {
-        public DadosEntradaBusinessModule(ILazy<ProcessStringFeature> feature1,
-            ILazy<GenerateRandomPasswordFeature> feature2) : base(feature1, feature2)
+        public DadosEntradaBusinessModule(ILazy<ProcessStringFeature> item1,
+            ILazy<GenerateRandomPasswordFeature> item2) : base(item1, item2)
         {
         }
 
@@ -151,21 +154,21 @@ namespace UsingBusiness
         /// </summary>
         /// <param name="inputString">String de entrada</param>
         public async Task ProcessString(string inputString) =>
-            await Feature1.ExecAsync(inputString);
+            await Item1.ExecAsync(inputString);
 
         /// <summary>
         /// Processa dados aleatórios com base em um valor que pode ser convertido em uma string de entrada
         /// </summary>
         /// <param name="from">Objeto que pode ser convertido para uma string</param>
         /// <typeparam name="TFrom">Tipo do objeto de entrada</typeparam>
-        public async Task ProcessString<TFrom>(TFrom @from) => await Feature1.ExecAsync(@from);
+        public async Task ProcessString<TFrom>(TFrom @from) => await Item1.ExecFromAsync(@from);
 
         /// <summary>
         /// Gera uma senha aleatório com base em uma tupla que informa os caracteres possíveis e o tamanho da senha pretendida
         /// </summary>
         /// <param name="input">Tupla (<see cref="Tuple{T1,T2}"/>) de string com os caracteres possíveis, e int com o tamanho da senha pretendida</param>
         public async Task<string> GenerateRandomPassword((string, int) input) =>
-            await Feature2.ExecAsync(input);
+            await Item2.ExecAsync(input);
 
         /// <summary>
         /// Gera uma senha aleatório com base em um valor que pode ser convertido em uma tupla <see cref="Tuple{T1,T2}"/> de string e int.
@@ -173,7 +176,7 @@ namespace UsingBusiness
         /// <param name="from">Objeto que pode ser convertido para uma tupla de string e int</param>
         /// <typeparam name="TFrom">Tipo do objeto de entrada</typeparam>
         public async Task<string> GenerateRandomPassword<TFrom>(TFrom @from) =>
-            await Feature2.ExecAsync(@from);
+            await Item2.ExecFromAsync(@from);
     }
 
     /// <summary>
@@ -184,31 +187,31 @@ namespace UsingBusiness
     /// você preferir: Service, BusinessService, Module, Facade, etc.
     /// </remarks>
     public class
-        DadosSaidaBusinessModule : BusinessFacade<GenerateRandomNumberFeature, ProcessStringFeature>
+        DadosSaidaBusinessModule : LazyGroup<GenerateRandomNumberFeature, ProcessStringFeature>
     {
-        public DadosSaidaBusinessModule(ILazy<GenerateRandomNumberFeature> feature1,
-            ILazy<ProcessStringFeature> feature2) : base(feature1, feature2)
+        public DadosSaidaBusinessModule(ILazy<GenerateRandomNumberFeature> item1,
+            ILazy<ProcessStringFeature> item2) : base(item1, item2)
         {
         }
 
         /// <summary>
         /// Gera um número aleatório
         /// </summary>
-        public async Task<int> GenerateRandomNumber() => await Feature1.ExecAsync();
+        public async Task<int> GenerateRandomNumber() => await Item1.ExecAsync();
 
         /// <summary>
         /// Processa dados aleatórios com base em uma string de entrada
         /// </summary>
         /// <param name="inputString">String de entrada</param>
         public async Task ProcessString(string inputString) =>
-            await Feature2.ExecAsync(inputString);
+            await Item2.ExecAsync(inputString);
 
         /// <summary>
         /// Processa dados aleatórios com base em um valor que pode ser convertido em uma string de entrada
         /// </summary>
         /// <param name="from">Objeto que pode ser convertido para uma string</param>
         /// <typeparam name="TFrom">Tipo do objeto de entrada</typeparam>
-        public async Task ProcessString<TFrom>(TFrom @from) => await Feature2.ExecAsync(@from);
+        public async Task ProcessString<TFrom>(TFrom @from) => await Item2.ExecFromAsync(@from);
     }
 
     /// <summary>
@@ -218,26 +221,26 @@ namespace UsingBusiness
     /// Aqui chamamos de módulo de negócio (BusinessModule) mas pode ser qualquer coisa que
     /// você preferir: Service, BusinessService, Module, Facade, etc.
     /// </remarks>
-    public class TudoJuntoBusinessModule : BusinessFacade<GenerateRandomNumberFeature,
+    public class TudoJuntoBusinessModule : LazyGroup<GenerateRandomNumberFeature,
         GenerateRandomPasswordFeature, ProcessStringFeature, ExecAllFeature>
     {
-        public TudoJuntoBusinessModule(ILazy<GenerateRandomNumberFeature> feature1,
-            ILazy<GenerateRandomPasswordFeature> feature2, ILazy<ProcessStringFeature> feature3,
-            ILazy<ExecAllFeature> feature4) : base(feature1, feature2, feature3, feature4)
+        public TudoJuntoBusinessModule(ILazy<GenerateRandomNumberFeature> item1,
+            ILazy<GenerateRandomPasswordFeature> item2, ILazy<ProcessStringFeature> item3,
+            ILazy<ExecAllFeature> item4) : base(item1, item2, item3, item4)
         {
         }
 
         /// <summary>
         /// Gera um número aleatório
         /// </summary>
-        public async Task<int> GenerateRandomNumber() => await Feature1.ExecAsync();
+        public async Task<int> GenerateRandomNumber() => await Item1.ExecAsync();
 
         /// <summary>
         /// Gera uma senha aleatório com base em uma tupla que informa os caracteres possíveis e o tamanho da senha pretendida
         /// </summary>
         /// <param name="input">Tupla (<see cref="Tuple{T1,T2}"/>) de string com os caracteres possíveis, e int com o tamanho da senha pretendida</param>
         public async Task<string> GenerateRandomPassword((string, int) input) =>
-            await Feature2.ExecAsync(input);
+            await Item2.ExecAsync(input);
 
         /// <summary>
         /// Gera uma senha aleatório com base em um valor que pode ser convertido em uma tupla <see cref="Tuple{T1,T2}"/> de string e int.
@@ -245,27 +248,80 @@ namespace UsingBusiness
         /// <param name="from">Objeto que pode ser convertido para uma tupla de string e int</param>
         /// <typeparam name="TFrom">Tipo do objeto de entrada</typeparam>
         public async Task<string> GenerateRandomPassword<TFrom>(TFrom @from) =>
-            await Feature2.ExecAsync(@from);
+            await Item2.ExecFromAsync(@from);
 
         /// <summary>
         /// Processa dados aleatórios com base em uma string de entrada
         /// </summary>
         /// <param name="inputString">String de entrada</param>
         public async Task ProcessString(string inputString) =>
-            await Feature3.ExecAsync(inputString);
+            await Item3.ExecAsync(inputString);
 
         /// <summary>
         /// Processa dados aleatórios com base em um valor que pode ser convertido em uma string de entrada
         /// </summary>
         /// <param name="from">Objeto que pode ser convertido para uma string</param>
         /// <typeparam name="TFrom">Tipo do objeto de entrada</typeparam>
-        public async Task ProcessString<TFrom>(TFrom @from) => await Feature3.ExecAsync(@from);
+        public async Task ProcessString<TFrom>(TFrom @from) => await Item3.ExecFromAsync(@from);
 
         /// <summary>
         /// Executa todas as outras funcionalidades para exemplificar uma característica que não
         /// precisa de parâmetros de entrada, e nem produz resultado de saída.
         /// </summary>
-        public async Task ExecAll() => await Feature4.ExecAsync();
+        public async Task ExecAll() => await Item4.ExecAsync();
+    }
+
+    public enum MyNotifyType
+    {
+        Type1,
+
+        [MetaTag(CustomIdKey, "NTFY-002")] Type2
+    }
+
+    public class MyRuleForNotify : RuleFor<NotificationMessage<MyNotifyType>>
+    {
+        public MyRuleForNotify() : base(nameof(MyNotifyType.Type1), "Confere mensagem Type1")
+        {
+        }
+
+        public override Task<RuleCheckResult>
+            CheckAsync(NotificationMessage<MyNotifyType> target) => Task.Run(() =>
+        {
+            if (!(target.Body is string))
+                return RuleCheckResult.Fail;
+
+            return RuleCheckResult.Success;
+        });
+    }
+
+    public class MyRuleForNotify2 : RuleFor<NotificationMessage<MyNotifyType>>
+    {
+        public MyRuleForNotify2() : base("NTFY-002", "Confere mensagem Type2")
+        {
+        }
+
+        public override Task<RuleCheckResult>
+            CheckAsync(NotificationMessage<MyNotifyType> target) => Task.Run(() =>
+        {
+            if (!(target.Body is float))
+                return RuleCheckResult.Fail;
+
+            if ((float) target.Body >= 7.5)
+                return new RuleCheckResult(false, new Dictionary<string, string>
+                {
+                    {"Numero", "O número era maior que 7.5"}
+                });
+
+            return RuleCheckResult.Success;
+        });
+    }
+
+    public class MyDispatcher : INotificationDispatcher<MyNotifyType>
+    {
+        public Task DispatchAsync(NotificationMessage<MyNotifyType> message)
+        {
+            return Task.CompletedTask;
+        }
     }
 
     public class Program
@@ -273,20 +329,24 @@ namespace UsingBusiness
         private readonly DadosEntradaBusinessModule _entradaModule;
         private readonly DadosSaidaBusinessModule _saidaModule;
         private readonly TudoJuntoBusinessModule _tudoModule;
+        private readonly NotificationManager<MyNotifyType> _notificator;
 
         public Program(DadosEntradaBusinessModule entradaModule,
-            DadosSaidaBusinessModule saidaModule, TudoJuntoBusinessModule tudoModule)
+            DadosSaidaBusinessModule saidaModule, TudoJuntoBusinessModule tudoModule,
+            NotificationManager<MyNotifyType> notificator)
         {
             Checker.NotNullArgument(entradaModule, nameof(entradaModule));
             Checker.NotNullArgument(saidaModule, nameof(saidaModule));
             Checker.NotNullArgument(tudoModule, nameof(tudoModule));
+            Checker.NotNullArgument(notificator, nameof(notificator));
 
             _entradaModule = entradaModule;
             _saidaModule = saidaModule;
             _tudoModule = tudoModule;
+            _notificator = notificator;
         }
 
-        public async Task Run()
+        private async Task Run()
         {
             var senha = await _entradaModule.GenerateRandomPassword(("12345ABCabc", 12));
             Console.WriteLine($"Senha aleatória gerada: {senha}");
@@ -295,23 +355,28 @@ namespace UsingBusiness
             Console.WriteLine($"Número aleatório gerado: {numero}");
 
             await _tudoModule.ExecAll();
+            
+            // Notificando mensagens sem falha
+            _notificator.Notify(MyNotifyType.Type1, "Mensagem 1");
+            _notificator.Notify(MyNotifyType.Type2, 6.0f);
+            
+            // Notificando uma mensagem com falha
+            _notificator.Notify(MyNotifyType.Type2, 7.51f);
         }
 
-        private static void Main()
+        private static async Task Main()
         {
             var services = ConfigureServices(new ServiceCollection());
 
-            using (var scope = services.BuildServiceProvider().CreateScope())
-            {
-                scope.ServiceProvider.GetService<Program>().Run().Wait();
-            }
+            using var scope = services.BuildServiceProvider().CreateScope();
+            await scope.ServiceProvider.GetService<Program>().Run();
         }
 
-        static IServiceCollection ConfigureServices(IServiceCollection services)
+        private static IServiceCollection ConfigureServices(IServiceCollection services)
         {
             services.AddScoped<Program>();
 
-            return services.AddBusinessFeatures();
+            return services.AddInfrastructure().AddBusiness();
         }
     }
 }

@@ -1,10 +1,9 @@
-using System;
 using System.Collections.Generic;
-using E5R.Architecture.Data.Abstractions;
+using E5R.Architecture.Core;
 
 namespace UsingDataEntityFrameworkCore.Models
 {
-    public class Course : IDataModel
+    public class Course : IIdentifiable
     {
         public int CourseID { get; set; }
         public string Title { get; set; }
@@ -12,6 +11,6 @@ namespace UsingDataEntityFrameworkCore.Models
 
         public ICollection<Enrollment> Enrollments { get; set; }
 
-        public object[] IdentifierValues => new[] { (object)CourseID };
+        public object[] Identifiers => new[] { (object)CourseID };
     }
 }

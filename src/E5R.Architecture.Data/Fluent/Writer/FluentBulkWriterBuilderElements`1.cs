@@ -8,7 +8,7 @@ using E5R.Architecture.Data.Abstractions;
 namespace E5R.Architecture.Data.Fluent.Writer
 {
     public class FluentBulkWriterBuilderElements<TDataModel>
-        where TDataModel : IDataModel
+        where TDataModel : IIdentifiable
     {
         internal readonly IStorageBulkWriter<TDataModel> _storage;
         internal readonly DataFilter<TDataModel> _filter;

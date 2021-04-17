@@ -12,8 +12,8 @@ using E5R.Architecture.Data.Fluent.Query;
 namespace E5R.Architecture.Data.Fluent
 {
     public class ProjectionInnerBuilder<TDataModel, TRootDataModel, TGroup, TSelect> : FluentQueryBuilderElements<TRootDataModel>
-        where TDataModel : IDataModel
-        where TRootDataModel : IDataModel
+        where TDataModel : IIdentifiable
+        where TRootDataModel : IIdentifiable
     {
         private readonly Expression<Func<TRootDataModel, TGroup>> _group;
         private readonly Expression<Func<IGrouping<TGroup, TRootDataModel>, TSelect>> _select;
@@ -52,7 +52,7 @@ namespace E5R.Architecture.Data.Fluent
         }
 
         public ProjectionInnerBuilder<T, TRootDataModel, TGroup, TSelect> ThenInclude<T>(Expression<Func<TDataModel, object>> expression)
-            where T : IDataModel
+            where T : IIdentifiable
         {
             Checker.NotNullArgument(expression, nameof(expression));
 

@@ -6,19 +6,18 @@ Transformando dados entre tipos
 ===============================
 
 No tipo de arquitetura que estamos propondo aqui e que de certa forma você já deve estar acostumado
-a trabalhor, costumamos ter muitas camadas da aplicação, e fazemos isso para abstrair e assim
-conseguir garantir o desacoplamento da solução como um todo.
+a trabalhar, costumamos dividir a aplicação em muitas camadas para com isso abstrair e garantir o
+desacoplamento da solução como um todo.
 
-Porém uma das atividades que nos pegamos fazendo o tempo todo é transformar dados de um tipo para
-outro. Transformamos *View Model's* para *DTO's* e/ou *DTO's* para *Domain Model's*, além de
-*Domain Model's* para *Data Model's*, e vice-versa.
+Porém uma das atividades que empenhamos boa parte do nosso tempo é na transformação de dados entre
+um tipo e outro. Transformamos de *View Model's* para *DTO's*, de *DTO's* para *Domain Model's*,
+de *Domain Model's* para *Data Model's*, e continua...
 
 Obviamente temos várias bibliotecas já disponíveis no mercado para conseguir fazer isso de forma
-bem simples, e também vários plugins de IDE que nos ajudam muito.
-Sabemos que não há dificuldade alguma em fazer essas transformações usando tais bibliotecas ou
-plugins.
+bem simples, e também vários plugins de IDE que nos ajudam muito nessa tarefa em particular.
+Não há dificuldade alguma em fazer essas transformações usando tais bibliotecas ou  plugins.
 
-Só pra ilustrar, vamos listar aqui algumas dessas ferramentas.
+Só pra ilustrar, temos aqui algumas dessas ferramentas:
 
 * [ValueInjecter](https://github.com/omuleanu/ValueInjecter)
 * [Boxed.Mapping](https://github.com/Dotnet-Boxed/Framework)
@@ -105,7 +104,7 @@ public class MyFromToTransformer : ITransformer<MyFrom, MyTo>
 > internamente o `TransformationManager` (implementação padrão para `ITransformationManager`)
 > usa o `IServiceProvider` para resolver os transformadores.
 
-Pronto, agora quando precisar esses transformar dados, basta usar:
+Pronto, agora quando precisar transformar esses dados, basta usar:
 ```c#
 public class MyService
 {

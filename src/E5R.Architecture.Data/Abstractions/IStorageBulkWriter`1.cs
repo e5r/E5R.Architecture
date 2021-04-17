@@ -5,15 +5,16 @@
 using System;
 using System.Collections.Generic;
 using System.Linq.Expressions;
+using E5R.Architecture.Core;
 
 namespace E5R.Architecture.Data.Abstractions
 {
     public interface IStorageBulkWriter<TUowProperty, TDataModel> : IStorageBulkWriter<TDataModel>
-        where TDataModel : IDataModel
+        where TDataModel : IIdentifiable
     { }
 
     public interface IStorageBulkWriter<TDataModel> : IStorageSignature
-        where TDataModel : IDataModel
+        where TDataModel : IIdentifiable
     {
         /// <summary>
         /// Creates new stored objects in bulk

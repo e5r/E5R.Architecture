@@ -5,12 +5,13 @@
 using System;
 using System.Collections.Generic;
 using System.Linq.Expressions;
+using E5R.Architecture.Core;
 using E5R.Architecture.Data.Abstractions;
 
 namespace E5R.Architecture.Data.Fluent.Query
 {
     public class FluentQueryBuilder<TDataModel> : FluentQueryBuilderElements<TDataModel>
-        where TDataModel : IDataModel
+        where TDataModel : IIdentifiable
     {
         public FluentQueryBuilder(IStorageReader<TDataModel> storage)
             : base(storage,
@@ -61,6 +62,8 @@ namespace E5R.Architecture.Data.Fluent.Query
         public TDataModel Find(object[] identifiers) => _storage.Find(identifiers, null);
 
         public TDataModel Find(TDataModel data) => _storage.Find(data, null);
+        
+        public int CountAll() => _storage.CountAll();
 
         public IEnumerable<TDataModel> GetAll() => _storage.GetAll(null);
 

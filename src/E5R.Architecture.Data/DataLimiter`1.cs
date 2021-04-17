@@ -11,7 +11,7 @@ namespace E5R.Architecture.Data.Abstractions
 {
     /// <inheritdoc />
     public class DataLimiter<TDataModel> : IDataLimiter<TDataModel>
-        where TDataModel : IDataModel
+        where TDataModel : IIdentifiable
     {
         public uint? OffsetBegin { get; private set; }
         public uint? OffsetLimit { get; private set; }

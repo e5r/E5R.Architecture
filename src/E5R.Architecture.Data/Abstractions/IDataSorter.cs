@@ -4,6 +4,7 @@
 
 using System;
 using System.Linq.Expressions;
+using E5R.Architecture.Core;
 
 namespace E5R.Architecture.Data.Abstractions
 {
@@ -12,7 +13,7 @@ namespace E5R.Architecture.Data.Abstractions
     /// </summary>
     /// <typeparam name="TDataModel">Data model type</typeparam>
     public interface IDataSorter<TDataModel>
-        where TDataModel : IDataModel
+        where TDataModel : IIdentifiable
     {
         /// <summary>
         /// Descending order
