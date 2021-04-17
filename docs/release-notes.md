@@ -51,12 +51,12 @@ string hashHexOfBytes = myBytes.Sha256Hex();
 string hmacHexOfBytes = myBytes.HmacSha384Hex(myKey);
 
 /* Hash e HMAC em bytes obtidos de uma string */
-byte[] hashOfString = myBytes.Sha512();
-byte[] hmacOfString = myBytes.HmacMd5(myKey);
+byte[] hashOfString = myString.Sha512();
+byte[] hmacOfString = myString.HmacMd5(myKey);
 
 /* Hash e HMAC em string obtidos de uma string */
-string hashHexOfString = myBytes.Sha1Hex();
-string hmacHexOfString = myBytes.HmacSha256Hex(myKey);
+string hashHexOfString = myString.Sha1Hex();
+string hmacHexOfString = myString.HmacSha256Hex(myKey);
 ```
 
 Breaking changes:
