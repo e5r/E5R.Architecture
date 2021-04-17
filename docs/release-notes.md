@@ -62,8 +62,33 @@ string hmacHexOfString = myBytes.HmacSha256Hex(myKey);
 Breaking changes:
 
 * `IDataModel` agora é `IIdentifiable` e agora está em `Core` ao invés de `Data`
-    - Também a propriedade com os valores foi renomeada de `IdentifierValues` para `Identifiers` somente
+  - Também a propriedade com os valores foi renomeada de `IdentifierValues` para `Identifiers` somente
 * O genérico `BusinessFacade<>` foi removido em favor de `LazyGroup<>`
+* Remove método de extensão `AddTransformationManager()`.
+  - Agora `ITransformationManager` é configurado automaticamente em `AddInfrastructure()`
+* Renomeia método de extensão `AddBusinessFeatures()` para somente `AddBusiness()` e altera assinatura
+* Altera assinatura de método de extensão `AddInfrastructure()`
+```c#
+// Agora temos várias opções de configuração da infraestrutura
+services.AddInfrastructure(options => {
+    options
+        .AddAssembly("MyAssembly.Um")
+        .AddAssembly("MyAssembly.Dois")
+        .AddAssembly("MyAssembly.Tres")
+        
+        // Ao habilitar o modo de desenvolvimento, o tipo ILazy<> é resolvido
+        // não de forma preguiçosa real, mas imediatamente, e isso é um lazy fake,
+        // porém ajuda a encontrar falhas no grafo de injeção de dependências logo na
+        // inicialização da aplicação. Quando uma dependência não foi devidamente
+        // registrada, uma exceção é levantada imediatamente no startup da aplicação,
+        // ao invés de somente quando uma chamada a funcionalidade é realizada.
+        .EnableDeveloperMode();
+});
+
+// Agora não precisamos mais informar a lista de assemblies em AddBusiness(),
+// pois essa lista já foi informada previamente via AddInfrastructure()
+services.AddBusiness();
+```
 
 ## 0.7.0
 
