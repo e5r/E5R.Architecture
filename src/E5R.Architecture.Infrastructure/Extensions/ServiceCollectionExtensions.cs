@@ -6,7 +6,6 @@ using System;
 using System.Data;
 using System.Data.Common;
 using System.Linq;
-using System.Reflection;
 using E5R.Architecture.Core;
 using E5R.Architecture.Infrastructure;
 using E5R.Architecture.Infrastructure.Abstractions;
@@ -87,9 +86,30 @@ namespace Microsoft.Extensions.DependencyInjection
             => serviceCollection.AddScoped<IUnitOfWork, UnitOfWorkByTransactionScope>();
 
         public static IServiceCollection AddInfrastructure(
+            this IServiceCollection serviceCollection) => AddInfrastructure(serviceCollection,
+            (_) => { });
+        
+        public static IServiceCollection AddInfrastructure(
             this IServiceCollection serviceCollection,
-            string[] customServiceAssemblies = null)
+            Action<InfrastructureOptions> config)
         {
+            Checker.NotNullArgument(config, nameof(config));
+            
+            var options = new InfrastructureOptions();
+
+            config(options);
+
+            return AddInfrastructure(serviceCollection, options);
+        }
+
+        public static IServiceCollection AddInfrastructure(
+            this IServiceCollection serviceCollection,
+            InfrastructureOptions options)
+        {
+            Checker.NotNullArgument(options, nameof(options));
+            Checker.NotNullArgument(options.CustomServiceAssemblies,
+                () => options.CustomServiceAssemblies);
+            
             // Forçamos o carregamento dos assemblies informados.
             //
             // NOTE: Isso é necessário porque o otimizador de compiladores como
@@ -98,17 +118,17 @@ namespace Microsoft.Extensions.DependencyInjection
             //       referenciado mas não utilize explicitamente nenhum objeto dessa
             //       referência, o assembly não estará disponível no AppDomain.
             //       Com isso, não conseguiríamos encontrar objetos para registrar
-            //       aqui. Por isso, carregamos assemblies customizados.
-            customServiceAssemblies?.ToList().ForEach(n => AppDomain.CurrentDomain.Load(n));
+            //       aqui. Por isso forçamos o carregamos dos assemblies informados aqui.
+            options.CustomServiceAssemblies.ToList().ForEach(n => AppDomain.CurrentDomain.Load(n));
 
             // Habilita "notification manager"
             serviceCollection.TryAddScoped(typeof(NotificationManager<>));
-
             AppDomain.CurrentDomain.AddAllNotificationDispatchers(serviceCollection);
 
             // Habilita "transformers"
+            serviceCollection.TryAddScoped(typeof(ITransformationManager), options.TransformationManagerType);
             AppDomain.CurrentDomain.AddAllTransformers(serviceCollection);
-
+            
             // Habilita "cross cutting" e "rule for"
             var container = new ServiceCollectionDIContainer(serviceCollection);
 
@@ -118,17 +138,8 @@ namespace Microsoft.Extensions.DependencyInjection
             AppDomain.CurrentDomain.AddAllRules(serviceCollection);
 
             // Habilita "lazy loading"
-            serviceCollection.TryAddScoped(typeof(ILazy<>), typeof(LazyResolver<>));
-
+            serviceCollection.TryAddScoped(typeof(ILazy<>), options.LazyResolverType);
             AppDomain.CurrentDomain.AddAllLazyGroups(serviceCollection);
-
-            return serviceCollection;
-        }
-
-        public static IServiceCollection AddTransformationManager(
-            this IServiceCollection serviceCollection)
-        {
-            serviceCollection.TryAddScoped<ITransformationManager, TransformationManager>();
 
             return serviceCollection;
         }

@@ -14,7 +14,7 @@ namespace E5R.Architecture.Business.Extensions
 {
     public static class AssemblyExtensions
     {
-        public static void AddBusinessFeatures(this Assembly assembly, IServiceCollection services)
+        public static void AddAllBusinessFeatures(this Assembly assembly, IServiceCollection services)
         {
             Checker.NotNullArgument(assembly, nameof(assembly));
             Checker.NotNullArgument(services, nameof(services));
