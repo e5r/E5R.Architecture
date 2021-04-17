@@ -193,7 +193,7 @@ namespace UsingInfrastructure
             services.AddScoped<Program>();
             services.AddScoped<IMyModel2Fail, MyModel2Fail>();
 
-            return services.AddInfrastructure().AddTransformationManager();
+            return services.AddInfrastructure();
         }
     }
 }

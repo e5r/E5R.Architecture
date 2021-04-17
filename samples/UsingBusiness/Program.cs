@@ -346,7 +346,7 @@ namespace UsingBusiness
             _notificator = notificator;
         }
 
-        public async Task Run()
+        private async Task Run()
         {
             var senha = await _entradaModule.GenerateRandomPassword(("12345ABCabc", 12));
             Console.WriteLine($"Senha aleatória gerada: {senha}");
@@ -364,21 +364,19 @@ namespace UsingBusiness
             _notificator.Notify(MyNotifyType.Type2, 7.51f);
         }
 
-        private static void Main()
+        private static async Task Main()
         {
             var services = ConfigureServices(new ServiceCollection());
 
-            using (var scope = services.BuildServiceProvider().CreateScope())
-            {
-                scope.ServiceProvider.GetService<Program>().Run().Wait();
-            }
+            using var scope = services.BuildServiceProvider().CreateScope();
+            await scope.ServiceProvider.GetService<Program>().Run();
         }
 
-        static IServiceCollection ConfigureServices(IServiceCollection services)
+        private static IServiceCollection ConfigureServices(IServiceCollection services)
         {
             services.AddScoped<Program>();
 
-            return services.AddBusinessFeatures();
+            return services.AddInfrastructure().AddBusiness();
         }
     }
 }
