@@ -10,7 +10,7 @@
     <meta name="viewport" content="width=device-width">
     <meta name="title" content="Class ProjectionRootBuilder&lt;TDataModel&gt;
    | Arquitetura E5R ">
-    <meta name="generator" content="docfx 2.56.6.0">
+    <meta name="generator" content="docfx 2.57.2.0">
     
     <link rel="shortcut icon" href="../images/favicon.png">
     <link rel="stylesheet" href="../styles/docfx.vendor.css">
@@ -85,7 +85,7 @@
   <h6><strong>Assembly</strong>: E5R.Architecture.Data.dll</h6>
   <h5 id="E5R_Architecture_Data_Fluent_ProjectionRootBuilder_1_syntax">Syntax</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public class ProjectionRootBuilder&lt;TDataModel&gt; : FluentQueryBuilderElements&lt;TDataModel&gt; where TDataModel : IDataModel</code></pre>
+    <pre><code class="lang-csharp hljs">public class ProjectionRootBuilder&lt;TDataModel&gt; : FluentQueryBuilderElements&lt;TDataModel&gt; where TDataModel : IIdentifiable</code></pre>
   </div>
   <h5 class="typeParameters">Type Parameters</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -215,7 +215,7 @@
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">public ProjectionInnerBuilder&lt;T, TDataModel&gt; Include&lt;T&gt;(Expression&lt;Func&lt;TDataModel, object&gt;&gt; expression)
-    where T : IDataModel</code></pre>
+    where T : IIdentifiable</code></pre>
   </div>
   <h5 class="parameters">Parameters</h5>
   <table class="table table-bordered table-striped table-condensed">

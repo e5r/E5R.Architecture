@@ -10,7 +10,7 @@
     <meta name="viewport" content="width=device-width">
     <meta name="title" content="Class NotificationManager&lt;TEnum&gt;
    | Arquitetura E5R ">
-    <meta name="generator" content="docfx 2.56.6.0">
+    <meta name="generator" content="docfx 2.57.2.0">
     
     <link rel="shortcut icon" href="../images/favicon.png">
     <link rel="stylesheet" href="../styles/docfx.vendor.css">
@@ -104,12 +104,12 @@
   <h3 id="constructors">Constructors
   </h3>
   <a id="E5R_Architecture_Core_NotificationManager_1__ctor_" data-uid="E5R.Architecture.Core.NotificationManager`1.#ctor*"></a>
-  <h4 id="E5R_Architecture_Core_NotificationManager_1__ctor_E5R_Architecture_Core_IRuleSet_E5R_Architecture_Core_NotificationMessage__0___E5R_Architecture_Core_INotificationDispatcher__0__" data-uid="E5R.Architecture.Core.NotificationManager`1.#ctor(E5R.Architecture.Core.IRuleSet{E5R.Architecture.Core.NotificationMessage{`0}},E5R.Architecture.Core.INotificationDispatcher{`0})">NotificationManager(IRuleSet&lt;NotificationMessage&lt;TEnum&gt;&gt;, INotificationDispatcher&lt;TEnum&gt;)</h4>
+  <h4 id="E5R_Architecture_Core_NotificationManager_1__ctor_E5R_Architecture_Core_IRuleSet_E5R_Architecture_Core_NotificationMessage__0___IEnumerable_E5R_Architecture_Core_INotificationDispatcher__0___" data-uid="E5R.Architecture.Core.NotificationManager`1.#ctor(E5R.Architecture.Core.IRuleSet{E5R.Architecture.Core.NotificationMessage{`0}},IEnumerable{E5R.Architecture.Core.INotificationDispatcher{`0}})">NotificationManager(IRuleSet&lt;NotificationMessage&lt;TEnum&gt;&gt;, IEnumerable&lt;INotificationDispatcher&lt;TEnum&gt;&gt;)</h4>
   <div class="markdown level1 summary"></div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public NotificationManager(IRuleSet&lt;NotificationMessage&lt;TEnum&gt;&gt; ruleSet, INotificationDispatcher&lt;TEnum&gt; dispatcher)</code></pre>
+    <pre><code class="lang-csharp hljs">public NotificationManager(IRuleSet&lt;NotificationMessage&lt;TEnum&gt;&gt; ruleSet, IEnumerable&lt;INotificationDispatcher&lt;TEnum&gt;&gt; dispatchers)</code></pre>
   </div>
   <h5 class="parameters">Parameters</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -127,8 +127,8 @@
         <td></td>
       </tr>
       <tr>
-        <td><a class="xref" href="E5R.Architecture.Core.INotificationDispatcher-1.html">INotificationDispatcher</a>&lt;TEnum&gt;</td>
-        <td><span class="parametername">dispatcher</span></td>
+        <td><span class="xref">IEnumerable</span>&lt;<a class="xref" href="E5R.Architecture.Core.INotificationDispatcher-1.html">INotificationDispatcher</a>&lt;TEnum&gt;&gt;</td>
+        <td><span class="parametername">dispatchers</span></td>
         <td></td>
       </tr>
     </tbody>

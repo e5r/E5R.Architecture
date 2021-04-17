@@ -10,7 +10,7 @@
     <meta name="viewport" content="width=device-width">
     <meta name="title" content="Class Checker
    | Arquitetura E5R ">
-    <meta name="generator" content="docfx 2.56.6.0">
+    <meta name="generator" content="docfx 2.57.2.0">
     
     <link rel="shortcut icon" href="../images/favicon.png">
     <link rel="stylesheet" href="../styles/docfx.vendor.css">
@@ -84,10 +84,40 @@
   <h6><strong>Assembly</strong>: E5R.Architecture.Core.dll</h6>
   <h5 id="E5R_Architecture_Core_Checker_syntax">Syntax</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public class Checker : object</code></pre>
+    <pre><code class="lang-csharp hljs">public static class Checker : object</code></pre>
   </div>
   <h3 id="methods">Methods
   </h3>
+  <a id="E5R_Architecture_Core_Checker_NotEmptyArgument_" data-uid="E5R.Architecture.Core.Checker.NotEmptyArgument*"></a>
+  <h4 id="E5R_Architecture_Core_Checker_NotEmptyArgument_System_String_Expression_Func_System_Object___" data-uid="E5R.Architecture.Core.Checker.NotEmptyArgument(System.String,Expression{Func{System.Object}})">NotEmptyArgument(String, Expression&lt;Func&lt;Object&gt;&gt;)</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static void NotEmptyArgument(string argStr, Expression&lt;Func&lt;object&gt;&gt; expression)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><span class="parametername">argStr</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="xref">Expression</span>&lt;<span class="xref">Func</span>&lt;<span class="xref">System.Object</span>&gt;&gt;</td>
+        <td><span class="parametername">expression</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
   <a id="E5R_Architecture_Core_Checker_NotEmptyArgument_" data-uid="E5R.Architecture.Core.Checker.NotEmptyArgument*"></a>
   <h4 id="E5R_Architecture_Core_Checker_NotEmptyArgument_System_String_System_String_" data-uid="E5R.Architecture.Core.Checker.NotEmptyArgument(System.String,System.String)">NotEmptyArgument(String, String)</h4>
   <div class="markdown level1 summary"></div>
@@ -114,6 +144,36 @@
       <tr>
         <td><span class="xref">System.String</span></td>
         <td><span class="parametername">argName</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <a id="E5R_Architecture_Core_Checker_NotEmptyOrWhiteArgument_" data-uid="E5R.Architecture.Core.Checker.NotEmptyOrWhiteArgument*"></a>
+  <h4 id="E5R_Architecture_Core_Checker_NotEmptyOrWhiteArgument_System_String_Expression_Func_System_Object___" data-uid="E5R.Architecture.Core.Checker.NotEmptyOrWhiteArgument(System.String,Expression{Func{System.Object}})">NotEmptyOrWhiteArgument(String, Expression&lt;Func&lt;Object&gt;&gt;)</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static void NotEmptyOrWhiteArgument(string argStr, Expression&lt;Func&lt;object&gt;&gt; expression)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><span class="parametername">argStr</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="xref">Expression</span>&lt;<span class="xref">Func</span>&lt;<span class="xref">System.Object</span>&gt;&gt;</td>
+        <td><span class="parametername">expression</span></td>
         <td></td>
       </tr>
     </tbody>
@@ -149,6 +209,36 @@
     </tbody>
   </table>
   <a id="E5R_Architecture_Core_Checker_NotNullArgument_" data-uid="E5R.Architecture.Core.Checker.NotNullArgument*"></a>
+  <h4 id="E5R_Architecture_Core_Checker_NotNullArgument_System_Object_Expression_Func_System_Object___" data-uid="E5R.Architecture.Core.Checker.NotNullArgument(System.Object,Expression{Func{System.Object}})">NotNullArgument(Object, Expression&lt;Func&lt;Object&gt;&gt;)</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static void NotNullArgument(object argObj, Expression&lt;Func&lt;object&gt;&gt; expression)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Object</span></td>
+        <td><span class="parametername">argObj</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="xref">Expression</span>&lt;<span class="xref">Func</span>&lt;<span class="xref">System.Object</span>&gt;&gt;</td>
+        <td><span class="parametername">expression</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <a id="E5R_Architecture_Core_Checker_NotNullArgument_" data-uid="E5R.Architecture.Core.Checker.NotNullArgument*"></a>
   <h4 id="E5R_Architecture_Core_Checker_NotNullArgument_System_Object_System_String_" data-uid="E5R.Architecture.Core.Checker.NotNullArgument(System.Object,System.String)">NotNullArgument(Object, String)</h4>
   <div class="markdown level1 summary"></div>
   <div class="markdown level1 conceptual"></div>
@@ -179,6 +269,36 @@
     </tbody>
   </table>
   <a id="E5R_Architecture_Core_Checker_NotNullObject_" data-uid="E5R.Architecture.Core.Checker.NotNullObject*"></a>
+  <h4 id="E5R_Architecture_Core_Checker_NotNullObject_System_Object_Expression_Func_System_Object___" data-uid="E5R.Architecture.Core.Checker.NotNullObject(System.Object,Expression{Func{System.Object}})">NotNullObject(Object, Expression&lt;Func&lt;Object&gt;&gt;)</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static void NotNullObject(object object, Expression&lt;Func&lt;object&gt;&gt; expression)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Object</span></td>
+        <td><span class="parametername">object</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="xref">Expression</span>&lt;<span class="xref">Func</span>&lt;<span class="xref">System.Object</span>&gt;&gt;</td>
+        <td><span class="parametername">expression</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <a id="E5R_Architecture_Core_Checker_NotNullObject_" data-uid="E5R.Architecture.Core.Checker.NotNullObject*"></a>
   <h4 id="E5R_Architecture_Core_Checker_NotNullObject_System_Object_System_String_" data-uid="E5R.Architecture.Core.Checker.NotNullObject(System.Object,System.String)">NotNullObject(Object, String)</h4>
   <div class="markdown level1 summary"></div>
   <div class="markdown level1 conceptual"></div>
@@ -204,6 +324,51 @@
       <tr>
         <td><span class="xref">System.String</span></td>
         <td><span class="parametername">objName</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <a id="E5R_Architecture_Core_Checker_NotNullOrEmptyArgument_" data-uid="E5R.Architecture.Core.Checker.NotNullOrEmptyArgument*"></a>
+  <h4 id="E5R_Architecture_Core_Checker_NotNullOrEmptyArgument__1___0___Expression_Func_System_Object___" data-uid="E5R.Architecture.Core.Checker.NotNullOrEmptyArgument``1(``0[],Expression{Func{System.Object}})">NotNullOrEmptyArgument&lt;T&gt;(T[], Expression&lt;Func&lt;Object&gt;&gt;)</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static void NotNullOrEmptyArgument&lt;T&gt;(T[] argArray, Expression&lt;Func&lt;object&gt;&gt; expression)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>T[]</td>
+        <td><span class="parametername">argArray</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="xref">Expression</span>&lt;<span class="xref">Func</span>&lt;<span class="xref">System.Object</span>&gt;&gt;</td>
+        <td><span class="parametername">expression</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="typeParameters">Type Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="parametername">T</span></td>
         <td></td>
       </tr>
     </tbody>

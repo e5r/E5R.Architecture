@@ -10,7 +10,7 @@
     <meta name="viewport" content="width=device-width">
     <meta name="title" content="Class EnumUtil
    | Arquitetura E5R ">
-    <meta name="generator" content="docfx 2.56.6.0">
+    <meta name="generator" content="docfx 2.57.2.0">
     
     <link rel="shortcut icon" href="../images/favicon.png">
     <link rel="stylesheet" href="../styles/docfx.vendor.css">
@@ -89,6 +89,72 @@
   </div>
   <h3 id="methods">Methods
   </h3>
+  <a id="E5R_Architecture_Core_Utils_EnumUtil_FromTag_" data-uid="E5R.Architecture.Core.Utils.EnumUtil.FromTag*"></a>
+  <h4 id="E5R_Architecture_Core_Utils_EnumUtil_FromTag__1_System_String_System_String_" data-uid="E5R.Architecture.Core.Utils.EnumUtil.FromTag``1(System.String,System.String)">FromTag&lt;TEnum&gt;(String, String)</h4>
+  <div class="markdown level1 summary"><p>Get a enum value from a tag value</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static TEnum FromTag&lt;TEnum&gt;(string tagKey, string tagValue)
+    where TEnum : Enum</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><span class="parametername">tagKey</span></td>
+        <td><p>The tag key</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><span class="parametername">tagValue</span></td>
+        <td><p>The tag value</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">TEnum</span></td>
+        <td><p>Value of enum based on tag</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="typeParameters">Type Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="parametername">TEnum</span></td>
+        <td><p>The enum type</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
   <a id="E5R_Architecture_Core_Utils_EnumUtil_GetModels_" data-uid="E5R.Architecture.Core.Utils.EnumUtil.GetModels*"></a>
   <h4 id="E5R_Architecture_Core_Utils_EnumUtil_GetModels__1" data-uid="E5R.Architecture.Core.Utils.EnumUtil.GetModels``1">GetModels&lt;TEnum&gt;()</h4>
   <div class="markdown level1 summary"><p>Get a enum values on <a class="xref" href="E5R.Architecture.Core.Models.EnumModel.html">EnumModel</a> format</p>

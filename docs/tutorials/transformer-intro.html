@@ -8,7 +8,7 @@
     <title>Tutorial - Transformando dados entre tipos | Arquitetura E5R </title>
     <meta name="viewport" content="width=device-width">
     <meta name="title" content="Tutorial - Transformando dados entre tipos | Arquitetura E5R ">
-    <meta name="generator" content="docfx 2.56.6.0">
+    <meta name="generator" content="docfx 2.57.2.0">
     
     <link rel="shortcut icon" href="../images/favicon.png">
     <link rel="stylesheet" href="../styles/docfx.vendor.css">
@@ -70,16 +70,15 @@
 <h1 id="transformando-dados-entre-tipos">Transformando dados entre tipos</h1>
 
 <p>No tipo de arquitetura que estamos propondo aqui e que de certa forma você já deve estar acostumado
-a trabalhor, costumamos ter muitas camadas da aplicação, e fazemos isso para abstrair e assim
-conseguir garantir o desacoplamento da solução como um todo.</p>
-<p>Porém uma das atividades que nos pegamos fazendo o tempo todo é transformar dados de um tipo para
-outro. Transformamos <em>View Model's</em> para <em>DTO's</em> e/ou <em>DTO's</em> para <em>Domain Model's</em>, além de
-<em>Domain Model's</em> para <em>Data Model's</em>, e vice-versa.</p>
+a trabalhar, costumamos dividir a aplicação em muitas camadas para com isso abstrair e garantir o
+desacoplamento da solução como um todo.</p>
+<p>Porém uma das atividades que empenhamos boa parte do nosso tempo é na transformação de dados entre
+um tipo e outro. Transformamos de <em>View Model's</em> para <em>DTO's</em>, de <em>DTO's</em> para <em>Domain Model's</em>,
+de <em>Domain Model's</em> para <em>Data Model's</em>, e continua...</p>
 <p>Obviamente temos várias bibliotecas já disponíveis no mercado para conseguir fazer isso de forma
-bem simples, e também vários plugins de IDE que nos ajudam muito.
-Sabemos que não há dificuldade alguma em fazer essas transformações usando tais bibliotecas ou
-plugins.</p>
-<p>Só pra ilustrar, vamos listar aqui algumas dessas ferramentas.</p>
+bem simples, e também vários plugins de IDE que nos ajudam muito nessa tarefa em particular.
+Não há dificuldade alguma em fazer essas transformações usando tais bibliotecas ou  plugins.</p>
+<p>Só pra ilustrar, temos aqui algumas dessas ferramentas:</p>
 <ul>
 <li><a href="https://github.com/omuleanu/ValueInjecter">ValueInjecter</a></li>
 <li><a href="https://github.com/Dotnet-Boxed/Framework">Boxed.Mapping</a></li>
@@ -162,7 +161,7 @@ aplicação <a href="https://dot.net">.NET</a> qualquer que usa os recursos de
 internamente o <code>TransformationManager</code> (implementação padrão para <code>ITransformationManager</code>)
 usa o <code>IServiceProvider</code> para resolver os transformadores.</p>
 </div>
-<p>Pronto, agora quando precisar esses transformar dados, basta usar:</p>
+<p>Pronto, agora quando precisar transformar esses dados, basta usar:</p>
 <pre><code class="lang-c#">public class MyService
 {
     private readonly ITransformationManager _transformer;

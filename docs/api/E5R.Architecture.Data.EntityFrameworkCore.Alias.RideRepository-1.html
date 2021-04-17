@@ -10,7 +10,7 @@
     <meta name="viewport" content="width=device-width">
     <meta name="title" content="Class RideRepository&lt;TDataModel&gt;
    | Arquitetura E5R ">
-    <meta name="generator" content="docfx 2.56.6.0">
+    <meta name="generator" content="docfx 2.57.2.0">
     
     <link rel="shortcut icon" href="../images/favicon.png">
     <link rel="stylesheet" href="../styles/docfx.vendor.css">
@@ -99,6 +99,12 @@
       <a class="xref" href="E5R.Architecture.Data.EntityFrameworkCore.RideStorage-1.html#E5R_Architecture_Data_EntityFrameworkCore_RideStorage_1_Find_System_Object___E5R_Architecture_Data_Abstractions_IDataIncludes_">RideStorage&lt;TDataModel&gt;.Find(Object[], IDataIncludes)</a>
     </div>
     <div>
+      <a class="xref" href="E5R.Architecture.Data.EntityFrameworkCore.RideStorage-1.html#E5R_Architecture_Data_EntityFrameworkCore_RideStorage_1_CountAll">RideStorage&lt;TDataModel&gt;.CountAll()</a>
+    </div>
+    <div>
+      <a class="xref" href="E5R.Architecture.Data.EntityFrameworkCore.RideStorage-1.html#E5R_Architecture_Data_EntityFrameworkCore_RideStorage_1_Count_E5R_Architecture_Data_Abstractions_IDataFilter__0__">RideStorage&lt;TDataModel&gt;.Count(IDataFilter&lt;TDataModel&gt;)</a>
+    </div>
+    <div>
       <a class="xref" href="E5R.Architecture.Data.EntityFrameworkCore.RideStorage-1.html#E5R_Architecture_Data_EntityFrameworkCore_RideStorage_1_GetAll_E5R_Architecture_Data_Abstractions_IDataIncludes_">RideStorage&lt;TDataModel&gt;.GetAll(IDataIncludes)</a>
     </div>
     <div>
@@ -163,7 +169,7 @@
   <h6><strong>Assembly</strong>: E5R.Architecture.Data.EntityFrameworkCore.dll</h6>
   <h5 id="E5R_Architecture_Data_EntityFrameworkCore_Alias_RideRepository_1_syntax">Syntax</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public class RideRepository&lt;TDataModel&gt; : RideStorage&lt;TDataModel&gt;, IStorageReader&lt;TDataModel&gt;, IStorageSignature where TDataModel : class, IDataModel</code></pre>
+    <pre><code class="lang-csharp hljs">public class RideRepository&lt;TDataModel&gt; : RideStorage&lt;TDataModel&gt;, IStorageReader&lt;TDataModel&gt;, IStorageSignature where TDataModel : class, IIdentifiable</code></pre>
   </div>
   <h5 class="typeParameters">Type Parameters</h5>
   <table class="table table-bordered table-striped table-condensed">

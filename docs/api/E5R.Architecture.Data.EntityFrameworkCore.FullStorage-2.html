@@ -10,7 +10,7 @@
     <meta name="viewport" content="width=device-width">
     <meta name="title" content="Class FullStorage&lt;TDbContext, TDataModel&gt;
    | Arquitetura E5R ">
-    <meta name="generator" content="docfx 2.56.6.0">
+    <meta name="generator" content="docfx 2.57.2.0">
     
     <link rel="shortcut icon" href="../images/favicon.png">
     <link rel="stylesheet" href="../styles/docfx.vendor.css">
@@ -111,7 +111,7 @@
   <h6><strong>Assembly</strong>: E5R.Architecture.Data.EntityFrameworkCore.dll</h6>
   <h5 id="E5R_Architecture_Data_EntityFrameworkCore_FullStorage_2_syntax">Syntax</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public class FullStorage&lt;TDbContext, TDataModel&gt; : StorageBase&lt;TDataModel&gt; where TDbContext : DbContext where TDataModel : class, IDataModel</code></pre>
+    <pre><code class="lang-csharp hljs">public class FullStorage&lt;TDbContext, TDataModel&gt; : StorageBase&lt;TDataModel&gt; where TDbContext : DbContext where TDataModel : class, IIdentifiable</code></pre>
   </div>
   <h5 class="typeParameters">Type Parameters</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -478,6 +478,69 @@
     <tbody>
       <tr>
         <td><span class="parametername">TUpdated</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <a id="E5R_Architecture_Data_EntityFrameworkCore_FullStorage_2_Count_" data-uid="E5R.Architecture.Data.EntityFrameworkCore.FullStorage`2.Count*"></a>
+  <h4 id="E5R_Architecture_Data_EntityFrameworkCore_FullStorage_2_Count_E5R_Architecture_Data_Abstractions_IDataFilter__1__" data-uid="E5R.Architecture.Data.EntityFrameworkCore.FullStorage`2.Count(E5R.Architecture.Data.Abstractions.IDataFilter{`1})">Count(IDataFilter&lt;TDataModel&gt;)</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public int Count(IDataFilter&lt;TDataModel&gt; filter)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="E5R.Architecture.Data.Abstractions.IDataFilter-1.html">IDataFilter</a>&lt;TDataModel&gt;</td>
+        <td><span class="parametername">filter</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <a id="E5R_Architecture_Data_EntityFrameworkCore_FullStorage_2_CountAll_" data-uid="E5R.Architecture.Data.EntityFrameworkCore.FullStorage`2.CountAll*"></a>
+  <h4 id="E5R_Architecture_Data_EntityFrameworkCore_FullStorage_2_CountAll" data-uid="E5R.Architecture.Data.EntityFrameworkCore.FullStorage`2.CountAll">CountAll()</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public int CountAll()</code></pre>
+  </div>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
         <td></td>
       </tr>
     </tbody>

@@ -1,0 +1,2373 @@
+﻿<!DOCTYPE html>
+<!--[if IE]><![endif]-->
+<html>
+  
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>Class StringExtensions
+   | Arquitetura E5R </title>
+    <meta name="viewport" content="width=device-width">
+    <meta name="title" content="Class StringExtensions
+   | Arquitetura E5R ">
+    <meta name="generator" content="docfx 2.57.2.0">
+    
+    <link rel="shortcut icon" href="../images/favicon.png">
+    <link rel="stylesheet" href="../styles/docfx.vendor.css">
+    <link rel="stylesheet" href="../styles/docfx.css">
+    <link rel="stylesheet" href="../styles/main.css">
+    <meta property="docfx:navrel" content="../toc.html">
+    <meta property="docfx:tocrel" content="toc.html">
+    
+    
+    
+  </head>
+  <body data-spy="scroll" data-target="#affix" data-offset="120">
+    <div id="wrapper">
+      <header>
+        
+        <nav id="autocollapse" class="navbar navbar-inverse ng-scope" role="navigation">
+          <div class="container">
+            <div class="navbar-header">
+              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+              
+              <a class="navbar-brand" href="../index.html">
+                <img id="logo" class="svg" src="../images/logo.png" alt="">
+              </a>
+            </div>
+            <div class="collapse navbar-collapse" id="navbar">
+              <form class="navbar-form navbar-right" role="search" id="search">
+                <div class="form-group">
+                  <input type="text" class="form-control" id="search-query" placeholder="Search" autocomplete="off">
+                </div>
+              </form>
+            </div>
+          </div>
+        </nav>
+        
+        <div class="subnav navbar navbar-default">
+          <div class="container hide-when-search" id="breadcrumb">
+            <ul class="breadcrumb">
+              <li></li>
+            </ul>
+          </div>
+        </div>
+      </header>
+      <div role="main" class="container body-content hide-when-search">
+        
+        <div class="sidenav hide-when-search">
+          <a class="btn toc-toggle collapse" data-toggle="collapse" href="#sidetoggle" aria-expanded="false" aria-controls="sidetoggle">Show / Hide Table of Contents</a>
+          <div class="sidetoggle collapse" id="sidetoggle">
+            <div id="sidetoc"></div>
+          </div>
+        </div>
+        <div class="article row grid-right">
+          <div class="col-md-10">
+            <article class="content wrap" id="_content" data-uid="E5R.Architecture.Core.Extensions.StringExtensions">
+  
+  
+  <h1 id="E5R_Architecture_Core_Extensions_StringExtensions" data-uid="E5R.Architecture.Core.Extensions.StringExtensions" class="text-break">Class StringExtensions
+  </h1>
+  <div class="markdown level0 summary"></div>
+  <div class="markdown level0 conceptual"></div>
+  <div class="inheritance">
+    <h5>Inheritance</h5>
+    <div class="level0"><span class="xref">System.Object</span></div>
+    <div class="level1"><span class="xref">StringExtensions</span></div>
+  </div>
+  <h6><strong>Namespace</strong>: <a class="xref" href="E5R.Architecture.Core.Extensions.html">E5R.Architecture.Core.Extensions</a></h6>
+  <h6><strong>Assembly</strong>: E5R.Architecture.Core.dll</h6>
+  <h5 id="E5R_Architecture_Core_Extensions_StringExtensions_syntax">Syntax</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static class StringExtensions : object</code></pre>
+  </div>
+  <h3 id="methods">Methods
+  </h3>
+  <a id="E5R_Architecture_Core_Extensions_StringExtensions_Hash_" data-uid="E5R.Architecture.Core.Extensions.StringExtensions.Hash*"></a>
+  <h4 id="E5R_Architecture_Core_Extensions_StringExtensions_Hash_System_String_HashAlgorithm_" data-uid="E5R.Architecture.Core.Extensions.StringExtensions.Hash(System.String,HashAlgorithm)">Hash(String, HashAlgorithm)</h4>
+  <div class="markdown level1 summary"><p>Computes hash of <see cref="!:String"></see></p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static byte[] Hash(this string inputString, HashAlgorithm algorithm)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><span class="parametername">inputString</span></td>
+        <td><p>The input <see cref="!:String"></see></p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">HashAlgorithm</span></td>
+        <td><span class="parametername">algorithm</span></td>
+        <td><p>The hash algorithm</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Byte</span>[]</td>
+        <td><p>The computed hash code</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 id="E5R_Architecture_Core_Extensions_StringExtensions_Hash_System_String_HashAlgorithm__remarks">Remarks</h5>
+  <div class="markdown level1 remarks"><p>Uses UTF-8 encoded <see cref="!:String"></see></p>
+</div>
+  <a id="E5R_Architecture_Core_Extensions_StringExtensions_Hash_" data-uid="E5R.Architecture.Core.Extensions.StringExtensions.Hash*"></a>
+  <h4 id="E5R_Architecture_Core_Extensions_StringExtensions_Hash_System_String_HashAlgorithm_Encoding_" data-uid="E5R.Architecture.Core.Extensions.StringExtensions.Hash(System.String,HashAlgorithm,Encoding)">Hash(String, HashAlgorithm, Encoding)</h4>
+  <div class="markdown level1 summary"><p>Computes hash of <see cref="!:String"></see></p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static byte[] Hash(this string inputString, HashAlgorithm algorithm, Encoding encoding)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><span class="parametername">inputString</span></td>
+        <td><p>The input <see cref="!:String"></see></p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">HashAlgorithm</span></td>
+        <td><span class="parametername">algorithm</span></td>
+        <td><p>The hash algorithm</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">Encoding</span></td>
+        <td><span class="parametername">encoding</span></td>
+        <td><p>Encoding</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Byte</span>[]</td>
+        <td><p>The computed hash code</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <a id="E5R_Architecture_Core_Extensions_StringExtensions_HashHex_" data-uid="E5R.Architecture.Core.Extensions.StringExtensions.HashHex*"></a>
+  <h4 id="E5R_Architecture_Core_Extensions_StringExtensions_HashHex_System_String_HashAlgorithm_" data-uid="E5R.Architecture.Core.Extensions.StringExtensions.HashHex(System.String,HashAlgorithm)">HashHex(String, HashAlgorithm)</h4>
+  <div class="markdown level1 summary"><p>Computes hash of <see cref="!:String"></see></p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static string HashHex(this string inputString, HashAlgorithm algorithm)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><span class="parametername">inputString</span></td>
+        <td><p>The input <see cref="!:String"></see></p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">HashAlgorithm</span></td>
+        <td><span class="parametername">algorithm</span></td>
+        <td><p>The hash algorithm</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><p>Hexadecimal <see cref="!:String"></see> representation of the computed hash code</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 id="E5R_Architecture_Core_Extensions_StringExtensions_HashHex_System_String_HashAlgorithm__remarks">Remarks</h5>
+  <div class="markdown level1 remarks"><p>Uses UTF-8 encoded <see cref="!:String"></see></p>
+</div>
+  <a id="E5R_Architecture_Core_Extensions_StringExtensions_HashHex_" data-uid="E5R.Architecture.Core.Extensions.StringExtensions.HashHex*"></a>
+  <h4 id="E5R_Architecture_Core_Extensions_StringExtensions_HashHex_System_String_HashAlgorithm_Encoding_" data-uid="E5R.Architecture.Core.Extensions.StringExtensions.HashHex(System.String,HashAlgorithm,Encoding)">HashHex(String, HashAlgorithm, Encoding)</h4>
+  <div class="markdown level1 summary"><p>Computes hash of <see cref="!:String"></see></p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static string HashHex(this string inputString, HashAlgorithm algorithm, Encoding encoding)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><span class="parametername">inputString</span></td>
+        <td><p>The input <see cref="!:String"></see></p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">HashAlgorithm</span></td>
+        <td><span class="parametername">algorithm</span></td>
+        <td><p>The hash algorithm</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">Encoding</span></td>
+        <td><span class="parametername">encoding</span></td>
+        <td><p>Encoding</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><p>Hexadecimal <see cref="!:String"></see> representation of the computed hash code</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <a id="E5R_Architecture_Core_Extensions_StringExtensions_HashHex_" data-uid="E5R.Architecture.Core.Extensions.StringExtensions.HashHex*"></a>
+  <h4 id="E5R_Architecture_Core_Extensions_StringExtensions_HashHex_System_String_HashAlgorithm_Encoding_System_Boolean_" data-uid="E5R.Architecture.Core.Extensions.StringExtensions.HashHex(System.String,HashAlgorithm,Encoding,System.Boolean)">HashHex(String, HashAlgorithm, Encoding, Boolean)</h4>
+  <div class="markdown level1 summary"><p>Computes hash of <see cref="!:String"></see></p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static string HashHex(this string inputString, HashAlgorithm algorithm, Encoding encoding, bool upperCaseOutput)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><span class="parametername">inputString</span></td>
+        <td><p>The input <see cref="!:String"></see></p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">HashAlgorithm</span></td>
+        <td><span class="parametername">algorithm</span></td>
+        <td><p>The hash algorithm</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">Encoding</span></td>
+        <td><span class="parametername">encoding</span></td>
+        <td><p>Encoding</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Boolean</span></td>
+        <td><span class="parametername">upperCaseOutput</span></td>
+        <td><p>If the output is to be uppercase</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><p>Hexadecimal <see cref="!:String"></see> representation of the computed hash code</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <a id="E5R_Architecture_Core_Extensions_StringExtensions_HashHex_" data-uid="E5R.Architecture.Core.Extensions.StringExtensions.HashHex*"></a>
+  <h4 id="E5R_Architecture_Core_Extensions_StringExtensions_HashHex_System_String_HashAlgorithm_System_Boolean_" data-uid="E5R.Architecture.Core.Extensions.StringExtensions.HashHex(System.String,HashAlgorithm,System.Boolean)">HashHex(String, HashAlgorithm, Boolean)</h4>
+  <div class="markdown level1 summary"><p>Computes hash of <see cref="!:String"></see></p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static string HashHex(this string inputString, HashAlgorithm algorithm, bool upperCaseOutput)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><span class="parametername">inputString</span></td>
+        <td><p>The input <see cref="!:String"></see></p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">HashAlgorithm</span></td>
+        <td><span class="parametername">algorithm</span></td>
+        <td><p>The hash algorithm</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Boolean</span></td>
+        <td><span class="parametername">upperCaseOutput</span></td>
+        <td><p>If the output is to be uppercase</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><p>Hexadecimal <see cref="!:String"></see> representation of the computed hash code</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 id="E5R_Architecture_Core_Extensions_StringExtensions_HashHex_System_String_HashAlgorithm_System_Boolean__remarks">Remarks</h5>
+  <div class="markdown level1 remarks"><p>Uses UTF-8 encoded <see cref="!:String"></see></p>
+</div>
+  <a id="E5R_Architecture_Core_Extensions_StringExtensions_Hmac_" data-uid="E5R.Architecture.Core.Extensions.StringExtensions.Hmac*"></a>
+  <h4 id="E5R_Architecture_Core_Extensions_StringExtensions_Hmac_System_String_HMAC_" data-uid="E5R.Architecture.Core.Extensions.StringExtensions.Hmac(System.String,HMAC)">Hmac(String, HMAC)</h4>
+  <div class="markdown level1 summary"><p>Computes HMAC of <see cref="!:String"></see></p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static byte[] Hmac(this string inputString, HMAC hmac)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><span class="parametername">inputString</span></td>
+        <td><p>The input <see cref="!:String"></see></p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">HMAC</span></td>
+        <td><span class="parametername">hmac</span></td>
+        <td><p>The <see cref="!:HMAC"></see> encryption algorithm</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Byte</span>[]</td>
+        <td><p>The computed <see cref="!:HMAC"></see> hash code</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 id="E5R_Architecture_Core_Extensions_StringExtensions_Hmac_System_String_HMAC__remarks">Remarks</h5>
+  <div class="markdown level1 remarks"><p>Uses UTF-8 encoded <see cref="!:String"></see></p>
+</div>
+  <a id="E5R_Architecture_Core_Extensions_StringExtensions_Hmac_" data-uid="E5R.Architecture.Core.Extensions.StringExtensions.Hmac*"></a>
+  <h4 id="E5R_Architecture_Core_Extensions_StringExtensions_Hmac_System_String_HMAC_Encoding_" data-uid="E5R.Architecture.Core.Extensions.StringExtensions.Hmac(System.String,HMAC,Encoding)">Hmac(String, HMAC, Encoding)</h4>
+  <div class="markdown level1 summary"><p>Computes HMAC of <see cref="!:String"></see></p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static byte[] Hmac(this string inputString, HMAC hmac, Encoding encoding)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><span class="parametername">inputString</span></td>
+        <td><p>The input <see cref="!:String"></see></p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">HMAC</span></td>
+        <td><span class="parametername">hmac</span></td>
+        <td><p>The <see cref="!:HMAC"></see> encryption algorithm</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">Encoding</span></td>
+        <td><span class="parametername">encoding</span></td>
+        <td><p>Encoding</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Byte</span>[]</td>
+        <td><p>The computed <see cref="!:HMAC"></see> hash code</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <a id="E5R_Architecture_Core_Extensions_StringExtensions_HmacHex_" data-uid="E5R.Architecture.Core.Extensions.StringExtensions.HmacHex*"></a>
+  <h4 id="E5R_Architecture_Core_Extensions_StringExtensions_HmacHex_System_String_HMAC_" data-uid="E5R.Architecture.Core.Extensions.StringExtensions.HmacHex(System.String,HMAC)">HmacHex(String, HMAC)</h4>
+  <div class="markdown level1 summary"><p>Computes HMAC of <see cref="!:String"></see></p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static string HmacHex(this string inputString, HMAC hmac)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><span class="parametername">inputString</span></td>
+        <td><p>The input <see cref="!:String"></see></p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">HMAC</span></td>
+        <td><span class="parametername">hmac</span></td>
+        <td><p>The <see cref="!:HMAC"></see> encryption algorithm</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><p>Hexadecimal <see cref="!:String"></see> representation of the computed <see cref="!:HMAC"></see>
+hash code</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 id="E5R_Architecture_Core_Extensions_StringExtensions_HmacHex_System_String_HMAC__remarks">Remarks</h5>
+  <div class="markdown level1 remarks"><p>Uses UTF-8 encoded <see cref="!:String"></see></p>
+</div>
+  <a id="E5R_Architecture_Core_Extensions_StringExtensions_HmacHex_" data-uid="E5R.Architecture.Core.Extensions.StringExtensions.HmacHex*"></a>
+  <h4 id="E5R_Architecture_Core_Extensions_StringExtensions_HmacHex_System_String_HMAC_Encoding_" data-uid="E5R.Architecture.Core.Extensions.StringExtensions.HmacHex(System.String,HMAC,Encoding)">HmacHex(String, HMAC, Encoding)</h4>
+  <div class="markdown level1 summary"><p>Computes HMAC of <see cref="!:String"></see></p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static string HmacHex(this string inputString, HMAC hmac, Encoding encoding)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><span class="parametername">inputString</span></td>
+        <td><p>The input <see cref="!:String"></see></p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">HMAC</span></td>
+        <td><span class="parametername">hmac</span></td>
+        <td><p>The <see cref="!:HMAC"></see> encryption algorithm</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">Encoding</span></td>
+        <td><span class="parametername">encoding</span></td>
+        <td><p>Encoding</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><p>Hexadecimal <see cref="!:String"></see> representation of the computed <see cref="!:HMAC"></see>
+hash code</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <a id="E5R_Architecture_Core_Extensions_StringExtensions_HmacHex_" data-uid="E5R.Architecture.Core.Extensions.StringExtensions.HmacHex*"></a>
+  <h4 id="E5R_Architecture_Core_Extensions_StringExtensions_HmacHex_System_String_HMAC_Encoding_System_Boolean_" data-uid="E5R.Architecture.Core.Extensions.StringExtensions.HmacHex(System.String,HMAC,Encoding,System.Boolean)">HmacHex(String, HMAC, Encoding, Boolean)</h4>
+  <div class="markdown level1 summary"><p>Computes HMAC of <see cref="!:String"></see></p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static string HmacHex(this string inputString, HMAC hmac, Encoding encoding, bool upperCaseOutput)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><span class="parametername">inputString</span></td>
+        <td><p>The input <see cref="!:String"></see></p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">HMAC</span></td>
+        <td><span class="parametername">hmac</span></td>
+        <td><p>The <see cref="!:HMAC"></see> encryption algorithm</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">Encoding</span></td>
+        <td><span class="parametername">encoding</span></td>
+        <td><p>Encoding</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Boolean</span></td>
+        <td><span class="parametername">upperCaseOutput</span></td>
+        <td><p>If the output is to be uppercase</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><p>Hexadecimal <see cref="!:String"></see> representation of the computed <see cref="!:HMAC"></see>
+hash code</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <a id="E5R_Architecture_Core_Extensions_StringExtensions_HmacHex_" data-uid="E5R.Architecture.Core.Extensions.StringExtensions.HmacHex*"></a>
+  <h4 id="E5R_Architecture_Core_Extensions_StringExtensions_HmacHex_System_String_HMAC_System_Boolean_" data-uid="E5R.Architecture.Core.Extensions.StringExtensions.HmacHex(System.String,HMAC,System.Boolean)">HmacHex(String, HMAC, Boolean)</h4>
+  <div class="markdown level1 summary"><p>Computes HMAC of <see cref="!:String"></see></p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static string HmacHex(this string inputString, HMAC hmac, bool upperCaseOutput)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><span class="parametername">inputString</span></td>
+        <td><p>The input <see cref="!:String"></see></p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">HMAC</span></td>
+        <td><span class="parametername">hmac</span></td>
+        <td><p>The <see cref="!:HMAC"></see> encryption algorithm</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Boolean</span></td>
+        <td><span class="parametername">upperCaseOutput</span></td>
+        <td><p>If the output is to be uppercase</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><p>Hexadecimal <see cref="!:String"></see> representation of the computed <see cref="!:HMAC"></see>
+hash code</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 id="E5R_Architecture_Core_Extensions_StringExtensions_HmacHex_System_String_HMAC_System_Boolean__remarks">Remarks</h5>
+  <div class="markdown level1 remarks"><p>Uses UTF-8 encoded <see cref="!:String"></see></p>
+</div>
+  <a id="E5R_Architecture_Core_Extensions_StringExtensions_HmacMd5_" data-uid="E5R.Architecture.Core.Extensions.StringExtensions.HmacMd5*"></a>
+  <h4 id="E5R_Architecture_Core_Extensions_StringExtensions_HmacMd5_System_String_System_Byte___" data-uid="E5R.Architecture.Core.Extensions.StringExtensions.HmacMd5(System.String,System.Byte[])">HmacMd5(String, Byte[])</h4>
+  <div class="markdown level1 summary"><p>Computes HMAC of <see cref="!:String"></see> by using the <see cref="!:HMACMD5"></see> hash function</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static byte[] HmacMd5(this string inputString, byte[] key)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><span class="parametername">inputString</span></td>
+        <td><p>The input <see cref="!:String"></see></p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Byte</span>[]</td>
+        <td><span class="parametername">key</span></td>
+        <td><p>The secret key for <see cref="!:HMACMD5"></see> encryption</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Byte</span>[]</td>
+        <td><p>The computed <see cref="!:HMACMD5"></see> hash code</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 id="E5R_Architecture_Core_Extensions_StringExtensions_HmacMd5_System_String_System_Byte____remarks">Remarks</h5>
+  <div class="markdown level1 remarks"><p>Uses UTF-8 encoded <see cref="!:String"></see></p>
+</div>
+  <a id="E5R_Architecture_Core_Extensions_StringExtensions_HmacMd5Hex_" data-uid="E5R.Architecture.Core.Extensions.StringExtensions.HmacMd5Hex*"></a>
+  <h4 id="E5R_Architecture_Core_Extensions_StringExtensions_HmacMd5Hex_System_String_System_Byte___" data-uid="E5R.Architecture.Core.Extensions.StringExtensions.HmacMd5Hex(System.String,System.Byte[])">HmacMd5Hex(String, Byte[])</h4>
+  <div class="markdown level1 summary"><p>Computes HMAC of <see cref="!:String"></see> by using the <see cref="!:HMACMD5"></see> hash function</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static string HmacMd5Hex(this string inputString, byte[] key)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><span class="parametername">inputString</span></td>
+        <td><p>The input <see cref="!:String"></see></p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Byte</span>[]</td>
+        <td><span class="parametername">key</span></td>
+        <td><p>The secret key for <see cref="!:HMACMD5"></see> encryption</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><p>Hexadecimal <see cref="!:String"></see> representation of the computed <see cref="!:HMACMD5"></see>
+hash code</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 id="E5R_Architecture_Core_Extensions_StringExtensions_HmacMd5Hex_System_String_System_Byte____remarks">Remarks</h5>
+  <div class="markdown level1 remarks"><p>Uses UTF-8 encoded <see cref="!:String"></see></p>
+</div>
+  <a id="E5R_Architecture_Core_Extensions_StringExtensions_HmacMd5Hex_" data-uid="E5R.Architecture.Core.Extensions.StringExtensions.HmacMd5Hex*"></a>
+  <h4 id="E5R_Architecture_Core_Extensions_StringExtensions_HmacMd5Hex_System_String_System_Byte___System_Boolean_" data-uid="E5R.Architecture.Core.Extensions.StringExtensions.HmacMd5Hex(System.String,System.Byte[],System.Boolean)">HmacMd5Hex(String, Byte[], Boolean)</h4>
+  <div class="markdown level1 summary"><p>Computes HMAC of <see cref="!:String"></see> by using the <see cref="!:HMACMD5"></see> hash function</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static string HmacMd5Hex(this string inputString, byte[] key, bool upperCaseOutput)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><span class="parametername">inputString</span></td>
+        <td><p>The input <see cref="!:String"></see></p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Byte</span>[]</td>
+        <td><span class="parametername">key</span></td>
+        <td><p>The secret key for <see cref="!:HMACMD5"></see> encryption</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Boolean</span></td>
+        <td><span class="parametername">upperCaseOutput</span></td>
+        <td><p>If the output is to be uppercase</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><p>Hexadecimal <see cref="!:String"></see> representation of the computed <see cref="!:HMACMD5"></see>
+hash code</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 id="E5R_Architecture_Core_Extensions_StringExtensions_HmacMd5Hex_System_String_System_Byte___System_Boolean__remarks">Remarks</h5>
+  <div class="markdown level1 remarks"><p>Uses UTF-8 encoded <see cref="!:String"></see></p>
+</div>
+  <a id="E5R_Architecture_Core_Extensions_StringExtensions_HmacSha1_" data-uid="E5R.Architecture.Core.Extensions.StringExtensions.HmacSha1*"></a>
+  <h4 id="E5R_Architecture_Core_Extensions_StringExtensions_HmacSha1_System_String_System_Byte___" data-uid="E5R.Architecture.Core.Extensions.StringExtensions.HmacSha1(System.String,System.Byte[])">HmacSha1(String, Byte[])</h4>
+  <div class="markdown level1 summary"><p>Computes HMAC of <see cref="!:String"></see> by using the <see cref="!:HMACSHA1"></see> hash function</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static byte[] HmacSha1(this string inputString, byte[] key)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><span class="parametername">inputString</span></td>
+        <td><p>The input <see cref="!:String"></see></p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Byte</span>[]</td>
+        <td><span class="parametername">key</span></td>
+        <td><p>The secret key for <see cref="!:HMACSHA1"></see> encryption</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Byte</span>[]</td>
+        <td><p>The computed <see cref="!:HMACSHA1"></see> hash code</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 id="E5R_Architecture_Core_Extensions_StringExtensions_HmacSha1_System_String_System_Byte____remarks">Remarks</h5>
+  <div class="markdown level1 remarks"><p>Uses UTF-8 encoded <see cref="!:String"></see></p>
+</div>
+  <a id="E5R_Architecture_Core_Extensions_StringExtensions_HmacSha1Hex_" data-uid="E5R.Architecture.Core.Extensions.StringExtensions.HmacSha1Hex*"></a>
+  <h4 id="E5R_Architecture_Core_Extensions_StringExtensions_HmacSha1Hex_System_String_System_Byte___" data-uid="E5R.Architecture.Core.Extensions.StringExtensions.HmacSha1Hex(System.String,System.Byte[])">HmacSha1Hex(String, Byte[])</h4>
+  <div class="markdown level1 summary"><p>Computes HMAC of <see cref="!:String"></see> by using the <see cref="!:HMACSHA1"></see> hash function</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static string HmacSha1Hex(this string inputString, byte[] key)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><span class="parametername">inputString</span></td>
+        <td><p>The input <see cref="!:String"></see></p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Byte</span>[]</td>
+        <td><span class="parametername">key</span></td>
+        <td><p>The secret key for <see cref="!:HMACSHA1"></see> encryption</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><p>Hexadecimal <see cref="!:String"></see> representation of the computed <see cref="!:HMACSHA1"></see>
+hash code</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 id="E5R_Architecture_Core_Extensions_StringExtensions_HmacSha1Hex_System_String_System_Byte____remarks">Remarks</h5>
+  <div class="markdown level1 remarks"><p>Uses UTF-8 encoded <see cref="!:String"></see></p>
+</div>
+  <a id="E5R_Architecture_Core_Extensions_StringExtensions_HmacSha1Hex_" data-uid="E5R.Architecture.Core.Extensions.StringExtensions.HmacSha1Hex*"></a>
+  <h4 id="E5R_Architecture_Core_Extensions_StringExtensions_HmacSha1Hex_System_String_System_Byte___System_Boolean_" data-uid="E5R.Architecture.Core.Extensions.StringExtensions.HmacSha1Hex(System.String,System.Byte[],System.Boolean)">HmacSha1Hex(String, Byte[], Boolean)</h4>
+  <div class="markdown level1 summary"><p>Computes HMAC of <see cref="!:String"></see> by using the <see cref="!:HMACSHA1"></see> hash function</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static string HmacSha1Hex(this string inputString, byte[] key, bool upperCaseOutput)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><span class="parametername">inputString</span></td>
+        <td><p>The input <see cref="!:String"></see></p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Byte</span>[]</td>
+        <td><span class="parametername">key</span></td>
+        <td><p>The secret key for <see cref="!:HMACSHA1"></see> encryption</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Boolean</span></td>
+        <td><span class="parametername">upperCaseOutput</span></td>
+        <td><p>If the output is to be uppercase</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><p>Hexadecimal <see cref="!:String"></see> representation of the computed <see cref="!:HMACSHA1"></see>
+hash code</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 id="E5R_Architecture_Core_Extensions_StringExtensions_HmacSha1Hex_System_String_System_Byte___System_Boolean__remarks">Remarks</h5>
+  <div class="markdown level1 remarks"><p>Uses UTF-8 encoded <see cref="!:String"></see></p>
+</div>
+  <a id="E5R_Architecture_Core_Extensions_StringExtensions_HmacSha256_" data-uid="E5R.Architecture.Core.Extensions.StringExtensions.HmacSha256*"></a>
+  <h4 id="E5R_Architecture_Core_Extensions_StringExtensions_HmacSha256_System_String_System_Byte___" data-uid="E5R.Architecture.Core.Extensions.StringExtensions.HmacSha256(System.String,System.Byte[])">HmacSha256(String, Byte[])</h4>
+  <div class="markdown level1 summary"><p>Computes HMAC of <see cref="!:String"></see> by using the <see cref="!:HMACSHA256"></see> hash function</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static byte[] HmacSha256(this string inputString, byte[] key)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><span class="parametername">inputString</span></td>
+        <td><p>The input <see cref="!:String"></see></p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Byte</span>[]</td>
+        <td><span class="parametername">key</span></td>
+        <td><p>The secret key for <see cref="!:HMACSHA256"></see> encryption</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Byte</span>[]</td>
+        <td><p>The computed <see cref="!:HMACSHA256"></see> hash code</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 id="E5R_Architecture_Core_Extensions_StringExtensions_HmacSha256_System_String_System_Byte____remarks">Remarks</h5>
+  <div class="markdown level1 remarks"><p>Uses UTF-8 encoded <see cref="!:String"></see></p>
+</div>
+  <a id="E5R_Architecture_Core_Extensions_StringExtensions_HmacSha256Hex_" data-uid="E5R.Architecture.Core.Extensions.StringExtensions.HmacSha256Hex*"></a>
+  <h4 id="E5R_Architecture_Core_Extensions_StringExtensions_HmacSha256Hex_System_String_System_Byte___" data-uid="E5R.Architecture.Core.Extensions.StringExtensions.HmacSha256Hex(System.String,System.Byte[])">HmacSha256Hex(String, Byte[])</h4>
+  <div class="markdown level1 summary"><p>Computes HMAC of <see cref="!:String"></see> by using the <see cref="!:HMACSHA256"></see> hash function</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static string HmacSha256Hex(this string inputString, byte[] key)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><span class="parametername">inputString</span></td>
+        <td><p>The input <see cref="!:String"></see></p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Byte</span>[]</td>
+        <td><span class="parametername">key</span></td>
+        <td><p>The secret key for <see cref="!:HMACSHA256"></see> encryption</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><p>Hexadecimal <see cref="!:String"></see> representation of the computed <see cref="!:HMACSHA256"></see>
+hash code</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 id="E5R_Architecture_Core_Extensions_StringExtensions_HmacSha256Hex_System_String_System_Byte____remarks">Remarks</h5>
+  <div class="markdown level1 remarks"><p>Uses UTF-8 encoded <see cref="!:String"></see></p>
+</div>
+  <a id="E5R_Architecture_Core_Extensions_StringExtensions_HmacSha256Hex_" data-uid="E5R.Architecture.Core.Extensions.StringExtensions.HmacSha256Hex*"></a>
+  <h4 id="E5R_Architecture_Core_Extensions_StringExtensions_HmacSha256Hex_System_String_System_Byte___System_Boolean_" data-uid="E5R.Architecture.Core.Extensions.StringExtensions.HmacSha256Hex(System.String,System.Byte[],System.Boolean)">HmacSha256Hex(String, Byte[], Boolean)</h4>
+  <div class="markdown level1 summary"><p>Computes HMAC of <see cref="!:String"></see> by using the <see cref="!:HMACSHA256"></see> hash function</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static string HmacSha256Hex(this string inputString, byte[] key, bool upperCaseOutput)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><span class="parametername">inputString</span></td>
+        <td><p>The input <see cref="!:String"></see></p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Byte</span>[]</td>
+        <td><span class="parametername">key</span></td>
+        <td><p>The secret key for <see cref="!:HMACSHA256"></see> encryption</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Boolean</span></td>
+        <td><span class="parametername">upperCaseOutput</span></td>
+        <td><p>If the output is to be uppercase</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><p>Hexadecimal <see cref="!:String"></see> representation of the computed <see cref="!:HMACSHA256"></see>
+hash code</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 id="E5R_Architecture_Core_Extensions_StringExtensions_HmacSha256Hex_System_String_System_Byte___System_Boolean__remarks">Remarks</h5>
+  <div class="markdown level1 remarks"><p>Uses UTF-8 encoded <see cref="!:String"></see></p>
+</div>
+  <a id="E5R_Architecture_Core_Extensions_StringExtensions_HmacSha384_" data-uid="E5R.Architecture.Core.Extensions.StringExtensions.HmacSha384*"></a>
+  <h4 id="E5R_Architecture_Core_Extensions_StringExtensions_HmacSha384_System_String_System_Byte___" data-uid="E5R.Architecture.Core.Extensions.StringExtensions.HmacSha384(System.String,System.Byte[])">HmacSha384(String, Byte[])</h4>
+  <div class="markdown level1 summary"><p>Computes HMAC of <see cref="!:String"></see> by using the <see cref="!:HMACSHA384"></see> hash function</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static byte[] HmacSha384(this string inputString, byte[] key)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><span class="parametername">inputString</span></td>
+        <td><p>The input <see cref="!:String"></see></p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Byte</span>[]</td>
+        <td><span class="parametername">key</span></td>
+        <td><p>The secret key for <see cref="!:HMACSHA384"></see> encryption</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Byte</span>[]</td>
+        <td><p>The computed <see cref="!:HMACSHA384"></see> hash code</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 id="E5R_Architecture_Core_Extensions_StringExtensions_HmacSha384_System_String_System_Byte____remarks">Remarks</h5>
+  <div class="markdown level1 remarks"><p>Uses UTF-8 encoded <see cref="!:String"></see></p>
+</div>
+  <a id="E5R_Architecture_Core_Extensions_StringExtensions_HmacSha384Hex_" data-uid="E5R.Architecture.Core.Extensions.StringExtensions.HmacSha384Hex*"></a>
+  <h4 id="E5R_Architecture_Core_Extensions_StringExtensions_HmacSha384Hex_System_String_System_Byte___" data-uid="E5R.Architecture.Core.Extensions.StringExtensions.HmacSha384Hex(System.String,System.Byte[])">HmacSha384Hex(String, Byte[])</h4>
+  <div class="markdown level1 summary"><p>Computes HMAC of <see cref="!:String"></see> by using the <see cref="!:HMACSHA384"></see> hash function</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static string HmacSha384Hex(this string inputString, byte[] key)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><span class="parametername">inputString</span></td>
+        <td><p>The input <see cref="!:String"></see></p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Byte</span>[]</td>
+        <td><span class="parametername">key</span></td>
+        <td><p>The secret key for <see cref="!:HMACSHA384"></see> encryption</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><p>Hexadecimal <see cref="!:String"></see> representation of the computed <see cref="!:HMACSHA384"></see>
+hash code</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 id="E5R_Architecture_Core_Extensions_StringExtensions_HmacSha384Hex_System_String_System_Byte____remarks">Remarks</h5>
+  <div class="markdown level1 remarks"><p>Uses UTF-8 encoded <see cref="!:String"></see></p>
+</div>
+  <a id="E5R_Architecture_Core_Extensions_StringExtensions_HmacSha384Hex_" data-uid="E5R.Architecture.Core.Extensions.StringExtensions.HmacSha384Hex*"></a>
+  <h4 id="E5R_Architecture_Core_Extensions_StringExtensions_HmacSha384Hex_System_String_System_Byte___System_Boolean_" data-uid="E5R.Architecture.Core.Extensions.StringExtensions.HmacSha384Hex(System.String,System.Byte[],System.Boolean)">HmacSha384Hex(String, Byte[], Boolean)</h4>
+  <div class="markdown level1 summary"><p>Computes HMAC of <see cref="!:String"></see> by using the <see cref="!:HMACSHA384"></see> hash function</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static string HmacSha384Hex(this string inputString, byte[] key, bool upperCaseOutput)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><span class="parametername">inputString</span></td>
+        <td><p>The input <see cref="!:String"></see></p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Byte</span>[]</td>
+        <td><span class="parametername">key</span></td>
+        <td><p>The secret key for <see cref="!:HMACSHA384"></see> encryption</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Boolean</span></td>
+        <td><span class="parametername">upperCaseOutput</span></td>
+        <td><p>If the output is to be uppercase</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><p>Hexadecimal <see cref="!:String"></see> representation of the computed <see cref="!:HMACSHA384"></see>
+hash code</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 id="E5R_Architecture_Core_Extensions_StringExtensions_HmacSha384Hex_System_String_System_Byte___System_Boolean__remarks">Remarks</h5>
+  <div class="markdown level1 remarks"><p>Uses UTF-8 encoded <see cref="!:String"></see></p>
+</div>
+  <a id="E5R_Architecture_Core_Extensions_StringExtensions_HmacSha512_" data-uid="E5R.Architecture.Core.Extensions.StringExtensions.HmacSha512*"></a>
+  <h4 id="E5R_Architecture_Core_Extensions_StringExtensions_HmacSha512_System_String_System_Byte___" data-uid="E5R.Architecture.Core.Extensions.StringExtensions.HmacSha512(System.String,System.Byte[])">HmacSha512(String, Byte[])</h4>
+  <div class="markdown level1 summary"><p>Computes HMAC of <see cref="!:String"></see> by using the <see cref="!:HMACSHA512"></see> hash function</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static byte[] HmacSha512(this string inputString, byte[] key)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><span class="parametername">inputString</span></td>
+        <td><p>The input <see cref="!:String"></see></p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Byte</span>[]</td>
+        <td><span class="parametername">key</span></td>
+        <td><p>The secret key for <see cref="!:HMACSHA512"></see> encryption</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Byte</span>[]</td>
+        <td><p>The computed <see cref="!:HMACSHA512"></see> hash code</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 id="E5R_Architecture_Core_Extensions_StringExtensions_HmacSha512_System_String_System_Byte____remarks">Remarks</h5>
+  <div class="markdown level1 remarks"><p>Uses UTF-8 encoded <see cref="!:String"></see></p>
+</div>
+  <a id="E5R_Architecture_Core_Extensions_StringExtensions_HmacSha512Hex_" data-uid="E5R.Architecture.Core.Extensions.StringExtensions.HmacSha512Hex*"></a>
+  <h4 id="E5R_Architecture_Core_Extensions_StringExtensions_HmacSha512Hex_System_String_System_Byte___" data-uid="E5R.Architecture.Core.Extensions.StringExtensions.HmacSha512Hex(System.String,System.Byte[])">HmacSha512Hex(String, Byte[])</h4>
+  <div class="markdown level1 summary"><p>Computes HMAC of <see cref="!:String"></see> by using the <see cref="!:HMACSHA512"></see> hash function</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static string HmacSha512Hex(this string inputString, byte[] key)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><span class="parametername">inputString</span></td>
+        <td><p>The input <see cref="!:String"></see></p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Byte</span>[]</td>
+        <td><span class="parametername">key</span></td>
+        <td><p>The secret key for <see cref="!:HMACSHA512"></see> encryption</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><p>Hexadecimal <see cref="!:String"></see> representation of the computed <see cref="!:HMACSHA512"></see>
+hash code</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 id="E5R_Architecture_Core_Extensions_StringExtensions_HmacSha512Hex_System_String_System_Byte____remarks">Remarks</h5>
+  <div class="markdown level1 remarks"><p>Uses UTF-8 encoded <see cref="!:String"></see></p>
+</div>
+  <a id="E5R_Architecture_Core_Extensions_StringExtensions_HmacSha512Hex_" data-uid="E5R.Architecture.Core.Extensions.StringExtensions.HmacSha512Hex*"></a>
+  <h4 id="E5R_Architecture_Core_Extensions_StringExtensions_HmacSha512Hex_System_String_System_Byte___System_Boolean_" data-uid="E5R.Architecture.Core.Extensions.StringExtensions.HmacSha512Hex(System.String,System.Byte[],System.Boolean)">HmacSha512Hex(String, Byte[], Boolean)</h4>
+  <div class="markdown level1 summary"><p>Computes HMAC of <see cref="!:String"></see> by using the <see cref="!:HMACSHA512"></see> hash function</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static string HmacSha512Hex(this string inputString, byte[] key, bool upperCaseOutput)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><span class="parametername">inputString</span></td>
+        <td><p>The input <see cref="!:String"></see></p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Byte</span>[]</td>
+        <td><span class="parametername">key</span></td>
+        <td><p>The secret key for <see cref="!:HMACSHA512"></see> encryption</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Boolean</span></td>
+        <td><span class="parametername">upperCaseOutput</span></td>
+        <td><p>If the output is to be uppercase</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><p>Hexadecimal <see cref="!:String"></see> representation of the computed <see cref="!:HMACSHA512"></see>
+hash code</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 id="E5R_Architecture_Core_Extensions_StringExtensions_HmacSha512Hex_System_String_System_Byte___System_Boolean__remarks">Remarks</h5>
+  <div class="markdown level1 remarks"><p>Uses UTF-8 encoded <see cref="!:String"></see></p>
+</div>
+  <a id="E5R_Architecture_Core_Extensions_StringExtensions_Md5_" data-uid="E5R.Architecture.Core.Extensions.StringExtensions.Md5*"></a>
+  <h4 id="E5R_Architecture_Core_Extensions_StringExtensions_Md5_System_String_" data-uid="E5R.Architecture.Core.Extensions.StringExtensions.Md5(System.String)">Md5(String)</h4>
+  <div class="markdown level1 summary"><p>Computes MD5 hash of <see cref="!:String"></see></p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static byte[] Md5(this string inputString)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><span class="parametername">inputString</span></td>
+        <td><p>The input <see cref="!:String"></see></p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Byte</span>[]</td>
+        <td><p>The computed MD5 hash code</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <a id="E5R_Architecture_Core_Extensions_StringExtensions_Md5Hex_" data-uid="E5R.Architecture.Core.Extensions.StringExtensions.Md5Hex*"></a>
+  <h4 id="E5R_Architecture_Core_Extensions_StringExtensions_Md5Hex_System_String_" data-uid="E5R.Architecture.Core.Extensions.StringExtensions.Md5Hex(System.String)">Md5Hex(String)</h4>
+  <div class="markdown level1 summary"><p>Computes MD5 hash of <see cref="!:String"></see></p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static string Md5Hex(this string inputString)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><span class="parametername">inputString</span></td>
+        <td><p>The input <see cref="!:String"></see></p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><p>Hexadecimal <see cref="!:String"></see> representation of the computed hash code</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <a id="E5R_Architecture_Core_Extensions_StringExtensions_Md5Hex_" data-uid="E5R.Architecture.Core.Extensions.StringExtensions.Md5Hex*"></a>
+  <h4 id="E5R_Architecture_Core_Extensions_StringExtensions_Md5Hex_System_String_System_Boolean_" data-uid="E5R.Architecture.Core.Extensions.StringExtensions.Md5Hex(System.String,System.Boolean)">Md5Hex(String, Boolean)</h4>
+  <div class="markdown level1 summary"><p>Computes MD5 hash of <see cref="!:String"></see></p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static string Md5Hex(this string inputString, bool upperCaseOutput)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><span class="parametername">inputString</span></td>
+        <td><p>The input <see cref="!:String"></see></p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Boolean</span></td>
+        <td><span class="parametername">upperCaseOutput</span></td>
+        <td><p>If the output is to be uppercase</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><p>Hexadecimal <see cref="!:String"></see> representation of the computed hash code</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <a id="E5R_Architecture_Core_Extensions_StringExtensions_Sha1_" data-uid="E5R.Architecture.Core.Extensions.StringExtensions.Sha1*"></a>
+  <h4 id="E5R_Architecture_Core_Extensions_StringExtensions_Sha1_System_String_" data-uid="E5R.Architecture.Core.Extensions.StringExtensions.Sha1(System.String)">Sha1(String)</h4>
+  <div class="markdown level1 summary"><p>Computes SHA-1 hash of <see cref="!:String"></see></p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static byte[] Sha1(this string inputString)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><span class="parametername">inputString</span></td>
+        <td><p>The input <see cref="!:String"></see></p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Byte</span>[]</td>
+        <td><p>The computed SHA-1 hash code</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <a id="E5R_Architecture_Core_Extensions_StringExtensions_Sha1Hex_" data-uid="E5R.Architecture.Core.Extensions.StringExtensions.Sha1Hex*"></a>
+  <h4 id="E5R_Architecture_Core_Extensions_StringExtensions_Sha1Hex_System_String_" data-uid="E5R.Architecture.Core.Extensions.StringExtensions.Sha1Hex(System.String)">Sha1Hex(String)</h4>
+  <div class="markdown level1 summary"><p>Computes SHA-1 hash of <see cref="!:String"></see></p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static string Sha1Hex(this string inputString)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><span class="parametername">inputString</span></td>
+        <td><p>The input <see cref="!:String"></see></p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><p>Hexadecimal <see cref="!:String"></see> representation of the computed hash code</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <a id="E5R_Architecture_Core_Extensions_StringExtensions_Sha1Hex_" data-uid="E5R.Architecture.Core.Extensions.StringExtensions.Sha1Hex*"></a>
+  <h4 id="E5R_Architecture_Core_Extensions_StringExtensions_Sha1Hex_System_String_System_Boolean_" data-uid="E5R.Architecture.Core.Extensions.StringExtensions.Sha1Hex(System.String,System.Boolean)">Sha1Hex(String, Boolean)</h4>
+  <div class="markdown level1 summary"><p>Computes SHA-1 hash of <see cref="!:String"></see></p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static string Sha1Hex(this string inputString, bool upperCaseOutput)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><span class="parametername">inputString</span></td>
+        <td><p>The input <see cref="!:String"></see></p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Boolean</span></td>
+        <td><span class="parametername">upperCaseOutput</span></td>
+        <td><p>If the output is to be uppercase</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><p>Hexadecimal <see cref="!:String"></see> representation of the computed hash code</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <a id="E5R_Architecture_Core_Extensions_StringExtensions_Sha256_" data-uid="E5R.Architecture.Core.Extensions.StringExtensions.Sha256*"></a>
+  <h4 id="E5R_Architecture_Core_Extensions_StringExtensions_Sha256_System_String_" data-uid="E5R.Architecture.Core.Extensions.StringExtensions.Sha256(System.String)">Sha256(String)</h4>
+  <div class="markdown level1 summary"><p>Computes SHA-256 hash of <see cref="!:String"></see></p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static byte[] Sha256(this string inputString)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><span class="parametername">inputString</span></td>
+        <td><p>The input <see cref="!:String"></see></p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Byte</span>[]</td>
+        <td><p>The computed SHA-256 hash code</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <a id="E5R_Architecture_Core_Extensions_StringExtensions_Sha256Hex_" data-uid="E5R.Architecture.Core.Extensions.StringExtensions.Sha256Hex*"></a>
+  <h4 id="E5R_Architecture_Core_Extensions_StringExtensions_Sha256Hex_System_String_" data-uid="E5R.Architecture.Core.Extensions.StringExtensions.Sha256Hex(System.String)">Sha256Hex(String)</h4>
+  <div class="markdown level1 summary"><p>Computes SHA-256 hash of <see cref="!:String"></see></p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static string Sha256Hex(this string inputString)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><span class="parametername">inputString</span></td>
+        <td><p>The input <see cref="!:String"></see></p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><p>Hexadecimal <see cref="!:String"></see> representation of the computed hash code</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <a id="E5R_Architecture_Core_Extensions_StringExtensions_Sha256Hex_" data-uid="E5R.Architecture.Core.Extensions.StringExtensions.Sha256Hex*"></a>
+  <h4 id="E5R_Architecture_Core_Extensions_StringExtensions_Sha256Hex_System_String_System_Boolean_" data-uid="E5R.Architecture.Core.Extensions.StringExtensions.Sha256Hex(System.String,System.Boolean)">Sha256Hex(String, Boolean)</h4>
+  <div class="markdown level1 summary"><p>Computes SHA-256 hash of <see cref="!:String"></see></p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static string Sha256Hex(this string inputString, bool upperCaseOutput)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><span class="parametername">inputString</span></td>
+        <td><p>The input <see cref="!:String"></see></p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Boolean</span></td>
+        <td><span class="parametername">upperCaseOutput</span></td>
+        <td><p>If the output is to be uppercase</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><p>Hexadecimal <see cref="!:String"></see> representation of the computed hash code</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <a id="E5R_Architecture_Core_Extensions_StringExtensions_Sha384_" data-uid="E5R.Architecture.Core.Extensions.StringExtensions.Sha384*"></a>
+  <h4 id="E5R_Architecture_Core_Extensions_StringExtensions_Sha384_System_String_" data-uid="E5R.Architecture.Core.Extensions.StringExtensions.Sha384(System.String)">Sha384(String)</h4>
+  <div class="markdown level1 summary"><p>Computes SHA-384 hash of <see cref="!:String"></see></p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static byte[] Sha384(this string inputString)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><span class="parametername">inputString</span></td>
+        <td><p>The input <see cref="!:String"></see></p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Byte</span>[]</td>
+        <td><p>The computed SHA-384 hash code</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <a id="E5R_Architecture_Core_Extensions_StringExtensions_Sha384Hex_" data-uid="E5R.Architecture.Core.Extensions.StringExtensions.Sha384Hex*"></a>
+  <h4 id="E5R_Architecture_Core_Extensions_StringExtensions_Sha384Hex_System_String_" data-uid="E5R.Architecture.Core.Extensions.StringExtensions.Sha384Hex(System.String)">Sha384Hex(String)</h4>
+  <div class="markdown level1 summary"><p>Computes SHA-384 hash of <see cref="!:String"></see></p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static string Sha384Hex(this string inputString)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><span class="parametername">inputString</span></td>
+        <td><p>The input <see cref="!:String"></see></p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><p>Hexadecimal <see cref="!:String"></see> representation of the computed hash code</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <a id="E5R_Architecture_Core_Extensions_StringExtensions_Sha384Hex_" data-uid="E5R.Architecture.Core.Extensions.StringExtensions.Sha384Hex*"></a>
+  <h4 id="E5R_Architecture_Core_Extensions_StringExtensions_Sha384Hex_System_String_System_Boolean_" data-uid="E5R.Architecture.Core.Extensions.StringExtensions.Sha384Hex(System.String,System.Boolean)">Sha384Hex(String, Boolean)</h4>
+  <div class="markdown level1 summary"><p>Computes SHA-256 hash of <see cref="!:String"></see></p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static string Sha384Hex(this string inputString, bool upperCaseOutput)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><span class="parametername">inputString</span></td>
+        <td><p>The input <see cref="!:String"></see></p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Boolean</span></td>
+        <td><span class="parametername">upperCaseOutput</span></td>
+        <td><p>If the output is to be uppercase</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><p>Hexadecimal <see cref="!:String"></see> representation of the computed hash code</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <a id="E5R_Architecture_Core_Extensions_StringExtensions_Sha512_" data-uid="E5R.Architecture.Core.Extensions.StringExtensions.Sha512*"></a>
+  <h4 id="E5R_Architecture_Core_Extensions_StringExtensions_Sha512_System_String_" data-uid="E5R.Architecture.Core.Extensions.StringExtensions.Sha512(System.String)">Sha512(String)</h4>
+  <div class="markdown level1 summary"><p>Computes SHA-512 hash of <see cref="!:String"></see></p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static byte[] Sha512(this string inputString)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><span class="parametername">inputString</span></td>
+        <td><p>The input <see cref="!:String"></see></p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Byte</span>[]</td>
+        <td><p>The computed SHA-512 hash code</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <a id="E5R_Architecture_Core_Extensions_StringExtensions_Sha512Hex_" data-uid="E5R.Architecture.Core.Extensions.StringExtensions.Sha512Hex*"></a>
+  <h4 id="E5R_Architecture_Core_Extensions_StringExtensions_Sha512Hex_System_String_" data-uid="E5R.Architecture.Core.Extensions.StringExtensions.Sha512Hex(System.String)">Sha512Hex(String)</h4>
+  <div class="markdown level1 summary"><p>Computes SHA-512 hash of <see cref="!:String"></see></p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static string Sha512Hex(this string inputString)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><span class="parametername">inputString</span></td>
+        <td><p>The input <see cref="!:String"></see></p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><p>Hexadecimal <see cref="!:String"></see> representation of the computed hash code</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <a id="E5R_Architecture_Core_Extensions_StringExtensions_Sha512Hex_" data-uid="E5R.Architecture.Core.Extensions.StringExtensions.Sha512Hex*"></a>
+  <h4 id="E5R_Architecture_Core_Extensions_StringExtensions_Sha512Hex_System_String_System_Boolean_" data-uid="E5R.Architecture.Core.Extensions.StringExtensions.Sha512Hex(System.String,System.Boolean)">Sha512Hex(String, Boolean)</h4>
+  <div class="markdown level1 summary"><p>Computes SHA-256 hash of <see cref="!:String"></see></p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static string Sha512Hex(this string inputString, bool upperCaseOutput)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><span class="parametername">inputString</span></td>
+        <td><p>The input <see cref="!:String"></see></p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Boolean</span></td>
+        <td><span class="parametername">upperCaseOutput</span></td>
+        <td><p>If the output is to be uppercase</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><p>Hexadecimal <see cref="!:String"></see> representation of the computed hash code</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <a id="E5R_Architecture_Core_Extensions_StringExtensions_ToBytes_" data-uid="E5R.Architecture.Core.Extensions.StringExtensions.ToBytes*"></a>
+  <h4 id="E5R_Architecture_Core_Extensions_StringExtensions_ToBytes_System_String_" data-uid="E5R.Architecture.Core.Extensions.StringExtensions.ToBytes(System.String)">ToBytes(String)</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static byte[] ToBytes(this string inputString)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><span class="parametername">inputString</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Byte</span>[]</td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <a id="E5R_Architecture_Core_Extensions_StringExtensions_ToBytes_" data-uid="E5R.Architecture.Core.Extensions.StringExtensions.ToBytes*"></a>
+  <h4 id="E5R_Architecture_Core_Extensions_StringExtensions_ToBytes_System_String_Encoding_" data-uid="E5R.Architecture.Core.Extensions.StringExtensions.ToBytes(System.String,Encoding)">ToBytes(String, Encoding)</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static byte[] ToBytes(this string inputString, Encoding encoding)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><span class="parametername">inputString</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="xref">Encoding</span></td>
+        <td><span class="parametername">encoding</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Byte</span>[]</td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+</article>
+          </div>
+          
+          <div class="hidden-sm col-md-2" role="complementary">
+            <div class="sideaffix">
+              <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">
+                <h5>In This Article</h5>
+                <div></div>
+              </nav>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <footer>
+        <div class="grad-bottom"></div>
+        <div class="footer">
+          <div class="container">
+            <span class="pull-right">
+              <a href="#top">Back to top</a>
+            </span>
+            Copyright (c) 2020 E5R Development Team
+            
+          </div>
+        </div>
+      </footer>
+    </div>
+    
+    <script type="text/javascript" src="../styles/docfx.vendor.js"></script>
+    <script type="text/javascript" src="../styles/docfx.js"></script>
+    <script type="text/javascript" src="../styles/main.js"></script>
+  </body>
+</html>

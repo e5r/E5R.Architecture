@@ -8,7 +8,7 @@
     <title>Tutorial - Introdu&#231;&#227;o a manipula&#231;&#227;o de dados | Arquitetura E5R </title>
     <meta name="viewport" content="width=device-width">
     <meta name="title" content="Tutorial - Introdu&#231;&#227;o a manipula&#231;&#227;o de dados | Arquitetura E5R ">
-    <meta name="generator" content="docfx 2.56.6.0">
+    <meta name="generator" content="docfx 2.57.2.0">
     
     <link rel="shortcut icon" href="../images/favicon.png">
     <link rel="stylesheet" href="../styles/docfx.vendor.css">
@@ -145,7 +145,7 @@ armazenamento, isso seria um <em>INSERT</em> a nível de banco de dados relacion
 _logger.LogDebug($&quot;Novo aluno criado com ID: {alunoCriado.AlunoId}&quot;);
 </code></pre>
 <p>Essa é a assinatura de nosso método <code>Create()</code>:</p>
-<pre><code class="lang-csharp">TDataModel Create(TDataModel data);
+<pre><code class="lang-csharp">/// &lt;returns&gt;Created object instance&lt;/returns&gt;
 </code></pre>
 <p>Sem mais <em>delongas</em> e é isso aí! Você acaba de criar um aluno no armazenamento.</p>
 <h2 id="read-ler">Read (Ler)</h2>
@@ -207,7 +207,7 @@ Então, se você quiser listar todos os alunos, pode fazê-lo assim:</p>
 <p>O método <code>GetAll()</code> retorna um enumerável contendo todos os alunos contidos no
 armazenamento.</p>
 <p>E essa é a assinatura do método <code>GetAll()</code>:</p>
-<pre><code class="lang-csharp">IEnumerable&lt;TDataModel&gt; GetAll(IDataIncludes includes = null);
+<pre><code class="lang-csharp">int CountAll();
 </code></pre>
 <blockquote>
 <p>Mais uma vez desconsideremos o parâmetro <code>IDataIncludes includes</code> por enquanto.</p>
@@ -287,11 +287,11 @@ _storage.Replace(conta);
 });
 </code></pre>
 <p>Veja as assinaturas dos métodos:</p>
-<pre><code class="lang-csharp">TDataModel Replace(TDataModel data);
-TDataModel Update&lt;TUpdated&gt;(object identifier, TUpdated updated);
-TDataModel Update&lt;TUpdated&gt;(object identifier, Expression&lt;Func&lt;TDataModel, TUpdated&gt;&gt; updateExpression);
-TDataModel Update&lt;TUpdated&gt;(object[] identifiers, TUpdated updated);
-TDataModel Update&lt;TUpdated&gt;(object[] identifiers, Expression&lt;Func&lt;TDataModel, TUpdated&gt;&gt; updateExpression);
+<pre><code class="lang-csharp">/// &lt;returns&gt;Replaced object instance&lt;/returns&gt;
+/// &lt;returns&gt;Updated object instance&lt;/returns&gt;
+/// &lt;returns&gt;Updated object instance&lt;/returns&gt;
+/// &lt;returns&gt;Updated object instance&lt;/returns&gt;
+/// &lt;returns&gt;Updated object instance&lt;/returns&gt;
 </code></pre><h2 id="delete-remover">Delete (Remover)</h2>
 <p>Por fim, outra coisa que podemos fazer é <strong>Remover</strong> objetos armazenados, o que também
 é conhecido por <em>excluir</em>, <em>apagar</em> e até mesmo <em>deletar</em>, fique a vontade para chamar como

@@ -10,7 +10,7 @@
     <meta name="viewport" content="width=device-width">
     <meta name="title" content="Interface IStore&lt;TDataModel&gt;
    | Arquitetura E5R ">
-    <meta name="generator" content="docfx 2.56.6.0">
+    <meta name="generator" content="docfx 2.57.2.0">
     
     <link rel="shortcut icon" href="../images/favicon.png">
     <link rel="stylesheet" href="../styles/docfx.vendor.css">
@@ -85,6 +85,12 @@
     </div>
     <div>
       <a class="xref" href="E5R.Architecture.Data.Abstractions.IStorageReader-1.html#E5R_Architecture_Data_Abstractions_IStorageReader_1_Find__0_E5R_Architecture_Data_Abstractions_IDataIncludes_">IStorageReader&lt;TDataModel&gt;.Find(TDataModel, IDataIncludes)</a>
+    </div>
+    <div>
+      <a class="xref" href="E5R.Architecture.Data.Abstractions.IStorageReader-1.html#E5R_Architecture_Data_Abstractions_IStorageReader_1_CountAll">IStorageReader&lt;TDataModel&gt;.CountAll()</a>
+    </div>
+    <div>
+      <a class="xref" href="E5R.Architecture.Data.Abstractions.IStorageReader-1.html#E5R_Architecture_Data_Abstractions_IStorageReader_1_Count_E5R_Architecture_Data_Abstractions_IDataFilter__0__">IStorageReader&lt;TDataModel&gt;.Count(IDataFilter&lt;TDataModel&gt;)</a>
     </div>
     <div>
       <a class="xref" href="E5R.Architecture.Data.Abstractions.IStorageReader-1.html#E5R_Architecture_Data_Abstractions_IStorageReader_1_GetAll_E5R_Architecture_Data_Abstractions_IDataIncludes_">IStorageReader&lt;TDataModel&gt;.GetAll(IDataIncludes)</a>
@@ -181,7 +187,7 @@
   <h6><strong>Assembly</strong>: E5R.Architecture.Data.dll</h6>
   <h5 id="E5R_Architecture_Data_Abstractions_Alias_IStore_1_syntax">Syntax</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public interface IStore&lt;TDataModel&gt; : IStorage&lt;TDataModel&gt;, IStorageReader&lt;TDataModel&gt;, IStorageWriter&lt;TDataModel&gt;, IStorageBulkWriter&lt;TDataModel&gt;, IStorageSignature where TDataModel : IDataModel</code></pre>
+    <pre><code class="lang-csharp hljs">public interface IStore&lt;TDataModel&gt; : IStorage&lt;TDataModel&gt;, IStorageReader&lt;TDataModel&gt;, IStorageWriter&lt;TDataModel&gt;, IStorageBulkWriter&lt;TDataModel&gt;, IStorageSignature where TDataModel : IIdentifiable</code></pre>
   </div>
   <h5 class="typeParameters">Type Parameters</h5>
   <table class="table table-bordered table-striped table-condensed">

@@ -10,7 +10,7 @@
     <meta name="viewport" content="width=device-width">
     <meta name="title" content="Class StorageExtensions
    | Arquitetura E5R ">
-    <meta name="generator" content="docfx 2.56.6.0">
+    <meta name="generator" content="docfx 2.57.2.0">
     
     <link rel="shortcut icon" href="../images/favicon.png">
     <link rel="stylesheet" href="../styles/docfx.vendor.css">
@@ -95,7 +95,7 @@
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">public static FluentBulkWriterBuilder&lt;TDataModel&gt; AsFluentBulkWriter&lt;TDataModel&gt;(this IStorageBulkWriter&lt;TDataModel&gt; storage)
-    where TDataModel : IDataModel</code></pre>
+    where TDataModel : IIdentifiable</code></pre>
   </div>
   <h5 class="parameters">Parameters</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -151,7 +151,7 @@
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">public static FluentQueryBuilder&lt;TDataModel&gt; AsFluentQuery&lt;TDataModel&gt;(this IStorageReader&lt;TDataModel&gt; storage)
-    where TDataModel : IDataModel</code></pre>
+    where TDataModel : IIdentifiable</code></pre>
   </div>
   <h5 class="parameters">Parameters</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -207,7 +207,7 @@
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">public static FluentWriterBuilder&lt;TDataModel&gt; AsFluentWriter&lt;TDataModel&gt;(this IStorageWriter&lt;TDataModel&gt; storage)
-    where TDataModel : IDataModel</code></pre>
+    where TDataModel : IIdentifiable</code></pre>
   </div>
   <h5 class="parameters">Parameters</h5>
   <table class="table table-bordered table-striped table-condensed">

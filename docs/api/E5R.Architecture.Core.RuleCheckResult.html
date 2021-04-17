@@ -10,7 +10,7 @@
     <meta name="viewport" content="width=device-width">
     <meta name="title" content="Class RuleCheckResult
    | Arquitetura E5R ">
-    <meta name="generator" content="docfx 2.56.6.0">
+    <meta name="generator" content="docfx 2.57.2.0">
     
     <link rel="shortcut icon" href="../images/favicon.png">
     <link rel="stylesheet" href="../styles/docfx.vendor.css">
@@ -89,12 +89,12 @@
   <h3 id="constructors">Constructors
   </h3>
   <a id="E5R_Architecture_Core_RuleCheckResult__ctor_" data-uid="E5R.Architecture.Core.RuleCheckResult.#ctor*"></a>
-  <h4 id="E5R_Architecture_Core_RuleCheckResult__ctor_System_Boolean_IDictionary_System_String_System_String__" data-uid="E5R.Architecture.Core.RuleCheckResult.#ctor(System.Boolean,IDictionary{System.String,System.String})">RuleCheckResult(Boolean, IDictionary&lt;String, String&gt;)</h4>
+  <h4 id="E5R_Architecture_Core_RuleCheckResult__ctor_System_Boolean_IReadOnlyDictionary_System_String_System_String__" data-uid="E5R.Architecture.Core.RuleCheckResult.#ctor(System.Boolean,IReadOnlyDictionary{System.String,System.String})">RuleCheckResult(Boolean, IReadOnlyDictionary&lt;String, String&gt;)</h4>
   <div class="markdown level1 summary"></div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public RuleCheckResult(bool success, IDictionary&lt;string, string&gt; unconformities = null)</code></pre>
+    <pre><code class="lang-csharp hljs">public RuleCheckResult(bool success, IReadOnlyDictionary&lt;string, string&gt; unconformities = null)</code></pre>
   </div>
   <h5 class="parameters">Parameters</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -112,7 +112,7 @@
         <td></td>
       </tr>
       <tr>
-        <td><span class="xref">IDictionary</span>&lt;<span class="xref">System.String</span>, <span class="xref">System.String</span>&gt;</td>
+        <td><span class="xref">IReadOnlyDictionary</span>&lt;<span class="xref">System.String</span>, <span class="xref">System.String</span>&gt;</td>
         <td><span class="parametername">unconformities</span></td>
         <td></td>
       </tr>
@@ -195,7 +195,7 @@
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public IDictionary&lt;string, string&gt; Unconformities { get; }</code></pre>
+    <pre><code class="lang-csharp hljs">public IReadOnlyDictionary&lt;string, string&gt; Unconformities { get; }</code></pre>
   </div>
   <h5 class="propertyValue">Property Value</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -207,7 +207,7 @@
     </thead>
     <tbody>
       <tr>
-        <td><span class="xref">IDictionary</span>&lt;<span class="xref">System.String</span>, <span class="xref">System.String</span>&gt;</td>
+        <td><span class="xref">IReadOnlyDictionary</span>&lt;<span class="xref">System.String</span>, <span class="xref">System.String</span>&gt;</td>
         <td></td>
       </tr>
     </tbody>

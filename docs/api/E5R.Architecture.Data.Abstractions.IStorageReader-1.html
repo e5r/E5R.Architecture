@@ -10,7 +10,7 @@
     <meta name="viewport" content="width=device-width">
     <meta name="title" content="Interface IStorageReader&lt;TDataModel&gt;
    | Arquitetura E5R ">
-    <meta name="generator" content="docfx 2.56.6.0">
+    <meta name="generator" content="docfx 2.57.2.0">
     
     <link rel="shortcut icon" href="../images/favicon.png">
     <link rel="stylesheet" href="../styles/docfx.vendor.css">
@@ -79,7 +79,7 @@
   <h6><strong>Assembly</strong>: E5R.Architecture.Data.dll</h6>
   <h5 id="E5R_Architecture_Data_Abstractions_IStorageReader_1_syntax">Syntax</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public interface IStorageReader&lt;TDataModel&gt; : IStorageSignature where TDataModel : IDataModel</code></pre>
+    <pre><code class="lang-csharp hljs">public interface IStorageReader&lt;TDataModel&gt; : IStorageSignature where TDataModel : IIdentifiable</code></pre>
   </div>
   <h5 class="typeParameters">Type Parameters</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -98,6 +98,69 @@
   </table>
   <h3 id="methods">Methods
   </h3>
+  <a id="E5R_Architecture_Data_Abstractions_IStorageReader_1_Count_" data-uid="E5R.Architecture.Data.Abstractions.IStorageReader`1.Count*"></a>
+  <h4 id="E5R_Architecture_Data_Abstractions_IStorageReader_1_Count_E5R_Architecture_Data_Abstractions_IDataFilter__0__" data-uid="E5R.Architecture.Data.Abstractions.IStorageReader`1.Count(E5R.Architecture.Data.Abstractions.IDataFilter{`0})">Count(IDataFilter&lt;TDataModel&gt;)</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">int Count(IDataFilter&lt;TDataModel&gt; filter)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="E5R.Architecture.Data.Abstractions.IDataFilter-1.html">IDataFilter</a>&lt;TDataModel&gt;</td>
+        <td><span class="parametername">filter</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <a id="E5R_Architecture_Data_Abstractions_IStorageReader_1_CountAll_" data-uid="E5R.Architecture.Data.Abstractions.IStorageReader`1.CountAll*"></a>
+  <h4 id="E5R_Architecture_Data_Abstractions_IStorageReader_1_CountAll" data-uid="E5R.Architecture.Data.Abstractions.IStorageReader`1.CountAll">CountAll()</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">int CountAll()</code></pre>
+  </div>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
   <a id="E5R_Architecture_Data_Abstractions_IStorageReader_1_Find_" data-uid="E5R.Architecture.Data.Abstractions.IStorageReader`1.Find*"></a>
   <h4 id="E5R_Architecture_Data_Abstractions_IStorageReader_1_Find__0_E5R_Architecture_Data_Abstractions_IDataIncludes_" data-uid="E5R.Architecture.Data.Abstractions.IStorageReader`1.Find(`0,E5R.Architecture.Data.Abstractions.IDataIncludes)">Find(TDataModel, IDataIncludes)</h4>
   <div class="markdown level1 summary"></div>

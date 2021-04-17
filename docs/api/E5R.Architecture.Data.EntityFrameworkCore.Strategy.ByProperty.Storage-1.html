@@ -10,7 +10,7 @@
     <meta name="viewport" content="width=device-width">
     <meta name="title" content="Class Storage&lt;TDataModel&gt;
    | Arquitetura E5R ">
-    <meta name="generator" content="docfx 2.56.6.0">
+    <meta name="generator" content="docfx 2.57.2.0">
     
     <link rel="shortcut icon" href="../images/favicon.png">
     <link rel="stylesheet" href="../styles/docfx.vendor.css">
@@ -115,6 +115,12 @@
     </div>
     <div>
       <a class="xref" href="E5R.Architecture.Data.EntityFrameworkCore.FullStorage-2.html#E5R_Architecture_Data_EntityFrameworkCore_FullStorage_2_Find_System_Object___E5R_Architecture_Data_Abstractions_IDataIncludes_">FullStorage&lt;DbContext, TDataModel&gt;.Find(Object[], IDataIncludes)</a>
+    </div>
+    <div>
+      <a class="xref" href="E5R.Architecture.Data.EntityFrameworkCore.FullStorage-2.html#E5R_Architecture_Data_EntityFrameworkCore_FullStorage_2_CountAll">FullStorage&lt;DbContext, TDataModel&gt;.CountAll()</a>
+    </div>
+    <div>
+      <a class="xref" href="E5R.Architecture.Data.EntityFrameworkCore.FullStorage-2.html#E5R_Architecture_Data_EntityFrameworkCore_FullStorage_2_Count_E5R_Architecture_Data_Abstractions_IDataFilter__1__">FullStorage&lt;DbContext, TDataModel&gt;.Count(IDataFilter&lt;TDataModel&gt;)</a>
     </div>
     <div>
       <a class="xref" href="E5R.Architecture.Data.EntityFrameworkCore.FullStorage-2.html#E5R_Architecture_Data_EntityFrameworkCore_FullStorage_2_GetAll_E5R_Architecture_Data_Abstractions_IDataIncludes_">FullStorage&lt;DbContext, TDataModel&gt;.GetAll(IDataIncludes)</a>
@@ -226,7 +232,7 @@
   <h6><strong>Assembly</strong>: E5R.Architecture.Data.EntityFrameworkCore.dll</h6>
   <h5 id="E5R_Architecture_Data_EntityFrameworkCore_Strategy_ByProperty_Storage_1_syntax">Syntax</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public class Storage&lt;TDataModel&gt; : Storage&lt;DbContext, TDataModel&gt;, IStorage&lt;DbContext, TDataModel&gt;, IRepository&lt;DbContext, TDataModel&gt;, IRepository&lt;TDataModel&gt;, IStore&lt;DbContext, TDataModel&gt;, IStore&lt;TDataModel&gt;, IStorage&lt;TDataModel&gt;, IStorageReader&lt;TDataModel&gt;, IStorageWriter&lt;TDataModel&gt;, IStorageBulkWriter&lt;TDataModel&gt;, IStorageSignature where TDataModel : class, IDataModel</code></pre>
+    <pre><code class="lang-csharp hljs">public class Storage&lt;TDataModel&gt; : Storage&lt;DbContext, TDataModel&gt;, IStorage&lt;DbContext, TDataModel&gt;, IRepository&lt;DbContext, TDataModel&gt;, IRepository&lt;TDataModel&gt;, IStore&lt;DbContext, TDataModel&gt;, IStore&lt;TDataModel&gt;, IStorage&lt;TDataModel&gt;, IStorageReader&lt;TDataModel&gt;, IStorageWriter&lt;TDataModel&gt;, IStorageBulkWriter&lt;TDataModel&gt;, IStorageSignature where TDataModel : class, IIdentifiable</code></pre>
   </div>
   <h5 class="typeParameters">Type Parameters</h5>
   <table class="table table-bordered table-striped table-condensed">

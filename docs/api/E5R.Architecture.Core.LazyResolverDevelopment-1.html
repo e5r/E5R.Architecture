@@ -5,12 +5,12 @@
   <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-    <title>Class DataModule&lt;TStorage1, TStorage2, TStorage3&gt;
+    <title>Class LazyResolverDevelopment&lt;TTarget&gt;
    | Arquitetura E5R </title>
     <meta name="viewport" content="width=device-width">
-    <meta name="title" content="Class DataModule&lt;TStorage1, TStorage2, TStorage3&gt;
+    <meta name="title" content="Class LazyResolverDevelopment&lt;TTarget&gt;
    | Arquitetura E5R ">
-    <meta name="generator" content="docfx 2.56.6.0">
+    <meta name="generator" content="docfx 2.57.2.0">
     
     <link rel="shortcut icon" href="../images/favicon.png">
     <link rel="stylesheet" href="../styles/docfx.vendor.css">
@@ -68,28 +68,28 @@
         </div>
         <div class="article row grid-right">
           <div class="col-md-10">
-            <article class="content wrap" id="_content" data-uid="E5R.Architecture.Data.DataModule`3">
+            <article class="content wrap" id="_content" data-uid="E5R.Architecture.Core.LazyResolverDevelopment`1">
   
   
-  <h1 id="E5R_Architecture_Data_DataModule_3" data-uid="E5R.Architecture.Data.DataModule`3" class="text-break">Class DataModule&lt;TStorage1, TStorage2, TStorage3&gt;
+  <h1 id="E5R_Architecture_Core_LazyResolverDevelopment_1" data-uid="E5R.Architecture.Core.LazyResolverDevelopment`1" class="text-break">Class LazyResolverDevelopment&lt;TTarget&gt;
   </h1>
-  <div class="markdown level0 summary"><p>Data module with three storage units</p>
+  <div class="markdown level0 summary"><p>Implements fake lazy loading for development purposes</p>
 </div>
   <div class="markdown level0 conceptual"></div>
   <div class="inheritance">
     <h5>Inheritance</h5>
     <div class="level0"><span class="xref">System.Object</span></div>
-    <div class="level1"><span class="xref">DataModule&lt;TStorage1, TStorage2, TStorage3&gt;</span></div>
+    <div class="level1"><span class="xref">LazyResolverDevelopment&lt;TTarget&gt;</span></div>
   </div>
   <div classs="implements">
     <h5>Implements</h5>
-    <div><a class="xref" href="E5R.Architecture.Data.Abstractions.IDataMouleSignature.html">IDataMouleSignature</a></div>
+    <div><a class="xref" href="E5R.Architecture.Core.ILazy-1.html">ILazy</a>&lt;TTarget&gt;</div>
   </div>
-  <h6><strong>Namespace</strong>: <a class="xref" href="E5R.Architecture.Data.html">E5R.Architecture.Data</a></h6>
-  <h6><strong>Assembly</strong>: E5R.Architecture.Data.dll</h6>
-  <h5 id="E5R_Architecture_Data_DataModule_3_syntax">Syntax</h5>
+  <h6><strong>Namespace</strong>: <a class="xref" href="E5R.Architecture.Core.html">E5R.Architecture.Core</a></h6>
+  <h6><strong>Assembly</strong>: E5R.Architecture.Core.dll</h6>
+  <h5 id="E5R_Architecture_Core_LazyResolverDevelopment_1_syntax">Syntax</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public class DataModule&lt;TStorage1, TStorage2, TStorage3&gt; : object, IDataMouleSignature where TStorage1 : IStorageSignature where TStorage2 : IStorageSignature where TStorage3 : IStorageSignature</code></pre>
+    <pre><code class="lang-csharp hljs">public class LazyResolverDevelopment&lt;TTarget&gt; : object, ILazy&lt;TTarget&gt;</code></pre>
   </div>
   <h5 class="typeParameters">Type Parameters</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -101,31 +101,48 @@
     </thead>
     <tbody>
       <tr>
-        <td><span class="parametername">TStorage1</span></td>
-        <td><p>Type of storage 1</p>
+        <td><span class="parametername">TTarget</span></td>
+        <td><p>Target type</p>
 </td>
       </tr>
+    </tbody>
+  </table>
+  <h3 id="constructors">Constructors
+  </h3>
+  <a id="E5R_Architecture_Core_LazyResolverDevelopment_1__ctor_" data-uid="E5R.Architecture.Core.LazyResolverDevelopment`1.#ctor*"></a>
+  <h4 id="E5R_Architecture_Core_LazyResolverDevelopment_1__ctor__0_" data-uid="E5R.Architecture.Core.LazyResolverDevelopment`1.#ctor(`0)">LazyResolverDevelopment(TTarget)</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public LazyResolverDevelopment(TTarget target)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
       <tr>
-        <td><span class="parametername">TStorage2</span></td>
-        <td><p>Type of storage 2</p>
-</td>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
       </tr>
+    </thead>
+    <tbody>
       <tr>
-        <td><span class="parametername">TStorage3</span></td>
-        <td><p>Type of storage 3</p>
-</td>
+        <td><span class="xref">TTarget</span></td>
+        <td><span class="parametername">target</span></td>
+        <td></td>
       </tr>
     </tbody>
   </table>
   <h3 id="properties">Properties
   </h3>
-  <a id="E5R_Architecture_Data_DataModule_3_Storage1_" data-uid="E5R.Architecture.Data.DataModule`3.Storage1*"></a>
-  <h4 id="E5R_Architecture_Data_DataModule_3_Storage1" data-uid="E5R.Architecture.Data.DataModule`3.Storage1">Storage1</h4>
+  <a id="E5R_Architecture_Core_LazyResolverDevelopment_1_Value_" data-uid="E5R.Architecture.Core.LazyResolverDevelopment`1.Value*"></a>
+  <h4 id="E5R_Architecture_Core_LazyResolverDevelopment_1_Value" data-uid="E5R.Architecture.Core.LazyResolverDevelopment`1.Value">Value</h4>
   <div class="markdown level1 summary"></div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">protected TStorage1 Storage1 { get; set; }</code></pre>
+    <pre><code class="lang-csharp hljs">public TTarget Value { get; }</code></pre>
   </div>
   <h5 class="propertyValue">Property Value</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -137,60 +154,14 @@
     </thead>
     <tbody>
       <tr>
-        <td><span class="xref">TStorage1</span></td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
-  <a id="E5R_Architecture_Data_DataModule_3_Storage2_" data-uid="E5R.Architecture.Data.DataModule`3.Storage2*"></a>
-  <h4 id="E5R_Architecture_Data_DataModule_3_Storage2" data-uid="E5R.Architecture.Data.DataModule`3.Storage2">Storage2</h4>
-  <div class="markdown level1 summary"></div>
-  <div class="markdown level1 conceptual"></div>
-  <h5 class="decalaration">Declaration</h5>
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">protected TStorage2 Storage2 { get; set; }</code></pre>
-  </div>
-  <h5 class="propertyValue">Property Value</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><span class="xref">TStorage2</span></td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
-  <a id="E5R_Architecture_Data_DataModule_3_Storage3_" data-uid="E5R.Architecture.Data.DataModule`3.Storage3*"></a>
-  <h4 id="E5R_Architecture_Data_DataModule_3_Storage3" data-uid="E5R.Architecture.Data.DataModule`3.Storage3">Storage3</h4>
-  <div class="markdown level1 summary"></div>
-  <div class="markdown level1 conceptual"></div>
-  <h5 class="decalaration">Declaration</h5>
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">protected TStorage3 Storage3 { get; set; }</code></pre>
-  </div>
-  <h5 class="propertyValue">Property Value</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><span class="xref">TStorage3</span></td>
+        <td><span class="xref">TTarget</span></td>
         <td></td>
       </tr>
     </tbody>
   </table>
   <h3 id="implements">Implements</h3>
   <div>
-      <a class="xref" href="E5R.Architecture.Data.Abstractions.IDataMouleSignature.html">IDataMouleSignature</a>
+      <a class="xref" href="E5R.Architecture.Core.ILazy-1.html">ILazy&lt;TTarget&gt;</a>
   </div>
 </article>
           </div>

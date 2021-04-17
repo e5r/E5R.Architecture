@@ -10,7 +10,7 @@
     <meta name="viewport" content="width=device-width">
     <meta name="title" content="Class ServiceCollectionExtensions
    | Arquitetura E5R ">
-    <meta name="generator" content="docfx 2.56.6.0">
+    <meta name="generator" content="docfx 2.57.2.0">
     
     <link rel="shortcut icon" href="../images/favicon.png">
     <link rel="stylesheet" href="../styles/docfx.vendor.css">
@@ -89,12 +89,12 @@
   <h3 id="methods">Methods
   </h3>
   <a id="Microsoft_Extensions_DependencyInjection_ServiceCollectionExtensions_AddInfrastructure_" data-uid="Microsoft.Extensions.DependencyInjection.ServiceCollectionExtensions.AddInfrastructure*"></a>
-  <h4 id="Microsoft_Extensions_DependencyInjection_ServiceCollectionExtensions_AddInfrastructure_IServiceCollection_System_String___" data-uid="Microsoft.Extensions.DependencyInjection.ServiceCollectionExtensions.AddInfrastructure(IServiceCollection,System.String[])">AddInfrastructure(IServiceCollection, String[])</h4>
+  <h4 id="Microsoft_Extensions_DependencyInjection_ServiceCollectionExtensions_AddInfrastructure_IServiceCollection_" data-uid="Microsoft.Extensions.DependencyInjection.ServiceCollectionExtensions.AddInfrastructure(IServiceCollection)">AddInfrastructure(IServiceCollection)</h4>
   <div class="markdown level1 summary"></div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public static IServiceCollection AddInfrastructure(this IServiceCollection serviceCollection, string[] customServiceAssemblies = null)</code></pre>
+    <pre><code class="lang-csharp hljs">public static IServiceCollection AddInfrastructure(this IServiceCollection serviceCollection)</code></pre>
   </div>
   <h5 class="parameters">Parameters</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -109,11 +109,6 @@
       <tr>
         <td><span class="xref">IServiceCollection</span></td>
         <td><span class="parametername">serviceCollection</span></td>
-        <td></td>
-      </tr>
-      <tr>
-        <td><span class="xref">System.String</span>[]</td>
-        <td><span class="parametername">customServiceAssemblies</span></td>
         <td></td>
       </tr>
     </tbody>
@@ -133,13 +128,13 @@
       </tr>
     </tbody>
   </table>
-  <a id="Microsoft_Extensions_DependencyInjection_ServiceCollectionExtensions_AddTransformationManager_" data-uid="Microsoft.Extensions.DependencyInjection.ServiceCollectionExtensions.AddTransformationManager*"></a>
-  <h4 id="Microsoft_Extensions_DependencyInjection_ServiceCollectionExtensions_AddTransformationManager_IServiceCollection_" data-uid="Microsoft.Extensions.DependencyInjection.ServiceCollectionExtensions.AddTransformationManager(IServiceCollection)">AddTransformationManager(IServiceCollection)</h4>
+  <a id="Microsoft_Extensions_DependencyInjection_ServiceCollectionExtensions_AddInfrastructure_" data-uid="Microsoft.Extensions.DependencyInjection.ServiceCollectionExtensions.AddInfrastructure*"></a>
+  <h4 id="Microsoft_Extensions_DependencyInjection_ServiceCollectionExtensions_AddInfrastructure_IServiceCollection_Action_E5R_Architecture_Infrastructure_InfrastructureOptions__" data-uid="Microsoft.Extensions.DependencyInjection.ServiceCollectionExtensions.AddInfrastructure(IServiceCollection,Action{E5R.Architecture.Infrastructure.InfrastructureOptions})">AddInfrastructure(IServiceCollection, Action&lt;InfrastructureOptions&gt;)</h4>
   <div class="markdown level1 summary"></div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public static IServiceCollection AddTransformationManager(this IServiceCollection serviceCollection)</code></pre>
+    <pre><code class="lang-csharp hljs">public static IServiceCollection AddInfrastructure(this IServiceCollection serviceCollection, Action&lt;InfrastructureOptions&gt; config)</code></pre>
   </div>
   <h5 class="parameters">Parameters</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -154,6 +149,56 @@
       <tr>
         <td><span class="xref">IServiceCollection</span></td>
         <td><span class="parametername">serviceCollection</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="xref">Action</span>&lt;<a class="xref" href="E5R.Architecture.Infrastructure.InfrastructureOptions.html">InfrastructureOptions</a>&gt;</td>
+        <td><span class="parametername">config</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">IServiceCollection</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <a id="Microsoft_Extensions_DependencyInjection_ServiceCollectionExtensions_AddInfrastructure_" data-uid="Microsoft.Extensions.DependencyInjection.ServiceCollectionExtensions.AddInfrastructure*"></a>
+  <h4 id="Microsoft_Extensions_DependencyInjection_ServiceCollectionExtensions_AddInfrastructure_IServiceCollection_E5R_Architecture_Infrastructure_InfrastructureOptions_" data-uid="Microsoft.Extensions.DependencyInjection.ServiceCollectionExtensions.AddInfrastructure(IServiceCollection,E5R.Architecture.Infrastructure.InfrastructureOptions)">AddInfrastructure(IServiceCollection, InfrastructureOptions)</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static IServiceCollection AddInfrastructure(this IServiceCollection serviceCollection, InfrastructureOptions options)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">IServiceCollection</span></td>
+        <td><span class="parametername">serviceCollection</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="E5R.Architecture.Infrastructure.InfrastructureOptions.html">InfrastructureOptions</a></td>
+        <td><span class="parametername">options</span></td>
         <td></td>
       </tr>
     </tbody>

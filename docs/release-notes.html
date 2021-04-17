@@ -8,7 +8,7 @@
     <title>Notas de Lan&#231;amento | Arquitetura E5R </title>
     <meta name="viewport" content="width=device-width">
     <meta name="title" content="Notas de Lan&#231;amento | Arquitetura E5R ">
-    <meta name="generator" content="docfx 2.56.6.0">
+    <meta name="generator" content="docfx 2.57.2.0">
     
     <link rel="shortcut icon" href="images/favicon.png">
     <link rel="stylesheet" href="styles/docfx.vendor.css">
@@ -62,6 +62,101 @@
             <article class="content wrap" id="_content" data-uid="">
 <h1 id="notas-de-lançamento">Notas de Lançamento</h1>
 
+<h2 id="080">0.8.0</h2>
+<p>Novos recursos:</p>
+<ul>
+<li>Adiciona genérico <code>LazyGroup&lt;&gt;</code> para agrupar objetos carregados preguiçosamente
+<ul>
+<li>Objetiva ser utilizado para construir objetos de fachada</li>
+<li>Registra automaticamente objetos que o herdam, se usar <code>AddInfrastructure()</code></li>
+</ul>
+</li>
+<li>Agora é possível obter um valor de <code>Enum</code> através de um valor de <code>MetaTag</code></li>
+<li>Novos métodos adicionados a interface <code>IStorage&lt;&gt;</code>
+<ul>
+<li><code>int CountAll()</code> Que retorna o total de registros</li>
+<li><code>int Count(IDataFilter&lt;&gt; filter)</code> Que retorna o total de registros que obedeçam a um determinado filtro</li>
+<li>Os métodos também estão disponíveis na api fluente <code>AsFluentQuery()</code></li>
+</ul>
+</li>
+<li>Adiciona capacidade de deduzir nome de parâmetro por expressões no utilitário Checker</li>
+</ul>
+<pre><code class="lang-c#">void MyMethod(MyClass model)
+{
+    Checker.NotNullObject(model?.Inner?.Prop, () =&gt; model.Inner.Prop);
+    // Equivalente a:
+    Checker.NotNullObject(model?.Inner?.Prop, &quot;model.Inner.Prop&quot;);
+}
+</code></pre>
+<ul>
+<li>Adiciona utilitários para calcular hash e assinaturas HMAC de <code>byte[]</code> e <code>string</code> na forma de extensões</li>
+</ul>
+<pre><code class="lang-c#">using E5R.Architecture.Core.Extensions;
+
+var myKey = Encoding.Default.GetBytes(&quot;secret&quot;);
+var myBytes = new byte[]{ 1,2,3,4};
+var myString = &quot;My string text&quot;;
+
+/* Hash e HMAC em bytes obtidos de um array de bytes
+
+   - Md5(), Sha1(), Sha256(), Sha384(), Sha512()
+   - HmacMd5(), HmacSha1(), HmacSha256(), HmacSha384(), HmacSha512()
+*/
+byte[] hashOfBytes = myBytes.Md5();
+byte[] hmacOfBytes = myBytes.HmacSha1(myKey);
+
+/* Hash e HMAC em string obtidos de um array de bytes
+
+   - Md5Hex(), Sha1Hex(), Sha256Hex(), Sha384Hex(), Sha512Hex()
+   - HmacMd5Hex(), HmacSha1Hex(), HmacSha256Hex(), HmacSha384Hex(), HmacSha512Hex()
+*/
+string hashHexOfBytes = myBytes.Sha256Hex();
+string hmacHexOfBytes = myBytes.HmacSha384Hex(myKey);
+
+/* Hash e HMAC em bytes obtidos de uma string */
+byte[] hashOfString = myString.Sha512();
+byte[] hmacOfString = myString.HmacMd5(myKey);
+
+/* Hash e HMAC em string obtidos de uma string */
+string hashHexOfString = myString.Sha1Hex();
+string hmacHexOfString = myString.HmacSha256Hex(myKey);
+</code></pre>
+<p>Breaking changes:</p>
+<ul>
+<li><code>IDataModel</code> agora é <code>IIdentifiable</code> e agora está em <code>Core</code> ao invés de <code>Data</code>
+<ul>
+<li>Também a propriedade com os valores foi renomeada de <code>IdentifierValues</code> para <code>Identifiers</code> somente</li>
+</ul>
+</li>
+<li>O genérico <code>BusinessFacade&lt;&gt;</code> foi removido em favor de <code>LazyGroup&lt;&gt;</code></li>
+<li>Remove método de extensão <code>AddTransformationManager()</code>.
+<ul>
+<li>Agora <code>ITransformationManager</code> é configurado automaticamente em <code>AddInfrastructure()</code></li>
+</ul>
+</li>
+<li>Renomeia método de extensão <code>AddBusinessFeatures()</code> para somente <code>AddBusiness()</code> e altera assinatura</li>
+<li>Altera assinatura de método de extensão <code>AddInfrastructure()</code></li>
+</ul>
+<pre><code class="lang-c#">// Agora temos várias opções de configuração da infraestrutura
+services.AddInfrastructure(options =&gt; {
+    options
+        .AddAssembly(&quot;MyAssembly.Um&quot;)
+        .AddAssembly(&quot;MyAssembly.Dois&quot;)
+        .AddAssembly(&quot;MyAssembly.Tres&quot;)
+        
+        // Ao habilitar o modo de desenvolvimento, o tipo ILazy&lt;&gt; é resolvido
+        // não de forma preguiçosa real, mas imediatamente, e isso é um lazy fake,
+        // porém ajuda a encontrar falhas no grafo de injeção de dependências logo na
+        // inicialização da aplicação. Quando uma dependência não foi devidamente
+        // registrada, uma exceção é levantada imediatamente no startup da aplicação,
+        // ao invés de somente quando uma chamada a funcionalidade é realizada.
+        .EnableDeveloperMode();
+});
+
+// Agora não precisamos mais informar a lista de assemblies em AddBusiness(),
+// pois essa lista já foi informada previamente via AddInfrastructure()
+services.AddBusiness();
+</code></pre>
 <h2 id="070">0.7.0</h2>
 <p>Novos recursos:</p>
 <ul>

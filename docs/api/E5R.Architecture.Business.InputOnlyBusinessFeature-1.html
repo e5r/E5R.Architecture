@@ -10,7 +10,7 @@
     <meta name="viewport" content="width=device-width">
     <meta name="title" content="Class InputOnlyBusinessFeature&lt;TInput&gt;
    | Arquitetura E5R ">
-    <meta name="generator" content="docfx 2.56.6.0">
+    <meta name="generator" content="docfx 2.57.2.0">
     
     <link rel="shortcut icon" href="../images/favicon.png">
     <link rel="stylesheet" href="../styles/docfx.vendor.css">
@@ -117,12 +117,12 @@
   <h3 id="constructors">Constructors
   </h3>
   <a id="E5R_Architecture_Business_InputOnlyBusinessFeature_1__ctor_" data-uid="E5R.Architecture.Business.InputOnlyBusinessFeature`1.#ctor*"></a>
-  <h4 id="E5R_Architecture_Business_InputOnlyBusinessFeature_1__ctor_ITransformationManager_" data-uid="E5R.Architecture.Business.InputOnlyBusinessFeature`1.#ctor(ITransformationManager)">InputOnlyBusinessFeature(ITransformationManager)</h4>
+  <h4 id="E5R_Architecture_Business_InputOnlyBusinessFeature_1__ctor_ILazy_ITransformationManager__" data-uid="E5R.Architecture.Business.InputOnlyBusinessFeature`1.#ctor(ILazy{ITransformationManager})">InputOnlyBusinessFeature(ILazy&lt;ITransformationManager&gt;)</h4>
   <div class="markdown level1 summary"></div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public InputOnlyBusinessFeature(ITransformationManager transformer)</code></pre>
+    <pre><code class="lang-csharp hljs">public InputOnlyBusinessFeature(ILazy&lt;ITransformationManager&gt; transformer)</code></pre>
   </div>
   <h5 class="parameters">Parameters</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -135,7 +135,7 @@
     </thead>
     <tbody>
       <tr>
-        <td><span class="xref">ITransformationManager</span></td>
+        <td><span class="xref">ILazy</span>&lt;<span class="xref">ITransformationManager</span>&gt;</td>
         <td><span class="parametername">transformer</span></td>
         <td></td>
       </tr>
@@ -223,13 +223,13 @@
       </tr>
     </tbody>
   </table>
-  <a id="E5R_Architecture_Business_InputOnlyBusinessFeature_1_ExecAsync_" data-uid="E5R.Architecture.Business.InputOnlyBusinessFeature`1.ExecAsync*"></a>
-  <h4 id="E5R_Architecture_Business_InputOnlyBusinessFeature_1_ExecAsync__1___0_" data-uid="E5R.Architecture.Business.InputOnlyBusinessFeature`1.ExecAsync``1(``0)">ExecAsync&lt;TFrom&gt;(TFrom)</h4>
+  <a id="E5R_Architecture_Business_InputOnlyBusinessFeature_1_ExecFromAsync_" data-uid="E5R.Architecture.Business.InputOnlyBusinessFeature`1.ExecFromAsync*"></a>
+  <h4 id="E5R_Architecture_Business_InputOnlyBusinessFeature_1_ExecFromAsync__1___0_" data-uid="E5R.Architecture.Business.InputOnlyBusinessFeature`1.ExecFromAsync``1(``0)">ExecFromAsync&lt;TFrom&gt;(TFrom)</h4>
   <div class="markdown level1 summary"></div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public Task ExecAsync&lt;TFrom&gt;(TFrom from)</code></pre>
+    <pre><code class="lang-csharp hljs">public Task ExecFromAsync&lt;TFrom&gt;(TFrom from)</code></pre>
   </div>
   <h5 class="parameters">Parameters</h5>
   <table class="table table-bordered table-striped table-condensed">

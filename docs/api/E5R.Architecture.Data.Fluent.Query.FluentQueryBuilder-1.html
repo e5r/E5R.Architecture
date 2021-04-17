@@ -10,7 +10,7 @@
     <meta name="viewport" content="width=device-width">
     <meta name="title" content="Class FluentQueryBuilder&lt;TDataModel&gt;
    | Arquitetura E5R ">
-    <meta name="generator" content="docfx 2.56.6.0">
+    <meta name="generator" content="docfx 2.57.2.0">
     
     <link rel="shortcut icon" href="../images/favicon.png">
     <link rel="stylesheet" href="../styles/docfx.vendor.css">
@@ -85,7 +85,7 @@
   <h6><strong>Assembly</strong>: E5R.Architecture.Data.dll</h6>
   <h5 id="E5R_Architecture_Data_Fluent_Query_FluentQueryBuilder_1_syntax">Syntax</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public class FluentQueryBuilder&lt;TDataModel&gt; : FluentQueryBuilderElements&lt;TDataModel&gt; where TDataModel : IDataModel</code></pre>
+    <pre><code class="lang-csharp hljs">public class FluentQueryBuilder&lt;TDataModel&gt; : FluentQueryBuilderElements&lt;TDataModel&gt; where TDataModel : IIdentifiable</code></pre>
   </div>
   <h5 class="typeParameters">Type Parameters</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -131,6 +131,29 @@
   </table>
   <h3 id="methods">Methods
   </h3>
+  <a id="E5R_Architecture_Data_Fluent_Query_FluentQueryBuilder_1_CountAll_" data-uid="E5R.Architecture.Data.Fluent.Query.FluentQueryBuilder`1.CountAll*"></a>
+  <h4 id="E5R_Architecture_Data_Fluent_Query_FluentQueryBuilder_1_CountAll" data-uid="E5R.Architecture.Data.Fluent.Query.FluentQueryBuilder`1.CountAll">CountAll()</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public int CountAll()</code></pre>
+  </div>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
   <a id="E5R_Architecture_Data_Fluent_Query_FluentQueryBuilder_1_Filter_" data-uid="E5R.Architecture.Data.Fluent.Query.FluentQueryBuilder`1.Filter*"></a>
   <h4 id="E5R_Architecture_Data_Fluent_Query_FluentQueryBuilder_1_Filter_Expression_Func__0_System_Boolean___" data-uid="E5R.Architecture.Data.Fluent.Query.FluentQueryBuilder`1.Filter(Expression{Func{`0,System.Boolean}})">Filter(Expression&lt;Func&lt;TDataModel, Boolean&gt;&gt;)</h4>
   <div class="markdown level1 summary"></div>

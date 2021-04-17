@@ -8,7 +8,7 @@
     <title>Tutorial - Atributos de Metatags | Arquitetura E5R </title>
     <meta name="viewport" content="width=device-width">
     <meta name="title" content="Tutorial - Atributos de Metatags | Arquitetura E5R ">
-    <meta name="generator" content="docfx 2.56.6.0">
+    <meta name="generator" content="docfx 2.57.2.0">
     
     <link rel="shortcut icon" href="../images/favicon.png">
     <link rel="stylesheet" href="../styles/docfx.vendor.css">
@@ -319,6 +319,13 @@ MinhaSituacao[] situacoes = EnumUtil.GetValues&lt;MinhaSituacao&gt;();
 using E5R.Architecture.Core.Models;
 
 EnumModel[] modelos = EnumUtil.GetModels&lt;MinhaSituacao&gt;();
+</code></pre>
+<p>Também podemos recuperar o valor de um enum qualquer com base no valor de uma tag:</p>
+<pre><code class="lang-c#">var byDescription = EnumUtil.FromTag&lt;MinhaSituacao&gt;(Tag.DescriptionKey, &quot;Finalizado com sucesso&quot;);
+var byCustomId = EnumUtil.FromTag&lt;MinhaSituacao&gt;(Tag.CustomIdKey, &quot;FS&quot;);
+
+Assert.Equal(MinhaSituacao.FinalizadoComSucesso, byDescription); 
+Assert.Equal(MinhaSituacao.FinalizadoComSucesso, byCustomId);
 </code></pre>
 </article>
           </div>
