@@ -9,6 +9,10 @@ Notas de Lançamento
 
 * O tipo `BusinessFeature` agora não requer mais `ITransformationManager` no construtor
   - Um novo tipo `BusinessFeatureWithTransformer<>` foi introduzido para quando necessitar de `ITransformationManager`
+* Adiciona método de extensão `ConfigureSetting<T>()` ao componente `E5R.Architecture.Infrastructure.AspNetCore`
+  - Configura o tipo `T` para uso como `TOptions<T>`
+  - Registra o tipo `T` no mecanismo de injeção de dependência com `AddScoped<>` para uso direto sem `TOptions`
+  - Tem as variantes `ConfigureScopedSetting<T>()`, `ConfigureTransientSetting<T>()` e `ConfigureSingletonSetting<T>()`
 
 ## 0.8.0
 
