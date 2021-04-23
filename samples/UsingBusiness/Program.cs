@@ -29,10 +29,6 @@ namespace UsingBusiness
     /// </summary>
     public class ProcessStringFeature : InputOnlyBusinessFeature<string>
     {
-        public ProcessStringFeature(ILazy<ITransformationManager> transformer) : base(transformer)
-        {
-        }
-
         protected override async Task ExecActionAsync(string input)
             => await Task.Run(() =>
             {
@@ -67,11 +63,6 @@ namespace UsingBusiness
     /// </summary>
     public class GenerateRandomPasswordFeature : BusinessFeature<(string, int), string>
     {
-        public GenerateRandomPasswordFeature(ILazy<ITransformationManager> transformer) : base(
-            transformer)
-        {
-        }
-
         protected override async Task<string> ExecActionAsync((string, int) input) =>
             await Task.Run(() =>
             {
@@ -157,26 +148,11 @@ namespace UsingBusiness
             await Item1.ExecAsync(inputString);
 
         /// <summary>
-        /// Processa dados aleatórios com base em um valor que pode ser convertido em uma string de entrada
-        /// </summary>
-        /// <param name="from">Objeto que pode ser convertido para uma string</param>
-        /// <typeparam name="TFrom">Tipo do objeto de entrada</typeparam>
-        public async Task ProcessString<TFrom>(TFrom @from) => await Item1.ExecFromAsync(@from);
-
-        /// <summary>
         /// Gera uma senha aleatório com base em uma tupla que informa os caracteres possíveis e o tamanho da senha pretendida
         /// </summary>
         /// <param name="input">Tupla (<see cref="Tuple{T1,T2}"/>) de string com os caracteres possíveis, e int com o tamanho da senha pretendida</param>
         public async Task<string> GenerateRandomPassword((string, int) input) =>
             await Item2.ExecAsync(input);
-
-        /// <summary>
-        /// Gera uma senha aleatório com base em um valor que pode ser convertido em uma tupla <see cref="Tuple{T1,T2}"/> de string e int.
-        /// </summary>
-        /// <param name="from">Objeto que pode ser convertido para uma tupla de string e int</param>
-        /// <typeparam name="TFrom">Tipo do objeto de entrada</typeparam>
-        public async Task<string> GenerateRandomPassword<TFrom>(TFrom @from) =>
-            await Item2.ExecFromAsync(@from);
     }
 
     /// <summary>
@@ -205,13 +181,6 @@ namespace UsingBusiness
         /// <param name="inputString">String de entrada</param>
         public async Task ProcessString(string inputString) =>
             await Item2.ExecAsync(inputString);
-
-        /// <summary>
-        /// Processa dados aleatórios com base em um valor que pode ser convertido em uma string de entrada
-        /// </summary>
-        /// <param name="from">Objeto que pode ser convertido para uma string</param>
-        /// <typeparam name="TFrom">Tipo do objeto de entrada</typeparam>
-        public async Task ProcessString<TFrom>(TFrom @from) => await Item2.ExecFromAsync(@from);
     }
 
     /// <summary>
@@ -243,26 +212,11 @@ namespace UsingBusiness
             await Item2.ExecAsync(input);
 
         /// <summary>
-        /// Gera uma senha aleatório com base em um valor que pode ser convertido em uma tupla <see cref="Tuple{T1,T2}"/> de string e int.
-        /// </summary>
-        /// <param name="from">Objeto que pode ser convertido para uma tupla de string e int</param>
-        /// <typeparam name="TFrom">Tipo do objeto de entrada</typeparam>
-        public async Task<string> GenerateRandomPassword<TFrom>(TFrom @from) =>
-            await Item2.ExecFromAsync(@from);
-
-        /// <summary>
         /// Processa dados aleatórios com base em uma string de entrada
         /// </summary>
         /// <param name="inputString">String de entrada</param>
         public async Task ProcessString(string inputString) =>
             await Item3.ExecAsync(inputString);
-
-        /// <summary>
-        /// Processa dados aleatórios com base em um valor que pode ser convertido em uma string de entrada
-        /// </summary>
-        /// <param name="from">Objeto que pode ser convertido para uma string</param>
-        /// <typeparam name="TFrom">Tipo do objeto de entrada</typeparam>
-        public async Task ProcessString<TFrom>(TFrom @from) => await Item3.ExecFromAsync(@from);
 
         /// <summary>
         /// Executa todas as outras funcionalidades para exemplificar uma característica que não
@@ -357,11 +311,11 @@ namespace UsingBusiness
             await _tudoModule.ExecAll();
             
             // Notificando mensagens sem falha
-            _notificator.Notify(MyNotifyType.Type1, "Mensagem 1");
-            _notificator.Notify(MyNotifyType.Type2, 6.0f);
+            await _notificator.NotifyAsync(MyNotifyType.Type1, "Mensagem 1");
+            await _notificator.NotifyAsync(MyNotifyType.Type2, 6.0f);
             
             // Notificando uma mensagem com falha
-            _notificator.Notify(MyNotifyType.Type2, 7.51f);
+            await _notificator.NotifyAsync(MyNotifyType.Type2, 7.51f);
         }
 
         private static async Task Main()

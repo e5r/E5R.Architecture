@@ -8,12 +8,25 @@ using E5R.Architecture.Core;
 namespace E5R.Architecture.Business
 {
     /// <summary>
-    /// Abstract business feature with input only
+    /// Abstract business feature with input only and data transformer
     /// </summary>
     /// <typeparam name="TInput">The input type</typeparam>
-    public abstract class InputOnlyBusinessFeature<TInput> : IBusinessFeatureSignature
+    public abstract class InputOnlyBusinessFeatureWithTransformer<TInput> : TransformerBasedBusinessFeature<TInput>,
+        IBusinessFeatureSignature
     {
+        protected InputOnlyBusinessFeatureWithTransformer(ILazy<ITransformationManager> transformer)
+            : base(transformer)
+        {
+        }
+
         protected abstract Task ExecActionAsync(TInput input);
+
+        public async Task ExecFromAsync<TFrom>(TFrom @from)
+        {
+            var input = TransformInput(@from);
+
+            await ExecActionAsync(input);
+        }
 
         public async Task ExecAsync(TInput input)
         {

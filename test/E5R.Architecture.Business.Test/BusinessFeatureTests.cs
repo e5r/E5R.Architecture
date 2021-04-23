@@ -97,7 +97,7 @@ namespace E5R.Architecture.Business.Test
 
     #region Mocks
 
-    public class TenInputOutputFeature : BusinessFeature<string, int>
+    public class TenInputOutputFeature : BusinessFeatureWithTransformer<string, int>
     {
         public TenInputOutputFeature(ILazy<ITransformationManager> transformer) : base(transformer)
         {

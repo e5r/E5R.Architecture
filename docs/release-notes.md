@@ -7,7 +7,8 @@ Notas de Lançamento
 
 ## 0.9.0 (dev)
 
-> TODO: ...
+* O tipo `BusinessFeature` agora não requer mais `ITransformationManager` no construtor
+  - Um novo tipo `BusinessFeatureWithTransformer<>` foi introduzido para quando necessitar de `ITransformationManager`
 
 ## 0.8.0
 
