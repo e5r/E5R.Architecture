@@ -12,6 +12,8 @@ namespace E5R.Architecture.Infrastructure
         public IEnumerable<string> CustomServiceAssemblies => _customServiceAssemblies;
         public Type TransformationManagerType { get; set; } = typeof(TransformationManager);
         public Type LazyResolverType { get; set; } = typeof(LazyResolver<>);
+        public Type FileSystemType { get; set; }
+        public Type SystemClockType { get; set; }
 
         public InfrastructureOptions EnableDeveloperMode()
         {

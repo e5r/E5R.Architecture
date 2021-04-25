@@ -13,6 +13,14 @@ Notas de Lançamento
   - Configura o tipo `T` para uso como `TOptions<T>`
   - Registra o tipo `T` no mecanismo de injeção de dependência com `AddScoped<>` para uso direto sem `TOptions`
   - Tem as variantes `ConfigureScopedSetting<T>()`, `ConfigureTransientSetting<T>()` e `ConfigureSingletonSetting<T>()`
+* Adiciona opção para usar serviços padrões em `AddInfrastructure()`
+  - Isso irá aplicar `DefaultFileSystem` para `IFileSystem` e `DefaultSystemClock` para `ISystemClock`
+  - Disponível no componente `E5R.Architecture.Infrastructure.Defaults` 
+```c#
+services.AddInfrastructure(options => {
+    options.UseDefaults();
+});
+``` 
 
 ## 0.8.0
 

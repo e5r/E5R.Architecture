@@ -120,6 +120,18 @@ namespace Microsoft.Extensions.DependencyInjection
             //       Com isso, não conseguiríamos encontrar objetos para registrar
             //       aqui. Por isso forçamos o carregamos dos assemblies informados aqui.
             options.CustomServiceAssemblies.ToList().ForEach(n => AppDomain.CurrentDomain.Load(n));
+            
+            // IFileSystem
+            if (options.FileSystemType != null)
+            {
+                serviceCollection.TryAddScoped(typeof(IFileSystem), options.FileSystemType);
+            }
+            
+            // ISystemClock
+            if (options.SystemClockType != null)
+            {
+                serviceCollection.TryAddScoped(typeof(ISystemClock), options.SystemClockType);
+            }
 
             // Habilita "notification manager"
             serviceCollection.TryAddScoped(typeof(NotificationManager<>));
