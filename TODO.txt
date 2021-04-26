@@ -1,16 +1,28 @@
-v0.x
+v1.0
 ====
+- Permitir várias implementações de ITransformer<X,Y> na mesma classe
+```
+public class MyTransformer : ITransformer<X, Y>, ITransformer<Y, X>
+{
+    public Y Transform(X from) { /* ... * }
+    public X Transform(Y from) { /* ... * }
+}
+```
+- Segregar IStorageReader:
+  > IFindableStorageReader para métodos Find()
+  > ICountableStorageReader para métodos Count()
+  > ISearchableStorageReader para métodos Search()
+  > IGetableStorageReader para métodos Get()
+- Segregar IStorageWriter:
+  > ICreatable para métodos Create()
+  > IReplaceable para métodos Replace()
+  > IRemovable para métodos Remove()
+  > IUpdatable para métodos Update()
 - Mover alguns itens de Infrastructure para Core
   > service.AddArchitectureCore();
 - Implementar validação de modelo (IModelValidator)
   > Será possível algum tipo de relacionamento com IRule, RuleFor<> e RuleSet<>?
   > Revisar RuleFor<> e RuleSet<> para ver se talvez nem seja prciso de um IModelValidator
-- Registrar automaticamente os objetos de transformação via AddInfrastrucure()
-  > Conferir se a operação ficará muito pesada
-  > Seguir mesma idéia de `AddAllRules()` e `AddLazyGroups()`
-
-v1.0
-====
 - Remover abstração própria de DI em favor de Microsoft.Extensions.DependencyInjection.Abstractions
 - Remover necessidade de objetos de assinatura
   > IDataModuleSignature
@@ -23,7 +35,8 @@ v1.0
 - Implementar Data.Dapper
   > Implementar suporte a SQL puro
   > IDataFilter, Sorter, Get(), Find(), Search(), etc.
-- Implementar mecanismo de transformação
+- Implementar Data.MongoDB
+- Sobre mecanismo de transformação
   > Modelo baseado em AutoMapper
     - Usa o AutoMapper para resolver as transformações
     - Uso:
