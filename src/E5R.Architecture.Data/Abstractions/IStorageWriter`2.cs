@@ -8,6 +8,9 @@ using E5R.Architecture.Core;
 
 namespace E5R.Architecture.Data.Abstractions
 {
+    // TODO: Remove(object...) e Remove(TDataModel...) para métodos de extensão sobre IStorageWriter<> e deixar apenas Remove(object[]...)
+    // TODO: Update<TUpdated>(object...) para métodos de extensão sobre IStorageWriter<> e deixar apenas Update<TUpdated>(object[]...)
+    
     public interface IStorageWriter<TUowProperty, TDataModel> : IStorageWriter<TDataModel>
         where TDataModel : IIdentifiable
     { }

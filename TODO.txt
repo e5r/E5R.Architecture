@@ -1,5 +1,12 @@
 v1.0
 ====
+- Segregar IStorageReader:
+  > [X] IStorageFindable para métodos Find()
+  > [X] IStorageCountable para métodos Count()
+  > [X] IStorageSearchable para métodos Search()
+  > [X] IStorageTransportable para métodos Get()
+  > [ ] Definir e implementar abstrações para operações tipo TSelect e TGroup
+  > [ ] Permitir FluentQuery em objetos segregados
 - Permitir várias implementações de ITransformer<X,Y> na mesma classe
 ```
 public class MyTransformer : ITransformer<X, Y>, ITransformer<Y, X>
@@ -8,16 +15,12 @@ public class MyTransformer : ITransformer<X, Y>, ITransformer<Y, X>
     public X Transform(Y from) { /* ... * }
 }
 ```
-- Segregar IStorageReader:
-  > IFindableStorageReader para métodos Find()
-  > ICountableStorageReader para métodos Count()
-  > ISearchableStorageReader para métodos Search()
-  > IGetableStorageReader para métodos Get()
 - Segregar IStorageWriter:
   > ICreatable para métodos Create()
   > IReplaceable para métodos Replace()
   > IRemovable para métodos Remove()
   > IUpdatable para métodos Update()
+  > Permitir FluentWriter para objetos segregados
 - Mover alguns itens de Infrastructure para Core
   > service.AddArchitectureCore();
 - Implementar validação de modelo (IModelValidator)
@@ -32,6 +35,8 @@ public class MyTransformer : ITransformer<X, Y>, ITransformer<Y, X>
 - Repensar DataModule<>. Talvez usar a idéia de BusinessService e DataService?
   (ou StorageService, PersistenceService)
 - Renomear Storage para Store?
+  > Remover "alias"
+  > Hoje abstrações segregadas só existem para IStorageX
 - Implementar Data.Dapper
   > Implementar suporte a SQL puro
   > IDataFilter, Sorter, Get(), Find(), Search(), etc.
