@@ -7,36 +7,37 @@ using E5R.Architecture.Core;
 
 namespace E5R.Architecture.Data.Abstractions
 {
-    public interface IStorageReader<TUowProperty, TDataModel> : IStorageReader<TDataModel>
-        where TDataModel : IIdentifiable
-    { }
-
-    public interface IStorageReader<TDataModel> : IStorageSignature
+    public interface
+        IStorageReader<TUowProperty, TDataModel> : IStorageFindable<TUowProperty, TDataModel>,
+            IStorageCountable<TUowProperty, TDataModel>,
+            IStorageTransportable<TUowProperty, TDataModel>,
+            IStorageSearchable<TUowProperty, TDataModel>,
+            IStorageReader<TDataModel>
         where TDataModel : IIdentifiable
     {
-        #region TDataModel operations
+    }
 
-        TDataModel Find(object identifier, IDataIncludes includes = null);
-        TDataModel Find(object[] identifiers, IDataIncludes includes = null);
-        TDataModel Find(TDataModel data, IDataIncludes includes = null);
-        int CountAll();
-        int Count(IDataFilter<TDataModel> filter);
-        IEnumerable<TDataModel> GetAll(IDataIncludes includes = null);
-        PaginatedResult<TDataModel> LimitedGet(IDataLimiter<TDataModel> limiter, IDataIncludes includes = null);
-        IEnumerable<TDataModel> Search(IDataFilter<TDataModel> filter, IDataIncludes includes = null);
-        PaginatedResult<TDataModel> LimitedSearch(IDataFilter<TDataModel> filter,
-            IDataLimiter<TDataModel> limiter, IDataIncludes includes = null);
-
-        #endregion
-
+    public interface IStorageReader<TDataModel> : IStorageFindable<TDataModel>,
+        IStorageCountable<TDataModel>, IStorageTransportable<TDataModel>,
+        IStorageSearchable<TDataModel>
+        where TDataModel : IIdentifiable
+    {
         #region TSelect operations
 
         TSelect Find<TSelect>(object identifier, IDataProjection<TDataModel, TSelect> projection);
-        TSelect Find<TSelect>(object[] identifiers, IDataProjection<TDataModel, TSelect> projection);
+
+        TSelect Find<TSelect>(object[] identifiers,
+            IDataProjection<TDataModel, TSelect> projection);
+
         TSelect Find<TSelect>(TDataModel data, IDataProjection<TDataModel, TSelect> projection);
         IEnumerable<TSelect> GetAll<TSelect>(IDataProjection<TDataModel, TSelect> projection);
-        PaginatedResult<TSelect> LimitedGet<TSelect>(IDataLimiter<TDataModel> limiter, IDataProjection<TDataModel, TSelect> projection);
-        IEnumerable<TSelect> Search<TSelect>(IDataFilter<TDataModel> filter, IDataProjection<TDataModel, TSelect> projection);
+
+        PaginatedResult<TSelect> LimitedGet<TSelect>(IDataLimiter<TDataModel> limiter,
+            IDataProjection<TDataModel, TSelect> projection);
+
+        IEnumerable<TSelect> Search<TSelect>(IDataFilter<TDataModel> filter,
+            IDataProjection<TDataModel, TSelect> projection);
+
         PaginatedResult<TSelect> LimitedSearch<TSelect>(IDataFilter<TDataModel> filter,
             IDataLimiter<TDataModel> limiter, IDataProjection<TDataModel, TSelect> projection);
 
@@ -44,11 +45,18 @@ namespace E5R.Architecture.Data.Abstractions
 
         #region TGroup operations
 
-        IEnumerable<TSelect> GetAll<TGroup, TSelect>(IDataProjection<TDataModel, TGroup, TSelect> projection);
-        PaginatedResult<TSelect> LimitedGet<TGroup, TSelect>(IDataLimiter<TDataModel> limiter, IDataProjection<TDataModel, TGroup, TSelect> projection);
-        IEnumerable<TSelect> Search<TGroup, TSelect>(IDataFilter<TDataModel> filter, IDataProjection<TDataModel, TGroup, TSelect> projection);
+        IEnumerable<TSelect> GetAll<TGroup, TSelect>(
+            IDataProjection<TDataModel, TGroup, TSelect> projection);
+
+        PaginatedResult<TSelect> LimitedGet<TGroup, TSelect>(IDataLimiter<TDataModel> limiter,
+            IDataProjection<TDataModel, TGroup, TSelect> projection);
+
+        IEnumerable<TSelect> Search<TGroup, TSelect>(IDataFilter<TDataModel> filter,
+            IDataProjection<TDataModel, TGroup, TSelect> projection);
+
         PaginatedResult<TSelect> LimitedSearch<TGroup, TSelect>(IDataFilter<TDataModel> filter,
-            IDataLimiter<TDataModel> limiter, IDataProjection<TDataModel, TGroup, TSelect> projection);
+            IDataLimiter<TDataModel> limiter,
+            IDataProjection<TDataModel, TGroup, TSelect> projection);
 
         #endregion
     }
