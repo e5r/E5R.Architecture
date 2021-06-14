@@ -20,7 +20,17 @@ Notas de Lançamento
 services.AddInfrastructure(options => {
     options.UseDefaults();
 });
-``` 
+```
+* Agora temos abstrações segregadas para IStorage<>
+```c#
+IStorageCountable<TDataModel> paraMetodosCount_e_CountAll;
+IStorageFindable<TDataModel> paraMetodosFind;
+IStorageSearchable<TDataModel> paraMetodosSearch_e_LimitedSearch;
+IStorageTransportable<TDataModel> paraMetodosGetAll_e_LimitedGet;
+
+// Assim é possível implementar repositórios customizados somente como o que precisa
+// Não há suporte para "alias" porque o objetivo é remover as abstrações "alias" no futuro
+```
 
 ## 0.8.0
 
