@@ -6,6 +6,7 @@ using E5R.Architecture.Data.Abstractions;
 using E5R.Architecture.Data.Abstractions.Alias;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
+using UsingDataEntityFrameworkCore.Data;
 using UsingDataEntityFrameworkCore.Models;
 
 namespace UsingDataEntityFrameworkCore.Controllers
@@ -14,16 +15,28 @@ namespace UsingDataEntityFrameworkCore.Controllers
     {
         private readonly ILogger<HomeController> _logger;
         private readonly IStoreReader<Student> _studentStore;
+        private readonly IStorageFindable<Student> _storageFindable;
+        private readonly IStorageFindable<SchoolContext, Student> _storageFindable2;
+        private readonly IStorageSearchable<Student> _storageSearchable;
+        private readonly IStorageSearchable<SchoolContext, Student> _storageSearchable2;
         private readonly ILazy<IStoreReader<Student>> _studentStoreLoader;
         private readonly IStoreReader<Enrollment> _enrollmentStore;
 
         public HomeController(ILogger<HomeController> logger,
-                              IStoreReader<Student> studentStore,
-                              ILazy<IStoreReader<Student>> studentStoreLoader,
-                              IStoreReader<Enrollment> enrollmentStore)
+            IStoreReader<Student> studentStore,
+            IStorageFindable<Student> storageFindable,
+            IStorageFindable<SchoolContext, Student> storageFindable2,
+            IStorageSearchable<Student> storageSearchable,
+            IStorageSearchable<SchoolContext, Student> storageSearchable2,
+            ILazy<IStoreReader<Student>> studentStoreLoader,
+            IStoreReader<Enrollment> enrollmentStore)
         {
             _logger = logger;
             _studentStore = studentStore;
+            _storageFindable = storageFindable;
+            _storageFindable2 = storageFindable2;
+            _storageSearchable = storageSearchable;
+            _storageSearchable2 = storageSearchable2;
             _studentStoreLoader = studentStoreLoader;
             _enrollmentStore = enrollmentStore;
         }
@@ -93,6 +106,18 @@ namespace UsingDataEntityFrameworkCore.Controllers
             var b3 = lazyStore.Find(2);
             var b4 = lazyStore.AsFluentQuery().Find(2);
 
+            var bb01 = _storageFindable.Find(2, new DataIncludes<Student>());
+            var bb02 = _storageFindable.Find(2, null);
+            var bb03 = _storageFindable.Find(2);
+            var bb04 = _storageFindable.Find(new object[] {2});
+            var bb05 = _storageFindable.Find(new Student {ID = 2});
+            
+            var bb11 = _storageFindable2.Find(2, new DataIncludes<Student>());
+            var bb12 = _storageFindable2.Find(2, null);
+            var bb13 = _storageFindable2.Find(2);
+            var bb14 = _storageFindable2.Find(new object[] {2});
+            var bb15 = _storageFindable2.Find(new Student {ID = 2});
+
             // Equivalentes para Find() com Include() e Select()
             var c1 = _enrollmentStore.AsFluentQuery()
                 .Projection()
@@ -139,6 +164,13 @@ namespace UsingDataEntityFrameworkCore.Controllers
                     })
                     .Project()
                 .Find(2);
+            
+            // Search
+            var e0_filter = new DataFilter<Student>();
+            e0_filter.AddFilter(w => w.FirstMidName.Contains("e"));
+
+            var e0_1 = _storageSearchable.Search(e0_filter);
+            var e0_2 = _storageSearchable2.Search(e0_filter);
 
             // Equivalentes para Search() com Include() e ThenInclude()
             var e1 = lazyStore.AsFluentQuery()

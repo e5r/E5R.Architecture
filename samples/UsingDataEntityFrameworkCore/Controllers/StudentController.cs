@@ -26,6 +26,10 @@ namespace UsingDataEntityFrameworkCore.Controllers
         private readonly DbConnection _connection;
         private readonly DbTransaction _transaction;
         private readonly IStoreReader<Student> _readerStore;
+        private readonly IStorageCountable<Student> _storageCountable;
+        private readonly IStorageCountable<SchoolContext, Student> _storageCountable2;
+        private readonly IStorageTransportable<Student> _storageTransportable;
+        private readonly IStorageTransportable<SchoolContext, Student> _storageTransportable2;
         private readonly IStoreWriter<SchoolContext, Student> _writerStore;
         private readonly IStoreBulkWriter<Student> _bulkWriterStore;
         private readonly IStoreReader<CourseTest> _storeCourseTest;
@@ -38,6 +42,10 @@ namespace UsingDataEntityFrameworkCore.Controllers
             UnitOfWorkProperty<DbTransaction> transaction,
             SchoolContext context2,
             IStoreReader<Student> readerStore,
+            IStorageCountable<Student> storageCountable,
+            IStorageCountable<SchoolContext, Student> storageCountable2,
+            IStorageTransportable<Student> storageTransportable,
+            IStorageTransportable<SchoolContext, Student> storageTransportable2,
             IStoreWriter<SchoolContext, Student> writerStore,
             IStoreBulkWriter<Student> bulkWriterStore,
             IStoreReader<CourseTest> storeCourseTest)
@@ -48,9 +56,19 @@ namespace UsingDataEntityFrameworkCore.Controllers
             _transaction = transaction ?? throw new ArgumentNullException(nameof(transaction));
             _context2 = context2 ?? throw new ArgumentNullException(nameof(context2));
             _readerStore = readerStore ?? throw new ArgumentNullException(nameof(readerStore));
+            _storageCountable = storageCountable ??
+                                throw new ArgumentNullException(nameof(storageCountable));
+            _storageCountable2 = storageCountable2 ??
+                                 throw new ArgumentNullException(nameof(storageCountable2));
+            _storageTransportable = storageTransportable ??
+                                throw new ArgumentNullException(nameof(storageTransportable));
+            _storageTransportable2 = storageTransportable2 ??
+                                     throw new ArgumentNullException(nameof(storageTransportable2));
             _writerStore = writerStore ?? throw new ArgumentNullException(nameof(writerStore));
-            _bulkWriterStore = bulkWriterStore ?? throw new ArgumentNullException(nameof(bulkWriterStore));
-            _storeCourseTest = storeCourseTest ?? throw new ArgumentNullException(nameof(storeCourseTest));
+            _bulkWriterStore = bulkWriterStore ??
+                               throw new ArgumentNullException(nameof(bulkWriterStore));
+            _storeCourseTest = storeCourseTest ??
+                               throw new ArgumentNullException(nameof(storeCourseTest));
         }
 
         public async Task<IActionResult> Index()
@@ -157,7 +175,7 @@ namespace UsingDataEntityFrameworkCore.Controllers
                     .ThenInclude(e => e.Course)
                 .AsNoTracking()
                 .FirstOrDefaultAsync(m => m.ID == id);
-
+            
             if (student == null)
             {
                 return NotFound();
@@ -254,8 +272,20 @@ namespace UsingDataEntityFrameworkCore.Controllers
                 var reload = _storeCourseTest.Find(courseTest.Identifiers);
                 _logger.LogDebug($"CourseTest {{ CourseID: {reload.CourseID}, CourseGUID: {reload.CourseGUID} }}");
             }
+            
+            var allCoursesTests3 = _storageTransportable.GetAll();
+            var allCoursesTests4 = _storageTransportable2.GetAll();
 
             throw new NotImplementedException("Isso deve gerar um IUnitOfWork.DiscardWork()");
+        }
+
+        public IActionResult Contar()
+        {
+            var count = _storageCountable.CountAll();
+
+            count = _storageCountable2.CountAll();
+
+            return View(count);
         }
     }
 }
