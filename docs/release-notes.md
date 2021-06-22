@@ -52,6 +52,29 @@ public class MultTransformer : ITransformer<B, A>, ITransformer<A, B>
     }
 }
 ````
+* Agora é possível tentar obter o valor de um enum com base em metatag's de forma silenciosa
+```c#
+using E5R.Architecture.Core.Utils;
+using Tag = E5R.Architecture.Core.MetaTagAttribute;
+
+enum MyEnum
+{
+    [MetaTag(DescriptionKey, "My First Option")]
+    FirstOption,
+
+    [MetaTag(CustomIdKey, "second-option")]
+    SecondOption
+}
+
+// Isso resulta em "MyEnum.SecondOption"
+EnumUtil.FromTag<MyEnum>(Tag.CustomIdKey, "second-option");
+
+// Isso levanta uma exceção
+EnumUtil.FromTag<MyEnum>(Tag.DescriptionKey, "Invalid Description");
+
+// Isso resulta em "false" e a variável resultado é preenchida com default(MyEnum)
+EnumUtil.TryFromTag<MyEnum>(Tag.DescriptionKey, "Invalid Description", out MyEnum resultado);
+```
 
 ## 0.8.0
 
