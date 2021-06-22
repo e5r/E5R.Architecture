@@ -9,7 +9,7 @@ namespace E5R.Architecture.Core.Exceptions
 {
     public class ArchitectureLayerException : Exception
     {
-        private const string OwnerHelpLink = "https://github.com/e5r/E5R.Architecture.Docs";
+        private const string OwnerHelpLink = "https://e5r.github.io/E5R.Architecture/";
 
         public ArchitectureLayerException(ArchitectureLayerIdentifier layerId, string message)
             : this(layerId, new Exception(message))
