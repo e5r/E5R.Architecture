@@ -31,6 +31,27 @@ IStorageTransportable<TDataModel> paraMetodosGetAll_e_LimitedGet;
 // Assim é possível implementar repositórios customizados somente como o que precisa
 // Não há suporte para "alias" porque o objetivo é remover as abstrações "alias" no futuro
 ```
+* Agora é possível utilizar uma mesma classe para vários transformadores
+````c#
+public class MultTransformer : ITransformer<B, A>, ITransformer<A, B>
+{
+    public A Transform(B @from)
+    {
+        return new A
+        {
+            AMessage = @from.BMessage
+        };
+    }
+
+    public B Transform(A @from)
+    {
+        return new B
+        {
+            BMessage = @from.AMessage
+        };
+    }
+}
+````
 
 ## 0.8.0
 
