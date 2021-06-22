@@ -76,14 +76,22 @@ namespace E5R.Architecture.Infrastructure.Extensions
                 .ToList()
                 .ForEach(transformerType =>
                 {
-                    var serviceType = transformerType.GetInterfaces().FirstOrDefault(t =>
-                        t.IsGenericType && transformerTypes.Contains(t.GetGenericTypeDefinition()));
+                    transformerType.GetInterfaces()
+                        .Where(t =>
+                            t.IsGenericType &&
+                            transformerTypes.Contains(t.GetGenericTypeDefinition()))
+                        .ToList()
+                        .ForEach(serviceType =>
+                        {
+                            if (services.Any(w =>
+                                w.ServiceType == serviceType &&
+                                w.ImplementationType == transformerType))
+                            {
+                                return;
+                            }
 
-                    if (services.Any(w =>
-                        w.ServiceType == serviceType && w.ImplementationType == transformerType))
-                        return;
-
-                    services.AddScoped(serviceType, transformerType);
+                            services.AddScoped(serviceType, transformerType);
+                        });
                 });
         }
 
