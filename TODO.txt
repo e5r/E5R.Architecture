@@ -1,5 +1,8 @@
 v1.0
 ====
+- EnumUtil.FromTag<>() ter uma versão de Try<>()
+  > Para quando se deseja verificar se é possível a conversão, mas quando se deseja um resultado
+    customizado para quando não houver possibilidade, ao invés de somente levantar a exceção
 - Segregar IStorageReader:
   > [X] IStorageFindable para métodos Find()
   > [X] IStorageCountable para métodos Count()
