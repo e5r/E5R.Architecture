@@ -58,6 +58,28 @@ namespace E5R.Architecture.Core.Test
             Assert.Equal(MyEnum.ThirdOption, thirdOption1);
             Assert.Equal(MyEnum.ThirdOption, thirdOption2);
         }
+        
+        [Fact]
+        public void TryParse_FromValidMetatag()
+        {
+            var firstOptionResult = EnumUtil.TryFromTag<MyEnum>(DescriptionKey, "My First Option",
+                out MyEnum firstOption);
+            var thirdOption1Result = EnumUtil.TryFromTag<MyEnum>(DescriptionKey, "My Third Option",
+                out MyEnum thirdOption1);
+            var secondOptionResult =
+                EnumUtil.TryFromTag<MyEnum>(CustomIdKey, "second-option", out MyEnum secondOption);
+            var thirdOption2Result = EnumUtil.TryFromTag<MyEnum>(CustomIdKey,
+                nameof(MyEnum.ThirdOption), out MyEnum thirdOption2);
+
+            Assert.True(firstOptionResult);
+            Assert.Equal(MyEnum.FirstOption, firstOption);
+            Assert.True( secondOptionResult);
+            Assert.Equal(MyEnum.SecondOption, secondOption);
+            Assert.True(thirdOption1Result);
+            Assert.Equal(MyEnum.ThirdOption, thirdOption1);
+            Assert.True(thirdOption2Result);
+            Assert.Equal(MyEnum.ThirdOption, thirdOption2);
+        }
 
         [Fact]
         public void RaiseException_FromInvalidMetatag()
@@ -84,6 +106,27 @@ namespace E5R.Architecture.Core.Test
             Assert.Equal(
                 "The Enum could not be converted because there is no value signed with the informed tag",
                 ex5.Message);
+        }
+        
+        [Fact]
+        public void TryParse_FromInvalidMetatag()
+        {
+            var result1 = EnumUtil.TryFromTag<MyEnum>(null, "invalid", out MyEnum enum1);
+            var result2 = EnumUtil.TryFromTag<MyEnum>("    ", "invalid", out MyEnum enum2);
+            var result3 = EnumUtil.TryFromTag<MyEnum>(CustomIdKey, null, out MyEnum enum3);
+            var result4 = EnumUtil.TryFromTag<MyEnum>(CustomIdKey, "    ", out MyEnum enum4);
+            var result5 = EnumUtil.TryFromTag<MyEnum>(CustomIdKey, "invalid", out MyEnum enum5);
+
+            Assert.False(result1);
+            Assert.False(result2);
+            Assert.False(result3);
+            Assert.False(result4);
+            Assert.False(result5);
+            Assert.Equal(default, enum1);
+            Assert.Equal(default, enum2);
+            Assert.Equal(default, enum3);
+            Assert.Equal(default, enum4);
+            Assert.Equal(default, enum5);
         }
 
         #region Fakes

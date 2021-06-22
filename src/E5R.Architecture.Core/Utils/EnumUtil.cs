@@ -55,5 +55,37 @@ namespace E5R.Architecture.Core.Utils
 
             return values.First();
         }
+
+        /// <summary>
+        /// Get a enum value from a tag value. A return value indicates whether the get was successful.
+        /// </summary>
+        /// <param name="tagKey">The tag key</param>
+        /// <param name="tagValue">The tag value</param>
+        /// <param name="result">
+        /// When this method returns, it contains the enum value annotated with the tag key
+        /// <paramref name = "tagKey" /> that has the tag value <paramref name = "tagValue" />,
+        /// if the get was successful, or the default value of the enum if the get failed. The get
+        /// will fail if there is no enum value annotated with the given tag. This parameter is
+        /// passed uninitialized; any value originally given in <paramref name = "result" /> will
+        /// be replaced.
+        /// </param>
+        /// <typeparam name="TEnum">The enum type</typeparam>
+        /// <returns>
+        /// <see langword="true" /> if the tag was obtained; otherwise, <see langword="false" />.
+        /// </returns>
+        public static bool TryFromTag<TEnum>(string tagKey, string tagValue, out TEnum result)
+            where TEnum : Enum
+        {
+            try
+            {
+                result = FromTag<TEnum>(tagKey, tagValue);
+                return true;
+            }
+            catch (Exception)
+            {
+                result = default;
+                return false;
+            }
+        }
     }
 }
