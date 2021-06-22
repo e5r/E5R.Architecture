@@ -1,8 +1,5 @@
 v1.0
 ====
-- EnumUtil.FromTag<>() ter uma versão de Try<>()
-  > Para quando se deseja verificar se é possível a conversão, mas quando se deseja um resultado
-    customizado para quando não houver possibilidade, ao invés de somente levantar a exceção
 - Segregar IStorageReader:
   > [X] IStorageFindable para métodos Find()
   > [X] IStorageCountable para métodos Count()
@@ -10,7 +7,6 @@ v1.0
   > [X] IStorageTransportable para métodos Get()
   > [ ] Definir e implementar abstrações para operações tipo TSelect e TGroup
   > [ ] Permitir FluentQuery em objetos segregados
-- Permitir várias implementações de ITransformer<X,Y> na mesma classe
 ```
 public class MyTransformer : ITransformer<X, Y>, ITransformer<Y, X>
 {
