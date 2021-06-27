@@ -75,6 +75,29 @@ EnumUtil.FromTag<MyEnum>(Tag.DescriptionKey, "Invalid Description");
 // Isso resulta em "false" e a variável resultado é preenchida com default(MyEnum)
 EnumUtil.TryFromTag<MyEnum>(Tag.DescriptionKey, "Invalid Description", out MyEnum resultado);
 ```
+* Adicionado gerenciamento de processos em segundo plano no componente Infrastructure.AspNetCore:
+```c#
+// Crie sua classe de trabalho
+class MyWorker : Worker
+    public Worker() : base(nameof(MyWorker)) {}
+    
+    public override Task<bool> DoWorkAsync(CancellationToken cancellationToken)
+    {
+        // TODO: Implemente seu trabalho
+    }
+}
+
+// Em sua classe Startup.cs
+// Habilite o gerenciamento de trabalhos
+services.AddWorkManager();
+
+// Registre seu trabalho
+services.AddHostedWorker<MyWorker>();
+
+// PS: Você tem dois sabores de trabalhadores:
+//     Worker - Trabalhador comum
+//     QueueWorker - Trabalhador de fila
+```
 
 ## 0.8.0
 
