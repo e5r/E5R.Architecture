@@ -1,19 +1,9 @@
 v1.0
 ====
 - Segregar IStorageReader:
-  > [X] IStorageFindable para métodos Find()
-  > [X] IStorageCountable para métodos Count()
-  > [X] IStorageSearchable para métodos Search()
-  > [X] IStorageTransportable para métodos Get()
-  > [ ] Definir e implementar abstrações para operações tipo TSelect e TGroup
-  > [ ] Permitir FluentQuery em objetos segregados
-```
-public class MyTransformer : ITransformer<X, Y>, ITransformer<Y, X>
-{
-    public Y Transform(X from) { /* ... * }
-    public X Transform(Y from) { /* ... * }
-}
-```
+  > Definir e implementar abstrações para operações tipo TSelect
+  > Definir e implementar abstrações para operações tipo TGroup
+  > Permitir FluentQuery em objetos segregados
 - Segregar IStorageWriter:
   > ICreatable para métodos Create()
   > IReplaceable para métodos Replace()
@@ -33,12 +23,10 @@ public class MyTransformer : ITransformer<X, Y>, ITransformer<Y, X>
   > IBusinessFacadeSignature
 - Repensar DataModule<>. Talvez usar a idéia de BusinessService e DataService?
   (ou StorageService, PersistenceService)
-- Renomear Storage para Store?
-  > Remover "alias"
-  > Hoje abstrações segregadas só existem para IStorageX
 - Implementar Data.Dapper
   > Implementar suporte a SQL puro
   > IDataFilter, Sorter, Get(), Find(), Search(), etc.
+  > https://github.com/sqlkata/querybuilder
 - Implementar Data.MongoDB
 - Sobre mecanismo de transformação
   > Modelo baseado em AutoMapper
@@ -50,14 +38,18 @@ public class MyTransformer : ITransformer<X, Y>, ITransformer<Y, X>
       3) Usa-se no construtor (ITransformationManager manager)
          manager.Transform<From, To>()
 - Mover este TODO.txt para um projeto no GitHub
+- Implementar internacionalização/localização
+- Adicionar templates de projetos para `dotnet new`
 
 v2.0
 ====
-- Implementar internacionalização/localização
 - Utilizar operações de Bulk com alguma biblioteca ao invés iteração simples
 - Padronizar nomes de componentes principais (UnitOfWork, Rule, RuleFor, RuleSet, BusinessFeature, etc)
   para condizer com "padrões de projeto" conhecidos (design pattern)
-
+- Renomear Storage para Store?
+  > Remover "alias"
+  > Hoje abstrações segregadas só existem para IStorageX
+ 
 vNext
 =====
 - Implementar Data para cenário na nuvem
