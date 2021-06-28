@@ -27,7 +27,7 @@ namespace UsingDataEntityFrameworkCore.Controllers
         private readonly DbTransaction _transaction;
         private readonly IStoreReader<Student> _readerStore;
         private readonly ICountableStorage<Student> _countableStorage;
-        private readonly ICountableStorage<SchoolContext, Student> _countableStorageCountable2;
+        private readonly ICountableStorage<SchoolContext, Student> _countableStorage2;
         private readonly IStorageTransportable<Student> _storageTransportable;
         private readonly IStorageTransportable<SchoolContext, Student> _storageTransportable2;
         private readonly IStoreWriter<SchoolContext, Student> _writerStore;
@@ -43,7 +43,7 @@ namespace UsingDataEntityFrameworkCore.Controllers
             SchoolContext context2,
             IStoreReader<Student> readerStore,
             ICountableStorage<Student> countableStorage,
-            ICountableStorage<SchoolContext, Student> countableStorageCountable2,
+            ICountableStorage<SchoolContext, Student> countableStorage2,
             IStorageTransportable<Student> storageTransportable,
             IStorageTransportable<SchoolContext, Student> storageTransportable2,
             IStoreWriter<SchoolContext, Student> writerStore,
@@ -58,8 +58,8 @@ namespace UsingDataEntityFrameworkCore.Controllers
             _readerStore = readerStore ?? throw new ArgumentNullException(nameof(readerStore));
             _countableStorage = countableStorage ??
                                 throw new ArgumentNullException(nameof(countableStorage));
-            _countableStorageCountable2 = countableStorageCountable2 ??
-                                 throw new ArgumentNullException(nameof(countableStorageCountable2));
+            _countableStorage2 = countableStorage2 ??
+                                 throw new ArgumentNullException(nameof(countableStorage2));
             _storageTransportable = storageTransportable ??
                                 throw new ArgumentNullException(nameof(storageTransportable));
             _storageTransportable2 = storageTransportable2 ??
@@ -283,7 +283,7 @@ namespace UsingDataEntityFrameworkCore.Controllers
         {
             var count = _countableStorage.CountAll();
 
-            count = _countableStorageCountable2.CountAll();
+            count = _countableStorage2.CountAll();
 
             return View(count);
         }

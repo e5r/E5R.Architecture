@@ -16,7 +16,7 @@ namespace UsingDataEntityFrameworkCore.Controllers
         private readonly ILogger<HomeController> _logger;
         private readonly IStoreReader<Student> _studentStore;
         private readonly IFindableStorage<Student> _findableStorage;
-        private readonly IFindableStorage<SchoolContext, Student> _findableStorageFindable2;
+        private readonly IFindableStorage<SchoolContext, Student> _findableStorage2;
         private readonly ISearchableStorage<Student> _searchableStorage;
         private readonly ISearchableStorage<SchoolContext, Student> _searchableStorage2;
         private readonly ILazy<IStoreReader<Student>> _studentStoreLoader;
@@ -25,7 +25,7 @@ namespace UsingDataEntityFrameworkCore.Controllers
         public HomeController(ILogger<HomeController> logger,
             IStoreReader<Student> studentStore,
             IFindableStorage<Student> findableStorage,
-            IFindableStorage<SchoolContext, Student> findableStorageFindable2,
+            IFindableStorage<SchoolContext, Student> findableStorage2,
             ISearchableStorage<Student> searchableStorage,
             ISearchableStorage<SchoolContext, Student> searchableStorage2,
             ILazy<IStoreReader<Student>> studentStoreLoader,
@@ -34,7 +34,7 @@ namespace UsingDataEntityFrameworkCore.Controllers
             _logger = logger;
             _studentStore = studentStore;
             _findableStorage = findableStorage;
-            _findableStorageFindable2 = findableStorageFindable2;
+            _findableStorage2 = findableStorage2;
             _searchableStorage = searchableStorage;
             _searchableStorage2 = searchableStorage2;
             _studentStoreLoader = studentStoreLoader;
@@ -112,11 +112,11 @@ namespace UsingDataEntityFrameworkCore.Controllers
             var bb04 = _findableStorage.Find(new object[] {2});
             var bb05 = _findableStorage.Find(new Student {ID = 2});
             
-            var bb11 = _findableStorageFindable2.Find(2, new DataIncludes<Student>());
-            var bb12 = _findableStorageFindable2.Find(2, null);
-            var bb13 = _findableStorageFindable2.Find(2);
-            var bb14 = _findableStorageFindable2.Find(new object[] {2});
-            var bb15 = _findableStorageFindable2.Find(new Student {ID = 2});
+            var bb11 = _findableStorage2.Find(2, new DataIncludes<Student>());
+            var bb12 = _findableStorage2.Find(2, null);
+            var bb13 = _findableStorage2.Find(2);
+            var bb14 = _findableStorage2.Find(new object[] {2});
+            var bb15 = _findableStorage2.Find(new Student {ID = 2});
 
             // Equivalentes para Find() com Include() e Select()
             var c1 = _enrollmentStore.AsFluentQuery()
