@@ -26,8 +26,8 @@ namespace UsingDataEntityFrameworkCore.Controllers
         private readonly DbConnection _connection;
         private readonly DbTransaction _transaction;
         private readonly IStoreReader<Student> _readerStore;
-        private readonly IStorageCountable<Student> _storageCountable;
-        private readonly IStorageCountable<SchoolContext, Student> _storageCountable2;
+        private readonly ICountableStorage<Student> _countableStorage;
+        private readonly ICountableStorage<SchoolContext, Student> _countableStorageCountable2;
         private readonly IStorageTransportable<Student> _storageTransportable;
         private readonly IStorageTransportable<SchoolContext, Student> _storageTransportable2;
         private readonly IStoreWriter<SchoolContext, Student> _writerStore;
@@ -42,8 +42,8 @@ namespace UsingDataEntityFrameworkCore.Controllers
             UnitOfWorkProperty<DbTransaction> transaction,
             SchoolContext context2,
             IStoreReader<Student> readerStore,
-            IStorageCountable<Student> storageCountable,
-            IStorageCountable<SchoolContext, Student> storageCountable2,
+            ICountableStorage<Student> countableStorage,
+            ICountableStorage<SchoolContext, Student> countableStorageCountable2,
             IStorageTransportable<Student> storageTransportable,
             IStorageTransportable<SchoolContext, Student> storageTransportable2,
             IStoreWriter<SchoolContext, Student> writerStore,
@@ -56,10 +56,10 @@ namespace UsingDataEntityFrameworkCore.Controllers
             _transaction = transaction ?? throw new ArgumentNullException(nameof(transaction));
             _context2 = context2 ?? throw new ArgumentNullException(nameof(context2));
             _readerStore = readerStore ?? throw new ArgumentNullException(nameof(readerStore));
-            _storageCountable = storageCountable ??
-                                throw new ArgumentNullException(nameof(storageCountable));
-            _storageCountable2 = storageCountable2 ??
-                                 throw new ArgumentNullException(nameof(storageCountable2));
+            _countableStorage = countableStorage ??
+                                throw new ArgumentNullException(nameof(countableStorage));
+            _countableStorageCountable2 = countableStorageCountable2 ??
+                                 throw new ArgumentNullException(nameof(countableStorageCountable2));
             _storageTransportable = storageTransportable ??
                                 throw new ArgumentNullException(nameof(storageTransportable));
             _storageTransportable2 = storageTransportable2 ??
@@ -281,9 +281,9 @@ namespace UsingDataEntityFrameworkCore.Controllers
 
         public IActionResult Contar()
         {
-            var count = _storageCountable.CountAll();
+            var count = _countableStorage.CountAll();
 
-            count = _storageCountable2.CountAll();
+            count = _countableStorageCountable2.CountAll();
 
             return View(count);
         }

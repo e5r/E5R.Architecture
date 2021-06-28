@@ -7,12 +7,12 @@ using E5R.Architecture.Core;
 namespace E5R.Architecture.Data.Abstractions
 {
     // TODO: Renomear todos os X<TUowProperty, TDataModel> para X<TUow...>
-    public interface IStorageCountable<TUowProperty, TDataModel> : IStorageCountable<TDataModel>
+    public interface ICountableStorage<TUowProperty, TDataModel> : ICountableStorage<TDataModel>
         where TDataModel : IIdentifiable
     {
     }
 
-    public interface IStorageCountable<TDataModel> : IStorageSignature
+    public interface ICountableStorage<TDataModel> : IStorageSignature
         where TDataModel : IIdentifiable
     {
         int CountAll();

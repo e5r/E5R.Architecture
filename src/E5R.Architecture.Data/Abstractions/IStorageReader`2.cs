@@ -9,7 +9,7 @@ namespace E5R.Architecture.Data.Abstractions
 {
     public interface
         IStorageReader<TUowProperty, TDataModel> : IStorageFindable<TUowProperty, TDataModel>,
-            IStorageCountable<TUowProperty, TDataModel>,
+            ICountableStorage<TUowProperty, TDataModel>,
             IStorageTransportable<TUowProperty, TDataModel>,
             IStorageSearchable<TUowProperty, TDataModel>,
             IStorageReader<TDataModel>
@@ -18,7 +18,7 @@ namespace E5R.Architecture.Data.Abstractions
     }
 
     public interface IStorageReader<TDataModel> : IStorageFindable<TDataModel>,
-        IStorageCountable<TDataModel>, IStorageTransportable<TDataModel>,
+        ICountableStorage<TDataModel>, IStorageTransportable<TDataModel>,
         IStorageSearchable<TDataModel>
         where TDataModel : IIdentifiable
     {
