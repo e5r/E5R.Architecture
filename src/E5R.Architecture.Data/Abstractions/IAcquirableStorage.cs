@@ -9,12 +9,12 @@ namespace E5R.Architecture.Data.Abstractions
 {
     // TODO: Renomear todos os X<TUowProperty, TDataModel> para X<TUow...>
     public interface
-        IStorageTransportable<TUowProperty, TDataModel> : IStorageTransportable<TDataModel>
+        IAcquirableStorage<TUowProperty, TDataModel> : IAcquirableStorage<TDataModel>
         where TDataModel : IIdentifiable
     {
     }
 
-    public interface IStorageTransportable<TDataModel> : IStorageSignature
+    public interface IAcquirableStorage<TDataModel> : IStorageSignature
         where TDataModel : IIdentifiable
     {
         IEnumerable<TDataModel> GetAll(IDataIncludes includes = null);

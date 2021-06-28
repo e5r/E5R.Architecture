@@ -26,7 +26,7 @@ services.AddInfrastructure(options => {
 ICountableStorage<TDataModel> paraMetodosCount_e_CountAll;
 IFindableStorage<TDataModel> paraMetodosFind;
 ISearchableStorage<TDataModel> paraMetodosSearch_e_LimitedSearch;
-IStorageTransportable<TDataModel> paraMetodosGetAll_e_LimitedGet;
+IAcquirableStorage<TDataModel> paraMetodosGetAll_e_LimitedGet;
 
 // Assim é possível implementar repositórios customizados somente como o que precisa
 // Não há suporte para "alias" porque o objetivo é remover as abstrações "alias" no futuro

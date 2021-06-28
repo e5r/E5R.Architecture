@@ -28,8 +28,8 @@ namespace UsingDataEntityFrameworkCore.Controllers
         private readonly IStoreReader<Student> _readerStore;
         private readonly ICountableStorage<Student> _countableStorage;
         private readonly ICountableStorage<SchoolContext, Student> _countableStorage2;
-        private readonly IStorageTransportable<Student> _storageTransportable;
-        private readonly IStorageTransportable<SchoolContext, Student> _storageTransportable2;
+        private readonly IAcquirableStorage<Student> _acquirableStorage;
+        private readonly IAcquirableStorage<SchoolContext, Student> _acquirableStorage2;
         private readonly IStoreWriter<SchoolContext, Student> _writerStore;
         private readonly IStoreBulkWriter<Student> _bulkWriterStore;
         private readonly IStoreReader<CourseTest> _storeCourseTest;
@@ -44,8 +44,8 @@ namespace UsingDataEntityFrameworkCore.Controllers
             IStoreReader<Student> readerStore,
             ICountableStorage<Student> countableStorage,
             ICountableStorage<SchoolContext, Student> countableStorage2,
-            IStorageTransportable<Student> storageTransportable,
-            IStorageTransportable<SchoolContext, Student> storageTransportable2,
+            IAcquirableStorage<Student> acquirableStorage,
+            IAcquirableStorage<SchoolContext, Student> acquirableStorage2,
             IStoreWriter<SchoolContext, Student> writerStore,
             IStoreBulkWriter<Student> bulkWriterStore,
             IStoreReader<CourseTest> storeCourseTest)
@@ -60,10 +60,10 @@ namespace UsingDataEntityFrameworkCore.Controllers
                                 throw new ArgumentNullException(nameof(countableStorage));
             _countableStorage2 = countableStorage2 ??
                                  throw new ArgumentNullException(nameof(countableStorage2));
-            _storageTransportable = storageTransportable ??
-                                throw new ArgumentNullException(nameof(storageTransportable));
-            _storageTransportable2 = storageTransportable2 ??
-                                     throw new ArgumentNullException(nameof(storageTransportable2));
+            _acquirableStorage = acquirableStorage ??
+                                throw new ArgumentNullException(nameof(acquirableStorage));
+            _acquirableStorage2 = acquirableStorage2 ??
+                                     throw new ArgumentNullException(nameof(acquirableStorage2));
             _writerStore = writerStore ?? throw new ArgumentNullException(nameof(writerStore));
             _bulkWriterStore = bulkWriterStore ??
                                throw new ArgumentNullException(nameof(bulkWriterStore));
@@ -273,8 +273,8 @@ namespace UsingDataEntityFrameworkCore.Controllers
                 _logger.LogDebug($"CourseTest {{ CourseID: {reload.CourseID}, CourseGUID: {reload.CourseGUID} }}");
             }
             
-            var allCoursesTests3 = _storageTransportable.GetAll();
-            var allCoursesTests4 = _storageTransportable2.GetAll();
+            var allCoursesTests3 = _acquirableStorage.GetAll();
+            var allCoursesTests4 = _acquirableStorage2.GetAll();
 
             throw new NotImplementedException("Isso deve gerar um IUnitOfWork.DiscardWork()");
         }

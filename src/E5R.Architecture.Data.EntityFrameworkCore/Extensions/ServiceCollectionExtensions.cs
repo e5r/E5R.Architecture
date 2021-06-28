@@ -18,7 +18,7 @@ namespace Microsoft.Extensions.DependencyInjection
             serviceCollection.AddScoped(typeof(IStorageReader<>), typeof(ByProperty.StorageReader<>));
             serviceCollection.AddScoped(typeof(IFindableStorage<>), typeof(ByProperty.StorageReader<>));
             serviceCollection.AddScoped(typeof(ICountableStorage<>), typeof(ByProperty.StorageReader<>));
-            serviceCollection.AddScoped(typeof(IStorageTransportable<>), typeof(ByProperty.StorageReader<>));
+            serviceCollection.AddScoped(typeof(IAcquirableStorage<>), typeof(ByProperty.StorageReader<>));
             serviceCollection.AddScoped(typeof(ISearchableStorage<>), typeof(ByProperty.StorageReader<>));
             serviceCollection.AddScoped(typeof(IStorageWriter<>), typeof(ByProperty.StorageWriter<>));
             serviceCollection.AddScoped(typeof(IStorageBulkWriter<>), typeof(ByProperty.StorageBulkWriter<>));
@@ -27,7 +27,7 @@ namespace Microsoft.Extensions.DependencyInjection
             serviceCollection.AddScoped(typeof(IStorageReader<,>), typeof(ByProperty.StorageReader<,>));
             serviceCollection.AddScoped(typeof(IFindableStorage<,>), typeof(ByProperty.StorageReader<,>));
             serviceCollection.AddScoped(typeof(ICountableStorage<,>), typeof(ByProperty.StorageReader<,>));
-            serviceCollection.AddScoped(typeof(IStorageTransportable<,>), typeof(ByProperty.StorageReader<,>));
+            serviceCollection.AddScoped(typeof(IAcquirableStorage<,>), typeof(ByProperty.StorageReader<,>));
             serviceCollection.AddScoped(typeof(ISearchableStorage<,>), typeof(ByProperty.StorageReader<,>));
             serviceCollection.AddScoped(typeof(IStorageWriter<,>), typeof(ByProperty.StorageWriter<,>));
             serviceCollection.AddScoped(typeof(IStorageBulkWriter<,>), typeof(ByProperty.StorageBulkWriter<,>));
@@ -64,7 +64,7 @@ namespace Microsoft.Extensions.DependencyInjection
             serviceCollection.AddScoped(typeof(IStorageReader<>), typeof(TransactionScope.StorageReader<>));
             serviceCollection.AddScoped(typeof(IFindableStorage<>), typeof(TransactionScope.StorageReader<>));
             serviceCollection.AddScoped(typeof(ICountableStorage<>), typeof(TransactionScope.StorageReader<>));
-            serviceCollection.AddScoped(typeof(IStorageTransportable<>), typeof(TransactionScope.StorageReader<>));
+            serviceCollection.AddScoped(typeof(IAcquirableStorage<>), typeof(TransactionScope.StorageReader<>));
             serviceCollection.AddScoped(typeof(ISearchableStorage<>), typeof(TransactionScope.StorageReader<>));
             serviceCollection.AddScoped(typeof(IStorageWriter<>), typeof(TransactionScope.StorageWriter<>));
             serviceCollection.AddScoped(typeof(IStorageBulkWriter<>), typeof(TransactionScope.StorageBulkWriter<>));
@@ -73,7 +73,7 @@ namespace Microsoft.Extensions.DependencyInjection
             serviceCollection.AddScoped(typeof(IStorageReader<,>), typeof(TransactionScope.StorageReader<,>));
             serviceCollection.AddScoped(typeof(IFindableStorage<,>), typeof(TransactionScope.StorageReader<,>));
             serviceCollection.AddScoped(typeof(ICountableStorage<,>), typeof(TransactionScope.StorageReader<,>));
-            serviceCollection.AddScoped(typeof(IStorageTransportable<,>), typeof(TransactionScope.StorageReader<,>));
+            serviceCollection.AddScoped(typeof(IAcquirableStorage<,>), typeof(TransactionScope.StorageReader<,>));
             serviceCollection.AddScoped(typeof(ISearchableStorage<,>), typeof(TransactionScope.StorageReader<,>));
             serviceCollection.AddScoped(typeof(IStorageWriter<,>), typeof(TransactionScope.StorageWriter<,>));
             serviceCollection.AddScoped(typeof(IStorageBulkWriter<,>), typeof(TransactionScope.StorageBulkWriter<,>));
