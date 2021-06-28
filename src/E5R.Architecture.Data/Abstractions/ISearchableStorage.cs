@@ -8,12 +8,12 @@ using E5R.Architecture.Core;
 namespace E5R.Architecture.Data.Abstractions
 {
     // TODO: Renomear todos os X<TUowProperty, TDataModel> para X<TUow...>
-    public interface IStorageSearchable<TUowProperty, TDataModel> : IStorageSearchable<TDataModel>
+    public interface ISearchableStorage<TUowProperty, TDataModel> : ISearchableStorage<TDataModel>
         where TDataModel : IIdentifiable
     {
     }
 
-    public interface IStorageSearchable<TDataModel> : IStorageSignature
+    public interface ISearchableStorage<TDataModel> : IStorageSignature
         where TDataModel : IIdentifiable
     {
         IEnumerable<TDataModel> Search(IDataFilter<TDataModel> filter,

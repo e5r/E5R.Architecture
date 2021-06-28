@@ -17,8 +17,8 @@ namespace UsingDataEntityFrameworkCore.Controllers
         private readonly IStoreReader<Student> _studentStore;
         private readonly IFindableStorage<Student> _findableStorage;
         private readonly IFindableStorage<SchoolContext, Student> _findableStorageFindable2;
-        private readonly IStorageSearchable<Student> _storageSearchable;
-        private readonly IStorageSearchable<SchoolContext, Student> _storageSearchable2;
+        private readonly ISearchableStorage<Student> _searchableStorage;
+        private readonly ISearchableStorage<SchoolContext, Student> _searchableStorage2;
         private readonly ILazy<IStoreReader<Student>> _studentStoreLoader;
         private readonly IStoreReader<Enrollment> _enrollmentStore;
 
@@ -26,8 +26,8 @@ namespace UsingDataEntityFrameworkCore.Controllers
             IStoreReader<Student> studentStore,
             IFindableStorage<Student> findableStorage,
             IFindableStorage<SchoolContext, Student> findableStorageFindable2,
-            IStorageSearchable<Student> storageSearchable,
-            IStorageSearchable<SchoolContext, Student> storageSearchable2,
+            ISearchableStorage<Student> searchableStorage,
+            ISearchableStorage<SchoolContext, Student> searchableStorage2,
             ILazy<IStoreReader<Student>> studentStoreLoader,
             IStoreReader<Enrollment> enrollmentStore)
         {
@@ -35,8 +35,8 @@ namespace UsingDataEntityFrameworkCore.Controllers
             _studentStore = studentStore;
             _findableStorage = findableStorage;
             _findableStorageFindable2 = findableStorageFindable2;
-            _storageSearchable = storageSearchable;
-            _storageSearchable2 = storageSearchable2;
+            _searchableStorage = searchableStorage;
+            _searchableStorage2 = searchableStorage2;
             _studentStoreLoader = studentStoreLoader;
             _enrollmentStore = enrollmentStore;
         }
@@ -169,8 +169,8 @@ namespace UsingDataEntityFrameworkCore.Controllers
             var e0_filter = new DataFilter<Student>();
             e0_filter.AddFilter(w => w.FirstMidName.Contains("e"));
 
-            var e0_1 = _storageSearchable.Search(e0_filter);
-            var e0_2 = _storageSearchable2.Search(e0_filter);
+            var e0_1 = _searchableStorage.Search(e0_filter);
+            var e0_2 = _searchableStorage2.Search(e0_filter);
 
             // Equivalentes para Search() com Include() e ThenInclude()
             var e1 = lazyStore.AsFluentQuery()

@@ -25,7 +25,7 @@ services.AddInfrastructure(options => {
 ```c#
 ICountableStorage<TDataModel> paraMetodosCount_e_CountAll;
 IFindableStorage<TDataModel> paraMetodosFind;
-IStorageSearchable<TDataModel> paraMetodosSearch_e_LimitedSearch;
+ISearchableStorage<TDataModel> paraMetodosSearch_e_LimitedSearch;
 IStorageTransportable<TDataModel> paraMetodosGetAll_e_LimitedGet;
 
 // Assim é possível implementar repositórios customizados somente como o que precisa
