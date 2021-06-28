@@ -7,13 +7,13 @@ using E5R.Architecture.Core;
 namespace E5R.Architecture.Data.Abstractions
 {
     // TODO: Renomear todos os X<TUowProperty, TDataModel> para X<TUow...>
-    public interface IStorageFindable<TUowProperty, TDataModel> : IStorageFindable<TDataModel>
+    public interface IFindableStorage<TUowProperty, TDataModel> : IFindableStorage<TDataModel>
         where TDataModel : IIdentifiable
     {
     }
 
     // TODO: Find(object...) e Find(TDataModel...) para métodos de extensão sobre IStorageReader<> e deixar apenas Find(object[]...)
-    public interface IStorageFindable<TDataModel> : IStorageSignature
+    public interface IFindableStorage<TDataModel> : IStorageSignature
         where TDataModel : IIdentifiable
     {
         TDataModel Find(object identifier, IDataIncludes includes = null);

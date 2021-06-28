@@ -15,8 +15,8 @@ namespace UsingDataEntityFrameworkCore.Controllers
     {
         private readonly ILogger<HomeController> _logger;
         private readonly IStoreReader<Student> _studentStore;
-        private readonly IStorageFindable<Student> _storageFindable;
-        private readonly IStorageFindable<SchoolContext, Student> _storageFindable2;
+        private readonly IFindableStorage<Student> _findableStorage;
+        private readonly IFindableStorage<SchoolContext, Student> _findableStorageFindable2;
         private readonly IStorageSearchable<Student> _storageSearchable;
         private readonly IStorageSearchable<SchoolContext, Student> _storageSearchable2;
         private readonly ILazy<IStoreReader<Student>> _studentStoreLoader;
@@ -24,8 +24,8 @@ namespace UsingDataEntityFrameworkCore.Controllers
 
         public HomeController(ILogger<HomeController> logger,
             IStoreReader<Student> studentStore,
-            IStorageFindable<Student> storageFindable,
-            IStorageFindable<SchoolContext, Student> storageFindable2,
+            IFindableStorage<Student> findableStorage,
+            IFindableStorage<SchoolContext, Student> findableStorageFindable2,
             IStorageSearchable<Student> storageSearchable,
             IStorageSearchable<SchoolContext, Student> storageSearchable2,
             ILazy<IStoreReader<Student>> studentStoreLoader,
@@ -33,8 +33,8 @@ namespace UsingDataEntityFrameworkCore.Controllers
         {
             _logger = logger;
             _studentStore = studentStore;
-            _storageFindable = storageFindable;
-            _storageFindable2 = storageFindable2;
+            _findableStorage = findableStorage;
+            _findableStorageFindable2 = findableStorageFindable2;
             _storageSearchable = storageSearchable;
             _storageSearchable2 = storageSearchable2;
             _studentStoreLoader = studentStoreLoader;
@@ -106,17 +106,17 @@ namespace UsingDataEntityFrameworkCore.Controllers
             var b3 = lazyStore.Find(2);
             var b4 = lazyStore.AsFluentQuery().Find(2);
 
-            var bb01 = _storageFindable.Find(2, new DataIncludes<Student>());
-            var bb02 = _storageFindable.Find(2, null);
-            var bb03 = _storageFindable.Find(2);
-            var bb04 = _storageFindable.Find(new object[] {2});
-            var bb05 = _storageFindable.Find(new Student {ID = 2});
+            var bb01 = _findableStorage.Find(2, new DataIncludes<Student>());
+            var bb02 = _findableStorage.Find(2, null);
+            var bb03 = _findableStorage.Find(2);
+            var bb04 = _findableStorage.Find(new object[] {2});
+            var bb05 = _findableStorage.Find(new Student {ID = 2});
             
-            var bb11 = _storageFindable2.Find(2, new DataIncludes<Student>());
-            var bb12 = _storageFindable2.Find(2, null);
-            var bb13 = _storageFindable2.Find(2);
-            var bb14 = _storageFindable2.Find(new object[] {2});
-            var bb15 = _storageFindable2.Find(new Student {ID = 2});
+            var bb11 = _findableStorageFindable2.Find(2, new DataIncludes<Student>());
+            var bb12 = _findableStorageFindable2.Find(2, null);
+            var bb13 = _findableStorageFindable2.Find(2);
+            var bb14 = _findableStorageFindable2.Find(new object[] {2});
+            var bb15 = _findableStorageFindable2.Find(new Student {ID = 2});
 
             // Equivalentes para Find() com Include() e Select()
             var c1 = _enrollmentStore.AsFluentQuery()

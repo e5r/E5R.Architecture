@@ -24,7 +24,7 @@ services.AddInfrastructure(options => {
 * Agora temos abstrações segregadas para IStorage<>
 ```c#
 ICountableStorage<TDataModel> paraMetodosCount_e_CountAll;
-IStorageFindable<TDataModel> paraMetodosFind;
+IFindableStorage<TDataModel> paraMetodosFind;
 IStorageSearchable<TDataModel> paraMetodosSearch_e_LimitedSearch;
 IStorageTransportable<TDataModel> paraMetodosGetAll_e_LimitedGet;
 
