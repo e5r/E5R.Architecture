@@ -9,40 +9,24 @@ namespace E5R.Architecture.Data.Abstractions
 {
     public interface
         IStorageReader<TUowProperty, TDataModel> : IFindableStorage<TUowProperty, TDataModel>,
+            IFindableStorageWithSelector<TUowProperty, TDataModel>,
             ICountableStorage<TUowProperty, TDataModel>,
             IAcquirableStorage<TUowProperty, TDataModel>,
+            IAcquirableStorageWithSelector<TUowProperty, TDataModel>,
             ISearchableStorage<TUowProperty, TDataModel>,
+            ISearchableStorageWithSelector<TUowProperty, TDataModel>,
             IStorageReader<TDataModel>
         where TDataModel : IIdentifiable
     {
     }
 
     public interface IStorageReader<TDataModel> : IFindableStorage<TDataModel>,
+        IFindableStorageWithSelector<TDataModel>,
         ICountableStorage<TDataModel>, IAcquirableStorage<TDataModel>,
-        ISearchableStorage<TDataModel>
+        IAcquirableStorageWithSelector<TDataModel>,
+        ISearchableStorage<TDataModel>, ISearchableStorageWithSelector<TDataModel>
         where TDataModel : IIdentifiable
     {
-        #region TSelect operations
-
-        TSelect Find<TSelect>(object identifier, IDataProjection<TDataModel, TSelect> projection);
-
-        TSelect Find<TSelect>(object[] identifiers,
-            IDataProjection<TDataModel, TSelect> projection);
-
-        TSelect Find<TSelect>(TDataModel data, IDataProjection<TDataModel, TSelect> projection);
-        IEnumerable<TSelect> GetAll<TSelect>(IDataProjection<TDataModel, TSelect> projection);
-
-        PaginatedResult<TSelect> LimitedGet<TSelect>(IDataLimiter<TDataModel> limiter,
-            IDataProjection<TDataModel, TSelect> projection);
-
-        IEnumerable<TSelect> Search<TSelect>(IDataFilter<TDataModel> filter,
-            IDataProjection<TDataModel, TSelect> projection);
-
-        PaginatedResult<TSelect> LimitedSearch<TSelect>(IDataFilter<TDataModel> filter,
-            IDataLimiter<TDataModel> limiter, IDataProjection<TDataModel, TSelect> projection);
-
-        #endregion
-
         #region TGroup operations
 
         IEnumerable<TSelect> GetAll<TGroup, TSelect>(
