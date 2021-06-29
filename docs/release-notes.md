@@ -21,13 +21,18 @@ services.AddInfrastructure(options => {
     options.UseDefaults();
 });
 ```
-* Agora temos abstrações segregadas para IStorage<>
+* Agora temos abstrações segregadas para `IStorage<T>`
+  - `ICountableStorage<T>` para objetos contáveis (Count e CountAll)
+  - `IFindableStorage<T>` para objetos encontráveis (Find)
+    - `IFindableStorageWithSelector<T>` que permitem projeção de seleção
+  - `ISearchableStorage<T>` para objetos pesquisáveis (Search e LimitedSearch)
+    - `ISearchableStorageWithGrouping<T>` que permitem agrupamento
+    - `ISearchableStorageWithSelector<T>` que permitem projeção de seleção
+  - `IAcquirableStorage<T>` para objetos adquiríveis (GetAll e LimitedGet)
+    - `IAcquirableStorageWithGrouping<T>` que permitem agrupamento
+    - `IAcquirableStorageWithSelector<T>` que permitem projeção de seleção
+    
 ```c#
-ICountableStorage<TDataModel> paraMetodosCount_e_CountAll;
-IFindableStorage<TDataModel> paraMetodosFind;
-ISearchableStorage<TDataModel> paraMetodosSearch_e_LimitedSearch;
-IAcquirableStorage<TDataModel> paraMetodosGetAll_e_LimitedGet;
-
 // Assim é possível implementar repositórios customizados somente como o que precisa
 // Não há suporte para "alias" porque o objetivo é remover as abstrações "alias" no futuro
 ```
