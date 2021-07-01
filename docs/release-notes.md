@@ -11,7 +11,7 @@ Notas de Lançamento
   - Um novo tipo `BusinessFeatureWithTransformer<>` foi introduzido para quando necessitar de `ITransformationManager`
 * Adiciona método de extensão `ConfigureSetting<T>()` ao componente `E5R.Architecture.Infrastructure.AspNetCore`
   - Configura o tipo `T` para uso como `TOptions<T>`
-  - Registra o tipo `T` no mecanismo de injeção de dependência com `AddScoped<>` para uso direto sem `TOptions`
+  - Registra o tipo `T` no mecanismo de injeção de dependência com `AddScoped<T>` para uso direto sem `TOptions`
   - Tem as variantes `ConfigureScopedSetting<T>()`, `ConfigureTransientSetting<T>()` e `ConfigureSingletonSetting<T>()`
 * Adiciona opção para usar serviços padrões em `AddInfrastructure()`
   - Isso irá aplicar `DefaultFileSystem` para `IFileSystem` e `DefaultSystemClock` para `ISystemClock`
@@ -22,15 +22,23 @@ services.AddInfrastructure(options => {
 });
 ```
 * Agora temos abstrações segregadas para `IStorage<T>`
-  - `ICountableStorage<T>` para objetos contáveis (Count e CountAll)
-  - `IFindableStorage<T>` para objetos encontráveis (Find)
+  + `ICountableStorage<T>` para objetos contáveis
+  + `IFindableStorage<T>` para objetos encontráveis
     - `IFindableStorageWithSelector<T>` que permitem projeção de seleção
-  - `ISearchableStorage<T>` para objetos pesquisáveis (Search e LimitedSearch)
+  + `ISearchableStorage<T>` para objetos pesquisáveis
     - `ISearchableStorageWithGrouping<T>` que permitem agrupamento
     - `ISearchableStorageWithSelector<T>` que permitem projeção de seleção
-  - `IAcquirableStorage<T>` para objetos adquiríveis (GetAll e LimitedGet)
+  + `IAcquirableStorage<T>` para objetos adquiríveis
     - `IAcquirableStorageWithGrouping<T>` que permitem agrupamento
     - `IAcquirableStorageWithSelector<T>` que permitem projeção de seleção
+  + `ICreatableStorage` para objetos criáveis
+    - `IBulkCreatableStorage` objetos criáveis em massa
+  + `IRemovableStorage` para objetos removíveis
+    - `IBulkRemovableStorage` objetos removíveis em massa
+  + `IReplaceableStorage` para objetos substituíveis
+    - `IBulkReplaceableStorage` objetos substituíveis em massa
+  + `IUpdatableStorage` para objetos atualizáveis
+    - `IBulkUpdatableStorage` objetos atualizáveis em massa
     
 ```c#
 // Assim é possível implementar repositórios customizados somente como o que precisa

@@ -18,12 +18,9 @@ namespace Microsoft.Extensions.DependencyInjection
         {
             // Objetos de armazenamento principais
             serviceCollection.AddScoped(typeof(IStorage<>), typeof(ByProperty.Storage<>));
-            serviceCollection.AddScoped(typeof(IStorageWriter<>), typeof(ByProperty.StorageWriter<>));
-            serviceCollection.AddScoped(typeof(IStorageBulkWriter<>), typeof(ByProperty.StorageBulkWriter<>));
             serviceCollection.AddScoped(typeof(IStorage<,>), typeof(ByProperty.Storage<,>));
-            serviceCollection.AddScoped(typeof(IStorageWriter<,>), typeof(ByProperty.StorageWriter<,>));
-            serviceCollection.AddScoped(typeof(IStorageBulkWriter<,>), typeof(ByProperty.StorageBulkWriter<,>));
-
+            
+            // Variações de IStorageReader
             AddInBatch(serviceCollection, new[]
                 {
                     typeof(IStorageReader<>),
@@ -53,6 +50,45 @@ namespace Microsoft.Extensions.DependencyInjection
                     typeof(ISearchableStorageWithSelector<,>),
                 },
                 typeof(ByProperty.StorageReader<,>));
+            
+            // Variações de IStorageWriter
+            AddInBatch(serviceCollection, new[]
+                {
+                    typeof(IStorageWriter<>),
+                    typeof(ICreatableStorage<>),
+                    typeof(IRemovableStorage<>),
+                    typeof(IReplaceableStorage<>),
+                    typeof(IUpdatableStorage<>)
+                },
+                typeof(ByProperty.StorageWriter<>));
+            
+            AddInBatch(serviceCollection, new[]
+                {
+                    typeof(IBulkCreatableStorage<>),
+                    typeof(IBulkRemovableStorage<>),
+                    typeof(IBulkReplaceableStorage<>),
+                    typeof(IBulkUpdatableStorage<>)
+                },
+                typeof(ByProperty.StorageBulkWriter<>));
+
+            AddInBatch(serviceCollection, new[]
+                {
+                    typeof(IStorageWriter<,>),
+                    typeof(ICreatableStorage<,>),
+                    typeof(IRemovableStorage<,>),
+                    typeof(IReplaceableStorage<,>),
+                    typeof(IUpdatableStorage<,>)
+                },
+                typeof(ByProperty.StorageWriter<,>));
+
+            AddInBatch(serviceCollection, new[]
+                {
+                    typeof(IBulkCreatableStorage<,>),
+                    typeof(IBulkRemovableStorage<,>),
+                    typeof(IBulkReplaceableStorage<,>),
+                    typeof(IBulkUpdatableStorage<,>)
+                },
+                typeof(ByProperty.StorageBulkWriter<,>));
 
             // Alias [Repository] dos objetos de armazenamento
             serviceCollection.AddScoped(typeof(IRepository<>), typeof(ByProperty.Storage<>));
@@ -81,12 +117,9 @@ namespace Microsoft.Extensions.DependencyInjection
         {
             // Objetos de armazenamento principais
             serviceCollection.AddScoped(typeof(IStorage<>), typeof(TransactionScope.Storage<>));
-            serviceCollection.AddScoped(typeof(IStorageWriter<>), typeof(TransactionScope.StorageWriter<>));
-            serviceCollection.AddScoped(typeof(IStorageBulkWriter<>), typeof(TransactionScope.StorageBulkWriter<>));
             serviceCollection.AddScoped(typeof(IStorage<,>), typeof(TransactionScope.Storage<,>));
-            serviceCollection.AddScoped(typeof(IStorageWriter<,>), typeof(TransactionScope.StorageWriter<,>));
-            serviceCollection.AddScoped(typeof(IStorageBulkWriter<,>), typeof(TransactionScope.StorageBulkWriter<,>));
 
+            // Variações de IStorageReader
             AddInBatch(serviceCollection, new[]
                 {
                     typeof(IStorageReader<>),
@@ -116,6 +149,45 @@ namespace Microsoft.Extensions.DependencyInjection
                     typeof(ISearchableStorageWithSelector<,>)
                 },
                 typeof(TransactionScope.StorageReader<,>));
+            
+            // Variações de IStorageWriter
+            AddInBatch(serviceCollection, new[]
+                {
+                    typeof(IStorageWriter<>),
+                    typeof(ICreatableStorage<>),
+                    typeof(IRemovableStorage<>),
+                    typeof(IReplaceableStorage<>),
+                    typeof(IUpdatableStorage<>)
+                },
+                typeof(TransactionScope.StorageWriter<>));
+
+            AddInBatch(serviceCollection, new[]
+                {
+                    typeof(IBulkCreatableStorage<>),
+                    typeof(IBulkRemovableStorage<>),
+                    typeof(IBulkReplaceableStorage<>),
+                    typeof(IBulkUpdatableStorage<>)
+                },
+                typeof(TransactionScope.StorageBulkWriter<>));
+            
+            AddInBatch(serviceCollection, new[]
+                {
+                    typeof(IStorageWriter<,>),
+                    typeof(ICreatableStorage<,>),
+                    typeof(IRemovableStorage<,>),
+                    typeof(IReplaceableStorage<,>),
+                    typeof(IUpdatableStorage<,>)
+                },
+                typeof(TransactionScope.StorageWriter<,>));
+
+            AddInBatch(serviceCollection, new[]
+                {
+                    typeof(IBulkCreatableStorage<,>),
+                    typeof(IBulkRemovableStorage<,>),
+                    typeof(IBulkReplaceableStorage<,>),
+                    typeof(IBulkUpdatableStorage<,>)
+                },
+                typeof(TransactionScope.StorageBulkWriter<,>));
             
             // Alias [Repository] dos objetos de armazenamento
             serviceCollection.AddScoped(typeof(IRepository<>), typeof(TransactionScope.Storage<>));
