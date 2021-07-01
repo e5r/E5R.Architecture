@@ -24,14 +24,7 @@ namespace E5R.Architecture.Infrastructure
             );
         }
 
-        public void SaveWork() => _scope.Complete();
-
-        public void DiscardWork()
-        {
-            // Nada precisa ser feito aqui, porque o TransactionManager se encarrega
-            // do resto. Só precisamos implementar o método porque é requerido pela
-            // interface IUnitOfWork
-        }
+        public void CommitWork() => _scope.Complete();
 
         public void Dispose() => Dispose(true);
 

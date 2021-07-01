@@ -65,7 +65,7 @@ namespace E5R.Architecture.Infrastructure.AspNetCore.Workers
                             await Delay.Wait();
                         }
                         
-                        uow.SaveWork();
+                        uow.CommitWork();
 
                         continue;
                     }
@@ -77,8 +77,6 @@ namespace E5R.Architecture.Infrastructure.AspNetCore.Workers
 
                         await Delay.WaitMinimum();
                     }
-                    
-                    uow.DiscardWork();
                 }
             }
         }

@@ -1,4 +1,5 @@
-﻿using System.Linq;
+﻿using System;
+using System.Linq;
 using System.Diagnostics;
 using E5R.Architecture.Core;
 using E5R.Architecture.Data;
@@ -21,6 +22,7 @@ namespace UsingDataEntityFrameworkCore.Controllers
         private readonly ISearchableStorage<SchoolContext, Student> _searchableStorage2;
         private readonly ILazy<IStoreReader<Student>> _studentStoreLoader;
         private readonly IStoreReader<Enrollment> _enrollmentStore;
+        private readonly IBulkCreatableStorage<Log> _bulkCreatableStorage;
 
         public HomeController(ILogger<HomeController> logger,
             IStoreReader<Student> studentStore,
@@ -29,7 +31,8 @@ namespace UsingDataEntityFrameworkCore.Controllers
             ISearchableStorage<Student> searchableStorage,
             ISearchableStorage<SchoolContext, Student> searchableStorage2,
             ILazy<IStoreReader<Student>> studentStoreLoader,
-            IStoreReader<Enrollment> enrollmentStore)
+            IStoreReader<Enrollment> enrollmentStore,
+            IBulkCreatableStorage<Log> bulkCreatableStorage)
         {
             _logger = logger;
             _studentStore = studentStore;
@@ -39,11 +42,18 @@ namespace UsingDataEntityFrameworkCore.Controllers
             _searchableStorage2 = searchableStorage2;
             _studentStoreLoader = studentStoreLoader;
             _enrollmentStore = enrollmentStore;
+            _bulkCreatableStorage = bulkCreatableStorage;
         }
 
         public IActionResult Index()
         {
             var lazyStore = _studentStoreLoader.Value;
+
+            var logs = _bulkCreatableStorage.BulkCreate(new[]
+            {
+                new Log {Date = DateTime.Now, Message = "Entrou na home 1"},
+                new Log {Date = DateTime.Now, Message = "Entrou na home 2"}
+            });
             
             // Equivalentes para GetAll() com GroupBy()
             var projection = new DataProjection<Student, int, object>(

@@ -34,6 +34,7 @@ namespace UsingDataEntityFrameworkCore.Controllers
         private readonly IStoreBulkWriter<Student> _bulkWriterStore;
         private readonly IStoreReader<CourseTest> _storeCourseTest;
         private readonly ILogger<StudentController> _logger;
+        private readonly ILazy<ICreatableStorage<Log>> _creatableStorage;
 
         public StudentController(
             ILogger<StudentController> logger,
@@ -48,7 +49,8 @@ namespace UsingDataEntityFrameworkCore.Controllers
             IAcquirableStorage<SchoolContext, Student> acquirableStorage2,
             IStoreWriter<SchoolContext, Student> writerStore,
             IStoreBulkWriter<Student> bulkWriterStore,
-            IStoreReader<CourseTest> storeCourseTest)
+            IStoreReader<CourseTest> storeCourseTest,
+            ILazy<ICreatableStorage<Log>> creatableStorage)
         {
             _logger = logger ?? throw new ArgumentNullException(nameof(logger));
             _context = context ?? throw new ArgumentNullException(nameof(context));
@@ -69,10 +71,15 @@ namespace UsingDataEntityFrameworkCore.Controllers
                                throw new ArgumentNullException(nameof(bulkWriterStore));
             _storeCourseTest = storeCourseTest ??
                                throw new ArgumentNullException(nameof(storeCourseTest));
+            _creatableStorage = creatableStorage ??
+                                throw new ArgumentNullException(nameof(creatableStorage));
         }
 
         public async Task<IActionResult> Index()
         {
+            _creatableStorage.Value.Create(new Log
+                {Date = DateTime.Now, Message = "Entrou em Student/Index"});
+            
             var students = await _context.Students
                 .ToListAsync();
 
@@ -85,6 +92,9 @@ namespace UsingDataEntityFrameworkCore.Controllers
 
         public IActionResult Search(string searchString, string button, uint? page)
         {
+            _creatableStorage.Value.Create(new Log
+                {Date = DateTime.Now, Message = "Entrou em Student/Search"});
+            
             uint pageOffset = Convert.ToUInt32(page.HasValue ? page.Value - 1 : 0);
 
             var query = _readerStore.AsFluentQuery()
@@ -165,6 +175,9 @@ namespace UsingDataEntityFrameworkCore.Controllers
 
         public async Task<IActionResult> Details(int? id)
         {
+            _creatableStorage.Value.Create(new Log
+                {Date = DateTime.Now, Message = "Entrou em Student/Details"});
+            
             if (id == null)
             {
                 return NotFound();
@@ -186,6 +199,9 @@ namespace UsingDataEntityFrameworkCore.Controllers
 
         public IActionResult Details2(int? id)
         {
+            _creatableStorage.Value.Create(new Log
+                {Date = DateTime.Now, Message = "Entrou em Student/Details2"});
+            
             if (id == null)
             {
                 return NotFound();
@@ -228,6 +244,9 @@ namespace UsingDataEntityFrameworkCore.Controllers
 
         public IActionResult Details3(int? id)
         {
+            _creatableStorage.Value.Create(new Log
+                {Date = DateTime.Now, Message = "Entrou em Student/Details3"});
+            
             if (id == null)
             {
                 return NotFound();

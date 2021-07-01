@@ -12,11 +12,6 @@ namespace E5R.Architecture.Infrastructure.Abstractions
         /// <summary>
         /// Saves the pending work
         /// </summary>
-        void SaveWork();
-
-        /// <summary>
-        /// Discard the pending work
-        /// </summary>
-        void DiscardWork();
+        void CommitWork();
     }
 }

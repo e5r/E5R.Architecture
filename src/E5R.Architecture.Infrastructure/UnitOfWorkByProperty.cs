@@ -14,9 +14,7 @@ namespace E5R.Architecture.Infrastructure
     {
         IDictionary<Type, Func<object>> _properties = new Dictionary<Type, Func<object>>();
 
-        public abstract void SaveWork();
-
-        public abstract void DiscardWork();
+        public abstract void CommitWork();
 
         public T Property<T>() where T : class
         {

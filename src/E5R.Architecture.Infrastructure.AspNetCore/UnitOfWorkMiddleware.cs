@@ -34,21 +34,9 @@ namespace E5R.Architecture.Infrastructure.AspNetCore
 
             _logger.LogTrace("Request start with transaction control");
 
-            try
-            {
-                await _next(context);
-            }
-            catch (Exception)
-            {
-                _logger.LogTrace("Discarding unit of work");
-                uow.DiscardWork();
-                _logger.LogTrace("Unit of work successfully discarded");
+            await _next(context);
+            uow.CommitWork();
 
-                throw;
-            }
-
-            _logger.LogTrace("Saving unit of work");
-            uow.SaveWork();
             _logger.LogTrace("Unit of work successfully saved");
         }
     }

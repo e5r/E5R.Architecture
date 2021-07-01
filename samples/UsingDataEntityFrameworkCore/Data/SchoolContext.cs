@@ -21,6 +21,7 @@ namespace UsingDataEntityFrameworkCore.Data
         public DbSet<CourseTest> CoursesTest { get; set; }
         public DbSet<Enrollment> Enrollments { get; set; }
         public DbSet<Student> Students { get; set; }
+        public DbSet<Log> Logs { get; set; }
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
@@ -34,6 +35,7 @@ namespace UsingDataEntityFrameworkCore.Data
             modelBuilder.Entity<Course>().ToTable("course");
             modelBuilder.Entity<Enrollment>().ToTable("enrollment");
             modelBuilder.Entity<Student>().ToTable("student");
+            modelBuilder.Entity<Log>().ToTable("log");
 
             modelBuilder.Entity<CourseTest>().ToTable("course_test")
                 .HasKey(pk => new { pk.CourseID, pk.CourseGUID });
