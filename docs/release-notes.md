@@ -9,10 +9,28 @@ Notas de Lançamento
 
 ### Novos recursos:
 
-* Adiciona método de extensão `ConfigureSetting<T>()` ao componente `E5R.Architecture.Infrastructure.AspNetCore`
-    - Configura o tipo `T` para uso como `TOptions<T>`
-    - Registra o tipo `T` no mecanismo de injeção de dependência com `AddScoped<T>` para uso direto sem `TOptions`
-    - Tem as variantes `ConfigureScopedSetting<T>()`, `ConfigureTransientSetting<T>()` e `ConfigureSingletonSetting<T>()`
+* Agora é possível registrar preferências com mecanismo *cross cutting*
+```c#
+public class CrossCuttingRegistrar : ICrossCuttingRegistrar
+{
+    public void Register(IServiceCollection services, IConfiguration configuration)
+    {
+        services.AddSettings<MySettings>(ServiceLifetime.Scoped, configuration, MySettings.Key);
+        services.AddTransientSettings<MySettings>(configuration, MySettings.Key);
+        services.AddScopedSettings<MySettings>(configuration, MySettings.Key);
+        services.AddSingletonSettings<MySettings>(configuration, MySettings.Key);
+    }
+}
+
+// Neste caso a preferência MySettings estará disponível tanto como o próprio tipo como um `IOptions<>`
+public class MyService
+{
+    public MyService(IOptions<MySettings> myOptions, MySettings mySettings)
+    {
+        // ...
+    }
+}
+```
 * Adiciona opção para usar serviços padrões em `AddInfrastructure()`
     - Isso irá aplicar `DefaultFileSystem` para `IFileSystem` e `DefaultSystemClock` para `ISystemClock`
     - Disponível no componente `E5R.Architecture.Infrastructure.Defaults`
@@ -120,30 +138,6 @@ services.AddHostedWorker<MyWorker>();
       - DILifetime
       - IDIContainer
     - A interface `ICrossCuttingRegistrar` espera um `IServiceCollection` junto a um `IConfiguration` ao invés de um `IDIContainer`
-    - Os métodos de extensão `ConfigureSetting`, `ConfigureScopedSetting`, `ConfigureTransientSetting` e `ConfigureSingletonSetting`
-      foram removidos da camada `Infrastructure.AspNetCore`
-  + Agora é possível registrar preferências.
-```c#
-public class CrossCuttingRegistrar : ICrossCuttingRegistrar
-{
-    public void Register(IServiceCollection services, IConfiguration configuration)
-    {
-        services.AddSettings<MySettings>(ServiceLifetime.Scoped, configuration, MySettings.Key);
-        services.AddTransientSettings<MySettings>(configuration, MySettings.Key);
-        services.AddScopedSettings<MySettings>(configuration, MySettings.Key);
-        services.AddSingletonSettings<MySettings>(configuration, MySettings.Key);
-    }
-}
-
-// Neste caso a preferência MySettings estará disponível tanto como o próprio tipo como um `IOptions<>`
-public class MyService
-{
-    public MyService(IOptions<MySettings> myOptions, MySettings mySettings)
-    {
-        // ...
-    }
-}
-```
 * A configuração de infraestrutura `AddInfrastructure()` agora requer pelo menos um `IConfiguration`
 
 ## 0.8.0
