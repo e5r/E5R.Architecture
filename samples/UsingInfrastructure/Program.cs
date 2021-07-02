@@ -6,7 +6,11 @@ using System;
 using System.Linq;
 using System.Threading.Tasks;
 using E5R.Architecture.Core;
+using E5R.Architecture.Infrastructure.Abstractions;
+using E5R.Architecture.Infrastructure.Extensions;
+using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using Microsoft.Extensions.Hosting;
 using static System.Diagnostics.Debug;
 using static E5R.Architecture.Core.RuleCheckResult;
 
@@ -178,22 +182,26 @@ namespace UsingInfrastructure
                 "RN-003 RN-004 (result7)");
         }
 
-        static void Main()
+        static void Main(string[] args)
         {
-            var services = ConfigureServices(new ServiceCollection());
-
-            using (var scope = services.BuildServiceProvider().CreateScope())
+            IHost host = Host.CreateDefaultBuilder()
+                .ConfigureAppConfiguration(c => c.AddEnvironmentVariables().AddCommandLine(args))
+                .ConfigureServices((hostBuilder, s) => s.AddInfrastructure())
+                .Build();
+            
+            using (var scope = host.Services.CreateScope())
             {
-                scope.ServiceProvider.GetService<Program>();
+                scope.ServiceProvider.GetRequiredService<Program>();
             }
         }
+    }
 
-        static IServiceCollection ConfigureServices(IServiceCollection services)
+    public class CrossCuttingRegistrar : IDIRegistrar
+    {
+        public void Register(IDIContainer container)
         {
-            services.AddScoped<Program>();
-            services.AddScoped<IMyModel2Fail, MyModel2Fail>();
-
-            return services.AddInfrastructure();
+            container.RegisterScoped<Program>();
+            container.RegisterScoped<IMyModel2Fail, MyModel2Fail>();
         }
     }
 }
