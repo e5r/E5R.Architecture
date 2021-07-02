@@ -22,16 +22,16 @@ namespace E5R.Architecture.Infrastructure.Extensions
                 return !name.StartsWith(nameof(System)) && !new[] {"netstandard"}.Contains(name);
             });
 
-        public static void DIRegistrar(this AppDomain appDomain, IDIContainer container)
+        public static void DIRegistrar(this AppDomain appDomain, IServiceCollection services)
         {
             Checker.NotNullArgument(appDomain, nameof(appDomain));
-            Checker.NotNullArgument(container, nameof(container));
+            Checker.NotNullArgument(services, nameof(services));
 
             appDomain.GetAssemblies()
                 .Where(a =>
                     a.DefinedTypes.Any(t => t.ImplementedInterfaces.Contains(typeof(IDIRegistrar))))
                 .ToList()
-                .ForEach(a => a.DIRegistrar(container));
+                .ForEach(a => a.DIRegistrar(services));
         }
 
         public static void AddAllNotificationDispatchers(this AppDomain appDomain,

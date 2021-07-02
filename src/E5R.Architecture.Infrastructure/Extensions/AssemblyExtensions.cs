@@ -14,16 +14,16 @@ namespace E5R.Architecture.Infrastructure.Extensions
 {
     public static class AssemblyExtensions
     {
-        public static void DIRegistrar(this Assembly assembly, IDIContainer container)
+        public static void DIRegistrar(this Assembly assembly, IServiceCollection services)
         {
             Checker.NotNullArgument(assembly, nameof(assembly));
-            Checker.NotNullArgument(container, nameof(container));
+            Checker.NotNullArgument(services, nameof(services));
 
             assembly.DefinedTypes
                 .Where(t => t.ImplementedInterfaces.Contains(typeof(IDIRegistrar)))
                 .Select(t => Activate(t.AsType()))
                 .ToList()
-                .ForEach(f => f.Register(container));
+                .ForEach(f => f.Register(services));
         }
 
         public static void AddAllNotificationDispatchers(this Assembly assembly,

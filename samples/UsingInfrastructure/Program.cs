@@ -198,10 +198,10 @@ namespace UsingInfrastructure
 
     public class CrossCuttingRegistrar : IDIRegistrar
     {
-        public void Register(IDIContainer container)
+        public void Register(IServiceCollection services)
         {
-            container.RegisterScoped<Program>();
-            container.RegisterScoped<IMyModel2Fail, MyModel2Fail>();
+            services.AddScoped<Program>();
+            services.AddScoped<IMyModel2Fail, MyModel2Fail>();
         }
     }
 }

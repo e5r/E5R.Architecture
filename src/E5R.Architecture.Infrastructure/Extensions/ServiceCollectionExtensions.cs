@@ -142,11 +142,9 @@ namespace Microsoft.Extensions.DependencyInjection
             AppDomain.CurrentDomain.AddAllTransformers(serviceCollection);
             
             // Habilita "cross cutting" e "rule for"
-            var container = new ServiceCollectionDIContainer(serviceCollection);
-
             serviceCollection.TryAddScoped(typeof(IRuleSet<>), typeof(RuleSet<>));
 
-            AppDomain.CurrentDomain.DIRegistrar(container);
+            AppDomain.CurrentDomain.DIRegistrar(serviceCollection);
             AppDomain.CurrentDomain.AddAllRules(serviceCollection);
 
             // Habilita "lazy loading"

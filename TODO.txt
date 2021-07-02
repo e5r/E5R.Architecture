@@ -1,21 +1,14 @@
 v1.0
 ====
 - Segregar IStorageReader:
-  > Definir e implementar abstrações para operações tipo TSelect
-  > Definir e implementar abstrações para operações tipo TGroup
   > Permitir FluentQuery em objetos segregados
 - Segregar IStorageWriter:
-  > ICreatable para métodos Create()
-  > IReplaceable para métodos Replace()
-  > IRemovable para métodos Remove()
-  > IUpdatable para métodos Update()
   > Permitir FluentWriter para objetos segregados
 - Mover alguns itens de Infrastructure para Core
   > service.AddArchitectureCore();
 - Implementar validação de modelo (IModelValidator)
   > Será possível algum tipo de relacionamento com IRule, RuleFor<> e RuleSet<>?
   > Revisar RuleFor<> e RuleSet<> para ver se talvez nem seja prciso de um IModelValidator
-- Remover abstração própria de DI em favor de Microsoft.Extensions.DependencyInjection.Abstractions
 - Remover necessidade de objetos de assinatura
   > IDataModuleSignature
   > IStorageSignature

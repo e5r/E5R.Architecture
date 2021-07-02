@@ -7,43 +7,40 @@ Notas de Lançamento
 
 ## 0.9.0 (dev)
 
-* O tipo `BusinessFeature` agora não requer mais `ITransformationManager` no construtor
-  - Um novo tipo `BusinessFeatureWithTransformer<>` foi introduzido para quando necessitar de `ITransformationManager`
+Novos recursos:
+
 * Adiciona método de extensão `ConfigureSetting<T>()` ao componente `E5R.Architecture.Infrastructure.AspNetCore`
-  - Configura o tipo `T` para uso como `TOptions<T>`
-  - Registra o tipo `T` no mecanismo de injeção de dependência com `AddScoped<T>` para uso direto sem `TOptions`
-  - Tem as variantes `ConfigureScopedSetting<T>()`, `ConfigureTransientSetting<T>()` e `ConfigureSingletonSetting<T>()`
+    - Configura o tipo `T` para uso como `TOptions<T>`
+    - Registra o tipo `T` no mecanismo de injeção de dependência com `AddScoped<T>` para uso direto sem `TOptions`
+    - Tem as variantes `ConfigureScopedSetting<T>()`, `ConfigureTransientSetting<T>()` e `ConfigureSingletonSetting<T>()`
 * Adiciona opção para usar serviços padrões em `AddInfrastructure()`
-  - Isso irá aplicar `DefaultFileSystem` para `IFileSystem` e `DefaultSystemClock` para `ISystemClock`
-  - Disponível no componente `E5R.Architecture.Infrastructure.Defaults` 
+    - Isso irá aplicar `DefaultFileSystem` para `IFileSystem` e `DefaultSystemClock` para `ISystemClock`
+    - Disponível no componente `E5R.Architecture.Infrastructure.Defaults`
 ```c#
 services.AddInfrastructure(options => {
     options.UseDefaults();
 });
 ```
 * Agora temos abstrações segregadas para `IStorage<T>`
-  + `ICountableStorage<T>` para objetos contáveis
-  + `IFindableStorage<T>` para objetos encontráveis
-    - `IFindableStorageWithSelector<T>` que permitem projeção de seleção
-  + `ISearchableStorage<T>` para objetos pesquisáveis
-    - `ISearchableStorageWithGrouping<T>` que permitem agrupamento
-    - `ISearchableStorageWithSelector<T>` que permitem projeção de seleção
-  + `IAcquirableStorage<T>` para objetos adquiríveis
-    - `IAcquirableStorageWithGrouping<T>` que permitem agrupamento
-    - `IAcquirableStorageWithSelector<T>` que permitem projeção de seleção
-  + `ICreatableStorage` para objetos criáveis
-    - `IBulkCreatableStorage` objetos criáveis em massa
-  + `IRemovableStorage` para objetos removíveis
-    - `IBulkRemovableStorage` objetos removíveis em massa
-  + `IReplaceableStorage` para objetos substituíveis
-    - `IBulkReplaceableStorage` objetos substituíveis em massa
-  + `IUpdatableStorage` para objetos atualizáveis
-    - `IBulkUpdatableStorage` objetos atualizáveis em massa
-    
-```c#
-// Assim é possível implementar repositórios customizados somente como o que precisa
-// Não há suporte para "alias" porque o objetivo é remover as abstrações "alias" no futuro
-```
+    + `ICountableStorage<T>` para objetos contáveis
+    + `IFindableStorage<T>` para objetos encontráveis
+        - `IFindableStorageWithSelector<T>` que permitem projeção de seleção
+    + `ISearchableStorage<T>` para objetos pesquisáveis
+        - `ISearchableStorageWithGrouping<T>` que permitem agrupamento
+        - `ISearchableStorageWithSelector<T>` que permitem projeção de seleção
+    + `IAcquirableStorage<T>` para objetos adquiríveis
+        - `IAcquirableStorageWithGrouping<T>` que permitem agrupamento
+        - `IAcquirableStorageWithSelector<T>` que permitem projeção de seleção
+    + `ICreatableStorage` para objetos criáveis
+        - `IBulkCreatableStorage` objetos criáveis em massa
+    + `IRemovableStorage` para objetos removíveis
+        - `IBulkRemovableStorage` objetos removíveis em massa
+    + `IReplaceableStorage` para objetos substituíveis
+        - `IBulkReplaceableStorage` objetos substituíveis em massa
+    + `IUpdatableStorage` para objetos atualizáveis
+        - `IBulkUpdatableStorage` objetos atualizáveis em massa
+> Assim é possível implementar repositórios customizados somente como o que precisa.
+> Não há suporte para "alias" porque o objetivo é remover as abstrações "alias" no futuro.
 * Agora é possível utilizar uma mesma classe para vários transformadores
 ````c#
 public class MultTransformer : ITransformer<B, A>, ITransformer<A, B>
@@ -111,6 +108,16 @@ services.AddHostedWorker<MyWorker>();
 //     Worker - Trabalhador comum
 //     QueueWorker - Trabalhador de fila
 ```
+
+Breaking changes:
+
+* O tipo `BusinessFeature` agora não requer mais `ITransformationManager` no construtor
+  - Um novo tipo `BusinessFeatureWithTransformer<>` foi introduzido para quando necessitar de `ITransformationManager`
+* O mecanismo de *cross cutting* agora usa o sistema padrão de injeção de dependência do .NET
+  - Foram removidas as seguintes abstrações:
+    - DILifetime
+    - IDIContainer
+  - A interface `IDIRegistrar` agora espera um `IServiceCollection` ao invés de um `IDIContainer`
 
 ## 0.8.0
 
