@@ -3,6 +3,7 @@
 // Licensed under the Apache version 2.0: https://github.com/e5r/manifest/blob/master/license/APACHE-2.0.txt
 
 using System;
+using System.Collections.Generic;
 using System.IO;
 
 namespace E5R.Architecture.Infrastructure.Abstractions
@@ -56,5 +57,29 @@ namespace E5R.Architecture.Infrastructure.Abstractions
         /// </summary>
         /// <param name="path">Path to directory</param>
         void CreateDirectory(string path);
+
+        /// <summary>
+        /// Get a collection of directory names in a specified path
+        /// </summary>
+        /// <param name="path">The relative or absolute path to the directory to search</param>
+        /// <param name="pattern">The search string to match against the names of directories in path</param>
+        /// <returns></returns>
+        IEnumerable<string> EnumerateDirectories(string path, string pattern);
+        
+        /// <summary>
+        /// Get a collection of file names in a specified path
+        /// </summary>
+        /// <param name="path">The relative or absolute path to the directory to search</param>
+        /// <param name="pattern">The search string to match against the names of files in path</param>
+        /// <returns></returns>
+        IEnumerable<string> EnumerateFiles(string path, string pattern);
+        
+        /// <summary>
+        /// Get a collection of file names and directory names in a specified path
+        /// </summary>
+        /// <param name="path">The relative or absolute path to the directory to search</param>
+        /// <param name="pattern">The search string to match against the names of file-system entries in path</param>
+        /// <returns></returns>
+        IEnumerable<string> EnumerateFileSystemEntries(string path, string pattern);
     }
 }
