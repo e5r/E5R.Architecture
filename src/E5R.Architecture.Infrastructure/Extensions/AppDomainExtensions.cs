@@ -8,6 +8,7 @@ using System.Linq;
 using System.Reflection;
 using E5R.Architecture.Core;
 using E5R.Architecture.Infrastructure.Abstractions;
+using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 
 namespace E5R.Architecture.Infrastructure.Extensions
@@ -22,16 +23,17 @@ namespace E5R.Architecture.Infrastructure.Extensions
                 return !name.StartsWith(nameof(System)) && !new[] {"netstandard"}.Contains(name);
             });
 
-        public static void DIRegistrar(this AppDomain appDomain, IServiceCollection services)
+        public static void DIRegistrar(this AppDomain appDomain, IServiceCollection services, IConfiguration configuration)
         {
             Checker.NotNullArgument(appDomain, nameof(appDomain));
             Checker.NotNullArgument(services, nameof(services));
+            Checker.NotNullArgument(configuration, nameof(configuration));
 
             appDomain.GetAssemblies()
                 .Where(a =>
-                    a.DefinedTypes.Any(t => t.ImplementedInterfaces.Contains(typeof(IDIRegistrar))))
+                    a.DefinedTypes.Any(t => t.ImplementedInterfaces.Contains(typeof(ICrossCuttingRegistrar))))
                 .ToList()
-                .ForEach(a => a.DIRegistrar(services));
+                .ForEach(a => a.DIRegistrar(services, configuration));
         }
 
         public static void AddAllNotificationDispatchers(this AppDomain appDomain,

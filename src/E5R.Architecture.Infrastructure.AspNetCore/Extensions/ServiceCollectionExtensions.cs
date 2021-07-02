@@ -12,26 +12,6 @@ namespace Microsoft.Extensions.DependencyInjection
 {
     public static class ServiceCollectionExtensions
     {
-        public static IServiceCollection ConfigureSetting<TSetting>(
-            this IServiceCollection services, IConfiguration config, string key)
-            where TSetting : class, new() =>
-            ConfigureScopedSetting<TSetting>(services, config, key);
-
-        public static IServiceCollection ConfigureScopedSetting<TSetting>(
-            this IServiceCollection services, IConfiguration config, string key)
-            where TSetting : class, new() => services.AddScoped(_ =>
-            Configure<TSetting>(services, config, key) ?? new TSetting());
-
-        public static IServiceCollection ConfigureTransientSetting<TSetting>(
-            this IServiceCollection services, IConfiguration config, string key)
-            where TSetting : class, new() => services.AddTransient(_ =>
-            Configure<TSetting>(services, config, key) ?? new TSetting());
-
-        public static IServiceCollection ConfigureSingletonSetting<TSetting>(
-            this IServiceCollection services, IConfiguration config, string key)
-            where TSetting : class, new() => services.AddSingleton(_ =>
-            Configure<TSetting>(services, config, key) ?? new TSetting());
-
         public static IServiceCollection AddWorkManager(
             this IServiceCollection services,
             Action<WorkManagerOptions> config)
@@ -66,17 +46,6 @@ namespace Microsoft.Extensions.DependencyInjection
             services.TryAddScoped(typeof(TWorker));
 
             return services.AddHostedService<WorkManager<TWorker>>();
-        }
-
-        private static TSetting Configure<TSetting>(IServiceCollection services,
-            IConfiguration config, string key)
-            where TSetting : class, new()
-        {
-            var section = config.GetSection(key);
-
-            services.Configure<TSetting>(section);
-
-            return section.Get<TSetting>();
         }
     }
 }

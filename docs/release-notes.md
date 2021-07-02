@@ -7,7 +7,7 @@ Notas de Lançamento
 
 ## 0.9.0 (dev)
 
-Novos recursos:
+### Novos recursos:
 
 * Adiciona método de extensão `ConfigureSetting<T>()` ao componente `E5R.Architecture.Infrastructure.AspNetCore`
     - Configura o tipo `T` para uso como `TOptions<T>`
@@ -109,15 +109,42 @@ services.AddHostedWorker<MyWorker>();
 //     QueueWorker - Trabalhador de fila
 ```
 
-Breaking changes:
+### Breaking changes:
 
 * O tipo `BusinessFeature` agora não requer mais `ITransformationManager` no construtor
   - Um novo tipo `BusinessFeatureWithTransformer<>` foi introduzido para quando necessitar de `ITransformationManager`
-* O mecanismo de *cross cutting* agora usa o sistema padrão de injeção de dependência do .NET
-  - Foram removidas as seguintes abstrações:
-    - DILifetime
-    - IDIContainer
-  - A interface `IDIRegistrar` agora espera um `IServiceCollection` ao invés de um `IDIContainer`
+* Aprimoramentos do mecanismo de *cross cutting*
+  + `IDIRegistrar` foi renomeado para `ICrossCuttingRegistrar`
+  + Agora usa o sistema padrão de injeção de dependência do .NET
+    - Foram removidas as seguintes abstrações:
+      - DILifetime
+      - IDIContainer
+    - A interface `ICrossCuttingRegistrar` espera um `IServiceCollection` junto a um `IConfiguration` ao invés de um `IDIContainer`
+    - Os métodos de extensão `ConfigureSetting`, `ConfigureScopedSetting`, `ConfigureTransientSetting` e `ConfigureSingletonSetting`
+      foram removidos da camada `Infrastructure.AspNetCore`
+  + Agora é possível registrar preferências.
+```c#
+public class CrossCuttingRegistrar : ICrossCuttingRegistrar
+{
+    public void Register(IServiceCollection services, IConfiguration configuration)
+    {
+        services.AddSettings<MySettings>(ServiceLifetime.Scoped, configuration, MySettings.Key);
+        services.AddTransientSettings<MySettings>(configuration, MySettings.Key);
+        services.AddScopedSettings<MySettings>(configuration, MySettings.Key);
+        services.AddSingletonSettings<MySettings>(configuration, MySettings.Key);
+    }
+}
+
+// Neste caso a preferência MySettings estará disponível tanto como o próprio tipo como um `IOptions<>`
+public class MyService
+{
+    public MyService(IOptions<MySettings> myOptions, MySettings mySettings)
+    {
+        // ...
+    }
+}
+```
+* A configuração de infraestrutura `AddInfrastructure()` agora requer pelo menos um `IConfiguration`
 
 ## 0.8.0
 

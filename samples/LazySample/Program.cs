@@ -2,6 +2,7 @@
 using System.Linq;
 using System.Threading.Tasks;
 using E5R.Architecture.Core;
+using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 
 namespace LazySample
@@ -96,7 +97,7 @@ namespace LazySample
         private static IServiceCollection Configure(IServiceCollection services)
         {
             services
-                .AddInfrastructure(infra =>
+                .AddInfrastructure(new ConfigurationBuilder().Build(), infra =>
                 {
 #if DEBUG
                     infra.EnableDeveloperMode();

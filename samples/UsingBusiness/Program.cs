@@ -10,6 +10,7 @@ using System.Threading.Tasks;
 using E5R.Architecture.Business;
 using E5R.Architecture.Business.Extensions;
 using E5R.Architecture.Core;
+using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using static E5R.Architecture.Core.MetaTagAttribute;
 
@@ -330,7 +331,7 @@ namespace UsingBusiness
         {
             services.AddScoped<Program>();
 
-            return services.AddInfrastructure().AddBusiness();
+            return services.AddInfrastructure(new ConfigurationBuilder().Build()).AddBusiness();
         }
     }
 }

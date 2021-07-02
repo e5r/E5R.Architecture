@@ -3,19 +3,32 @@
 // Licensed under the Apache version 2.0: https://github.com/e5r/manifest/blob/master/license/APACHE-2.0.txt
 
 using System;
+using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using E5R.Architecture.Core;
 using E5R.Architecture.Infrastructure.Abstractions;
-using E5R.Architecture.Infrastructure.Extensions;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using Microsoft.Extensions.Options;
 using static System.Diagnostics.Debug;
 using static E5R.Architecture.Core.RuleCheckResult;
 
 namespace UsingInfrastructure
 {
+    public class MySettings
+    {
+        public const string Key = "My";
+        
+        public string Message { get; set; }
+
+        public MySettings()
+        {
+            Message = "Default message";
+        }
+    }
+
     public interface IMyModel2Fail
     {
         RuleCheckResult GetFail();
@@ -131,7 +144,7 @@ namespace UsingInfrastructure
 
     public class Program
     {
-        public Program(IRuleSet<MyModel> ruleset, ITransformationManager transformer)
+        public Program(IOptions<MySettings> optionsSettings, MySettings settings, IRuleSet<MyModel> ruleset, ITransformationManager transformer)
         {
             // Data transformations
             TransformSourceData sourceData = new TransformSourceData()
@@ -185,8 +198,16 @@ namespace UsingInfrastructure
         static void Main(string[] args)
         {
             IHost host = Host.CreateDefaultBuilder()
-                .ConfigureAppConfiguration(c => c.AddEnvironmentVariables().AddCommandLine(args))
-                .ConfigureServices((hostBuilder, s) => s.AddInfrastructure())
+                .ConfigureAppConfiguration(c =>
+                {
+                    c.AddInMemoryCollection(new[]
+                        {
+                            KeyValuePair.Create<string, string>("My:Message", "Minha mensagem"), 
+                        })
+                        .AddEnvironmentVariables()
+                        .AddCommandLine(args);
+                })
+                .ConfigureServices((hostBuilder, s) => s.AddInfrastructure(hostBuilder.Configuration))
                 .Build();
             
             using (var scope = host.Services.CreateScope())
@@ -196,12 +217,17 @@ namespace UsingInfrastructure
         }
     }
 
-    public class CrossCuttingRegistrar : IDIRegistrar
+    public class CrossCuttingRegistrar : ICrossCuttingRegistrar
     {
-        public void Register(IServiceCollection services)
+        public void Register(IServiceCollection services, IConfiguration configuration)
         {
             services.AddScoped<Program>();
             services.AddScoped<IMyModel2Fail, MyModel2Fail>();
+
+            services.AddSettings<MySettings>(ServiceLifetime.Scoped, configuration, MySettings.Key);
+            services.AddTransientSettings<MySettings>(configuration, MySettings.Key);
+            services.AddScopedSettings<MySettings>(configuration, MySettings.Key);
+            services.AddSingletonSettings<MySettings>(configuration, MySettings.Key);
         }
     }
 }

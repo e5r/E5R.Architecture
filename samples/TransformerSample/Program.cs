@@ -4,6 +4,7 @@
 
 using System.Diagnostics;
 using E5R.Architecture.Core;
+using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 
 namespace TransformerSample
@@ -83,7 +84,7 @@ namespace TransformerSample
         {
             services.AddScoped<Program>();
 
-            return services.AddInfrastructure();
+            return services.AddInfrastructure(new ConfigurationBuilder().Build());
         }
     }
 

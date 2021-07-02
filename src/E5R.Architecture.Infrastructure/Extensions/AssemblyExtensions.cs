@@ -7,6 +7,7 @@ using System.Linq;
 using System.Reflection;
 using E5R.Architecture.Core;
 using E5R.Architecture.Infrastructure.Abstractions;
+using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.DependencyInjection.Extensions;
 
@@ -14,16 +15,17 @@ namespace E5R.Architecture.Infrastructure.Extensions
 {
     public static class AssemblyExtensions
     {
-        public static void DIRegistrar(this Assembly assembly, IServiceCollection services)
+        public static void DIRegistrar(this Assembly assembly, IServiceCollection services, IConfiguration configuration)
         {
             Checker.NotNullArgument(assembly, nameof(assembly));
             Checker.NotNullArgument(services, nameof(services));
+            Checker.NotNullArgument(configuration, nameof(configuration));
 
             assembly.DefinedTypes
-                .Where(t => t.ImplementedInterfaces.Contains(typeof(IDIRegistrar)))
+                .Where(t => t.ImplementedInterfaces.Contains(typeof(ICrossCuttingRegistrar)))
                 .Select(t => Activate(t.AsType()))
                 .ToList()
-                .ForEach(f => f.Register(services));
+                .ForEach(f => f.Register(services, configuration));
         }
 
         public static void AddAllNotificationDispatchers(this Assembly assembly,
@@ -151,11 +153,11 @@ namespace E5R.Architecture.Infrastructure.Extensions
                 .ForEach(services.TryAddScoped);
         }
 
-        private static IDIRegistrar Activate(Type type)
+        private static ICrossCuttingRegistrar Activate(Type type)
         {
             Checker.NotNullArgument(type, nameof(type));
 
-            return Activator.CreateInstance(type) as IDIRegistrar;
+            return Activator.CreateInstance(type) as ICrossCuttingRegistrar;
         }
     }
 }
