@@ -20,14 +20,14 @@ namespace E5R.Architecture.Infrastructure.AspNetCore.Workers
 
         protected ILogger Logger { get; }
 
-        protected abstract Task<TQueueObject> PopAsync(CancellationToken cancellationToken);
+        protected abstract Task<TQueueObject> DequeueAsync(CancellationToken cancellationToken);
 
         protected abstract Task<bool> DoWorkAsync(TQueueObject @object,
             CancellationToken cancellationToken);
 
         public override async Task<bool> DoWorkAsync(CancellationToken cancellationToken)
         {
-            var @object = await PopAsync(cancellationToken);
+            var @object = await DequeueAsync(cancellationToken);
 
             if (@object != null)
             {
