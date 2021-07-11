@@ -126,6 +126,45 @@ services.AddHostedWorker<MyWorker>();
 //     Worker - Trabalhador comum
 //     QueueWorker - Trabalhador de fila
 ```
+* Adicionado método de extensão para preencher objeto com um dicionário de strings
+```c#
+using E5R.Architecture.Core.Extensions;
+
+private class MyProperties
+{
+    public string MyProperty1 { get; set; }
+    public string MyProperty2 { get; set; }
+    public string MyProperty3 { get; set; }
+    public string MyProperty4 { get; set; }
+}
+
+var myDictionary = new Dictionary<string, string>
+{
+    {"MyProperty1", "Exact name"},
+    {"myProperty1", "camelCase name"},
+    {"my_property1", "snake_case name"},
+    {"My_Property1", "Snake_Case name"},
+};
+
+var myProperties1 = new MyProperties().Fill(myDictionary);
+var myProperties2 = myDictionary.FillObject(new MyProperties());
+var myProperties3 = myDictionary.Activate<MyProperties>();
+
+Assert.Equal("Exact name", myProperties1.MyProperty1);
+Assert.Equal("camelCase name", myProperties1.MyProperty2);
+Assert.Equal("snake_case name", myProperties1.MyProperty3);
+Assert.Equal("Snake_Case name", myProperties1.MyProperty4);
+
+Assert.Equal("Exact name", myProperties2.MyProperty1);
+Assert.Equal("camelCase name", myProperties2.MyProperty2);
+Assert.Equal("snake_case name", myProperties2.MyProperty3);
+Assert.Equal("Snake_Case name", myProperties2.MyProperty4);
+
+Assert.Equal("Exact name", myProperties3.MyProperty1);
+Assert.Equal("camelCase name", myProperties3.MyProperty2);
+Assert.Equal("snake_case name", myProperties3.MyProperty3);
+Assert.Equal("Snake_Case name", myProperties3.MyProperty4);
+```
 
 ### Breaking changes:
 
