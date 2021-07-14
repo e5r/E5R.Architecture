@@ -27,7 +27,7 @@ init:
 
 before_build:
   - ps: 'dotnet --info'
-#  - ps: 'dotnet restore'
+  - ps: 'dotnet restore'
 
 build_script:
   - ps: >-
@@ -39,7 +39,7 @@ build_script:
 
 test_script:
   - ps: 'dotnet test --collect:"XPlat Code Coverage"'
-  - ps: 'codecov'
+#  - ps: 'codecov'
 
 for:
 -
