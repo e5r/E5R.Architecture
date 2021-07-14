@@ -27,7 +27,7 @@ init:
 
 before_build:
   - ps: 'dotnet --info'
-  - ps: 'dotnet restore'
+#  - ps: 'dotnet restore'
 
 build_script:
   - ps: >-
