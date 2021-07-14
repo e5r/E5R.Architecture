@@ -39,7 +39,7 @@ build_script:
 
 test_script:
   - ps: 'dotnet test --collect:"XPlat Code Coverage"'
-  - ps: 'codecov -Z -F unittests'
+  - ps: 'codecov'
 
 for:
 -
