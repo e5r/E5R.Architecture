@@ -129,6 +129,53 @@ namespace E5R.Architecture.Core.Test
             Assert.Equal(default, enum5);
         }
 
+        [Fact]
+        public void FromValue_FindsTheEnum_ForCorrespondingCode()
+        {
+            int emptyOption = (int) MyEnum.EmptyOption;
+            int firstOption = (int) MyEnum.FirstOption;
+            int secondOption = (int) MyEnum.SecondOption;
+            int thirdOption = (int) MyEnum.ThirdOption;
+            
+            Assert.Equal(MyEnum.EmptyOption, EnumUtil.FromValue<MyEnum>(emptyOption));
+            Assert.Equal(MyEnum.FirstOption, EnumUtil.FromValue<MyEnum>(firstOption));
+            Assert.Equal(MyEnum.SecondOption, EnumUtil.FromValue<MyEnum>(secondOption));
+            Assert.Equal(MyEnum.ThirdOption, EnumUtil.FromValue<MyEnum>(thirdOption));
+        }
+        
+        [Fact]
+        public void FromValue_RaisesException_ForNonMatchingCode()
+        {
+            var ex = Assert.Throws<InvalidCastException>(() => EnumUtil.FromValue<MyEnum>(-1));
+            
+            Assert.Equal("Enum could not be converted because there is no matching value", ex.Message);
+        }
+        
+        [Fact]
+        public void TryFromValue_ReturnsTrue_ForCorrespondingCode()
+        {
+            int emptyOption = (int) MyEnum.EmptyOption;
+            int firstOption = (int) MyEnum.FirstOption;
+            int secondOption = (int) MyEnum.SecondOption;
+            int thirdOption = (int) MyEnum.ThirdOption;
+            
+            var emptyOptionResult = EnumUtil.TryFromValue(emptyOption, out MyEnum _);
+            var firstOptionResult = EnumUtil.TryFromValue(firstOption, out MyEnum _);
+            var secondOptionResult = EnumUtil.TryFromValue(secondOption, out MyEnum _);
+            var thirdOptionResult = EnumUtil.TryFromValue(thirdOption, out MyEnum _);
+            
+            Assert.True(emptyOptionResult);
+            Assert.True(firstOptionResult);
+            Assert.True(secondOptionResult);
+            Assert.True(thirdOptionResult);
+        }
+        
+        [Fact]
+        public void TryFromValue_ReturnsFalse_ForNonCorrespondingCode()
+        {
+            Assert.False(EnumUtil.TryFromValue(-1, out MyEnum _));
+        }
+
         #region Fakes
 
 #pragma warning disable 67, 169
