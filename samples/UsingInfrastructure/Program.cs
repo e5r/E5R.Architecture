@@ -13,7 +13,6 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Options;
 using static System.Diagnostics.Debug;
-using static E5R.Architecture.Core.RuleCheckResult;
 
 namespace UsingInfrastructure
 {
@@ -54,13 +53,13 @@ namespace UsingInfrastructure
         {
         }
 
-        public override Task<RuleCheckResult> CheckAsync(MyModel target) => Task.Run(() =>
+        public override async Task<RuleCheckResult> CheckAsync(MyModel target)
         {
             if (target?.Name?.ToLowerInvariant() != "brazil")
-                return RuleCheckResult.Fail;
+                return await Fail();
 
-            return Success;
-        });
+            return await Success();
+        }
     }
 
     public class NumberMinimalRule : RuleFor<MyModel>
@@ -69,13 +68,13 @@ namespace UsingInfrastructure
         {
         }
 
-        public override Task<RuleCheckResult> CheckAsync(MyModel target) => Task.Run(() =>
+        public override async Task<RuleCheckResult> CheckAsync(MyModel target)
         {
             if (target?.Number > 10)
-                return Success;
+                return await Success();
 
-            return RuleCheckResult.Fail;
-        });
+            return await Fail();
+        }
     }
 
     public class NameIsExactlyBrazilRule : RuleFor<MyModel>
@@ -85,13 +84,13 @@ namespace UsingInfrastructure
         {
         }
 
-        public override Task<RuleCheckResult> CheckAsync(MyModel target) => Task.Run(() =>
+        public override async Task<RuleCheckResult> CheckAsync(MyModel target)
         {
             if (target?.Name != "Brazil")
-                return RuleCheckResult.Fail;
+                return await Fail();
 
-            return Success;
-        });
+            return await Success();
+        }
     }
 
     public class NumberIsBigRule : RuleFor<MyModel>
@@ -105,13 +104,13 @@ namespace UsingInfrastructure
             _fail = fail;
         }
 
-        public override Task<RuleCheckResult> CheckAsync(MyModel target) => Task.Run(() =>
+        public override async Task<RuleCheckResult> CheckAsync(MyModel target)
         {
             if (target?.Number >= 35 && target.Number <= 80)
-                return Success;
+                return await Success();
 
             return _fail.GetFail();
-        });
+        }
     }
 
     public class TransformSourceData

@@ -88,5 +88,28 @@ namespace E5R.Architecture.Core
                 ? new ViolatedRuleException(this, result.Unconformities, exceptionMessageTemplate)
                 : new ViolatedRuleException(this, result.Unconformities);
         }
+
+        protected Task<RuleCheckResult> Success() => Task.FromResult(RuleCheckResult.Success);
+        
+        protected Task<RuleCheckResult> Fail() => Task.FromResult(RuleCheckResult.Fail);
+
+        protected Task<RuleCheckResult> Fail(string unconformityKey, string unconformityValue)
+        {
+            Checker.NotEmptyOrWhiteArgument(unconformityKey, nameof(unconformityKey));
+            Checker.NotEmptyOrWhiteArgument(unconformityValue, nameof(unconformityValue));
+            
+            return Task.FromResult(new RuleCheckResult(false,
+                new Dictionary<string, string> {{unconformityKey, unconformityValue}}));
+        }
+        
+        protected Task<RuleCheckResult> Fail(IReadOnlyDictionary<string,string> unconfomities)
+        {
+            if (unconfomities == null)
+            {
+                return Task.FromResult(RuleCheckResult.Fail);
+            }
+
+            return Task.FromResult(new RuleCheckResult(false, unconfomities));
+        }
     }
 }

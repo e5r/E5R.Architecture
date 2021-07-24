@@ -165,6 +165,47 @@ Assert.Equal("camelCase name", myProperties3.MyProperty2);
 Assert.Equal("snake_case name", myProperties3.MyProperty3);
 Assert.Equal("Snake_Case name", myProperties3.MyProperty4);
 ```
+* Adiciona mais utilitários de enum
+```c#
+// É possível obter uma referência para tipo de enum por seu valor
+// numérico integral diretamente
+enum MyEnum
+{
+    Option0,
+    Option1,
+    Option2
+}
+MyEnum myEnumValue = EnumUtil.FromValue<MyEnum>(1));
+Assert.Equal(MyEnum.Option1, myEnumValue);
+
+// Se preferir pode testar se a conversão é válida
+if(!EnumUtil.TryFromValue(7, out MyEnum _))
+{
+    throw new Exception("Identificador MyEnum inválido");
+}
+```
+* Adiciona métodos utilitários protegidos em `RuleFor<T>` para melhorar a verificação assíncrona
+```c#
+class MyRuleFor : RuleFor<MyType>
+{
+    public override async Task<RuleCheckResult> CheckAsync(MyType target)
+    {
+        // Para indicar sucesso
+        return await Success();
+
+        // Para indicar falha
+        return await Fail();
+        
+        // Para indicar falha com uma inconformidade
+        return await Fail("nome", "O nome estava inválido");
+        
+        // Para indicar falha com várias inconformidades
+        var inconformidades = new Dictionary<string, string>();
+        // ...
+        return await Fail(inconformidades);
+    }
+}
+```
 
 ### Breaking changes:
 
