@@ -112,7 +112,7 @@ namespace E5R.Architecture.Core
                         }
                         else
                         {
-                            unconformities.Add($"{rule.Code}", nameof(Fail));
+                            unconformities.Add(rule.Code, rule.Description);
                         }
                     }
                 }
