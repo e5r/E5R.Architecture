@@ -193,13 +193,16 @@ class MyRuleFor : RuleFor<MyType>
         // Para indicar sucesso
         return await Success();
 
-        // Para indicar falha
+        // Para indicar falha (a inconformidade será o código e descrição da regra)
         return await Fail();
         
-        // Para indicar falha com uma inconformidade
-        return await Fail("nome", "O nome estava inválido");
+        // Para indicar falha sem nenhuma inconformidade
+        return await FailWithoutUnconformities()
         
-        // Para indicar falha com várias inconformidades
+        // Para indicar falha com uma inconformidade personalizada
+        return await Fail("codigo", "Descrição da inconformidade");
+        
+        // Para indicar falha com uma lista personalizada de inconformidades
         var inconformidades = new Dictionary<string, string>();
         // ...
         return await Fail(inconformidades);

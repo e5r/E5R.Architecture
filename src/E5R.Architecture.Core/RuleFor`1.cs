@@ -91,7 +91,13 @@ namespace E5R.Architecture.Core
 
         protected Task<RuleCheckResult> Success() => Task.FromResult(RuleCheckResult.Success);
         
-        protected Task<RuleCheckResult> Fail() => Task.FromResult(RuleCheckResult.Fail);
+        protected Task<RuleCheckResult> FailWithoutUnconformities() => Task.FromResult(RuleCheckResult.Fail);
+
+        protected Task<RuleCheckResult> Fail()
+        {
+            return Task.FromResult(new RuleCheckResult(false,
+                new Dictionary<string, string> {{Code, Description}}));
+        }
 
         protected Task<RuleCheckResult> Fail(string unconformityKey, string unconformityValue)
         {
@@ -104,10 +110,7 @@ namespace E5R.Architecture.Core
         
         protected Task<RuleCheckResult> Fail(IReadOnlyDictionary<string,string> unconfomities)
         {
-            if (unconfomities == null)
-            {
-                return Task.FromResult(RuleCheckResult.Fail);
-            }
+            Checker.NotNullArgument(unconfomities, nameof(unconfomities));
 
             return Task.FromResult(new RuleCheckResult(false, unconfomities));
         }
