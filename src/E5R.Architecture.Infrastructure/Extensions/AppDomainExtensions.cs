@@ -23,7 +23,7 @@ namespace E5R.Architecture.Infrastructure.Extensions
                 return !name.StartsWith(nameof(System)) && !new[] {"netstandard"}.Contains(name);
             });
 
-        public static void DIRegistrar(this AppDomain appDomain, IServiceCollection services, IConfiguration configuration)
+        public static void AddCrossCuttingRegistrar(this AppDomain appDomain, IServiceCollection services, IConfiguration configuration)
         {
             Checker.NotNullArgument(appDomain, nameof(appDomain));
             Checker.NotNullArgument(services, nameof(services));
@@ -33,7 +33,7 @@ namespace E5R.Architecture.Infrastructure.Extensions
                 .Where(a =>
                     a.DefinedTypes.Any(t => t.ImplementedInterfaces.Contains(typeof(ICrossCuttingRegistrar))))
                 .ToList()
-                .ForEach(a => a.DIRegistrar(services, configuration));
+                .ForEach(a => a.AddCrossCuttingRegistrar(services, configuration));
         }
 
         public static void AddAllNotificationDispatchers(this AppDomain appDomain,

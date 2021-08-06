@@ -149,7 +149,7 @@ namespace Microsoft.Extensions.DependencyInjection
             // Habilita "cross cutting" e "rule for"
             serviceCollection.TryAddScoped(typeof(IRuleSet<>), typeof(RuleSet<>));
 
-            AppDomain.CurrentDomain.DIRegistrar(serviceCollection, configuration);
+            AppDomain.CurrentDomain.AddCrossCuttingRegistrar(serviceCollection, configuration);
             AppDomain.CurrentDomain.AddAllRules(serviceCollection);
 
             // Habilita "lazy loading"

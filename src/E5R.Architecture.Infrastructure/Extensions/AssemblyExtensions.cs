@@ -15,7 +15,7 @@ namespace E5R.Architecture.Infrastructure.Extensions
 {
     public static class AssemblyExtensions
     {
-        public static void DIRegistrar(this Assembly assembly, IServiceCollection services, IConfiguration configuration)
+        public static void AddCrossCuttingRegistrar(this Assembly assembly, IServiceCollection services, IConfiguration configuration)
         {
             Checker.NotNullArgument(assembly, nameof(assembly));
             Checker.NotNullArgument(services, nameof(services));
