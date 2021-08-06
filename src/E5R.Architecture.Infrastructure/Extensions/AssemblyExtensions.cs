@@ -15,7 +15,7 @@ namespace E5R.Architecture.Infrastructure.Extensions
 {
     public static class AssemblyExtensions
     {
-        public static void AddCrossCuttingRegistrar(this Assembly assembly, IServiceCollection services, IConfiguration configuration)
+        public static Assembly AddCrossCuttingRegistrar(this Assembly assembly, IServiceCollection services, IConfiguration configuration)
         {
             Checker.NotNullArgument(assembly, nameof(assembly));
             Checker.NotNullArgument(services, nameof(services));
@@ -26,9 +26,11 @@ namespace E5R.Architecture.Infrastructure.Extensions
                 .Select(t => Activate(t.AsType()))
                 .ToList()
                 .ForEach(f => f.Register(services, configuration));
+
+            return assembly;
         }
 
-        public static void AddAllNotificationDispatchers(this Assembly assembly,
+        public static Assembly AddAllNotificationDispatchers(this Assembly assembly,
             IServiceCollection services)
         {
             Checker.NotNullArgument(assembly, nameof(assembly));
@@ -55,9 +57,11 @@ namespace E5R.Architecture.Infrastructure.Extensions
 
                     services.AddScoped(serviceType, dispatcherType);
                 });
+
+            return assembly;
         }
 
-        public static void AddAllTransformers(this Assembly assembly,
+        public static Assembly AddAllTransformers(this Assembly assembly,
             IServiceCollection services)
         {
             Checker.NotNullArgument(assembly, nameof(assembly));
@@ -95,9 +99,11 @@ namespace E5R.Architecture.Infrastructure.Extensions
                             services.AddScoped(serviceType, transformerType);
                         });
                 });
+
+            return assembly;
         }
 
-        public static void AddAllRules(this Assembly assembly, IServiceCollection services)
+        public static Assembly AddAllRules(this Assembly assembly, IServiceCollection services)
         {
             Checker.NotNullArgument(assembly, nameof(assembly));
             Checker.NotNullArgument(services, nameof(services));
@@ -125,9 +131,11 @@ namespace E5R.Architecture.Infrastructure.Extensions
 
                     services.AddScoped(serviceType, ruleType);
                 });
+
+            return assembly;
         }
 
-        public static void AddAllLazyGroups(this Assembly assembly, IServiceCollection services)
+        public static Assembly AddAllLazyGroups(this Assembly assembly, IServiceCollection services)
         {
             Checker.NotNullArgument(assembly, nameof(assembly));
             Checker.NotNullArgument(services, nameof(services));
@@ -151,6 +159,8 @@ namespace E5R.Architecture.Infrastructure.Extensions
                     groupTypes.Contains(t.BaseType.GetGenericTypeDefinition()))
                 .ToList()
                 .ForEach(services.TryAddScoped);
+
+            return assembly;
         }
 
         private static ICrossCuttingRegistrar Activate(Type type)

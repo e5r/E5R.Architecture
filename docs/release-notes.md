@@ -209,6 +209,41 @@ class MyRuleFor : RuleFor<MyType>
     }
 }
 ```
+* Nova extensão que adiciona infraestrutura sem autocarregamento `AddInfrastructureWithoutAutoload()`
+> Quando usamos `AddInfrastructure()` vários itens da infraestrutura são carregados
+> automaticamente, mas se preferir pode não carregá-los.
+```c#
+// Mas você ainda tem todo controle no que carregar ou não
+services.AddInfrastructureWithoutAutoload(config, options => {
+    options.RegisterCrossCuttingAutomatically = true;
+    options.RegisterRulesAutomatically = true;
+    options.RegisterNotificationDispatchersAutomatically = true;
+    options.RegisterTransformersAutomatically = true;
+    options.RegisterLazyGroupsAutomatically = true;
+});
+
+// Quando você usa assim, todos são habilitados por padrão
+services.AddInfrastructure(config);
+
+// Você ainda pode carregar cada item separadamente direto dos seus assemblies e
+// isso simplesmente vai registrar cada tipo no container de injeção de dependências
+Assembly.GetExecutingAssembly()
+    .AddAllRules(services)
+    .AddAllTransformers(services)
+    .AddAllLazyGroups(services)
+    .AddAllNotificationDispatchers(services)
+    .AddCrossCuttingRegistrar(services, config);
+```
+* Agora você pode informar vários assemblies ao mesmo tempo para carregamento automático de tipos
+```c#
+services.AddInfrastructure(config, options => {
+    options.AddAssemblies(new[]
+    {
+        "Assembly1",
+        "Assembly2"
+    });
+});
+```
 
 ### Breaking changes:
 

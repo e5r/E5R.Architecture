@@ -108,7 +108,11 @@ namespace E5R.Architecture.Core
                         {
                             result.Unconformities
                                 .ToList()
-                                .ForEach(u => unconformities.Add($"{rule.Code}:{u.Key}", u.Value));
+                                .ForEach(u =>
+                                    unconformities.Add(
+                                        rule.Code.Equals(u.Key)
+                                            ? rule.Code
+                                            : $"{rule.Code}:{u.Key}", u.Value));
                         }
                         else
                         {

@@ -104,6 +104,27 @@ namespace Microsoft.Extensions.DependencyInjection
 
             return AddInfrastructure(serviceCollection, configuration, options);
         }
+        
+        public static IServiceCollection AddInfrastructureWithoutAutoload(
+            this IServiceCollection serviceCollection, IConfiguration configuration,
+            Action<InfrastructureOptions> optionsHandler)
+        {
+            Checker.NotNullArgument(configuration, nameof(configuration));
+            Checker.NotNullArgument(optionsHandler, nameof(optionsHandler));
+
+            var options = new InfrastructureOptions
+            {
+                RegisterRulesAutomatically = false,
+                RegisterTransformersAutomatically = false,
+                RegisterCrossCuttingAutomatically = false,
+                RegisterNotificationDispatchersAutomatically = false,
+                RegisterLazyGroupsAutomatically = false
+            };
+
+            optionsHandler(options);
+            
+            return AddInfrastructure(serviceCollection, configuration, options);
+        }
 
         public static IServiceCollection AddInfrastructure(
             this IServiceCollection serviceCollection, IConfiguration configuration,
@@ -125,36 +146,49 @@ namespace Microsoft.Extensions.DependencyInjection
             //       aqui. Por isso forçamos o carregamos dos assemblies informados aqui.
             options.CustomServiceAssemblies.ToList().ForEach(n => AppDomain.CurrentDomain.Load(n));
 
-            // IFileSystem
             if (options.FileSystemType != null)
             {
                 serviceCollection.TryAddScoped(typeof(IFileSystem), options.FileSystemType);
             }
 
-            // ISystemClock
             if (options.SystemClockType != null)
             {
                 serviceCollection.TryAddScoped(typeof(ISystemClock), options.SystemClockType);
             }
 
-            // Habilita "notification manager"
             serviceCollection.TryAddScoped(typeof(NotificationManager<>));
-            AppDomain.CurrentDomain.AddAllNotificationDispatchers(serviceCollection);
+            
+            if (options.RegisterNotificationDispatchersAutomatically)
+            {
+                AppDomain.CurrentDomain.AddAllNotificationDispatchers(serviceCollection);
+            }
 
-            // Habilita "transformers"
             serviceCollection.TryAddScoped(typeof(ITransformationManager),
                 options.TransformationManagerType);
-            AppDomain.CurrentDomain.AddAllTransformers(serviceCollection);
 
-            // Habilita "cross cutting" e "rule for"
+            if (options.RegisterTransformersAutomatically)
+            {
+                AppDomain.CurrentDomain.AddAllTransformers(serviceCollection);
+            }
+
             serviceCollection.TryAddScoped(typeof(IRuleSet<>), typeof(RuleSet<>));
 
-            AppDomain.CurrentDomain.AddCrossCuttingRegistrar(serviceCollection, configuration);
-            AppDomain.CurrentDomain.AddAllRules(serviceCollection);
+            if (options.RegisterCrossCuttingAutomatically)
+            {
+                AppDomain.CurrentDomain.AddCrossCuttingRegistrar(serviceCollection, configuration);
+            }
 
-            // Habilita "lazy loading"
+            if (options.RegisterRulesAutomatically)
+            {
+                AppDomain.CurrentDomain.AddAllRules(serviceCollection);
+            }
+
             serviceCollection.TryAddScoped(typeof(ILazy<>), options.LazyResolverType);
-            AppDomain.CurrentDomain.AddAllLazyGroups(serviceCollection);
+
+            if (options.RegisterLazyGroupsAutomatically)
+            {
+                AppDomain.CurrentDomain.AddAllLazyGroups(serviceCollection);
+            }
 
             return serviceCollection;
         }
