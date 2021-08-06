@@ -8,7 +8,7 @@
     <title>Notas de Lan&#231;amento | Arquitetura E5R </title>
     <meta name="viewport" content="width=device-width">
     <meta name="title" content="Notas de Lan&#231;amento | Arquitetura E5R ">
-    <meta name="generator" content="docfx 2.57.2.0">
+    <meta name="generator" content="docfx 2.58.0.0">
     
     <link rel="shortcut icon" href="images/favicon.png">
     <link rel="stylesheet" href="styles/docfx.vendor.css">
@@ -62,6 +62,311 @@
             <article class="content wrap" id="_content" data-uid="">
 <h1 id="notas-de-lançamento">Notas de Lançamento</h1>
 
+<h2 id="090">0.9.0</h2>
+<h3 id="novos-recursos">Novos recursos:</h3>
+<ul>
+<li>Agora é possível registrar preferências com mecanismo <em>cross cutting</em></li>
+</ul>
+<pre><code class="lang-c#">public class CrossCuttingRegistrar : ICrossCuttingRegistrar
+{
+    public void Register(IServiceCollection services, IConfiguration configuration)
+    {
+        services.AddSettings&lt;MySettings&gt;(ServiceLifetime.Scoped, configuration, MySettings.Key);
+        services.AddTransientSettings&lt;MySettings&gt;(configuration, MySettings.Key);
+        services.AddScopedSettings&lt;MySettings&gt;(configuration, MySettings.Key);
+        services.AddSingletonSettings&lt;MySettings&gt;(configuration, MySettings.Key);
+    }
+}
+
+// Neste caso a preferência MySettings estará disponível tanto como o próprio tipo como um `IOptions&lt;&gt;`
+public class MyService
+{
+    public MyService(IOptions&lt;MySettings&gt; myOptions, MySettings mySettings)
+    {
+        // ...
+    }
+}
+</code></pre>
+<ul>
+<li>Adiciona opção para usar serviços padrões em <code>AddInfrastructure()</code>
+<ul>
+<li>Isso irá aplicar <code>DefaultFileSystem</code> para <code>IFileSystem</code> e <code>DefaultSystemClock</code> para <code>ISystemClock</code></li>
+<li>Disponível no componente <code>E5R.Architecture.Infrastructure.Defaults</code></li>
+</ul>
+</li>
+</ul>
+<pre><code class="lang-c#">services.AddInfrastructure(options =&gt; {
+    options.UseDefaults();
+});
+</code></pre>
+<ul>
+<li>Agora temos abstrações segregadas para <code>IStorage&lt;T&gt;</code>
+<ul>
+<li><code>ICountableStorage&lt;T&gt;</code> para objetos contáveis</li>
+<li><code>IFindableStorage&lt;T&gt;</code> para objetos encontráveis
+<ul>
+<li><code>IFindableStorageWithSelector&lt;T&gt;</code> que permitem projeção de seleção</li>
+</ul>
+</li>
+<li><code>ISearchableStorage&lt;T&gt;</code> para objetos pesquisáveis
+<ul>
+<li><code>ISearchableStorageWithGrouping&lt;T&gt;</code> que permitem agrupamento</li>
+<li><code>ISearchableStorageWithSelector&lt;T&gt;</code> que permitem projeção de seleção</li>
+</ul>
+</li>
+<li><code>IAcquirableStorage&lt;T&gt;</code> para objetos adquiríveis
+<ul>
+<li><code>IAcquirableStorageWithGrouping&lt;T&gt;</code> que permitem agrupamento</li>
+<li><code>IAcquirableStorageWithSelector&lt;T&gt;</code> que permitem projeção de seleção</li>
+</ul>
+</li>
+<li><code>ICreatableStorage</code> para objetos criáveis
+<ul>
+<li><code>IBulkCreatableStorage</code> objetos criáveis em massa</li>
+</ul>
+</li>
+<li><code>IRemovableStorage</code> para objetos removíveis
+<ul>
+<li><code>IBulkRemovableStorage</code> objetos removíveis em massa</li>
+</ul>
+</li>
+<li><code>IReplaceableStorage</code> para objetos substituíveis
+<ul>
+<li><code>IBulkReplaceableStorage</code> objetos substituíveis em massa</li>
+</ul>
+</li>
+<li><code>IUpdatableStorage</code> para objetos atualizáveis
+<ul>
+<li><code>IBulkUpdatableStorage</code> objetos atualizáveis em massa</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<blockquote>
+<p>Assim é possível implementar repositórios customizados somente como o que precisa.
+Não há suporte para &quot;alias&quot; porque o objetivo é remover as abstrações &quot;alias&quot; no futuro.</p>
+</blockquote>
+<ul>
+<li>Agora é possível utilizar uma mesma classe para vários transformadores</li>
+</ul>
+<pre><code class="lang-c#">public class MultTransformer : ITransformer&lt;B, A&gt;, ITransformer&lt;A, B&gt;
+{
+    public A Transform(B @from)
+    {
+        return new A
+        {
+            AMessage = @from.BMessage
+        };
+    }
+
+    public B Transform(A @from)
+    {
+        return new B
+        {
+            BMessage = @from.AMessage
+        };
+    }
+}
+</code></pre>
+<ul>
+<li>Agora é possível tentar obter o valor de um enum com base em metatag's de forma silenciosa</li>
+</ul>
+<pre><code class="lang-c#">using E5R.Architecture.Core.Utils;
+using Tag = E5R.Architecture.Core.MetaTagAttribute;
+
+enum MyEnum
+{
+    [MetaTag(DescriptionKey, &quot;My First Option&quot;)]
+    FirstOption,
+
+    [MetaTag(CustomIdKey, &quot;second-option&quot;)]
+    SecondOption
+}
+
+// Isso resulta em &quot;MyEnum.SecondOption&quot;
+EnumUtil.FromTag&lt;MyEnum&gt;(Tag.CustomIdKey, &quot;second-option&quot;);
+
+// Isso levanta uma exceção
+EnumUtil.FromTag&lt;MyEnum&gt;(Tag.DescriptionKey, &quot;Invalid Description&quot;);
+
+// Isso resulta em &quot;false&quot; e a variável resultado é preenchida com default(MyEnum)
+EnumUtil.TryFromTag&lt;MyEnum&gt;(Tag.DescriptionKey, &quot;Invalid Description&quot;, out MyEnum resultado);
+</code></pre>
+<ul>
+<li>Adicionado gerenciamento de processos em segundo plano no componente Infrastructure.AspNetCore:</li>
+</ul>
+<pre><code class="lang-c#">// Crie sua classe de trabalho
+class MyWorker : Worker
+    public Worker() : base(nameof(MyWorker)) {}
+    
+    public override Task&lt;bool&gt; DoWorkAsync(CancellationToken cancellationToken)
+    {
+        // TODO: Implemente seu trabalho
+    }
+}
+
+// Em sua classe Startup.cs
+// Habilite o gerenciamento de trabalhos
+services.AddWorkManager();
+
+// Registre seu trabalho
+services.AddHostedWorker&lt;MyWorker&gt;();
+
+// PS: Você tem dois sabores de trabalhadores:
+//     Worker - Trabalhador comum
+//     QueueWorker - Trabalhador de fila
+</code></pre>
+<ul>
+<li>Adicionado método de extensão para preencher objeto com um dicionário de strings</li>
+</ul>
+<pre><code class="lang-c#">using E5R.Architecture.Core.Extensions;
+
+private class MyProperties
+{
+    public string MyProperty1 { get; set; }
+    public string MyProperty2 { get; set; }
+    public string MyProperty3 { get; set; }
+    public string MyProperty4 { get; set; }
+}
+
+var myDictionary = new Dictionary&lt;string, string&gt;
+{
+    {&quot;MyProperty1&quot;, &quot;Exact name&quot;},
+    {&quot;myProperty1&quot;, &quot;camelCase name&quot;},
+    {&quot;my_property1&quot;, &quot;snake_case name&quot;},
+    {&quot;My_Property1&quot;, &quot;Snake_Case name&quot;},
+};
+
+var myProperties1 = new MyProperties().Fill(myDictionary);
+var myProperties2 = myDictionary.FillObject(new MyProperties());
+var myProperties3 = myDictionary.Activate&lt;MyProperties&gt;();
+
+Assert.Equal(&quot;Exact name&quot;, myProperties1.MyProperty1);
+Assert.Equal(&quot;camelCase name&quot;, myProperties1.MyProperty2);
+Assert.Equal(&quot;snake_case name&quot;, myProperties1.MyProperty3);
+Assert.Equal(&quot;Snake_Case name&quot;, myProperties1.MyProperty4);
+
+Assert.Equal(&quot;Exact name&quot;, myProperties2.MyProperty1);
+Assert.Equal(&quot;camelCase name&quot;, myProperties2.MyProperty2);
+Assert.Equal(&quot;snake_case name&quot;, myProperties2.MyProperty3);
+Assert.Equal(&quot;Snake_Case name&quot;, myProperties2.MyProperty4);
+
+Assert.Equal(&quot;Exact name&quot;, myProperties3.MyProperty1);
+Assert.Equal(&quot;camelCase name&quot;, myProperties3.MyProperty2);
+Assert.Equal(&quot;snake_case name&quot;, myProperties3.MyProperty3);
+Assert.Equal(&quot;Snake_Case name&quot;, myProperties3.MyProperty4);
+</code></pre>
+<ul>
+<li>Adiciona mais utilitários de enum</li>
+</ul>
+<pre><code class="lang-c#">// É possível obter uma referência para tipo de enum por seu valor
+// numérico integral diretamente
+enum MyEnum
+{
+    Option0,
+    Option1,
+    Option2
+}
+MyEnum myEnumValue = EnumUtil.FromValue&lt;MyEnum&gt;(1));
+Assert.Equal(MyEnum.Option1, myEnumValue);
+
+// Se preferir pode testar se a conversão é válida
+if(!EnumUtil.TryFromValue(7, out MyEnum _))
+{
+    throw new Exception(&quot;Identificador MyEnum inválido&quot;);
+}
+</code></pre>
+<ul>
+<li>Adiciona métodos utilitários protegidos em <code>RuleFor&lt;T&gt;</code> para melhorar a verificação assíncrona</li>
+</ul>
+<pre><code class="lang-c#">class MyRuleFor : RuleFor&lt;MyType&gt;
+{
+    public override async Task&lt;RuleCheckResult&gt; CheckAsync(MyType target)
+    {
+        // Para indicar sucesso
+        return await Success();
+
+        // Para indicar falha (a inconformidade será o código e descrição da regra)
+        return await Fail();
+        
+        // Para indicar falha sem nenhuma inconformidade
+        return await FailWithoutUnconformities()
+        
+        // Para indicar falha com uma inconformidade personalizada
+        return await Fail(&quot;codigo&quot;, &quot;Descrição da inconformidade&quot;);
+        
+        // Para indicar falha com uma lista personalizada de inconformidades
+        var inconformidades = new Dictionary&lt;string, string&gt;();
+        // ...
+        return await Fail(inconformidades);
+    }
+}
+</code></pre>
+<ul>
+<li>Nova extensão que adiciona infraestrutura sem autocarregamento <code>AddInfrastructureWithoutAutoload()</code></li>
+</ul>
+<blockquote>
+<p>Quando usamos <code>AddInfrastructure()</code> vários itens da infraestrutura são carregados
+automaticamente, mas se preferir pode não carregá-los.</p>
+</blockquote>
+<pre><code class="lang-c#">// Mas você ainda tem todo controle no que carregar ou não
+services.AddInfrastructureWithoutAutoload(config, options =&gt; {
+    options.RegisterCrossCuttingAutomatically = true;
+    options.RegisterRulesAutomatically = true;
+    options.RegisterNotificationDispatchersAutomatically = true;
+    options.RegisterTransformersAutomatically = true;
+    options.RegisterLazyGroupsAutomatically = true;
+});
+
+// Quando você usa assim, todos são habilitados por padrão
+services.AddInfrastructure(config);
+
+// Você ainda pode carregar cada item separadamente direto dos seus assemblies e
+// isso simplesmente vai registrar cada tipo no container de injeção de dependências
+Assembly.GetExecutingAssembly()
+    .AddAllRules(services)
+    .AddAllTransformers(services)
+    .AddAllLazyGroups(services)
+    .AddAllNotificationDispatchers(services)
+    .AddCrossCuttingRegistrar(services, config);
+</code></pre>
+<ul>
+<li>Agora você pode informar vários assemblies ao mesmo tempo para carregamento automático de tipos</li>
+</ul>
+<pre><code class="lang-c#">services.AddInfrastructure(config, options =&gt; {
+    options.AddAssemblies(new[]
+    {
+        &quot;Assembly1&quot;,
+        &quot;Assembly2&quot;
+    });
+});
+</code></pre>
+<h3 id="breaking-changes">Breaking changes:</h3>
+<ul>
+<li>O tipo <code>BusinessFeature</code> agora não requer mais <code>ITransformationManager</code> no construtor
+<ul>
+<li>Um novo tipo <code>BusinessFeatureWithTransformer&lt;&gt;</code> foi introduzido para quando necessitar de <code>ITransformationManager</code></li>
+</ul>
+</li>
+<li>Aprimoramentos do mecanismo de <em>cross cutting</em>
+<ul>
+<li><code>IDIRegistrar</code> foi renomeado para <code>ICrossCuttingRegistrar</code></li>
+<li>Agora usa o sistema padrão de injeção de dependência do .NET
+<ul>
+<li>Foram removidas as seguintes abstrações:
+<ul>
+<li>DILifetime</li>
+<li>IDIContainer</li>
+</ul>
+</li>
+<li>A interface <code>ICrossCuttingRegistrar</code> espera um <code>IServiceCollection</code> junto a um <code>IConfiguration</code> ao invés de um <code>IDIContainer</code></li>
+</ul>
+</li>
+</ul>
+</li>
+<li>A configuração de infraestrutura <code>AddInfrastructure()</code> agora requer pelo menos um <code>IConfiguration</code></li>
+</ul>
 <h2 id="080">0.8.0</h2>
 <p>Novos recursos:</p>
 <ul>

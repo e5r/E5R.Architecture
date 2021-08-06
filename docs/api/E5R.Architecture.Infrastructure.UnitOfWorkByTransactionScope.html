@@ -10,7 +10,7 @@
     <meta name="viewport" content="width=device-width">
     <meta name="title" content="Class UnitOfWorkByTransactionScope
    | Arquitetura E5R ">
-    <meta name="generator" content="docfx 2.57.2.0">
+    <meta name="generator" content="docfx 2.58.0.0">
     
     <link rel="shortcut icon" href="../images/favicon.png">
     <link rel="stylesheet" href="../styles/docfx.vendor.css">
@@ -103,13 +103,13 @@
   </div>
   <h3 id="methods">Methods
   </h3>
-  <a id="E5R_Architecture_Infrastructure_UnitOfWorkByTransactionScope_DiscardWork_" data-uid="E5R.Architecture.Infrastructure.UnitOfWorkByTransactionScope.DiscardWork*"></a>
-  <h4 id="E5R_Architecture_Infrastructure_UnitOfWorkByTransactionScope_DiscardWork" data-uid="E5R.Architecture.Infrastructure.UnitOfWorkByTransactionScope.DiscardWork">DiscardWork()</h4>
+  <a id="E5R_Architecture_Infrastructure_UnitOfWorkByTransactionScope_CommitWork_" data-uid="E5R.Architecture.Infrastructure.UnitOfWorkByTransactionScope.CommitWork*"></a>
+  <h4 id="E5R_Architecture_Infrastructure_UnitOfWorkByTransactionScope_CommitWork" data-uid="E5R.Architecture.Infrastructure.UnitOfWorkByTransactionScope.CommitWork">CommitWork()</h4>
   <div class="markdown level1 summary"></div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public void DiscardWork()</code></pre>
+    <pre><code class="lang-csharp hljs">public void CommitWork()</code></pre>
   </div>
   <a id="E5R_Architecture_Infrastructure_UnitOfWorkByTransactionScope_Dispose_" data-uid="E5R.Architecture.Infrastructure.UnitOfWorkByTransactionScope.Dispose*"></a>
   <h4 id="E5R_Architecture_Infrastructure_UnitOfWorkByTransactionScope_Dispose" data-uid="E5R.Architecture.Infrastructure.UnitOfWorkByTransactionScope.Dispose">Dispose()</h4>
@@ -119,20 +119,16 @@
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">public void Dispose()</code></pre>
   </div>
-  <a id="E5R_Architecture_Infrastructure_UnitOfWorkByTransactionScope_SaveWork_" data-uid="E5R.Architecture.Infrastructure.UnitOfWorkByTransactionScope.SaveWork*"></a>
-  <h4 id="E5R_Architecture_Infrastructure_UnitOfWorkByTransactionScope_SaveWork" data-uid="E5R.Architecture.Infrastructure.UnitOfWorkByTransactionScope.SaveWork">SaveWork()</h4>
-  <div class="markdown level1 summary"></div>
-  <div class="markdown level1 conceptual"></div>
-  <h5 class="decalaration">Declaration</h5>
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public void SaveWork()</code></pre>
-  </div>
   <h3 id="implements">Implements</h3>
   <div>
       <a class="xref" href="E5R.Architecture.Infrastructure.Abstractions.IUnitOfWork.html">IUnitOfWork</a>
   </div>
   <div>
       <span class="xref">IDisposable</span>
+  </div>
+  <h3 id="extensionmethods">Extension Methods</h3>
+  <div>
+      <a class="xref" href="E5R.Architecture.Core.Extensions.ObjectExtensions.html#E5R_Architecture_Core_Extensions_ObjectExtensions_Fill__1___0_Dictionary_System_String_System_String__">ObjectExtensions.Fill&lt;TObject&gt;(TObject, Dictionary&lt;String, String&gt;)</a>
   </div>
 </article>
           </div>

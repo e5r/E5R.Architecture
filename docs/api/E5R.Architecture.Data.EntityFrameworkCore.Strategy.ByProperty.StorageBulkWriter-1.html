@@ -10,7 +10,7 @@
     <meta name="viewport" content="width=device-width">
     <meta name="title" content="Class StorageBulkWriter&lt;TDataModel&gt;
    | Arquitetura E5R ">
-    <meta name="generator" content="docfx 2.57.2.0">
+    <meta name="generator" content="docfx 2.58.0.0">
     
     <link rel="shortcut icon" href="../images/favicon.png">
     <link rel="stylesheet" href="../styles/docfx.vendor.css">
@@ -86,11 +86,19 @@
   <div classs="implements">
     <h5>Implements</h5>
     <div><a class="xref" href="E5R.Architecture.Data.Abstractions.IStorageBulkWriter-2.html">IStorageBulkWriter</a>&lt;<span class="xref">DbContext</span>, TDataModel&gt;</div>
+    <div><a class="xref" href="E5R.Architecture.Data.Abstractions.IBulkCreatableStorage-2.html">IBulkCreatableStorage</a>&lt;<span class="xref">DbContext</span>, TDataModel&gt;</div>
+    <div><a class="xref" href="E5R.Architecture.Data.Abstractions.IBulkRemovableStorage-2.html">IBulkRemovableStorage</a>&lt;<span class="xref">DbContext</span>, TDataModel&gt;</div>
+    <div><a class="xref" href="E5R.Architecture.Data.Abstractions.IBulkReplaceableStorage-2.html">IBulkReplaceableStorage</a>&lt;<span class="xref">DbContext</span>, TDataModel&gt;</div>
+    <div><a class="xref" href="E5R.Architecture.Data.Abstractions.IBulkUpdatableStorage-2.html">IBulkUpdatableStorage</a>&lt;<span class="xref">DbContext</span>, TDataModel&gt;</div>
     <div><a class="xref" href="E5R.Architecture.Data.Abstractions.Alias.IRepositoryBulkWriter-2.html">IRepositoryBulkWriter</a>&lt;<span class="xref">DbContext</span>, TDataModel&gt;</div>
     <div><a class="xref" href="E5R.Architecture.Data.Abstractions.Alias.IRepositoryBulkWriter-1.html">IRepositoryBulkWriter</a>&lt;TDataModel&gt;</div>
     <div><a class="xref" href="E5R.Architecture.Data.Abstractions.Alias.IStoreBulkWriter-2.html">IStoreBulkWriter</a>&lt;<span class="xref">DbContext</span>, TDataModel&gt;</div>
     <div><a class="xref" href="E5R.Architecture.Data.Abstractions.Alias.IStoreBulkWriter-1.html">IStoreBulkWriter</a>&lt;TDataModel&gt;</div>
     <div><a class="xref" href="E5R.Architecture.Data.Abstractions.IStorageBulkWriter-1.html">IStorageBulkWriter</a>&lt;TDataModel&gt;</div>
+    <div><a class="xref" href="E5R.Architecture.Data.Abstractions.IBulkCreatableStorage-1.html">IBulkCreatableStorage</a>&lt;TDataModel&gt;</div>
+    <div><a class="xref" href="E5R.Architecture.Data.Abstractions.IBulkRemovableStorage-1.html">IBulkRemovableStorage</a>&lt;TDataModel&gt;</div>
+    <div><a class="xref" href="E5R.Architecture.Data.Abstractions.IBulkReplaceableStorage-1.html">IBulkReplaceableStorage</a>&lt;TDataModel&gt;</div>
+    <div><a class="xref" href="E5R.Architecture.Data.Abstractions.IBulkUpdatableStorage-1.html">IBulkUpdatableStorage</a>&lt;TDataModel&gt;</div>
     <div><a class="xref" href="E5R.Architecture.Data.Abstractions.IStorageSignature.html">IStorageSignature</a></div>
   </div>
   <div class="inheritedMembers">
@@ -229,7 +237,7 @@
   <h6><strong>Assembly</strong>: E5R.Architecture.Data.EntityFrameworkCore.dll</h6>
   <h5 id="E5R_Architecture_Data_EntityFrameworkCore_Strategy_ByProperty_StorageBulkWriter_1_syntax">Syntax</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public class StorageBulkWriter&lt;TDataModel&gt; : StorageBulkWriter&lt;DbContext, TDataModel&gt;, IStorageBulkWriter&lt;DbContext, TDataModel&gt;, IRepositoryBulkWriter&lt;DbContext, TDataModel&gt;, IRepositoryBulkWriter&lt;TDataModel&gt;, IStoreBulkWriter&lt;DbContext, TDataModel&gt;, IStoreBulkWriter&lt;TDataModel&gt;, IStorageBulkWriter&lt;TDataModel&gt;, IStorageSignature where TDataModel : class, IIdentifiable</code></pre>
+    <pre><code class="lang-csharp hljs">public class StorageBulkWriter&lt;TDataModel&gt; : StorageBulkWriter&lt;DbContext, TDataModel&gt;, IStorageBulkWriter&lt;DbContext, TDataModel&gt;, IBulkCreatableStorage&lt;DbContext, TDataModel&gt;, IBulkRemovableStorage&lt;DbContext, TDataModel&gt;, IBulkReplaceableStorage&lt;DbContext, TDataModel&gt;, IBulkUpdatableStorage&lt;DbContext, TDataModel&gt;, IRepositoryBulkWriter&lt;DbContext, TDataModel&gt;, IRepositoryBulkWriter&lt;TDataModel&gt;, IStoreBulkWriter&lt;DbContext, TDataModel&gt;, IStoreBulkWriter&lt;TDataModel&gt;, IStorageBulkWriter&lt;TDataModel&gt;, IBulkCreatableStorage&lt;TDataModel&gt;, IBulkRemovableStorage&lt;TDataModel&gt;, IBulkReplaceableStorage&lt;TDataModel&gt;, IBulkUpdatableStorage&lt;TDataModel&gt;, IStorageSignature where TDataModel : class, IIdentifiable</code></pre>
   </div>
   <h5 class="typeParameters">Type Parameters</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -278,6 +286,18 @@
       <a class="xref" href="E5R.Architecture.Data.Abstractions.IStorageBulkWriter-2.html">IStorageBulkWriter&lt;TUowProperty, TDataModel&gt;</a>
   </div>
   <div>
+      <a class="xref" href="E5R.Architecture.Data.Abstractions.IBulkCreatableStorage-2.html">IBulkCreatableStorage&lt;TUowProperty, TDataModel&gt;</a>
+  </div>
+  <div>
+      <a class="xref" href="E5R.Architecture.Data.Abstractions.IBulkRemovableStorage-2.html">IBulkRemovableStorage&lt;TUowProperty, TDataModel&gt;</a>
+  </div>
+  <div>
+      <a class="xref" href="E5R.Architecture.Data.Abstractions.IBulkReplaceableStorage-2.html">IBulkReplaceableStorage&lt;TUowProperty, TDataModel&gt;</a>
+  </div>
+  <div>
+      <a class="xref" href="E5R.Architecture.Data.Abstractions.IBulkUpdatableStorage-2.html">IBulkUpdatableStorage&lt;TUowProperty, TDataModel&gt;</a>
+  </div>
+  <div>
       <a class="xref" href="E5R.Architecture.Data.Abstractions.Alias.IRepositoryBulkWriter-2.html">IRepositoryBulkWriter&lt;TUowProperty, TDataModel&gt;</a>
   </div>
   <div>
@@ -293,7 +313,23 @@
       <a class="xref" href="E5R.Architecture.Data.Abstractions.IStorageBulkWriter-1.html">IStorageBulkWriter&lt;TDataModel&gt;</a>
   </div>
   <div>
+      <a class="xref" href="E5R.Architecture.Data.Abstractions.IBulkCreatableStorage-1.html">IBulkCreatableStorage&lt;TDataModel&gt;</a>
+  </div>
+  <div>
+      <a class="xref" href="E5R.Architecture.Data.Abstractions.IBulkRemovableStorage-1.html">IBulkRemovableStorage&lt;TDataModel&gt;</a>
+  </div>
+  <div>
+      <a class="xref" href="E5R.Architecture.Data.Abstractions.IBulkReplaceableStorage-1.html">IBulkReplaceableStorage&lt;TDataModel&gt;</a>
+  </div>
+  <div>
+      <a class="xref" href="E5R.Architecture.Data.Abstractions.IBulkUpdatableStorage-1.html">IBulkUpdatableStorage&lt;TDataModel&gt;</a>
+  </div>
+  <div>
       <a class="xref" href="E5R.Architecture.Data.Abstractions.IStorageSignature.html">IStorageSignature</a>
+  </div>
+  <h3 id="extensionmethods">Extension Methods</h3>
+  <div>
+      <a class="xref" href="E5R.Architecture.Core.Extensions.ObjectExtensions.html#E5R_Architecture_Core_Extensions_ObjectExtensions_Fill__1___0_Dictionary_System_String_System_String__">ObjectExtensions.Fill&lt;TObject&gt;(TObject, Dictionary&lt;String, String&gt;)</a>
   </div>
 </article>
           </div>

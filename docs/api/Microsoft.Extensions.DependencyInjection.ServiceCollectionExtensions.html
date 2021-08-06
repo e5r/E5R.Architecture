@@ -10,7 +10,7 @@
     <meta name="viewport" content="width=device-width">
     <meta name="title" content="Class ServiceCollectionExtensions
    | Arquitetura E5R ">
-    <meta name="generator" content="docfx 2.57.2.0">
+    <meta name="generator" content="docfx 2.58.0.0">
     
     <link rel="shortcut icon" href="../images/favicon.png">
     <link rel="stylesheet" href="../styles/docfx.vendor.css">
@@ -89,12 +89,12 @@
   <h3 id="methods">Methods
   </h3>
   <a id="Microsoft_Extensions_DependencyInjection_ServiceCollectionExtensions_AddInfrastructure_" data-uid="Microsoft.Extensions.DependencyInjection.ServiceCollectionExtensions.AddInfrastructure*"></a>
-  <h4 id="Microsoft_Extensions_DependencyInjection_ServiceCollectionExtensions_AddInfrastructure_IServiceCollection_" data-uid="Microsoft.Extensions.DependencyInjection.ServiceCollectionExtensions.AddInfrastructure(IServiceCollection)">AddInfrastructure(IServiceCollection)</h4>
+  <h4 id="Microsoft_Extensions_DependencyInjection_ServiceCollectionExtensions_AddInfrastructure_IServiceCollection_IConfiguration_" data-uid="Microsoft.Extensions.DependencyInjection.ServiceCollectionExtensions.AddInfrastructure(IServiceCollection,IConfiguration)">AddInfrastructure(IServiceCollection, IConfiguration)</h4>
   <div class="markdown level1 summary"></div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public static IServiceCollection AddInfrastructure(this IServiceCollection serviceCollection)</code></pre>
+    <pre><code class="lang-csharp hljs">public static IServiceCollection AddInfrastructure(this IServiceCollection serviceCollection, IConfiguration configuration)</code></pre>
   </div>
   <h5 class="parameters">Parameters</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -109,6 +109,11 @@
       <tr>
         <td><span class="xref">IServiceCollection</span></td>
         <td><span class="parametername">serviceCollection</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="xref">IConfiguration</span></td>
+        <td><span class="parametername">configuration</span></td>
         <td></td>
       </tr>
     </tbody>
@@ -129,12 +134,12 @@
     </tbody>
   </table>
   <a id="Microsoft_Extensions_DependencyInjection_ServiceCollectionExtensions_AddInfrastructure_" data-uid="Microsoft.Extensions.DependencyInjection.ServiceCollectionExtensions.AddInfrastructure*"></a>
-  <h4 id="Microsoft_Extensions_DependencyInjection_ServiceCollectionExtensions_AddInfrastructure_IServiceCollection_Action_E5R_Architecture_Infrastructure_InfrastructureOptions__" data-uid="Microsoft.Extensions.DependencyInjection.ServiceCollectionExtensions.AddInfrastructure(IServiceCollection,Action{E5R.Architecture.Infrastructure.InfrastructureOptions})">AddInfrastructure(IServiceCollection, Action&lt;InfrastructureOptions&gt;)</h4>
+  <h4 id="Microsoft_Extensions_DependencyInjection_ServiceCollectionExtensions_AddInfrastructure_IServiceCollection_IConfiguration_Action_E5R_Architecture_Infrastructure_InfrastructureOptions__" data-uid="Microsoft.Extensions.DependencyInjection.ServiceCollectionExtensions.AddInfrastructure(IServiceCollection,IConfiguration,Action{E5R.Architecture.Infrastructure.InfrastructureOptions})">AddInfrastructure(IServiceCollection, IConfiguration, Action&lt;InfrastructureOptions&gt;)</h4>
   <div class="markdown level1 summary"></div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public static IServiceCollection AddInfrastructure(this IServiceCollection serviceCollection, Action&lt;InfrastructureOptions&gt; config)</code></pre>
+    <pre><code class="lang-csharp hljs">public static IServiceCollection AddInfrastructure(this IServiceCollection serviceCollection, IConfiguration configuration, Action&lt;InfrastructureOptions&gt; optionsHandler)</code></pre>
   </div>
   <h5 class="parameters">Parameters</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -149,11 +154,16 @@
       <tr>
         <td><span class="xref">IServiceCollection</span></td>
         <td><span class="parametername">serviceCollection</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="xref">IConfiguration</span></td>
+        <td><span class="parametername">configuration</span></td>
         <td></td>
       </tr>
       <tr>
         <td><span class="xref">Action</span>&lt;<a class="xref" href="E5R.Architecture.Infrastructure.InfrastructureOptions.html">InfrastructureOptions</a>&gt;</td>
-        <td><span class="parametername">config</span></td>
+        <td><span class="parametername">optionsHandler</span></td>
         <td></td>
       </tr>
     </tbody>
@@ -174,12 +184,12 @@
     </tbody>
   </table>
   <a id="Microsoft_Extensions_DependencyInjection_ServiceCollectionExtensions_AddInfrastructure_" data-uid="Microsoft.Extensions.DependencyInjection.ServiceCollectionExtensions.AddInfrastructure*"></a>
-  <h4 id="Microsoft_Extensions_DependencyInjection_ServiceCollectionExtensions_AddInfrastructure_IServiceCollection_E5R_Architecture_Infrastructure_InfrastructureOptions_" data-uid="Microsoft.Extensions.DependencyInjection.ServiceCollectionExtensions.AddInfrastructure(IServiceCollection,E5R.Architecture.Infrastructure.InfrastructureOptions)">AddInfrastructure(IServiceCollection, InfrastructureOptions)</h4>
+  <h4 id="Microsoft_Extensions_DependencyInjection_ServiceCollectionExtensions_AddInfrastructure_IServiceCollection_IConfiguration_E5R_Architecture_Infrastructure_InfrastructureOptions_" data-uid="Microsoft.Extensions.DependencyInjection.ServiceCollectionExtensions.AddInfrastructure(IServiceCollection,IConfiguration,E5R.Architecture.Infrastructure.InfrastructureOptions)">AddInfrastructure(IServiceCollection, IConfiguration, InfrastructureOptions)</h4>
   <div class="markdown level1 summary"></div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public static IServiceCollection AddInfrastructure(this IServiceCollection serviceCollection, InfrastructureOptions options)</code></pre>
+    <pre><code class="lang-csharp hljs">public static IServiceCollection AddInfrastructure(this IServiceCollection serviceCollection, IConfiguration configuration, InfrastructureOptions options)</code></pre>
   </div>
   <h5 class="parameters">Parameters</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -194,6 +204,11 @@
       <tr>
         <td><span class="xref">IServiceCollection</span></td>
         <td><span class="parametername">serviceCollection</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="xref">IConfiguration</span></td>
+        <td><span class="parametername">configuration</span></td>
         <td></td>
       </tr>
       <tr>
@@ -214,6 +229,325 @@
     <tbody>
       <tr>
         <td><span class="xref">IServiceCollection</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <a id="Microsoft_Extensions_DependencyInjection_ServiceCollectionExtensions_AddInfrastructureWithoutAutoload_" data-uid="Microsoft.Extensions.DependencyInjection.ServiceCollectionExtensions.AddInfrastructureWithoutAutoload*"></a>
+  <h4 id="Microsoft_Extensions_DependencyInjection_ServiceCollectionExtensions_AddInfrastructureWithoutAutoload_IServiceCollection_IConfiguration_Action_E5R_Architecture_Infrastructure_InfrastructureOptions__" data-uid="Microsoft.Extensions.DependencyInjection.ServiceCollectionExtensions.AddInfrastructureWithoutAutoload(IServiceCollection,IConfiguration,Action{E5R.Architecture.Infrastructure.InfrastructureOptions})">AddInfrastructureWithoutAutoload(IServiceCollection, IConfiguration, Action&lt;InfrastructureOptions&gt;)</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static IServiceCollection AddInfrastructureWithoutAutoload(this IServiceCollection serviceCollection, IConfiguration configuration, Action&lt;InfrastructureOptions&gt; optionsHandler)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">IServiceCollection</span></td>
+        <td><span class="parametername">serviceCollection</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="xref">IConfiguration</span></td>
+        <td><span class="parametername">configuration</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="xref">Action</span>&lt;<a class="xref" href="E5R.Architecture.Infrastructure.InfrastructureOptions.html">InfrastructureOptions</a>&gt;</td>
+        <td><span class="parametername">optionsHandler</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">IServiceCollection</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <a id="Microsoft_Extensions_DependencyInjection_ServiceCollectionExtensions_AddScopedSettings_" data-uid="Microsoft.Extensions.DependencyInjection.ServiceCollectionExtensions.AddScopedSettings*"></a>
+  <h4 id="Microsoft_Extensions_DependencyInjection_ServiceCollectionExtensions_AddScopedSettings__1_IServiceCollection_IConfiguration_System_String_" data-uid="Microsoft.Extensions.DependencyInjection.ServiceCollectionExtensions.AddScopedSettings``1(IServiceCollection,IConfiguration,System.String)">AddScopedSettings&lt;TSetting&gt;(IServiceCollection, IConfiguration, String)</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static IServiceCollection AddScopedSettings&lt;TSetting&gt;(this IServiceCollection services, IConfiguration configuration, string settingKey)
+    where TSetting : class, new()</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">IServiceCollection</span></td>
+        <td><span class="parametername">services</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="xref">IConfiguration</span></td>
+        <td><span class="parametername">configuration</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><span class="parametername">settingKey</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">IServiceCollection</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="typeParameters">Type Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="parametername">TSetting</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <a id="Microsoft_Extensions_DependencyInjection_ServiceCollectionExtensions_AddSettings_" data-uid="Microsoft.Extensions.DependencyInjection.ServiceCollectionExtensions.AddSettings*"></a>
+  <h4 id="Microsoft_Extensions_DependencyInjection_ServiceCollectionExtensions_AddSettings__1_IServiceCollection_ServiceLifetime_IConfiguration_System_String_" data-uid="Microsoft.Extensions.DependencyInjection.ServiceCollectionExtensions.AddSettings``1(IServiceCollection,ServiceLifetime,IConfiguration,System.String)">AddSettings&lt;TSetting&gt;(IServiceCollection, ServiceLifetime, IConfiguration, String)</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static IServiceCollection AddSettings&lt;TSetting&gt;(this IServiceCollection services, ServiceLifetime lifetime, IConfiguration configuration, string settingKey)
+    where TSetting : class, new()</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">IServiceCollection</span></td>
+        <td><span class="parametername">services</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="xref">ServiceLifetime</span></td>
+        <td><span class="parametername">lifetime</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="xref">IConfiguration</span></td>
+        <td><span class="parametername">configuration</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><span class="parametername">settingKey</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">IServiceCollection</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="typeParameters">Type Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="parametername">TSetting</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <a id="Microsoft_Extensions_DependencyInjection_ServiceCollectionExtensions_AddSingletonSettings_" data-uid="Microsoft.Extensions.DependencyInjection.ServiceCollectionExtensions.AddSingletonSettings*"></a>
+  <h4 id="Microsoft_Extensions_DependencyInjection_ServiceCollectionExtensions_AddSingletonSettings__1_IServiceCollection_IConfiguration_System_String_" data-uid="Microsoft.Extensions.DependencyInjection.ServiceCollectionExtensions.AddSingletonSettings``1(IServiceCollection,IConfiguration,System.String)">AddSingletonSettings&lt;TSetting&gt;(IServiceCollection, IConfiguration, String)</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static IServiceCollection AddSingletonSettings&lt;TSetting&gt;(this IServiceCollection services, IConfiguration configuration, string settingKey)
+    where TSetting : class, new()</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">IServiceCollection</span></td>
+        <td><span class="parametername">services</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="xref">IConfiguration</span></td>
+        <td><span class="parametername">configuration</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><span class="parametername">settingKey</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">IServiceCollection</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="typeParameters">Type Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="parametername">TSetting</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <a id="Microsoft_Extensions_DependencyInjection_ServiceCollectionExtensions_AddTransientSettings_" data-uid="Microsoft.Extensions.DependencyInjection.ServiceCollectionExtensions.AddTransientSettings*"></a>
+  <h4 id="Microsoft_Extensions_DependencyInjection_ServiceCollectionExtensions_AddTransientSettings__1_IServiceCollection_IConfiguration_System_String_" data-uid="Microsoft.Extensions.DependencyInjection.ServiceCollectionExtensions.AddTransientSettings``1(IServiceCollection,IConfiguration,System.String)">AddTransientSettings&lt;TSetting&gt;(IServiceCollection, IConfiguration, String)</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static IServiceCollection AddTransientSettings&lt;TSetting&gt;(this IServiceCollection services, IConfiguration configuration, string settingKey)
+    where TSetting : class, new()</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">IServiceCollection</span></td>
+        <td><span class="parametername">services</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="xref">IConfiguration</span></td>
+        <td><span class="parametername">configuration</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><span class="parametername">settingKey</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">IServiceCollection</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="typeParameters">Type Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="parametername">TSetting</span></td>
         <td></td>
       </tr>
     </tbody>

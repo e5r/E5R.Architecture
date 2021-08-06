@@ -10,7 +10,7 @@
     <meta name="viewport" content="width=device-width">
     <meta name="title" content="Class EnumUtil
    | Arquitetura E5R ">
-    <meta name="generator" content="docfx 2.57.2.0">
+    <meta name="generator" content="docfx 2.58.0.0">
     
     <link rel="shortcut icon" href="../images/favicon.png">
     <link rel="stylesheet" href="../styles/docfx.vendor.css">
@@ -91,7 +91,7 @@
   </h3>
   <a id="E5R_Architecture_Core_Utils_EnumUtil_FromTag_" data-uid="E5R.Architecture.Core.Utils.EnumUtil.FromTag*"></a>
   <h4 id="E5R_Architecture_Core_Utils_EnumUtil_FromTag__1_System_String_System_String_" data-uid="E5R.Architecture.Core.Utils.EnumUtil.FromTag``1(System.String,System.String)">FromTag&lt;TEnum&gt;(String, String)</h4>
-  <div class="markdown level1 summary"><p>Get a enum value from a tag value</p>
+  <div class="markdown level1 summary"><p>Get a enum from a tag value</p>
 </div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
@@ -134,7 +134,67 @@
     <tbody>
       <tr>
         <td><span class="xref">TEnum</span></td>
-        <td><p>Value of enum based on tag</p>
+        <td><p>Enum based on tag</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="typeParameters">Type Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="parametername">TEnum</span></td>
+        <td><p>The enum type</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <a id="E5R_Architecture_Core_Utils_EnumUtil_FromValue_" data-uid="E5R.Architecture.Core.Utils.EnumUtil.FromValue*"></a>
+  <h4 id="E5R_Architecture_Core_Utils_EnumUtil_FromValue__1_System_Int32_" data-uid="E5R.Architecture.Core.Utils.EnumUtil.FromValue``1(System.Int32)">FromValue&lt;TEnum&gt;(Int32)</h4>
+  <div class="markdown level1 summary"><p>Get an enum from its value</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static TEnum FromValue&lt;TEnum&gt;(int value)
+    where TEnum : Enum</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td><span class="parametername">value</span></td>
+        <td><p>The enum value</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">TEnum</span></td>
+        <td><p>Enum based on value</p>
 </td>
       </tr>
     </tbody>
@@ -219,6 +279,153 @@
       <tr>
         <td>TEnum[]</td>
         <td><p>Array of enum values</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="typeParameters">Type Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="parametername">TEnum</span></td>
+        <td><p>The enum type</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <a id="E5R_Architecture_Core_Utils_EnumUtil_TryFromTag_" data-uid="E5R.Architecture.Core.Utils.EnumUtil.TryFromTag*"></a>
+  <h4 id="E5R_Architecture_Core_Utils_EnumUtil_TryFromTag__1_System_String_System_String___0__" data-uid="E5R.Architecture.Core.Utils.EnumUtil.TryFromTag``1(System.String,System.String,``0@)">TryFromTag&lt;TEnum&gt;(String, String, out TEnum)</h4>
+  <div class="markdown level1 summary"><p>Get a enum value from a tag value. A return value indicates whether the get was successful.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static bool TryFromTag&lt;TEnum&gt;(string tagKey, string tagValue, out TEnum result)
+    where TEnum : Enum</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><span class="parametername">tagKey</span></td>
+        <td><p>The tag key</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><span class="parametername">tagValue</span></td>
+        <td><p>The tag value</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">TEnum</span></td>
+        <td><span class="parametername">result</span></td>
+        <td><p>When this method returns, it contains the enum value annotated with the tag key
+<code data-dev-comment-type="paramref" class="paramref">tagKey</code> that has the tag value <code data-dev-comment-type="paramref" class="paramref">tagValue</code>,
+if the get was successful, or the default value of the enum if the get failed. The get
+will fail if there is no enum value annotated with the given tag. This parameter is
+passed uninitialized; any value originally given in <code data-dev-comment-type="paramref" class="paramref">result</code> will
+be replaced.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Boolean</span></td>
+        <td><p><span class="xref">true</span> if the tag was obtained; otherwise, <span class="xref">false</span>.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="typeParameters">Type Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="parametername">TEnum</span></td>
+        <td><p>The enum type</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <a id="E5R_Architecture_Core_Utils_EnumUtil_TryFromValue_" data-uid="E5R.Architecture.Core.Utils.EnumUtil.TryFromValue*"></a>
+  <h4 id="E5R_Architecture_Core_Utils_EnumUtil_TryFromValue__1_System_Int32___0__" data-uid="E5R.Architecture.Core.Utils.EnumUtil.TryFromValue``1(System.Int32,``0@)">TryFromValue&lt;TEnum&gt;(Int32, out TEnum)</h4>
+  <div class="markdown level1 summary"><p>Get an enum from its value. A return value indicates whether the get was successful.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static bool TryFromValue&lt;TEnum&gt;(int value, out TEnum result)
+    where TEnum : Enum</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td><span class="parametername">value</span></td>
+        <td><p>The enum value</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">TEnum</span></td>
+        <td><span class="parametername">result</span></td>
+        <td><p>When this method returns, it contains the enum corresponding to the value entered in
+<code data-dev-comment-type="paramref" class="paramref">value</code>, if the get was successful, or the default value of the
+enum if the get failed. The get will fail if there is no matching enum value.
+This parameter is passed uninitialized; any value originally given in
+<code data-dev-comment-type="paramref" class="paramref">result</code> will be replaced.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Boolean</span></td>
+        <td><p><span class="xref">true</span> if the tag was obtained; otherwise, <span class="xref">false</span>.</p>
 </td>
       </tr>
     </tbody>

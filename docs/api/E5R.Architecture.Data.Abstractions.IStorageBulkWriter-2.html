@@ -10,7 +10,7 @@
     <meta name="viewport" content="width=device-width">
     <meta name="title" content="Interface IStorageBulkWriter&lt;TUowProperty, TDataModel&gt;
    | Arquitetura E5R ">
-    <meta name="generator" content="docfx 2.57.2.0">
+    <meta name="generator" content="docfx 2.58.0.0">
     
     <link rel="shortcut icon" href="../images/favicon.png">
     <link rel="stylesheet" href="../styles/docfx.vendor.css">
@@ -78,29 +78,29 @@
   <div class="inheritedMembers">
     <h5>Inherited Members</h5>
     <div>
-      <a class="xref" href="E5R.Architecture.Data.Abstractions.IStorageBulkWriter-1.html#E5R_Architecture_Data_Abstractions_IStorageBulkWriter_1_BulkCreate_IEnumerable__0__">IStorageBulkWriter&lt;TDataModel&gt;.BulkCreate(IEnumerable&lt;TDataModel&gt;)</a>
+      <a class="xref" href="E5R.Architecture.Data.Abstractions.IBulkCreatableStorage-1.html#E5R_Architecture_Data_Abstractions_IBulkCreatableStorage_1_BulkCreate_IEnumerable__0__">IBulkCreatableStorage&lt;TDataModel&gt;.BulkCreate(IEnumerable&lt;TDataModel&gt;)</a>
     </div>
     <div>
-      <a class="xref" href="E5R.Architecture.Data.Abstractions.IStorageBulkWriter-1.html#E5R_Architecture_Data_Abstractions_IStorageBulkWriter_1_BulkReplace_IEnumerable__0__">IStorageBulkWriter&lt;TDataModel&gt;.BulkReplace(IEnumerable&lt;TDataModel&gt;)</a>
+      <a class="xref" href="E5R.Architecture.Data.Abstractions.IBulkRemovableStorage-1.html#E5R_Architecture_Data_Abstractions_IBulkRemovableStorage_1_BulkRemove_IEnumerable__0__">IBulkRemovableStorage&lt;TDataModel&gt;.BulkRemove(IEnumerable&lt;TDataModel&gt;)</a>
     </div>
     <div>
-      <a class="xref" href="E5R.Architecture.Data.Abstractions.IStorageBulkWriter-1.html#E5R_Architecture_Data_Abstractions_IStorageBulkWriter_1_BulkRemove_IEnumerable__0__">IStorageBulkWriter&lt;TDataModel&gt;.BulkRemove(IEnumerable&lt;TDataModel&gt;)</a>
+      <a class="xref" href="E5R.Architecture.Data.Abstractions.IBulkRemovableStorage-1.html#E5R_Architecture_Data_Abstractions_IBulkRemovableStorage_1_BulkRemove_E5R_Architecture_Data_Abstractions_IDataFilter__0__">IBulkRemovableStorage&lt;TDataModel&gt;.BulkRemove(IDataFilter&lt;TDataModel&gt;)</a>
     </div>
     <div>
-      <a class="xref" href="E5R.Architecture.Data.Abstractions.IStorageBulkWriter-1.html#E5R_Architecture_Data_Abstractions_IStorageBulkWriter_1_BulkRemove_E5R_Architecture_Data_Abstractions_IDataFilter__0__">IStorageBulkWriter&lt;TDataModel&gt;.BulkRemove(IDataFilter&lt;TDataModel&gt;)</a>
+      <a class="xref" href="E5R.Architecture.Data.Abstractions.IBulkReplaceableStorage-1.html#E5R_Architecture_Data_Abstractions_IBulkReplaceableStorage_1_BulkReplace_IEnumerable__0__">IBulkReplaceableStorage&lt;TDataModel&gt;.BulkReplace(IEnumerable&lt;TDataModel&gt;)</a>
     </div>
     <div>
-      <a class="xref" href="E5R.Architecture.Data.Abstractions.IStorageBulkWriter-1.html#E5R_Architecture_Data_Abstractions_IStorageBulkWriter_1_BulkUpdate__1_E5R_Architecture_Data_Abstractions_IDataFilter__0____0_">IStorageBulkWriter&lt;TDataModel&gt;.BulkUpdate&lt;TUpdated&gt;(IDataFilter&lt;TDataModel&gt;, TUpdated)</a>
+      <a class="xref" href="E5R.Architecture.Data.Abstractions.IBulkUpdatableStorage-1.html#E5R_Architecture_Data_Abstractions_IBulkUpdatableStorage_1_BulkUpdate__1_E5R_Architecture_Data_Abstractions_IDataFilter__0____0_">IBulkUpdatableStorage&lt;TDataModel&gt;.BulkUpdate&lt;TUpdated&gt;(IDataFilter&lt;TDataModel&gt;, TUpdated)</a>
     </div>
     <div>
-      <a class="xref" href="E5R.Architecture.Data.Abstractions.IStorageBulkWriter-1.html#E5R_Architecture_Data_Abstractions_IStorageBulkWriter_1_BulkUpdate__1_E5R_Architecture_Data_Abstractions_IDataFilter__0__Expression_Func__0___0___">IStorageBulkWriter&lt;TDataModel&gt;.BulkUpdate&lt;TUpdated&gt;(IDataFilter&lt;TDataModel&gt;, Expression&lt;Func&lt;TDataModel, TUpdated&gt;&gt;)</a>
+      <a class="xref" href="E5R.Architecture.Data.Abstractions.IBulkUpdatableStorage-1.html#E5R_Architecture_Data_Abstractions_IBulkUpdatableStorage_1_BulkUpdate__1_E5R_Architecture_Data_Abstractions_IDataFilter__0__Expression_Func__0___0___">IBulkUpdatableStorage&lt;TDataModel&gt;.BulkUpdate&lt;TUpdated&gt;(IDataFilter&lt;TDataModel&gt;, Expression&lt;Func&lt;TDataModel, TUpdated&gt;&gt;)</a>
     </div>
   </div>
   <h6><strong>Namespace</strong>: <a class="xref" href="E5R.Architecture.Data.Abstractions.html">E5R.Architecture.Data.Abstractions</a></h6>
   <h6><strong>Assembly</strong>: E5R.Architecture.Data.dll</h6>
   <h5 id="E5R_Architecture_Data_Abstractions_IStorageBulkWriter_2_syntax">Syntax</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public interface IStorageBulkWriter&lt;TUowProperty, TDataModel&gt; : IStorageBulkWriter&lt;TDataModel&gt;, IStorageSignature where TDataModel : IIdentifiable</code></pre>
+    <pre><code class="lang-csharp hljs">public interface IStorageBulkWriter&lt;TUowProperty, TDataModel&gt; : IBulkCreatableStorage&lt;TUowProperty, TDataModel&gt;, IBulkCreatableStorage&lt;TDataModel&gt;, IBulkRemovableStorage&lt;TUowProperty, TDataModel&gt;, IBulkRemovableStorage&lt;TDataModel&gt;, IBulkReplaceableStorage&lt;TUowProperty, TDataModel&gt;, IBulkReplaceableStorage&lt;TDataModel&gt;, IBulkUpdatableStorage&lt;TUowProperty, TDataModel&gt;, IBulkUpdatableStorage&lt;TDataModel&gt;, IStorageSignature where TDataModel : IIdentifiable</code></pre>
   </div>
   <h5 class="typeParameters">Type Parameters</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -121,6 +121,10 @@
       </tr>
     </tbody>
   </table>
+  <h3 id="extensionmethods">Extension Methods</h3>
+  <div>
+      <a class="xref" href="E5R.Architecture.Core.Extensions.ObjectExtensions.html#E5R_Architecture_Core_Extensions_ObjectExtensions_Fill__1___0_Dictionary_System_String_System_String__">ObjectExtensions.Fill&lt;TObject&gt;(TObject, Dictionary&lt;String, String&gt;)</a>
+  </div>
 </article>
           </div>
           

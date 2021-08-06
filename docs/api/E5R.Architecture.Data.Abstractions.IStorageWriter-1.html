@@ -10,7 +10,7 @@
     <meta name="viewport" content="width=device-width">
     <meta name="title" content="Interface IStorageWriter&lt;TDataModel&gt;
    | Arquitetura E5R ">
-    <meta name="generator" content="docfx 2.57.2.0">
+    <meta name="generator" content="docfx 2.58.0.0">
     
     <link rel="shortcut icon" href="../images/favicon.png">
     <link rel="stylesheet" href="../styles/docfx.vendor.css">
@@ -75,11 +75,41 @@
   </h1>
   <div class="markdown level0 summary"></div>
   <div class="markdown level0 conceptual"></div>
+  <div class="inheritedMembers">
+    <h5>Inherited Members</h5>
+    <div>
+      <a class="xref" href="E5R.Architecture.Data.Abstractions.ICreatableStorage-1.html#E5R_Architecture_Data_Abstractions_ICreatableStorage_1_Create__0_">ICreatableStorage&lt;TDataModel&gt;.Create(TDataModel)</a>
+    </div>
+    <div>
+      <a class="xref" href="E5R.Architecture.Data.Abstractions.IReplaceableStorage-1.html#E5R_Architecture_Data_Abstractions_IReplaceableStorage_1_Replace__0_">IReplaceableStorage&lt;TDataModel&gt;.Replace(TDataModel)</a>
+    </div>
+    <div>
+      <a class="xref" href="E5R.Architecture.Data.Abstractions.IRemovableStorage-1.html#E5R_Architecture_Data_Abstractions_IRemovableStorage_1_Remove_System_Object_">IRemovableStorage&lt;TDataModel&gt;.Remove(Object)</a>
+    </div>
+    <div>
+      <a class="xref" href="E5R.Architecture.Data.Abstractions.IRemovableStorage-1.html#E5R_Architecture_Data_Abstractions_IRemovableStorage_1_Remove_System_Object___">IRemovableStorage&lt;TDataModel&gt;.Remove(Object[])</a>
+    </div>
+    <div>
+      <a class="xref" href="E5R.Architecture.Data.Abstractions.IRemovableStorage-1.html#E5R_Architecture_Data_Abstractions_IRemovableStorage_1_Remove__0_">IRemovableStorage&lt;TDataModel&gt;.Remove(TDataModel)</a>
+    </div>
+    <div>
+      <a class="xref" href="E5R.Architecture.Data.Abstractions.IUpdatableStorage-1.html#E5R_Architecture_Data_Abstractions_IUpdatableStorage_1_Update__1_System_Object___0_">IUpdatableStorage&lt;TDataModel&gt;.Update&lt;TUpdated&gt;(Object, TUpdated)</a>
+    </div>
+    <div>
+      <a class="xref" href="E5R.Architecture.Data.Abstractions.IUpdatableStorage-1.html#E5R_Architecture_Data_Abstractions_IUpdatableStorage_1_Update__1_System_Object_Expression_Func__0___0___">IUpdatableStorage&lt;TDataModel&gt;.Update&lt;TUpdated&gt;(Object, Expression&lt;Func&lt;TDataModel, TUpdated&gt;&gt;)</a>
+    </div>
+    <div>
+      <a class="xref" href="E5R.Architecture.Data.Abstractions.IUpdatableStorage-1.html#E5R_Architecture_Data_Abstractions_IUpdatableStorage_1_Update__1_System_Object_____0_">IUpdatableStorage&lt;TDataModel&gt;.Update&lt;TUpdated&gt;(Object[], TUpdated)</a>
+    </div>
+    <div>
+      <a class="xref" href="E5R.Architecture.Data.Abstractions.IUpdatableStorage-1.html#E5R_Architecture_Data_Abstractions_IUpdatableStorage_1_Update__1_System_Object___Expression_Func__0___0___">IUpdatableStorage&lt;TDataModel&gt;.Update&lt;TUpdated&gt;(Object[], Expression&lt;Func&lt;TDataModel, TUpdated&gt;&gt;)</a>
+    </div>
+  </div>
   <h6><strong>Namespace</strong>: <a class="xref" href="E5R.Architecture.Data.Abstractions.html">E5R.Architecture.Data.Abstractions</a></h6>
   <h6><strong>Assembly</strong>: E5R.Architecture.Data.dll</h6>
   <h5 id="E5R_Architecture_Data_Abstractions_IStorageWriter_1_syntax">Syntax</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public interface IStorageWriter&lt;TDataModel&gt; : IStorageSignature where TDataModel : IIdentifiable</code></pre>
+    <pre><code class="lang-csharp hljs">public interface IStorageWriter&lt;TDataModel&gt; : ICreatableStorage&lt;TDataModel&gt;, IReplaceableStorage&lt;TDataModel&gt;, IRemovableStorage&lt;TDataModel&gt;, IUpdatableStorage&lt;TDataModel&gt;, IStorageSignature where TDataModel : IIdentifiable</code></pre>
   </div>
   <h5 class="typeParameters">Type Parameters</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -96,430 +126,10 @@
       </tr>
     </tbody>
   </table>
-  <h3 id="methods">Methods
-  </h3>
-  <a id="E5R_Architecture_Data_Abstractions_IStorageWriter_1_Create_" data-uid="E5R.Architecture.Data.Abstractions.IStorageWriter`1.Create*"></a>
-  <h4 id="E5R_Architecture_Data_Abstractions_IStorageWriter_1_Create__0_" data-uid="E5R.Architecture.Data.Abstractions.IStorageWriter`1.Create(`0)">Create(TDataModel)</h4>
-  <div class="markdown level1 summary"><p>Creates a new stored object</p>
-</div>
-  <div class="markdown level1 conceptual"></div>
-  <h5 class="decalaration">Declaration</h5>
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">TDataModel Create(TDataModel data)</code></pre>
+  <h3 id="extensionmethods">Extension Methods</h3>
+  <div>
+      <a class="xref" href="E5R.Architecture.Core.Extensions.ObjectExtensions.html#E5R_Architecture_Core_Extensions_ObjectExtensions_Fill__1___0_Dictionary_System_String_System_String__">ObjectExtensions.Fill&lt;TObject&gt;(TObject, Dictionary&lt;String, String&gt;)</a>
   </div>
-  <h5 class="parameters">Parameters</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Name</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><span class="xref">TDataModel</span></td>
-        <td><span class="parametername">data</span></td>
-        <td><p>Object data</p>
-</td>
-      </tr>
-    </tbody>
-  </table>
-  <h5 class="returns">Returns</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><span class="xref">TDataModel</span></td>
-        <td><p>Created object instance</p>
-</td>
-      </tr>
-    </tbody>
-  </table>
-  <a id="E5R_Architecture_Data_Abstractions_IStorageWriter_1_Remove_" data-uid="E5R.Architecture.Data.Abstractions.IStorageWriter`1.Remove*"></a>
-  <h4 id="E5R_Architecture_Data_Abstractions_IStorageWriter_1_Remove__0_" data-uid="E5R.Architecture.Data.Abstractions.IStorageWriter`1.Remove(`0)">Remove(TDataModel)</h4>
-  <div class="markdown level1 summary"></div>
-  <div class="markdown level1 conceptual"></div>
-  <h5 class="decalaration">Declaration</h5>
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">void Remove(TDataModel data)</code></pre>
-  </div>
-  <h5 class="parameters">Parameters</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Name</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><span class="xref">TDataModel</span></td>
-        <td><span class="parametername">data</span></td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
-  <a id="E5R_Architecture_Data_Abstractions_IStorageWriter_1_Remove_" data-uid="E5R.Architecture.Data.Abstractions.IStorageWriter`1.Remove*"></a>
-  <h4 id="E5R_Architecture_Data_Abstractions_IStorageWriter_1_Remove_System_Object_" data-uid="E5R.Architecture.Data.Abstractions.IStorageWriter`1.Remove(System.Object)">Remove(Object)</h4>
-  <div class="markdown level1 summary"><p>Removes a stored object</p>
-</div>
-  <div class="markdown level1 conceptual"></div>
-  <h5 class="decalaration">Declaration</h5>
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">void Remove(object identifier)</code></pre>
-  </div>
-  <h5 class="parameters">Parameters</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Name</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><span class="xref">System.Object</span></td>
-        <td><span class="parametername">identifier</span></td>
-        <td><p>Object identifier</p>
-</td>
-      </tr>
-    </tbody>
-  </table>
-  <a id="E5R_Architecture_Data_Abstractions_IStorageWriter_1_Remove_" data-uid="E5R.Architecture.Data.Abstractions.IStorageWriter`1.Remove*"></a>
-  <h4 id="E5R_Architecture_Data_Abstractions_IStorageWriter_1_Remove_System_Object___" data-uid="E5R.Architecture.Data.Abstractions.IStorageWriter`1.Remove(System.Object[])">Remove(Object[])</h4>
-  <div class="markdown level1 summary"><p>Removes a stored object</p>
-</div>
-  <div class="markdown level1 conceptual"></div>
-  <h5 class="decalaration">Declaration</h5>
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">void Remove(object[] identifiers)</code></pre>
-  </div>
-  <h5 class="parameters">Parameters</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Name</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><span class="xref">System.Object</span>[]</td>
-        <td><span class="parametername">identifiers</span></td>
-        <td><p>Object identifiers</p>
-</td>
-      </tr>
-    </tbody>
-  </table>
-  <a id="E5R_Architecture_Data_Abstractions_IStorageWriter_1_Replace_" data-uid="E5R.Architecture.Data.Abstractions.IStorageWriter`1.Replace*"></a>
-  <h4 id="E5R_Architecture_Data_Abstractions_IStorageWriter_1_Replace__0_" data-uid="E5R.Architecture.Data.Abstractions.IStorageWriter`1.Replace(`0)">Replace(TDataModel)</h4>
-  <div class="markdown level1 summary"></div>
-  <div class="markdown level1 conceptual"></div>
-  <h5 class="decalaration">Declaration</h5>
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">TDataModel Replace(TDataModel data)</code></pre>
-  </div>
-  <h5 class="parameters">Parameters</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Name</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><span class="xref">TDataModel</span></td>
-        <td><span class="parametername">data</span></td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
-  <h5 class="returns">Returns</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><span class="xref">TDataModel</span></td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
-  <a id="E5R_Architecture_Data_Abstractions_IStorageWriter_1_Update_" data-uid="E5R.Architecture.Data.Abstractions.IStorageWriter`1.Update*"></a>
-  <h4 id="E5R_Architecture_Data_Abstractions_IStorageWriter_1_Update__1_System_Object___0_" data-uid="E5R.Architecture.Data.Abstractions.IStorageWriter`1.Update``1(System.Object,``0)">Update&lt;TUpdated&gt;(Object, TUpdated)</h4>
-  <div class="markdown level1 summary"><p>Updates data from a stored object</p>
-</div>
-  <div class="markdown level1 conceptual"></div>
-  <h5 class="decalaration">Declaration</h5>
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">TDataModel Update&lt;TUpdated&gt;(object identifier, TUpdated updated)</code></pre>
-  </div>
-  <h5 class="parameters">Parameters</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Name</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><span class="xref">System.Object</span></td>
-        <td><span class="parametername">identifier</span></td>
-        <td><p>Object identifier</p>
-</td>
-      </tr>
-      <tr>
-        <td><span class="xref">TUpdated</span></td>
-        <td><span class="parametername">updated</span></td>
-        <td><p>Updated object data</p>
-</td>
-      </tr>
-    </tbody>
-  </table>
-  <h5 class="returns">Returns</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><span class="xref">TDataModel</span></td>
-        <td><p>Updated object instance</p>
-</td>
-      </tr>
-    </tbody>
-  </table>
-  <h5 class="typeParameters">Type Parameters</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Name</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><span class="parametername">TUpdated</span></td>
-        <td><p>Type for the updated data. Usually an anonymous type</p>
-</td>
-      </tr>
-    </tbody>
-  </table>
-  <a id="E5R_Architecture_Data_Abstractions_IStorageWriter_1_Update_" data-uid="E5R.Architecture.Data.Abstractions.IStorageWriter`1.Update*"></a>
-  <h4 id="E5R_Architecture_Data_Abstractions_IStorageWriter_1_Update__1_System_Object_Expression_Func__0___0___" data-uid="E5R.Architecture.Data.Abstractions.IStorageWriter`1.Update``1(System.Object,Expression{Func{`0,``0}})">Update&lt;TUpdated&gt;(Object, Expression&lt;Func&lt;TDataModel, TUpdated&gt;&gt;)</h4>
-  <div class="markdown level1 summary"><p>Updates data from a stored object</p>
-</div>
-  <div class="markdown level1 conceptual"></div>
-  <h5 class="decalaration">Declaration</h5>
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">TDataModel Update&lt;TUpdated&gt;(object identifier, Expression&lt;Func&lt;TDataModel, TUpdated&gt;&gt; updateExpression)</code></pre>
-  </div>
-  <h5 class="parameters">Parameters</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Name</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><span class="xref">System.Object</span></td>
-        <td><span class="parametername">identifier</span></td>
-        <td><p>Object identifier</p>
-</td>
-      </tr>
-      <tr>
-        <td><span class="xref">Expression</span>&lt;<span class="xref">Func</span>&lt;TDataModel, TUpdated&gt;&gt;</td>
-        <td><span class="parametername">updateExpression</span></td>
-        <td><p>Update expression</p>
-</td>
-      </tr>
-    </tbody>
-  </table>
-  <h5 class="returns">Returns</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><span class="xref">TDataModel</span></td>
-        <td><p>Updated object instance</p>
-</td>
-      </tr>
-    </tbody>
-  </table>
-  <h5 class="typeParameters">Type Parameters</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Name</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><span class="parametername">TUpdated</span></td>
-        <td><p>Type for the updated data. Usually an anonymous type</p>
-</td>
-      </tr>
-    </tbody>
-  </table>
-  <a id="E5R_Architecture_Data_Abstractions_IStorageWriter_1_Update_" data-uid="E5R.Architecture.Data.Abstractions.IStorageWriter`1.Update*"></a>
-  <h4 id="E5R_Architecture_Data_Abstractions_IStorageWriter_1_Update__1_System_Object_____0_" data-uid="E5R.Architecture.Data.Abstractions.IStorageWriter`1.Update``1(System.Object[],``0)">Update&lt;TUpdated&gt;(Object[], TUpdated)</h4>
-  <div class="markdown level1 summary"><p>Updates data from a stored object</p>
-</div>
-  <div class="markdown level1 conceptual"></div>
-  <h5 class="decalaration">Declaration</h5>
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">TDataModel Update&lt;TUpdated&gt;(object[] identifiers, TUpdated updated)</code></pre>
-  </div>
-  <h5 class="parameters">Parameters</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Name</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><span class="xref">System.Object</span>[]</td>
-        <td><span class="parametername">identifiers</span></td>
-        <td><p>Object identifiers</p>
-</td>
-      </tr>
-      <tr>
-        <td><span class="xref">TUpdated</span></td>
-        <td><span class="parametername">updated</span></td>
-        <td><p>Updated object data</p>
-</td>
-      </tr>
-    </tbody>
-  </table>
-  <h5 class="returns">Returns</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><span class="xref">TDataModel</span></td>
-        <td><p>Updated object instance</p>
-</td>
-      </tr>
-    </tbody>
-  </table>
-  <h5 class="typeParameters">Type Parameters</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Name</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><span class="parametername">TUpdated</span></td>
-        <td><p>Type for the updated data. Usually an anonymous type</p>
-</td>
-      </tr>
-    </tbody>
-  </table>
-  <a id="E5R_Architecture_Data_Abstractions_IStorageWriter_1_Update_" data-uid="E5R.Architecture.Data.Abstractions.IStorageWriter`1.Update*"></a>
-  <h4 id="E5R_Architecture_Data_Abstractions_IStorageWriter_1_Update__1_System_Object___Expression_Func__0___0___" data-uid="E5R.Architecture.Data.Abstractions.IStorageWriter`1.Update``1(System.Object[],Expression{Func{`0,``0}})">Update&lt;TUpdated&gt;(Object[], Expression&lt;Func&lt;TDataModel, TUpdated&gt;&gt;)</h4>
-  <div class="markdown level1 summary"><p>Updates data from a stored object</p>
-</div>
-  <div class="markdown level1 conceptual"></div>
-  <h5 class="decalaration">Declaration</h5>
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">TDataModel Update&lt;TUpdated&gt;(object[] identifiers, Expression&lt;Func&lt;TDataModel, TUpdated&gt;&gt; updateExpression)</code></pre>
-  </div>
-  <h5 class="parameters">Parameters</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Name</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><span class="xref">System.Object</span>[]</td>
-        <td><span class="parametername">identifiers</span></td>
-        <td><p>Object identifiers</p>
-</td>
-      </tr>
-      <tr>
-        <td><span class="xref">Expression</span>&lt;<span class="xref">Func</span>&lt;TDataModel, TUpdated&gt;&gt;</td>
-        <td><span class="parametername">updateExpression</span></td>
-        <td><p>Update expression</p>
-</td>
-      </tr>
-    </tbody>
-  </table>
-  <h5 class="returns">Returns</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><span class="xref">TDataModel</span></td>
-        <td><p>Updated object instance</p>
-</td>
-      </tr>
-    </tbody>
-  </table>
-  <h5 class="typeParameters">Type Parameters</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Name</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><span class="parametername">TUpdated</span></td>
-        <td><p>Type for the updated data. Usually an anonymous type</p>
-</td>
-      </tr>
-    </tbody>
-  </table>
 </article>
           </div>
           

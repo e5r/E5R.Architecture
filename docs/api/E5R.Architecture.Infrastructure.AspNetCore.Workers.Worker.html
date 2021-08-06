@@ -5,12 +5,12 @@
   <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-    <title>Class ServiceCollectionDIContainer
+    <title>Class Worker
    | Arquitetura E5R </title>
     <meta name="viewport" content="width=device-width">
-    <meta name="title" content="Class ServiceCollectionDIContainer
+    <meta name="title" content="Class Worker
    | Arquitetura E5R ">
-    <meta name="generator" content="docfx 2.57.2.0">
+    <meta name="generator" content="docfx 2.58.0.0">
     
     <link rel="shortcut icon" href="../images/favicon.png">
     <link rel="stylesheet" href="../styles/docfx.vendor.css">
@@ -68,37 +68,38 @@
         </div>
         <div class="article row grid-right">
           <div class="col-md-10">
-            <article class="content wrap" id="_content" data-uid="E5R.Architecture.Infrastructure.ServiceCollectionDIContainer">
+            <article class="content wrap" id="_content" data-uid="E5R.Architecture.Infrastructure.AspNetCore.Workers.Worker">
   
   
-  <h1 id="E5R_Architecture_Infrastructure_ServiceCollectionDIContainer" data-uid="E5R.Architecture.Infrastructure.ServiceCollectionDIContainer" class="text-break">Class ServiceCollectionDIContainer
+  <h1 id="E5R_Architecture_Infrastructure_AspNetCore_Workers_Worker" data-uid="E5R.Architecture.Infrastructure.AspNetCore.Workers.Worker" class="text-break">Class Worker
   </h1>
   <div class="markdown level0 summary"></div>
   <div class="markdown level0 conceptual"></div>
   <div class="inheritance">
     <h5>Inheritance</h5>
     <div class="level0"><span class="xref">System.Object</span></div>
-    <div class="level1"><span class="xref">ServiceCollectionDIContainer</span></div>
+    <div class="level1"><span class="xref">Worker</span></div>
+      <div class="level2"><a class="xref" href="E5R.Architecture.Infrastructure.AspNetCore.Workers.QueueWorker-1.html">QueueWorker&lt;TQueueObject&gt;</a></div>
   </div>
   <div classs="implements">
     <h5>Implements</h5>
-    <div><a class="xref" href="E5R.Architecture.Infrastructure.Abstractions.IDIContainer.html">IDIContainer</a></div>
+    <div><a class="xref" href="E5R.Architecture.Infrastructure.AspNetCore.Workers.IWorker.html">IWorker</a></div>
   </div>
-  <h6><strong>Namespace</strong>: <a class="xref" href="E5R.Architecture.Infrastructure.html">E5R.Architecture.Infrastructure</a></h6>
-  <h6><strong>Assembly</strong>: E5R.Architecture.Infrastructure.dll</h6>
-  <h5 id="E5R_Architecture_Infrastructure_ServiceCollectionDIContainer_syntax">Syntax</h5>
+  <h6><strong>Namespace</strong>: <a class="xref" href="E5R.Architecture.Infrastructure.AspNetCore.Workers.html">E5R.Architecture.Infrastructure.AspNetCore.Workers</a></h6>
+  <h6><strong>Assembly</strong>: E5R.Architecture.Infrastructure.AspNetCore.dll</h6>
+  <h5 id="E5R_Architecture_Infrastructure_AspNetCore_Workers_Worker_syntax">Syntax</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public class ServiceCollectionDIContainer : object, IDIContainer</code></pre>
+    <pre><code class="lang-csharp hljs">public abstract class Worker : object, IWorker</code></pre>
   </div>
   <h3 id="constructors">Constructors
   </h3>
-  <a id="E5R_Architecture_Infrastructure_ServiceCollectionDIContainer__ctor_" data-uid="E5R.Architecture.Infrastructure.ServiceCollectionDIContainer.#ctor*"></a>
-  <h4 id="E5R_Architecture_Infrastructure_ServiceCollectionDIContainer__ctor_IServiceCollection_" data-uid="E5R.Architecture.Infrastructure.ServiceCollectionDIContainer.#ctor(IServiceCollection)">ServiceCollectionDIContainer(IServiceCollection)</h4>
+  <a id="E5R_Architecture_Infrastructure_AspNetCore_Workers_Worker__ctor_" data-uid="E5R.Architecture.Infrastructure.AspNetCore.Workers.Worker.#ctor*"></a>
+  <h4 id="E5R_Architecture_Infrastructure_AspNetCore_Workers_Worker__ctor_System_String_" data-uid="E5R.Architecture.Infrastructure.AspNetCore.Workers.Worker.#ctor(System.String)">Worker(String)</h4>
   <div class="markdown level1 summary"></div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public ServiceCollectionDIContainer(IServiceCollection serviceCollection)</code></pre>
+    <pre><code class="lang-csharp hljs">protected Worker(string workerName)</code></pre>
   </div>
   <h5 class="parameters">Parameters</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -111,21 +112,46 @@
     </thead>
     <tbody>
       <tr>
-        <td><span class="xref">IServiceCollection</span></td>
-        <td><span class="parametername">serviceCollection</span></td>
+        <td><span class="xref">System.String</span></td>
+        <td><span class="parametername">workerName</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h3 id="properties">Properties
+  </h3>
+  <a id="E5R_Architecture_Infrastructure_AspNetCore_Workers_Worker_WorkerName_" data-uid="E5R.Architecture.Infrastructure.AspNetCore.Workers.Worker.WorkerName*"></a>
+  <h4 id="E5R_Architecture_Infrastructure_AspNetCore_Workers_Worker_WorkerName" data-uid="E5R.Architecture.Infrastructure.AspNetCore.Workers.Worker.WorkerName">WorkerName</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public string WorkerName { get; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.String</span></td>
         <td></td>
       </tr>
     </tbody>
   </table>
   <h3 id="methods">Methods
   </h3>
-  <a id="E5R_Architecture_Infrastructure_ServiceCollectionDIContainer_Register_" data-uid="E5R.Architecture.Infrastructure.ServiceCollectionDIContainer.Register*"></a>
-  <h4 id="E5R_Architecture_Infrastructure_ServiceCollectionDIContainer_Register_E5R_Architecture_Infrastructure_Abstractions_DILifetime_Type_" data-uid="E5R.Architecture.Infrastructure.ServiceCollectionDIContainer.Register(E5R.Architecture.Infrastructure.Abstractions.DILifetime,Type)">Register(DILifetime, Type)</h4>
+  <a id="E5R_Architecture_Infrastructure_AspNetCore_Workers_Worker_DoWorkAsync_" data-uid="E5R.Architecture.Infrastructure.AspNetCore.Workers.Worker.DoWorkAsync*"></a>
+  <h4 id="E5R_Architecture_Infrastructure_AspNetCore_Workers_Worker_DoWorkAsync_CancellationToken_" data-uid="E5R.Architecture.Infrastructure.AspNetCore.Workers.Worker.DoWorkAsync(CancellationToken)">DoWorkAsync(CancellationToken)</h4>
   <div class="markdown level1 summary"></div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public void Register(DILifetime lifetime, Type implementationType)</code></pre>
+    <pre><code class="lang-csharp hljs">public abstract Task&lt;bool&gt; DoWorkAsync(CancellationToken cancellationToken)</code></pre>
   </div>
   <h5 class="parameters">Parameters</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -138,90 +164,34 @@
     </thead>
     <tbody>
       <tr>
-        <td><a class="xref" href="E5R.Architecture.Infrastructure.Abstractions.DILifetime.html">DILifetime</a></td>
-        <td><span class="parametername">lifetime</span></td>
-        <td></td>
-      </tr>
-      <tr>
-        <td><span class="xref">Type</span></td>
-        <td><span class="parametername">implementationType</span></td>
+        <td><span class="xref">CancellationToken</span></td>
+        <td><span class="parametername">cancellationToken</span></td>
         <td></td>
       </tr>
     </tbody>
   </table>
-  <a id="E5R_Architecture_Infrastructure_ServiceCollectionDIContainer_Register_" data-uid="E5R.Architecture.Infrastructure.ServiceCollectionDIContainer.Register*"></a>
-  <h4 id="E5R_Architecture_Infrastructure_ServiceCollectionDIContainer_Register_E5R_Architecture_Infrastructure_Abstractions_DILifetime_Type_Func_System_Object__" data-uid="E5R.Architecture.Infrastructure.ServiceCollectionDIContainer.Register(E5R.Architecture.Infrastructure.Abstractions.DILifetime,Type,Func{System.Object})">Register(DILifetime, Type, Func&lt;Object&gt;)</h4>
-  <div class="markdown level1 summary"></div>
-  <div class="markdown level1 conceptual"></div>
-  <h5 class="decalaration">Declaration</h5>
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public void Register(DILifetime lifetime, Type baseType, Func&lt;object&gt; implementationFactory)</code></pre>
-  </div>
-  <h5 class="parameters">Parameters</h5>
+  <h5 class="returns">Returns</h5>
   <table class="table table-bordered table-striped table-condensed">
     <thead>
       <tr>
         <th>Type</th>
-        <th>Name</th>
         <th>Description</th>
       </tr>
     </thead>
     <tbody>
       <tr>
-        <td><a class="xref" href="E5R.Architecture.Infrastructure.Abstractions.DILifetime.html">DILifetime</a></td>
-        <td><span class="parametername">lifetime</span></td>
-        <td></td>
-      </tr>
-      <tr>
-        <td><span class="xref">Type</span></td>
-        <td><span class="parametername">baseType</span></td>
-        <td></td>
-      </tr>
-      <tr>
-        <td><span class="xref">Func</span>&lt;<span class="xref">System.Object</span>&gt;</td>
-        <td><span class="parametername">implementationFactory</span></td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
-  <a id="E5R_Architecture_Infrastructure_ServiceCollectionDIContainer_Register_" data-uid="E5R.Architecture.Infrastructure.ServiceCollectionDIContainer.Register*"></a>
-  <h4 id="E5R_Architecture_Infrastructure_ServiceCollectionDIContainer_Register_E5R_Architecture_Infrastructure_Abstractions_DILifetime_Type_Type_" data-uid="E5R.Architecture.Infrastructure.ServiceCollectionDIContainer.Register(E5R.Architecture.Infrastructure.Abstractions.DILifetime,Type,Type)">Register(DILifetime, Type, Type)</h4>
-  <div class="markdown level1 summary"></div>
-  <div class="markdown level1 conceptual"></div>
-  <h5 class="decalaration">Declaration</h5>
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public void Register(DILifetime lifetime, Type baseType, Type implementationType)</code></pre>
-  </div>
-  <h5 class="parameters">Parameters</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Name</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="E5R.Architecture.Infrastructure.Abstractions.DILifetime.html">DILifetime</a></td>
-        <td><span class="parametername">lifetime</span></td>
-        <td></td>
-      </tr>
-      <tr>
-        <td><span class="xref">Type</span></td>
-        <td><span class="parametername">baseType</span></td>
-        <td></td>
-      </tr>
-      <tr>
-        <td><span class="xref">Type</span></td>
-        <td><span class="parametername">implementationType</span></td>
+        <td><span class="xref">Task</span>&lt;<span class="xref">System.Boolean</span>&gt;</td>
         <td></td>
       </tr>
     </tbody>
   </table>
   <h3 id="implements">Implements</h3>
   <div>
-      <a class="xref" href="E5R.Architecture.Infrastructure.Abstractions.IDIContainer.html">IDIContainer</a>
+      <a class="xref" href="E5R.Architecture.Infrastructure.AspNetCore.Workers.IWorker.html">IWorker</a>
+  </div>
+  <h3 id="extensionmethods">Extension Methods</h3>
+  <div>
+      <a class="xref" href="E5R.Architecture.Core.Extensions.ObjectExtensions.html#E5R_Architecture_Core_Extensions_ObjectExtensions_Fill__1___0_Dictionary_System_String_System_String__">ObjectExtensions.Fill&lt;TObject&gt;(TObject, Dictionary&lt;String, String&gt;)</a>
   </div>
 </article>
           </div>

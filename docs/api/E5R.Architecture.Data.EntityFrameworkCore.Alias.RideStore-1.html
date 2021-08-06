@@ -10,7 +10,7 @@
     <meta name="viewport" content="width=device-width">
     <meta name="title" content="Class RideStore&lt;TDataModel&gt;
    | Arquitetura E5R ">
-    <meta name="generator" content="docfx 2.57.2.0">
+    <meta name="generator" content="docfx 2.58.0.0">
     
     <link rel="shortcut icon" href="../images/favicon.png">
     <link rel="stylesheet" href="../styles/docfx.vendor.css">
@@ -85,6 +85,15 @@
   <div classs="implements">
     <h5>Implements</h5>
     <div><a class="xref" href="E5R.Architecture.Data.Abstractions.IStorageReader-1.html">IStorageReader</a>&lt;TDataModel&gt;</div>
+    <div><a class="xref" href="E5R.Architecture.Data.Abstractions.IFindableStorage-1.html">IFindableStorage</a>&lt;TDataModel&gt;</div>
+    <div><a class="xref" href="E5R.Architecture.Data.Abstractions.IFindableStorageWithSelector-1.html">IFindableStorageWithSelector</a>&lt;TDataModel&gt;</div>
+    <div><a class="xref" href="E5R.Architecture.Data.Abstractions.ICountableStorage-1.html">ICountableStorage</a>&lt;TDataModel&gt;</div>
+    <div><a class="xref" href="E5R.Architecture.Data.Abstractions.IAcquirableStorage-1.html">IAcquirableStorage</a>&lt;TDataModel&gt;</div>
+    <div><a class="xref" href="E5R.Architecture.Data.Abstractions.IAcquirableStorageWithGrouping-1.html">IAcquirableStorageWithGrouping</a>&lt;TDataModel&gt;</div>
+    <div><a class="xref" href="E5R.Architecture.Data.Abstractions.IAcquirableStorageWithSelector-1.html">IAcquirableStorageWithSelector</a>&lt;TDataModel&gt;</div>
+    <div><a class="xref" href="E5R.Architecture.Data.Abstractions.ISearchableStorage-1.html">ISearchableStorage</a>&lt;TDataModel&gt;</div>
+    <div><a class="xref" href="E5R.Architecture.Data.Abstractions.ISearchableStorageWithGrouping-1.html">ISearchableStorageWithGrouping</a>&lt;TDataModel&gt;</div>
+    <div><a class="xref" href="E5R.Architecture.Data.Abstractions.ISearchableStorageWithSelector-1.html">ISearchableStorageWithSelector</a>&lt;TDataModel&gt;</div>
     <div><a class="xref" href="E5R.Architecture.Data.Abstractions.IStorageSignature.html">IStorageSignature</a></div>
   </div>
   <div class="inheritedMembers">
@@ -169,7 +178,7 @@
   <h6><strong>Assembly</strong>: E5R.Architecture.Data.EntityFrameworkCore.dll</h6>
   <h5 id="E5R_Architecture_Data_EntityFrameworkCore_Alias_RideStore_1_syntax">Syntax</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public class RideStore&lt;TDataModel&gt; : RideStorage&lt;TDataModel&gt;, IStorageReader&lt;TDataModel&gt;, IStorageSignature where TDataModel : class, IIdentifiable</code></pre>
+    <pre><code class="lang-csharp hljs">public class RideStore&lt;TDataModel&gt; : RideStorage&lt;TDataModel&gt;, IStorageReader&lt;TDataModel&gt;, IFindableStorage&lt;TDataModel&gt;, IFindableStorageWithSelector&lt;TDataModel&gt;, ICountableStorage&lt;TDataModel&gt;, IAcquirableStorage&lt;TDataModel&gt;, IAcquirableStorageWithGrouping&lt;TDataModel&gt;, IAcquirableStorageWithSelector&lt;TDataModel&gt;, ISearchableStorage&lt;TDataModel&gt;, ISearchableStorageWithGrouping&lt;TDataModel&gt;, ISearchableStorageWithSelector&lt;TDataModel&gt;, IStorageSignature where TDataModel : class, IIdentifiable</code></pre>
   </div>
   <h5 class="typeParameters">Type Parameters</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -218,7 +227,38 @@
       <a class="xref" href="E5R.Architecture.Data.Abstractions.IStorageReader-1.html">IStorageReader&lt;TDataModel&gt;</a>
   </div>
   <div>
+      <a class="xref" href="E5R.Architecture.Data.Abstractions.IFindableStorage-1.html">IFindableStorage&lt;TDataModel&gt;</a>
+  </div>
+  <div>
+      <a class="xref" href="E5R.Architecture.Data.Abstractions.IFindableStorageWithSelector-1.html">IFindableStorageWithSelector&lt;TDataModel&gt;</a>
+  </div>
+  <div>
+      <a class="xref" href="E5R.Architecture.Data.Abstractions.ICountableStorage-1.html">ICountableStorage&lt;TDataModel&gt;</a>
+  </div>
+  <div>
+      <a class="xref" href="E5R.Architecture.Data.Abstractions.IAcquirableStorage-1.html">IAcquirableStorage&lt;TDataModel&gt;</a>
+  </div>
+  <div>
+      <a class="xref" href="E5R.Architecture.Data.Abstractions.IAcquirableStorageWithGrouping-1.html">IAcquirableStorageWithGrouping&lt;TDataModel&gt;</a>
+  </div>
+  <div>
+      <a class="xref" href="E5R.Architecture.Data.Abstractions.IAcquirableStorageWithSelector-1.html">IAcquirableStorageWithSelector&lt;TDataModel&gt;</a>
+  </div>
+  <div>
+      <a class="xref" href="E5R.Architecture.Data.Abstractions.ISearchableStorage-1.html">ISearchableStorage&lt;TDataModel&gt;</a>
+  </div>
+  <div>
+      <a class="xref" href="E5R.Architecture.Data.Abstractions.ISearchableStorageWithGrouping-1.html">ISearchableStorageWithGrouping&lt;TDataModel&gt;</a>
+  </div>
+  <div>
+      <a class="xref" href="E5R.Architecture.Data.Abstractions.ISearchableStorageWithSelector-1.html">ISearchableStorageWithSelector&lt;TDataModel&gt;</a>
+  </div>
+  <div>
       <a class="xref" href="E5R.Architecture.Data.Abstractions.IStorageSignature.html">IStorageSignature</a>
+  </div>
+  <h3 id="extensionmethods">Extension Methods</h3>
+  <div>
+      <a class="xref" href="E5R.Architecture.Core.Extensions.ObjectExtensions.html#E5R_Architecture_Core_Extensions_ObjectExtensions_Fill__1___0_Dictionary_System_String_System_String__">ObjectExtensions.Fill&lt;TObject&gt;(TObject, Dictionary&lt;String, String&gt;)</a>
   </div>
 </article>
           </div>

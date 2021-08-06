@@ -10,7 +10,7 @@
     <meta name="viewport" content="width=device-width">
     <meta name="title" content="Class BusinessFeature&lt;TInput, TOutput&gt;
    | Arquitetura E5R ">
-    <meta name="generator" content="docfx 2.57.2.0">
+    <meta name="generator" content="docfx 2.58.0.0">
     
     <link rel="shortcut icon" href="../images/favicon.png">
     <link rel="stylesheet" href="../styles/docfx.vendor.css">
@@ -79,24 +79,17 @@
   <div class="inheritance">
     <h5>Inheritance</h5>
     <div class="level0"><span class="xref">System.Object</span></div>
-    <div class="level1"><a class="xref" href="E5R.Architecture.Business.InputBasedBusinessFeature-1.html">InputBasedBusinessFeature</a>&lt;TInput&gt;</div>
-    <div class="level2"><span class="xref">BusinessFeature&lt;TInput, TOutput&gt;</span></div>
+    <div class="level1"><span class="xref">BusinessFeature&lt;TInput, TOutput&gt;</span></div>
   </div>
   <div classs="implements">
     <h5>Implements</h5>
     <div><a class="xref" href="E5R.Architecture.Business.IBusinessFeatureSignature.html">IBusinessFeatureSignature</a></div>
   </div>
-  <div class="inheritedMembers">
-    <h5>Inherited Members</h5>
-    <div>
-      <a class="xref" href="E5R.Architecture.Business.InputBasedBusinessFeature-1.html#E5R_Architecture_Business_InputBasedBusinessFeature_1_TransformInput__1___0_">InputBasedBusinessFeature&lt;TInput&gt;.TransformInput&lt;TFrom&gt;(TFrom)</a>
-    </div>
-  </div>
   <h6><strong>Namespace</strong>: <a class="xref" href="E5R.Architecture.Business.html">E5R.Architecture.Business</a></h6>
   <h6><strong>Assembly</strong>: E5R.Architecture.Business.dll</h6>
   <h5 id="E5R_Architecture_Business_BusinessFeature_2_syntax">Syntax</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public abstract class BusinessFeature&lt;TInput, TOutput&gt; : InputBasedBusinessFeature&lt;TInput&gt;, IBusinessFeatureSignature</code></pre>
+    <pre><code class="lang-csharp hljs">public abstract class BusinessFeature&lt;TInput, TOutput&gt; : object, IBusinessFeatureSignature</code></pre>
   </div>
   <h5 class="typeParameters">Type Parameters</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -116,33 +109,6 @@
         <td><span class="parametername">TOutput</span></td>
         <td><p>The output type</p>
 </td>
-      </tr>
-    </tbody>
-  </table>
-  <h3 id="constructors">Constructors
-  </h3>
-  <a id="E5R_Architecture_Business_BusinessFeature_2__ctor_" data-uid="E5R.Architecture.Business.BusinessFeature`2.#ctor*"></a>
-  <h4 id="E5R_Architecture_Business_BusinessFeature_2__ctor_ILazy_ITransformationManager__" data-uid="E5R.Architecture.Business.BusinessFeature`2.#ctor(ILazy{ITransformationManager})">BusinessFeature(ILazy&lt;ITransformationManager&gt;)</h4>
-  <div class="markdown level1 summary"></div>
-  <div class="markdown level1 conceptual"></div>
-  <h5 class="decalaration">Declaration</h5>
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public BusinessFeature(ILazy&lt;ITransformationManager&gt; transformer)</code></pre>
-  </div>
-  <h5 class="parameters">Parameters</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Name</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><span class="xref">ILazy</span>&lt;<span class="xref">ITransformationManager</span>&gt;</td>
-        <td><span class="parametername">transformer</span></td>
-        <td></td>
       </tr>
     </tbody>
   </table>
@@ -194,7 +160,7 @@
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public Task&lt;TOutput&gt; ExecAsync(TInput input)</code></pre>
+    <pre><code class="lang-csharp hljs">public async Task&lt;TOutput&gt; ExecAsync(TInput input)</code></pre>
   </div>
   <h5 class="parameters">Parameters</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -228,64 +194,13 @@
       </tr>
     </tbody>
   </table>
-  <a id="E5R_Architecture_Business_BusinessFeature_2_ExecFromAsync_" data-uid="E5R.Architecture.Business.BusinessFeature`2.ExecFromAsync*"></a>
-  <h4 id="E5R_Architecture_Business_BusinessFeature_2_ExecFromAsync__1___0_" data-uid="E5R.Architecture.Business.BusinessFeature`2.ExecFromAsync``1(``0)">ExecFromAsync&lt;TFrom&gt;(TFrom)</h4>
-  <div class="markdown level1 summary"></div>
-  <div class="markdown level1 conceptual"></div>
-  <h5 class="decalaration">Declaration</h5>
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public Task&lt;TOutput&gt; ExecFromAsync&lt;TFrom&gt;(TFrom from)</code></pre>
-  </div>
-  <h5 class="parameters">Parameters</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Name</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><span class="xref">TFrom</span></td>
-        <td><span class="parametername">from</span></td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
-  <h5 class="returns">Returns</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><span class="xref">Task</span>&lt;TOutput&gt;</td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
-  <h5 class="typeParameters">Type Parameters</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Name</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><span class="parametername">TFrom</span></td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
   <h3 id="implements">Implements</h3>
   <div>
       <a class="xref" href="E5R.Architecture.Business.IBusinessFeatureSignature.html">IBusinessFeatureSignature</a>
+  </div>
+  <h3 id="extensionmethods">Extension Methods</h3>
+  <div>
+      <a class="xref" href="E5R.Architecture.Core.Extensions.ObjectExtensions.html#E5R_Architecture_Core_Extensions_ObjectExtensions_Fill__1___0_Dictionary_System_String_System_String__">ObjectExtensions.Fill&lt;TObject&gt;(TObject, Dictionary&lt;String, String&gt;)</a>
   </div>
 </article>
           </div>
