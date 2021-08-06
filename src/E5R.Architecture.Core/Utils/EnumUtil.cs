@@ -31,12 +31,12 @@ namespace E5R.Architecture.Core.Utils
             => (TEnum[]) Enum.GetValues(typeof(TEnum));
 
         /// <summary>
-        /// Get a enum value from a tag value
+        /// Get a enum from a tag value
         /// </summary>
         /// <param name="tagKey">The tag key</param>
         /// <param name="tagValue">The tag value</param>
         /// <typeparam name="TEnum">The enum type</typeparam>
-        /// <returns>Value of enum based on tag</returns>
+        /// <returns>Enum based on tag</returns>
         public static TEnum FromTag<TEnum>(string tagKey, string tagValue) where TEnum : Enum
         {
             Checker.NotEmptyOrWhiteArgument(tagKey, nameof(tagKey));
@@ -54,6 +54,87 @@ namespace E5R.Architecture.Core.Utils
             }
 
             return values.First();
+        }
+        
+        /// <summary>
+        /// Get an enum from its value
+        /// </summary>
+        /// <param name="value">The enum value</param>
+        /// <typeparam name="TEnum">The enum type</typeparam>
+        /// <returns>Enum based on value</returns>
+        public static TEnum FromValue<TEnum>(int value) where TEnum : Enum
+        {
+            var values = GetValues<TEnum>().Where(e => Convert.ToInt32(e) == value);
+
+            if (!values.Any())
+            {
+                // TODO: Implementar i18n/l10n
+                throw new InvalidCastException(
+                    "Enum could not be converted because there is no matching value");
+            }
+
+            return values.First();
+        }
+
+        /// <summary>
+        /// Get a enum value from a tag value. A return value indicates whether the get was successful.
+        /// </summary>
+        /// <param name="tagKey">The tag key</param>
+        /// <param name="tagValue">The tag value</param>
+        /// <param name="result">
+        /// When this method returns, it contains the enum value annotated with the tag key
+        /// <paramref name = "tagKey" /> that has the tag value <paramref name = "tagValue" />,
+        /// if the get was successful, or the default value of the enum if the get failed. The get
+        /// will fail if there is no enum value annotated with the given tag. This parameter is
+        /// passed uninitialized; any value originally given in <paramref name = "result" /> will
+        /// be replaced.
+        /// </param>
+        /// <typeparam name="TEnum">The enum type</typeparam>
+        /// <returns>
+        /// <see langword="true" /> if the tag was obtained; otherwise, <see langword="false" />.
+        /// </returns>
+        public static bool TryFromTag<TEnum>(string tagKey, string tagValue, out TEnum result)
+            where TEnum : Enum
+        {
+            try
+            {
+                result = FromTag<TEnum>(tagKey, tagValue);
+                return true;
+            }
+            catch (Exception)
+            {
+                result = default;
+                return false;
+            }
+        }
+        
+        /// <summary>
+        /// Get an enum from its value. A return value indicates whether the get was successful.
+        /// </summary>
+        /// <param name="value">The enum value</param>
+        /// <param name="result">
+        /// When this method returns, it contains the enum corresponding to the value entered in 
+        /// <paramref name = "value" />, if the get was successful, or the default value of the
+        /// enum if the get failed. The get will fail if there is no matching enum value.
+        /// This parameter is passed uninitialized; any value originally given in
+        /// <paramref name = "result" /> will be replaced.
+        /// </param>
+        /// <typeparam name="TEnum">The enum type</typeparam>
+        /// <returns>
+        /// <see langword="true" /> if the tag was obtained; otherwise, <see langword="false" />.
+        /// </returns>
+        public static bool TryFromValue<TEnum>(int value, out TEnum result) where TEnum : Enum
+        {
+            try
+            {
+                result = FromValue<TEnum>(value);
+                return true;
+            }
+            catch (Exception)
+            {
+                result = default;
+                return false;
+            }
         }
     }
 }

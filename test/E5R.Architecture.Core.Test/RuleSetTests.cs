@@ -280,14 +280,17 @@ namespace E5R.Architecture.Core.Test
             var ruleFor3Mock = new Mock<IRuleFor<FakeModel>>();
 
             ruleFor1Mock.Setup(s => s.Code).Returns("Code1");
+            ruleFor1Mock.Setup(s => s.Description).Returns("Code1 Rule");
             ruleFor1Mock.Setup(s => s.CheckAsync(It.IsAny<FakeModel>()))
                 .ReturnsAsync(RuleCheckResult.Fail);
             
             ruleFor2Mock.Setup(s => s.Code).Returns("Code2");
+            ruleFor2Mock.Setup(s => s.Description).Returns("Code2 Rule");
             ruleFor2Mock.Setup(s => s.CheckAsync(It.IsAny<FakeModel>()))
                 .ReturnsAsync(RuleCheckResult.Fail);
             
             ruleFor3Mock.Setup(s => s.Code).Returns("Code3");
+            ruleFor3Mock.Setup(s => s.Description).Returns("Code3 Rule");
             ruleFor3Mock.Setup(s => s.CheckAsync(It.IsAny<FakeModel>()))
                 .ReturnsAsync(RuleCheckResult.Fail);
 
@@ -316,11 +319,11 @@ namespace E5R.Architecture.Core.Test
             Assert.False(result.IsSuccess);
             Assert.Equal(3, result.Unconformities.Count);
             Assert.Equal("Code1", result.Unconformities.First().Key);
-            Assert.Equal(nameof(RuleCheckResult.Fail), result.Unconformities.First().Value);
+            Assert.Equal("Code1 Rule", result.Unconformities.First().Value);
             Assert.Equal("Code2", result.Unconformities.Skip(1).First().Key);
-            Assert.Equal(nameof(RuleCheckResult.Fail), result.Unconformities.Skip(1).First().Value);
+            Assert.Equal("Code2 Rule", result.Unconformities.Skip(1).First().Value);
             Assert.Equal("Code3", result.Unconformities.Skip(2).First().Key);
-            Assert.Equal(nameof(RuleCheckResult.Fail), result.Unconformities.Skip(2).First().Value);
+            Assert.Equal("Code3 Rule", result.Unconformities.Skip(2).First().Value);
         }
 
         #region Fakes

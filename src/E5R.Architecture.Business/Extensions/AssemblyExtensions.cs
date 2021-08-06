@@ -27,11 +27,11 @@ namespace E5R.Architecture.Business.Extensions
                 .ForEach(services.TryAddScoped);
         }
 
-        private static IDIRegistrar Activate(Type type)
+        private static ICrossCuttingRegistrar Activate(Type type)
         {
             Checker.NotNullArgument(type, nameof(type));
 
-            return Activator.CreateInstance(type) as IDIRegistrar;
+            return Activator.CreateInstance(type) as ICrossCuttingRegistrar;
         }
     }
 }

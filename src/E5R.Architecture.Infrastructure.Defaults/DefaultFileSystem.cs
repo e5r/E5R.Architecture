@@ -3,6 +3,7 @@
 // Licensed under the Apache version 2.0: https://github.com/e5r/manifest/blob/master/license/APACHE-2.0.txt
 
 using System;
+using System.Collections.Generic;
 using System.IO;
 using E5R.Architecture.Core;
 using E5R.Architecture.Infrastructure.Abstractions;
@@ -73,6 +74,76 @@ namespace E5R.Architecture.Infrastructure.Defaults
             Checker.NotNullArgument(path, nameof(path));
 
             Directory.CreateDirectory(path);
+        }
+
+        public IEnumerable<string> EnumerateDirectories(string path, string pattern)
+        {
+            Checker.NotEmptyOrWhiteArgument(path, nameof(path));
+
+            try
+            {
+                return string.IsNullOrWhiteSpace(pattern)
+                    ? Directory.EnumerateDirectories(path)
+                    : Directory.EnumerateDirectories(path, pattern);
+            }
+            catch (DirectoryNotFoundException)
+            {
+                throw;
+            }
+            catch (IOException)
+            {
+                throw;
+            }
+            catch (Exception exception)
+            {
+                throw new IOException(exception.Message, exception);
+            }
+        }
+
+        public IEnumerable<string> EnumerateFiles(string path, string pattern)
+        {
+            Checker.NotEmptyOrWhiteArgument(path, nameof(path));
+
+            try
+            {
+                return string.IsNullOrWhiteSpace(pattern)
+                    ? Directory.EnumerateFiles(path)
+                    : Directory.EnumerateFiles(path, pattern);
+            }
+            catch (DirectoryNotFoundException)
+            {
+                throw;
+            }
+            catch (IOException)
+            {
+                throw;
+            }
+            catch (Exception exception)
+            {
+                throw new IOException(exception.Message, exception);
+            }
+        }
+
+        public IEnumerable<string> EnumerateFileSystemEntries(string path, string pattern)
+        {
+            try
+            {
+                return string.IsNullOrWhiteSpace(pattern)
+                    ? Directory.EnumerateFileSystemEntries(path)
+                    : Directory.EnumerateFileSystemEntries(path, pattern);
+            }
+            catch (DirectoryNotFoundException)
+            {
+                throw;
+            }
+            catch (IOException)
+            {
+                throw;
+            }
+            catch (Exception exception)
+            {
+                throw new IOException(exception.Message, exception);
+            }
         }
     }
 }

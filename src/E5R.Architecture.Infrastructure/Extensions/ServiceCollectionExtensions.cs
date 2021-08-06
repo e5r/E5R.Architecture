@@ -10,7 +10,9 @@ using E5R.Architecture.Core;
 using E5R.Architecture.Infrastructure;
 using E5R.Architecture.Infrastructure.Abstractions;
 using E5R.Architecture.Infrastructure.Extensions;
+using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection.Extensions;
+using Microsoft.Extensions.Options;
 
 namespace Microsoft.Extensions.DependencyInjection
 {
@@ -86,30 +88,53 @@ namespace Microsoft.Extensions.DependencyInjection
             => serviceCollection.AddScoped<IUnitOfWork, UnitOfWorkByTransactionScope>();
 
         public static IServiceCollection AddInfrastructure(
-            this IServiceCollection serviceCollection) => AddInfrastructure(serviceCollection,
-            (_) => { });
-        
+            this IServiceCollection serviceCollection, IConfiguration configuration) =>
+            AddInfrastructure(serviceCollection, configuration, (_) => { });
+
         public static IServiceCollection AddInfrastructure(
-            this IServiceCollection serviceCollection,
-            Action<InfrastructureOptions> config)
+            this IServiceCollection serviceCollection, IConfiguration configuration,
+            Action<InfrastructureOptions> optionsHandler)
         {
-            Checker.NotNullArgument(config, nameof(config));
-            
+            Checker.NotNullArgument(configuration, nameof(configuration));
+            Checker.NotNullArgument(optionsHandler, nameof(optionsHandler));
+
             var options = new InfrastructureOptions();
 
-            config(options);
+            optionsHandler(options);
 
-            return AddInfrastructure(serviceCollection, options);
+            return AddInfrastructure(serviceCollection, configuration, options);
+        }
+        
+        public static IServiceCollection AddInfrastructureWithoutAutoload(
+            this IServiceCollection serviceCollection, IConfiguration configuration,
+            Action<InfrastructureOptions> optionsHandler)
+        {
+            Checker.NotNullArgument(configuration, nameof(configuration));
+            Checker.NotNullArgument(optionsHandler, nameof(optionsHandler));
+
+            var options = new InfrastructureOptions
+            {
+                RegisterRulesAutomatically = false,
+                RegisterTransformersAutomatically = false,
+                RegisterCrossCuttingAutomatically = false,
+                RegisterNotificationDispatchersAutomatically = false,
+                RegisterLazyGroupsAutomatically = false
+            };
+
+            optionsHandler(options);
+            
+            return AddInfrastructure(serviceCollection, configuration, options);
         }
 
         public static IServiceCollection AddInfrastructure(
-            this IServiceCollection serviceCollection,
+            this IServiceCollection serviceCollection, IConfiguration configuration,
             InfrastructureOptions options)
         {
+            Checker.NotNullArgument(configuration, nameof(configuration));
             Checker.NotNullArgument(options, nameof(options));
             Checker.NotNullArgument(options.CustomServiceAssemblies,
                 () => options.CustomServiceAssemblies);
-            
+
             // Forçamos o carregamento dos assemblies informados.
             //
             // NOTE: Isso é necessário porque o otimizador de compiladores como
@@ -121,27 +146,86 @@ namespace Microsoft.Extensions.DependencyInjection
             //       aqui. Por isso forçamos o carregamos dos assemblies informados aqui.
             options.CustomServiceAssemblies.ToList().ForEach(n => AppDomain.CurrentDomain.Load(n));
 
-            // Habilita "notification manager"
-            serviceCollection.TryAddScoped(typeof(NotificationManager<>));
-            AppDomain.CurrentDomain.AddAllNotificationDispatchers(serviceCollection);
+            if (options.FileSystemType != null)
+            {
+                serviceCollection.TryAddScoped(typeof(IFileSystem), options.FileSystemType);
+            }
 
-            // Habilita "transformers"
-            serviceCollection.TryAddScoped(typeof(ITransformationManager), options.TransformationManagerType);
-            AppDomain.CurrentDomain.AddAllTransformers(serviceCollection);
+            if (options.SystemClockType != null)
+            {
+                serviceCollection.TryAddScoped(typeof(ISystemClock), options.SystemClockType);
+            }
+
+            serviceCollection.TryAddScoped(typeof(NotificationManager<>));
             
-            // Habilita "cross cutting" e "rule for"
-            var container = new ServiceCollectionDIContainer(serviceCollection);
+            if (options.RegisterNotificationDispatchersAutomatically)
+            {
+                AppDomain.CurrentDomain.AddAllNotificationDispatchers(serviceCollection);
+            }
+
+            serviceCollection.TryAddScoped(typeof(ITransformationManager),
+                options.TransformationManagerType);
+
+            if (options.RegisterTransformersAutomatically)
+            {
+                AppDomain.CurrentDomain.AddAllTransformers(serviceCollection);
+            }
 
             serviceCollection.TryAddScoped(typeof(IRuleSet<>), typeof(RuleSet<>));
 
-            AppDomain.CurrentDomain.DIRegistrar(container);
-            AppDomain.CurrentDomain.AddAllRules(serviceCollection);
+            if (options.RegisterCrossCuttingAutomatically)
+            {
+                AppDomain.CurrentDomain.AddCrossCuttingRegistrar(serviceCollection, configuration);
+            }
 
-            // Habilita "lazy loading"
+            if (options.RegisterRulesAutomatically)
+            {
+                AppDomain.CurrentDomain.AddAllRules(serviceCollection);
+            }
+
             serviceCollection.TryAddScoped(typeof(ILazy<>), options.LazyResolverType);
-            AppDomain.CurrentDomain.AddAllLazyGroups(serviceCollection);
+
+            if (options.RegisterLazyGroupsAutomatically)
+            {
+                AppDomain.CurrentDomain.AddAllLazyGroups(serviceCollection);
+            }
 
             return serviceCollection;
         }
+
+        public static IServiceCollection AddSettings<TSetting>(
+            this IServiceCollection services, ServiceLifetime lifetime,
+            IConfiguration configuration, string settingKey)
+            where TSetting : class, new()
+        {
+            Checker.NotNullArgument(services, nameof(services));
+            Checker.NotNullArgument(configuration, nameof(configuration));
+            Checker.NotEmptyOrWhiteArgument(settingKey, nameof(settingKey));
+
+            services.Configure<TSetting>(configuration.GetSection(settingKey));
+
+            var descriptor = new ServiceDescriptor(typeof(TSetting),
+                provider => provider.GetService<IOptions<TSetting>>()?.Value ?? new TSetting(),
+                lifetime);
+
+            services.TryAdd(descriptor);
+
+            return services;
+        }
+
+        public static IServiceCollection AddTransientSettings<TSetting>(
+            this IServiceCollection services, IConfiguration configuration, string settingKey)
+            where TSetting : class, new() => AddSettings<TSetting>(services,
+            ServiceLifetime.Transient, configuration, settingKey);
+
+        public static IServiceCollection AddScopedSettings<TSetting>(
+            this IServiceCollection services, IConfiguration configuration, string settingKey)
+            where TSetting : class, new() => AddSettings<TSetting>(services, ServiceLifetime.Scoped,
+            configuration, settingKey);
+
+        public static IServiceCollection AddSingletonSettings<TSetting>(
+            this IServiceCollection services, IConfiguration configuration, string settingKey)
+            where TSetting : class, new() => AddSettings<TSetting>(services,
+            ServiceLifetime.Singleton, configuration, settingKey);
     }
 }

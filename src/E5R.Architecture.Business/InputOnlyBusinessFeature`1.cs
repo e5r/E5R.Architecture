@@ -11,22 +11,9 @@ namespace E5R.Architecture.Business
     /// Abstract business feature with input only
     /// </summary>
     /// <typeparam name="TInput">The input type</typeparam>
-    public abstract class InputOnlyBusinessFeature<TInput> : InputBasedBusinessFeature<TInput>,
-        IBusinessFeatureSignature
+    public abstract class InputOnlyBusinessFeature<TInput> : IBusinessFeatureSignature
     {
-        public InputOnlyBusinessFeature(ILazy<ITransformationManager> transformer) : base(
-            transformer)
-        {
-        }
-
         protected abstract Task ExecActionAsync(TInput input);
-
-        public async Task ExecFromAsync<TFrom>(TFrom @from)
-        {
-            var input = TransformInput(@from);
-
-            await ExecActionAsync(input);
-        }
 
         public async Task ExecAsync(TInput input)
         {

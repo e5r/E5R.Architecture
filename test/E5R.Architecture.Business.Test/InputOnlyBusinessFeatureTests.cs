@@ -97,7 +97,7 @@ namespace E5R.Architecture.Business.Test
 
     #region Mocks
 
-    public class IntegerInputonlyFeature : InputOnlyBusinessFeature<string>
+    public class IntegerInputonlyFeature : InputOnlyBusinessFeatureWithTransformer<string>
     {
         public IntegerInputonlyFeature(ILazy<ITransformationManager> transformer) : base(
             transformer)

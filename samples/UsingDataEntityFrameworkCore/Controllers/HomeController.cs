@@ -1,4 +1,5 @@
-﻿using System.Linq;
+﻿using System;
+using System.Linq;
 using System.Diagnostics;
 using E5R.Architecture.Core;
 using E5R.Architecture.Data;
@@ -6,6 +7,7 @@ using E5R.Architecture.Data.Abstractions;
 using E5R.Architecture.Data.Abstractions.Alias;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
+using UsingDataEntityFrameworkCore.Data;
 using UsingDataEntityFrameworkCore.Models;
 
 namespace UsingDataEntityFrameworkCore.Controllers
@@ -14,23 +16,44 @@ namespace UsingDataEntityFrameworkCore.Controllers
     {
         private readonly ILogger<HomeController> _logger;
         private readonly IStoreReader<Student> _studentStore;
+        private readonly IFindableStorage<Student> _findableStorage;
+        private readonly IFindableStorage<SchoolContext, Student> _findableStorage2;
+        private readonly ISearchableStorage<Student> _searchableStorage;
+        private readonly ISearchableStorage<SchoolContext, Student> _searchableStorage2;
         private readonly ILazy<IStoreReader<Student>> _studentStoreLoader;
         private readonly IStoreReader<Enrollment> _enrollmentStore;
+        private readonly IBulkCreatableStorage<Log> _bulkCreatableStorage;
 
         public HomeController(ILogger<HomeController> logger,
-                              IStoreReader<Student> studentStore,
-                              ILazy<IStoreReader<Student>> studentStoreLoader,
-                              IStoreReader<Enrollment> enrollmentStore)
+            IStoreReader<Student> studentStore,
+            IFindableStorage<Student> findableStorage,
+            IFindableStorage<SchoolContext, Student> findableStorage2,
+            ISearchableStorage<Student> searchableStorage,
+            ISearchableStorage<SchoolContext, Student> searchableStorage2,
+            ILazy<IStoreReader<Student>> studentStoreLoader,
+            IStoreReader<Enrollment> enrollmentStore,
+            IBulkCreatableStorage<Log> bulkCreatableStorage)
         {
             _logger = logger;
             _studentStore = studentStore;
+            _findableStorage = findableStorage;
+            _findableStorage2 = findableStorage2;
+            _searchableStorage = searchableStorage;
+            _searchableStorage2 = searchableStorage2;
             _studentStoreLoader = studentStoreLoader;
             _enrollmentStore = enrollmentStore;
+            _bulkCreatableStorage = bulkCreatableStorage;
         }
 
         public IActionResult Index()
         {
             var lazyStore = _studentStoreLoader.Value;
+
+            var logs = _bulkCreatableStorage.BulkCreate(new[]
+            {
+                new Log {Date = DateTime.Now, Message = "Entrou na home 1"},
+                new Log {Date = DateTime.Now, Message = "Entrou na home 2"}
+            });
             
             // Equivalentes para GetAll() com GroupBy()
             var projection = new DataProjection<Student, int, object>(
@@ -93,6 +116,18 @@ namespace UsingDataEntityFrameworkCore.Controllers
             var b3 = lazyStore.Find(2);
             var b4 = lazyStore.AsFluentQuery().Find(2);
 
+            var bb01 = _findableStorage.Find(2, new DataIncludes<Student>());
+            var bb02 = _findableStorage.Find(2, null);
+            var bb03 = _findableStorage.Find(2);
+            var bb04 = _findableStorage.Find(new object[] {2});
+            var bb05 = _findableStorage.Find(new Student {ID = 2});
+            
+            var bb11 = _findableStorage2.Find(2, new DataIncludes<Student>());
+            var bb12 = _findableStorage2.Find(2, null);
+            var bb13 = _findableStorage2.Find(2);
+            var bb14 = _findableStorage2.Find(new object[] {2});
+            var bb15 = _findableStorage2.Find(new Student {ID = 2});
+
             // Equivalentes para Find() com Include() e Select()
             var c1 = _enrollmentStore.AsFluentQuery()
                 .Projection()
@@ -139,6 +174,13 @@ namespace UsingDataEntityFrameworkCore.Controllers
                     })
                     .Project()
                 .Find(2);
+            
+            // Search
+            var e0_filter = new DataFilter<Student>();
+            e0_filter.AddFilter(w => w.FirstMidName.Contains("e"));
+
+            var e0_1 = _searchableStorage.Search(e0_filter);
+            var e0_2 = _searchableStorage2.Search(e0_filter);
 
             // Equivalentes para Search() com Include() e ThenInclude()
             var e1 = lazyStore.AsFluentQuery()

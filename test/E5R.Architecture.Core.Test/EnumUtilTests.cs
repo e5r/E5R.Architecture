@@ -58,6 +58,28 @@ namespace E5R.Architecture.Core.Test
             Assert.Equal(MyEnum.ThirdOption, thirdOption1);
             Assert.Equal(MyEnum.ThirdOption, thirdOption2);
         }
+        
+        [Fact]
+        public void TryParse_FromValidMetatag()
+        {
+            var firstOptionResult = EnumUtil.TryFromTag<MyEnum>(DescriptionKey, "My First Option",
+                out MyEnum firstOption);
+            var thirdOption1Result = EnumUtil.TryFromTag<MyEnum>(DescriptionKey, "My Third Option",
+                out MyEnum thirdOption1);
+            var secondOptionResult =
+                EnumUtil.TryFromTag<MyEnum>(CustomIdKey, "second-option", out MyEnum secondOption);
+            var thirdOption2Result = EnumUtil.TryFromTag<MyEnum>(CustomIdKey,
+                nameof(MyEnum.ThirdOption), out MyEnum thirdOption2);
+
+            Assert.True(firstOptionResult);
+            Assert.Equal(MyEnum.FirstOption, firstOption);
+            Assert.True( secondOptionResult);
+            Assert.Equal(MyEnum.SecondOption, secondOption);
+            Assert.True(thirdOption1Result);
+            Assert.Equal(MyEnum.ThirdOption, thirdOption1);
+            Assert.True(thirdOption2Result);
+            Assert.Equal(MyEnum.ThirdOption, thirdOption2);
+        }
 
         [Fact]
         public void RaiseException_FromInvalidMetatag()
@@ -84,6 +106,74 @@ namespace E5R.Architecture.Core.Test
             Assert.Equal(
                 "The Enum could not be converted because there is no value signed with the informed tag",
                 ex5.Message);
+        }
+        
+        [Fact]
+        public void TryParse_FromInvalidMetatag()
+        {
+            var result1 = EnumUtil.TryFromTag<MyEnum>(null, "invalid", out MyEnum enum1);
+            var result2 = EnumUtil.TryFromTag<MyEnum>("    ", "invalid", out MyEnum enum2);
+            var result3 = EnumUtil.TryFromTag<MyEnum>(CustomIdKey, null, out MyEnum enum3);
+            var result4 = EnumUtil.TryFromTag<MyEnum>(CustomIdKey, "    ", out MyEnum enum4);
+            var result5 = EnumUtil.TryFromTag<MyEnum>(CustomIdKey, "invalid", out MyEnum enum5);
+
+            Assert.False(result1);
+            Assert.False(result2);
+            Assert.False(result3);
+            Assert.False(result4);
+            Assert.False(result5);
+            Assert.Equal(default, enum1);
+            Assert.Equal(default, enum2);
+            Assert.Equal(default, enum3);
+            Assert.Equal(default, enum4);
+            Assert.Equal(default, enum5);
+        }
+
+        [Fact]
+        public void FromValue_FindsTheEnum_ForCorrespondingCode()
+        {
+            int emptyOption = (int) MyEnum.EmptyOption;
+            int firstOption = (int) MyEnum.FirstOption;
+            int secondOption = (int) MyEnum.SecondOption;
+            int thirdOption = (int) MyEnum.ThirdOption;
+            
+            Assert.Equal(MyEnum.EmptyOption, EnumUtil.FromValue<MyEnum>(emptyOption));
+            Assert.Equal(MyEnum.FirstOption, EnumUtil.FromValue<MyEnum>(firstOption));
+            Assert.Equal(MyEnum.SecondOption, EnumUtil.FromValue<MyEnum>(secondOption));
+            Assert.Equal(MyEnum.ThirdOption, EnumUtil.FromValue<MyEnum>(thirdOption));
+        }
+        
+        [Fact]
+        public void FromValue_RaisesException_ForNonMatchingCode()
+        {
+            var ex = Assert.Throws<InvalidCastException>(() => EnumUtil.FromValue<MyEnum>(-1));
+            
+            Assert.Equal("Enum could not be converted because there is no matching value", ex.Message);
+        }
+        
+        [Fact]
+        public void TryFromValue_ReturnsTrue_ForCorrespondingCode()
+        {
+            int emptyOption = (int) MyEnum.EmptyOption;
+            int firstOption = (int) MyEnum.FirstOption;
+            int secondOption = (int) MyEnum.SecondOption;
+            int thirdOption = (int) MyEnum.ThirdOption;
+            
+            var emptyOptionResult = EnumUtil.TryFromValue(emptyOption, out MyEnum _);
+            var firstOptionResult = EnumUtil.TryFromValue(firstOption, out MyEnum _);
+            var secondOptionResult = EnumUtil.TryFromValue(secondOption, out MyEnum _);
+            var thirdOptionResult = EnumUtil.TryFromValue(thirdOption, out MyEnum _);
+            
+            Assert.True(emptyOptionResult);
+            Assert.True(firstOptionResult);
+            Assert.True(secondOptionResult);
+            Assert.True(thirdOptionResult);
+        }
+        
+        [Fact]
+        public void TryFromValue_ReturnsFalse_ForNonCorrespondingCode()
+        {
+            Assert.False(EnumUtil.TryFromValue(-1, out MyEnum _));
         }
 
         #region Fakes

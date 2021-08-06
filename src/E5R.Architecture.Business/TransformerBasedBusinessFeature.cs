@@ -8,11 +8,11 @@ using E5R.Architecture.Core.Exceptions;
 
 namespace E5R.Architecture.Business
 {
-    public class InputBasedBusinessFeature<TInput>
+    public class TransformerBasedBusinessFeature<TInput>
     {
         private readonly ILazy<ITransformationManager> _transformer;
 
-        protected InputBasedBusinessFeature(ILazy<ITransformationManager> transformer)
+        protected TransformerBasedBusinessFeature(ILazy<ITransformationManager> transformer)
         {
             Checker.NotNullArgument(transformer, nameof(transformer));
 

@@ -7,7 +7,7 @@ using System.Linq.Expressions;
 
 namespace E5R.Architecture.Data.Abstractions
 {
-    // <summary>
+    /// <summary>
     /// Data projection (Include and Select) for data model
     /// </summary>
     public interface IDataProjection<TDataModel, TSelect> : IDataIncludes

@@ -3,15 +3,31 @@
 // Licensed under the Apache version 2.0: https://github.com/e5r/manifest/blob/master/license/APACHE-2.0.txt
 
 using System;
+using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using E5R.Architecture.Core;
+using E5R.Architecture.Infrastructure.Abstractions;
+using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using Microsoft.Extensions.Hosting;
+using Microsoft.Extensions.Options;
 using static System.Diagnostics.Debug;
-using static E5R.Architecture.Core.RuleCheckResult;
 
 namespace UsingInfrastructure
 {
+    public class MySettings
+    {
+        public const string Key = "My";
+        
+        public string Message { get; set; }
+
+        public MySettings()
+        {
+            Message = "Default message";
+        }
+    }
+
     public interface IMyModel2Fail
     {
         RuleCheckResult GetFail();
@@ -37,13 +53,13 @@ namespace UsingInfrastructure
         {
         }
 
-        public override Task<RuleCheckResult> CheckAsync(MyModel target) => Task.Run(() =>
+        public override async Task<RuleCheckResult> CheckAsync(MyModel target)
         {
             if (target?.Name?.ToLowerInvariant() != "brazil")
-                return RuleCheckResult.Fail;
+                return await Fail();
 
-            return Success;
-        });
+            return await Success();
+        }
     }
 
     public class NumberMinimalRule : RuleFor<MyModel>
@@ -52,13 +68,13 @@ namespace UsingInfrastructure
         {
         }
 
-        public override Task<RuleCheckResult> CheckAsync(MyModel target) => Task.Run(() =>
+        public override async Task<RuleCheckResult> CheckAsync(MyModel target)
         {
             if (target?.Number > 10)
-                return Success;
+                return await Success();
 
-            return RuleCheckResult.Fail;
-        });
+            return await Fail();
+        }
     }
 
     public class NameIsExactlyBrazilRule : RuleFor<MyModel>
@@ -68,13 +84,13 @@ namespace UsingInfrastructure
         {
         }
 
-        public override Task<RuleCheckResult> CheckAsync(MyModel target) => Task.Run(() =>
+        public override async Task<RuleCheckResult> CheckAsync(MyModel target)
         {
             if (target?.Name != "Brazil")
-                return RuleCheckResult.Fail;
+                return await Fail();
 
-            return Success;
-        });
+            return await Success();
+        }
     }
 
     public class NumberIsBigRule : RuleFor<MyModel>
@@ -88,13 +104,13 @@ namespace UsingInfrastructure
             _fail = fail;
         }
 
-        public override Task<RuleCheckResult> CheckAsync(MyModel target) => Task.Run(() =>
+        public override async Task<RuleCheckResult> CheckAsync(MyModel target)
         {
             if (target?.Number >= 35 && target.Number <= 80)
-                return Success;
+                return await Success();
 
             return _fail.GetFail();
-        });
+        }
     }
 
     public class TransformSourceData
@@ -127,7 +143,7 @@ namespace UsingInfrastructure
 
     public class Program
     {
-        public Program(IRuleSet<MyModel> ruleset, ITransformationManager transformer)
+        public Program(IOptions<MySettings> optionsSettings, MySettings settings, IRuleSet<MyModel> ruleset, ITransformationManager transformer)
         {
             // Data transformations
             TransformSourceData sourceData = new TransformSourceData()
@@ -178,22 +194,39 @@ namespace UsingInfrastructure
                 "RN-003 RN-004 (result7)");
         }
 
-        static void Main()
+        static void Main(string[] args)
         {
-            var services = ConfigureServices(new ServiceCollection());
-
-            using (var scope = services.BuildServiceProvider().CreateScope())
+            IHost host = Host.CreateDefaultBuilder()
+                .ConfigureAppConfiguration(c =>
+                {
+                    c.AddInMemoryCollection(new[]
+                        {
+                            KeyValuePair.Create<string, string>("My:Message", "Minha mensagem"), 
+                        })
+                        .AddEnvironmentVariables()
+                        .AddCommandLine(args);
+                })
+                .ConfigureServices((hostBuilder, s) => s.AddInfrastructure(hostBuilder.Configuration))
+                .Build();
+            
+            using (var scope = host.Services.CreateScope())
             {
-                scope.ServiceProvider.GetService<Program>();
+                scope.ServiceProvider.GetRequiredService<Program>();
             }
         }
+    }
 
-        static IServiceCollection ConfigureServices(IServiceCollection services)
+    public class CrossCuttingRegistrar : ICrossCuttingRegistrar
+    {
+        public void Register(IServiceCollection services, IConfiguration configuration)
         {
             services.AddScoped<Program>();
             services.AddScoped<IMyModel2Fail, MyModel2Fail>();
 
-            return services.AddInfrastructure();
+            services.AddSettings<MySettings>(ServiceLifetime.Scoped, configuration, MySettings.Key);
+            services.AddTransientSettings<MySettings>(configuration, MySettings.Key);
+            services.AddScopedSettings<MySettings>(configuration, MySettings.Key);
+            services.AddSingletonSettings<MySettings>(configuration, MySettings.Key);
         }
     }
 }

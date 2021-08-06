@@ -12,21 +12,9 @@ namespace E5R.Architecture.Business
     /// </summary>
     /// <typeparam name="TInput">The input type</typeparam>
     /// <typeparam name="TOutput">The output type</typeparam>
-    public abstract class BusinessFeature<TInput, TOutput> : InputBasedBusinessFeature<TInput>,
-        IBusinessFeatureSignature
+    public abstract class BusinessFeature<TInput, TOutput> : IBusinessFeatureSignature
     {
-        public BusinessFeature(ILazy<ITransformationManager> transformer) : base(transformer)
-        {
-        }
-
         protected abstract Task<TOutput> ExecActionAsync(TInput input);
-
-        public async Task<TOutput> ExecFromAsync<TFrom>(TFrom @from)
-        {
-            var input = TransformInput(@from);
-
-            return await ExecActionAsync(input);
-        }
 
         public async Task<TOutput> ExecAsync(TInput input)
         {

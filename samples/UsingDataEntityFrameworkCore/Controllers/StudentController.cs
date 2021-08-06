@@ -26,10 +26,15 @@ namespace UsingDataEntityFrameworkCore.Controllers
         private readonly DbConnection _connection;
         private readonly DbTransaction _transaction;
         private readonly IStoreReader<Student> _readerStore;
+        private readonly ICountableStorage<Student> _countableStorage;
+        private readonly ICountableStorage<SchoolContext, Student> _countableStorage2;
+        private readonly IAcquirableStorage<Student> _acquirableStorage;
+        private readonly IAcquirableStorage<SchoolContext, Student> _acquirableStorage2;
         private readonly IStoreWriter<SchoolContext, Student> _writerStore;
         private readonly IStoreBulkWriter<Student> _bulkWriterStore;
         private readonly IStoreReader<CourseTest> _storeCourseTest;
         private readonly ILogger<StudentController> _logger;
+        private readonly ILazy<ICreatableStorage<Log>> _creatableStorage;
 
         public StudentController(
             ILogger<StudentController> logger,
@@ -38,9 +43,14 @@ namespace UsingDataEntityFrameworkCore.Controllers
             UnitOfWorkProperty<DbTransaction> transaction,
             SchoolContext context2,
             IStoreReader<Student> readerStore,
+            ICountableStorage<Student> countableStorage,
+            ICountableStorage<SchoolContext, Student> countableStorage2,
+            IAcquirableStorage<Student> acquirableStorage,
+            IAcquirableStorage<SchoolContext, Student> acquirableStorage2,
             IStoreWriter<SchoolContext, Student> writerStore,
             IStoreBulkWriter<Student> bulkWriterStore,
-            IStoreReader<CourseTest> storeCourseTest)
+            IStoreReader<CourseTest> storeCourseTest,
+            ILazy<ICreatableStorage<Log>> creatableStorage)
         {
             _logger = logger ?? throw new ArgumentNullException(nameof(logger));
             _context = context ?? throw new ArgumentNullException(nameof(context));
@@ -48,13 +58,28 @@ namespace UsingDataEntityFrameworkCore.Controllers
             _transaction = transaction ?? throw new ArgumentNullException(nameof(transaction));
             _context2 = context2 ?? throw new ArgumentNullException(nameof(context2));
             _readerStore = readerStore ?? throw new ArgumentNullException(nameof(readerStore));
+            _countableStorage = countableStorage ??
+                                throw new ArgumentNullException(nameof(countableStorage));
+            _countableStorage2 = countableStorage2 ??
+                                 throw new ArgumentNullException(nameof(countableStorage2));
+            _acquirableStorage = acquirableStorage ??
+                                throw new ArgumentNullException(nameof(acquirableStorage));
+            _acquirableStorage2 = acquirableStorage2 ??
+                                     throw new ArgumentNullException(nameof(acquirableStorage2));
             _writerStore = writerStore ?? throw new ArgumentNullException(nameof(writerStore));
-            _bulkWriterStore = bulkWriterStore ?? throw new ArgumentNullException(nameof(bulkWriterStore));
-            _storeCourseTest = storeCourseTest ?? throw new ArgumentNullException(nameof(storeCourseTest));
+            _bulkWriterStore = bulkWriterStore ??
+                               throw new ArgumentNullException(nameof(bulkWriterStore));
+            _storeCourseTest = storeCourseTest ??
+                               throw new ArgumentNullException(nameof(storeCourseTest));
+            _creatableStorage = creatableStorage ??
+                                throw new ArgumentNullException(nameof(creatableStorage));
         }
 
         public async Task<IActionResult> Index()
         {
+            _creatableStorage.Value.Create(new Log
+                {Date = DateTime.Now, Message = "Entrou em Student/Index"});
+            
             var students = await _context.Students
                 .ToListAsync();
 
@@ -67,6 +92,9 @@ namespace UsingDataEntityFrameworkCore.Controllers
 
         public IActionResult Search(string searchString, string button, uint? page)
         {
+            _creatableStorage.Value.Create(new Log
+                {Date = DateTime.Now, Message = "Entrou em Student/Search"});
+            
             uint pageOffset = Convert.ToUInt32(page.HasValue ? page.Value - 1 : 0);
 
             var query = _readerStore.AsFluentQuery()
@@ -147,6 +175,9 @@ namespace UsingDataEntityFrameworkCore.Controllers
 
         public async Task<IActionResult> Details(int? id)
         {
+            _creatableStorage.Value.Create(new Log
+                {Date = DateTime.Now, Message = "Entrou em Student/Details"});
+            
             if (id == null)
             {
                 return NotFound();
@@ -157,7 +188,7 @@ namespace UsingDataEntityFrameworkCore.Controllers
                     .ThenInclude(e => e.Course)
                 .AsNoTracking()
                 .FirstOrDefaultAsync(m => m.ID == id);
-
+            
             if (student == null)
             {
                 return NotFound();
@@ -168,6 +199,9 @@ namespace UsingDataEntityFrameworkCore.Controllers
 
         public IActionResult Details2(int? id)
         {
+            _creatableStorage.Value.Create(new Log
+                {Date = DateTime.Now, Message = "Entrou em Student/Details2"});
+            
             if (id == null)
             {
                 return NotFound();
@@ -210,6 +244,9 @@ namespace UsingDataEntityFrameworkCore.Controllers
 
         public IActionResult Details3(int? id)
         {
+            _creatableStorage.Value.Create(new Log
+                {Date = DateTime.Now, Message = "Entrou em Student/Details3"});
+            
             if (id == null)
             {
                 return NotFound();
@@ -254,8 +291,20 @@ namespace UsingDataEntityFrameworkCore.Controllers
                 var reload = _storeCourseTest.Find(courseTest.Identifiers);
                 _logger.LogDebug($"CourseTest {{ CourseID: {reload.CourseID}, CourseGUID: {reload.CourseGUID} }}");
             }
+            
+            var allCoursesTests3 = _acquirableStorage.GetAll();
+            var allCoursesTests4 = _acquirableStorage2.GetAll();
 
             throw new NotImplementedException("Isso deve gerar um IUnitOfWork.DiscardWork()");
+        }
+
+        public IActionResult Contar()
+        {
+            var count = _countableStorage.CountAll();
+
+            count = _countableStorage2.CountAll();
+
+            return View(count);
         }
     }
 }

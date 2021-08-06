@@ -1,0 +1,18 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+    <PropertyGroup>
+        <OutputType>Exe</OutputType>
+        <TargetFramework>netcoreapp3.1</TargetFramework>
+        <IsPackable>false</IsPackable>
+    </PropertyGroup>
+
+    <ItemGroup>
+        <PackageReference Include="Microsoft.Extensions.Configuration" Version="3.1.11" />
+        <PackageReference Include="Microsoft.Extensions.DependencyInjection" Version="3.1.11" />
+    </ItemGroup>
+  
+    <ItemGroup>
+        <ProjectReference Include="..\..\src\E5R.Architecture.Infrastructure\E5R.Architecture.Infrastructure.csproj" />
+    </ItemGroup>
+
+</Project>

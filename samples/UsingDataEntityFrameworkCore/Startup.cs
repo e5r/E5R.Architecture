@@ -54,7 +54,7 @@ namespace UsingDataEntityFrameworkCore
             });
 
             services.AddStoragePropertyStrategy();
-            services.AddInfrastructure();
+            services.AddInfrastructure(Configuration);
 
             // Strategy.TransactionScope
             //services.AddDbContext<SchoolContext>((serviceProvider, options) =>
