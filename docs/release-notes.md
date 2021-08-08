@@ -7,7 +7,13 @@ Notas de Lançamento
 
 ## 0.10.0 (dev)
 
-> TODO ...
+### Breaking changes:
+
+* `LazyGroup<>` foi renomeado para `LazyTuple`
+  - Seus itens agora são públicos
+  - Foi adicionado a tupla com único item
+* O registro no assembly `AddAllLazyGroups()` não registra mais classes que herdam de `LazyGroup<>` (que agora se chama `LazyTuple<>`)
+  - Ao invés disso registra diretamente `LazyTuple<>`
 
 ## 0.9.0
 

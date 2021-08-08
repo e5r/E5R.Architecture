@@ -132,13 +132,16 @@ namespace UsingBusiness
     /// Aqui chamamos de módulo de negócio (BusinessModule) mas pode ser qualquer coisa que
     /// você preferir: Service, BusinessService, Module, Facade, etc.
     /// </remarks>
-    public class DadosEntradaBusinessModule : LazyGroup<
-        ProcessStringFeature,
-        GenerateRandomPasswordFeature>
+    public class DadosEntradaBusinessModule
     {
-        public DadosEntradaBusinessModule(ILazy<ProcessStringFeature> item1,
-            ILazy<GenerateRandomPasswordFeature> item2) : base(item1, item2)
+        private readonly LazyTuple<ProcessStringFeature, GenerateRandomPasswordFeature> _g;
+
+        public DadosEntradaBusinessModule(
+            LazyTuple<ProcessStringFeature, GenerateRandomPasswordFeature> tuple)
         {
+            Checker.NotNullArgument(tuple, nameof(tuple));
+
+            _g = tuple;
         }
 
         /// <summary>
@@ -146,14 +149,14 @@ namespace UsingBusiness
         /// </summary>
         /// <param name="inputString">String de entrada</param>
         public async Task ProcessString(string inputString) =>
-            await Item1.ExecAsync(inputString);
+            await _g.Item1.ExecAsync(inputString);
 
         /// <summary>
         /// Gera uma senha aleatório com base em uma tupla que informa os caracteres possíveis e o tamanho da senha pretendida
         /// </summary>
         /// <param name="input">Tupla (<see cref="Tuple{T1,T2}"/>) de string com os caracteres possíveis, e int com o tamanho da senha pretendida</param>
         public async Task<string> GenerateRandomPassword((string, int) input) =>
-            await Item2.ExecAsync(input);
+            await _g.Item2.ExecAsync(input);
     }
 
     /// <summary>
@@ -163,25 +166,28 @@ namespace UsingBusiness
     /// Aqui chamamos de módulo de negócio (BusinessModule) mas pode ser qualquer coisa que
     /// você preferir: Service, BusinessService, Module, Facade, etc.
     /// </remarks>
-    public class
-        DadosSaidaBusinessModule : LazyGroup<GenerateRandomNumberFeature, ProcessStringFeature>
+    public class DadosSaidaBusinessModule
     {
-        public DadosSaidaBusinessModule(ILazy<GenerateRandomNumberFeature> item1,
-            ILazy<ProcessStringFeature> item2) : base(item1, item2)
+        private readonly LazyTuple<GenerateRandomNumberFeature, ProcessStringFeature> _g;
+        
+        public DadosSaidaBusinessModule(LazyTuple<GenerateRandomNumberFeature, ProcessStringFeature> tuple)
         {
+            Checker.NotNullArgument(tuple, nameof(tuple));
+
+            _g = tuple;
         }
 
         /// <summary>
         /// Gera um número aleatório
         /// </summary>
-        public async Task<int> GenerateRandomNumber() => await Item1.ExecAsync();
+        public async Task<int> GenerateRandomNumber() => await _g.Item1.ExecAsync();
 
         /// <summary>
         /// Processa dados aleatórios com base em uma string de entrada
         /// </summary>
         /// <param name="inputString">String de entrada</param>
         public async Task ProcessString(string inputString) =>
-            await Item2.ExecAsync(inputString);
+            await _g.Item2.ExecAsync(inputString);
     }
 
     /// <summary>
@@ -191,39 +197,44 @@ namespace UsingBusiness
     /// Aqui chamamos de módulo de negócio (BusinessModule) mas pode ser qualquer coisa que
     /// você preferir: Service, BusinessService, Module, Facade, etc.
     /// </remarks>
-    public class TudoJuntoBusinessModule : LazyGroup<GenerateRandomNumberFeature,
-        GenerateRandomPasswordFeature, ProcessStringFeature, ExecAllFeature>
+    public class TudoJuntoBusinessModule
     {
-        public TudoJuntoBusinessModule(ILazy<GenerateRandomNumberFeature> item1,
-            ILazy<GenerateRandomPasswordFeature> item2, ILazy<ProcessStringFeature> item3,
-            ILazy<ExecAllFeature> item4) : base(item1, item2, item3, item4)
+        private readonly LazyTuple<GenerateRandomNumberFeature, GenerateRandomPasswordFeature,
+            ProcessStringFeature, ExecAllFeature> _g;
+
+        public TudoJuntoBusinessModule(
+            LazyTuple<GenerateRandomNumberFeature, GenerateRandomPasswordFeature,
+                ProcessStringFeature, ExecAllFeature> tuple)
         {
+            Checker.NotNullArgument(tuple, nameof(tuple));
+
+            _g = tuple;
         }
 
         /// <summary>
         /// Gera um número aleatório
         /// </summary>
-        public async Task<int> GenerateRandomNumber() => await Item1.ExecAsync();
+        public async Task<int> GenerateRandomNumber() => await _g.Item1.ExecAsync();
 
         /// <summary>
         /// Gera uma senha aleatório com base em uma tupla que informa os caracteres possíveis e o tamanho da senha pretendida
         /// </summary>
         /// <param name="input">Tupla (<see cref="Tuple{T1,T2}"/>) de string com os caracteres possíveis, e int com o tamanho da senha pretendida</param>
         public async Task<string> GenerateRandomPassword((string, int) input) =>
-            await Item2.ExecAsync(input);
+            await _g.Item2.ExecAsync(input);
 
         /// <summary>
         /// Processa dados aleatórios com base em uma string de entrada
         /// </summary>
         /// <param name="inputString">String de entrada</param>
         public async Task ProcessString(string inputString) =>
-            await Item3.ExecAsync(inputString);
+            await _g.Item3.ExecAsync(inputString);
 
         /// <summary>
         /// Executa todas as outras funcionalidades para exemplificar uma característica que não
         /// precisa de parâmetros de entrada, e nem produz resultado de saída.
         /// </summary>
-        public async Task ExecAll() => await Item4.ExecAsync();
+        public async Task ExecAll() => await _g.Item4.ExecAsync();
     }
 
     public enum MyNotifyType
@@ -329,9 +340,12 @@ namespace UsingBusiness
 
         private static IServiceCollection ConfigureServices(IServiceCollection services)
         {
-            services.AddScoped<Program>();
-
-            return services.AddInfrastructure(new ConfigurationBuilder().Build()).AddBusiness();
+            return services.AddInfrastructure(new ConfigurationBuilder().Build())
+                .AddBusiness()
+                .AddScoped<Program>()
+                .AddScoped<DadosEntradaBusinessModule>()
+                .AddScoped<DadosSaidaBusinessModule>()
+                .AddScoped<TudoJuntoBusinessModule>();
         }
     }
 }
