@@ -9,6 +9,7 @@ Notas de Lançamento
 
 ### Breaking changes:
 
+* `BusinessFeature` e seus derivados foram renomeados para `ActionHandler`
 * `LazyGroup<>` foi renomeado para `LazyTuple`
   - Seus itens agora são públicos
   - Foi adicionado a tupla com único item

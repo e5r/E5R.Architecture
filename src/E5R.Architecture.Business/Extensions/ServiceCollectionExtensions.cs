@@ -11,7 +11,7 @@ namespace E5R.Architecture.Business.Extensions
     {
         public static IServiceCollection AddBusiness(this IServiceCollection serviceCollection)
         {
-            AppDomain.CurrentDomain.AddAllBusinessFeatures(serviceCollection);
+            AppDomain.CurrentDomain.AddAllActionHandlers(serviceCollection);
 
             return serviceCollection;
         }

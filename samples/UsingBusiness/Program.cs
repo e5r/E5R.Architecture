@@ -17,18 +17,18 @@ using static E5R.Architecture.Core.MetaTagAttribute;
 namespace UsingBusiness
 {
     /// <summary>
-    /// Característica que gera um número aleatório
+    /// Ação que gera um número aleatório
     /// </summary>
-    public class GenerateRandomNumberFeature : OutputOnlyBusinessFeature<int>
+    public class GenerateRandomNumberHandler : OutputOnlyActionHandler<int>
     {
         protected override async Task<int> ExecActionAsync() =>
             await Task.Run(() => new Random().Next(int.MinValue, int.MaxValue));
     }
 
     /// <summary>
-    /// Característica que processa uma string de entrada
+    /// Ação que processa uma string de entrada
     /// </summary>
-    public class ProcessStringFeature : InputOnlyBusinessFeature<string>
+    public class ProcessStringHandler : InputOnlyActionHandler<string>
     {
         protected override async Task ExecActionAsync(string input)
             => await Task.Run(() =>
@@ -60,9 +60,9 @@ namespace UsingBusiness
     }
 
     /// <summary>
-    /// Característica que gera uma senha aleatória com base em uma lista de caracteres válidos
+    /// Ação que gera uma senha aleatória com base em uma lista de caracteres válidos
     /// </summary>
-    public class GenerateRandomPasswordFeature : BusinessFeature<(string, int), string>
+    public class GenerateRandomPasswordHandler : ActionHandler<(string, int), string>
     {
         protected override async Task<string> ExecActionAsync((string, int) input) =>
             await Task.Run(() =>
@@ -92,52 +92,52 @@ namespace UsingBusiness
     }
 
     /// <summary>
-    /// Característica que executa todas as outras 3 features
+    /// Ação que executa todas as outras 3 ações
     /// </summary>
-    public class ExecAllFeature : BusinessFeature
+    public class ExecAllHandler : ActionHandler
     {
-        private readonly GenerateRandomNumberFeature _generateRandomNumberFeature;
-        private readonly GenerateRandomPasswordFeature _generateRandomPasswordFeature;
-        private readonly ProcessStringFeature _processStringFeature;
+        private readonly GenerateRandomNumberHandler _generateRandomNumberHandler;
+        private readonly GenerateRandomPasswordHandler _generateRandomPasswordHandler;
+        private readonly ProcessStringHandler _processStringHandler;
 
-        public ExecAllFeature(GenerateRandomNumberFeature generateRandomNumberFeature,
-            GenerateRandomPasswordFeature generateRandomPasswordFeature,
-            ProcessStringFeature processStringFeature)
+        public ExecAllHandler(GenerateRandomNumberHandler generateRandomNumberHandler,
+            GenerateRandomPasswordHandler generateRandomPasswordHandler,
+            ProcessStringHandler processStringHandler)
         {
-            Checker.NotNullArgument(generateRandomNumberFeature,
-                nameof(generateRandomNumberFeature));
-            Checker.NotNullArgument(generateRandomPasswordFeature,
-                nameof(generateRandomPasswordFeature));
-            Checker.NotNullArgument(processStringFeature, nameof(processStringFeature));
+            Checker.NotNullArgument(generateRandomNumberHandler,
+                nameof(generateRandomNumberHandler));
+            Checker.NotNullArgument(generateRandomPasswordHandler,
+                nameof(generateRandomPasswordHandler));
+            Checker.NotNullArgument(processStringHandler, nameof(processStringHandler));
 
-            _generateRandomNumberFeature = generateRandomNumberFeature;
-            _generateRandomPasswordFeature = generateRandomPasswordFeature;
-            _processStringFeature = processStringFeature;
+            _generateRandomNumberHandler = generateRandomNumberHandler;
+            _generateRandomPasswordHandler = generateRandomPasswordHandler;
+            _processStringHandler = processStringHandler;
         }
 
         protected override async Task ExecActionAsync()
         {
-            var number = await _generateRandomNumberFeature.ExecAsync();
-            var password = await _generateRandomPasswordFeature.ExecAsync((
+            var number = await _generateRandomNumberHandler.ExecAsync();
+            var password = await _generateRandomPasswordHandler.ExecAsync((
                 "012345 6789abcdefgh    ijklmnopqrs tuvwxyz-)(*&ˆˆ$#@!", 10));
 
-            await _processStringFeature.ExecAsync("nova string");
+            await _processStringHandler.ExecAsync("nova string");
         }
     }
 
     /// <summary>
-    /// Fachada para funcionalidades de negócio que aceitam parâmetros de entrada
+    /// Fachada para ações que aceitam parâmetros de entrada
     /// </summary>
     /// <remarks>
-    /// Aqui chamamos de módulo de negócio (BusinessModule) mas pode ser qualquer coisa que
-    /// você preferir: Service, BusinessService, Module, Facade, etc.
+    /// Aqui chamamos de serviço de negócio (BusinessService) mas pode ser qualquer coisa que
+    /// você preferir: BusinessModule, Service, Module, Facade, etc.
     /// </remarks>
-    public class DadosEntradaBusinessModule
+    public class DadosEntradaBusinessService
     {
-        private readonly LazyTuple<ProcessStringFeature, GenerateRandomPasswordFeature> _g;
+        private readonly LazyTuple<ProcessStringHandler, GenerateRandomPasswordHandler> _g;
 
-        public DadosEntradaBusinessModule(
-            LazyTuple<ProcessStringFeature, GenerateRandomPasswordFeature> tuple)
+        public DadosEntradaBusinessService(
+            LazyTuple<ProcessStringHandler, GenerateRandomPasswordHandler> tuple)
         {
             Checker.NotNullArgument(tuple, nameof(tuple));
 
@@ -163,14 +163,14 @@ namespace UsingBusiness
     /// Fachada para características de negócio que produzem resultado de saída
     /// </summary>
     /// <remarks>
-    /// Aqui chamamos de módulo de negócio (BusinessModule) mas pode ser qualquer coisa que
-    /// você preferir: Service, BusinessService, Module, Facade, etc.
+    /// Aqui chamamos de serviço de negócio (BusinessService) mas pode ser qualquer coisa que
+    /// você preferir: BusinessModule, Service, Module, Facade, etc.
     /// </remarks>
-    public class DadosSaidaBusinessModule
+    public class DadosSaidaBusinessService
     {
-        private readonly LazyTuple<GenerateRandomNumberFeature, ProcessStringFeature> _g;
+        private readonly LazyTuple<GenerateRandomNumberHandler, ProcessStringHandler> _g;
         
-        public DadosSaidaBusinessModule(LazyTuple<GenerateRandomNumberFeature, ProcessStringFeature> tuple)
+        public DadosSaidaBusinessService(LazyTuple<GenerateRandomNumberHandler, ProcessStringHandler> tuple)
         {
             Checker.NotNullArgument(tuple, nameof(tuple));
 
@@ -194,17 +194,17 @@ namespace UsingBusiness
     /// Fachada para todas as características de negócio
     /// </summary>
     /// <remarks>
-    /// Aqui chamamos de módulo de negócio (BusinessModule) mas pode ser qualquer coisa que
-    /// você preferir: Service, BusinessService, Module, Facade, etc.
+    /// Aqui chamamos de serviço de negócio (BusinessService) mas pode ser qualquer coisa que
+    /// você preferir: BusinessModule, Service, Module, Facade, etc.
     /// </remarks>
-    public class TudoJuntoBusinessModule
+    public class TudoJuntoBusinessService
     {
-        private readonly LazyTuple<GenerateRandomNumberFeature, GenerateRandomPasswordFeature,
-            ProcessStringFeature, ExecAllFeature> _g;
+        private readonly LazyTuple<GenerateRandomNumberHandler, GenerateRandomPasswordHandler,
+            ProcessStringHandler, ExecAllHandler> _g;
 
-        public TudoJuntoBusinessModule(
-            LazyTuple<GenerateRandomNumberFeature, GenerateRandomPasswordFeature,
-                ProcessStringFeature, ExecAllFeature> tuple)
+        public TudoJuntoBusinessService(
+            LazyTuple<GenerateRandomNumberHandler, GenerateRandomPasswordHandler,
+                ProcessStringHandler, ExecAllHandler> tuple)
         {
             Checker.NotNullArgument(tuple, nameof(tuple));
 
@@ -292,35 +292,35 @@ namespace UsingBusiness
 
     public class Program
     {
-        private readonly DadosEntradaBusinessModule _entradaModule;
-        private readonly DadosSaidaBusinessModule _saidaModule;
-        private readonly TudoJuntoBusinessModule _tudoModule;
+        private readonly DadosEntradaBusinessService _entradaService;
+        private readonly DadosSaidaBusinessService _saidaService;
+        private readonly TudoJuntoBusinessService _tudoService;
         private readonly NotificationManager<MyNotifyType> _notificator;
 
-        public Program(DadosEntradaBusinessModule entradaModule,
-            DadosSaidaBusinessModule saidaModule, TudoJuntoBusinessModule tudoModule,
+        public Program(DadosEntradaBusinessService entradaService,
+            DadosSaidaBusinessService saidaService, TudoJuntoBusinessService tudoService,
             NotificationManager<MyNotifyType> notificator)
         {
-            Checker.NotNullArgument(entradaModule, nameof(entradaModule));
-            Checker.NotNullArgument(saidaModule, nameof(saidaModule));
-            Checker.NotNullArgument(tudoModule, nameof(tudoModule));
+            Checker.NotNullArgument(entradaService, nameof(entradaService));
+            Checker.NotNullArgument(saidaService, nameof(saidaService));
+            Checker.NotNullArgument(tudoService, nameof(tudoService));
             Checker.NotNullArgument(notificator, nameof(notificator));
 
-            _entradaModule = entradaModule;
-            _saidaModule = saidaModule;
-            _tudoModule = tudoModule;
+            _entradaService = entradaService;
+            _saidaService = saidaService;
+            _tudoService = tudoService;
             _notificator = notificator;
         }
 
         private async Task Run()
         {
-            var senha = await _entradaModule.GenerateRandomPassword(("12345ABCabc", 12));
+            var senha = await _entradaService.GenerateRandomPassword(("12345ABCabc", 12));
             Console.WriteLine($"Senha aleatória gerada: {senha}");
 
-            var numero = await _saidaModule.GenerateRandomNumber();
+            var numero = await _saidaService.GenerateRandomNumber();
             Console.WriteLine($"Número aleatório gerado: {numero}");
 
-            await _tudoModule.ExecAll();
+            await _tudoService.ExecAll();
             
             // Notificando mensagens sem falha
             await _notificator.NotifyAsync(MyNotifyType.Type1, "Mensagem 1");
@@ -343,9 +343,9 @@ namespace UsingBusiness
             return services.AddInfrastructure(new ConfigurationBuilder().Build())
                 .AddBusiness()
                 .AddScoped<Program>()
-                .AddScoped<DadosEntradaBusinessModule>()
-                .AddScoped<DadosSaidaBusinessModule>()
-                .AddScoped<TudoJuntoBusinessModule>();
+                .AddScoped<DadosEntradaBusinessService>()
+                .AddScoped<DadosSaidaBusinessService>()
+                .AddScoped<TudoJuntoBusinessService>();
         }
     }
 }

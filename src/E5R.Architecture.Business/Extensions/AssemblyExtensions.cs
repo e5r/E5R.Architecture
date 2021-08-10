@@ -14,12 +14,12 @@ namespace E5R.Architecture.Business.Extensions
 {
     public static class AssemblyExtensions
     {
-        public static void AddAllBusinessFeatures(this Assembly assembly, IServiceCollection services)
+        public static void AddAllActionHandlers(this Assembly assembly, IServiceCollection services)
         {
             Checker.NotNullArgument(assembly, nameof(assembly));
             Checker.NotNullArgument(services, nameof(services));
 
-            var typeOfFeatureSignature = typeof(IBusinessFeatureSignature);
+            var typeOfFeatureSignature = typeof(IActionHandler);
 
             assembly.DefinedTypes
                 .Where(t => !t.IsAbstract && typeOfFeatureSignature.IsAssignableFrom(t))
