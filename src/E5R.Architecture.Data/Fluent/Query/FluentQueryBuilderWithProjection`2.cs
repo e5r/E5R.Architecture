@@ -16,7 +16,7 @@ namespace E5R.Architecture.Data.Fluent.Query
         private readonly DataProjection<TDataModel, TSelect> _projection;
 
         internal FluentQueryBuilderWithProjection(IStorageReader<TDataModel> storage,
-            DataFilter<TDataModel> filter,
+            ExpressionDataFilter<TDataModel> filter,
             DataLimiter<TDataModel> limiter,
             DataIncludes<TDataModel> includes,
             Expression<Func<TDataModel, TSelect>> select)

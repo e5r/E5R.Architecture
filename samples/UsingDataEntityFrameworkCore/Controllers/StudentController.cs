@@ -120,7 +120,7 @@ namespace UsingDataEntityFrameworkCore.Controllers
                     f.FirstMidName.ToLower().Contains(searchString.ToLower()) ||
                     f.LastName.ToLower().Contains(searchString.ToLower());
 
-                var filter = new DataFilter<Student>()
+                var filter = new ExpressionDataFilter<Student>()
                     .AddFilter(filterExpression);
 
                 // Todos com mesmo segundo nome

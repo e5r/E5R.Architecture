@@ -11,13 +11,13 @@ namespace E5R.Architecture.Data.Fluent.Query
         where TDataModel : IIdentifiable
     {
         internal readonly IStorageReader<TDataModel> _storage;
-        internal readonly DataFilter<TDataModel> _filter;
+        internal readonly ExpressionDataFilter<TDataModel> _filter;
         internal readonly DataLimiter<TDataModel> _limiter;
         internal readonly DataIncludes<TDataModel> _includes;
 
         internal FluentQueryBuilderElements(
             IStorageReader<TDataModel> storage,
-            DataFilter<TDataModel> filter,
+            ExpressionDataFilter<TDataModel> filter,
             DataLimiter<TDataModel> limiter,
             DataIncludes<TDataModel> includes)
         {

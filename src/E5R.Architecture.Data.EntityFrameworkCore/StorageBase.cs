@@ -40,7 +40,7 @@ namespace E5R.Architecture.Data.EntityFrameworkCore
                 throw new InvalidOperationException($"Number of primary keys configured in {typeof(TDataModel)} different than expected.");
             }
 
-            var filter = new DataFilter<TDataModel>();
+            var filter = new ExpressionDataFilter<TDataModel>();
             var param = Expression.Parameter(typeof(TDataModel), "e");
             Expression<Func<TDataModel, bool>> filterExpression = null;
 
@@ -83,9 +83,9 @@ namespace E5R.Architecture.Data.EntityFrameworkCore
             Checker.NotNullArgument(origin, nameof(origin));
             Checker.NotNullArgument(filter, nameof(filter));
 
-            var filterList = filter.GetFilter();
+            var filterList = filter.GetExpressionFilter();
 
-            Checker.NotNullObject(filterList, $"filter.{nameof(filter.GetFilter)}()");
+            Checker.NotNullObject(filterList, $"filter.{nameof(filter.GetExpressionFilter)}()");
 
             var query = filterList.Aggregate(origin, (q, w) => q.Where(w));
 
