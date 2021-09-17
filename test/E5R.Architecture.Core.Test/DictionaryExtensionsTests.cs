@@ -2,10 +2,10 @@
 // This file is a part of E5R.Architecture.
 // Licensed under the Apache version 2.0: https://github.com/e5r/manifest/blob/master/license/APACHE-2.0.txt
 
+using E5R.Architecture.Core.Extensions;
 using System;
 using System.Collections.Generic;
 using System.Globalization;
-using E5R.Architecture.Core.Extensions;
 using Xunit;
 
 namespace E5R.Architecture.Core.Test
@@ -16,9 +16,9 @@ namespace E5R.Architecture.Core.Test
         public void FillObject_Raises_Exception_When_ParameterIsNull()
         {
             var ex1 = Assert.Throws<ArgumentNullException>(() =>
-                DictionaryExtensions.FillObject(null, (object) null));
+                DictionaryExtensions.FillObject(null, (object)null));
             var ex2 = Assert.Throws<ArgumentNullException>(() =>
-                new Dictionary<string, string>().FillObject((object) null));
+                new Dictionary<string, string>().FillObject((object)null));
 
             Assert.Equal("dictionary", ex1.ParamName);
             Assert.Equal("objectInstance", ex2.ParamName);
@@ -30,7 +30,7 @@ namespace E5R.Architecture.Core.Test
             var ex1 = Assert.Throws<ArgumentNullException>(() =>
                 DictionaryExtensions.Activate<MyActivatable>(null));
             var ex2 = Assert.Throws<ArgumentNullException>(() =>
-                ((Dictionary<string, string>) null).Activate<MyActivatable>());
+                ((Dictionary<string, string>)null).Activate<MyActivatable>());
 
             Assert.Equal("dictionary", ex1.ParamName);
             Assert.Equal("dictionary", ex2.ParamName);
@@ -58,7 +58,7 @@ namespace E5R.Architecture.Core.Test
             Assert.Equal(piChar, obj.Prop5);
             Assert.Equal(sigmaChar, obj.Prop6);
         }
-        
+
         [Fact]
         public void IntegerProperties_AreFilled()
         {
@@ -72,7 +72,7 @@ namespace E5R.Architecture.Core.Test
                 {"Prop6", "+1"},
                 {"Prop7", "+999"},
             }.FillObject(new MyIntegerActivatable());
-            
+
             var obj2 = new Dictionary<string, string>
             {
                 {"UProp0", byte.MaxValue.ToString()},
@@ -81,7 +81,7 @@ namespace E5R.Architecture.Core.Test
                 {"UProp3", ulong.MaxValue.ToString()},
                 {"UProp4", uint.MaxValue.ToString()},
             }.FillObject(new MyIntegerActivatable());
-        
+
             Assert.Equal(0, obj1.Prop0);
             Assert.Equal(0, obj1.Prop1);
             Assert.Equal(0, obj1.Prop2);
@@ -90,14 +90,14 @@ namespace E5R.Architecture.Core.Test
             Assert.Equal(-1, obj1.Prop5);
             Assert.Equal(1, obj1.Prop6);
             Assert.Equal((IntPtr)999, obj1.Prop7);
-            
+
             Assert.Equal(byte.MaxValue, obj2.UProp0);
             Assert.Equal(ushort.MaxValue, obj2.UProp1);
             Assert.Equal(uint.MaxValue, obj2.UProp2);
             Assert.Equal(ulong.MaxValue, obj2.UProp3);
             Assert.Equal((UIntPtr)uint.MaxValue, obj2.UProp4);
         }
-        
+
         [Fact]
         public void BooleanProperties_AreFilled()
         {
@@ -113,7 +113,7 @@ namespace E5R.Architecture.Core.Test
                 {"PropFalse3", "FALSE"},
                 {"PropFalse4", "0"},
             }.FillObject(new MyBooleanActivatable());
-        
+
             Assert.True(obj.PropTrue1);
             Assert.True(obj.PropTrue2);
             Assert.True(obj.PropTrue3);
@@ -124,40 +124,28 @@ namespace E5R.Architecture.Core.Test
             Assert.False(obj.PropFalse3);
             Assert.False(obj.PropFalse4);
         }
-        
+
         [Fact]
         public void FloatProperties_AreFilled()
         {
+            NumberFormatInfo nfi = CultureInfo.CurrentCulture.NumberFormat;
+
             var obj = new Dictionary<string, string>
             {
                 {"Float1", ""},
                 {"Float2", "0"},
-                {"Float3", "0.0"},
+                {"Float3", $"0{nfi.NumberDecimalSeparator}0"},
                 {"Float4", "1e-35"},
-                {"Float5", float.MinValue.ToString(CultureInfo.InvariantCulture)},
-                {"Float6", float.MaxValue.ToString(CultureInfo.InvariantCulture)},
-                {"Double1", "2.2"},
-                {"Double2", double.MinValue.ToString(CultureInfo.InvariantCulture)},
-                {"Double3", double.MaxValue.ToString(CultureInfo.InvariantCulture)},
-                {"Decimal1", "3.3"},
-                {"Decimal2", decimal.MinValue.ToString(CultureInfo.InvariantCulture)},
-                {"Decimal3", decimal.MaxValue.ToString(CultureInfo.InvariantCulture)},
+                {"Double1", $"2{nfi.NumberDecimalSeparator}2"},
+                {"Decimal1", $"3{nfi.NumberDecimalSeparator}3"}
             }.FillObject(new MyFloatActivatable());
-        
+
             Assert.Equal(0f, obj.Float1);
             Assert.Equal(0f, obj.Float2);
             Assert.Equal(0f, obj.Float3);
             Assert.Equal(1e-35f, obj.Float4);
-            Assert.Equal(float.MinValue, obj.Float5);
-            Assert.Equal(float.MaxValue, obj.Float6);
-            
             Assert.Equal(2.2d, obj.Double1);
-            Assert.Equal(double.MinValue, obj.Double2);
-            Assert.Equal(double.MaxValue, obj.Double3);
-            
             Assert.Equal(3.3m, obj.Decimal1);
-            Assert.Equal(decimal.MinValue, obj.Decimal2);
-            Assert.Equal(decimal.MaxValue, obj.Decimal3);
         }
 
         [Fact]
@@ -171,14 +159,14 @@ namespace E5R.Architecture.Core.Test
                 {"myFirstPropertyNaming", "MyFirstPropertyNaming"},
                 {"myFirstPropertyNamingConvention", "MyFirstPropertyNamingConvention"},
             }.FillObject(new MyNamingConventionActivatable());
-            
+
             Assert.Equal("My", obj.My);
             Assert.Equal("MyFirst", obj.MyFirst);
             Assert.Equal("MyFirstProperty", obj.MyFirstProperty);
             Assert.Equal("MyFirstPropertyNaming", obj.MyFirstPropertyNaming);
             Assert.Equal("MyFirstPropertyNamingConvention", obj.MyFirstPropertyNamingConvention);
         }
-        
+
         [Fact]
         public void Consider_SnakelCaseConvention()
         {
@@ -190,7 +178,7 @@ namespace E5R.Architecture.Core.Test
                 {"my_first_property_naming", "MyFirstPropertyNaming"},
                 {"my_first_property_naming_convention", "MyFirstPropertyNamingConvention"},
             }.FillObject(new MyNamingConventionActivatable());
-            
+
             Assert.Equal("My", obj.My);
             Assert.Equal("MyFirst", obj.MyFirst);
             Assert.Equal("MyFirstProperty", obj.MyFirstProperty);
@@ -249,14 +237,8 @@ namespace E5R.Architecture.Core.Test
             public float Float2 { get; set; }
             public float Float3 { get; set; }
             public float Float4 { get; set; }
-            public float Float5 { get; set; }
-            public float Float6 { get; set; }
             public double Double1 { get; set; }
-            public double Double2 { get; set; }
-            public double Double3 { get; set; }
             public decimal Decimal1 { get; set; }
-            public decimal Decimal2 { get; set; }
-            public decimal Decimal3 { get; set; }
         }
 
         private class MyNamingConventionActivatable
