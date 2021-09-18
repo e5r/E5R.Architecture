@@ -2,11 +2,12 @@
 // This file is a part of E5R.Architecture.
 // Licensed under the Apache version 2.0: https://github.com/e5r/manifest/blob/master/license/APACHE-2.0.txt
 
+using E5R.Architecture.Core;
+using E5R.Architecture.Core.Exceptions;
+using E5R.Architecture.Data.Abstractions;
 using System;
 using System.Collections.Generic;
 using System.Linq.Expressions;
-using E5R.Architecture.Core;
-using E5R.Architecture.Data.Abstractions;
 
 namespace E5R.Architecture.Data
 {
@@ -32,5 +33,16 @@ namespace E5R.Architecture.Data
         /// </summary>
         /// <returns>List of reducer expression</returns>
         public IEnumerable<Expression<Func<TDataModel, bool>>> GetExpressionFilter() => _filters;
+
+        /// <summary>
+        /// Get a filter object
+        /// </summary>
+        /// <typeparam name="TObject">Filter type</typeparam>
+        /// <returns>An object with filter data</returns>
+        public TObject GetObjectFilter<TObject>() where TObject : class
+        {
+            // TODO: Implementar i18n/l10n
+            throw new DataLayerException("Object filter not supported");
+        }
     }
 }

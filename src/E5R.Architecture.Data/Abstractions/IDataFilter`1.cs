@@ -10,7 +10,7 @@ using E5R.Architecture.Core;
 namespace E5R.Architecture.Data.Abstractions
 {
     /// <summary>
-    /// Data filter (Where) for data model with identifier
+    /// Data filter for storage items
     /// </summary>
     /// <typeparam name="TDataModel">Model type</typeparam>
     public interface IDataFilter<TDataModel>
@@ -21,5 +21,12 @@ namespace E5R.Architecture.Data.Abstractions
         /// </summary>
         /// <returns>List of reducer expression</returns>
         IEnumerable<Expression<Func<TDataModel, bool>>> GetExpressionFilter();
+
+        /// <summary>
+        /// Get a filter object
+        /// </summary>
+        /// <typeparam name="TObject">Filter type</typeparam>
+        /// <returns>An object with filter data</returns>
+        TObject GetObjectFilter<TObject>() where TObject : class;
     }
 }
