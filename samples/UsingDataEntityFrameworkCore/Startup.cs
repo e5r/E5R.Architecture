@@ -10,6 +10,8 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using UsingDataEntityFrameworkCore.Data;
+using UsingDataEntityFrameworkCore.Data.Repositories;
+using UsingDataEntityFrameworkCore.Models;
 
 namespace UsingDataEntityFrameworkCore
 {
@@ -55,6 +57,9 @@ namespace UsingDataEntityFrameworkCore
 
             services.AddStoragePropertyStrategy();
             services.AddInfrastructure(Configuration);
+
+            // Repositório personalizado
+            services.AddScoped<ICountableStorage<Student>, CountableStorageStudent>();
 
             // Strategy.TransactionScope
             //services.AddDbContext<SchoolContext>((serviceProvider, options) =>

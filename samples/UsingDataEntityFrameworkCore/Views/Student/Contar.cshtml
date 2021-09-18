@@ -1,7 +1,12 @@
-﻿@model Int32
+@model (Int32, Int32)
 
 @{ ViewData["Title"] = "Contar"; }
 
 <h2>Contar</h2>
 
-Total de estudantes: <strong>@Model</strong>
+<div>
+    Total de estudantes: <strong>@Model.Item1</strong>
+</div>
+<div>
+    Total de estudantes filtrados: <strong>@Model.Item2</strong>
+</div>
