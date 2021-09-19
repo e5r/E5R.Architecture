@@ -1,4 +1,4 @@
-﻿// Copyright (c) E5R Development Team. All rights reserved.
+// Copyright (c) E5R Development Team. All rights reserved.
 // This file is a part of E5R.Architecture.
 // Licensed under the Apache version 2.0: https://github.com/e5r/manifest/blob/master/license/APACHE-2.0.txt
 
@@ -10,7 +10,7 @@ using E5R.Architecture.Core;
 namespace E5R.Architecture.Data.Abstractions
 {
     /// <summary>
-    /// Data filter (Where) for data model with identifier
+    /// Data filter for storage items
     /// </summary>
     /// <typeparam name="TDataModel">Model type</typeparam>
     public interface IDataFilter<TDataModel>
@@ -20,6 +20,13 @@ namespace E5R.Architecture.Data.Abstractions
         /// Get a filter expression (Where)
         /// </summary>
         /// <returns>List of reducer expression</returns>
-        IEnumerable<Expression<Func<TDataModel, bool>>> GetFilter();
+        IEnumerable<Expression<Func<TDataModel, bool>>> GetExpressionFilter();
+
+        /// <summary>
+        /// Get a filter object
+        /// </summary>
+        /// <typeparam name="TObject">Filter type</typeparam>
+        /// <returns>An object with filter data</returns>
+        TObject GetObjectFilter<TObject>() where TObject : class;
     }
 }

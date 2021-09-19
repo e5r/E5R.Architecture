@@ -1,8 +1,5 @@
-using System;
-using System.Data.Common;
-using System.Linq;
-using System.Linq.Expressions;
-using System.Threading.Tasks;
+using E5R.Architecture.Core;
+using E5R.Architecture.Data;
 using E5R.Architecture.Data.Abstractions;
 using E5R.Architecture.Data.Abstractions.Alias;
 using E5R.Architecture.Data.EntityFrameworkCore.Alias;
@@ -10,10 +7,14 @@ using E5R.Architecture.Infrastructure;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Logging;
+using System;
+using System.Data.Common;
+using System.Linq;
+using System.Linq.Expressions;
+using System.Threading.Tasks;
 using UsingDataEntityFrameworkCore.Data;
+using UsingDataEntityFrameworkCore.Data.Filter;
 using UsingDataEntityFrameworkCore.Models;
-using E5R.Architecture.Core;
-using E5R.Architecture.Data;
 
 namespace UsingDataEntityFrameworkCore.Controllers
 {
@@ -78,8 +79,8 @@ namespace UsingDataEntityFrameworkCore.Controllers
         public async Task<IActionResult> Index()
         {
             _creatableStorage.Value.Create(new Log
-                {Date = DateTime.Now, Message = "Entrou em Student/Index"});
-            
+            { Date = DateTime.Now, Message = "Entrou em Student/Index" });
+
             var students = await _context.Students
                 .ToListAsync();
 
@@ -93,8 +94,8 @@ namespace UsingDataEntityFrameworkCore.Controllers
         public IActionResult Search(string searchString, string button, uint? page)
         {
             _creatableStorage.Value.Create(new Log
-                {Date = DateTime.Now, Message = "Entrou em Student/Search"});
-            
+            { Date = DateTime.Now, Message = "Entrou em Student/Search" });
+
             uint pageOffset = Convert.ToUInt32(page.HasValue ? page.Value - 1 : 0);
 
             var query = _readerStore.AsFluentQuery()
@@ -120,7 +121,7 @@ namespace UsingDataEntityFrameworkCore.Controllers
                     f.FirstMidName.ToLower().Contains(searchString.ToLower()) ||
                     f.LastName.ToLower().Contains(searchString.ToLower());
 
-                var filter = new DataFilter<Student>()
+                var filter = new ExpressionDataFilter<Student>()
                     .AddFilter(filterExpression);
 
                 // Todos com mesmo segundo nome
@@ -176,8 +177,8 @@ namespace UsingDataEntityFrameworkCore.Controllers
         public async Task<IActionResult> Details(int? id)
         {
             _creatableStorage.Value.Create(new Log
-                {Date = DateTime.Now, Message = "Entrou em Student/Details"});
-            
+            { Date = DateTime.Now, Message = "Entrou em Student/Details" });
+
             if (id == null)
             {
                 return NotFound();
@@ -188,7 +189,7 @@ namespace UsingDataEntityFrameworkCore.Controllers
                     .ThenInclude(e => e.Course)
                 .AsNoTracking()
                 .FirstOrDefaultAsync(m => m.ID == id);
-            
+
             if (student == null)
             {
                 return NotFound();
@@ -200,8 +201,8 @@ namespace UsingDataEntityFrameworkCore.Controllers
         public IActionResult Details2(int? id)
         {
             _creatableStorage.Value.Create(new Log
-                {Date = DateTime.Now, Message = "Entrou em Student/Details2"});
-            
+            { Date = DateTime.Now, Message = "Entrou em Student/Details2" });
+
             if (id == null)
             {
                 return NotFound();
@@ -245,8 +246,8 @@ namespace UsingDataEntityFrameworkCore.Controllers
         public IActionResult Details3(int? id)
         {
             _creatableStorage.Value.Create(new Log
-                {Date = DateTime.Now, Message = "Entrou em Student/Details3"});
-            
+            { Date = DateTime.Now, Message = "Entrou em Student/Details3" });
+
             if (id == null)
             {
                 return NotFound();
@@ -291,7 +292,7 @@ namespace UsingDataEntityFrameworkCore.Controllers
                 var reload = _storeCourseTest.Find(courseTest.Identifiers);
                 _logger.LogDebug($"CourseTest {{ CourseID: {reload.CourseID}, CourseGUID: {reload.CourseGUID} }}");
             }
-            
+
             var allCoursesTests3 = _acquirableStorage.GetAll();
             var allCoursesTests4 = _acquirableStorage2.GetAll();
 
@@ -300,11 +301,19 @@ namespace UsingDataEntityFrameworkCore.Controllers
 
         public IActionResult Contar()
         {
-            var count = _countableStorage.CountAll();
+            var objectFilter = new StudentObjectFilter();
 
-            count = _countableStorage2.CountAll();
+            //objectFilter.ByID = 3;
 
-            return View(count);
+            //int byIdValue1 = objectFilter.ByID;
+            //var byIdValue2 = (int)objectFilter.ByID;
+
+            objectFilter.FirstMidNameContains = "Er";
+
+            var count1 = _countableStorage.CountAll();
+            var count2 = _countableStorage.Count(new ObjectDataFilter<Student>(objectFilter));
+
+            return View((count1, count2));
         }
     }
 }

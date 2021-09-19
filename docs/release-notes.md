@@ -7,6 +7,84 @@ Notas de Lançamento
 
 ## 0.10.0 (dev)
 
+### Novos recursos:
+
+* `IDataFilter<>` recebe um novo método na assinagura
+  - `GetObjectFilter<TObject>()` que deve retornar um objeto qualquer com dados a ser usados como filtro
+* Novo tipo de filtro `ObjectDataFilter` foi adicionado
+> Tanto `ObjectDataFilter` quanto `ExpressionDataFilter` implementam os métodos de `IDataFilter`, porém:
+>> `ObjectDataFilter` levanta uma exceção ao chamar `GetExpressionFilter()`
+>> `ExpressionDataFilter` levanta uma exceção ao chamar `GetObjectFilter()`
+* Novo tipo abstrato `IdentifiableExpressionMaker` 
+  - Para auxiliar na conversão de um objeto de filtro em expressões que podem ser usadas no LINQ
+* Novo tipo `AttributableValue` para valores _atribuíveis_
+  - Também temos um utilitário `AttributableValueUtil` para uso do `Assigned` inclusive em valores nulos
+  - As vezes só o `Nullable<x>` ou `x?` não é o suficiente
+  - E `Nullable<Nullable<x>>` ou `x??` não é permitido ainda
+```c#
+public class Pessoa
+{
+    public string Nome {get; set; }
+    public int? Idade { get; set; }
+}
+
+public class PessoaFiltro
+{
+    public string PorNome {get; set; }
+    public int? PorIdade { get; set; }
+}
+```
+> As duas classes para simular que você tem um objeto e deseja fazer um
+> filtro no banco de dados por esse objeto. Vamos focar apenas no campo `Idade`.
+>> Como filtrar por uma idade específica?
+>> Simples: Se o campo `PorIdade` tiver um valor (`PorIdade.HasValue`) aplicamos o filtro, em outro caso não.
+
+> Mas veja que a propriedade `Idade` é opcional no banco de dados,
+> isso quer dizer que também podemos ter campos sem idade informada.
+>> Como filtrar por itens que não tem idade informada?
+>> Não é mais simples: Usamos a opção `PorIdade.HasValue` para saber se
+>> devemos ou não aplicar o filtro.
+
+> Ou usamos o novo tipo `AttributableValue`
+```c#
+public class PessoaFiltro
+{
+    public string PorNome {get; set; }
+    public AttributableValue<int?> PorIdade { get; set; }
+}
+```
+> Agora podemos conferir em se o valor está atribuído `PorIdade.Assigned`
+> em em seguida então usar o valor interno, que por sua vez é um `Nullable<x>`. Agora temos uma simulação de `Nullable<Nullable<X>>`
+> já que não podemosazer isso diretamente na linguagem. Seria o mesmo
+> que `X??`.
+* Novos métodos de extensão para uso de `Task` em contextos síncronos
+```c#
+class MinhaClasse
+{
+    // Opção 1: Já conhecida e continua igual
+    void MeuMetodoSincronoSemResultado()
+    {
+        ChamandoMetodoAssincrono().Wait();
+    }
+
+    // Opção1: Agora com métodos que retornam resultado
+    int MeuMetodoSincronoComResultado()
+    {
+        Task t = ChamandoMetodoAssincrono();
+
+        t.Wait();
+
+        return t.Result;
+    }
+
+    // Opção 2: Com nova extensão
+    int MeuMetodoSincronoComResultado()
+    {
+        return ChamandoMetodoAssincrono().WaitResult();
+    }
+}
+```
+
 ### Breaking changes:
 
 * `BusinessFeature` e seus derivados foram renomeados para `ActionHandler`
@@ -15,6 +93,8 @@ Notas de Lançamento
   - Foi adicionado a tupla com único item
 * O registro no assembly `AddAllLazyGroups()` não registra mais classes que herdam de `LazyGroup<>` (que agora se chama `LazyTuple<>`)
   - Ao invés disso registra diretamente `LazyTuple<>`
+* DataFilter<> foi renomeado para ExpressionDataFilter<>
+  - O método GetFilter() foi renomeado para GetExpressionFilter()
 
 ## 0.9.0
 

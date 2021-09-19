@@ -14,11 +14,11 @@ namespace E5R.Architecture.Data.Fluent.Writer
         where TDataModel : IIdentifiable
     {
         public FluentBulkWriterBuilder(IStorageBulkWriter<TDataModel> storage) : base(storage,
-            new DataFilter<TDataModel>())
+            new ExpressionDataFilter<TDataModel>())
         { }
 
         internal FluentBulkWriterBuilder(IStorageBulkWriter<TDataModel> storage,
-            DataFilter<TDataModel> filter) : base(storage, filter)
+            ExpressionDataFilter<TDataModel> filter) : base(storage, filter)
         { }
 
         #region Makers
