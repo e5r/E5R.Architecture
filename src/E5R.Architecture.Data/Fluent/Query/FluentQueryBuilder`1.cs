@@ -15,14 +15,14 @@ namespace E5R.Architecture.Data.Fluent.Query
     {
         public FluentQueryBuilder(IStorageReader<TDataModel> storage)
             : base(storage,
-                  new DataFilter<TDataModel>(),
+                  new ExpressionDataFilter<TDataModel>(),
                   new DataLimiter<TDataModel>(),
                   new DataIncludes<TDataModel>())
         { }
 
         internal FluentQueryBuilder(
             IStorageReader<TDataModel> storage,
-            DataFilter<TDataModel> filter,
+            ExpressionDataFilter<TDataModel> filter,
             DataLimiter<TDataModel> limiter,
             DataIncludes<TDataModel> includes)
             : base(storage, filter, limiter, includes)

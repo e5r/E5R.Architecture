@@ -16,7 +16,7 @@ namespace E5R.Architecture.Data.Fluent
         where TRootDataModel : IIdentifiable
     {
         internal ProjectionInnerBuilder(IStorageReader<TRootDataModel> storage,
-            DataFilter<TRootDataModel> filter,
+            ExpressionDataFilter<TRootDataModel> filter,
             DataLimiter<TRootDataModel> limiter,
             DataIncludes<TRootDataModel> includes)
             : base(storage, filter, limiter, includes)

@@ -14,7 +14,7 @@ namespace E5R.Architecture.Data.Fluent.Writer
         where TDataModel : IIdentifiable
     {
         internal FluentBulkWriterBuilderWithFilter(IStorageBulkWriter<TDataModel> storage,
-            DataFilter<TDataModel> filter) : base(storage, filter)
+            ExpressionDataFilter<TDataModel> filter) : base(storage, filter)
         { }
 
         public FluentBulkWriterBuilderWithFilter<TDataModel> Filter(

@@ -11,11 +11,11 @@ namespace E5R.Architecture.Data.Fluent.Writer
         where TDataModel : IIdentifiable
     {
         internal readonly IStorageBulkWriter<TDataModel> _storage;
-        internal readonly DataFilter<TDataModel> _filter;
+        internal readonly ExpressionDataFilter<TDataModel> _filter;
 
         internal FluentBulkWriterBuilderElements(
             IStorageBulkWriter<TDataModel> storage,
-            DataFilter<TDataModel> filter)
+            ExpressionDataFilter<TDataModel> filter)
         {
             Checker.NotNullArgument(storage, nameof(storage));
             Checker.NotNullArgument(filter, nameof(filter));
