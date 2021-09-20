@@ -98,20 +98,9 @@ namespace E5R.Architecture.Data.EntityFrameworkCore
 
         #region IStorageReader for TSelect
 
-        public TSelect Find<TSelect>(TDataModel data,
-            IDataProjection<TDataModel, TSelect> projection)
-        {
-            Checker.NotNullArgument(data, nameof(data));
-
-            return Find(data.Identifiers, projection);
-        }
-
-        public TSelect Find<TSelect>(object identifier,
-            IDataProjection<TDataModel, TSelect> projection)
-            => Find(new object[] { identifier }, projection);
 
         public TSelect Find<TSelect>(object[] identifiers,
-            IDataProjection<TDataModel, TSelect> projection)
+              IDataProjection<TDataModel, TSelect> projection)
         {
             Checker.NotNullArgument(identifiers, nameof(identifiers));
             Checker.NotNullArgument(projection, nameof(projection));

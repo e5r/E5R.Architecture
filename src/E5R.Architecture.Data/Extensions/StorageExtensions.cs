@@ -14,7 +14,6 @@ namespace E5R.Architecture.Data.Abstractions
         /// <summary>
         /// Create fluent API object for query
         /// </summary>
-        /// <typeparam name="TDataModel">Data type</typeparam>
         /// <param name="storage">Storage object</param>
         /// <returns>Instance of <see cref="FluentQueryBuilder{TDataModel}"/></returns>
         public static FluentQueryBuilder<TDataModel> AsFluentQuery<TDataModel>(
@@ -27,7 +26,6 @@ namespace E5R.Architecture.Data.Abstractions
         /// <summary>
         /// Create fluent API object for writing
         /// </summary>
-        /// <typeparam name="TDataModel">Data type</typeparam>
         /// <param name="storage">Storage object</param>
         /// <returns>Instance of <see cref="FluentWriterBuilder{TDataModel}"/></returns>
         public static FluentWriterBuilder<TDataModel> AsFluentWriter<TDataModel>(
@@ -40,7 +38,6 @@ namespace E5R.Architecture.Data.Abstractions
         /// <summary>
         /// Create fluent API object for bulk writing
         /// </summary>
-        /// <typeparam name="TDataModel">Data type</typeparam>
         /// <param name="storage">Storage object</param>
         /// <returns>Instance of <see cref="FluentBulkWriterBuilder{TDataModel}"/></returns>
         public static FluentBulkWriterBuilder<TDataModel> AsFluentBulkWriter<TDataModel>(
@@ -82,11 +79,10 @@ namespace E5R.Architecture.Data.Abstractions
         }
         #endregion
 
-        #region IFindableStorage
+        #region IFindableStorage, IFindableStorageWithSelector
         /// <summary>
-        /// Find an item stored by identifiers
+        /// Find an item stored by a data instance
         /// </summary>
-        /// <typeparam name="TDataModel">Data type</typeparam>
         /// <param name="storage">Storage object</param>
         /// <param name="data">Data item</param>
         /// <param name="includes">Linked data to include</param>
@@ -103,7 +99,6 @@ namespace E5R.Architecture.Data.Abstractions
         /// <summary>
         /// Find an item stored by identifier
         /// </summary>
-        /// <typeparam name="TDataModel">Data type</typeparam>
         /// <param name="storage">Storage object</param>
         /// <param name="identifier">Item identifier</param>
         /// <param name="includes">Linked data to include</param>
@@ -115,6 +110,40 @@ namespace E5R.Architecture.Data.Abstractions
             Checker.NotNullArgument(identifier, nameof(identifier));
 
             return storage.Find(new object[] { identifier }, includes);
+        }
+
+        /// <summary>
+        /// Find an item stored by a data instance
+        /// </summary>
+        /// <param name="storage">Storage object</param>
+        /// <param name="data">Data item</param>
+        /// <param name="projection">Data projection</param>
+        /// <returns>Instance of <typeparamref name="TSelect"/>, or null when not found</returns>
+        public static TSelect Find<TDataModel, TSelect>(this IFindableStorageWithSelector<TDataModel> storage, TDataModel data, IDataProjection<TDataModel, TSelect> projection)
+            where TDataModel : IIdentifiable
+        {
+            Checker.NotNullArgument(storage, nameof(storage));
+            Checker.NotNullArgument(data, nameof(data));
+            Checker.NotNullArgument(projection, nameof(projection));
+
+            return storage.Find(data.Identifiers, projection);
+        }
+
+        /// <summary>
+        /// Find an item stored by identifier
+        /// </summary>
+        /// <param name="storage">Storage object</param>
+        /// <param name="identifier">Item identifier</param>
+        /// <param name="projection">Data projection</param>
+        /// <returns>Instance of <typeparamref name="TSelect"/>, or null when not found</returns>
+        public static TSelect Find<TDataModel, TSelect>(this IFindableStorageWithSelector<TDataModel> storage, object identifier, IDataProjection<TDataModel, TSelect> projection)
+            where TDataModel : IIdentifiable
+        {
+            Checker.NotNullArgument(storage, nameof(storage));
+            Checker.NotNullArgument(identifier, nameof(identifier));
+            Checker.NotNullArgument(projection, nameof(projection));
+
+            return storage.Find(new object[] { identifier }, projection);
         }
         #endregion
     }
