@@ -310,23 +310,6 @@ namespace E5R.Architecture.Data.EntityFrameworkCore
             Context.Entry(targetData).State = EntityState.Detached;
         }
 
-        public TDataModel Update<TUpdated>(object identifier, TUpdated updated)
-        {
-            Checker.NotNullArgument(identifier, nameof(identifier));
-            Checker.NotNullArgument(updated, nameof(updated));
-
-            return Update<TUpdated>(new[] { identifier }, _ => updated);
-        }
-
-        public TDataModel Update<TUpdated>(object identifier,
-            Expression<Func<TDataModel, TUpdated>> updateExpression)
-        {
-            Checker.NotNullArgument(identifier, nameof(identifier));
-            Checker.NotNullArgument(updateExpression, nameof(updateExpression));
-
-            return Update(new[] { identifier }, updateExpression);
-        }
-
         public TDataModel Update<TUpdated>(object[] identifiers, TUpdated updated)
         {
             Checker.NotNullArgument(identifiers, nameof(identifiers));

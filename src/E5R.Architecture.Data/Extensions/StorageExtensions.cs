@@ -5,6 +5,8 @@
 using E5R.Architecture.Core;
 using E5R.Architecture.Data.Fluent.Query;
 using E5R.Architecture.Data.Fluent.Writer;
+using System;
+using System.Linq.Expressions;
 
 namespace E5R.Architecture.Data.Abstractions
 {
@@ -144,6 +146,44 @@ namespace E5R.Architecture.Data.Abstractions
             Checker.NotNullArgument(projection, nameof(projection));
 
             return storage.Find(new object[] { identifier }, projection);
+        }
+        #endregion
+
+        #region IUpdatableStorage
+        /// <summary>
+        /// Updates data from a stored object
+        /// </summary>
+        /// <param name="identifier">Object identifier</param>
+        /// <param name="updated">Updated object data</param>
+        /// <returns>Updated object instance</returns>
+        public static TDataModel Update<TDataModel, TUpdated>(this IUpdatableStorage<TDataModel> storage,
+            object identifier, TUpdated updated)
+            where TDataModel : IIdentifiable
+        {
+            Checker.NotNullArgument(storage, nameof(storage));
+            Checker.NotNullArgument(identifier, nameof(identifier));
+            Checker.NotNullArgument(updated, nameof(updated));
+
+            return storage.Update<TUpdated>(new[] { identifier }, _ => updated);
+        }
+
+        /// <summary>
+        /// Updates data from a stored object
+        /// </summary>
+        /// <param name="identifier">Object identifier</param>
+        /// <param name="updateExpression">Update expression</param>
+        /// <typeparam name="TUpdated">Type for the updated data. Usually an anonymous type</typeparam>
+        /// <returns>Updated object instance</returns>
+        public static TDataModel Update<TDataModel, TUpdated>(this IUpdatableStorage<TDataModel> storage,
+            object identifier,
+            Expression<Func<TDataModel, TUpdated>> updateExpression)
+            where TDataModel : IIdentifiable
+        {
+            Checker.NotNullArgument(storage, nameof(storage));
+            Checker.NotNullArgument(identifier, nameof(identifier));
+            Checker.NotNullArgument(updateExpression, nameof(updateExpression));
+
+            return storage.Update(new[] { identifier }, updateExpression);
         }
         #endregion
     }
