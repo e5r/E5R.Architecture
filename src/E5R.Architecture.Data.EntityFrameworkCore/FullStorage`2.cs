@@ -32,7 +32,6 @@ namespace E5R.Architecture.Data.EntityFrameworkCore
         }
 
         #region IStorageReader for TDataModel
-
         public TDataModel Find(object[] identifiers, IDataIncludes includes)
         {
             Checker.NotNullArgument(identifiers, nameof(identifiers));
@@ -93,12 +92,9 @@ namespace E5R.Architecture.Data.EntityFrameworkCore
                 total
             );
         }
-
         #endregion
 
         #region IStorageReader for TSelect
-
-
         public TSelect Find<TSelect>(object[] identifiers,
               IDataProjection<TDataModel, TSelect> projection)
         {
@@ -175,11 +171,9 @@ namespace E5R.Architecture.Data.EntityFrameworkCore
                 total
             );
         }
-
         #endregion
 
         #region IStorageReader for TGroup
-
         public IEnumerable<TSelect> GetAll<TGroup, TSelect>(
             IDataProjection<TDataModel, TGroup, TSelect> projection)
         {
@@ -256,11 +250,9 @@ namespace E5R.Architecture.Data.EntityFrameworkCore
                 total
             );
         }
-
         #endregion
 
         #region IStorageWriter
-
         public TDataModel Create(TDataModel data)
         {
             Checker.NotNullArgument(data, nameof(data));
@@ -345,11 +337,9 @@ namespace E5R.Architecture.Data.EntityFrameworkCore
 
             return targetData;
         }
-
         #endregion
 
         #region IBulkStorageWriter
-
         public IEnumerable<TDataModel> BulkCreate(IEnumerable<TDataModel> data)
         {
             Checker.NotNullArgument(data, nameof(data));
@@ -467,7 +457,6 @@ namespace E5R.Architecture.Data.EntityFrameworkCore
 
             return affectedObjects;
         }
-
         #endregion
     }
 }
