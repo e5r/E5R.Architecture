@@ -16,9 +16,22 @@ namespace E5R.Architecture.Data.Abstractions
     public interface ISearchableStorage<TDataModel> : IStorageSignature
         where TDataModel : IIdentifiable
     {
+        /// <summary>
+        /// Search for items stored according to filter entered
+        /// </summary>
+        /// <param name="filter">Data filter</param>
+        /// <param name="includes">Linked data to include</param>
+        /// <returns>List of <see cref="TDataModel"/></returns>
         IEnumerable<TDataModel> Search(IDataFilter<TDataModel> filter,
             IDataIncludes includes = null);
 
+        /// <summary>
+        /// Search for stored items in a limited way according to filter entered
+        /// </summary>
+        /// <param name="filter">Data filter</param>
+        /// <param name="limiter">Limitation data</param>
+        /// <param name="includes">Linked data to include</param>
+        /// <returns>Paged list of <see cref="TDataModel"/></returns>
         PaginatedResult<TDataModel> LimitedSearch(IDataFilter<TDataModel> filter,
             IDataLimiter<TDataModel> limiter, IDataIncludes includes = null);
     }
