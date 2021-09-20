@@ -2,14 +2,14 @@
 // This file is a part of E5R.Architecture.
 // Licensed under the Apache version 2.0: https://github.com/e5r/manifest/blob/master/license/APACHE-2.0.txt
 
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Linq.Expressions;
 using E5R.Architecture.Core;
 using E5R.Architecture.Core.Exceptions;
 using E5R.Architecture.Data.Abstractions;
 using Microsoft.EntityFrameworkCore;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Linq.Expressions;
 
 namespace E5R.Architecture.Data.EntityFrameworkCore
 {
@@ -32,16 +32,6 @@ namespace E5R.Architecture.Data.EntityFrameworkCore
         }
 
         #region IStorageReader for TDataModel
-
-        public TDataModel Find(TDataModel data, IDataIncludes includes)
-        {
-            Checker.NotNullArgument(data, nameof(data));
-
-            return Find(data.Identifiers, includes);
-        }
-
-        public TDataModel Find(object identifier, IDataIncludes includes)
-            => Find(new object[] {identifier}, includes);
 
         public TDataModel Find(object[] identifiers, IDataIncludes includes)
         {
@@ -118,7 +108,7 @@ namespace E5R.Architecture.Data.EntityFrameworkCore
 
         public TSelect Find<TSelect>(object identifier,
             IDataProjection<TDataModel, TSelect> projection)
-            => Find(new object[] {identifier}, projection);
+            => Find(new object[] { identifier }, projection);
 
         public TSelect Find<TSelect>(object[] identifiers,
             IDataProjection<TDataModel, TSelect> projection)
@@ -336,7 +326,7 @@ namespace E5R.Architecture.Data.EntityFrameworkCore
             Checker.NotNullArgument(identifier, nameof(identifier));
             Checker.NotNullArgument(updated, nameof(updated));
 
-            return Update<TUpdated>(new[] {identifier}, _ => updated);
+            return Update<TUpdated>(new[] { identifier }, _ => updated);
         }
 
         public TDataModel Update<TUpdated>(object identifier,
@@ -345,7 +335,7 @@ namespace E5R.Architecture.Data.EntityFrameworkCore
             Checker.NotNullArgument(identifier, nameof(identifier));
             Checker.NotNullArgument(updateExpression, nameof(updateExpression));
 
-            return Update(new[] {identifier}, updateExpression);
+            return Update(new[] { identifier }, updateExpression);
         }
 
         public TDataModel Update<TUpdated>(object[] identifiers, TUpdated updated)
