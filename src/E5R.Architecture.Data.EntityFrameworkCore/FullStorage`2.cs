@@ -312,21 +312,6 @@ namespace E5R.Architecture.Data.EntityFrameworkCore
             return data;
         }
 
-        public void Remove(object identifier)
-        {
-            Checker.NotNullArgument(identifier, nameof(identifier));
-
-            var targetData = Find(identifier, null);
-
-            if (targetData == null)
-            {
-                // TODO: Implementar i18n/l10n
-                throw new DataLayerException("Object to remove not found in storage");
-            }
-
-            Remove(targetData);
-        }
-
         public void Remove(object[] identifiers)
         {
             Checker.NotNullArgument(identifiers, nameof(identifiers));
@@ -339,20 +324,11 @@ namespace E5R.Architecture.Data.EntityFrameworkCore
                 throw new DataLayerException("Object to remove not found in storage");
             }
 
-            Remove(targetData);
-        }
-
-        public void Remove(TDataModel data)
-        {
-            Checker.NotNullArgument(data, nameof(data));
-
-            // TODO: Implementar validação
-
-            Context.Entry(data).State = EntityState.Deleted;
+            Context.Entry(targetData).State = EntityState.Deleted;
             Context.SaveChanges();
 
             // Desanexamos o objeto do contexto após manipulação
-            Context.Entry(data).State = EntityState.Detached;
+            Context.Entry(targetData).State = EntityState.Detached;
         }
 
         public TDataModel Update<TUpdated>(object identifier, TUpdated updated)
