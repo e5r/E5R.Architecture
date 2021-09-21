@@ -15,7 +15,17 @@ namespace E5R.Architecture.Data.Abstractions
     public interface ICountableStorage<TDataModel> : IStorageSignature
         where TDataModel : IIdentifiable
     {
+        /// <summary>
+        /// Count all stored records
+        /// </summary>
+        /// <returns>Total number of all records</returns>
         int CountAll();
+
+        /// <summary>
+        /// Count records stored according to the filter entered
+        /// </summary>
+        /// <param name="filter">Data filter</param>
+        /// <returns>Total number of records</returns>
         int Count(IDataFilter<TDataModel> filter);
     }
 }

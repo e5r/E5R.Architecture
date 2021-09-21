@@ -18,9 +18,20 @@ namespace E5R.Architecture.Data.Abstractions
     public interface IAcquirableStorageWithGrouping<TDataModel> : IStorageSignature
         where TDataModel : IIdentifiable
     {
+        /// <summary>
+        /// Get all stored items with grouping
+        /// </summary>
+        /// <param name="projection">Data projection (Include, Group and Select) for data model</param>
+        /// <returns>List of <see cref="IDataProjection{TDataModel, TGroup, TSelect}.Select"/></returns>
         IEnumerable<TSelect> GetAll<TGroup, TSelect>(
             IDataProjection<TDataModel, TGroup, TSelect> projection);
 
+        /// <summary>
+        /// Gets the stored items with grouping in a limited way
+        /// </summary>
+        /// <param name="limiter">Limitation data</param>
+        /// <param name="projection">Data projection (Include, Group and Select) for data model</param>
+        /// <returns>Paged list of <see cref="IDataProjection{TDataModel, TGroup, TSelect}.Select"/></returns>
         PaginatedResult<TSelect> LimitedGet<TGroup, TSelect>(IDataLimiter<TDataModel> limiter,
             IDataProjection<TDataModel, TGroup, TSelect> projection);
     }

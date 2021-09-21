@@ -95,6 +95,16 @@ class MinhaClasse
   - Ao invés disso registra diretamente `LazyTuple<>`
 * DataFilter<> foi renomeado para ExpressionDataFilter<>
   - O método GetFilter() foi renomeado para GetExpressionFilter()
+* Algumas interfaces do componente `E5R.Architecture.Data` foram simplificadas
+  - A interface `IRemovableStorage` agora só tem uma assinatura de método
+```C#
+void Remove(object[] identifiers);
+```
+  - A interface `IUpdatableStorage` agora só tem duas assinaturas de método
+```c#
+TDataModel Update<TUpdated>(object[] identifiers, TUpdated updated);
+TDataModel Update<TUpdated>(object[] identifiers, Expression<Func<TDataModel, TUpdated>> updateExpression);
+```
 
 ## 0.9.0
 

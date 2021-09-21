@@ -12,12 +12,15 @@ namespace E5R.Architecture.Data.Abstractions
     {
     }
 
-    // TODO: Find(object...) e Find(TDataModel...) para métodos de extensão sobre IStorageReader<> e deixar apenas Find(object[]...)
     public interface IFindableStorage<TDataModel> : IStorageSignature
         where TDataModel : IIdentifiable
     {
-        TDataModel Find(object identifier, IDataIncludes includes = null);
+        /// <summary>
+        /// Find an item stored by identifiers
+        /// </summary>
+        /// <param name="identifiers">Item identifiers</param>
+        /// <param name="includes">Linked data to include</param>
+        /// <returns>Instance of <see cref="TDataModel"/>, or null when not found</returns>
         TDataModel Find(object[] identifiers, IDataIncludes includes = null);
-        TDataModel Find(TDataModel data, IDataIncludes includes = null);
     }
 }

@@ -18,9 +18,22 @@ namespace E5R.Architecture.Data.Abstractions
     public interface ISearchableStorageWithGrouping<TDataModel> : IStorageSignature
         where TDataModel : IIdentifiable
     {
+        /// <summary>
+        /// Search for items stored according to filter entered
+        /// </summary>
+        /// <param name="filter">Data filter</param>
+        /// <param name="projection">Data projection (Include, Group and Select) for data model</param>
+        /// <returns>List of <see cref="IDataProjection{TDataModel, TGroup, TSelect}.Select"/></returns>
         IEnumerable<TSelect> Search<TGroup, TSelect>(IDataFilter<TDataModel> filter,
             IDataProjection<TDataModel, TGroup, TSelect> projection);
 
+        /// <summary>
+        /// Search for stored items in a limited way according to filter entered
+        /// </summary>
+        /// <param name="filter">Data filter</param>
+        /// <param name="limiter">Limitation data</param>
+        /// <param name="projection">Data projection (Include, Group and Select) for data model</param>
+        /// <returns>List of <see cref="IDataProjection{TDataModel, TGroup, TSelect}.Select"/></returns>
         PaginatedResult<TSelect> LimitedSearch<TGroup, TSelect>(IDataFilter<TDataModel> filter,
             IDataLimiter<TDataModel> limiter,
             IDataProjection<TDataModel, TGroup, TSelect> projection);

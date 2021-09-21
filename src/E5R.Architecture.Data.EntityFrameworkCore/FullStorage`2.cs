@@ -2,14 +2,14 @@
 // This file is a part of E5R.Architecture.
 // Licensed under the Apache version 2.0: https://github.com/e5r/manifest/blob/master/license/APACHE-2.0.txt
 
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Linq.Expressions;
 using E5R.Architecture.Core;
 using E5R.Architecture.Core.Exceptions;
 using E5R.Architecture.Data.Abstractions;
 using Microsoft.EntityFrameworkCore;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Linq.Expressions;
 
 namespace E5R.Architecture.Data.EntityFrameworkCore
 {
@@ -32,17 +32,6 @@ namespace E5R.Architecture.Data.EntityFrameworkCore
         }
 
         #region IStorageReader for TDataModel
-
-        public TDataModel Find(TDataModel data, IDataIncludes includes)
-        {
-            Checker.NotNullArgument(data, nameof(data));
-
-            return Find(data.Identifiers, includes);
-        }
-
-        public TDataModel Find(object identifier, IDataIncludes includes)
-            => Find(new object[] {identifier}, includes);
-
         public TDataModel Find(object[] identifiers, IDataIncludes includes)
         {
             Checker.NotNullArgument(identifiers, nameof(identifiers));
@@ -103,25 +92,11 @@ namespace E5R.Architecture.Data.EntityFrameworkCore
                 total
             );
         }
-
         #endregion
 
         #region IStorageReader for TSelect
-
-        public TSelect Find<TSelect>(TDataModel data,
-            IDataProjection<TDataModel, TSelect> projection)
-        {
-            Checker.NotNullArgument(data, nameof(data));
-
-            return Find(data.Identifiers, projection);
-        }
-
-        public TSelect Find<TSelect>(object identifier,
-            IDataProjection<TDataModel, TSelect> projection)
-            => Find(new object[] {identifier}, projection);
-
         public TSelect Find<TSelect>(object[] identifiers,
-            IDataProjection<TDataModel, TSelect> projection)
+              IDataProjection<TDataModel, TSelect> projection)
         {
             Checker.NotNullArgument(identifiers, nameof(identifiers));
             Checker.NotNullArgument(projection, nameof(projection));
@@ -196,11 +171,9 @@ namespace E5R.Architecture.Data.EntityFrameworkCore
                 total
             );
         }
-
         #endregion
 
         #region IStorageReader for TGroup
-
         public IEnumerable<TSelect> GetAll<TGroup, TSelect>(
             IDataProjection<TDataModel, TGroup, TSelect> projection)
         {
@@ -277,11 +250,9 @@ namespace E5R.Architecture.Data.EntityFrameworkCore
                 total
             );
         }
-
         #endregion
 
         #region IStorageWriter
-
         public TDataModel Create(TDataModel data)
         {
             Checker.NotNullArgument(data, nameof(data));
@@ -312,21 +283,6 @@ namespace E5R.Architecture.Data.EntityFrameworkCore
             return data;
         }
 
-        public void Remove(object identifier)
-        {
-            Checker.NotNullArgument(identifier, nameof(identifier));
-
-            var targetData = Find(identifier, null);
-
-            if (targetData == null)
-            {
-                // TODO: Implementar i18n/l10n
-                throw new DataLayerException("Object to remove not found in storage");
-            }
-
-            Remove(targetData);
-        }
-
         public void Remove(object[] identifiers)
         {
             Checker.NotNullArgument(identifiers, nameof(identifiers));
@@ -339,37 +295,11 @@ namespace E5R.Architecture.Data.EntityFrameworkCore
                 throw new DataLayerException("Object to remove not found in storage");
             }
 
-            Remove(targetData);
-        }
-
-        public void Remove(TDataModel data)
-        {
-            Checker.NotNullArgument(data, nameof(data));
-
-            // TODO: Implementar validação
-
-            Context.Entry(data).State = EntityState.Deleted;
+            Context.Entry(targetData).State = EntityState.Deleted;
             Context.SaveChanges();
 
             // Desanexamos o objeto do contexto após manipulação
-            Context.Entry(data).State = EntityState.Detached;
-        }
-
-        public TDataModel Update<TUpdated>(object identifier, TUpdated updated)
-        {
-            Checker.NotNullArgument(identifier, nameof(identifier));
-            Checker.NotNullArgument(updated, nameof(updated));
-
-            return Update<TUpdated>(new[] {identifier}, _ => updated);
-        }
-
-        public TDataModel Update<TUpdated>(object identifier,
-            Expression<Func<TDataModel, TUpdated>> updateExpression)
-        {
-            Checker.NotNullArgument(identifier, nameof(identifier));
-            Checker.NotNullArgument(updateExpression, nameof(updateExpression));
-
-            return Update(new[] {identifier}, updateExpression);
+            Context.Entry(targetData).State = EntityState.Detached;
         }
 
         public TDataModel Update<TUpdated>(object[] identifiers, TUpdated updated)
@@ -407,11 +337,9 @@ namespace E5R.Architecture.Data.EntityFrameworkCore
 
             return targetData;
         }
-
         #endregion
 
         #region IBulkStorageWriter
-
         public IEnumerable<TDataModel> BulkCreate(IEnumerable<TDataModel> data)
         {
             Checker.NotNullArgument(data, nameof(data));
@@ -529,7 +457,6 @@ namespace E5R.Architecture.Data.EntityFrameworkCore
 
             return affectedObjects;
         }
-
         #endregion
     }
 }

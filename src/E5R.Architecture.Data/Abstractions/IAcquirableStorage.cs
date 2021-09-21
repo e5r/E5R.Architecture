@@ -14,11 +14,26 @@ namespace E5R.Architecture.Data.Abstractions
     {
     }
 
+    /// <summary>
+    /// Storage of acquirable items
+    /// </summary>
+    /// <typeparam name="TDataModel">Type of stored data</typeparam>
     public interface IAcquirableStorage<TDataModel> : IStorageSignature
         where TDataModel : IIdentifiable
     {
+        /// <summary>
+        /// Get all stored items
+        /// </summary>
+        /// <param name="includes">Linked data to include</param>
+        /// <returns>List of <see cref="TDataModel"/></returns>
         IEnumerable<TDataModel> GetAll(IDataIncludes includes = null);
 
+        /// <summary>
+        /// Gets the stored items in a limited way
+        /// </summary>
+        /// <param name="limiter">Limitation data</param>
+        /// <param name="includes">Linked data to include</param>
+        /// <returns>Paged list of <see cref="TDataModel"/></returns>
         PaginatedResult<TDataModel> LimitedGet(IDataLimiter<TDataModel> limiter,
             IDataIncludes includes = null);
     }

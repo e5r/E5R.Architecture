@@ -14,15 +14,15 @@ namespace E5R.Architecture.Data.Abstractions
     {
     }
 
-    // TODO: Find(object...) e Find(TDataModel...) para métodos de extensão sobre IStorageReader<> e deixar apenas Find(object[]...)
     public interface IFindableStorageWithSelector<TDataModel> : IStorageSignature
         where TDataModel : IIdentifiable
     {
-        TSelect Find<TSelect>(object identifier, IDataProjection<TDataModel, TSelect> projection);
-
-        TSelect Find<TSelect>(object[] identifiers,
-            IDataProjection<TDataModel, TSelect> projection);
-
-        TSelect Find<TSelect>(TDataModel data, IDataProjection<TDataModel, TSelect> projection);
+        /// <summary>
+        /// Find an item stored by identifiers
+        /// </summary>
+        /// <param name="identifiers">Item identifiers</param>
+        /// <param name="projection">Data projection</param>
+        /// <returns>Instance of <typeparamref name="TSelect"/>, or null when not found</returns>
+        TSelect Find<TSelect>(object[] identifiers, IDataProjection<TDataModel, TSelect> projection);
     }
 }
