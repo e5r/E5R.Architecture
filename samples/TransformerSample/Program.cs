@@ -58,6 +58,13 @@ namespace TransformerSample
                 new A { AMessage = "Message A3" },
             };
 
+            var paginatedListOfA = new PaginatedResult<A>(new List<A>
+            {
+                new A { AMessage = "Paginated A1" },
+                new A { AMessage = "Paginated A2" },
+                new A { AMessage = "Paginated A3" },
+            }, 10, 3, 1000);
+
             var aFromB = transformer.Transform<B, A>(b);
             var aFromC = transformer.Transform<C, A>(c);
             var bFromA = transformer.Transform<A, B>(a);
@@ -68,6 +75,7 @@ namespace TransformerSample
             var cFromAv3 = transformer.Transform<A, C, TransformerVariant>(a, TransformerVariant.Variant3);
             var cFromB = transformer.Transform<B, C>(b);
             var listOfB = transformer.Transform<A, B>(listOfA);
+            var paginatedListOfB = transformer.Transform<A, B>(paginatedListOfA);
 
             Debug.Assert(aFromB.AMessage.Equals(b.BMessage), "Invalid aFromB");
             Debug.Assert(aFromC.AMessage.Equals(c.CMessage), "Invalid aFromC");
@@ -80,10 +88,23 @@ namespace TransformerSample
             Debug.Assert(cFromB.CMessage.Equals(b.BMessage), "Invalid cFromB");
             Debug.Assert(listOfB != null, "List of B is null");
             Debug.Assert(listOfB.Count() == listOfA.Count, "Invalid count of list B");
+            Debug.Assert(paginatedListOfB.CurrentPage == paginatedListOfA.CurrentPage, "Invalid CurrentPage of paginatedListOfB");
+            Debug.Assert(paginatedListOfB.Limit == paginatedListOfA.Limit, "Invalid Limit of paginatedListOfB");
+            Debug.Assert(paginatedListOfB.NextPage == paginatedListOfA.NextPage, "Invalid NextPage of paginatedListOfB");
+            Debug.Assert(paginatedListOfB.Offset == paginatedListOfA.Offset, "Invalid Offset of paginatedListOfB");
+            Debug.Assert(paginatedListOfB.PageCount == paginatedListOfA.PageCount, "Invalid OfPageCountfset of paginatedListOfB");
+            Debug.Assert(paginatedListOfB.PreviousPage == paginatedListOfA.PreviousPage, "Invalid PreviousPage of paginatedListOfB");
+            Debug.Assert(paginatedListOfB.Total == paginatedListOfA.Total, "Invalid Total of paginatedListOfB");
+            Debug.Assert(paginatedListOfB.Result == null, "Invalid Result of paginatedListOfB");
 
             foreach (var (item, index) in listOfA.Select((item, index) => (item, index)))
             {
                 Debug.Assert(item.AMessage.Equals(listOfB.ElementAt(index).BMessage), "Invalid item pair value");
+            }
+
+            foreach (var (item, index) in paginatedListOfA.Result.Select((item, index) => (item, index)))
+            {
+                Debug.Assert(item.AMessage.Equals(paginatedListOfB.Result.ElementAt(index).BMessage), "Invalid paginated item pair value");
             }
         }
 

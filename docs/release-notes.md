@@ -84,7 +84,8 @@ class MinhaClasse
     }
 }
 ```
-* `ITransformationManager` ganha sobrecarga de método para transformar lista de itens
+* `ITransformationManager` ganha sobrecarga de método para transformar listas simples
+  e listas paginadas de itens
 ```c#
 var transformer = ITransformationManager;
 
@@ -95,7 +96,9 @@ var listOfA = new List<A>
     new A { AMessage = "Message A3" },
 };
 
+var paginatedListOfA = new PaginatedResult<A>(listOfA, 10, 3, 1000);
 var listOfB = transformer.Transform<A, B>(listOfA);
+var paginatedListOfB = transformer.Transform<A, B>(paginatedListOfA);
 
 public class AToBTransformer : ITransformer<A, B>
 {

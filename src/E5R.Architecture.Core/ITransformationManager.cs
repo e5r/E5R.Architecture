@@ -20,11 +20,19 @@ namespace E5R.Architecture.Core
         TTo Transform<TFrom, TTo>(TFrom from);
 
         /// <summary>
-        /// Create a new list of <typeparamref name="TTo"/> based on list of <typeparamref name="TFrom"/>;
+        /// Create a new list of <typeparamref name="TTo"/> based on list of <typeparamref name="TFrom"/>.
         /// </summary>
         /// <param name="from">List of origin data</param>
         /// <returns>List of <typeparamref name="TTo"/></returns>
         IEnumerable<TTo> Transform<TFrom, TTo>(IEnumerable<TFrom> from);
+
+        /// <summary>
+        /// Create a new paginated list of <typeparamref name="TTo"/> based on paginated list 
+        /// of <typeparamref name="TFrom"/>.
+        /// </summary>
+        /// <param name="from">Paginated list of origin data</param>
+        /// <returns>Paginated list of <typeparamref name="TTo"/></returns>
+        PaginatedResult<TTo> Transform<TFrom, TTo>(PaginatedResult<TFrom> from);
 
         /// <summary>
         /// Create new instance of <typeparamref name="TTo"/> based on <typeparamref name="TFrom"/> instance
@@ -44,6 +52,16 @@ namespace E5R.Architecture.Core
         /// <param name="operation">The operation reference</param>
         /// <returns>List of <typeparamref name="TTo"/></returns>
         IEnumerable<TTo> Transform<TFrom, TTo, TOperation>(IEnumerable<TFrom> from, TOperation operation)
+            where TTo : new() where TOperation : Enum;
+
+        /// <summary>
+        /// Create a new paginated list of <typeparamref name="TTo"/> based on list of 
+        /// <typeparamref name="TFrom"/> and <typeparamref name="TOperation"/> value.
+        /// </summary>
+        /// <param name="from">Paginated list of origin data</param>
+        /// <param name="operation">The operation reference</param>
+        /// <returns>Paginated list of <typeparamref name="TTo"/></returns>
+        PaginatedResult<TTo> Transform<TFrom, TTo, TOperation>(PaginatedResult<TFrom> from, TOperation operation)
             where TTo : new() where TOperation : Enum;
     }
 }
