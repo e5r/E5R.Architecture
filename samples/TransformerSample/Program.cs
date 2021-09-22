@@ -1,8 +1,10 @@
-﻿// Copyright (c) E5R Development Team. All rights reserved.
+// Copyright (c) E5R Development Team. All rights reserved.
 // This file is a part of E5R.Architecture.
 // Licensed under the Apache version 2.0: https://github.com/e5r/manifest/blob/master/license/APACHE-2.0.txt
 
+using System.Collections.Generic;
 using System.Diagnostics;
+using System.Linq;
 using E5R.Architecture.Core;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
@@ -49,6 +51,13 @@ namespace TransformerSample
                 CMessage = "Original message from C"
             };
 
+            var listOfA = new List<A>
+            {
+                new A { AMessage = "Message A1" },
+                new A { AMessage = "Message A2" },
+                new A { AMessage = "Message A3" },
+            };
+
             var aFromB = transformer.Transform<B, A>(b);
             var aFromC = transformer.Transform<C, A>(c);
             var bFromA = transformer.Transform<A, B>(a);
@@ -58,7 +67,8 @@ namespace TransformerSample
             var cFromAv2 = transformer.Transform<A, C, TransformerVariant>(a, TransformerVariant.Variant2);
             var cFromAv3 = transformer.Transform<A, C, TransformerVariant>(a, TransformerVariant.Variant3);
             var cFromB = transformer.Transform<B, C>(b);
-            
+            var listOfB = transformer.Transform<A, B>(listOfA);
+
             Debug.Assert(aFromB.AMessage.Equals(b.BMessage), "Invalid aFromB");
             Debug.Assert(aFromC.AMessage.Equals(c.CMessage), "Invalid aFromC");
             Debug.Assert(bFromA.BMessage.Equals(a.AMessage), "Invalid bFromA");
@@ -68,6 +78,13 @@ namespace TransformerSample
             Debug.Assert(cFromAv2.CMessage.Equals(a.AMessage + "/Variant2"), "Invalid cFromA/Variant2");
             Debug.Assert(cFromAv3.CMessage.Equals(a.AMessage + "/Variant3"), "Invalid cFromA/Variant3");
             Debug.Assert(cFromB.CMessage.Equals(b.BMessage), "Invalid cFromB");
+            Debug.Assert(listOfB != null, "List of B is null");
+            Debug.Assert(listOfB.Count() == listOfA.Count, "Invalid count of list B");
+
+            foreach (var (item, index) in listOfA.Select((item, index) => (item, index)))
+            {
+                Debug.Assert(item.AMessage.Equals(listOfB.ElementAt(index).BMessage), "Invalid item pair value");
+            }
         }
 
         static void Main(string[] args)

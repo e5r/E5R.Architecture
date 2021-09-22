@@ -84,6 +84,30 @@ class MinhaClasse
     }
 }
 ```
+* `ITransformationManager` ganha sobrecarga de método para transformar lista de itens
+```c#
+var transformer = ITransformationManager;
+
+var listOfA = new List<A>
+{
+    new A { AMessage = "Message A1" },
+    new A { AMessage = "Message A2" },
+    new A { AMessage = "Message A3" },
+};
+
+var listOfB = transformer.Transform<A, B>(listOfA);
+
+public class AToBTransformer : ITransformer<A, B>
+{
+    public B Transform(A @from)
+    {
+        return new B
+        {
+            BMessage = @from.AMessage
+        };
+    }
+}
+```
 
 ### Breaking changes:
 
