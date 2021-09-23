@@ -16,7 +16,7 @@ namespace UsingDataEntityFrameworkCore.Data.Filter
 
         public Expression<Func<Student, bool>> MakeExpression()
         {
-            return w => !Assigned(LastName) || string.Compare(w.FirstMidName, LastName) == 0;
+            return w => !Assigned(LastName) || string.Compare(w.LastName, LastName) == 0;
         }
 
         public string MakeSqlWhere(string tableAlias = null)

@@ -27,9 +27,9 @@ namespace E5R.Architecture.Data
             return this;
         }
 
-        public DataFilter<TDataModel> AddFilter(IIdentifiableExpressionMaker<TDataModel> filterObject)
+        public DataFilter<TDataModel> AddFilter(IIdentifiableExpressionMaker<TDataModel> filterMakerr)
         {
-            _filterItems.Add(filterObject, filterObject.MakeExpression());
+            _filterItems.Add(filterMakerr, filterMakerr.MakeExpression());
 
             return this;
         }

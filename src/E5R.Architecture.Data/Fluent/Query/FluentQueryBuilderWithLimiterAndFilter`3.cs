@@ -1,4 +1,4 @@
-﻿// Copyright (c) E5R Development Team. All rights reserved.
+// Copyright (c) E5R Development Team. All rights reserved.
 // This file is a part of E5R.Architecture.
 // Licensed under the Apache version 2.0: https://github.com/e5r/manifest/blob/master/license/APACHE-2.0.txt
 
@@ -23,9 +23,16 @@ namespace E5R.Architecture.Data.Fluent.Query
             _projection = projection;
         }
 
-        public FluentQueryBuilderWithLimiterAndFilter<TDataModel, TGroup, TSelect> Filter(Expression<Func<TDataModel, bool>> filter)
+        public FluentQueryBuilderWithLimiterAndFilter<TDataModel, TGroup, TSelect> Filter(Expression<Func<TDataModel, bool>> filterExpression)
         {
-            _filter.AddFilter(filter);
+            _filter.AddFilter(filterExpression);
+
+            return this;
+        }
+
+        public FluentQueryBuilderWithLimiterAndFilter<TDataModel, TGroup, TSelect> Filter(IIdentifiableExpressionMaker<TDataModel> filterMaker)
+        {
+            _filter.AddFilter(filterMaker);
 
             return this;
         }

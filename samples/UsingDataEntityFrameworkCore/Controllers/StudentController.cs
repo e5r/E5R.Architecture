@@ -303,15 +303,19 @@ namespace UsingDataEntityFrameworkCore.Controllers
         {
             var count1 = _countableStorage.CountAll();
 
-            var objectFilter = new DataFilter<Student>();
+            var filterFirstMidnameContains = new StudentFirstMidNameContainsFilter { FirstMidName = "ar" };
+            var filterByLastName = new StudentByLastNameFilter { LastName = "Silva Campos" };
 
-            objectFilter
-                .AddFilter(new StudentFirstMidNameContainsFilter { FirstMidName = "ar" })
-                .AddFilter(new StudentByLastNameFilter { LastName = "Silva Campos" });
+            var count2 = _readerStore.AsFluentQuery()
+                .Filter(filterFirstMidnameContains)
+                .Filter(filterByLastName)
+                .Count();
 
-            var count2 = _countableStorage.Count(objectFilter);
+            var count3 = _countableStorage.Count(new DataFilter<Student>()
+                .AddFilter(filterFirstMidnameContains)
+                .AddFilter(filterByLastName));
 
-            return View((count1, count2));
+            return View((count1, count2, count3));
         }
     }
 }

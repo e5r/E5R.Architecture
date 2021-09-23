@@ -1,4 +1,4 @@
-﻿// Copyright (c) E5R Development Team. All rights reserved.
+// Copyright (c) E5R Development Team. All rights reserved.
 // This file is a part of E5R.Architecture.
 // Licensed under the Apache version 2.0: https://github.com/e5r/manifest/blob/master/license/APACHE-2.0.txt
 
@@ -38,6 +38,9 @@ namespace E5R.Architecture.Data.Fluent.Query
         public FluentQueryBuilderWithFilter<TDataModel> Filter(Expression<Func<TDataModel, bool>> filterExpression)
             => EmptyProjection().Filter(filterExpression);
 
+        public FluentQueryBuilderWithFilter<TDataModel> Filter(IIdentifiableExpressionMaker<TDataModel> filterMaker)
+            => EmptyProjection().Filter(filterMaker);
+
         public FluentQueryBuilderWithLimiter<TDataModel> Sort(Expression<Func<TDataModel, object>> sortExpression)
             => EmptyProjection().Sort(sortExpression);
 
@@ -62,7 +65,7 @@ namespace E5R.Architecture.Data.Fluent.Query
         public TDataModel Find(object[] identifiers) => _storage.Find(identifiers, null);
 
         public TDataModel Find(TDataModel data) => _storage.Find(data, null);
-        
+
         public int CountAll() => _storage.CountAll();
 
         public IEnumerable<TDataModel> GetAll() => _storage.GetAll(null);

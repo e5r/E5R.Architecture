@@ -59,23 +59,23 @@ namespace UsingDataEntityFrameworkCore.Data.Repositories
             return _context.Set<Student>().Count();
         }
 
-        private string GetSqlWhereClause(object filterObject, string tableAlias)
+        private string GetSqlWhereClause(object objectFilterMaker, string tableAlias)
         {
-            Checker.NotNullArgument(filterObject, nameof(filterObject));
+            Checker.NotNullArgument(objectFilterMaker, nameof(objectFilterMaker));
 
-            var objectType = filterObject.GetType();
+            var objectType = objectFilterMaker.GetType();
 
             if (objectType == typeof(StudentByIdFilter))
             {
-                return (filterObject as StudentByIdFilter).MakeSqlWhere(tableAlias);
+                return (objectFilterMaker as StudentByIdFilter).MakeSqlWhere(tableAlias);
             }
             else if (objectType == typeof(StudentByLastNameFilter))
             {
-                return (filterObject as StudentByLastNameFilter).MakeSqlWhere(tableAlias);
+                return (objectFilterMaker as StudentByLastNameFilter).MakeSqlWhere(tableAlias);
             }
             else if (objectType == typeof(StudentFirstMidNameContainsFilter))
             {
-                return (filterObject as StudentFirstMidNameContainsFilter).MakeSqlWhere(tableAlias);
+                return (objectFilterMaker as StudentFirstMidNameContainsFilter).MakeSqlWhere(tableAlias);
             }
 
             throw new InvalidOperationException($"O tipo de filtro {objectType.Name} não está mapeado para SQL");

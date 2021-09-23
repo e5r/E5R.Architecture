@@ -1,4 +1,4 @@
-@model (Int32, Int32)
+@model (Int32, Int32, Int32)
 
 @{ ViewData["Title"] = "Contar"; }
 
@@ -8,5 +8,8 @@
     Total de estudantes: <strong>@Model.Item1</strong>
 </div>
 <div>
-    Total de estudantes filtrados: <strong>@Model.Item2</strong>
+    Total de estudantes filtrados pelo EntityFramework: <strong>@Model.Item2</strong>
+</div>
+<div>
+    Total de estudantes filtrados por SQL puro: <strong>@Model.Item3</strong>
 </div>

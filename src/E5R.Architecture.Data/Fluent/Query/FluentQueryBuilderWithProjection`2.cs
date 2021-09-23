@@ -29,6 +29,10 @@ namespace E5R.Architecture.Data.Fluent.Query
             => new FluentQueryBuilderWithFilter<TDataModel, TSelect>(_storage, _filter, _limiter, _projection)
                 .Filter(filterExpression);
 
+        public FluentQueryBuilderWithFilter<TDataModel, TSelect> Filter(IIdentifiableExpressionMaker<TDataModel> filterMaker)
+            => new FluentQueryBuilderWithFilter<TDataModel, TSelect>(_storage, _filter, _limiter, _projection)
+                .Filter(filterMaker);
+
         public FluentQueryBuilderWithLimiter<TDataModel, TSelect> Sort(Expression<Func<TDataModel, object>> sortExpression)
             => new FluentQueryBuilderWithLimiter<TDataModel, TSelect>(_storage, _filter, _limiter, _projection)
                 .Sort(sortExpression);
