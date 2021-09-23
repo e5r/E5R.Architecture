@@ -17,16 +17,15 @@ namespace E5R.Architecture.Data.Abstractions
         where TDataModel : IIdentifiable
     {
         /// <summary>
-        /// Get a filter expression (Where)
+        /// Get a filter expression list
         /// </summary>
         /// <returns>List of reducer expression</returns>
-        IEnumerable<Expression<Func<TDataModel, bool>>> GetExpressionFilter();
+        IEnumerable<Expression<Func<TDataModel, bool>>> GetExpressions();
 
         /// <summary>
-        /// Get a filter object
+        /// Get a filter object list
         /// </summary>
-        /// <typeparam name="TObject">Filter type</typeparam>
-        /// <returns>An object with filter data</returns>
-        TObject GetObjectFilter<TObject>() where TObject : class;
+        /// <returns>List of a reducer object</returns>
+        IEnumerable<object> GetObjects();
     }
 }

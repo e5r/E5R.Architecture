@@ -17,7 +17,7 @@ namespace E5R.Architecture.Data.Fluent
         private readonly Expression<Func<TRootDataModel, TSelect>> _select;
 
         internal ProjectionInnerBuilder(IStorageReader<TRootDataModel> storage,
-            ExpressionDataFilter<TRootDataModel> filter,
+            DataFilter<TRootDataModel> filter,
             DataLimiter<TRootDataModel> limiter,
             DataIncludes<TRootDataModel> includes,
             Expression<Func<TRootDataModel, TSelect>> select)

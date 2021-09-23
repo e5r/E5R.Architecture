@@ -1,4 +1,4 @@
-﻿// Copyright (c) E5R Development Team. All rights reserved.
+// Copyright (c) E5R Development Team. All rights reserved.
 // This file is a part of E5R.Architecture.
 // Licensed under the Apache version 2.0: https://github.com/e5r/manifest/blob/master/license/APACHE-2.0.txt
 
@@ -40,7 +40,7 @@ namespace E5R.Architecture.Data.EntityFrameworkCore
                 throw new InvalidOperationException($"Number of primary keys configured in {typeof(TDataModel)} different than expected.");
             }
 
-            var filter = new ExpressionDataFilter<TDataModel>();
+            var filter = new DataFilter<TDataModel>();
             var param = Expression.Parameter(typeof(TDataModel), "e");
             Expression<Func<TDataModel, bool>> filterExpression = null;
 
@@ -83,11 +83,11 @@ namespace E5R.Architecture.Data.EntityFrameworkCore
             Checker.NotNullArgument(origin, nameof(origin));
             Checker.NotNullArgument(filter, nameof(filter));
 
-            var filterList = filter.GetExpressionFilter();
+            var filterExpressions = filter.GetExpressions();
 
-            Checker.NotNullObject(filterList, $"filter.{nameof(filter.GetExpressionFilter)}()");
+            Checker.NotNullObject(filterExpressions, $"filter.{nameof(filter.GetExpressions)}()");
 
-            var query = filterList.Aggregate(origin, (q, w) => q.Where(w));
+            var query = filterExpressions.Aggregate(origin, (q, w) => q.Where(w));
 
             return TryApplyIncludes(query, includes);
         }

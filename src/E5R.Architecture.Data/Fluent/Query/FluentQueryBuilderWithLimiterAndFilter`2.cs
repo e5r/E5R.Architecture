@@ -1,4 +1,4 @@
-﻿// Copyright (c) E5R Development Team. All rights reserved.
+// Copyright (c) E5R Development Team. All rights reserved.
 // This file is a part of E5R.Architecture.
 // Licensed under the Apache version 2.0: https://github.com/e5r/manifest/blob/master/license/APACHE-2.0.txt
 
@@ -15,7 +15,7 @@ namespace E5R.Architecture.Data.Fluent.Query
         private readonly DataProjection<TDataModel, TSelect> _projection;
 
         internal FluentQueryBuilderWithLimiterAndFilter(IStorageReader<TDataModel> storage,
-            ExpressionDataFilter<TDataModel> filter,
+            DataFilter<TDataModel> filter,
             DataLimiter<TDataModel> limiter,
             DataProjection<TDataModel, TSelect> projection)
             : base(storage, filter, limiter, projection.GetDataIncludes())
@@ -23,9 +23,16 @@ namespace E5R.Architecture.Data.Fluent.Query
             _projection = projection;
         }
 
-        public FluentQueryBuilderWithLimiterAndFilter<TDataModel, TSelect> Filter(Expression<Func<TDataModel, bool>> filter)
+        public FluentQueryBuilderWithLimiterAndFilter<TDataModel, TSelect> Filter(Expression<Func<TDataModel, bool>> filterExpression)
         {
-            _filter.AddFilter(filter);
+            _filter.AddFilter(filterExpression);
+
+            return this;
+        }
+
+        public FluentQueryBuilderWithLimiterAndFilter<TDataModel, TSelect> Filter(IIdentifiableExpressionMaker<TDataModel> filterMaker)
+        {
+            _filter.AddFilter(filterMaker);
 
             return this;
         }

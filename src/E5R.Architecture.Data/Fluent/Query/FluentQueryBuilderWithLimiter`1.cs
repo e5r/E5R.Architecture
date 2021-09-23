@@ -1,4 +1,4 @@
-﻿// Copyright (c) E5R Development Team. All rights reserved.
+// Copyright (c) E5R Development Team. All rights reserved.
 // This file is a part of E5R.Architecture.
 // Licensed under the Apache version 2.0: https://github.com/e5r/manifest/blob/master/license/APACHE-2.0.txt
 
@@ -13,15 +13,19 @@ namespace E5R.Architecture.Data.Fluent.Query
         where TDataModel : IIdentifiable
     {
         internal FluentQueryBuilderWithLimiter(IStorageReader<TDataModel> storage,
-            ExpressionDataFilter<TDataModel> filter,
+            DataFilter<TDataModel> filter,
             DataLimiter<TDataModel> limiter,
             DataIncludes<TDataModel> includes)
             : base(storage, filter, limiter, includes)
         { }
 
-        public FluentQueryBuilderWithLimiterAndFilter<TDataModel> Filter(Expression<Func<TDataModel, bool>> filter)
+        public FluentQueryBuilderWithLimiterAndFilter<TDataModel> Filter(Expression<Func<TDataModel, bool>> filterExpression)
             => new FluentQueryBuilderWithLimiterAndFilter<TDataModel>(_storage, _filter, _limiter, _includes)
-                .Filter(filter);
+                .Filter(filterExpression);
+
+        public FluentQueryBuilderWithLimiterAndFilter<TDataModel> Filter(IIdentifiableExpressionMaker<TDataModel> filterMaker)
+            => new FluentQueryBuilderWithLimiterAndFilter<TDataModel>(_storage, _filter, _limiter, _includes)
+                .Filter(filterMaker);
 
         public FluentQueryBuilderWithLimiter<TDataModel> Sort(Expression<Func<TDataModel, object>> sorter)
         {

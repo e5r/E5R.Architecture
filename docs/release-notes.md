@@ -9,16 +9,13 @@ Notas de Lançamento
 
 ### Novos recursos:
 
-* `IDataFilter<>` recebe um novo método na assinagura
-  - `GetObjectFilter<TObject>()` que deve retornar um objeto qualquer com dados a ser usados como filtro
-* Novo tipo de filtro `ObjectDataFilter` foi adicionado
-> Tanto `ObjectDataFilter` quanto `ExpressionDataFilter` implementam os métodos de `IDataFilter`, porém:
->> `ObjectDataFilter` levanta uma exceção ao chamar `GetExpressionFilter()`
->> `ExpressionDataFilter` levanta uma exceção ao chamar `GetObjectFilter()`
-* Novo tipo abstrato `IdentifiableExpressionMaker` 
-  - Para auxiliar na conversão de um objeto de filtro em expressões que podem ser usadas no LINQ
+* Nova interface `IdentifiableExpressionMaker` 
+  - Para auxiliar na construção de objetos de filtro
+  - Mas pode ser usado em qualquer lugar que precise converter um objeto identificável
+  - em uma expressão para o tipo identificável
 * Novo tipo `AttributableValue` para valores _atribuíveis_
-  - Também temos um utilitário `AttributableValueUtil` para uso do `Assigned` inclusive em valores nulos
+  - Também temos um utilitário `AttributableValueUtil` para uso do `Assigned` inclusive
+    em valores nulos e de forma estática
   - As vezes só o `Nullable<x>` ou `x?` não é o suficiente
   - E `Nullable<Nullable<x>>` ou `x??` não é permitido ainda
 ```c#
@@ -33,30 +30,67 @@ public class PessoaFiltro
     public string PorNome {get; set; }
     public int? PorIdade { get; set; }
 }
-```
-> As duas classes para simular que você tem um objeto e deseja fazer um
-> filtro no banco de dados por esse objeto. Vamos focar apenas no campo `Idade`.
->> Como filtrar por uma idade específica?
->> Simples: Se o campo `PorIdade` tiver um valor (`PorIdade.HasValue`) aplicamos o filtro, em outro caso não.
 
-> Mas veja que a propriedade `Idade` é opcional no banco de dados,
-> isso quer dizer que também podemos ter campos sem idade informada.
->> Como filtrar por itens que não tem idade informada?
->> Não é mais simples: Usamos a opção `PorIdade.HasValue` para saber se
->> devemos ou não aplicar o filtro.
+// As duas classes para simular que você tem um objeto e deseja fazer um
+// filtro no banco de dados por esse objeto.
+// Vamos focar apenas no campo "Idade".
+//
+// Como filtrar por uma idade específica?
+// Simples: Se o campo `PorIdade` tiver um valor (PorIdade.HasValue)
+// aplicamos o filtro, em outro caso não.
+//
+// Mas veja que a propriedade "Idade" é opcional no banco de dados,
+// isso quer dizer que também podemos ter campos sem idade informada.
+//
+// Como filtrar por itens que não tem idade informada?
+// Não é mais simples: Já usamos a opção "PorIdade.HasValue" para saber se
+// devemos ou não aplicar o filtro. Então como representar um valor nulo agora?
+//
+// Simplificando novamente: Usamos o novo tipo `AttributableValue`
 
-> Ou usamos o novo tipo `AttributableValue`
-```c#
 public class PessoaFiltro
 {
     public string PorNome {get; set; }
     public AttributableValue<int?> PorIdade { get; set; }
 }
+
+// Agora podemos conferir se o valor está atribuído "PorIdade.Assigned"
+// e em seguida, usar o valor interno, que por sua vez é um "Nullable<int>".
+// E agora temos uma simulação de "Nullable<Nullable<int>>"
+// já que não podemos fazer isso diretamente na linguagem.
+// Seria o mesmo que "int??".
 ```
-> Agora podemos conferir em se o valor está atribuído `PorIdade.Assigned`
-> em em seguida então usar o valor interno, que por sua vez é um `Nullable<x>`. Agora temos uma simulação de `Nullable<Nullable<X>>`
-> já que não podemosazer isso diretamente na linguagem. Seria o mesmo
-> que `X??`.
+* Com o novo `IDataFilter<>` combinado com `IIdentifiableExpressionMaker<>` agora podemos
+  criar filtros personalizados por objeto
+```C#
+using static E5R.Architecture.Core.Utils.AttributableValueUtil;
+
+public class ByLastNameFilter : IIdentifiableExpressionMaker<Student>
+{
+    public AttributableValue<string> LastName { get; set; }
+
+    public Expression<Func<Student, bool>> MakeExpression()
+    {
+        return w => !Assigned(LastName) || string.Compare(w.LastName, LastName) == 0;
+    }
+
+    public string MyCreateSqlClause()
+    {
+        // Sua lógica para criar o SQL...
+    }
+}
+
+// Com isso, nos métodos que recebem um IDataFilter, agora você pode usar
+// tanto uma expressão diretamente:
+var _ = MyStorage.AsFluentQuery()
+    .Filter(f => string.Compare(f.LastName, "My Las Name") == 0)
+    .Search();
+
+// Quanto esse objeto personalizado
+var _ = MyStorage.AsFluentQuery()
+    .Filter(new ByLastNameFilter { LastName = "My Las Name"})
+    .Search();
+```
 * Novos métodos de extensão para uso de `Task` em contextos síncronos
 ```c#
 class MinhaClasse
@@ -120,8 +154,18 @@ public class AToBTransformer : ITransformer<A, B>
   - Foi adicionado a tupla com único item
 * O registro no assembly `AddAllLazyGroups()` não registra mais classes que herdam de `LazyGroup<>` (que agora se chama `LazyTuple<>`)
   - Ao invés disso registra diretamente `LazyTuple<>`
-* DataFilter<> foi renomeado para ExpressionDataFilter<>
-  - O método GetFilter() foi renomeado para GetExpressionFilter()
+* `IDataFilter<>` tem nova assinagura:
+```C#
+public interface IDataFilter<TDataModel>
+{
+    // Sempre deve retornar uma lista de expressões
+    IEnumerable<Expression<Func<TDataModel, bool>>> GetExpressions();
+
+    // Quando não houver objetos de filtro, deve-se retornar as
+    // próprias expressões como objetos
+    IEnumerable<object> GetObjects();
+}
+```
 * Algumas interfaces do componente `E5R.Architecture.Data` foram simplificadas
   - A interface `IRemovableStorage` agora só tem uma assinatura de método
 ```C#

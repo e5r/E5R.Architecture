@@ -1,4 +1,4 @@
-﻿// Copyright (c) E5R Development Team. All rights reserved.
+// Copyright (c) E5R Development Team. All rights reserved.
 // This file is a part of E5R.Architecture.
 // Licensed under the Apache version 2.0: https://github.com/e5r/manifest/blob/master/license/APACHE-2.0.txt
 
@@ -15,7 +15,7 @@ namespace E5R.Architecture.Data.Fluent.Query
         private readonly DataProjection<TDataModel, TSelect> _projection;
 
         internal FluentQueryBuilderWithLimiter(IStorageReader<TDataModel> storage,
-            ExpressionDataFilter<TDataModel> filter,
+            DataFilter<TDataModel> filter,
             DataLimiter<TDataModel> limiter,
             DataProjection<TDataModel, TSelect> projection)
             : base(storage, filter, limiter, projection.GetDataIncludes())
@@ -23,9 +23,13 @@ namespace E5R.Architecture.Data.Fluent.Query
             _projection = projection;
         }
 
-        public FluentQueryBuilderWithLimiterAndFilter<TDataModel, TSelect> Filter(Expression<Func<TDataModel, bool>> filter)
+        public FluentQueryBuilderWithLimiterAndFilter<TDataModel, TSelect> Filter(Expression<Func<TDataModel, bool>> filterExpression)
             => new FluentQueryBuilderWithLimiterAndFilter<TDataModel, TSelect>(_storage, _filter, _limiter, _projection)
-                .Filter(filter);
+                .Filter(filterExpression);
+
+        public FluentQueryBuilderWithLimiterAndFilter<TDataModel, TSelect> Filter(IIdentifiableExpressionMaker<TDataModel> filterMaker)
+            => new FluentQueryBuilderWithLimiterAndFilter<TDataModel, TSelect>(_storage, _filter, _limiter, _projection)
+                .Filter(filterMaker);
 
         public FluentQueryBuilderWithLimiter<TDataModel, TSelect> Sort(Expression<Func<TDataModel, object>> sorter)
         {

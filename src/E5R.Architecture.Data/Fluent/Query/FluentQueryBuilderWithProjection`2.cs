@@ -16,7 +16,7 @@ namespace E5R.Architecture.Data.Fluent.Query
         private readonly DataProjection<TDataModel, TSelect> _projection;
 
         internal FluentQueryBuilderWithProjection(IStorageReader<TDataModel> storage,
-            ExpressionDataFilter<TDataModel> filter,
+            DataFilter<TDataModel> filter,
             DataLimiter<TDataModel> limiter,
             DataIncludes<TDataModel> includes,
             Expression<Func<TDataModel, TSelect>> select)
@@ -28,6 +28,10 @@ namespace E5R.Architecture.Data.Fluent.Query
         public FluentQueryBuilderWithFilter<TDataModel, TSelect> Filter(Expression<Func<TDataModel, bool>> filterExpression)
             => new FluentQueryBuilderWithFilter<TDataModel, TSelect>(_storage, _filter, _limiter, _projection)
                 .Filter(filterExpression);
+
+        public FluentQueryBuilderWithFilter<TDataModel, TSelect> Filter(IIdentifiableExpressionMaker<TDataModel> filterMaker)
+            => new FluentQueryBuilderWithFilter<TDataModel, TSelect>(_storage, _filter, _limiter, _projection)
+                .Filter(filterMaker);
 
         public FluentQueryBuilderWithLimiter<TDataModel, TSelect> Sort(Expression<Func<TDataModel, object>> sortExpression)
             => new FluentQueryBuilderWithLimiter<TDataModel, TSelect>(_storage, _filter, _limiter, _projection)

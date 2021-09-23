@@ -1,4 +1,4 @@
-﻿// Copyright (c) E5R Development Team. All rights reserved.
+// Copyright (c) E5R Development Team. All rights reserved.
 // This file is a part of E5R.Architecture.
 // Licensed under the Apache version 2.0: https://github.com/e5r/manifest/blob/master/license/APACHE-2.0.txt
 
@@ -14,11 +14,11 @@ namespace E5R.Architecture.Data.Fluent.Writer
         where TDataModel : IIdentifiable
     {
         public FluentBulkWriterBuilder(IStorageBulkWriter<TDataModel> storage) : base(storage,
-            new ExpressionDataFilter<TDataModel>())
+            new DataFilter<TDataModel>())
         { }
 
         internal FluentBulkWriterBuilder(IStorageBulkWriter<TDataModel> storage,
-            ExpressionDataFilter<TDataModel> filter) : base(storage, filter)
+            DataFilter<TDataModel> filter) : base(storage, filter)
         { }
 
         #region Makers
@@ -27,6 +27,11 @@ namespace E5R.Architecture.Data.Fluent.Writer
             Expression<Func<TDataModel, bool>> filterExpression)
             => new FluentBulkWriterBuilderWithFilter<TDataModel>(_storage, _filter).Filter(
                 filterExpression);
+
+        public FluentBulkWriterBuilderWithFilter<TDataModel> Filter(
+            IIdentifiableExpressionMaker<TDataModel> filterMaker)
+            => new FluentBulkWriterBuilderWithFilter<TDataModel>(_storage, _filter).Filter(
+                filterMaker);
 
         #endregion
 

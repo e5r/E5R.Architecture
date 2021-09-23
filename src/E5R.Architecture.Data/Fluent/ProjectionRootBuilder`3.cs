@@ -18,7 +18,7 @@ namespace E5R.Architecture.Data.Fluent
         private readonly Expression<Func<IGrouping<TGroup, TDataModel>, TSelect>> _select;
 
         internal ProjectionRootBuilder(IStorageReader<TDataModel> storage,
-            ExpressionDataFilter<TDataModel> filter,
+            DataFilter<TDataModel> filter,
             DataLimiter<TDataModel> limiter,
             DataIncludes<TDataModel> includes,
             Expression<Func<TDataModel, TGroup>> group,
