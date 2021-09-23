@@ -2,6 +2,8 @@ using E5R.Architecture.Core;
 using E5R.Architecture.Data.Abstractions;
 using E5R.Architecture.Infrastructure;
 using Microsoft.EntityFrameworkCore;
+using System;
+using System.Data.Common;
 using System.Linq;
 using UsingDataEntityFrameworkCore.Data.Filter;
 using UsingDataEntityFrameworkCore.Models;
@@ -23,16 +25,60 @@ namespace UsingDataEntityFrameworkCore.Data.Repositories
         {
             Checker.NotNullArgument(filter, nameof(filter));
 
-            StudentObjectFilter f = filter.GetObjectFilter<StudentObjectFilter>();
+            var sqlWhereClauses = filter.GetObjects()
+                .Select((o) => GetSqlWhereClause(o, "t"))
+                .ToList();
 
-            var query = _context.Set<Student>().AsQueryable();
+            var sqlWhere = sqlWhereClauses.Any()
+                ? string.Join(" and ", sqlWhereClauses)
+                : string.Empty;
 
-            return f.TryAggregate(query).Count();
+            using (var cmd = _context.Database.GetDbConnection().CreateCommand())
+            {
+                var whereClause = !string.IsNullOrWhiteSpace(sqlWhere)
+                    ? $" where {sqlWhere}"
+                    : string.Empty
+                    ;
+
+                cmd.CommandText = $"select count(*) from {nameof(Student)} t{whereClause}";
+
+                using (DbDataReader reader = cmd.ExecuteReader())
+                {
+                    if (reader.HasRows && reader.Read())
+                    {
+                        return reader.GetInt32(0);
+                    }
+                }
+            }
+
+            return 0;
         }
 
         public int CountAll()
         {
             return _context.Set<Student>().Count();
+        }
+
+        private string GetSqlWhereClause(object filterObject, string tableAlias)
+        {
+            Checker.NotNullArgument(filterObject, nameof(filterObject));
+
+            var objectType = filterObject.GetType();
+
+            if (objectType == typeof(StudentByIdFilter))
+            {
+                return (filterObject as StudentByIdFilter).MakeSqlWhere(tableAlias);
+            }
+            else if (objectType == typeof(StudentByLastNameFilter))
+            {
+                return (filterObject as StudentByLastNameFilter).MakeSqlWhere(tableAlias);
+            }
+            else if (objectType == typeof(StudentFirstMidNameContainsFilter))
+            {
+                return (filterObject as StudentFirstMidNameContainsFilter).MakeSqlWhere(tableAlias);
+            }
+
+            throw new InvalidOperationException($"O tipo de filtro {objectType.Name} não está mapeado para SQL");
         }
     }
 }

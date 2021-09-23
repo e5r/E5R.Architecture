@@ -121,7 +121,7 @@ namespace UsingDataEntityFrameworkCore.Controllers
                     f.FirstMidName.ToLower().Contains(searchString.ToLower()) ||
                     f.LastName.ToLower().Contains(searchString.ToLower());
 
-                var filter = new ExpressionDataFilter<Student>()
+                var filter = new DataFilter<Student>()
                     .AddFilter(filterExpression);
 
                 // Todos com mesmo segundo nome
@@ -301,17 +301,15 @@ namespace UsingDataEntityFrameworkCore.Controllers
 
         public IActionResult Contar()
         {
-            var objectFilter = new StudentObjectFilter();
-
-            //objectFilter.ByID = 3;
-
-            //int byIdValue1 = objectFilter.ByID;
-            //var byIdValue2 = (int)objectFilter.ByID;
-
-            objectFilter.FirstMidNameContains = "Er";
-
             var count1 = _countableStorage.CountAll();
-            var count2 = _countableStorage.Count(new ObjectDataFilter<Student>(objectFilter));
+
+            var objectFilter = new DataFilter<Student>();
+
+            objectFilter
+                .AddFilter(new StudentFirstMidNameContainsFilter { FirstMidName = "ar" })
+                .AddFilter(new StudentByLastNameFilter { LastName = "Silva Campos" });
+
+            var count2 = _countableStorage.Count(objectFilter);
 
             return View((count1, count2));
         }

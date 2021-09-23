@@ -14,7 +14,7 @@ namespace E5R.Architecture.Data.Fluent.Query
         where TDataModel : IIdentifiable
     {
         internal FluentQueryBuilderWithFilter(IStorageReader<TDataModel> storage,
-            ExpressionDataFilter<TDataModel> filter,
+            DataFilter<TDataModel> filter,
             DataLimiter<TDataModel> limiter,
             DataIncludes<TDataModel> includes)
             : base(storage, filter, limiter, includes)

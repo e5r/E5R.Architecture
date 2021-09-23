@@ -176,7 +176,7 @@ namespace UsingDataEntityFrameworkCore.Controllers
                 .Find(2);
             
             // Search
-            var e0_filter = new ExpressionDataFilter<Student>();
+            var e0_filter = new DataFilter<Student>();
             e0_filter.AddFilter(w => w.FirstMidName.Contains("e"));
 
             var e0_1 = _searchableStorage.Search(e0_filter);
