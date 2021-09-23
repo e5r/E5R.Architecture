@@ -19,13 +19,13 @@ namespace E5R.Architecture.Data.Abstractions
         /// <summary>
         /// Get a filter expression list
         /// </summary>
-        /// <returns>List of reducer expression</returns>
+        /// <returns>List of expressions</returns>
         IEnumerable<Expression<Func<TDataModel, bool>>> GetExpressions();
 
         /// <summary>
         /// Get a filter object list
         /// </summary>
-        /// <returns>List of a reducer object</returns>
+        /// <returns>List of objects</returns>
         IEnumerable<object> GetObjects();
     }
 }

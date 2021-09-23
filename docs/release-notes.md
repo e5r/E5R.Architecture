@@ -12,7 +12,7 @@ Notas de Lançamento
 * Nova interface `IdentifiableExpressionMaker` 
   - Para auxiliar na construção de objetos de filtro
   - Mas pode ser usado em qualquer lugar que precise converter um objeto identificável
-  - em uma expressão para o tipo identificável
+    em uma expressão para o tipo identificável
 * Novo tipo `AttributableValue` para valores _atribuíveis_
   - Também temos um utilitário `AttributableValueUtil` para uso do `Assigned` inclusive
     em valores nulos e de forma estática
@@ -55,8 +55,8 @@ public class PessoaFiltro
 }
 
 // Agora podemos conferir se o valor está atribuído "PorIdade.Assigned"
-// e em seguida, usar o valor interno, que por sua vez é um "Nullable<int>".
-// E agora temos uma simulação de "Nullable<Nullable<int>>"
+// e em seguida, usar o valor interno "PorIdade.Value", que por sua vez é um
+// "Nullable<int>". E agora temos uma simulação de "Nullable<Nullable<int>>"
 // já que não podemos fazer isso diretamente na linguagem.
 // Seria o mesmo que "int??".
 ```
@@ -83,12 +83,12 @@ public class ByLastNameFilter : IIdentifiableExpressionMaker<Student>
 // Com isso, nos métodos que recebem um IDataFilter, agora você pode usar
 // tanto uma expressão diretamente:
 var _ = MyStorage.AsFluentQuery()
-    .Filter(f => string.Compare(f.LastName, "My Las Name") == 0)
+    .Filter(f => string.Compare(f.LastName, "My Last Name") == 0)
     .Search();
 
 // Quanto esse objeto personalizado
 var _ = MyStorage.AsFluentQuery()
-    .Filter(new ByLastNameFilter { LastName = "My Las Name"})
+    .Filter(new ByLastNameFilter { LastName = "My Last Name"})
     .Search();
 ```
 * Novos métodos de extensão para uso de `Task` em contextos síncronos
@@ -431,22 +431,22 @@ services.AddInfrastructure(config, options => {
   + `IDIRegistrar` foi renomeado para `ICrossCuttingRegistrar`
   + Agora usa o sistema padrão de injeção de dependência do .NET
     - Foram removidas as seguintes abstrações:
-      - DILifetime
-      - IDIContainer
+      - `DILifetime`
+      - `IDIContainer`
     - A interface `ICrossCuttingRegistrar` espera um `IServiceCollection` junto a um `IConfiguration` ao invés de um `IDIContainer`
 * A configuração de infraestrutura `AddInfrastructure()` agora requer pelo menos um `IConfiguration`
 
 ## 0.8.0
 
-Novos recursos:
+### Novos recursos:
 
 * Adiciona genérico `LazyGroup<>` para agrupar objetos carregados preguiçosamente
     - Objetiva ser utilizado para construir objetos de fachada
     - Registra automaticamente objetos que o herdam, se usar `AddInfrastructure()`
 * Agora é possível obter um valor de `Enum` através de um valor de `MetaTag`
 * Novos métodos adicionados a interface `IStorage<>`
-    - `int CountAll()` Que retorna o total de registros
-    - `int Count(IDataFilter<> filter)` Que retorna o total de registros que obedeçam a um determinado filtro
+    - `int CountAll()` que retorna o total de registros
+    - `int Count(IDataFilter<> filter)` que retorna o total de registros que obedeçam a um determinado filtro
     - Os métodos também estão disponíveis na api fluente `AsFluentQuery()`
 * Adiciona capacidade de deduzir nome de parâmetro por expressões no utilitário Checker
 ```c#
@@ -490,9 +490,9 @@ string hashHexOfString = myString.Sha1Hex();
 string hmacHexOfString = myString.HmacSha256Hex(myKey);
 ```
 
-Breaking changes:
+### Breaking changes:
 
-* `IDataModel` agora é `IIdentifiable` e agora está em `Core` ao invés de `Data`
+* `IDataModel` agora é `IIdentifiable` e foi movido de `Data` para `Core`
   - Também a propriedade com os valores foi renomeada de `IdentifierValues` para `Identifiers` somente
 * O genérico `BusinessFacade<>` foi removido em favor de `LazyGroup<>`
 * Remove método de extensão `AddTransformationManager()`.
@@ -523,20 +523,17 @@ services.AddBusiness();
 
 ## 0.7.0
 
-Novos recursos:
+### Novos recursos:
 
 * Adiciona conceito de `BusinessFeature` e `BusinessFacade`
     - Leia o tutorial [Escrevendo características de negócio](tutorials/writing-business-feature.md)
+* `RuleFor<>` agora aceita injeção de dependências
+* `NotificationManager` agora valida as mensagens de acordo com `RuleSet<>`
 
-Refatorações:
+### Breaking changes:
 
-* RuleFor<> agora aceita injeção de dependências
-* RuleSet<>  reformulado para agrupar regras via injeção de dependência
-* NotificationManager agora valida as mensagens de acordo com RuleSet<>
-
-Breaking changes:
-
-* RuleSet<> não é mais para agrupar manualmente regras
+* `RuleSet<>` reformulado para agrupar regras via injeção de dependência
+* `RuleSet<>` não é mais para agrupar manualmente regras
 ```c#
 // Antes: Você instanciava RuleSet<> e adicionava
 //        as regras que queria estar em conformidade, e,
@@ -578,11 +575,11 @@ public class MyBusinessClass
 
 ## 0.6.0
 
-Novos recursos:
+### Novos recursos:
 
 * Api fluente para gravar dados armazenados
     - Leia o tutorial [Escrevendo dados com API Fluente](tutorials/writing-with-fluent-api.md)
-* UniqueIdentifier é um novo objeto do core para geração de identificadores únicos
+* `UniqueIdentifier` é um novo objeto do core para geração de identificadores únicos
     - Leia o tutorial [Identificadores únicos](tutorials/uid.md)
 * Transformação de dados entre tipos
     - Leia o tutorial [Transformando dados entre tipos](tutorials/transformer-intro.md)
@@ -598,7 +595,7 @@ Adicionamos alguns novos recursos:
 
 ## 0.4.0
 
-Adiciona novas assinaturas a IDataStorage.Remove()
+Adiciona novas assinaturas a `IDataStorage.Remove()`
 
 * Remove(object identifier);
 * Remove(object[] identifiers);
@@ -612,10 +609,10 @@ https://e5r.github.io/E5R.Architecture
 Nesta versão temos tantas novidades que não dá pra detalhar tanto, então ficam algumas notas.
 
 * Adicionamos o conceito de `IRule` ao "core"
-* Adicionamos o conceito de `NotificationManage` ao "core
-* PaginatedResult<> result agora está no "Core" e é usado no lugar de `DataLimiterResult<>`
+* Adicionamos o conceito de `NotificationManager` ao "core
+* `PaginatedResult<>` result agora está no "Core" e é usado no lugar de `DataLimiterResult<>`
 * Agora temos um local para documentação ao vivo (https://e5r.github.io/E5R.Architecture)
-* UnitOfWork agora é implementado usando duas estratégias: `ByProperty` e `TransactionScope`
+* `UnitOfWork` agora é implementado usando duas estratégias: `ByProperty` e `TransactionScope`
 * Estabiliza API de `IStorageReader<>`
     - Find()
     - GetAll()
@@ -660,15 +657,15 @@ var result = _studentStore.AsFluentQuery()
 
 ## 0.2.0
 
-O Suporte a UnitOfWork está completo usando a estratégia de propriedades.
+O Suporte a `UnitOfWork` está completo usando a estratégia de propriedades.
 
 Várias outras refatorações foram feitas:
 
 * Conceito de reducer passa a ser filter
 * Conceito de IoC passa a ser DI
-* ComponentInformation é obtido via dados do Assembly
+* `ComponentInformation` é obtido via dados do Assembly
 * Exceções agora estão centralizadas no componente Core
-* DataFilter e DataLimiter ganham uma implementação padrão em Linq
+* `DataFilter` e `DataLimiter` ganham uma implementação padrão em Linq
 
 O suporte a `E5R.Architecture.Core.Formatters` foi removido
 
