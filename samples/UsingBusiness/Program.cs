@@ -21,8 +21,8 @@ namespace UsingBusiness
     /// </summary>
     public class GenerateRandomNumberHandler : OutputOnlyActionHandler<int>
     {
-        protected override async Task<int> ExecActionAsync() =>
-            await Task.Run(() => new Random().Next(int.MinValue, int.MaxValue));
+        protected override Task<int> ExecActionAsync() =>
+            Task.FromResult(new Random().Next(int.MinValue, int.MaxValue));
     }
 
     /// <summary>
@@ -30,33 +30,34 @@ namespace UsingBusiness
     /// </summary>
     public class ProcessStringHandler : InputOnlyActionHandler<string>
     {
-        protected override async Task ExecActionAsync(string input)
-            => await Task.Run(() =>
+        protected override Task ExecActionAsync(string input)
+        {
+            // Aqui é garantido que "input" não é nulo
+
+            if (string.IsNullOrEmpty(input))
             {
-                // Aqui é garantido que "input" não é nulo
+                input = "abc";
+            }
 
-                if (string.IsNullOrEmpty(input))
+            var builder = new StringBuilder();
+
+            input.ToList().ForEach(c =>
+            {
+                var bytes = new byte[(int)c];
+
+                new Random().NextBytes(bytes);
+
+                foreach (var b in bytes)
                 {
-                    input = "abc";
+                    builder.Append(b.ToString("x"));
                 }
-
-                var builder = new StringBuilder();
-
-                input.ToList().ForEach(c =>
-                {
-                    var bytes = new byte[(int) c];
-
-                    new Random().NextBytes(bytes);
-
-                    foreach (var b in bytes)
-                    {
-                        builder.Append(b.ToString("x"));
-                    }
-                });
-
-                var stringGerada = builder.ToString();
-                var tamanhoString = stringGerada.Length;
             });
+
+            var stringGerada = builder.ToString();
+            var tamanhoString = stringGerada.Length;
+
+            return Task.CompletedTask;
+        }
     }
 
     /// <summary>
@@ -64,31 +65,30 @@ namespace UsingBusiness
     /// </summary>
     public class GenerateRandomPasswordHandler : ActionHandler<(string, int), string>
     {
-        protected override async Task<string> ExecActionAsync((string, int) input) =>
-            await Task.Run(() =>
+        protected override Task<string> ExecActionAsync((string, int) input)
+        {
+            var template = input.Item1;
+            var count = input.Item2;
+
+            Checker.NotEmptyOrWhiteArgument(template, "input(string)");
+
+            if (count < 3)
             {
-                var template = input.Item1;
-                var count = input.Item2;
+                throw new Exception("O password precisa de pelo menos 3 caracteres");
+            }
 
-                Checker.NotEmptyOrWhiteArgument(template, "input(string)");
+            var builder = new StringBuilder();
+            var rnd = new Random();
 
-                if (count < 3)
-                {
-                    throw new Exception("O password precisa de pelo menos 3 caracteres");
-                }
+            while (builder.Length < count)
+            {
+                var idx = rnd.Next(0, template.Length - 1);
 
-                var builder = new StringBuilder();
-                var rnd = new Random();
+                builder.Append(template.ElementAt(idx));
+            }
 
-                while (builder.Length < count)
-                {
-                    var idx = rnd.Next(0, template.Length - 1);
-
-                    builder.Append(template.ElementAt(idx));
-                }
-
-                return builder.ToString();
-            });
+            return Task.FromResult(builder.ToString());
+        }
     }
 
     /// <summary>
@@ -169,8 +169,9 @@ namespace UsingBusiness
     public class DadosSaidaBusinessService
     {
         private readonly LazyTuple<GenerateRandomNumberHandler, ProcessStringHandler> _g;
-        
-        public DadosSaidaBusinessService(LazyTuple<GenerateRandomNumberHandler, ProcessStringHandler> tuple)
+
+        public DadosSaidaBusinessService(
+            LazyTuple<GenerateRandomNumberHandler, ProcessStringHandler> tuple)
         {
             Checker.NotNullArgument(tuple, nameof(tuple));
 
@@ -272,10 +273,10 @@ namespace UsingBusiness
             if (!(target.Body is float))
                 return RuleCheckResult.Fail;
 
-            if ((float) target.Body >= 7.5)
+            if ((float)target.Body >= 7.5)
                 return new RuleCheckResult(false, new Dictionary<string, string>
                 {
-                    {"Numero", "O número era maior que 7.5"}
+                    { "Numero", "O número era maior que 7.5" }
                 });
 
             return RuleCheckResult.Success;
@@ -321,11 +322,11 @@ namespace UsingBusiness
             Console.WriteLine($"Número aleatório gerado: {numero}");
 
             await _tudoService.ExecAll();
-            
+
             // Notificando mensagens sem falha
             await _notificator.NotifyAsync(MyNotifyType.Type1, "Mensagem 1");
             await _notificator.NotifyAsync(MyNotifyType.Type2, 6.0f);
-            
+
             // Notificando uma mensagem com falha
             await _notificator.NotifyAsync(MyNotifyType.Type2, 7.51f);
         }
