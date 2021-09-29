@@ -41,7 +41,7 @@ build_script:
       }
 
 test_script:
-  - ps: 'dotnet test --collect:"XPlat Code Coverage"'
+  - ps: 'dotnet test E5R.Architecture.sln --collect:"XPlat Code Coverage"'
 #  - ps: 'codecov'
 
 for:
