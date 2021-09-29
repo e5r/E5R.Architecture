@@ -1,0 +1,10 @@
+{
+  "solutionFile": "./E5R.Architecture.Template.FullSolution.sln",
+  "publishGlobalExcludes": [
+    "*.pdb",
+    "appsettings.*.json",
+    "config.*.json"
+  ],
+  "publishArtifacts": [],
+  "testArtifacts": []
+}
