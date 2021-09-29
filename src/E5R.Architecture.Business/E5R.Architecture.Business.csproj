@@ -8,5 +8,6 @@
   </PropertyGroup>
   <ItemGroup>
     <ProjectReference Include="..\E5R.Architecture.Data\E5R.Architecture.Data.csproj" />
+    <ProjectReference Include="..\E5R.Architecture.Infrastructure\E5R.Architecture.Infrastructure.csproj" />
   </ItemGroup>
 </Project>
