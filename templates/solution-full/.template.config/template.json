@@ -1,0 +1,14 @@
+{
+  "$schema": "http://json.schemastore.org/template",
+  "author": "E5R Development Team",
+  "classifications": ["Common", "Web", "Architecture"],
+  "identity": "E5R.Architecture.Template.FullSolution",
+  "name": "E5R Architecture Full Solution",
+  "shortName": "e5r-full-solution",
+  "sourceName": "E5R.Architecture.Template.FullSolution",
+  "preferNameDirectory": true,
+  "tags": {
+    "language": "C#",
+    "type": "project"
+  }
+}

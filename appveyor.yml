@@ -27,18 +27,21 @@ init:
 
 before_build:
   - ps: 'dotnet --info'
-  - ps: 'dotnet restore'
+  - ps: 'dotnet restore E5R.Architecture.sln'
+  - ps: 'dotnet restore E5R.Architecture.Template.csproj'
 
 build_script:
   - ps: >-
       if ($ENV:BUILD_VERSION_SUFFIX) {
         dotnet build .\E5R.Architecture.sln --no-restore -c ${ENV:CONFIGURATION} --version-suffix ${ENV:BUILD_VERSION_SUFFIX};
+        dotnet build .\E5R.Architecture.Template.csproj --no-restore -c ${ENV:CONFIGURATION} --version-suffix ${ENV:BUILD_VERSION_SUFFIX};
       } else {
         dotnet build .\E5R.Architecture.sln --no-restore -c ${ENV:CONFIGURATION};
+        dotnet build .\E5R.Architecture.Template.csproj --no-restore -c ${ENV:CONFIGURATION};
       }
 
 test_script:
-  - ps: 'dotnet test --collect:"XPlat Code Coverage"'
+  - ps: 'dotnet test E5R.Architecture.sln --collect:"XPlat Code Coverage"'
 #  - ps: 'codecov'
 
 for:

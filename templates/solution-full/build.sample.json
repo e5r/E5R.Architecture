@@ -1,0 +1,21 @@
+{
+  "solutionFile": "./E5R.Architecture.Template.FullSolution.sln",
+  "publishGlobalExcludes": [
+    "*.pdb",
+    "appsettings.*.json",
+    "config.*.json"
+  ],
+  "publishArtifacts": [{
+    "component": "You.Src.Component.Folder.AndProject.Name",
+    "name": "component-output-name",
+    "excludes": []
+  }, {
+    "component": "You.Src.NuGet.Component.Folder.AndProject.Name",
+    "name": "nuget-component-output-name",
+    "nuget": true
+  }],
+  "testArtifacts": [{
+    "component": "You.Test.Component.Folder.AndProject.Name",
+    "name": "component-test-name"
+  }]
+}
