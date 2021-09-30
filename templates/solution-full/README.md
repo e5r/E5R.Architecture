@@ -1,14 +1,6 @@
 # E5R.Architecture.Template.FullSolution
 
-## IMPORTANTE!
-
-Renomeie o arquivo `editorconfig.file` para `.editorconfig` e `gitignore.file` para `.gitignore`
-caso queira utilizá-los ou simplesmente remova-os de sua solução.
-
-
 Descreva aqui seu projeto.
-
-
 
 ## Para compilar e distribuir seu projeto
 

@@ -6,5 +6,9 @@
   "name": "E5R Architecture Full Solution",
   "shortName": "e5r-full-solution",
   "sourceName": "E5R.Architecture.Template.FullSolution",
-  "preferNameDirectory": true
+  "preferNameDirectory": true,
+  "tags": {
+    "language": "C#",
+    "type": "project"
+  }
 }

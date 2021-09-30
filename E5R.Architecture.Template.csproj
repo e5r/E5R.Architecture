@@ -6,14 +6,18 @@
     <PackageVersion Condition=" '$(VersionSuffix)' == '' ">$(VersionPrefix)</PackageVersion>
     <PackageVersion Condition=" '$(VersionSuffix)' != '' ">$(VersionPrefix)-$(VersionSuffix)</PackageVersion>
     <PackageId>E5R.Architecture.Template</PackageId>
+    <PackageProjectUrl>https://github.com/e5r/E5R.Architecture</PackageProjectUrl>
     <Title>E5R Architecture Templates</Title>
     <Authors>erlimar</Authors>
     <Description>Templates to use when creating an project based on E5R Architecture</Description>
     <PackageTags>dotnet-new;templates;e5r</PackageTags>
     <TargetFramework>netstandard2.0</TargetFramework>
+    <SuppressDependenciesWhenPacking>True</SuppressDependenciesWhenPacking>
+    <NoDefaultExcludes>true</NoDefaultExcludes>
     <IncludeContentInPack>true</IncludeContentInPack>
     <IncludeBuildOutput>false</IncludeBuildOutput>
     <ContentTargetFolder>content</ContentTargetFolder>
+    <NoWarn>$(NoWarn);NU5110;NU5111;NU5123;NU5128</NoWarn>
   </PropertyGroup>
 
   <PropertyGroup Condition=" '$(Configuration)' == 'Release' ">
