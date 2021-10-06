@@ -8,15 +8,15 @@ namespace E5R.Architecture.Template.FullSolution.UnitTest
     /// Remova este exemplo de teste unitário e faça os seus próprios
     /// </summary>
     /// <remarks>
-    /// Neste arquivo de teste estamos exemplificamos um padrão que você pode seguir
-    /// ao formular seus testes. O uso de <see cref="TraitAttribute"/> ajuda a
-    /// organizar seus testes nas interfaces de exploradores de testes nas IDE's
+    /// Neste arquivo de teste estamos exemplificando um padrão que você pode seguir
+    /// ao formular seus testes (ou não). O uso de <see cref="TraitAttribute"/> ajuda
+    /// a organizar seus testes nas interfaces de exploradores de testes nas IDE's
     /// mais modernas, além de permitir um filtro de testes durante suas rotinas
-    /// de construição via integração contínua.
+    /// de construção via integração contínua.
     /// </remarks>
 
-    // Sempre defina o alvo sendo testado. Normalmente uma classe de teste para
-    // cada classe alvo.
+    // Sempre defina o alvo sendo testado. Normalmente (mas nem sempre) uma classe
+    // de teste para cada classe alvo.
     [Trait(nameof(Target), nameof(TraitUtil))]
 
     // É uma boa prática identificar o tipo do alvo nas unidades mais relevantes

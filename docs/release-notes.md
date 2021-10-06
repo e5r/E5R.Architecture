@@ -145,6 +145,20 @@ public class AToBTransformer : ITransformer<A, B>
     }
 }
 ```
+* Novo utilitário para tipo `object` que copia valores entre objetos
+```c#
+using E5R.Architecture.Core.Extensions;
+
+var obj1 = new MyObjectOne();
+var obj2 = new MyObjectTwo();
+
+// Copia valores das propriedades de "obj1" para "obj2"
+// "propriedades com mesmo nome e tipo"
+var copiedCount = obj1.CopyPropertyValuesTo(obj2);
+
+// O retorno é a quantidade de propriedades copiadas, assim
+// você pode tomar alguma decisão caso nada tenha sido copiado.
+```
 
 ### Breaking changes:
 
