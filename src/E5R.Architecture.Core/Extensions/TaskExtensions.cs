@@ -2,9 +2,11 @@
 // This file is a part of E5R.Architecture.
 // Licensed under the Apache version 2.0: https://github.com/e5r/manifest/blob/master/license/APACHE-2.0.txt
 
-using E5R.Architecture.Core;
+using System;
+using System.Threading;
+using System.Threading.Tasks;
 
-namespace System.Threading.Tasks
+namespace E5R.Architecture.Core.Extensions
 {
     public static class TaskExtensions
     {
