@@ -4,6 +4,7 @@
 
 using E5R.Architecture.Core;
 using E5R.Architecture.Core.Exceptions;
+using E5R.Architecture.Core.Extensions;
 using E5R.Architecture.Data.Abstractions;
 using Microsoft.EntityFrameworkCore;
 using System;
@@ -327,7 +328,11 @@ namespace E5R.Architecture.Data.EntityFrameworkCore
             var updatedFactory = updateExpression.Compile();
             var updated = updatedFactory(targetData);
 
-            CopyProperties(from: updated, to: targetData);
+            if (updated.CopyPropertyValuesTo(targetData) < 1)
+            {
+                // TODO: Implementar i18n/l10n
+                throw new DataLayerException("No matching data found for update");
+            }
 
             Context.Entry(targetData).State = EntityState.Modified;
             Context.SaveChanges();
@@ -444,7 +449,11 @@ namespace E5R.Architecture.Data.EntityFrameworkCore
                 //       - https://github.com/zzzprojects/EntityFramework-Plus
                 var updated = updatedFactory(targetData);
 
-                CopyProperties(from: updated, to: targetData);
+                if (updated.CopyPropertyValuesTo(targetData) < 1)
+                {
+                    // TODO: Implementar i18n/l10n
+                    throw new DataLayerException("No matching data found for update");
+                }
 
                 Context.Entry(targetData).State = EntityState.Modified;
                 affectedObjects.Add(targetData);

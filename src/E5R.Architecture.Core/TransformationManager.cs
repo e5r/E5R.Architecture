@@ -6,6 +6,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using E5R.Architecture.Core.Exceptions;
+using E5R.Architecture.Core.Extensions;
 
 namespace E5R.Architecture.Core
 {
@@ -31,6 +32,25 @@ namespace E5R.Architecture.Core
             return ResolveType<ITransformer<TFrom, TTo>>().Transform(from);
         }
 
+        public TTo AutoTransform<TFrom, TTo>(TFrom from) where TTo : new()
+        {
+            Checker.NotNullArgument(from, nameof(from));
+
+            var t = ResolveOptionalType<ITransformer<TFrom, TTo>>();
+
+            // Encontramos um ITransformer? Então vamos usá-lo e pronto.
+            if (t != null)
+            {
+                return t.Transform(from);
+            }
+
+            // Não encontramos um ITransformer. Então vamos criar um objeto e copiar as
+            // propriedades, pois é o que dá pra fazer por agora.
+            var to = new TTo();
+            var _ = from.CopyPropertyValuesTo(to);
+
+            return to;
+        }
 
         public TTo Transform<TFrom, TTo, TOperation>(TFrom from, TOperation operation)
             where TTo : new() where TOperation : Enum
@@ -49,6 +69,29 @@ namespace E5R.Architecture.Core
             var t = ResolveType<ITransformer<TFrom, TTo>>();
 
             return from.ToList().ConvertAll(t.Transform);
+        }
+
+        public IEnumerable<TTo> AutoTransform<TFrom, TTo>(IEnumerable<TFrom> from) where TTo : new()
+        {
+            Checker.NotNullArgument(from, nameof(from));
+
+            var t = ResolveOptionalType<ITransformer<TFrom, TTo>>();
+
+            // Encontramos um ITransformer? Então vamos usá-lo e pronto.
+            if (t != null)
+            {
+                return from.ToList().ConvertAll(t.Transform);
+            }
+
+            // Não encontramos um ITransformer. Então vamos criar um objeto de cada
+            //  e copiar as propriedades, pois é o que dá pra fazer por agora.
+            return from.Select(s =>
+            {
+                var to = new TTo();
+                var _ = s.CopyPropertyValuesTo(to);
+
+                return to;
+            });
         }
 
         IEnumerable<TTo> ITransformationManager.Transform<TFrom, TTo, TOperation>(IEnumerable<TFrom> from, TOperation operation)
@@ -71,6 +114,15 @@ namespace E5R.Architecture.Core
             return new PaginatedResult<TTo>(result, from.Offset, from.Limit, from.Total);
         }
 
+        public PaginatedResult<TTo> AutoTransform<TFrom, TTo>(PaginatedResult<TFrom> from) where TTo : new()
+        {
+            Checker.NotNullArgument(from, nameof(from));
+
+            var result = AutoTransform<TFrom, TTo>(from.Result);
+
+            return new PaginatedResult<TTo>(result, from.Offset, from.Limit, from.Total);
+        }
+
         PaginatedResult<TTo> ITransformationManager.Transform<TFrom, TTo, TOperation>(PaginatedResult<TFrom> from, TOperation operation)
         {
             Checker.NotNullArgument(from, nameof(from));
@@ -81,16 +133,17 @@ namespace E5R.Architecture.Core
         }
         #endregion
 
-        TType ResolveType<TType>()
+        private TType ResolveOptionalType<TType>() => (TType)_serviceProvider.GetService(typeof(TType));
+
+        private TType ResolveType<TType>()
         {
-            var serviceType = typeof(TType);
-            var service = _serviceProvider.GetService(serviceType);
+            var service = ResolveOptionalType<TType>();
 
             if (service == null)
             {
                 // TODO: Implementar i18n/l10n
                 throw new InfrastructureLayerException(
-                    $"Type {serviceType.FullName} could not be resolved");
+                    $"Type {typeof(TType).FullName} could not be resolved");
             }
 
             return (TType)service;
