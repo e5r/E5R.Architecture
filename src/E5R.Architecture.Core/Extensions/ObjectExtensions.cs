@@ -21,6 +21,9 @@ namespace E5R.Architecture.Core.Extensions
 
         public static int CopyPropertyValuesTo<TFrom, TTo>(this TFrom from, TTo to)
         {
+            Checker.NotNullArgument(from, nameof(from));
+            Checker.NotNullArgument(to, nameof(to));
+
             var fromProperties = typeof(TFrom).GetProperties();
             var updateableProperties = typeof(TTo).GetProperties().Where(w =>
                 w.CanWrite &&

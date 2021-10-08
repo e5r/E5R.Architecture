@@ -145,6 +145,35 @@ public class AToBTransformer : ITransformer<A, B>
     }
 }
 ```
+* `ITransformationManager` ganha novos métodos para transformar automaticamente objetos
+```c#
+// TTo AutoTransform<TFrom, TTo>(TFrom from) where TTo : new();
+// IEnumerable<TTo> AutoTransform<TFrom, TTo>(IEnumerable<TFrom> from) where TTo : new();
+// PaginatedResult<TTo> AutoTransform<TFrom, TTo>(PaginatedResult<TFrom> from) where TTo : new();
+
+public class MyFrom
+{
+    public int IntegerValue { get; set; }
+    public string StringValue { get; set; }
+    public Guid GuidValue { get; set; }
+}
+
+public class MyTo
+{
+    public int IntegerValue { get; set; }
+    public string StringValue { get; set; }
+    public string NotCopiedString { get; set; }
+    public Guid GuidValue { get; set; }
+}
+var transformer = ITransformationManager;
+
+var from = new MyFrom { /* ... */ }
+var to = transformer.AutoTransform<MyFrom, MyTo>(from);
+
+// Se existir um ITransformer<MyFrom, MyTo> ele será usado, se não, as propriedades
+// serão simplesmente copiadas entre os objetos.
+// Na cópia todas as propriedades de mesmo nome e tipo serão copiadas e as demais não.
+```
 * Novo utilitário para tipo `object` que copia valores entre objetos
 ```c#
 using E5R.Architecture.Core.Extensions;
