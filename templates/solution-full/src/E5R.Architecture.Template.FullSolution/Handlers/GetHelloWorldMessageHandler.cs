@@ -7,6 +7,9 @@ using E5R.Architecture.Business;
 
 namespace E5R.Architecture.Template.FullSolution.Handlers
 {
+    /// <summary>
+    /// Make a hello world message
+    /// </summary>
     public class GetHelloWorldMessageHandler : OutputOnlyActionHandler<string>
     {
         protected override Task<string> ExecActionAsync()

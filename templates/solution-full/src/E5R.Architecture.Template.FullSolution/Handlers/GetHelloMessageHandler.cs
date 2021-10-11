@@ -9,6 +9,9 @@ using E5R.Architecture.Template.FullSolution.Domain.Data.TransferObjects;
 
 namespace E5R.Architecture.Template.FullSolution.Handlers
 {
+    /// <summary>
+    /// Make a hello message with custom name option
+    /// </summary>
     public class GetHelloMessageHandler : ActionHandler<GetHelloMessageInput, string>
     {
         private IRuleSet<GetHelloMessageInput> Rules { get; }
