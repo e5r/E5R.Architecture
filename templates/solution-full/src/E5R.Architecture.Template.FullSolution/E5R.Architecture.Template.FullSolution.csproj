@@ -10,4 +10,8 @@
     <PackageReference Include="E5R.Architecture.Business" Version="0.10.0-beta-327" />
   </ItemGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\E5R.Architecture.Template.FullSolution.Domain\E5R.Architecture.Template.FullSolution.Domain.csproj" />
+  </ItemGroup>
+
 </Project>
