@@ -1,4 +1,4 @@
-// Copyright (c) E5R Development Team. All rights reserved.
+﻿// Copyright (c) E5R Development Team. All rights reserved.
 // This file is a part of E5R.Architecture.
 // Licensed under the Apache version 2.0: https://github.com/e5r/manifest/blob/master/license/APACHE-2.0.txt
 
@@ -6,7 +6,6 @@ using System;
 using System.Linq;
 using System.Linq.Expressions;
 using E5R.Architecture.Core;
-using E5R.Architecture.Core.Exceptions;
 using E5R.Architecture.Data.Abstractions;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata;
@@ -16,7 +15,7 @@ namespace E5R.Architecture.Data.EntityFrameworkCore
     public class StorageBase<TDataModel>
         where TDataModel : class, IIdentifiable
     {
-        public IQueryable<TDataModel> QueryFind(
+        protected IQueryable<TDataModel> QueryFind(
             IEntityType entityType,
             IQueryable<TDataModel> origin,
             object[] identifiers,
@@ -93,7 +92,7 @@ namespace E5R.Architecture.Data.EntityFrameworkCore
         }
 
         /// <summary>
-        /// Query for operations that must return an <see cref="PaginatedResult{}" />
+        /// Query for operations that must return an <see cref="PaginatedResult{TDataModel}" />
         /// </summary>
         /// <param name="limiter">Data limiter</param>
         /// <param name="origin">Original data query</param>
@@ -122,30 +121,33 @@ namespace E5R.Architecture.Data.EntityFrameworkCore
             {
                 if (orderBy == null)
                 {
-                    if (sorter.Descending)
-                        orderBy = result.OrderByDescending(sorter.Sorter);
-                    else
-                        orderBy = result.OrderBy(sorter.Sorter);
+                    orderBy = sorter.Descending 
+                        ? result.OrderByDescending(sorter.Sorter) 
+                        : result.OrderBy(sorter.Sorter);
                 }
                 else
                 {
-                    if (sorter.Descending)
-                        orderBy = orderBy.ThenByDescending(sorter.Sorter);
-                    else
-                        orderBy = orderBy.ThenBy(sorter.Sorter);
+                    orderBy = sorter.Descending 
+                        ? orderBy.ThenByDescending(sorter.Sorter) 
+                        : orderBy.ThenBy(sorter.Sorter);
                 }
             }
 
             result = orderBy ?? result;
 
-            uint offset = 0;
-            uint limit = 0;
-            int total = result.Count();
+            uint offset;
+            uint limit;
+            
+            var total = result.Count();
 
             if (limiter.OffsetBegin.HasValue)
             {
                 offset = limiter.OffsetBegin.Value;
                 result = result.Skip(Convert.ToInt32(offset));
+            }
+            else
+            {
+                offset = 0;
             }
 
             if (limiter.OffsetLimit.HasValue)
@@ -165,10 +167,9 @@ namespace E5R.Architecture.Data.EntityFrameworkCore
             IQueryable<TDataModel> query,
             IDataIncludes includes)
         {
-            if (includes == null)
-                return query;
-
-            return includes.Includes.Aggregate(query, (q, i) => q.Include(i));
+            return includes != null
+                ? includes.Includes.Aggregate(query, (q, i) => q.Include(i))
+                : query;
         }
     }
 }
