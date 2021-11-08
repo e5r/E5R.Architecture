@@ -49,7 +49,7 @@ namespace E5R.Architecture.Data.EntityFrameworkCore
             QuerySearch(Query, filter, null).Count();
 
         public IEnumerable<TDataModel> GetAll(IDataIncludes includes) =>
-            TryApplyIncludes(Query, includes);
+            TryApplyIncludes(Query, includes).ToList();
 
         public PaginatedResult<TDataModel> LimitedGet(IDataLimiter<TDataModel> limiter,
             IDataIncludes includes)
@@ -59,7 +59,7 @@ namespace E5R.Architecture.Data.EntityFrameworkCore
             var (offset, limit, total, result) = QueryPreLimitResult(Query, limiter, includes);
 
             return new PaginatedResult<TDataModel>(
-                result,
+                result.ToList(),
                 offset,
                 limit,
                 total
@@ -71,7 +71,7 @@ namespace E5R.Architecture.Data.EntityFrameworkCore
         {
             Checker.NotNullArgument(filter, nameof(filter));
 
-            return QuerySearch(Query, filter, includes);
+            return QuerySearch(Query, filter, includes).ToList();
         }
 
         public PaginatedResult<TDataModel> LimitedSearch(IDataFilter<TDataModel> filter,
@@ -87,7 +87,7 @@ namespace E5R.Architecture.Data.EntityFrameworkCore
             var (offset, limit, total, result) = QueryPreLimitResult(query, limiter, null);
 
             return new PaginatedResult<TDataModel>(
-                result,
+                result.ToList(),
                 offset,
                 limit,
                 total
@@ -117,7 +117,7 @@ namespace E5R.Architecture.Data.EntityFrameworkCore
             Checker.NotNullObject(projection.Select,
                 $"{nameof(projection)}.{nameof(projection.Select)}");
 
-            return TryApplyIncludes(Query, projection).Select(projection.Select);
+            return TryApplyIncludes(Query, projection).Select(projection.Select).ToList();
         }
 
         public PaginatedResult<TSelect> LimitedGet<TSelect>(IDataLimiter<TDataModel> limiter,
@@ -131,7 +131,7 @@ namespace E5R.Architecture.Data.EntityFrameworkCore
             var (offset, limit, total, result) = QueryPreLimitResult(Query, limiter, projection);
 
             return new PaginatedResult<TSelect>(
-                result.Select(projection.Select),
+                result.Select(projection.Select).ToList(),
                 offset,
                 limit,
                 total
@@ -147,7 +147,7 @@ namespace E5R.Architecture.Data.EntityFrameworkCore
                 $"{nameof(projection)}.{nameof(projection.Select)}");
 
             return QuerySearch(Query, filter, projection)
-                .Select(projection.Select);
+                .Select(projection.Select).ToList();
         }
 
         public PaginatedResult<TSelect> LimitedSearch<TSelect>(IDataFilter<TDataModel> filter,
@@ -166,7 +166,7 @@ namespace E5R.Architecture.Data.EntityFrameworkCore
             var (offset, limit, total, result) = QueryPreLimitResult(query, limiter, null);
 
             return new PaginatedResult<TSelect>(
-                result.Select(projection.Select),
+                result.Select(projection.Select).ToList(),
                 offset,
                 limit,
                 total
@@ -186,7 +186,8 @@ namespace E5R.Architecture.Data.EntityFrameworkCore
 
             return TryApplyIncludes(Query, projection)
                 .GroupBy(projection.Group)
-                .Select(projection.Select);
+                .Select(projection.Select)
+                .ToList();
         }
 
         public PaginatedResult<TSelect> LimitedGet<TGroup, TSelect>(
@@ -203,7 +204,7 @@ namespace E5R.Architecture.Data.EntityFrameworkCore
             var (offset, limit, total, result) = QueryPreLimitResult(Query, limiter, projection);
 
             return new PaginatedResult<TSelect>(
-                result.GroupBy(projection.Group).Select(projection.Select),
+                result.GroupBy(projection.Group).Select(projection.Select).ToList(),
                 offset,
                 limit,
                 total
@@ -222,7 +223,8 @@ namespace E5R.Architecture.Data.EntityFrameworkCore
 
             return QuerySearch(Query, filter, projection)
                 .GroupBy(projection.Group)
-                .Select(projection.Select);
+                .Select(projection.Select)
+                .ToList();
         }
 
         public PaginatedResult<TSelect> LimitedSearch<TGroup, TSelect>(
@@ -245,7 +247,7 @@ namespace E5R.Architecture.Data.EntityFrameworkCore
             var (offset, limit, total, result) = QueryPreLimitResult(query, limiter, null);
 
             return new PaginatedResult<TSelect>(
-                result.GroupBy(projection.Group).Select(projection.Select),
+                result.GroupBy(projection.Group).Select(projection.Select).ToList(),
                 offset,
                 limit,
                 total
