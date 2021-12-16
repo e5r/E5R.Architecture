@@ -22,6 +22,14 @@ namespace E5R.Architecture.Data.Abstractions
         where TDataModel : IIdentifiable
     {
         /// <summary>
+        /// Get the first item stored according to filter entered
+        /// </summary>
+        /// <param name="filter">Data filter</param>
+        /// <param name="includes">Linked data to include</param>
+        /// <returns>Instance of <see cref="TDataModel"/>, or null when not found</returns>
+        TDataModel GetFirst(IDataFilter<TDataModel> filter, IDataIncludes includes = null);
+
+        /// <summary>
         /// Get all stored items
         /// </summary>
         /// <param name="includes">Linked data to include</param>

@@ -48,6 +48,9 @@ namespace E5R.Architecture.Data.EntityFrameworkCore
         public int Count(IDataFilter<TDataModel> filter) =>
             QuerySearch(Query, filter, null).Count();
 
+        public TDataModel GetFirst(IDataFilter<TDataModel> filter, IDataIncludes includes = null) =>
+            QuerySearch(Query, filter, includes).FirstOrDefault();
+
         public IEnumerable<TDataModel> GetAll(IDataIncludes includes) =>
             TryApplyIncludes(Query, includes).ToList();
 
@@ -111,11 +114,19 @@ namespace E5R.Architecture.Data.EntityFrameworkCore
                 .FirstOrDefault();
         }
 
+        public TSelect GetFirst<TSelect>(IDataFilter<TDataModel> filter,
+            IDataProjection<TDataModel, TSelect> projection)
+        {
+            Checker.NotNullArgument(projection, nameof(projection));
+            Checker.NotNullObject(projection.Select, () => projection.Select);
+
+            return QuerySearch(Query, filter, projection).Select(projection.Select).FirstOrDefault();
+        }
+
         public IEnumerable<TSelect> GetAll<TSelect>(IDataProjection<TDataModel, TSelect> projection)
         {
             Checker.NotNullArgument(projection, nameof(projection));
-            Checker.NotNullObject(projection.Select,
-                $"{nameof(projection)}.{nameof(projection.Select)}");
+            Checker.NotNullObject(projection.Select, () => projection.Select);
 
             return TryApplyIncludes(Query, projection).Select(projection.Select).ToList();
         }

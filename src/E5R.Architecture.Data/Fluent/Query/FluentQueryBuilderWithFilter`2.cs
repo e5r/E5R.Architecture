@@ -60,6 +60,8 @@ namespace E5R.Architecture.Data.Fluent.Query
 
         #region Storage Actions
 
+        public TSelect GetFirst() => _storage.GetFirst<TSelect>(_filter, _projection);
+
         public IEnumerable<TSelect> Search() => _storage.Search<TSelect>(_filter, _projection);
 
         #endregion

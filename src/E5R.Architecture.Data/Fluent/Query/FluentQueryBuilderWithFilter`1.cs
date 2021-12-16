@@ -67,6 +67,8 @@ namespace E5R.Architecture.Data.Fluent.Query
 
         #region Storage Actions
 
+        public TDataModel GetFirst() => _storage.GetFirst(_filter, _includes);
+
         public IEnumerable<TDataModel> Search() => _storage.Search(_filter, _includes);
 
         public int Count() => _storage.Count(_filter);

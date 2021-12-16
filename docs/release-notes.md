@@ -225,6 +225,18 @@ public interface IUpdatableStorage<TDataModel>
     TDataModel Update<TUpdated>(object[] identifiers, Expression<Func<TDataModel, TUpdated>> updateExpression);
 }
 ```
+* As interfaces `IAcquirableStorage` e `IAcquirableStorageWithSelector` ganham novo método para retornar primeiro item à partir de um filtro
+```c#
+public interface IAcquirableStorage<TDataModel>
+{
+    TDataModel GetFirst(IDataFilter<TDataModel> filter, IDataIncludes includes = null);
+}
+
+public interface IAcquirableStorageWithSelector<TDataModel>
+{
+    TSelect GetFirst<TSelect>(IDataFilter<TDataModel> filter, IDataProjection<TDataModel, TSelect> projection);
+}
+```
 
 ## 0.9.0
 
