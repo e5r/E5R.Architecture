@@ -1,4 +1,4 @@
-﻿// Copyright (c) E5R Development Team. All rights reserved.
+// Copyright (c) E5R Development Team. All rights reserved.
 // This file is a part of E5R.Architecture.
 // Licensed under the Apache version 2.0: https://github.com/e5r/manifest/blob/master/license/APACHE-2.0.txt
 
@@ -138,11 +138,7 @@ namespace E5R.Architecture.Core
         {
             try
             {
-                var task = CheckAsync(target);
-
-                task.Wait();
-
-                return task.Result;
+                return CheckAsync(target).GetAwaiter().GetResult();
             }
             catch (Exception ex)
             {
@@ -154,7 +150,7 @@ namespace E5R.Architecture.Core
         }
 
         public void Ensure(TTarget target, string exceptionMessageTemplate = null)
-            => EnsureAsync(target, exceptionMessageTemplate).Wait();
+            => EnsureAsync(target, exceptionMessageTemplate).GetAwaiter().GetResult();
 
         public async Task EnsureAsync(TTarget target, string exceptionMessageTemplate = null)
         {

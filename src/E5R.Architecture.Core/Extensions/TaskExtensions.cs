@@ -20,9 +20,7 @@ namespace E5R.Architecture.Core.Extensions
         {
             Checker.NotNullArgument(task, nameof(task));
 
-            task.Wait();
-
-            return task.Result;
+            return task.GetAwaiter().GetResult();
         }
 
         /// <summary>

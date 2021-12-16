@@ -1,4 +1,4 @@
-﻿// Copyright (c) E5R Development Team. All rights reserved.
+// Copyright (c) E5R Development Team. All rights reserved.
 // This file is a part of E5R.Architecture.
 // Licensed under the Apache version 2.0: https://github.com/e5r/manifest/blob/master/license/APACHE-2.0.txt
 
@@ -29,7 +29,7 @@ namespace E5R.Architecture.Core
         }
 
         public void Notify(TEnum type, object body, Parameters parameters = null)
-            => NotifyAsync(type, body, parameters).Wait();
+            => NotifyAsync(type, body, parameters).GetAwaiter().GetResult();
 
         public async Task NotifyAsync(TEnum type, object body, Parameters parameters = null)
         {
