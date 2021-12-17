@@ -7,39 +7,35 @@ using System.Linq;
 using E5R.Architecture.Core;
 using E5R.Architecture.Core.Exceptions;
 using E5R.Architecture.Data.Abstractions;
+using Microsoft.EntityFrameworkCore;
 
 namespace E5R.Architecture.Data.EntityFrameworkCore
 {
     public class RideStorage<TDataModel> : StorageBase<TDataModel>, IStorageReader<TDataModel>
         where TDataModel : class, IIdentifiable
     {
+        private readonly DbContext _dbContext;
         private readonly IQueryable<TDataModel> _query;
 
-        public RideStorage(IQueryable<TDataModel> query)
+        public RideStorage(DbContext dbContext, IQueryable<TDataModel> query)
         {
+            Checker.NotNullArgument(dbContext, nameof(dbContext));
             Checker.NotNullArgument(query, nameof(query));
 
+            _dbContext = dbContext;
             _query = query;
         }
 
         #region IStorageReader for TDataModel
 
-        public TDataModel Find(TDataModel data, IDataIncludes includes = null)
-        {
-            throw new DataLayerException(
-                $"{this.GetType().Name} not implement {nameof(Find)}(data)!");
-        }
-
-        public TDataModel Find(object identifier, IDataIncludes includes = null)
-        {
-            throw new DataLayerException(
-                $"{this.GetType().Name} not implement {nameof(Find)}(identifier)!");
-        }
-
         public TDataModel Find(object[] identifiers, IDataIncludes includes = null)
         {
-            throw new DataLayerException(
-                $"{this.GetType().Name} not implement {nameof(Find)}(identifiers)!");
+            Checker.NotNullArgument(identifiers, nameof(identifiers));
+
+            var entityType = _dbContext.Model.FindEntityType(typeof(TDataModel));
+
+            return QueryFind(entityType, _query, identifiers, includes)
+                .FirstOrDefault();
         }
 
         public int CountAll() => _query.Count();

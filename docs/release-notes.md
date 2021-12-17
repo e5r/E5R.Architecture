@@ -237,6 +237,7 @@ public interface IAcquirableStorageWithSelector<TDataModel>
     TSelect GetFirst<TSelect>(IDataFilter<TDataModel> filter, IDataProjection<TDataModel, TSelect> projection);
 }
 ```
+* Os derivados de `RideStorage`, que inclui `RawSqlRideStorage` agora implementam o método `Find()`
 
 ## 0.9.0
 
