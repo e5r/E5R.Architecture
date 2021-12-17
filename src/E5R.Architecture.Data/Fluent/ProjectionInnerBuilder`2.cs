@@ -1,4 +1,4 @@
-﻿// Copyright (c) E5R Development Team. All rights reserved.
+// Copyright (c) E5R Development Team. All rights reserved.
 // This file is a part of E5R.Architecture.
 // Licensed under the Apache version 2.0: https://github.com/e5r/manifest/blob/master/license/APACHE-2.0.txt
 
@@ -29,6 +29,16 @@ namespace E5R.Architecture.Data.Fluent
             _includes.Include(expression as LambdaExpression);
 
             return new ProjectionRootBuilder<TRootDataModel>(_storage, _filter, _limiter, _includes);
+        }
+
+        public ProjectionInnerBuilder<T, TRootDataModel> Include<T>(Expression<Func<TDataModel, object>> expression)
+            where T : IIdentifiable
+        {
+            Checker.NotNullArgument(expression, nameof(expression));
+
+            _includes.Include(expression as LambdaExpression);
+
+            return new ProjectionInnerBuilder<T, TRootDataModel>(_storage, _filter, _limiter, _includes);
         }
 
         public ProjectionInnerBuilder<TDataModel, TRootDataModel> ThenInclude(Expression<Func<TDataModel, object>> expression)
