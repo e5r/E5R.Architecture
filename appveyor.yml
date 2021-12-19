@@ -69,7 +69,7 @@ for:
       description: 'CI Release v$(appveyor_build_version) from AppVeyor'
       artifact: E5RArchitecturePackages
       auth_token:
-        secure: ZEaPbdCkQoEXD/52qVLt7n6Kl6uCV/d/ba644DCMt86YRJs8kvpaprkYK6I5wUdq
+        secure: j5NTu+nvmL6XdfvpcTmcrKloOPf5CnXIvk/ZZ7NnZgW6GUY8XOl2hY9j9lHVTSo7
       on:
         IS_NOT_PR: true
     - provider: NuGet
@@ -99,7 +99,7 @@ for:
       artifact: E5RArchitecturePackages
       prerelease: true
       auth_token:
-        secure: ZEaPbdCkQoEXD/52qVLt7n6Kl6uCV/d/ba644DCMt86YRJs8kvpaprkYK6I5wUdq
+        secure: j5NTu+nvmL6XdfvpcTmcrKloOPf5CnXIvk/ZZ7NnZgW6GUY8XOl2hY9j9lHVTSo7
       on:
         IS_NOT_PR: true
     - provider: NuGet
