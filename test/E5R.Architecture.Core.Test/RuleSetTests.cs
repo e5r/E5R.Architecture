@@ -210,12 +210,18 @@ namespace E5R.Architecture.Core.Test
 
             ruleFor1Mock.Setup(s => s.CheckAsync(It.IsAny<FakeModel>()))
                 .ReturnsAsync(RuleCheckResult.Success);
+            ruleFor1Mock.Setup(s => s.Code).Returns("MOCK1");
+            ruleFor1Mock.Setup(s => s.Description).Returns("MOCK1");
             
             ruleFor2Mock.Setup(s => s.CheckAsync(It.IsAny<FakeModel>()))
                 .ReturnsAsync(RuleCheckResult.Fail);
-            
+            ruleFor2Mock.Setup(s => s.Code).Returns("MOCK2");
+            ruleFor2Mock.Setup(s => s.Description).Returns("MOCK2");
+
             ruleFor3Mock.Setup(s => s.CheckAsync(It.IsAny<FakeModel>()))
                 .ReturnsAsync(RuleCheckResult.Success);
+            ruleFor3Mock.Setup(s => s.Code).Returns("MOCK13");
+            ruleFor3Mock.Setup(s => s.Description).Returns("MOCK3");
 
             serviceProviderMock
                 .Setup(p => p.GetService(typeof(IEnumerable<IRuleFor<FakeModel>>)))

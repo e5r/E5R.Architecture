@@ -49,10 +49,7 @@ namespace E5R.Architecture.Core
             }
             catch (Exception ex)
             {
-                return new RuleCheckResult(false, new Dictionary<string, string>
-                {
-                    {"$exception", ex.Message}
-                });
+                return new RuleCheckResult(ex);
             }
         }
 
@@ -69,10 +66,7 @@ namespace E5R.Architecture.Core
             }
             catch (Exception ex)
             {
-                result = new RuleCheckResult(false, new Dictionary<string, string>
-                {
-                    { "$exception", ex.Message }
-                });
+                result = new RuleCheckResult(ex);
             }
 
             if (result.IsSuccess)
