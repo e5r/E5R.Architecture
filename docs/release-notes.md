@@ -238,6 +238,16 @@ public interface IAcquirableStorageWithSelector<TDataModel>
 }
 ```
 * Os derivados de `RideStorage`, que inclui `RawSqlRideStorage` agora implementam o método `Find()`
+* Agora no resultado de validação de uma regra temos a possibilidade de identificar uma falha inesperada
+```c#
+var rule = MyRuleFor();
+var result = rule.Check(myModel);
+
+if(!result.IsSuccess && result.UnexpectedException != null)
+{
+    // Use result.UnexpectedException...
+}
+```
 
 ## 0.9.0
 
