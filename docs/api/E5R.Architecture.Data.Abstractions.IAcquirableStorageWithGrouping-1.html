@@ -10,7 +10,7 @@
     <meta name="viewport" content="width=device-width">
     <meta name="title" content="Interface IAcquirableStorageWithGrouping&lt;TDataModel&gt;
    | Arquitetura E5R ">
-    <meta name="generator" content="docfx 2.58.0.0">
+    <meta name="generator" content="docfx 2.58.9.0">
     
     <link rel="shortcut icon" href="../images/favicon.png">
     <link rel="stylesheet" href="../styles/docfx.vendor.css">
@@ -100,7 +100,8 @@
   </h3>
   <a id="E5R_Architecture_Data_Abstractions_IAcquirableStorageWithGrouping_1_GetAll_" data-uid="E5R.Architecture.Data.Abstractions.IAcquirableStorageWithGrouping`1.GetAll*"></a>
   <h4 id="E5R_Architecture_Data_Abstractions_IAcquirableStorageWithGrouping_1_GetAll__2_E5R_Architecture_Data_Abstractions_IDataProjection__0___0___1__" data-uid="E5R.Architecture.Data.Abstractions.IAcquirableStorageWithGrouping`1.GetAll``2(E5R.Architecture.Data.Abstractions.IDataProjection{`0,``0,``1})">GetAll&lt;TGroup, TSelect&gt;(IDataProjection&lt;TDataModel, TGroup, TSelect&gt;)</h4>
-  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 summary"><p>Get all stored items with grouping</p>
+</div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
@@ -119,7 +120,8 @@
       <tr>
         <td><a class="xref" href="E5R.Architecture.Data.Abstractions.IDataProjection-3.html">IDataProjection</a>&lt;TDataModel, TGroup, TSelect&gt;</td>
         <td><span class="parametername">projection</span></td>
-        <td></td>
+        <td><p>Data projection (Include, Group and Select) for data model</p>
+</td>
       </tr>
     </tbody>
   </table>
@@ -134,7 +136,8 @@
     <tbody>
       <tr>
         <td><span class="xref">IEnumerable</span>&lt;TSelect&gt;</td>
-        <td></td>
+        <td><p>List of <a class="xref" href="E5R.Architecture.Data.Abstractions.IDataProjection-3.html#E5R_Architecture_Data_Abstractions_IDataProjection_3_Select">Select</a></p>
+</td>
       </tr>
     </tbody>
   </table>
@@ -159,7 +162,8 @@
   </table>
   <a id="E5R_Architecture_Data_Abstractions_IAcquirableStorageWithGrouping_1_LimitedGet_" data-uid="E5R.Architecture.Data.Abstractions.IAcquirableStorageWithGrouping`1.LimitedGet*"></a>
   <h4 id="E5R_Architecture_Data_Abstractions_IAcquirableStorageWithGrouping_1_LimitedGet__2_E5R_Architecture_Data_Abstractions_IDataLimiter__0__E5R_Architecture_Data_Abstractions_IDataProjection__0___0___1__" data-uid="E5R.Architecture.Data.Abstractions.IAcquirableStorageWithGrouping`1.LimitedGet``2(E5R.Architecture.Data.Abstractions.IDataLimiter{`0},E5R.Architecture.Data.Abstractions.IDataProjection{`0,``0,``1})">LimitedGet&lt;TGroup, TSelect&gt;(IDataLimiter&lt;TDataModel&gt;, IDataProjection&lt;TDataModel, TGroup, TSelect&gt;)</h4>
-  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 summary"><p>Gets the stored items with grouping in a limited way</p>
+</div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
@@ -178,12 +182,14 @@
       <tr>
         <td><a class="xref" href="E5R.Architecture.Data.Abstractions.IDataLimiter-1.html">IDataLimiter</a>&lt;TDataModel&gt;</td>
         <td><span class="parametername">limiter</span></td>
-        <td></td>
+        <td><p>Limitation data</p>
+</td>
       </tr>
       <tr>
         <td><a class="xref" href="E5R.Architecture.Data.Abstractions.IDataProjection-3.html">IDataProjection</a>&lt;TDataModel, TGroup, TSelect&gt;</td>
         <td><span class="parametername">projection</span></td>
-        <td></td>
+        <td><p>Data projection (Include, Group and Select) for data model</p>
+</td>
       </tr>
     </tbody>
   </table>
@@ -198,7 +204,8 @@
     <tbody>
       <tr>
         <td><a class="xref" href="E5R.Architecture.Core.PaginatedResult-1.html">PaginatedResult</a>&lt;TSelect&gt;</td>
-        <td></td>
+        <td><p>Paged list of <a class="xref" href="E5R.Architecture.Data.Abstractions.IDataProjection-3.html#E5R_Architecture_Data_Abstractions_IDataProjection_3_Select">Select</a></p>
+</td>
       </tr>
     </tbody>
   </table>
@@ -224,6 +231,9 @@
   <h3 id="extensionmethods">Extension Methods</h3>
   <div>
       <a class="xref" href="E5R.Architecture.Core.Extensions.ObjectExtensions.html#E5R_Architecture_Core_Extensions_ObjectExtensions_Fill__1___0_Dictionary_System_String_System_String__">ObjectExtensions.Fill&lt;TObject&gt;(TObject, Dictionary&lt;String, String&gt;)</a>
+  </div>
+  <div>
+      <a class="xref" href="E5R.Architecture.Core.Extensions.ObjectExtensions.html#E5R_Architecture_Core_Extensions_ObjectExtensions_CopyPropertyValuesTo__2___0___1_">ObjectExtensions.CopyPropertyValuesTo&lt;TFrom, TTo&gt;(TFrom, TTo)</a>
   </div>
 </article>
           </div>

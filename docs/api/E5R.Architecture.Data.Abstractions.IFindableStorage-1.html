@@ -10,7 +10,7 @@
     <meta name="viewport" content="width=device-width">
     <meta name="title" content="Interface IFindableStorage&lt;TDataModel&gt;
    | Arquitetura E5R ">
-    <meta name="generator" content="docfx 2.58.0.0">
+    <meta name="generator" content="docfx 2.58.9.0">
     
     <link rel="shortcut icon" href="../images/favicon.png">
     <link rel="stylesheet" href="../styles/docfx.vendor.css">
@@ -99,98 +99,9 @@
   <h3 id="methods">Methods
   </h3>
   <a id="E5R_Architecture_Data_Abstractions_IFindableStorage_1_Find_" data-uid="E5R.Architecture.Data.Abstractions.IFindableStorage`1.Find*"></a>
-  <h4 id="E5R_Architecture_Data_Abstractions_IFindableStorage_1_Find__0_E5R_Architecture_Data_Abstractions_IDataIncludes_" data-uid="E5R.Architecture.Data.Abstractions.IFindableStorage`1.Find(`0,E5R.Architecture.Data.Abstractions.IDataIncludes)">Find(TDataModel, IDataIncludes)</h4>
-  <div class="markdown level1 summary"></div>
-  <div class="markdown level1 conceptual"></div>
-  <h5 class="decalaration">Declaration</h5>
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">TDataModel Find(TDataModel data, IDataIncludes includes = null)</code></pre>
-  </div>
-  <h5 class="parameters">Parameters</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Name</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><span class="xref">TDataModel</span></td>
-        <td><span class="parametername">data</span></td>
-        <td></td>
-      </tr>
-      <tr>
-        <td><a class="xref" href="E5R.Architecture.Data.Abstractions.IDataIncludes.html">IDataIncludes</a></td>
-        <td><span class="parametername">includes</span></td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
-  <h5 class="returns">Returns</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><span class="xref">TDataModel</span></td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
-  <a id="E5R_Architecture_Data_Abstractions_IFindableStorage_1_Find_" data-uid="E5R.Architecture.Data.Abstractions.IFindableStorage`1.Find*"></a>
-  <h4 id="E5R_Architecture_Data_Abstractions_IFindableStorage_1_Find_System_Object_E5R_Architecture_Data_Abstractions_IDataIncludes_" data-uid="E5R.Architecture.Data.Abstractions.IFindableStorage`1.Find(System.Object,E5R.Architecture.Data.Abstractions.IDataIncludes)">Find(Object, IDataIncludes)</h4>
-  <div class="markdown level1 summary"></div>
-  <div class="markdown level1 conceptual"></div>
-  <h5 class="decalaration">Declaration</h5>
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">TDataModel Find(object identifier, IDataIncludes includes = null)</code></pre>
-  </div>
-  <h5 class="parameters">Parameters</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Name</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><span class="xref">System.Object</span></td>
-        <td><span class="parametername">identifier</span></td>
-        <td></td>
-      </tr>
-      <tr>
-        <td><a class="xref" href="E5R.Architecture.Data.Abstractions.IDataIncludes.html">IDataIncludes</a></td>
-        <td><span class="parametername">includes</span></td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
-  <h5 class="returns">Returns</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><span class="xref">TDataModel</span></td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
-  <a id="E5R_Architecture_Data_Abstractions_IFindableStorage_1_Find_" data-uid="E5R.Architecture.Data.Abstractions.IFindableStorage`1.Find*"></a>
   <h4 id="E5R_Architecture_Data_Abstractions_IFindableStorage_1_Find_System_Object___E5R_Architecture_Data_Abstractions_IDataIncludes_" data-uid="E5R.Architecture.Data.Abstractions.IFindableStorage`1.Find(System.Object[],E5R.Architecture.Data.Abstractions.IDataIncludes)">Find(Object[], IDataIncludes)</h4>
-  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 summary"><p>Find an item stored by identifiers</p>
+</div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
@@ -209,12 +120,14 @@
       <tr>
         <td><span class="xref">System.Object</span>[]</td>
         <td><span class="parametername">identifiers</span></td>
-        <td></td>
+        <td><p>Item identifiers</p>
+</td>
       </tr>
       <tr>
         <td><a class="xref" href="E5R.Architecture.Data.Abstractions.IDataIncludes.html">IDataIncludes</a></td>
         <td><span class="parametername">includes</span></td>
-        <td></td>
+        <td><p>Linked data to include</p>
+</td>
       </tr>
     </tbody>
   </table>
@@ -229,13 +142,17 @@
     <tbody>
       <tr>
         <td><span class="xref">TDataModel</span></td>
-        <td></td>
+        <td><p>Instance of <see cref="!:TDataModel"></see>, or null when not found</p>
+</td>
       </tr>
     </tbody>
   </table>
   <h3 id="extensionmethods">Extension Methods</h3>
   <div>
       <a class="xref" href="E5R.Architecture.Core.Extensions.ObjectExtensions.html#E5R_Architecture_Core_Extensions_ObjectExtensions_Fill__1___0_Dictionary_System_String_System_String__">ObjectExtensions.Fill&lt;TObject&gt;(TObject, Dictionary&lt;String, String&gt;)</a>
+  </div>
+  <div>
+      <a class="xref" href="E5R.Architecture.Core.Extensions.ObjectExtensions.html#E5R_Architecture_Core_Extensions_ObjectExtensions_CopyPropertyValuesTo__2___0___1_">ObjectExtensions.CopyPropertyValuesTo&lt;TFrom, TTo&gt;(TFrom, TTo)</a>
   </div>
 </article>
           </div>

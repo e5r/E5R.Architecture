@@ -10,7 +10,7 @@
     <meta name="viewport" content="width=device-width">
     <meta name="title" content="Interface ISearchableStorage&lt;TDataModel&gt;
    | Arquitetura E5R ">
-    <meta name="generator" content="docfx 2.58.0.0">
+    <meta name="generator" content="docfx 2.58.9.0">
     
     <link rel="shortcut icon" href="../images/favicon.png">
     <link rel="stylesheet" href="../styles/docfx.vendor.css">
@@ -100,7 +100,8 @@
   </h3>
   <a id="E5R_Architecture_Data_Abstractions_ISearchableStorage_1_LimitedSearch_" data-uid="E5R.Architecture.Data.Abstractions.ISearchableStorage`1.LimitedSearch*"></a>
   <h4 id="E5R_Architecture_Data_Abstractions_ISearchableStorage_1_LimitedSearch_E5R_Architecture_Data_Abstractions_IDataFilter__0__E5R_Architecture_Data_Abstractions_IDataLimiter__0__E5R_Architecture_Data_Abstractions_IDataIncludes_" data-uid="E5R.Architecture.Data.Abstractions.ISearchableStorage`1.LimitedSearch(E5R.Architecture.Data.Abstractions.IDataFilter{`0},E5R.Architecture.Data.Abstractions.IDataLimiter{`0},E5R.Architecture.Data.Abstractions.IDataIncludes)">LimitedSearch(IDataFilter&lt;TDataModel&gt;, IDataLimiter&lt;TDataModel&gt;, IDataIncludes)</h4>
-  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 summary"><p>Search for stored items in a limited way according to filter entered</p>
+</div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
@@ -119,17 +120,20 @@
       <tr>
         <td><a class="xref" href="E5R.Architecture.Data.Abstractions.IDataFilter-1.html">IDataFilter</a>&lt;TDataModel&gt;</td>
         <td><span class="parametername">filter</span></td>
-        <td></td>
+        <td><p>Data filter</p>
+</td>
       </tr>
       <tr>
         <td><a class="xref" href="E5R.Architecture.Data.Abstractions.IDataLimiter-1.html">IDataLimiter</a>&lt;TDataModel&gt;</td>
         <td><span class="parametername">limiter</span></td>
-        <td></td>
+        <td><p>Limitation data</p>
+</td>
       </tr>
       <tr>
         <td><a class="xref" href="E5R.Architecture.Data.Abstractions.IDataIncludes.html">IDataIncludes</a></td>
         <td><span class="parametername">includes</span></td>
-        <td></td>
+        <td><p>Linked data to include</p>
+</td>
       </tr>
     </tbody>
   </table>
@@ -144,13 +148,15 @@
     <tbody>
       <tr>
         <td><a class="xref" href="E5R.Architecture.Core.PaginatedResult-1.html">PaginatedResult</a>&lt;TDataModel&gt;</td>
-        <td></td>
+        <td><p>Paged list of <see cref="!:TDataModel"></see></p>
+</td>
       </tr>
     </tbody>
   </table>
   <a id="E5R_Architecture_Data_Abstractions_ISearchableStorage_1_Search_" data-uid="E5R.Architecture.Data.Abstractions.ISearchableStorage`1.Search*"></a>
   <h4 id="E5R_Architecture_Data_Abstractions_ISearchableStorage_1_Search_E5R_Architecture_Data_Abstractions_IDataFilter__0__E5R_Architecture_Data_Abstractions_IDataIncludes_" data-uid="E5R.Architecture.Data.Abstractions.ISearchableStorage`1.Search(E5R.Architecture.Data.Abstractions.IDataFilter{`0},E5R.Architecture.Data.Abstractions.IDataIncludes)">Search(IDataFilter&lt;TDataModel&gt;, IDataIncludes)</h4>
-  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 summary"><p>Search for items stored according to filter entered</p>
+</div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
@@ -169,12 +175,14 @@
       <tr>
         <td><a class="xref" href="E5R.Architecture.Data.Abstractions.IDataFilter-1.html">IDataFilter</a>&lt;TDataModel&gt;</td>
         <td><span class="parametername">filter</span></td>
-        <td></td>
+        <td><p>Data filter</p>
+</td>
       </tr>
       <tr>
         <td><a class="xref" href="E5R.Architecture.Data.Abstractions.IDataIncludes.html">IDataIncludes</a></td>
         <td><span class="parametername">includes</span></td>
-        <td></td>
+        <td><p>Linked data to include</p>
+</td>
       </tr>
     </tbody>
   </table>
@@ -189,13 +197,17 @@
     <tbody>
       <tr>
         <td><span class="xref">IEnumerable</span>&lt;TDataModel&gt;</td>
-        <td></td>
+        <td><p>List of <see cref="!:TDataModel"></see></p>
+</td>
       </tr>
     </tbody>
   </table>
   <h3 id="extensionmethods">Extension Methods</h3>
   <div>
       <a class="xref" href="E5R.Architecture.Core.Extensions.ObjectExtensions.html#E5R_Architecture_Core_Extensions_ObjectExtensions_Fill__1___0_Dictionary_System_String_System_String__">ObjectExtensions.Fill&lt;TObject&gt;(TObject, Dictionary&lt;String, String&gt;)</a>
+  </div>
+  <div>
+      <a class="xref" href="E5R.Architecture.Core.Extensions.ObjectExtensions.html#E5R_Architecture_Core_Extensions_ObjectExtensions_CopyPropertyValuesTo__2___0___1_">ObjectExtensions.CopyPropertyValuesTo&lt;TFrom, TTo&gt;(TFrom, TTo)</a>
   </div>
 </article>
           </div>

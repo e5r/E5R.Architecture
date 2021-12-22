@@ -10,7 +10,7 @@
     <meta name="viewport" content="width=device-width">
     <meta name="title" content="Class DataFilter&lt;TDataModel&gt;
    | Arquitetura E5R ">
-    <meta name="generator" content="docfx 2.58.0.0">
+    <meta name="generator" content="docfx 2.58.9.0">
     
     <link rel="shortcut icon" href="../images/favicon.png">
     <link rel="stylesheet" href="../styles/docfx.vendor.css">
@@ -73,7 +73,7 @@
   
   <h1 id="E5R_Architecture_Data_DataFilter_1" data-uid="E5R.Architecture.Data.DataFilter`1" class="text-break">Class DataFilter&lt;TDataModel&gt;
   </h1>
-  <div class="markdown level0 summary"><p>Linq implementation for IDataFilter</p>
+  <div class="markdown level0 summary"><p>Implementation for IDataFilter</p>
 </div>
   <div class="markdown level0 conceptual"></div>
   <div class="inheritance">
@@ -110,12 +110,12 @@
   <h3 id="methods">Methods
   </h3>
   <a id="E5R_Architecture_Data_DataFilter_1_AddFilter_" data-uid="E5R.Architecture.Data.DataFilter`1.AddFilter*"></a>
-  <h4 id="E5R_Architecture_Data_DataFilter_1_AddFilter_Expression_Func__0_System_Boolean___" data-uid="E5R.Architecture.Data.DataFilter`1.AddFilter(Expression{Func{`0,System.Boolean}})">AddFilter(Expression&lt;Func&lt;TDataModel, Boolean&gt;&gt;)</h4>
+  <h4 id="E5R_Architecture_Data_DataFilter_1_AddFilter_E5R_Architecture_Core_IIdentifiableExpressionMaker__0__" data-uid="E5R.Architecture.Data.DataFilter`1.AddFilter(E5R.Architecture.Core.IIdentifiableExpressionMaker{`0})">AddFilter(IIdentifiableExpressionMaker&lt;TDataModel&gt;)</h4>
   <div class="markdown level1 summary"></div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public DataFilter&lt;TDataModel&gt; AddFilter(Expression&lt;Func&lt;TDataModel, bool&gt;&gt; filter)</code></pre>
+    <pre><code class="lang-csharp hljs">public DataFilter&lt;TDataModel&gt; AddFilter(IIdentifiableExpressionMaker&lt;TDataModel&gt; filterMakerr)</code></pre>
   </div>
   <h5 class="parameters">Parameters</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -128,8 +128,8 @@
     </thead>
     <tbody>
       <tr>
-        <td><span class="xref">Expression</span>&lt;<span class="xref">Func</span>&lt;TDataModel, <span class="xref">System.Boolean</span>&gt;&gt;</td>
-        <td><span class="parametername">filter</span></td>
+        <td><a class="xref" href="E5R.Architecture.Core.IIdentifiableExpressionMaker-1.html">IIdentifiableExpressionMaker</a>&lt;TDataModel&gt;</td>
+        <td><span class="parametername">filterMakerr</span></td>
         <td></td>
       </tr>
     </tbody>
@@ -149,14 +149,53 @@
       </tr>
     </tbody>
   </table>
-  <a id="E5R_Architecture_Data_DataFilter_1_GetFilter_" data-uid="E5R.Architecture.Data.DataFilter`1.GetFilter*"></a>
-  <h4 id="E5R_Architecture_Data_DataFilter_1_GetFilter" data-uid="E5R.Architecture.Data.DataFilter`1.GetFilter">GetFilter()</h4>
-  <div class="markdown level1 summary"><p>Get a filter expression (Where)</p>
-</div>
+  <a id="E5R_Architecture_Data_DataFilter_1_AddFilter_" data-uid="E5R.Architecture.Data.DataFilter`1.AddFilter*"></a>
+  <h4 id="E5R_Architecture_Data_DataFilter_1_AddFilter_Expression_Func__0_System_Boolean___" data-uid="E5R.Architecture.Data.DataFilter`1.AddFilter(Expression{Func{`0,System.Boolean}})">AddFilter(Expression&lt;Func&lt;TDataModel, Boolean&gt;&gt;)</h4>
+  <div class="markdown level1 summary"></div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public IEnumerable&lt;Expression&lt;Func&lt;TDataModel, bool&gt;&gt;&gt; GetFilter()</code></pre>
+    <pre><code class="lang-csharp hljs">public DataFilter&lt;TDataModel&gt; AddFilter(Expression&lt;Func&lt;TDataModel, bool&gt;&gt; filterExpression)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">Expression</span>&lt;<span class="xref">Func</span>&lt;TDataModel, <span class="xref">System.Boolean</span>&gt;&gt;</td>
+        <td><span class="parametername">filterExpression</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="E5R.Architecture.Data.DataFilter-1.html">DataFilter</a>&lt;TDataModel&gt;</td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <a id="E5R_Architecture_Data_DataFilter_1_GetExpressions_" data-uid="E5R.Architecture.Data.DataFilter`1.GetExpressions*"></a>
+  <h4 id="E5R_Architecture_Data_DataFilter_1_GetExpressions" data-uid="E5R.Architecture.Data.DataFilter`1.GetExpressions">GetExpressions()</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public IEnumerable&lt;Expression&lt;Func&lt;TDataModel, bool&gt;&gt;&gt; GetExpressions()</code></pre>
   </div>
   <h5 class="returns">Returns</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -169,8 +208,30 @@
     <tbody>
       <tr>
         <td><span class="xref">IEnumerable</span>&lt;<span class="xref">Expression</span>&lt;<span class="xref">Func</span>&lt;TDataModel, <span class="xref">System.Boolean</span>&gt;&gt;&gt;</td>
-        <td><p>List of reducer expression</p>
-</td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <a id="E5R_Architecture_Data_DataFilter_1_GetObjects_" data-uid="E5R.Architecture.Data.DataFilter`1.GetObjects*"></a>
+  <h4 id="E5R_Architecture_Data_DataFilter_1_GetObjects" data-uid="E5R.Architecture.Data.DataFilter`1.GetObjects">GetObjects()</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public IEnumerable&lt;object&gt; GetObjects()</code></pre>
+  </div>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">IEnumerable</span>&lt;<span class="xref">System.Object</span>&gt;</td>
+        <td></td>
       </tr>
     </tbody>
   </table>
@@ -181,6 +242,9 @@
   <h3 id="extensionmethods">Extension Methods</h3>
   <div>
       <a class="xref" href="E5R.Architecture.Core.Extensions.ObjectExtensions.html#E5R_Architecture_Core_Extensions_ObjectExtensions_Fill__1___0_Dictionary_System_String_System_String__">ObjectExtensions.Fill&lt;TObject&gt;(TObject, Dictionary&lt;String, String&gt;)</a>
+  </div>
+  <div>
+      <a class="xref" href="E5R.Architecture.Core.Extensions.ObjectExtensions.html#E5R_Architecture_Core_Extensions_ObjectExtensions_CopyPropertyValuesTo__2___0___1_">ObjectExtensions.CopyPropertyValuesTo&lt;TFrom, TTo&gt;(TFrom, TTo)</a>
   </div>
 </article>
           </div>

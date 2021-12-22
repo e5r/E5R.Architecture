@@ -10,7 +10,7 @@
     <meta name="viewport" content="width=device-width">
     <meta name="title" content="Class TransformationManager
    | Arquitetura E5R ">
-    <meta name="generator" content="docfx 2.58.0.0">
+    <meta name="generator" content="docfx 2.58.9.0">
     
     <link rel="shortcut icon" href="../images/favicon.png">
     <link rel="stylesheet" href="../styles/docfx.vendor.css">
@@ -120,6 +120,186 @@
   </table>
   <h3 id="methods">Methods
   </h3>
+  <a id="E5R_Architecture_Core_TransformationManager_AutoTransform_" data-uid="E5R.Architecture.Core.TransformationManager.AutoTransform*"></a>
+  <h4 id="E5R_Architecture_Core_TransformationManager_AutoTransform__2___0_" data-uid="E5R.Architecture.Core.TransformationManager.AutoTransform``2(``0)">AutoTransform&lt;TFrom, TTo&gt;(TFrom)</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public TTo AutoTransform&lt;TFrom, TTo&gt;(TFrom from)
+    where TTo : new()</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">TFrom</span></td>
+        <td><span class="parametername">from</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">TTo</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="typeParameters">Type Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="parametername">TFrom</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="parametername">TTo</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <a id="E5R_Architecture_Core_TransformationManager_AutoTransform_" data-uid="E5R.Architecture.Core.TransformationManager.AutoTransform*"></a>
+  <h4 id="E5R_Architecture_Core_TransformationManager_AutoTransform__2_E5R_Architecture_Core_PaginatedResult___0__" data-uid="E5R.Architecture.Core.TransformationManager.AutoTransform``2(E5R.Architecture.Core.PaginatedResult{``0})">AutoTransform&lt;TFrom, TTo&gt;(PaginatedResult&lt;TFrom&gt;)</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public PaginatedResult&lt;TTo&gt; AutoTransform&lt;TFrom, TTo&gt;(PaginatedResult&lt;TFrom&gt; from)
+    where TTo : new()</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="E5R.Architecture.Core.PaginatedResult-1.html">PaginatedResult</a>&lt;TFrom&gt;</td>
+        <td><span class="parametername">from</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="E5R.Architecture.Core.PaginatedResult-1.html">PaginatedResult</a>&lt;TTo&gt;</td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="typeParameters">Type Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="parametername">TFrom</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="parametername">TTo</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <a id="E5R_Architecture_Core_TransformationManager_AutoTransform_" data-uid="E5R.Architecture.Core.TransformationManager.AutoTransform*"></a>
+  <h4 id="E5R_Architecture_Core_TransformationManager_AutoTransform__2_IEnumerable___0__" data-uid="E5R.Architecture.Core.TransformationManager.AutoTransform``2(IEnumerable{``0})">AutoTransform&lt;TFrom, TTo&gt;(IEnumerable&lt;TFrom&gt;)</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public IEnumerable&lt;TTo&gt; AutoTransform&lt;TFrom, TTo&gt;(IEnumerable&lt;TFrom&gt; from)
+    where TTo : new()</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">IEnumerable</span>&lt;TFrom&gt;</td>
+        <td><span class="parametername">from</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">IEnumerable</span>&lt;TTo&gt;</td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="typeParameters">Type Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="parametername">TFrom</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="parametername">TTo</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
   <a id="E5R_Architecture_Core_TransformationManager_Transform_" data-uid="E5R.Architecture.Core.TransformationManager.Transform*"></a>
   <h4 id="E5R_Architecture_Core_TransformationManager_Transform__2___0_" data-uid="E5R.Architecture.Core.TransformationManager.Transform``2(``0)">Transform&lt;TFrom, TTo&gt;(TFrom)</h4>
   <div class="markdown level1 summary"></div>
@@ -156,6 +336,124 @@
     <tbody>
       <tr>
         <td><span class="xref">TTo</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="typeParameters">Type Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="parametername">TFrom</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="parametername">TTo</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <a id="E5R_Architecture_Core_TransformationManager_Transform_" data-uid="E5R.Architecture.Core.TransformationManager.Transform*"></a>
+  <h4 id="E5R_Architecture_Core_TransformationManager_Transform__2_E5R_Architecture_Core_PaginatedResult___0__" data-uid="E5R.Architecture.Core.TransformationManager.Transform``2(E5R.Architecture.Core.PaginatedResult{``0})">Transform&lt;TFrom, TTo&gt;(PaginatedResult&lt;TFrom&gt;)</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public PaginatedResult&lt;TTo&gt; Transform&lt;TFrom, TTo&gt;(PaginatedResult&lt;TFrom&gt; from)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="E5R.Architecture.Core.PaginatedResult-1.html">PaginatedResult</a>&lt;TFrom&gt;</td>
+        <td><span class="parametername">from</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="E5R.Architecture.Core.PaginatedResult-1.html">PaginatedResult</a>&lt;TTo&gt;</td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="typeParameters">Type Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="parametername">TFrom</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="parametername">TTo</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <a id="E5R_Architecture_Core_TransformationManager_Transform_" data-uid="E5R.Architecture.Core.TransformationManager.Transform*"></a>
+  <h4 id="E5R_Architecture_Core_TransformationManager_Transform__2_IEnumerable___0__" data-uid="E5R.Architecture.Core.TransformationManager.Transform``2(IEnumerable{``0})">Transform&lt;TFrom, TTo&gt;(IEnumerable&lt;TFrom&gt;)</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public IEnumerable&lt;TTo&gt; Transform&lt;TFrom, TTo&gt;(IEnumerable&lt;TFrom&gt; from)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">IEnumerable</span>&lt;TFrom&gt;</td>
+        <td><span class="parametername">from</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">IEnumerable</span>&lt;TTo&gt;</td>
         <td></td>
       </tr>
     </tbody>
@@ -249,6 +547,148 @@
       </tr>
     </tbody>
   </table>
+  <h3 id="eii">Explicit Interface Implementations
+  </h3>
+  <a id="E5R_Architecture_Core_TransformationManager_E5R_Architecture_Core_ITransformationManager_Transform_" data-uid="E5R.Architecture.Core.TransformationManager.E5R#Architecture#Core#ITransformationManager#Transform*"></a>
+  <h4 id="E5R_Architecture_Core_TransformationManager_E5R_Architecture_Core_ITransformationManager_Transform__3_E5R_Architecture_Core_PaginatedResult___0____2_" data-uid="E5R.Architecture.Core.TransformationManager.E5R#Architecture#Core#ITransformationManager#Transform``3(E5R.Architecture.Core.PaginatedResult{``0},``2)">ITransformationManager.Transform&lt;TFrom, TTo, TOperation&gt;(PaginatedResult&lt;TFrom&gt;, TOperation)</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">PaginatedResult&lt;TTo&gt; ITransformationManager.Transform&lt;TFrom, TTo, TOperation&gt;(PaginatedResult&lt;TFrom&gt; from, TOperation operation)
+    where TTo : new()
+    where TOperation : Enum</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="E5R.Architecture.Core.PaginatedResult-1.html">PaginatedResult</a>&lt;TFrom&gt;</td>
+        <td><span class="parametername">from</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="xref">TOperation</span></td>
+        <td><span class="parametername">operation</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="E5R.Architecture.Core.PaginatedResult-1.html">PaginatedResult</a>&lt;TTo&gt;</td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="typeParameters">Type Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="parametername">TFrom</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="parametername">TTo</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="parametername">TOperation</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <a id="E5R_Architecture_Core_TransformationManager_E5R_Architecture_Core_ITransformationManager_Transform_" data-uid="E5R.Architecture.Core.TransformationManager.E5R#Architecture#Core#ITransformationManager#Transform*"></a>
+  <h4 id="E5R_Architecture_Core_TransformationManager_E5R_Architecture_Core_ITransformationManager_Transform__3_IEnumerable___0____2_" data-uid="E5R.Architecture.Core.TransformationManager.E5R#Architecture#Core#ITransformationManager#Transform``3(IEnumerable{``0},``2)">ITransformationManager.Transform&lt;TFrom, TTo, TOperation&gt;(IEnumerable&lt;TFrom&gt;, TOperation)</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">IEnumerable&lt;TTo&gt; ITransformationManager.Transform&lt;TFrom, TTo, TOperation&gt;(IEnumerable&lt;TFrom&gt; from, TOperation operation)
+    where TTo : new()
+    where TOperation : Enum</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">IEnumerable</span>&lt;TFrom&gt;</td>
+        <td><span class="parametername">from</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="xref">TOperation</span></td>
+        <td><span class="parametername">operation</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">IEnumerable</span>&lt;TTo&gt;</td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="typeParameters">Type Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="parametername">TFrom</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="parametername">TTo</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="parametername">TOperation</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
   <h3 id="implements">Implements</h3>
   <div>
       <a class="xref" href="E5R.Architecture.Core.ITransformationManager.html">ITransformationManager</a>
@@ -256,6 +696,9 @@
   <h3 id="extensionmethods">Extension Methods</h3>
   <div>
       <a class="xref" href="E5R.Architecture.Core.Extensions.ObjectExtensions.html#E5R_Architecture_Core_Extensions_ObjectExtensions_Fill__1___0_Dictionary_System_String_System_String__">ObjectExtensions.Fill&lt;TObject&gt;(TObject, Dictionary&lt;String, String&gt;)</a>
+  </div>
+  <div>
+      <a class="xref" href="E5R.Architecture.Core.Extensions.ObjectExtensions.html#E5R_Architecture_Core_Extensions_ObjectExtensions_CopyPropertyValuesTo__2___0___1_">ObjectExtensions.CopyPropertyValuesTo&lt;TFrom, TTo&gt;(TFrom, TTo)</a>
   </div>
 </article>
           </div>

@@ -10,7 +10,7 @@
     <meta name="viewport" content="width=device-width">
     <meta name="title" content="Interface IDataFilter&lt;TDataModel&gt;
    | Arquitetura E5R ">
-    <meta name="generator" content="docfx 2.58.0.0">
+    <meta name="generator" content="docfx 2.58.9.0">
     
     <link rel="shortcut icon" href="../images/favicon.png">
     <link rel="stylesheet" href="../styles/docfx.vendor.css">
@@ -73,7 +73,7 @@
   
   <h1 id="E5R_Architecture_Data_Abstractions_IDataFilter_1" data-uid="E5R.Architecture.Data.Abstractions.IDataFilter`1" class="text-break">Interface IDataFilter&lt;TDataModel&gt;
   </h1>
-  <div class="markdown level0 summary"><p>Data filter (Where) for data model with identifier</p>
+  <div class="markdown level0 summary"><p>Data filter for storage items</p>
 </div>
   <div class="markdown level0 conceptual"></div>
   <h6><strong>Namespace</strong>: <a class="xref" href="E5R.Architecture.Data.Abstractions.html">E5R.Architecture.Data.Abstractions</a></h6>
@@ -101,14 +101,14 @@
   </table>
   <h3 id="methods">Methods
   </h3>
-  <a id="E5R_Architecture_Data_Abstractions_IDataFilter_1_GetFilter_" data-uid="E5R.Architecture.Data.Abstractions.IDataFilter`1.GetFilter*"></a>
-  <h4 id="E5R_Architecture_Data_Abstractions_IDataFilter_1_GetFilter" data-uid="E5R.Architecture.Data.Abstractions.IDataFilter`1.GetFilter">GetFilter()</h4>
-  <div class="markdown level1 summary"><p>Get a filter expression (Where)</p>
+  <a id="E5R_Architecture_Data_Abstractions_IDataFilter_1_GetExpressions_" data-uid="E5R.Architecture.Data.Abstractions.IDataFilter`1.GetExpressions*"></a>
+  <h4 id="E5R_Architecture_Data_Abstractions_IDataFilter_1_GetExpressions" data-uid="E5R.Architecture.Data.Abstractions.IDataFilter`1.GetExpressions">GetExpressions()</h4>
+  <div class="markdown level1 summary"><p>Get a filter expression list</p>
 </div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">IEnumerable&lt;Expression&lt;Func&lt;TDataModel, bool&gt;&gt;&gt; GetFilter()</code></pre>
+    <pre><code class="lang-csharp hljs">IEnumerable&lt;Expression&lt;Func&lt;TDataModel, bool&gt;&gt;&gt; GetExpressions()</code></pre>
   </div>
   <h5 class="returns">Returns</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -121,7 +121,32 @@
     <tbody>
       <tr>
         <td><span class="xref">IEnumerable</span>&lt;<span class="xref">Expression</span>&lt;<span class="xref">Func</span>&lt;TDataModel, <span class="xref">System.Boolean</span>&gt;&gt;&gt;</td>
-        <td><p>List of reducer expression</p>
+        <td><p>List of expressions</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <a id="E5R_Architecture_Data_Abstractions_IDataFilter_1_GetObjects_" data-uid="E5R.Architecture.Data.Abstractions.IDataFilter`1.GetObjects*"></a>
+  <h4 id="E5R_Architecture_Data_Abstractions_IDataFilter_1_GetObjects" data-uid="E5R.Architecture.Data.Abstractions.IDataFilter`1.GetObjects">GetObjects()</h4>
+  <div class="markdown level1 summary"><p>Get a filter object list</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">IEnumerable&lt;object&gt; GetObjects()</code></pre>
+  </div>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">IEnumerable</span>&lt;<span class="xref">System.Object</span>&gt;</td>
+        <td><p>List of objects</p>
 </td>
       </tr>
     </tbody>
@@ -129,6 +154,9 @@
   <h3 id="extensionmethods">Extension Methods</h3>
   <div>
       <a class="xref" href="E5R.Architecture.Core.Extensions.ObjectExtensions.html#E5R_Architecture_Core_Extensions_ObjectExtensions_Fill__1___0_Dictionary_System_String_System_String__">ObjectExtensions.Fill&lt;TObject&gt;(TObject, Dictionary&lt;String, String&gt;)</a>
+  </div>
+  <div>
+      <a class="xref" href="E5R.Architecture.Core.Extensions.ObjectExtensions.html#E5R_Architecture_Core_Extensions_ObjectExtensions_CopyPropertyValuesTo__2___0___1_">ObjectExtensions.CopyPropertyValuesTo&lt;TFrom, TTo&gt;(TFrom, TTo)</a>
   </div>
 </article>
           </div>

@@ -10,7 +10,7 @@
     <meta name="viewport" content="width=device-width">
     <meta name="title" content="Class StorageBase&lt;TDataModel&gt;
    | Arquitetura E5R ">
-    <meta name="generator" content="docfx 2.58.0.0">
+    <meta name="generator" content="docfx 2.58.9.0">
     
     <link rel="shortcut icon" href="../images/favicon.png">
     <link rel="stylesheet" href="../styles/docfx.vendor.css">
@@ -105,62 +105,13 @@
   </table>
   <h3 id="methods">Methods
   </h3>
-  <a id="E5R_Architecture_Data_EntityFrameworkCore_StorageBase_1_CopyProperties_" data-uid="E5R.Architecture.Data.EntityFrameworkCore.StorageBase`1.CopyProperties*"></a>
-  <h4 id="E5R_Architecture_Data_EntityFrameworkCore_StorageBase_1_CopyProperties__2___0___1_" data-uid="E5R.Architecture.Data.EntityFrameworkCore.StorageBase`1.CopyProperties``2(``0,``1)">CopyProperties&lt;TFrom, TTo&gt;(TFrom, TTo)</h4>
-  <div class="markdown level1 summary"></div>
-  <div class="markdown level1 conceptual"></div>
-  <h5 class="decalaration">Declaration</h5>
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">protected void CopyProperties&lt;TFrom, TTo&gt;(TFrom from, TTo to)</code></pre>
-  </div>
-  <h5 class="parameters">Parameters</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Name</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><span class="xref">TFrom</span></td>
-        <td><span class="parametername">from</span></td>
-        <td></td>
-      </tr>
-      <tr>
-        <td><span class="xref">TTo</span></td>
-        <td><span class="parametername">to</span></td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
-  <h5 class="typeParameters">Type Parameters</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Name</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><span class="parametername">TFrom</span></td>
-        <td></td>
-      </tr>
-      <tr>
-        <td><span class="parametername">TTo</span></td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
   <a id="E5R_Architecture_Data_EntityFrameworkCore_StorageBase_1_QueryFind_" data-uid="E5R.Architecture.Data.EntityFrameworkCore.StorageBase`1.QueryFind*"></a>
   <h4 id="E5R_Architecture_Data_EntityFrameworkCore_StorageBase_1_QueryFind_IEntityType_IQueryable__0__System_Object___E5R_Architecture_Data_Abstractions_IDataIncludes_" data-uid="E5R.Architecture.Data.EntityFrameworkCore.StorageBase`1.QueryFind(IEntityType,IQueryable{`0},System.Object[],E5R.Architecture.Data.Abstractions.IDataIncludes)">QueryFind(IEntityType, IQueryable&lt;TDataModel&gt;, Object[], IDataIncludes)</h4>
   <div class="markdown level1 summary"></div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public IQueryable&lt;TDataModel&gt; QueryFind(IEntityType entityType, IQueryable&lt;TDataModel&gt; origin, object[] identifiers, IDataIncludes includes)</code></pre>
+    <pre><code class="lang-csharp hljs">protected IQueryable&lt;TDataModel&gt; QueryFind(IEntityType entityType, IQueryable&lt;TDataModel&gt; origin, object[] identifiers, IDataIncludes includes)</code></pre>
   </div>
   <h5 class="parameters">Parameters</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -211,7 +162,7 @@
   </table>
   <a id="E5R_Architecture_Data_EntityFrameworkCore_StorageBase_1_QueryPreLimitResult_" data-uid="E5R.Architecture.Data.EntityFrameworkCore.StorageBase`1.QueryPreLimitResult*"></a>
   <h4 id="E5R_Architecture_Data_EntityFrameworkCore_StorageBase_1_QueryPreLimitResult_IQueryable__0__E5R_Architecture_Data_Abstractions_IDataLimiter__0__E5R_Architecture_Data_Abstractions_IDataIncludes_" data-uid="E5R.Architecture.Data.EntityFrameworkCore.StorageBase`1.QueryPreLimitResult(IQueryable{`0},E5R.Architecture.Data.Abstractions.IDataLimiter{`0},E5R.Architecture.Data.Abstractions.IDataIncludes)">QueryPreLimitResult(IQueryable&lt;TDataModel&gt;, IDataLimiter&lt;TDataModel&gt;, IDataIncludes)</h4>
-  <div class="markdown level1 summary"><p>Query for operations that must return an <see cref="!:PaginatedResult&lt;>"></see></p>
+  <div class="markdown level1 summary"><p>Query for operations that must return an <see cref="!:PaginatedResult&lt;TDataModel>"></see></p>
 </div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
@@ -362,6 +313,9 @@
   <h3 id="extensionmethods">Extension Methods</h3>
   <div>
       <a class="xref" href="E5R.Architecture.Core.Extensions.ObjectExtensions.html#E5R_Architecture_Core_Extensions_ObjectExtensions_Fill__1___0_Dictionary_System_String_System_String__">ObjectExtensions.Fill&lt;TObject&gt;(TObject, Dictionary&lt;String, String&gt;)</a>
+  </div>
+  <div>
+      <a class="xref" href="E5R.Architecture.Core.Extensions.ObjectExtensions.html#E5R_Architecture_Core_Extensions_ObjectExtensions_CopyPropertyValuesTo__2___0___1_">ObjectExtensions.CopyPropertyValuesTo&lt;TFrom, TTo&gt;(TFrom, TTo)</a>
   </div>
 </article>
           </div>

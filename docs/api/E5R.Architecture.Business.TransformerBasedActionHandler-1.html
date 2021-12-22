@@ -5,12 +5,12 @@
   <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-    <title>Class LazyGroup&lt;TItem1, TItem2, TItem3, TItem4&gt;
+    <title>Class TransformerBasedActionHandler&lt;TInput&gt;
    | Arquitetura E5R </title>
     <meta name="viewport" content="width=device-width">
-    <meta name="title" content="Class LazyGroup&lt;TItem1, TItem2, TItem3, TItem4&gt;
+    <meta name="title" content="Class TransformerBasedActionHandler&lt;TInput&gt;
    | Arquitetura E5R ">
-    <meta name="generator" content="docfx 2.58.0.0">
+    <meta name="generator" content="docfx 2.58.9.0">
     
     <link rel="shortcut icon" href="../images/favicon.png">
     <link rel="stylesheet" href="../styles/docfx.vendor.css">
@@ -68,23 +68,25 @@
         </div>
         <div class="article row grid-right">
           <div class="col-md-10">
-            <article class="content wrap" id="_content" data-uid="E5R.Architecture.Core.LazyGroup`4">
+            <article class="content wrap" id="_content" data-uid="E5R.Architecture.Business.TransformerBasedActionHandler`1">
   
   
-  <h1 id="E5R_Architecture_Core_LazyGroup_4" data-uid="E5R.Architecture.Core.LazyGroup`4" class="text-break">Class LazyGroup&lt;TItem1, TItem2, TItem3, TItem4&gt;
+  <h1 id="E5R_Architecture_Business_TransformerBasedActionHandler_1" data-uid="E5R.Architecture.Business.TransformerBasedActionHandler`1" class="text-break">Class TransformerBasedActionHandler&lt;TInput&gt;
   </h1>
   <div class="markdown level0 summary"></div>
   <div class="markdown level0 conceptual"></div>
   <div class="inheritance">
     <h5>Inheritance</h5>
     <div class="level0"><span class="xref">System.Object</span></div>
-    <div class="level1"><span class="xref">LazyGroup&lt;TItem1, TItem2, TItem3, TItem4&gt;</span></div>
+    <div class="level1"><span class="xref">TransformerBasedActionHandler&lt;TInput&gt;</span></div>
+      <div class="level2"><a class="xref" href="E5R.Architecture.Business.ActionHandlerWithTransformer-2.html">ActionHandlerWithTransformer&lt;TInput, TOutput&gt;</a></div>
+      <div class="level2"><a class="xref" href="E5R.Architecture.Business.InputOnlyActionHandlerWithTransformer-1.html">InputOnlyActionHandlerWithTransformer&lt;TInput&gt;</a></div>
   </div>
-  <h6><strong>Namespace</strong>: <a class="xref" href="E5R.Architecture.Core.html">E5R.Architecture.Core</a></h6>
-  <h6><strong>Assembly</strong>: E5R.Architecture.Core.dll</h6>
-  <h5 id="E5R_Architecture_Core_LazyGroup_4_syntax">Syntax</h5>
+  <h6><strong>Namespace</strong>: <a class="xref" href="E5R.Architecture.Business.html">E5R.Architecture.Business</a></h6>
+  <h6><strong>Assembly</strong>: E5R.Architecture.Business.dll</h6>
+  <h5 id="E5R_Architecture_Business_TransformerBasedActionHandler_1_syntax">Syntax</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public class LazyGroup&lt;TItem1, TItem2, TItem3, TItem4&gt; : object where TItem1 : class where TItem2 : class where TItem3 : class where TItem4 : class</code></pre>
+    <pre><code class="lang-csharp hljs">public class TransformerBasedActionHandler&lt;TInput&gt; : object</code></pre>
   </div>
   <h5 class="typeParameters">Type Parameters</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -96,32 +98,20 @@
     </thead>
     <tbody>
       <tr>
-        <td><span class="parametername">TItem1</span></td>
-        <td></td>
-      </tr>
-      <tr>
-        <td><span class="parametername">TItem2</span></td>
-        <td></td>
-      </tr>
-      <tr>
-        <td><span class="parametername">TItem3</span></td>
-        <td></td>
-      </tr>
-      <tr>
-        <td><span class="parametername">TItem4</span></td>
+        <td><span class="parametername">TInput</span></td>
         <td></td>
       </tr>
     </tbody>
   </table>
   <h3 id="constructors">Constructors
   </h3>
-  <a id="E5R_Architecture_Core_LazyGroup_4__ctor_" data-uid="E5R.Architecture.Core.LazyGroup`4.#ctor*"></a>
-  <h4 id="E5R_Architecture_Core_LazyGroup_4__ctor_E5R_Architecture_Core_ILazy__0__E5R_Architecture_Core_ILazy__1__E5R_Architecture_Core_ILazy__2__E5R_Architecture_Core_ILazy__3__" data-uid="E5R.Architecture.Core.LazyGroup`4.#ctor(E5R.Architecture.Core.ILazy{`0},E5R.Architecture.Core.ILazy{`1},E5R.Architecture.Core.ILazy{`2},E5R.Architecture.Core.ILazy{`3})">LazyGroup(ILazy&lt;TItem1&gt;, ILazy&lt;TItem2&gt;, ILazy&lt;TItem3&gt;, ILazy&lt;TItem4&gt;)</h4>
+  <a id="E5R_Architecture_Business_TransformerBasedActionHandler_1__ctor_" data-uid="E5R.Architecture.Business.TransformerBasedActionHandler`1.#ctor*"></a>
+  <h4 id="E5R_Architecture_Business_TransformerBasedActionHandler_1__ctor_ILazy_ITransformationManager__" data-uid="E5R.Architecture.Business.TransformerBasedActionHandler`1.#ctor(ILazy{ITransformationManager})">TransformerBasedActionHandler(ILazy&lt;ITransformationManager&gt;)</h4>
   <div class="markdown level1 summary"></div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public LazyGroup(ILazy&lt;TItem1&gt; item1, ILazy&lt;TItem2&gt; item2, ILazy&lt;TItem3&gt; item3, ILazy&lt;TItem4&gt; item4)</code></pre>
+    <pre><code class="lang-csharp hljs">protected TransformerBasedActionHandler(ILazy&lt;ITransformationManager&gt; transformer)</code></pre>
   </div>
   <h5 class="parameters">Parameters</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -134,61 +124,40 @@
     </thead>
     <tbody>
       <tr>
-        <td><a class="xref" href="E5R.Architecture.Core.ILazy-1.html">ILazy</a>&lt;TItem1&gt;</td>
-        <td><span class="parametername">item1</span></td>
-        <td></td>
-      </tr>
-      <tr>
-        <td><a class="xref" href="E5R.Architecture.Core.ILazy-1.html">ILazy</a>&lt;TItem2&gt;</td>
-        <td><span class="parametername">item2</span></td>
-        <td></td>
-      </tr>
-      <tr>
-        <td><a class="xref" href="E5R.Architecture.Core.ILazy-1.html">ILazy</a>&lt;TItem3&gt;</td>
-        <td><span class="parametername">item3</span></td>
-        <td></td>
-      </tr>
-      <tr>
-        <td><a class="xref" href="E5R.Architecture.Core.ILazy-1.html">ILazy</a>&lt;TItem4&gt;</td>
-        <td><span class="parametername">item4</span></td>
+        <td><span class="xref">ILazy</span>&lt;<span class="xref">ITransformationManager</span>&gt;</td>
+        <td><span class="parametername">transformer</span></td>
         <td></td>
       </tr>
     </tbody>
   </table>
-  <h3 id="properties">Properties
+  <h3 id="methods">Methods
   </h3>
-  <a id="E5R_Architecture_Core_LazyGroup_4_Item1_" data-uid="E5R.Architecture.Core.LazyGroup`4.Item1*"></a>
-  <h4 id="E5R_Architecture_Core_LazyGroup_4_Item1" data-uid="E5R.Architecture.Core.LazyGroup`4.Item1">Item1</h4>
+  <a id="E5R_Architecture_Business_TransformerBasedActionHandler_1_TransformInput_" data-uid="E5R.Architecture.Business.TransformerBasedActionHandler`1.TransformInput*"></a>
+  <h4 id="E5R_Architecture_Business_TransformerBasedActionHandler_1_TransformInput__1___0_" data-uid="E5R.Architecture.Business.TransformerBasedActionHandler`1.TransformInput``1(``0)">TransformInput&lt;TFrom&gt;(TFrom)</h4>
   <div class="markdown level1 summary"></div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">protected TItem1 Item1 { get; }</code></pre>
+    <pre><code class="lang-csharp hljs">protected TInput TransformInput&lt;TFrom&gt;(TFrom from)</code></pre>
   </div>
-  <h5 class="propertyValue">Property Value</h5>
+  <h5 class="parameters">Parameters</h5>
   <table class="table table-bordered table-striped table-condensed">
     <thead>
       <tr>
         <th>Type</th>
+        <th>Name</th>
         <th>Description</th>
       </tr>
     </thead>
     <tbody>
       <tr>
-        <td><span class="xref">TItem1</span></td>
+        <td><span class="xref">TFrom</span></td>
+        <td><span class="parametername">from</span></td>
         <td></td>
       </tr>
     </tbody>
   </table>
-  <a id="E5R_Architecture_Core_LazyGroup_4_Item2_" data-uid="E5R.Architecture.Core.LazyGroup`4.Item2*"></a>
-  <h4 id="E5R_Architecture_Core_LazyGroup_4_Item2" data-uid="E5R.Architecture.Core.LazyGroup`4.Item2">Item2</h4>
-  <div class="markdown level1 summary"></div>
-  <div class="markdown level1 conceptual"></div>
-  <h5 class="decalaration">Declaration</h5>
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">protected TItem2 Item2 { get; }</code></pre>
-  </div>
-  <h5 class="propertyValue">Property Value</h5>
+  <h5 class="returns">Returns</h5>
   <table class="table table-bordered table-striped table-condensed">
     <thead>
       <tr>
@@ -198,53 +167,22 @@
     </thead>
     <tbody>
       <tr>
-        <td><span class="xref">TItem2</span></td>
+        <td><span class="xref">TInput</span></td>
         <td></td>
       </tr>
     </tbody>
   </table>
-  <a id="E5R_Architecture_Core_LazyGroup_4_Item3_" data-uid="E5R.Architecture.Core.LazyGroup`4.Item3*"></a>
-  <h4 id="E5R_Architecture_Core_LazyGroup_4_Item3" data-uid="E5R.Architecture.Core.LazyGroup`4.Item3">Item3</h4>
-  <div class="markdown level1 summary"></div>
-  <div class="markdown level1 conceptual"></div>
-  <h5 class="decalaration">Declaration</h5>
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">protected TItem3 Item3 { get; }</code></pre>
-  </div>
-  <h5 class="propertyValue">Property Value</h5>
+  <h5 class="typeParameters">Type Parameters</h5>
   <table class="table table-bordered table-striped table-condensed">
     <thead>
       <tr>
-        <th>Type</th>
+        <th>Name</th>
         <th>Description</th>
       </tr>
     </thead>
     <tbody>
       <tr>
-        <td><span class="xref">TItem3</span></td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
-  <a id="E5R_Architecture_Core_LazyGroup_4_Item4_" data-uid="E5R.Architecture.Core.LazyGroup`4.Item4*"></a>
-  <h4 id="E5R_Architecture_Core_LazyGroup_4_Item4" data-uid="E5R.Architecture.Core.LazyGroup`4.Item4">Item4</h4>
-  <div class="markdown level1 summary"></div>
-  <div class="markdown level1 conceptual"></div>
-  <h5 class="decalaration">Declaration</h5>
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">protected TItem4 Item4 { get; }</code></pre>
-  </div>
-  <h5 class="propertyValue">Property Value</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><span class="xref">TItem4</span></td>
+        <td><span class="parametername">TFrom</span></td>
         <td></td>
       </tr>
     </tbody>
@@ -252,6 +190,9 @@
   <h3 id="extensionmethods">Extension Methods</h3>
   <div>
       <a class="xref" href="E5R.Architecture.Core.Extensions.ObjectExtensions.html#E5R_Architecture_Core_Extensions_ObjectExtensions_Fill__1___0_Dictionary_System_String_System_String__">ObjectExtensions.Fill&lt;TObject&gt;(TObject, Dictionary&lt;String, String&gt;)</a>
+  </div>
+  <div>
+      <a class="xref" href="E5R.Architecture.Core.Extensions.ObjectExtensions.html#E5R_Architecture_Core_Extensions_ObjectExtensions_CopyPropertyValuesTo__2___0___1_">ObjectExtensions.CopyPropertyValuesTo&lt;TFrom, TTo&gt;(TFrom, TTo)</a>
   </div>
 </article>
           </div>

@@ -10,7 +10,7 @@
     <meta name="viewport" content="width=device-width">
     <meta name="title" content="Class FluentQueryBuilderWithFilter&lt;TDataModel&gt;
    | Arquitetura E5R ">
-    <meta name="generator" content="docfx 2.58.0.0">
+    <meta name="generator" content="docfx 2.58.9.0">
     
     <link rel="shortcut icon" href="../images/favicon.png">
     <link rel="stylesheet" href="../styles/docfx.vendor.css">
@@ -128,12 +128,12 @@
     </tbody>
   </table>
   <a id="E5R_Architecture_Data_Fluent_Query_FluentQueryBuilderWithFilter_1_Filter_" data-uid="E5R.Architecture.Data.Fluent.Query.FluentQueryBuilderWithFilter`1.Filter*"></a>
-  <h4 id="E5R_Architecture_Data_Fluent_Query_FluentQueryBuilderWithFilter_1_Filter_Expression_Func__0_System_Boolean___" data-uid="E5R.Architecture.Data.Fluent.Query.FluentQueryBuilderWithFilter`1.Filter(Expression{Func{`0,System.Boolean}})">Filter(Expression&lt;Func&lt;TDataModel, Boolean&gt;&gt;)</h4>
+  <h4 id="E5R_Architecture_Data_Fluent_Query_FluentQueryBuilderWithFilter_1_Filter_E5R_Architecture_Core_IIdentifiableExpressionMaker__0__" data-uid="E5R.Architecture.Data.Fluent.Query.FluentQueryBuilderWithFilter`1.Filter(E5R.Architecture.Core.IIdentifiableExpressionMaker{`0})">Filter(IIdentifiableExpressionMaker&lt;TDataModel&gt;)</h4>
   <div class="markdown level1 summary"></div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public FluentQueryBuilderWithFilter&lt;TDataModel&gt; Filter(Expression&lt;Func&lt;TDataModel, bool&gt;&gt; filter)</code></pre>
+    <pre><code class="lang-csharp hljs">public FluentQueryBuilderWithFilter&lt;TDataModel&gt; Filter(IIdentifiableExpressionMaker&lt;TDataModel&gt; filterMaker)</code></pre>
   </div>
   <h5 class="parameters">Parameters</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -146,8 +146,8 @@
     </thead>
     <tbody>
       <tr>
-        <td><span class="xref">Expression</span>&lt;<span class="xref">Func</span>&lt;TDataModel, <span class="xref">System.Boolean</span>&gt;&gt;</td>
-        <td><span class="parametername">filter</span></td>
+        <td><a class="xref" href="E5R.Architecture.Core.IIdentifiableExpressionMaker-1.html">IIdentifiableExpressionMaker</a>&lt;TDataModel&gt;</td>
+        <td><span class="parametername">filterMaker</span></td>
         <td></td>
       </tr>
     </tbody>
@@ -163,6 +163,69 @@
     <tbody>
       <tr>
         <td><a class="xref" href="E5R.Architecture.Data.Fluent.Query.FluentQueryBuilderWithFilter-1.html">FluentQueryBuilderWithFilter</a>&lt;TDataModel&gt;</td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <a id="E5R_Architecture_Data_Fluent_Query_FluentQueryBuilderWithFilter_1_Filter_" data-uid="E5R.Architecture.Data.Fluent.Query.FluentQueryBuilderWithFilter`1.Filter*"></a>
+  <h4 id="E5R_Architecture_Data_Fluent_Query_FluentQueryBuilderWithFilter_1_Filter_Expression_Func__0_System_Boolean___" data-uid="E5R.Architecture.Data.Fluent.Query.FluentQueryBuilderWithFilter`1.Filter(Expression{Func{`0,System.Boolean}})">Filter(Expression&lt;Func&lt;TDataModel, Boolean&gt;&gt;)</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public FluentQueryBuilderWithFilter&lt;TDataModel&gt; Filter(Expression&lt;Func&lt;TDataModel, bool&gt;&gt; filterExpression)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">Expression</span>&lt;<span class="xref">Func</span>&lt;TDataModel, <span class="xref">System.Boolean</span>&gt;&gt;</td>
+        <td><span class="parametername">filterExpression</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="E5R.Architecture.Data.Fluent.Query.FluentQueryBuilderWithFilter-1.html">FluentQueryBuilderWithFilter</a>&lt;TDataModel&gt;</td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <a id="E5R_Architecture_Data_Fluent_Query_FluentQueryBuilderWithFilter_1_GetFirst_" data-uid="E5R.Architecture.Data.Fluent.Query.FluentQueryBuilderWithFilter`1.GetFirst*"></a>
+  <h4 id="E5R_Architecture_Data_Fluent_Query_FluentQueryBuilderWithFilter_1_GetFirst" data-uid="E5R.Architecture.Data.Fluent.Query.FluentQueryBuilderWithFilter`1.GetFirst">GetFirst()</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public TDataModel GetFirst()</code></pre>
+  </div>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">TDataModel</span></td>
         <td></td>
       </tr>
     </tbody>
@@ -398,6 +461,9 @@
   <h3 id="extensionmethods">Extension Methods</h3>
   <div>
       <a class="xref" href="E5R.Architecture.Core.Extensions.ObjectExtensions.html#E5R_Architecture_Core_Extensions_ObjectExtensions_Fill__1___0_Dictionary_System_String_System_String__">ObjectExtensions.Fill&lt;TObject&gt;(TObject, Dictionary&lt;String, String&gt;)</a>
+  </div>
+  <div>
+      <a class="xref" href="E5R.Architecture.Core.Extensions.ObjectExtensions.html#E5R_Architecture_Core_Extensions_ObjectExtensions_CopyPropertyValuesTo__2___0___1_">ObjectExtensions.CopyPropertyValuesTo&lt;TFrom, TTo&gt;(TFrom, TTo)</a>
   </div>
 </article>
           </div>

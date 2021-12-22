@@ -10,7 +10,7 @@
     <meta name="viewport" content="width=device-width">
     <meta name="title" content="Interface IAcquirableStorage&lt;TDataModel&gt;
    | Arquitetura E5R ">
-    <meta name="generator" content="docfx 2.58.0.0">
+    <meta name="generator" content="docfx 2.58.9.0">
     
     <link rel="shortcut icon" href="../images/favicon.png">
     <link rel="stylesheet" href="../styles/docfx.vendor.css">
@@ -73,7 +73,8 @@
   
   <h1 id="E5R_Architecture_Data_Abstractions_IAcquirableStorage_1" data-uid="E5R.Architecture.Data.Abstractions.IAcquirableStorage`1" class="text-break">Interface IAcquirableStorage&lt;TDataModel&gt;
   </h1>
-  <div class="markdown level0 summary"></div>
+  <div class="markdown level0 summary"><p>Storage of acquirable items</p>
+</div>
   <div class="markdown level0 conceptual"></div>
   <h6><strong>Namespace</strong>: <a class="xref" href="E5R.Architecture.Data.Abstractions.html">E5R.Architecture.Data.Abstractions</a></h6>
   <h6><strong>Assembly</strong>: E5R.Architecture.Data.dll</h6>
@@ -92,7 +93,8 @@
     <tbody>
       <tr>
         <td><span class="parametername">TDataModel</span></td>
-        <td></td>
+        <td><p>Type of stored data</p>
+</td>
       </tr>
     </tbody>
   </table>
@@ -100,7 +102,8 @@
   </h3>
   <a id="E5R_Architecture_Data_Abstractions_IAcquirableStorage_1_GetAll_" data-uid="E5R.Architecture.Data.Abstractions.IAcquirableStorage`1.GetAll*"></a>
   <h4 id="E5R_Architecture_Data_Abstractions_IAcquirableStorage_1_GetAll_E5R_Architecture_Data_Abstractions_IDataIncludes_" data-uid="E5R.Architecture.Data.Abstractions.IAcquirableStorage`1.GetAll(E5R.Architecture.Data.Abstractions.IDataIncludes)">GetAll(IDataIncludes)</h4>
-  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 summary"><p>Get all stored items</p>
+</div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
@@ -119,7 +122,8 @@
       <tr>
         <td><a class="xref" href="E5R.Architecture.Data.Abstractions.IDataIncludes.html">IDataIncludes</a></td>
         <td><span class="parametername">includes</span></td>
-        <td></td>
+        <td><p>Linked data to include</p>
+</td>
       </tr>
     </tbody>
   </table>
@@ -134,13 +138,64 @@
     <tbody>
       <tr>
         <td><span class="xref">IEnumerable</span>&lt;TDataModel&gt;</td>
-        <td></td>
+        <td><p>List of <see cref="!:TDataModel"></see></p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <a id="E5R_Architecture_Data_Abstractions_IAcquirableStorage_1_GetFirst_" data-uid="E5R.Architecture.Data.Abstractions.IAcquirableStorage`1.GetFirst*"></a>
+  <h4 id="E5R_Architecture_Data_Abstractions_IAcquirableStorage_1_GetFirst_E5R_Architecture_Data_Abstractions_IDataFilter__0__E5R_Architecture_Data_Abstractions_IDataIncludes_" data-uid="E5R.Architecture.Data.Abstractions.IAcquirableStorage`1.GetFirst(E5R.Architecture.Data.Abstractions.IDataFilter{`0},E5R.Architecture.Data.Abstractions.IDataIncludes)">GetFirst(IDataFilter&lt;TDataModel&gt;, IDataIncludes)</h4>
+  <div class="markdown level1 summary"><p>Get the first item stored according to filter entered</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">TDataModel GetFirst(IDataFilter&lt;TDataModel&gt; filter, IDataIncludes includes = null)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="E5R.Architecture.Data.Abstractions.IDataFilter-1.html">IDataFilter</a>&lt;TDataModel&gt;</td>
+        <td><span class="parametername">filter</span></td>
+        <td><p>Data filter</p>
+</td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="E5R.Architecture.Data.Abstractions.IDataIncludes.html">IDataIncludes</a></td>
+        <td><span class="parametername">includes</span></td>
+        <td><p>Linked data to include</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">TDataModel</span></td>
+        <td><p>Instance of <see cref="!:TDataModel"></see>, or null when not found</p>
+</td>
       </tr>
     </tbody>
   </table>
   <a id="E5R_Architecture_Data_Abstractions_IAcquirableStorage_1_LimitedGet_" data-uid="E5R.Architecture.Data.Abstractions.IAcquirableStorage`1.LimitedGet*"></a>
   <h4 id="E5R_Architecture_Data_Abstractions_IAcquirableStorage_1_LimitedGet_E5R_Architecture_Data_Abstractions_IDataLimiter__0__E5R_Architecture_Data_Abstractions_IDataIncludes_" data-uid="E5R.Architecture.Data.Abstractions.IAcquirableStorage`1.LimitedGet(E5R.Architecture.Data.Abstractions.IDataLimiter{`0},E5R.Architecture.Data.Abstractions.IDataIncludes)">LimitedGet(IDataLimiter&lt;TDataModel&gt;, IDataIncludes)</h4>
-  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 summary"><p>Gets the stored items in a limited way</p>
+</div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
@@ -159,12 +214,14 @@
       <tr>
         <td><a class="xref" href="E5R.Architecture.Data.Abstractions.IDataLimiter-1.html">IDataLimiter</a>&lt;TDataModel&gt;</td>
         <td><span class="parametername">limiter</span></td>
-        <td></td>
+        <td><p>Limitation data</p>
+</td>
       </tr>
       <tr>
         <td><a class="xref" href="E5R.Architecture.Data.Abstractions.IDataIncludes.html">IDataIncludes</a></td>
         <td><span class="parametername">includes</span></td>
-        <td></td>
+        <td><p>Linked data to include</p>
+</td>
       </tr>
     </tbody>
   </table>
@@ -179,13 +236,17 @@
     <tbody>
       <tr>
         <td><a class="xref" href="E5R.Architecture.Core.PaginatedResult-1.html">PaginatedResult</a>&lt;TDataModel&gt;</td>
-        <td></td>
+        <td><p>Paged list of <see cref="!:TDataModel"></see></p>
+</td>
       </tr>
     </tbody>
   </table>
   <h3 id="extensionmethods">Extension Methods</h3>
   <div>
       <a class="xref" href="E5R.Architecture.Core.Extensions.ObjectExtensions.html#E5R_Architecture_Core_Extensions_ObjectExtensions_Fill__1___0_Dictionary_System_String_System_String__">ObjectExtensions.Fill&lt;TObject&gt;(TObject, Dictionary&lt;String, String&gt;)</a>
+  </div>
+  <div>
+      <a class="xref" href="E5R.Architecture.Core.Extensions.ObjectExtensions.html#E5R_Architecture_Core_Extensions_ObjectExtensions_CopyPropertyValuesTo__2___0___1_">ObjectExtensions.CopyPropertyValuesTo&lt;TFrom, TTo&gt;(TFrom, TTo)</a>
   </div>
 </article>
           </div>

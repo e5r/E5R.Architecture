@@ -10,7 +10,7 @@
     <meta name="viewport" content="width=device-width">
     <meta name="title" content="Interface ITransformationManager
    | Arquitetura E5R ">
-    <meta name="generator" content="docfx 2.58.0.0">
+    <meta name="generator" content="docfx 2.58.9.0">
     
     <link rel="shortcut icon" href="../images/favicon.png">
     <link rel="stylesheet" href="../styles/docfx.vendor.css">
@@ -84,9 +84,222 @@
   </div>
   <h3 id="methods">Methods
   </h3>
+  <a id="E5R_Architecture_Core_ITransformationManager_AutoTransform_" data-uid="E5R.Architecture.Core.ITransformationManager.AutoTransform*"></a>
+  <h4 id="E5R_Architecture_Core_ITransformationManager_AutoTransform__2___0_" data-uid="E5R.Architecture.Core.ITransformationManager.AutoTransform``2(``0)">AutoTransform&lt;TFrom, TTo&gt;(TFrom)</h4>
+  <div class="markdown level1 summary"><p>Create a new instance of <code data-dev-comment-type="typeparamref" class="typeparamref">TTo</code> automatically based on the
+<code data-dev-comment-type="typeparamref" class="typeparamref">TFrom</code> instance.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">TTo AutoTransform&lt;TFrom, TTo&gt;(TFrom from)
+    where TTo : new()</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">TFrom</span></td>
+        <td><span class="parametername">from</span></td>
+        <td><p>Origin data</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">TTo</span></td>
+        <td><p>Instance of <code data-dev-comment-type="typeparamref" class="typeparamref">TTo</code></p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="typeParameters">Type Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="parametername">TFrom</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="parametername">TTo</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 id="E5R_Architecture_Core_ITransformationManager_AutoTransform__2___0__remarks">Remarks</h5>
+  <div class="markdown level1 remarks"><p>If there is an <a class="xref" href="E5R.Architecture.Core.ITransformer-2.html">ITransformer&lt;TFrom, TTo&gt;</a> from <code data-dev-comment-type="typeparamref" class="typeparamref">TFrom</code> to
+<code data-dev-comment-type="typeparamref" class="typeparamref">TTo</code> it will be used, in another case a new instance of
+<code data-dev-comment-type="typeparamref" class="typeparamref">TTo</code> will be created and the property values will be copied from
+<code data-dev-comment-type="typeparamref" class="typeparamref">TFrom</code> to <code data-dev-comment-type="typeparamref" class="typeparamref">TTo</code> using
+<a class="xref" href="E5R.Architecture.Core.Extensions.ObjectExtensions.html#E5R_Architecture_Core_Extensions_ObjectExtensions_CopyPropertyValuesTo__2___0___1_">CopyPropertyValuesTo&lt;TFrom, TTo&gt;(TFrom, TTo)</a>.</p>
+</div>
+  <a id="E5R_Architecture_Core_ITransformationManager_AutoTransform_" data-uid="E5R.Architecture.Core.ITransformationManager.AutoTransform*"></a>
+  <h4 id="E5R_Architecture_Core_ITransformationManager_AutoTransform__2_E5R_Architecture_Core_PaginatedResult___0__" data-uid="E5R.Architecture.Core.ITransformationManager.AutoTransform``2(E5R.Architecture.Core.PaginatedResult{``0})">AutoTransform&lt;TFrom, TTo&gt;(PaginatedResult&lt;TFrom&gt;)</h4>
+  <div class="markdown level1 summary"><p>Create a new paginated list of <code data-dev-comment-type="typeparamref" class="typeparamref">TTo</code> automatically based on
+paginated list of <code data-dev-comment-type="typeparamref" class="typeparamref">TFrom</code>.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">PaginatedResult&lt;TTo&gt; AutoTransform&lt;TFrom, TTo&gt;(PaginatedResult&lt;TFrom&gt; from)
+    where TTo : new()</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="E5R.Architecture.Core.PaginatedResult-1.html">PaginatedResult</a>&lt;TFrom&gt;</td>
+        <td><span class="parametername">from</span></td>
+        <td><p>Paginated list of origin data</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="E5R.Architecture.Core.PaginatedResult-1.html">PaginatedResult</a>&lt;TTo&gt;</td>
+        <td><p>Paginated list of <code data-dev-comment-type="typeparamref" class="typeparamref">TTo</code></p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="typeParameters">Type Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="parametername">TFrom</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="parametername">TTo</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 id="E5R_Architecture_Core_ITransformationManager_AutoTransform__2_E5R_Architecture_Core_PaginatedResult___0___remarks">Remarks</h5>
+  <div class="markdown level1 remarks"><p>If there is an <a class="xref" href="E5R.Architecture.Core.ITransformer-2.html">ITransformer&lt;TFrom, TTo&gt;</a> from <code data-dev-comment-type="typeparamref" class="typeparamref">TFrom</code> to
+<code data-dev-comment-type="typeparamref" class="typeparamref">TTo</code> it will be used, in another case a new instance of
+<code data-dev-comment-type="typeparamref" class="typeparamref">TTo</code> will be created and the property values will be copied from
+<code data-dev-comment-type="typeparamref" class="typeparamref">TFrom</code> to <code data-dev-comment-type="typeparamref" class="typeparamref">TTo</code> using
+<a class="xref" href="E5R.Architecture.Core.Extensions.ObjectExtensions.html#E5R_Architecture_Core_Extensions_ObjectExtensions_CopyPropertyValuesTo__2___0___1_">CopyPropertyValuesTo&lt;TFrom, TTo&gt;(TFrom, TTo)</a>.</p>
+</div>
+  <a id="E5R_Architecture_Core_ITransformationManager_AutoTransform_" data-uid="E5R.Architecture.Core.ITransformationManager.AutoTransform*"></a>
+  <h4 id="E5R_Architecture_Core_ITransformationManager_AutoTransform__2_IEnumerable___0__" data-uid="E5R.Architecture.Core.ITransformationManager.AutoTransform``2(IEnumerable{``0})">AutoTransform&lt;TFrom, TTo&gt;(IEnumerable&lt;TFrom&gt;)</h4>
+  <div class="markdown level1 summary"><p>Create a new list of <code data-dev-comment-type="typeparamref" class="typeparamref">TTo</code> automatically based on list of
+<code data-dev-comment-type="typeparamref" class="typeparamref">TFrom</code> instance.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">IEnumerable&lt;TTo&gt; AutoTransform&lt;TFrom, TTo&gt;(IEnumerable&lt;TFrom&gt; from)
+    where TTo : new()</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">IEnumerable</span>&lt;TFrom&gt;</td>
+        <td><span class="parametername">from</span></td>
+        <td><p>List of origin data</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">IEnumerable</span>&lt;TTo&gt;</td>
+        <td><p>List of <code data-dev-comment-type="typeparamref" class="typeparamref">TTo</code></p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="typeParameters">Type Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="parametername">TFrom</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="parametername">TTo</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 id="E5R_Architecture_Core_ITransformationManager_AutoTransform__2_IEnumerable___0___remarks">Remarks</h5>
+  <div class="markdown level1 remarks"><p>If there is an <a class="xref" href="E5R.Architecture.Core.ITransformer-2.html">ITransformer&lt;TFrom, TTo&gt;</a> from <code data-dev-comment-type="typeparamref" class="typeparamref">TFrom</code> to
+<code data-dev-comment-type="typeparamref" class="typeparamref">TTo</code> it will be used, in another case a new instance of
+<code data-dev-comment-type="typeparamref" class="typeparamref">TTo</code> will be created and the property values will be copied from
+<code data-dev-comment-type="typeparamref" class="typeparamref">TFrom</code> to <code data-dev-comment-type="typeparamref" class="typeparamref">TTo</code> using
+<a class="xref" href="E5R.Architecture.Core.Extensions.ObjectExtensions.html#E5R_Architecture_Core_Extensions_ObjectExtensions_CopyPropertyValuesTo__2___0___1_">CopyPropertyValuesTo&lt;TFrom, TTo&gt;(TFrom, TTo)</a>.</p>
+</div>
   <a id="E5R_Architecture_Core_ITransformationManager_Transform_" data-uid="E5R.Architecture.Core.ITransformationManager.Transform*"></a>
   <h4 id="E5R_Architecture_Core_ITransformationManager_Transform__2___0_" data-uid="E5R.Architecture.Core.ITransformationManager.Transform``2(``0)">Transform&lt;TFrom, TTo&gt;(TFrom)</h4>
-  <div class="markdown level1 summary"><p>Create new instance of <see cref="!:TTo"></see> based on <see cref="!:TFrom"></see> instance.</p>
+  <div class="markdown level1 summary"><p>Create new instance of <code data-dev-comment-type="typeparamref" class="typeparamref">TTo</code> based on <see cref="!:TFrom"></see> instance.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
@@ -122,7 +335,132 @@
     <tbody>
       <tr>
         <td><span class="xref">TTo</span></td>
-        <td><p>Instance of <see cref="!:TTo"></see></p>
+        <td><p>Instance of <code data-dev-comment-type="typeparamref" class="typeparamref">TTo</code></p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="typeParameters">Type Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="parametername">TFrom</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="parametername">TTo</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <a id="E5R_Architecture_Core_ITransformationManager_Transform_" data-uid="E5R.Architecture.Core.ITransformationManager.Transform*"></a>
+  <h4 id="E5R_Architecture_Core_ITransformationManager_Transform__2_E5R_Architecture_Core_PaginatedResult___0__" data-uid="E5R.Architecture.Core.ITransformationManager.Transform``2(E5R.Architecture.Core.PaginatedResult{``0})">Transform&lt;TFrom, TTo&gt;(PaginatedResult&lt;TFrom&gt;)</h4>
+  <div class="markdown level1 summary"><p>Create a new paginated list of <code data-dev-comment-type="typeparamref" class="typeparamref">TTo</code> based on paginated list
+of <code data-dev-comment-type="typeparamref" class="typeparamref">TFrom</code>.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">PaginatedResult&lt;TTo&gt; Transform&lt;TFrom, TTo&gt;(PaginatedResult&lt;TFrom&gt; from)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="E5R.Architecture.Core.PaginatedResult-1.html">PaginatedResult</a>&lt;TFrom&gt;</td>
+        <td><span class="parametername">from</span></td>
+        <td><p>Paginated list of origin data</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="E5R.Architecture.Core.PaginatedResult-1.html">PaginatedResult</a>&lt;TTo&gt;</td>
+        <td><p>Paginated list of <code data-dev-comment-type="typeparamref" class="typeparamref">TTo</code></p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="typeParameters">Type Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="parametername">TFrom</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="parametername">TTo</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <a id="E5R_Architecture_Core_ITransformationManager_Transform_" data-uid="E5R.Architecture.Core.ITransformationManager.Transform*"></a>
+  <h4 id="E5R_Architecture_Core_ITransformationManager_Transform__2_IEnumerable___0__" data-uid="E5R.Architecture.Core.ITransformationManager.Transform``2(IEnumerable{``0})">Transform&lt;TFrom, TTo&gt;(IEnumerable&lt;TFrom&gt;)</h4>
+  <div class="markdown level1 summary"><p>Create a new list of <code data-dev-comment-type="typeparamref" class="typeparamref">TTo</code> based on list of <code data-dev-comment-type="typeparamref" class="typeparamref">TFrom</code>.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">IEnumerable&lt;TTo&gt; Transform&lt;TFrom, TTo&gt;(IEnumerable&lt;TFrom&gt; from)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">IEnumerable</span>&lt;TFrom&gt;</td>
+        <td><span class="parametername">from</span></td>
+        <td><p>List of origin data</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">IEnumerable</span>&lt;TTo&gt;</td>
+        <td><p>List of <code data-dev-comment-type="typeparamref" class="typeparamref">TTo</code></p>
 </td>
       </tr>
     </tbody>
@@ -148,7 +486,8 @@
   </table>
   <a id="E5R_Architecture_Core_ITransformationManager_Transform_" data-uid="E5R.Architecture.Core.ITransformationManager.Transform*"></a>
   <h4 id="E5R_Architecture_Core_ITransformationManager_Transform__3___0___2_" data-uid="E5R.Architecture.Core.ITransformationManager.Transform``3(``0,``2)">Transform&lt;TFrom, TTo, TOperation&gt;(TFrom, TOperation)</h4>
-  <div class="markdown level1 summary"><p>Create new instance of <see cref="!:TTo"></see> based on <see cref="!:TFrom"></see> instance and <see cref="!:TOperation"></see> value.</p>
+  <div class="markdown level1 summary"><p>Create new instance of <code data-dev-comment-type="typeparamref" class="typeparamref">TTo</code> based on <code data-dev-comment-type="typeparamref" class="typeparamref">TFrom</code> instance
+and <code data-dev-comment-type="typeparamref" class="typeparamref">TOperation</code> value.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
@@ -220,9 +559,162 @@
       </tr>
     </tbody>
   </table>
+  <a id="E5R_Architecture_Core_ITransformationManager_Transform_" data-uid="E5R.Architecture.Core.ITransformationManager.Transform*"></a>
+  <h4 id="E5R_Architecture_Core_ITransformationManager_Transform__3_E5R_Architecture_Core_PaginatedResult___0____2_" data-uid="E5R.Architecture.Core.ITransformationManager.Transform``3(E5R.Architecture.Core.PaginatedResult{``0},``2)">Transform&lt;TFrom, TTo, TOperation&gt;(PaginatedResult&lt;TFrom&gt;, TOperation)</h4>
+  <div class="markdown level1 summary"><p>Create a new paginated list of <code data-dev-comment-type="typeparamref" class="typeparamref">TTo</code> based on list of
+<code data-dev-comment-type="typeparamref" class="typeparamref">TFrom</code> and <code data-dev-comment-type="typeparamref" class="typeparamref">TOperation</code> value.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">PaginatedResult&lt;TTo&gt; Transform&lt;TFrom, TTo, TOperation&gt;(PaginatedResult&lt;TFrom&gt; from, TOperation operation)
+    where TTo : new()
+    where TOperation : Enum</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="E5R.Architecture.Core.PaginatedResult-1.html">PaginatedResult</a>&lt;TFrom&gt;</td>
+        <td><span class="parametername">from</span></td>
+        <td><p>Paginated list of origin data</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">TOperation</span></td>
+        <td><span class="parametername">operation</span></td>
+        <td><p>The operation reference</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="E5R.Architecture.Core.PaginatedResult-1.html">PaginatedResult</a>&lt;TTo&gt;</td>
+        <td><p>Paginated list of <code data-dev-comment-type="typeparamref" class="typeparamref">TTo</code></p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="typeParameters">Type Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="parametername">TFrom</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="parametername">TTo</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="parametername">TOperation</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <a id="E5R_Architecture_Core_ITransformationManager_Transform_" data-uid="E5R.Architecture.Core.ITransformationManager.Transform*"></a>
+  <h4 id="E5R_Architecture_Core_ITransformationManager_Transform__3_IEnumerable___0____2_" data-uid="E5R.Architecture.Core.ITransformationManager.Transform``3(IEnumerable{``0},``2)">Transform&lt;TFrom, TTo, TOperation&gt;(IEnumerable&lt;TFrom&gt;, TOperation)</h4>
+  <div class="markdown level1 summary"><p>Create a new list of <code data-dev-comment-type="typeparamref" class="typeparamref">TTo</code> based on list of <code data-dev-comment-type="typeparamref" class="typeparamref">TFrom</code> and
+<code data-dev-comment-type="typeparamref" class="typeparamref">TOperation</code> value.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">IEnumerable&lt;TTo&gt; Transform&lt;TFrom, TTo, TOperation&gt;(IEnumerable&lt;TFrom&gt; from, TOperation operation)
+    where TTo : new()
+    where TOperation : Enum</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">IEnumerable</span>&lt;TFrom&gt;</td>
+        <td><span class="parametername">from</span></td>
+        <td><p>List of origin data</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">TOperation</span></td>
+        <td><span class="parametername">operation</span></td>
+        <td><p>The operation reference</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">IEnumerable</span>&lt;TTo&gt;</td>
+        <td><p>List of <code data-dev-comment-type="typeparamref" class="typeparamref">TTo</code></p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="typeParameters">Type Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="parametername">TFrom</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="parametername">TTo</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="parametername">TOperation</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
   <h3 id="extensionmethods">Extension Methods</h3>
   <div>
       <a class="xref" href="E5R.Architecture.Core.Extensions.ObjectExtensions.html#E5R_Architecture_Core_Extensions_ObjectExtensions_Fill__1___0_Dictionary_System_String_System_String__">ObjectExtensions.Fill&lt;TObject&gt;(TObject, Dictionary&lt;String, String&gt;)</a>
+  </div>
+  <div>
+      <a class="xref" href="E5R.Architecture.Core.Extensions.ObjectExtensions.html#E5R_Architecture_Core_Extensions_ObjectExtensions_CopyPropertyValuesTo__2___0___1_">ObjectExtensions.CopyPropertyValuesTo&lt;TFrom, TTo&gt;(TFrom, TTo)</a>
   </div>
 </article>
           </div>

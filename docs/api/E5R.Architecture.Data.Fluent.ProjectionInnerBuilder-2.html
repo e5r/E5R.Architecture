@@ -10,7 +10,7 @@
     <meta name="viewport" content="width=device-width">
     <meta name="title" content="Class ProjectionInnerBuilder&lt;TDataModel, TRootDataModel&gt;
    | Arquitetura E5R ">
-    <meta name="generator" content="docfx 2.58.0.0">
+    <meta name="generator" content="docfx 2.58.9.0">
     
     <link rel="shortcut icon" href="../images/favicon.png">
     <link rel="stylesheet" href="../styles/docfx.vendor.css">
@@ -212,6 +212,62 @@
       </tr>
     </tbody>
   </table>
+  <a id="E5R_Architecture_Data_Fluent_ProjectionInnerBuilder_2_Include_" data-uid="E5R.Architecture.Data.Fluent.ProjectionInnerBuilder`2.Include*"></a>
+  <h4 id="E5R_Architecture_Data_Fluent_ProjectionInnerBuilder_2_Include__1_Expression_Func__0_System_Object___" data-uid="E5R.Architecture.Data.Fluent.ProjectionInnerBuilder`2.Include``1(Expression{Func{`0,System.Object}})">Include&lt;T&gt;(Expression&lt;Func&lt;TDataModel, Object&gt;&gt;)</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public ProjectionInnerBuilder&lt;T, TRootDataModel&gt; Include&lt;T&gt;(Expression&lt;Func&lt;TDataModel, object&gt;&gt; expression)
+    where T : IIdentifiable</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">Expression</span>&lt;<span class="xref">Func</span>&lt;TDataModel, <span class="xref">System.Object</span>&gt;&gt;</td>
+        <td><span class="parametername">expression</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="E5R.Architecture.Data.Fluent.ProjectionInnerBuilder-2.html">ProjectionInnerBuilder</a>&lt;T, TRootDataModel&gt;</td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="typeParameters">Type Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="parametername">T</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
   <a id="E5R_Architecture_Data_Fluent_ProjectionInnerBuilder_2_Map_" data-uid="E5R.Architecture.Data.Fluent.ProjectionInnerBuilder`2.Map*"></a>
   <h4 id="E5R_Architecture_Data_Fluent_ProjectionInnerBuilder_2_Map__1_Expression_Func__1___0___" data-uid="E5R.Architecture.Data.Fluent.ProjectionInnerBuilder`2.Map``1(Expression{Func{`1,``0}})">Map&lt;TSelect&gt;(Expression&lt;Func&lt;TRootDataModel, TSelect&gt;&gt;)</h4>
   <div class="markdown level1 summary"></div>
@@ -389,6 +445,9 @@
   <h3 id="extensionmethods">Extension Methods</h3>
   <div>
       <a class="xref" href="E5R.Architecture.Core.Extensions.ObjectExtensions.html#E5R_Architecture_Core_Extensions_ObjectExtensions_Fill__1___0_Dictionary_System_String_System_String__">ObjectExtensions.Fill&lt;TObject&gt;(TObject, Dictionary&lt;String, String&gt;)</a>
+  </div>
+  <div>
+      <a class="xref" href="E5R.Architecture.Core.Extensions.ObjectExtensions.html#E5R_Architecture_Core_Extensions_ObjectExtensions_CopyPropertyValuesTo__2___0___1_">ObjectExtensions.CopyPropertyValuesTo&lt;TFrom, TTo&gt;(TFrom, TTo)</a>
   </div>
 </article>
           </div>

@@ -5,12 +5,12 @@
   <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-    <title>Class LazyGroup&lt;TItem1, TItem2, TItem3, TItem4, TItem5, TItem6&gt;
+    <title>Class AttributableValue&lt;TValue&gt;
    | Arquitetura E5R </title>
     <meta name="viewport" content="width=device-width">
-    <meta name="title" content="Class LazyGroup&lt;TItem1, TItem2, TItem3, TItem4, TItem5, TItem6&gt;
+    <meta name="title" content="Class AttributableValue&lt;TValue&gt;
    | Arquitetura E5R ">
-    <meta name="generator" content="docfx 2.58.0.0">
+    <meta name="generator" content="docfx 2.58.9.0">
     
     <link rel="shortcut icon" href="../images/favicon.png">
     <link rel="stylesheet" href="../styles/docfx.vendor.css">
@@ -68,23 +68,24 @@
         </div>
         <div class="article row grid-right">
           <div class="col-md-10">
-            <article class="content wrap" id="_content" data-uid="E5R.Architecture.Core.LazyGroup`6">
+            <article class="content wrap" id="_content" data-uid="E5R.Architecture.Core.AttributableValue`1">
   
   
-  <h1 id="E5R_Architecture_Core_LazyGroup_6" data-uid="E5R.Architecture.Core.LazyGroup`6" class="text-break">Class LazyGroup&lt;TItem1, TItem2, TItem3, TItem4, TItem5, TItem6&gt;
+  <h1 id="E5R_Architecture_Core_AttributableValue_1" data-uid="E5R.Architecture.Core.AttributableValue`1" class="text-break">Class AttributableValue&lt;TValue&gt;
   </h1>
-  <div class="markdown level0 summary"></div>
+  <div class="markdown level0 summary"><p>Value with assignment control</p>
+</div>
   <div class="markdown level0 conceptual"></div>
   <div class="inheritance">
     <h5>Inheritance</h5>
     <div class="level0"><span class="xref">System.Object</span></div>
-    <div class="level1"><span class="xref">LazyGroup&lt;TItem1, TItem2, TItem3, TItem4, TItem5, TItem6&gt;</span></div>
+    <div class="level1"><span class="xref">AttributableValue&lt;TValue&gt;</span></div>
   </div>
   <h6><strong>Namespace</strong>: <a class="xref" href="E5R.Architecture.Core.html">E5R.Architecture.Core</a></h6>
   <h6><strong>Assembly</strong>: E5R.Architecture.Core.dll</h6>
-  <h5 id="E5R_Architecture_Core_LazyGroup_6_syntax">Syntax</h5>
+  <h5 id="E5R_Architecture_Core_AttributableValue_1_syntax">Syntax</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public class LazyGroup&lt;TItem1, TItem2, TItem3, TItem4, TItem5, TItem6&gt; : object where TItem1 : class where TItem2 : class where TItem3 : class where TItem4 : class where TItem5 : class where TItem6 : class</code></pre>
+    <pre><code class="lang-csharp hljs">public class AttributableValue&lt;TValue&gt; : object</code></pre>
   </div>
   <h5 class="typeParameters">Type Parameters</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -96,40 +97,28 @@
     </thead>
     <tbody>
       <tr>
-        <td><span class="parametername">TItem1</span></td>
-        <td></td>
-      </tr>
-      <tr>
-        <td><span class="parametername">TItem2</span></td>
-        <td></td>
-      </tr>
-      <tr>
-        <td><span class="parametername">TItem3</span></td>
-        <td></td>
-      </tr>
-      <tr>
-        <td><span class="parametername">TItem4</span></td>
-        <td></td>
-      </tr>
-      <tr>
-        <td><span class="parametername">TItem5</span></td>
-        <td></td>
-      </tr>
-      <tr>
-        <td><span class="parametername">TItem6</span></td>
+        <td><span class="parametername">TValue</span></td>
         <td></td>
       </tr>
     </tbody>
   </table>
   <h3 id="constructors">Constructors
   </h3>
-  <a id="E5R_Architecture_Core_LazyGroup_6__ctor_" data-uid="E5R.Architecture.Core.LazyGroup`6.#ctor*"></a>
-  <h4 id="E5R_Architecture_Core_LazyGroup_6__ctor_E5R_Architecture_Core_ILazy__0__E5R_Architecture_Core_ILazy__1__E5R_Architecture_Core_ILazy__2__E5R_Architecture_Core_ILazy__3__E5R_Architecture_Core_ILazy__4__E5R_Architecture_Core_ILazy__5__" data-uid="E5R.Architecture.Core.LazyGroup`6.#ctor(E5R.Architecture.Core.ILazy{`0},E5R.Architecture.Core.ILazy{`1},E5R.Architecture.Core.ILazy{`2},E5R.Architecture.Core.ILazy{`3},E5R.Architecture.Core.ILazy{`4},E5R.Architecture.Core.ILazy{`5})">LazyGroup(ILazy&lt;TItem1&gt;, ILazy&lt;TItem2&gt;, ILazy&lt;TItem3&gt;, ILazy&lt;TItem4&gt;, ILazy&lt;TItem5&gt;, ILazy&lt;TItem6&gt;)</h4>
+  <a id="E5R_Architecture_Core_AttributableValue_1__ctor_" data-uid="E5R.Architecture.Core.AttributableValue`1.#ctor*"></a>
+  <h4 id="E5R_Architecture_Core_AttributableValue_1__ctor" data-uid="E5R.Architecture.Core.AttributableValue`1.#ctor">AttributableValue()</h4>
   <div class="markdown level1 summary"></div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public LazyGroup(ILazy&lt;TItem1&gt; item1, ILazy&lt;TItem2&gt; item2, ILazy&lt;TItem3&gt; item3, ILazy&lt;TItem4&gt; item4, ILazy&lt;TItem5&gt; item5, ILazy&lt;TItem6&gt; item6)</code></pre>
+    <pre><code class="lang-csharp hljs">public AttributableValue()</code></pre>
+  </div>
+  <a id="E5R_Architecture_Core_AttributableValue_1__ctor_" data-uid="E5R.Architecture.Core.AttributableValue`1.#ctor*"></a>
+  <h4 id="E5R_Architecture_Core_AttributableValue_1__ctor__0_" data-uid="E5R.Architecture.Core.AttributableValue`1.#ctor(`0)">AttributableValue(TValue)</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public AttributableValue(TValue value)</code></pre>
   </div>
   <h5 class="parameters">Parameters</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -142,46 +131,21 @@
     </thead>
     <tbody>
       <tr>
-        <td><a class="xref" href="E5R.Architecture.Core.ILazy-1.html">ILazy</a>&lt;TItem1&gt;</td>
-        <td><span class="parametername">item1</span></td>
-        <td></td>
-      </tr>
-      <tr>
-        <td><a class="xref" href="E5R.Architecture.Core.ILazy-1.html">ILazy</a>&lt;TItem2&gt;</td>
-        <td><span class="parametername">item2</span></td>
-        <td></td>
-      </tr>
-      <tr>
-        <td><a class="xref" href="E5R.Architecture.Core.ILazy-1.html">ILazy</a>&lt;TItem3&gt;</td>
-        <td><span class="parametername">item3</span></td>
-        <td></td>
-      </tr>
-      <tr>
-        <td><a class="xref" href="E5R.Architecture.Core.ILazy-1.html">ILazy</a>&lt;TItem4&gt;</td>
-        <td><span class="parametername">item4</span></td>
-        <td></td>
-      </tr>
-      <tr>
-        <td><a class="xref" href="E5R.Architecture.Core.ILazy-1.html">ILazy</a>&lt;TItem5&gt;</td>
-        <td><span class="parametername">item5</span></td>
-        <td></td>
-      </tr>
-      <tr>
-        <td><a class="xref" href="E5R.Architecture.Core.ILazy-1.html">ILazy</a>&lt;TItem6&gt;</td>
-        <td><span class="parametername">item6</span></td>
+        <td><span class="xref">TValue</span></td>
+        <td><span class="parametername">value</span></td>
         <td></td>
       </tr>
     </tbody>
   </table>
   <h3 id="properties">Properties
   </h3>
-  <a id="E5R_Architecture_Core_LazyGroup_6_Item1_" data-uid="E5R.Architecture.Core.LazyGroup`6.Item1*"></a>
-  <h4 id="E5R_Architecture_Core_LazyGroup_6_Item1" data-uid="E5R.Architecture.Core.LazyGroup`6.Item1">Item1</h4>
+  <a id="E5R_Architecture_Core_AttributableValue_1_Assigned_" data-uid="E5R.Architecture.Core.AttributableValue`1.Assigned*"></a>
+  <h4 id="E5R_Architecture_Core_AttributableValue_1_Assigned" data-uid="E5R.Architecture.Core.AttributableValue`1.Assigned">Assigned</h4>
   <div class="markdown level1 summary"></div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">protected TItem1 Item1 { get; }</code></pre>
+    <pre><code class="lang-csharp hljs">public bool Assigned { get; }</code></pre>
   </div>
   <h5 class="propertyValue">Property Value</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -193,18 +157,18 @@
     </thead>
     <tbody>
       <tr>
-        <td><span class="xref">TItem1</span></td>
+        <td><span class="xref">System.Boolean</span></td>
         <td></td>
       </tr>
     </tbody>
   </table>
-  <a id="E5R_Architecture_Core_LazyGroup_6_Item2_" data-uid="E5R.Architecture.Core.LazyGroup`6.Item2*"></a>
-  <h4 id="E5R_Architecture_Core_LazyGroup_6_Item2" data-uid="E5R.Architecture.Core.LazyGroup`6.Item2">Item2</h4>
+  <a id="E5R_Architecture_Core_AttributableValue_1_Value_" data-uid="E5R.Architecture.Core.AttributableValue`1.Value*"></a>
+  <h4 id="E5R_Architecture_Core_AttributableValue_1_Value" data-uid="E5R.Architecture.Core.AttributableValue`1.Value">Value</h4>
   <div class="markdown level1 summary"></div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">protected TItem2 Item2 { get; }</code></pre>
+    <pre><code class="lang-csharp hljs">public TValue Value { get; }</code></pre>
   </div>
   <h5 class="propertyValue">Property Value</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -216,43 +180,39 @@
     </thead>
     <tbody>
       <tr>
-        <td><span class="xref">TItem2</span></td>
+        <td><span class="xref">TValue</span></td>
         <td></td>
       </tr>
     </tbody>
   </table>
-  <a id="E5R_Architecture_Core_LazyGroup_6_Item3_" data-uid="E5R.Architecture.Core.LazyGroup`6.Item3*"></a>
-  <h4 id="E5R_Architecture_Core_LazyGroup_6_Item3" data-uid="E5R.Architecture.Core.LazyGroup`6.Item3">Item3</h4>
+  <h3 id="operators">Operators
+  </h3>
+  <a id="E5R_Architecture_Core_AttributableValue_1_op_Implicit_" data-uid="E5R.Architecture.Core.AttributableValue`1.op_Implicit*"></a>
+  <h4 id="E5R_Architecture_Core_AttributableValue_1_op_Implicit__0__E5R_Architecture_Core_AttributableValue__0_" data-uid="E5R.Architecture.Core.AttributableValue`1.op_Implicit(`0)~E5R.Architecture.Core.AttributableValue{`0}">Implicit(TValue to AttributableValue&lt;TValue&gt;)</h4>
   <div class="markdown level1 summary"></div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">protected TItem3 Item3 { get; }</code></pre>
+    <pre><code class="lang-csharp hljs">public static implicit operator AttributableValue&lt;TValue&gt;(TValue value)</code></pre>
   </div>
-  <h5 class="propertyValue">Property Value</h5>
+  <h5 class="parameters">Parameters</h5>
   <table class="table table-bordered table-striped table-condensed">
     <thead>
       <tr>
         <th>Type</th>
+        <th>Name</th>
         <th>Description</th>
       </tr>
     </thead>
     <tbody>
       <tr>
-        <td><span class="xref">TItem3</span></td>
+        <td><span class="xref">TValue</span></td>
+        <td><span class="parametername">value</span></td>
         <td></td>
       </tr>
     </tbody>
   </table>
-  <a id="E5R_Architecture_Core_LazyGroup_6_Item4_" data-uid="E5R.Architecture.Core.LazyGroup`6.Item4*"></a>
-  <h4 id="E5R_Architecture_Core_LazyGroup_6_Item4" data-uid="E5R.Architecture.Core.LazyGroup`6.Item4">Item4</h4>
-  <div class="markdown level1 summary"></div>
-  <div class="markdown level1 conceptual"></div>
-  <h5 class="decalaration">Declaration</h5>
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">protected TItem4 Item4 { get; }</code></pre>
-  </div>
-  <h5 class="propertyValue">Property Value</h5>
+  <h5 class="returns">Returns</h5>
   <table class="table table-bordered table-striped table-condensed">
     <thead>
       <tr>
@@ -262,43 +222,37 @@
     </thead>
     <tbody>
       <tr>
-        <td><span class="xref">TItem4</span></td>
+        <td><a class="xref" href="E5R.Architecture.Core.AttributableValue-1.html">AttributableValue</a>&lt;TValue&gt;</td>
         <td></td>
       </tr>
     </tbody>
   </table>
-  <a id="E5R_Architecture_Core_LazyGroup_6_Item5_" data-uid="E5R.Architecture.Core.LazyGroup`6.Item5*"></a>
-  <h4 id="E5R_Architecture_Core_LazyGroup_6_Item5" data-uid="E5R.Architecture.Core.LazyGroup`6.Item5">Item5</h4>
+  <a id="E5R_Architecture_Core_AttributableValue_1_op_Implicit_" data-uid="E5R.Architecture.Core.AttributableValue`1.op_Implicit*"></a>
+  <h4 id="E5R_Architecture_Core_AttributableValue_1_op_Implicit_E5R_Architecture_Core_AttributableValue__0____0" data-uid="E5R.Architecture.Core.AttributableValue`1.op_Implicit(E5R.Architecture.Core.AttributableValue{`0})~`0">Implicit(AttributableValue&lt;TValue&gt; to TValue)</h4>
   <div class="markdown level1 summary"></div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">protected TItem5 Item5 { get; }</code></pre>
+    <pre><code class="lang-csharp hljs">public static implicit operator TValue(AttributableValue&lt;TValue&gt; value)</code></pre>
   </div>
-  <h5 class="propertyValue">Property Value</h5>
+  <h5 class="parameters">Parameters</h5>
   <table class="table table-bordered table-striped table-condensed">
     <thead>
       <tr>
         <th>Type</th>
+        <th>Name</th>
         <th>Description</th>
       </tr>
     </thead>
     <tbody>
       <tr>
-        <td><span class="xref">TItem5</span></td>
+        <td><a class="xref" href="E5R.Architecture.Core.AttributableValue-1.html">AttributableValue</a>&lt;TValue&gt;</td>
+        <td><span class="parametername">value</span></td>
         <td></td>
       </tr>
     </tbody>
   </table>
-  <a id="E5R_Architecture_Core_LazyGroup_6_Item6_" data-uid="E5R.Architecture.Core.LazyGroup`6.Item6*"></a>
-  <h4 id="E5R_Architecture_Core_LazyGroup_6_Item6" data-uid="E5R.Architecture.Core.LazyGroup`6.Item6">Item6</h4>
-  <div class="markdown level1 summary"></div>
-  <div class="markdown level1 conceptual"></div>
-  <h5 class="decalaration">Declaration</h5>
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">protected TItem6 Item6 { get; }</code></pre>
-  </div>
-  <h5 class="propertyValue">Property Value</h5>
+  <h5 class="returns">Returns</h5>
   <table class="table table-bordered table-striped table-condensed">
     <thead>
       <tr>
@@ -308,7 +262,7 @@
     </thead>
     <tbody>
       <tr>
-        <td><span class="xref">TItem6</span></td>
+        <td><span class="xref">TValue</span></td>
         <td></td>
       </tr>
     </tbody>
@@ -316,6 +270,9 @@
   <h3 id="extensionmethods">Extension Methods</h3>
   <div>
       <a class="xref" href="E5R.Architecture.Core.Extensions.ObjectExtensions.html#E5R_Architecture_Core_Extensions_ObjectExtensions_Fill__1___0_Dictionary_System_String_System_String__">ObjectExtensions.Fill&lt;TObject&gt;(TObject, Dictionary&lt;String, String&gt;)</a>
+  </div>
+  <div>
+      <a class="xref" href="E5R.Architecture.Core.Extensions.ObjectExtensions.html#E5R_Architecture_Core_Extensions_ObjectExtensions_CopyPropertyValuesTo__2___0___1_">ObjectExtensions.CopyPropertyValuesTo&lt;TFrom, TTo&gt;(TFrom, TTo)</a>
   </div>
 </article>
           </div>
