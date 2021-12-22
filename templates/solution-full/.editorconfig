@@ -1,0 +1,28 @@
+# EditorConfig is awesome: https://EditorConfig.org
+
+root = true
+
+[*]
+indent_style = space
+indent_size = 4
+end_of_line = crlf
+charset = utf-8
+trim_trailing_whitespace = true
+insert_final_newline = true
+
+[*.{json,csproj,xml,props}]
+insert_final_newline = false
+indent_size = 2
+
+[*.md]
+trim_trailing_whitespace = false
+
+[*.cs]
+dotnet_separate_import_directive_groups = true
+dotnet_sort_system_directives_first = true
+file_header_template = Copyright (c) E5R.Architecture.Template.FullSolution. Todos os direitos reservados.\nConfigure suas notas de cabeçalho no arquivo ".editorconfig" na raiz da solução.
+
+# .NET Analyzer
+dotnet_analyzer_diagnostic.category-Style.severity = warning
+dotnet_diagnostic.IDE0022.severity = silent
+dotnet_diagnostic.IDE0058.severity = silent

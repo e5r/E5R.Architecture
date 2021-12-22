@@ -7,39 +7,35 @@ using System.Linq;
 using E5R.Architecture.Core;
 using E5R.Architecture.Core.Exceptions;
 using E5R.Architecture.Data.Abstractions;
+using Microsoft.EntityFrameworkCore;
 
 namespace E5R.Architecture.Data.EntityFrameworkCore
 {
     public class RideStorage<TDataModel> : StorageBase<TDataModel>, IStorageReader<TDataModel>
         where TDataModel : class, IIdentifiable
     {
+        private readonly DbContext _dbContext;
         private readonly IQueryable<TDataModel> _query;
 
-        public RideStorage(IQueryable<TDataModel> query)
+        public RideStorage(DbContext dbContext, IQueryable<TDataModel> query)
         {
+            Checker.NotNullArgument(dbContext, nameof(dbContext));
             Checker.NotNullArgument(query, nameof(query));
 
+            _dbContext = dbContext;
             _query = query;
         }
 
         #region IStorageReader for TDataModel
 
-        public TDataModel Find(TDataModel data, IDataIncludes includes = null)
-        {
-            throw new DataLayerException(
-                $"{this.GetType().Name} not implement {nameof(Find)}(data)!");
-        }
-
-        public TDataModel Find(object identifier, IDataIncludes includes = null)
-        {
-            throw new DataLayerException(
-                $"{this.GetType().Name} not implement {nameof(Find)}(identifier)!");
-        }
-
         public TDataModel Find(object[] identifiers, IDataIncludes includes = null)
         {
-            throw new DataLayerException(
-                $"{this.GetType().Name} not implement {nameof(Find)}(identifiers)!");
+            Checker.NotNullArgument(identifiers, nameof(identifiers));
+
+            var entityType = _dbContext.Model.FindEntityType(typeof(TDataModel));
+
+            return QueryFind(entityType, _query, identifiers, includes)
+                .FirstOrDefault();
         }
 
         public int CountAll() => _query.Count();
@@ -47,8 +43,11 @@ namespace E5R.Architecture.Data.EntityFrameworkCore
         public int Count(IDataFilter<TDataModel> filter) =>
             QuerySearch(_query, filter, null).Count();
 
+        public TDataModel GetFirst(IDataFilter<TDataModel> filter, IDataIncludes includes = null) =>
+            QuerySearch(_query, filter, includes).FirstOrDefault();
+
         public IEnumerable<TDataModel> GetAll(IDataIncludes includes) =>
-            TryApplyIncludes(_query, includes);
+            TryApplyIncludes(_query, includes).ToList();
 
         public PaginatedResult<TDataModel> LimitedGet(IDataLimiter<TDataModel> limiter,
             IDataIncludes includes)
@@ -58,7 +57,7 @@ namespace E5R.Architecture.Data.EntityFrameworkCore
             var (offset, limit, total, result) = QueryPreLimitResult(_query, limiter, includes);
 
             return new PaginatedResult<TDataModel>(
-                result,
+                result.ToList(),
                 offset,
                 limit,
                 total
@@ -70,7 +69,7 @@ namespace E5R.Architecture.Data.EntityFrameworkCore
         {
             Checker.NotNullArgument(filter, nameof(filter));
 
-            return QuerySearch(_query, filter, includes);
+            return QuerySearch(_query, filter, includes).ToList();
         }
 
         public PaginatedResult<TDataModel> LimitedSearch(IDataFilter<TDataModel> filter,
@@ -86,7 +85,7 @@ namespace E5R.Architecture.Data.EntityFrameworkCore
             var (offset, limit, total, result) = QueryPreLimitResult(query, limiter, null);
 
             return new PaginatedResult<TDataModel>(
-                result,
+                result.ToList(),
                 offset,
                 limit,
                 total
@@ -118,13 +117,22 @@ namespace E5R.Architecture.Data.EntityFrameworkCore
                 $"{this.GetType().Name} not implement {nameof(Find)}(identifiers)!");
         }
 
+        public TSelect GetFirst<TSelect>(IDataFilter<TDataModel> filter,
+            IDataProjection<TDataModel, TSelect> projection)
+        {
+            Checker.NotNullArgument(projection, nameof(projection));
+            Checker.NotNullObject(projection.Select, () => projection.Select);
+
+            return QuerySearch(_query, filter, projection).Select(projection.Select).FirstOrDefault();
+        }
+
         public IEnumerable<TSelect> GetAll<TSelect>(IDataProjection<TDataModel, TSelect> projection)
         {
             Checker.NotNullArgument(projection, nameof(projection));
             Checker.NotNullObject(projection.Select,
                 $"{nameof(projection)}.{nameof(projection.Select)}");
 
-            return TryApplyIncludes(_query, projection).Select(projection.Select);
+            return TryApplyIncludes(_query, projection).Select(projection.Select).ToList();
         }
 
         public PaginatedResult<TSelect> LimitedGet<TSelect>(IDataLimiter<TDataModel> limiter,
@@ -138,7 +146,7 @@ namespace E5R.Architecture.Data.EntityFrameworkCore
             var (offset, limit, total, result) = QueryPreLimitResult(_query, limiter, projection);
 
             return new PaginatedResult<TSelect>(
-                result.Select(projection.Select),
+                result.Select(projection.Select).ToList(),
                 offset,
                 limit,
                 total
@@ -154,7 +162,8 @@ namespace E5R.Architecture.Data.EntityFrameworkCore
                 $"{nameof(projection)}.{nameof(projection.Select)}");
 
             return QuerySearch(_query, filter, projection)
-                .Select(projection.Select);
+                .Select(projection.Select)
+                .ToList();
         }
 
         public PaginatedResult<TSelect> LimitedSearch<TSelect>(IDataFilter<TDataModel> filter,
@@ -173,7 +182,7 @@ namespace E5R.Architecture.Data.EntityFrameworkCore
             var (offset, limit, total, result) = QueryPreLimitResult(query, limiter, null);
 
             return new PaginatedResult<TSelect>(
-                result.Select(projection.Select),
+                result.Select(projection.Select).ToList(),
                 offset,
                 limit,
                 total
@@ -195,7 +204,8 @@ namespace E5R.Architecture.Data.EntityFrameworkCore
 
             return TryApplyIncludes(_query, projection)
                 .GroupBy(projection.Group)
-                .Select(projection.Select);
+                .Select(projection.Select)
+                .ToList();
         }
 
         public PaginatedResult<TSelect> LimitedGet<TGroup, TSelect>(
@@ -212,7 +222,7 @@ namespace E5R.Architecture.Data.EntityFrameworkCore
             var (offset, limit, total, result) = QueryPreLimitResult(_query, limiter, projection);
 
             return new PaginatedResult<TSelect>(
-                result.GroupBy(projection.Group).Select(projection.Select),
+                result.GroupBy(projection.Group).Select(projection.Select).ToList(),
                 offset,
                 limit,
                 total
@@ -231,7 +241,8 @@ namespace E5R.Architecture.Data.EntityFrameworkCore
 
             return QuerySearch(_query, filter, projection)
                 .GroupBy(projection.Group)
-                .Select(projection.Select);
+                .Select(projection.Select)
+                .ToList();
         }
 
         public PaginatedResult<TSelect> LimitedSearch<TGroup, TSelect>(
@@ -254,7 +265,7 @@ namespace E5R.Architecture.Data.EntityFrameworkCore
             var (offset, limit, total, result) = QueryPreLimitResult(query, limiter, null);
 
             return new PaginatedResult<TSelect>(
-                result.GroupBy(projection.Group).Select(projection.Select),
+                result.GroupBy(projection.Group).Select(projection.Select).ToList(),
                 offset,
                 limit,
                 total

@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Linq;
 using System.Diagnostics;
 using E5R.Architecture.Core;
@@ -340,9 +340,10 @@ namespace UsingDataEntityFrameworkCore.Controllers
 
             var g2_b = lazyStore.AsFluentQuery()
                 .Projection()
-                    .Include(i => i.Enrollments)
                     .Include<Enrollment>(i => i.Enrollments)
                         .ThenInclude<Course>(i => i.Course)
+                    .Include<Enrollment>(i => i.Enrollments)
+                        .ThenInclude<Student>(i => i.Student)
                     .Map(m => new
                     {
                         StudentName = $"{m.LastName}, {m.FirstMidName}",
@@ -350,7 +351,8 @@ namespace UsingDataEntityFrameworkCore.Controllers
                         Enrollments = m.Enrollments.Select(s => new
                         {
                             Grade = s.Grade,
-                            Course = s.Course.Title
+                            Course = s.Course.Title,
+                            Student = s.Student == null ? string.Empty : s.Student.FirstMidName
                         })
                     })
                     .Project()

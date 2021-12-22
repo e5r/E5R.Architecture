@@ -1,4 +1,4 @@
-﻿// Copyright (c) E5R Development Team. All rights reserved.
+// Copyright (c) E5R Development Team. All rights reserved.
 // This file is a part of E5R.Architecture.
 // Licensed under the Apache version 2.0: https://github.com/e5r/manifest/blob/master/license/APACHE-2.0.txt
 
@@ -22,9 +22,17 @@ namespace E5R.Architecture.Data.Fluent.Query
         }
 
         public FluentQueryBuilderWithFilter<TDataModel> Filter(
-            Expression<Func<TDataModel, bool>> filter)
+            Expression<Func<TDataModel, bool>> filterExpression)
         {
-            _filter.AddFilter(filter);
+            _filter.AddFilter(filterExpression);
+
+            return this;
+        }
+
+        public FluentQueryBuilderWithFilter<TDataModel> Filter(
+            IIdentifiableExpressionMaker<TDataModel> filterMaker)
+        {
+            _filter.AddFilter(filterMaker);
 
             return this;
         }
@@ -58,6 +66,8 @@ namespace E5R.Architecture.Data.Fluent.Query
                 .Paginate(currentPage, limitPerPage);
 
         #region Storage Actions
+
+        public TDataModel GetFirst() => _storage.GetFirst(_filter, _includes);
 
         public IEnumerable<TDataModel> Search() => _storage.Search(_filter, _includes);
 

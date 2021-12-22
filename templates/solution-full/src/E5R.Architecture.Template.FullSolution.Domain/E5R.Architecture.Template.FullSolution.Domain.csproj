@@ -1,0 +1,14 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <Import Project="..\..\project.props" />
+
+  <PropertyGroup>
+    <TargetFramework>net5.0</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="E5R.Architecture.Core" Version="0.10.0-beta-327" />
+    <PackageReference Include="E5R.Architecture.Data" Version="0.10.0-beta-327" />
+  </ItemGroup>
+
+</Project>

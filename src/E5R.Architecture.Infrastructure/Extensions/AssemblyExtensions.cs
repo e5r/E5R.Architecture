@@ -9,7 +9,6 @@ using E5R.Architecture.Core;
 using E5R.Architecture.Infrastructure.Abstractions;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
-using Microsoft.Extensions.DependencyInjection.Extensions;
 
 namespace E5R.Architecture.Infrastructure.Extensions
 {
@@ -139,26 +138,17 @@ namespace E5R.Architecture.Infrastructure.Extensions
         {
             Checker.NotNullArgument(assembly, nameof(assembly));
             Checker.NotNullArgument(services, nameof(services));
-
-            var groupTypes = new[]
-            {
-                typeof(LazyGroup<,>),
-                typeof(LazyGroup<,,>),
-                typeof(LazyGroup<,,,>),
-                typeof(LazyGroup<,,,,>),
-                typeof(LazyGroup<,,,,,>),
-                typeof(LazyGroup<,,,,,,>),
-                typeof(LazyGroup<,,,,,,,>),
-                typeof(LazyGroup<,,,,,,,,>),
-                typeof(LazyGroup<,,,,,,,,,>),
-            };
-
-            assembly.DefinedTypes
-                .Where(t =>
-                    t.BaseType != null && t.BaseType.IsGenericType &&
-                    groupTypes.Contains(t.BaseType.GetGenericTypeDefinition()))
-                .ToList()
-                .ForEach(services.TryAddScoped);
+            
+            services.AddScoped(typeof(LazyTuple<>));
+            services.AddScoped(typeof(LazyTuple<,>));
+            services.AddScoped(typeof(LazyTuple<,,>));
+            services.AddScoped(typeof(LazyTuple<,,,>));
+            services.AddScoped(typeof(LazyTuple<,,,,>));
+            services.AddScoped(typeof(LazyTuple<,,,,,>));
+            services.AddScoped(typeof(LazyTuple<,,,,,,>));
+            services.AddScoped(typeof(LazyTuple<,,,,,,,>));
+            services.AddScoped(typeof(LazyTuple<,,,,,,,,>));
+            services.AddScoped(typeof(LazyTuple<,,,,,,,,,>));
 
             return assembly;
         }

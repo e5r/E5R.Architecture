@@ -20,25 +20,6 @@ namespace E5R.Architecture.Data.Abstractions
         /// <summary>
         /// Updates data from a stored object
         /// </summary>
-        /// <param name="identifier">Object identifier</param>
-        /// <param name="updated">Updated object data</param>
-        /// <typeparam name="TUpdated">Type for the updated data. Usually an anonymous type</typeparam>
-        /// <returns>Updated object instance</returns>
-        TDataModel Update<TUpdated>(object identifier, TUpdated updated);
-
-        /// <summary>
-        /// Updates data from a stored object
-        /// </summary>
-        /// <param name="identifier">Object identifier</param>
-        /// <param name="updateExpression">Update expression</param>
-        /// <typeparam name="TUpdated">Type for the updated data. Usually an anonymous type</typeparam>
-        /// <returns>Updated object instance</returns>
-        TDataModel Update<TUpdated>(object identifier,
-            Expression<Func<TDataModel, TUpdated>> updateExpression);
-
-        /// <summary>
-        /// Updates data from a stored object
-        /// </summary>
         /// <param name="identifiers">Object identifiers</param>
         /// <param name="updated">Updated object data</param>
         /// <typeparam name="TUpdated">Type for the updated data. Usually an anonymous type</typeparam>

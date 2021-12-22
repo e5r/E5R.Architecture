@@ -6,7 +6,6 @@ using System;
 using System.Linq;
 using System.Linq.Expressions;
 using E5R.Architecture.Core;
-using E5R.Architecture.Core.Exceptions;
 using E5R.Architecture.Data.Abstractions;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata;
@@ -16,7 +15,7 @@ namespace E5R.Architecture.Data.EntityFrameworkCore
     public class StorageBase<TDataModel>
         where TDataModel : class, IIdentifiable
     {
-        public IQueryable<TDataModel> QueryFind(
+        protected IQueryable<TDataModel> QueryFind(
             IEntityType entityType,
             IQueryable<TDataModel> origin,
             object[] identifiers,
@@ -83,17 +82,17 @@ namespace E5R.Architecture.Data.EntityFrameworkCore
             Checker.NotNullArgument(origin, nameof(origin));
             Checker.NotNullArgument(filter, nameof(filter));
 
-            var filterList = filter.GetFilter();
+            var filterExpressions = filter.GetExpressions();
 
-            Checker.NotNullObject(filterList, $"filter.{nameof(filter.GetFilter)}()");
+            Checker.NotNullObject(filterExpressions, $"filter.{nameof(filter.GetExpressions)}()");
 
-            var query = filterList.Aggregate(origin, (q, w) => q.Where(w));
+            var query = filterExpressions.Aggregate(origin, (q, w) => q.Where(w));
 
             return TryApplyIncludes(query, includes);
         }
 
         /// <summary>
-        /// Query for operations that must return an <see cref="PaginatedResult{}" />
+        /// Query for operations that must return an <see cref="PaginatedResult{TDataModel}" />
         /// </summary>
         /// <param name="limiter">Data limiter</param>
         /// <param name="origin">Original data query</param>
@@ -122,30 +121,33 @@ namespace E5R.Architecture.Data.EntityFrameworkCore
             {
                 if (orderBy == null)
                 {
-                    if (sorter.Descending)
-                        orderBy = result.OrderByDescending(sorter.Sorter);
-                    else
-                        orderBy = result.OrderBy(sorter.Sorter);
+                    orderBy = sorter.Descending 
+                        ? result.OrderByDescending(sorter.Sorter) 
+                        : result.OrderBy(sorter.Sorter);
                 }
                 else
                 {
-                    if (sorter.Descending)
-                        orderBy = orderBy.ThenByDescending(sorter.Sorter);
-                    else
-                        orderBy = orderBy.ThenBy(sorter.Sorter);
+                    orderBy = sorter.Descending 
+                        ? orderBy.ThenByDescending(sorter.Sorter) 
+                        : orderBy.ThenBy(sorter.Sorter);
                 }
             }
 
             result = orderBy ?? result;
 
-            uint offset = 0;
-            uint limit = 0;
-            int total = result.Count();
+            uint offset;
+            uint limit;
+            
+            var total = result.Count();
 
             if (limiter.OffsetBegin.HasValue)
             {
                 offset = limiter.OffsetBegin.Value;
                 result = result.Skip(Convert.ToInt32(offset));
+            }
+            else
+            {
+                offset = 0;
             }
 
             if (limiter.OffsetLimit.HasValue)
@@ -165,42 +167,9 @@ namespace E5R.Architecture.Data.EntityFrameworkCore
             IQueryable<TDataModel> query,
             IDataIncludes includes)
         {
-            if (includes == null)
-                return query;
-
-            return includes.Includes.Aggregate(query, (q, i) => q.Include(i));
-        }
-
-        protected void CopyProperties<TFrom, TTo>(TFrom from, TTo to)
-        {
-            var fromProperties = typeof(TFrom).GetProperties();
-            var updateableProperties = typeof(TTo).GetProperties().Where(w =>
-                w.CanWrite &&
-                fromProperties.Any(a => a.Name == w.Name && a.PropertyType == w.PropertyType));
-
-            if (!fromProperties.Any() || !updateableProperties.Any())
-            {
-                // TODO: Implementar i18n/l10n
-                throw new DataLayerException("No matching data found for update");
-            }
-
-            updateableProperties
-                .ToList()
-                .ForEach(updateableProp =>
-                {
-                    var fromProp = fromProperties.FirstOrDefault(w => w.Name == updateableProp.Name);
-
-                    // Esta exceção nunca deve ocorrer, mas... "O seguro morreu de velho"
-                    if (fromProp == null)
-                    {
-                        // TODO: Implementar i18n/l10n
-                        throw new DataLayerException($"No matching data was found to update property {fromProp.Name}");
-                    }
-
-                    var fromValue = fromProp.GetValue(from);
-
-                    updateableProp.SetValue(to, fromValue);
-                });
+            return includes != null
+                ? includes.Includes.Aggregate(query, (q, i) => q.Include(i))
+                : query;
         }
     }
 }

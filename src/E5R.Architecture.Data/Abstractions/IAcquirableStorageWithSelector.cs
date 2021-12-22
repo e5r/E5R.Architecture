@@ -18,8 +18,28 @@ namespace E5R.Architecture.Data.Abstractions
     public interface IAcquirableStorageWithSelector<TDataModel> : IStorageSignature
         where TDataModel : IIdentifiable
     {
+        /// <summary>
+        /// Get the first item stored according to filter entered
+        /// </summary>
+        /// <param name="filter">Data filter</param>
+        /// <param name="projection">Data projection (Include and Select) for data model</param>
+        /// <returns>Instance of <see cref="IDataProjection{TDataModel, TGroup}.Select"/>, or null when not found</returns>
+        TSelect GetFirst<TSelect>(IDataFilter<TDataModel> filter,
+            IDataProjection<TDataModel, TSelect> projection);
+
+        /// <summary>
+        /// Get all stored items
+        /// </summary>
+        /// <param name="projection">Data projection (Include and Select) for data model</param>
+        /// <returns>List of <see cref="IDataProjection{TDataModel, TSelect}.Select"/></returns>
         IEnumerable<TSelect> GetAll<TSelect>(IDataProjection<TDataModel, TSelect> projection);
 
+        /// <summary>
+        /// Gets the stored items in a limited way
+        /// </summary>
+        /// <param name="limiter">Limitation data</param>
+        /// <param name="projection">Data projection (Include and Select) for data model</param>
+        /// <returns>Paged list of <see cref="IDataProjection{TDataModel, TSelect}.Select"/></returns>
         PaginatedResult<TSelect> LimitedGet<TSelect>(IDataLimiter<TDataModel> limiter,
             IDataProjection<TDataModel, TSelect> projection);
     }

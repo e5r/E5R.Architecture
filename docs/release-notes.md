@@ -5,6 +5,250 @@ title: Notas de Lançamento
 Notas de Lançamento
 ===================
 
+## 0.10.0
+
+### Novos recursos:
+
+* Nova interface `IdentifiableExpressionMaker` 
+  - Para auxiliar na construção de objetos de filtro
+  - Mas pode ser usado em qualquer lugar que precise converter um objeto identificável
+    em uma expressão para o tipo identificável
+* Novo tipo `AttributableValue` para valores _atribuíveis_
+  - Também temos um utilitário `AttributableValueUtil` para uso do `Assigned` inclusive
+    em valores nulos e de forma estática
+  - As vezes só o `Nullable<x>` ou `x?` não é o suficiente
+  - E `Nullable<Nullable<x>>` ou `x??` não é permitido ainda
+```c#
+public class Pessoa
+{
+    public string Nome {get; set; }
+    public int? Idade { get; set; }
+}
+
+public class PessoaFiltro
+{
+    public string PorNome {get; set; }
+    public int? PorIdade { get; set; }
+}
+
+// As duas classes para simular que você tem um objeto e deseja fazer um
+// filtro no banco de dados por esse objeto.
+// Vamos focar apenas no campo "Idade".
+//
+// Como filtrar por uma idade específica?
+// Simples: Se o campo `PorIdade` tiver um valor (PorIdade.HasValue)
+// aplicamos o filtro, em outro caso não.
+//
+// Mas veja que a propriedade "Idade" é opcional no banco de dados,
+// isso quer dizer que também podemos ter campos sem idade informada.
+//
+// Como filtrar por itens que não tem idade informada?
+// Não é mais simples: Já usamos a opção "PorIdade.HasValue" para saber se
+// devemos ou não aplicar o filtro. Então como representar um valor nulo agora?
+//
+// Simplificando novamente: Usamos o novo tipo `AttributableValue`
+
+public class PessoaFiltro
+{
+    public string PorNome {get; set; }
+    public AttributableValue<int?> PorIdade { get; set; }
+}
+
+// Agora podemos conferir se o valor está atribuído "PorIdade.Assigned"
+// e em seguida, usar o valor interno "PorIdade.Value", que por sua vez é um
+// "Nullable<int>". E agora temos uma simulação de "Nullable<Nullable<int>>"
+// já que não podemos fazer isso diretamente na linguagem.
+// Seria o mesmo que "int??".
+```
+* Com o novo `IDataFilter<>` combinado com `IIdentifiableExpressionMaker<>` agora podemos
+  criar filtros personalizados por objeto
+```C#
+using static E5R.Architecture.Core.Utils.AttributableValueUtil;
+
+public class ByLastNameFilter : IIdentifiableExpressionMaker<Student>
+{
+    public AttributableValue<string> LastName { get; set; }
+
+    public Expression<Func<Student, bool>> MakeExpression()
+    {
+        return w => !Assigned(LastName) || string.Compare(w.LastName, LastName) == 0;
+    }
+
+    public string MyCreateSqlClause()
+    {
+        // Sua lógica para criar o SQL...
+    }
+}
+
+// Com isso, nos métodos que recebem um IDataFilter, agora você pode usar
+// tanto uma expressão diretamente:
+var _ = MyStorage.AsFluentQuery()
+    .Filter(f => string.Compare(f.LastName, "My Last Name") == 0)
+    .Search();
+
+// Quanto esse objeto personalizado
+var _ = MyStorage.AsFluentQuery()
+    .Filter(new ByLastNameFilter { LastName = "My Last Name"})
+    .Search();
+```
+* Novos métodos de extensão para uso de `Task` em contextos síncronos
+```c#
+class MinhaClasse
+{
+    // Opção 1: Já conhecida e continua igual
+    void MeuMetodoSincronoSemResultado()
+    {
+        ChamandoMetodoAssincrono().Wait();
+    }
+
+    // Opção1: Agora com métodos que retornam resultado
+    int MeuMetodoSincronoComResultado()
+    {
+        Task t = ChamandoMetodoAssincrono();
+
+        t.Wait();
+
+        return t.Result;
+    }
+
+    // Opção 2: Com nova extensão
+    int MeuMetodoSincronoComResultado()
+    {
+        return ChamandoMetodoAssincrono().WaitResult();
+    }
+}
+```
+* `ITransformationManager` ganha sobrecarga de método para transformar listas simples
+  e listas paginadas de itens
+```c#
+var transformer = ITransformationManager;
+
+var listOfA = new List<A>
+{
+    new A { AMessage = "Message A1" },
+    new A { AMessage = "Message A2" },
+    new A { AMessage = "Message A3" },
+};
+
+var paginatedListOfA = new PaginatedResult<A>(listOfA, 10, 3, 1000);
+var listOfB = transformer.Transform<A, B>(listOfA);
+var paginatedListOfB = transformer.Transform<A, B>(paginatedListOfA);
+
+public class AToBTransformer : ITransformer<A, B>
+{
+    public B Transform(A @from)
+    {
+        return new B
+        {
+            BMessage = @from.AMessage
+        };
+    }
+}
+```
+* `ITransformationManager` ganha novos métodos para transformar automaticamente objetos
+```c#
+// TTo AutoTransform<TFrom, TTo>(TFrom from) where TTo : new();
+// IEnumerable<TTo> AutoTransform<TFrom, TTo>(IEnumerable<TFrom> from) where TTo : new();
+// PaginatedResult<TTo> AutoTransform<TFrom, TTo>(PaginatedResult<TFrom> from) where TTo : new();
+
+public class MyFrom
+{
+    public int IntegerValue { get; set; }
+    public string StringValue { get; set; }
+    public Guid GuidValue { get; set; }
+}
+
+public class MyTo
+{
+    public int IntegerValue { get; set; }
+    public string StringValue { get; set; }
+    public string NotCopiedString { get; set; }
+    public Guid GuidValue { get; set; }
+}
+var transformer = ITransformationManager;
+
+var from = new MyFrom { /* ... */ }
+var to = transformer.AutoTransform<MyFrom, MyTo>(from);
+
+// Se existir um ITransformer<MyFrom, MyTo> ele será usado, se não, as propriedades
+// serão simplesmente copiadas entre os objetos.
+// Na cópia todas as propriedades de mesmo nome e tipo serão copiadas e as demais não.
+```
+* Novo utilitário para tipo `object` que copia valores entre objetos
+```c#
+using E5R.Architecture.Core.Extensions;
+
+var obj1 = new MyObjectOne();
+var obj2 = new MyObjectTwo();
+
+// Copia valores das propriedades de "obj1" para "obj2"
+// "propriedades com mesmo nome e tipo"
+var copiedCount = obj1.CopyPropertyValuesTo(obj2);
+
+// O retorno é a quantidade de propriedades copiadas, assim
+// você pode tomar alguma decisão caso nada tenha sido copiado.
+```
+
+### Breaking changes:
+
+* `BusinessFeature` e seus derivados foram renomeados para `ActionHandler`
+* `LazyGroup<>` foi renomeado para `LazyTuple`
+  - Seus itens agora são públicos
+  - Foi adicionado a tupla com único item
+* O registro no assembly `AddAllLazyGroups()` não registra mais classes que herdam de `LazyGroup<>` (que agora se chama `LazyTuple<>`)
+  - Ao invés disso registra diretamente `LazyTuple<>`
+* `IDataFilter<>` tem nova assinagura:
+```C#
+public interface IDataFilter<TDataModel>
+{
+    // Sempre deve retornar uma lista de expressões
+    IEnumerable<Expression<Func<TDataModel, bool>>> GetExpressions();
+
+    // Quando não houver objetos de filtro, deve-se retornar as
+    // próprias expressões como objetos
+    IEnumerable<object> GetObjects();
+}
+```
+* Algumas interfaces do componente `E5R.Architecture.Data` foram simplificadas
+  - A interface `IRemovableStorage` agora só tem uma assinatura de método
+```C#
+public interface IRemovableStorage<TDataModel>
+{
+    void Remove(object[] identifiers);
+}
+```
+  - A interface `IUpdatableStorage` agora só tem duas assinaturas de método
+```c#
+public interface IUpdatableStorage<TDataModel>
+{
+    TDataModel Update<TUpdated>(object[] identifiers, TUpdated updated);
+    TDataModel Update<TUpdated>(object[] identifiers, Expression<Func<TDataModel, TUpdated>> updateExpression);
+}
+```
+* As interfaces `IAcquirableStorage` e `IAcquirableStorageWithSelector` ganham novo método para retornar primeiro item à partir de um filtro
+```c#
+public interface IAcquirableStorage<TDataModel>
+{
+    TDataModel GetFirst(IDataFilter<TDataModel> filter, IDataIncludes includes = null);
+}
+
+public interface IAcquirableStorageWithSelector<TDataModel>
+{
+    TSelect GetFirst<TSelect>(IDataFilter<TDataModel> filter, IDataProjection<TDataModel, TSelect> projection);
+}
+```
+* Os derivados de `RideStorage`, que inclui `RawSqlRideStorage` agora implementam o método `Find()`
+* Agora no resultado de validação de uma regra temos a possibilidade de identificar uma falha inesperada
+```c#
+var rule = MyRuleFor();
+var result = rule.Check(myModel);
+
+if(!result.IsSuccess && result.UnexpectedException != null)
+{
+    // Use result.UnexpectedException...
+}
+```
+
 ## 0.9.0
 
 ### Novos recursos:
@@ -253,22 +497,22 @@ services.AddInfrastructure(config, options => {
   + `IDIRegistrar` foi renomeado para `ICrossCuttingRegistrar`
   + Agora usa o sistema padrão de injeção de dependência do .NET
     - Foram removidas as seguintes abstrações:
-      - DILifetime
-      - IDIContainer
+      - `DILifetime`
+      - `IDIContainer`
     - A interface `ICrossCuttingRegistrar` espera um `IServiceCollection` junto a um `IConfiguration` ao invés de um `IDIContainer`
 * A configuração de infraestrutura `AddInfrastructure()` agora requer pelo menos um `IConfiguration`
 
 ## 0.8.0
 
-Novos recursos:
+### Novos recursos:
 
 * Adiciona genérico `LazyGroup<>` para agrupar objetos carregados preguiçosamente
     - Objetiva ser utilizado para construir objetos de fachada
     - Registra automaticamente objetos que o herdam, se usar `AddInfrastructure()`
 * Agora é possível obter um valor de `Enum` através de um valor de `MetaTag`
 * Novos métodos adicionados a interface `IStorage<>`
-    - `int CountAll()` Que retorna o total de registros
-    - `int Count(IDataFilter<> filter)` Que retorna o total de registros que obedeçam a um determinado filtro
+    - `int CountAll()` que retorna o total de registros
+    - `int Count(IDataFilter<> filter)` que retorna o total de registros que obedeçam a um determinado filtro
     - Os métodos também estão disponíveis na api fluente `AsFluentQuery()`
 * Adiciona capacidade de deduzir nome de parâmetro por expressões no utilitário Checker
 ```c#
@@ -312,9 +556,9 @@ string hashHexOfString = myString.Sha1Hex();
 string hmacHexOfString = myString.HmacSha256Hex(myKey);
 ```
 
-Breaking changes:
+### Breaking changes:
 
-* `IDataModel` agora é `IIdentifiable` e agora está em `Core` ao invés de `Data`
+* `IDataModel` agora é `IIdentifiable` e foi movido de `Data` para `Core`
   - Também a propriedade com os valores foi renomeada de `IdentifierValues` para `Identifiers` somente
 * O genérico `BusinessFacade<>` foi removido em favor de `LazyGroup<>`
 * Remove método de extensão `AddTransformationManager()`.
@@ -345,20 +589,17 @@ services.AddBusiness();
 
 ## 0.7.0
 
-Novos recursos:
+### Novos recursos:
 
 * Adiciona conceito de `BusinessFeature` e `BusinessFacade`
     - Leia o tutorial [Escrevendo características de negócio](tutorials/writing-business-feature.md)
+* `RuleFor<>` agora aceita injeção de dependências
+* `NotificationManager` agora valida as mensagens de acordo com `RuleSet<>`
 
-Refatorações:
+### Breaking changes:
 
-* RuleFor<> agora aceita injeção de dependências
-* RuleSet<>  reformulado para agrupar regras via injeção de dependência
-* NotificationManager agora valida as mensagens de acordo com RuleSet<>
-
-Breaking changes:
-
-* RuleSet<> não é mais para agrupar manualmente regras
+* `RuleSet<>` reformulado para agrupar regras via injeção de dependência
+* `RuleSet<>` não é mais para agrupar manualmente regras
 ```c#
 // Antes: Você instanciava RuleSet<> e adicionava
 //        as regras que queria estar em conformidade, e,
@@ -400,11 +641,11 @@ public class MyBusinessClass
 
 ## 0.6.0
 
-Novos recursos:
+### Novos recursos:
 
 * Api fluente para gravar dados armazenados
     - Leia o tutorial [Escrevendo dados com API Fluente](tutorials/writing-with-fluent-api.md)
-* UniqueIdentifier é um novo objeto do core para geração de identificadores únicos
+* `UniqueIdentifier` é um novo objeto do core para geração de identificadores únicos
     - Leia o tutorial [Identificadores únicos](tutorials/uid.md)
 * Transformação de dados entre tipos
     - Leia o tutorial [Transformando dados entre tipos](tutorials/transformer-intro.md)
@@ -420,7 +661,7 @@ Adicionamos alguns novos recursos:
 
 ## 0.4.0
 
-Adiciona novas assinaturas a IDataStorage.Remove()
+Adiciona novas assinaturas a `IDataStorage.Remove()`
 
 * Remove(object identifier);
 * Remove(object[] identifiers);
@@ -434,10 +675,10 @@ https://e5r.github.io/E5R.Architecture
 Nesta versão temos tantas novidades que não dá pra detalhar tanto, então ficam algumas notas.
 
 * Adicionamos o conceito de `IRule` ao "core"
-* Adicionamos o conceito de `NotificationManage` ao "core
-* PaginatedResult<> result agora está no "Core" e é usado no lugar de `DataLimiterResult<>`
+* Adicionamos o conceito de `NotificationManager` ao "core
+* `PaginatedResult<>` result agora está no "Core" e é usado no lugar de `DataLimiterResult<>`
 * Agora temos um local para documentação ao vivo (https://e5r.github.io/E5R.Architecture)
-* UnitOfWork agora é implementado usando duas estratégias: `ByProperty` e `TransactionScope`
+* `UnitOfWork` agora é implementado usando duas estratégias: `ByProperty` e `TransactionScope`
 * Estabiliza API de `IStorageReader<>`
     - Find()
     - GetAll()
@@ -482,15 +723,15 @@ var result = _studentStore.AsFluentQuery()
 
 ## 0.2.0
 
-O Suporte a UnitOfWork está completo usando a estratégia de propriedades.
+O Suporte a `UnitOfWork` está completo usando a estratégia de propriedades.
 
 Várias outras refatorações foram feitas:
 
 * Conceito de reducer passa a ser filter
 * Conceito de IoC passa a ser DI
-* ComponentInformation é obtido via dados do Assembly
+* `ComponentInformation` é obtido via dados do Assembly
 * Exceções agora estão centralizadas no componente Core
-* DataFilter e DataLimiter ganham uma implementação padrão em Linq
+* `DataFilter` e `DataLimiter` ganham uma implementação padrão em Linq
 
 O suporte a `E5R.Architecture.Core.Formatters` foi removido
 

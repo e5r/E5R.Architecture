@@ -12,7 +12,7 @@ namespace E5R.Architecture.Business.Extensions
 {
     public static class AppDomainExtensions
     {
-        public static void AddAllBusinessFeatures(this AppDomain appDomain, IServiceCollection services)
+        public static void AddAllActionHandlers(this AppDomain appDomain, IServiceCollection services)
         {
             Checker.NotNullArgument(appDomain, nameof(appDomain));
             Checker.NotNullArgument(services, nameof(services));
@@ -20,7 +20,7 @@ namespace E5R.Architecture.Business.Extensions
             appDomain
                 .GetNonSystemAssemblies()
                 .ToList()
-                .ForEach(a => a.AddAllBusinessFeatures(services));
+                .ForEach(a => a.AddAllActionHandlers(services));
         }
     }
 }

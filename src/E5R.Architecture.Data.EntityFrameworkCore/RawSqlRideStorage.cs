@@ -12,11 +12,11 @@ namespace E5R.Architecture.Data.EntityFrameworkCore
         where TDataModel : class, IIdentifiable
     {
         public RawSqlRideStorage(DbContext context, string sql, params object[] parameters)
-            : base(context.Set<TDataModel>().FromSqlRaw(sql, parameters))
+            : base(context, context.Set<TDataModel>().FromSqlRaw(sql, parameters))
         { }
 
         public RawSqlRideStorage(DbContext context, FormattableString sql)
-        : base(context.Set<TDataModel>().FromSqlInterpolated(sql))
+        : base(context, context.Set<TDataModel>().FromSqlInterpolated(sql))
         { }
     }
 }

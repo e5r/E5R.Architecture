@@ -3,7 +3,6 @@
 // Licensed under the Apache version 2.0: https://github.com/e5r/manifest/blob/master/license/APACHE-2.0.txt
 
 using System;
-using System.Linq;
 using Microsoft.Extensions.DependencyInjection;
 
 namespace E5R.Architecture.Business.Extensions
@@ -12,7 +11,7 @@ namespace E5R.Architecture.Business.Extensions
     {
         public static IServiceCollection AddBusiness(this IServiceCollection serviceCollection)
         {
-            AppDomain.CurrentDomain.AddAllBusinessFeatures(serviceCollection);
+            AppDomain.CurrentDomain.AddAllActionHandlers(serviceCollection);
 
             return serviceCollection;
         }

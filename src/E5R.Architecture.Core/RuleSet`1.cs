@@ -1,4 +1,4 @@
-﻿// Copyright (c) E5R Development Team. All rights reserved.
+// Copyright (c) E5R Development Team. All rights reserved.
 // This file is a part of E5R.Architecture.
 // Licensed under the Apache version 2.0: https://github.com/e5r/manifest/blob/master/license/APACHE-2.0.txt
 
@@ -28,20 +28,20 @@ namespace E5R.Architecture.Core
 
             Rules = rules;
         }
-        
+
         private IEnumerable<IRuleFor<TTarget>> Rules { get; set; }
 
         public IRuleSet<TTarget> ByCode(string code)
         {
             Checker.NotEmptyOrWhiteArgument(code, nameof(code));
 
-            return ByCode(new[] {code});
+            return ByCode(new[] { code });
         }
 
         public IRuleSet<TTarget> ByCode(string[] codes)
         {
             Checker.NotNullOrEmptyArgument(codes, nameof(codes));
-            
+
             var allMatchedRules = new List<IRuleFor<TTarget>>();
             var matchedCodes = new List<string>();
 
@@ -62,7 +62,7 @@ namespace E5R.Architecture.Core
             if (matchedCodes.Count != codes.Length)
             {
                 var noMatchedCodes = codes.Where(c => !matchedCodes.Contains(c));
-                    
+
                 // TODO: Implementar i18n/l10n
                 throw new InfrastructureLayerException(
                     $"No matches found for {string.Join(", ", noMatchedCodes)}");
@@ -72,12 +72,12 @@ namespace E5R.Architecture.Core
         }
 
         public IRuleSet<TTarget> ByDefaultCategory() => ByCategory(null);
-        
+
         public IRuleSet<TTarget> ByCategory(string category)
         {
             // Não validamos se o parâmetro é nulo propositalmente porque
             // uma categoria nula é considerada categoria padrão
-            
+
             var matchedRules = Rules
                 .Where(w => string.Equals(w.Category, category))
                 .ToList();
@@ -95,66 +95,74 @@ namespace E5R.Architecture.Core
         public async Task<RuleCheckResult> CheckAsync(TTarget target)
         {
             var unconformities = new Dictionary<string, string>();
+            var unexpectedExceptions = new List<Exception>();
 
             foreach (var rule in Rules)
             {
+                RuleCheckResult result;
+
                 try
                 {
-                    var result = await rule.CheckAsync(target);
-
-                    if (!result.IsSuccess)
-                    {
-                        if (result.Unconformities != null && result.Unconformities.Any())
-                        {
-                            result.Unconformities
-                                .ToList()
-                                .ForEach(u =>
-                                    unconformities.Add(
-                                        rule.Code.Equals(u.Key)
-                                            ? rule.Code
-                                            : $"{rule.Code}:{u.Key}", u.Value));
-                        }
-                        else
-                        {
-                            unconformities.Add(rule.Code, rule.Description);
-                        }
-                    }
+                    result = await rule.CheckAsync(target);
                 }
                 catch (Exception ex)
                 {
-                    unconformities.Add($"{rule.Code}:$exception", ex.Message);
+                    result = new RuleCheckResult(ex);
+                }
+
+                if (!result.IsSuccess)
+                {
+                    if (result.UnexpectedException != null)
+                    {
+                        unexpectedExceptions.Add(result.UnexpectedException);
+                    }
+
+                    if (result.Unconformities != null && result.Unconformities.Any())
+                    {
+                        result.Unconformities.ToList().ForEach(u =>
+                        {
+                            unconformities.Add(
+                                rule.Code.Equals(u.Key)
+                                ? rule.Code
+                                : $"{rule.Code}:{u.Key}", u.Value);
+                        });
+                    }
+                    else
+                    {
+                        unconformities.Add(rule.Code, rule.Description);
+                    }
                 }
             }
 
-            if (!unconformities.Any())
+            if (!unconformities.Any() && !unexpectedExceptions.Any())
             {
                 return Success;
             }
 
-            return new RuleCheckResult(false, unconformities);
+            if (unexpectedExceptions.Any())
+            {
+                return new RuleCheckResult(new AggregateException(unexpectedExceptions), unconformities);
+            }
+            else
+            {
+                return new RuleCheckResult(false, unconformities);
+            }
         }
 
         public RuleCheckResult Check(TTarget target)
         {
             try
             {
-                var task = CheckAsync(target);
-
-                task.Wait();
-
-                return task.Result;
+                return CheckAsync(target).GetAwaiter().GetResult();
             }
             catch (Exception ex)
             {
-                return new RuleCheckResult(false, new Dictionary<string, string>
-                {
-                    {"$exception", ex.Message}
-                });
+                return new RuleCheckResult(ex);
             }
         }
 
         public void Ensure(TTarget target, string exceptionMessageTemplate = null)
-            => EnsureAsync(target, exceptionMessageTemplate).Wait();
+            => EnsureAsync(target, exceptionMessageTemplate).GetAwaiter().GetResult();
 
         public async Task EnsureAsync(TTarget target, string exceptionMessageTemplate = null)
         {
@@ -177,11 +185,11 @@ namespace E5R.Architecture.Core
                 throw new AggregateException(exceptions);
             }
         }
-        
+
         private async Task EnsureRuleAsync(IRuleFor<TTarget> rule, TTarget target,
             string exceptionMessageTemplate = null)
         {
-            RuleCheckResult result = null;
+            RuleCheckResult result;
 
             try
             {
@@ -189,10 +197,7 @@ namespace E5R.Architecture.Core
             }
             catch (Exception ex)
             {
-                result = new RuleCheckResult(false, new Dictionary<string, string>
-                {
-                    {"$exception", ex.Message}
-                });
+                result = new RuleCheckResult(ex);
             }
 
             if (result.IsSuccess)

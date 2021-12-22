@@ -1,4 +1,4 @@
-﻿// Copyright (c) E5R Development Team. All rights reserved.
+// Copyright (c) E5R Development Team. All rights reserved.
 // This file is a part of E5R.Architecture.
 // Licensed under the Apache version 2.0: https://github.com/e5r/manifest/blob/master/license/APACHE-2.0.txt
 
@@ -29,6 +29,10 @@ namespace E5R.Architecture.Data.Fluent.Query
             => new FluentQueryBuilderWithFilter<TDataModel, TSelect>(_storage, _filter, _limiter, _projection)
                 .Filter(filterExpression);
 
+        public FluentQueryBuilderWithFilter<TDataModel, TSelect> Filter(IIdentifiableExpressionMaker<TDataModel> filterMaker)
+            => new FluentQueryBuilderWithFilter<TDataModel, TSelect>(_storage, _filter, _limiter, _projection)
+                .Filter(filterMaker);
+
         public FluentQueryBuilderWithLimiter<TDataModel, TSelect> Sort(Expression<Func<TDataModel, object>> sortExpression)
             => new FluentQueryBuilderWithLimiter<TDataModel, TSelect>(_storage, _filter, _limiter, _projection)
                 .Sort(sortExpression);
@@ -51,11 +55,11 @@ namespace E5R.Architecture.Data.Fluent.Query
 
         #region Storage Actions
 
-        public TSelect Find(object identifier) => _storage.Find<TSelect>(identifier, _projection);
+        public TSelect Find(object identifier) => _storage.Find<TDataModel, TSelect>(identifier, _projection);
 
         public TSelect Find(object[] identifiers) => _storage.Find<TSelect>(identifiers, _projection);
 
-        public TSelect Find(TDataModel data) => _storage.Find<TSelect>(data, _projection);
+        public TSelect Find(TDataModel data) => _storage.Find<TDataModel, TSelect>(data, _projection);
 
         public IEnumerable<TSelect> GetAll() => _storage.GetAll<TSelect>(_projection);
 
