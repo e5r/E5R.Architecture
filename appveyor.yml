@@ -74,7 +74,7 @@ for:
         IS_NOT_PR: true
     - provider: NuGet
       api_key:
-        secure: UiEhClEPf4VHjZt2bs/qkDFuwOxfhWn7dOC0yywa+7IXrJU2oX2f619taoR345Gp
+        secure: EDe38sBZju3nnFQapqJvlcIL1EH0mJMJGzdi2+GRKgdOBkSXa2lWA6EzwpLi1DuI
       skip_symbols: true
       artifact: E5RArchitecturePackages
       on:
@@ -104,7 +104,7 @@ for:
         IS_NOT_PR: true
     - provider: NuGet
       api_key:
-        secure: 364KvrQ/YO/pvYohGLmV68vcW+7xqNW23AShaWKMLCUdidRUslx3sqN4qc24oKAd
+        secure: EDe38sBZju3nnFQapqJvlcIL1EH0mJMJGzdi2+GRKgdOBkSXa2lWA6EzwpLi1DuI
       skip_symbols: true
       artifact: E5RArchitecturePackages
       on:
