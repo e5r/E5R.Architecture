@@ -5,7 +5,7 @@ title: Notas de Lançamento
 Notas de Lançamento
 ===================
 
-## 0.10.0 (dev)
+## 0.10.0
 
 ### Novos recursos:
 
