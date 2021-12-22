@@ -92,7 +92,7 @@ _logger.LogDebug($"Novo aluno criado com ID: {alunoCriado.AlunoId}");
 ```
 
 Essa é a assinatura de nosso método `Create()`:
-[!code-csharp[](../../src/E5R.Architecture.Data/Abstractions/IStorageWriter`2.cs?range=22)]
+[!code-csharp[](../../src/E5R.Architecture.Data/Abstractions/ICreatableStorage.cs?range=23)]
 
 Sem mais _delongas_ e é isso aí! Você acaba de criar um aluno no armazenamento.
 
@@ -114,8 +114,12 @@ if (aluno == null)
 _logger.LogDebug($"Encontramos o aluno {aluno.Nome} {aluno.Sobrenome");
 ```
 
-Essas são as assinaturas de nosso método `Find()`:
-[!code-csharp[](../../src/E5R.Architecture.Data/Abstractions/IStorageReader`2.cs?range=19-21)]
+Essa é a assinatura de nosso método `Find()`:
+[!code-csharp[](../../src/E5R.Architecture.Data/Abstractions/IFindableStorage.cs?range=24)]
+
+Mas temos extensões que permitem chamar o método com somente um objeto (como no exemplo) ou
+usando a própria entidade:
+[!code-csharp[](../../src/E5R.Architecture.Data/Extensions/StorageExtensions.cs?range=92,108)]
 
 > Ignore por enquanto o parâmetro `IDataIncludes includes`, até porque ele é opcional,
 > e também porque estaremos vendo sobre isso em outro tutorial.
@@ -169,7 +173,7 @@ O método `GetAll()` retorna um enumerável contendo todos os alunos contidos no
 armazenamento.
 
 E essa é a assinatura do método `GetAll()`:
-[!code-csharp[](../../src/E5R.Architecture.Data/Abstractions/IStorageReader`2.cs?range=22)]
+[!code-csharp[](../../src/E5R.Architecture.Data/Abstractions/IAcquirableStorage.cs?range=37)]
 
 > Mais uma vez desconsideremos o parâmetro `IDataIncludes includes` por enquanto.
 
@@ -210,7 +214,6 @@ fazemos a substituição. Assim:
 var aluno = _storage.Find(1);
 
 aluno.Sobrenome = "Campos";
-aluno.DataInscricao = DateTime.Now;
 
 _storage.Replace(aluno);
 
@@ -261,7 +264,8 @@ _storage.Update(1, c => new {
 ```
 
 Veja as assinaturas dos métodos:
-[!code-csharp[](../../src/E5R.Architecture.Data/Abstractions/IStorageWriter`2.cs?range=32,62,71,80,89)]
+[!code-csharp[](../../src/E5R.Architecture.Data/Abstractions/IReplaceableStorage.cs?range=26)]
+[!code-csharp[](../../src/E5R.Architecture.Data/Abstractions/IUpdatableStorage.cs?range=27,36-37)]
 
 
 ## Delete (Remover)
