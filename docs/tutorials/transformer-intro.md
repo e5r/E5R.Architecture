@@ -69,13 +69,22 @@ public class MyTo
 aplicação [.NET](https://dot.net) qualquer que usa os recursos de
 [injeção de dependência](https://docs.microsoft.com/pt-br/dotnet/core/extensions/dependency-injection).
 
-Primeiro registre o gerente de transformações em sua classe `Startup`:
+Primeiro inicialize sua infraestrutura na classe `Startup`:
 ```c#
 public class Startup
 {
+    // ...
+
     public void ConfigureServices(IServiceCollection services)
     {
-        services.AddTransformationManager();
+        // Caso use a inicialização padrão automática
+        services.AddInfrastructure(Configuration);
+
+        // Se for usar inicialização sem auto-inicialização, você precisará
+        // habilitar a opção "RegisterTransformersAutomatically"
+        services.AddInfrastructureWithoutAutoload(Configuration, options => {
+            options.RegisterTransformersAutomatically = true;
+        });
     }
 }
 ```
@@ -117,7 +126,7 @@ public class MyService
     
     public void MyMethod(MyFrom myFrom)
     {
-        var myTo = _transformer.Transform<MyTo>(myFrom);
+        var myTo = _transformer.Transform<MyFrom, MyTo>(myFrom);
     }
 }
 ```
@@ -191,9 +200,59 @@ public class MyService
     
     public void MyMethod(MyFrom myFrom)
     {
-        MyTo myTo = _transformer.Transform(myFrom, MyOperation.Update);
+        MyTo myTo = _transformer.Transform<MyFrom, MyTo>(myFrom, MyOperation.Update);
     }
 }
 ```
+
+Para cenários mais básico, temos também a opção de auto transformação. Isso é útil caso
+você precise transformar entre objetos que tem propriedades comuns.
+
+Suponha as seguintes classes:
+```c#
+public class MyAutoFrom
+{
+    public int Id { get; set; }
+    public string FirstName { get; set; }
+    public string LastName { get; set; }
+    public DateTime DateOfBirth { get; set; }
+}
+
+public class MyAutoTo
+{
+    public int Id { get; set; }
+    public string FirstName { get; set; }
+    public string Name { get; set; }
+    public float DateOfBirth { get; set; }
+}
+```
+
+Você não precisará criar um `ITransformer<MyAutoFrom, MyAutoTo>` para fazer essa transformação. Basta:
+```c#
+public class MyService
+{
+    private readonly ITransformationManager _transformer;
+    
+    public MyService(ITransformationManager transformer)
+    {
+        _transformer = transformer;
+    }
+    
+    public void MyMethod(MyAutoFrom myAutoFrom)
+    {
+        MyAutoTo myAutoTo = _transformer.AutoTransform<MyAutoFrom, MyAutoTo>(myAutoFrom);
+    }
+}
+```
+
+Neste caso uma instância de `MyAutoTo` será criada e os campos `Id` e `FirstName` serão
+copiados de uma instância para outra porque tem mesmo nome e tipo.
+
+Por outro lado, o campo `Name` de `MyAutoTo` não será copiado porque não tem um correspondente
+em `MyAutoFrom`, e também `DateOfBirth` não será copiado, porque mesmo tendo um correspondente
+em `MyAutoFrom`, eles são de tipos diferentes.
+
+> Um ponto a observar é que o tipo destino `MyAutoTo` precisa ter um construtor padrão
+> caso contrário a instanciação não será possível.
 
 E é isso aí! Futuramente podemos melhorar os textos e exemplos, mas por enquanto é só.
