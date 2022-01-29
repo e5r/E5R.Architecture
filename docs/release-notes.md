@@ -7,7 +7,42 @@ Notas de Lançamento
 
 ## 0.11.0 (dev)
 
-> TODO ...
+### Novos recursos:
+
+* Novo tipo `RuleValidatableObject<>` para uso específico na validação de objetos
+  - Destinado ao uso em conujunto com modelos de visão
+```c#
+// Quando você cria um modelo de visão herdando de `RuleValidatableObject<>` e existem regras
+// vinculadas ao modelo em si através de `RuleFor<>`, essas regras serão aplicadas como
+// validador de modelo do ASP.NET automaticamente.
+// A falha em qualquer uma das regras irá gerar uma vfalha de validação de modelo do ASP.NET e
+// se aplica a todos os cenários de uso documentados do ASP.NET.
+public class MyViewModel : RuleValidatableObject<MyViewModel>
+{
+    // ...
+}
+
+public class MyRuleForMyViewModel : RuleFor<MyViewModel>
+{
+    public MyRuleForMyViewModel() : base("RA-001", "Regra de apresentação 1") { }
+
+    public override Task<RuleCheckResult> CheckAsync(MyViewModel target)
+    {
+        // ...
+    }
+}
+
+// Caso prefira, você pode chamar o método `Validate()` no próprio objeto para obter uma lista
+// de falhas de validação (`ValidationResult`) de forma customizada
+public class MyController
+{
+    public IActionResult Index(MyViewModel model)
+    {
+        var validationContext = new ValidationContext(model, HttpContext.RequestServices, null);
+        var validateResults = model.Validate(validationContext);
+    }
+}
+```
 
 ## 0.10.0
 
