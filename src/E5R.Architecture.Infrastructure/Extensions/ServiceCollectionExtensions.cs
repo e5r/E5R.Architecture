@@ -118,7 +118,8 @@ namespace Microsoft.Extensions.DependencyInjection
                 RegisterTransformersAutomatically = false,
                 RegisterCrossCuttingAutomatically = false,
                 RegisterNotificationDispatchersAutomatically = false,
-                RegisterLazyGroupsAutomatically = false
+                RegisterLazyGroupsAutomatically = false,
+                RegisterRuleModelValidatorAutomatically = false
             };
 
             optionsHandler(options);
@@ -156,6 +157,12 @@ namespace Microsoft.Extensions.DependencyInjection
                 serviceCollection.TryAddScoped(typeof(ISystemClock), options.SystemClockType);
             }
 
+            if (options.RuleModelValidatorType != null)
+            {
+                serviceCollection.TryAddScoped(typeof(IRuleModelValidator),
+                    options.RuleModelValidatorType);
+            }
+
             serviceCollection.TryAddScoped(typeof(NotificationManager<>));
             
             if (options.RegisterNotificationDispatchersAutomatically)
@@ -163,8 +170,11 @@ namespace Microsoft.Extensions.DependencyInjection
                 AppDomain.CurrentDomain.AddAllNotificationDispatchers(serviceCollection);
             }
 
-            serviceCollection.TryAddScoped(typeof(ITransformationManager),
-                options.TransformationManagerType);
+            if (options.TransformationManagerType != null)
+            {
+                serviceCollection.TryAddScoped(typeof(ITransformationManager),
+                    options.TransformationManagerType);
+            }
 
             if (options.RegisterTransformersAutomatically)
             {

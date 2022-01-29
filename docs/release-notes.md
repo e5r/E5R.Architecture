@@ -44,6 +44,24 @@ public class MyController
         var validateResults = model.Validate(validationContext);
     }
 }
+
+// Se não estiver usando uma pilha ASP.NET pode obter o mesmo resultado injetando
+// `IRuleModelValidator` para fazer esse trabalho. Neste caso um modelo nunca pode
+// ser nulo, e precisa implementar a interface `IValidatableObject`.
+public class MyController
+{
+    public MyController(IRuleModelValidator ruleModelValidator)
+    {
+        RuleModelValidator = ruleModelValidator;
+    }
+    
+    private IRuleModelValidator RuleModelValidator { get; }
+    
+    public IActionResult Index(MyViewModel model)
+    {
+        var validateResults = RuleModelValidator.Validate(model);
+    }
+}
 ```
 
 ## 0.10.0
