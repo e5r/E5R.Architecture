@@ -18,7 +18,9 @@ namespace E5R.Architecture.Core
 
             if (validationContext.ObjectType != typeof(TTarget))
             {
-                throw new Exception("Tipo alvo para validação diferente do tipo alvo da regra");
+                // TODO: Implementar i18n/l10n
+                throw new InvalidOperationException(
+                    "Target type for validation different from linked rule target type");
             }
 
             var rules =
