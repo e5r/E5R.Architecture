@@ -6,4 +6,7 @@
     <RootNamespace>$(RootPkgNamespace).Core</RootNamespace>
     <Description>Componente principal, base para todos os outros da arquitetura de software E5R Development Team</Description>
   </PropertyGroup>
+  <ItemGroup>
+    <PackageReference Include="System.ComponentModel.Annotations" Version="4.7.0" />
+  </ItemGroup>
 </Project>

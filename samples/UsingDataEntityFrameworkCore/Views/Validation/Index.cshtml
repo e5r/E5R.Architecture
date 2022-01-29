@@ -1,0 +1,19 @@
+﻿@model RuleObjectValidationViewModel
+
+@{
+    ViewBag.Title = "Validação por objeto";
+    Layout = "_Layout";
+}
+
+<h2>@ViewBag.Title</h2>
+<form method="post">
+    <div asp-validation-summary="ModelOnly" style="color:red;margin-bottom: 20px;border-bottom: solid 1px darkred;"></div>
+    Property1: <input asp-for="Property1"/> <span asp-validation-for="Property1" style="color:red"></span><br/>
+    Property2: <input asp-for="Property2"/> <span asp-validation-for="Property2" style="color:red"></span><br/>
+    Property3: <input asp-for="Property3"/> <span asp-validation-for="Property3" style="color:red"></span><br/>
+
+    <p>
+        <button type="submit">Validar</button>
+    </p>
+</form>
+

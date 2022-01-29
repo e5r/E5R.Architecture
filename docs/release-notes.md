@@ -7,7 +7,62 @@ Notas de Lançamento
 
 ## 0.11.0 (dev)
 
-> TODO ...
+### Novos recursos:
+
+* `E5R.Architecture.Core` agora depende de `System.ComponentModel.Annotations >= 4.7.0`
+* Novo tipo `RuleValidatableObject<>` para uso específico na validação de objetos
+  - Destinado ao uso em conujunto com modelos de visão
+```c#
+// Quando você cria um modelo de visão herdando de `RuleValidatableObject<>` e existem regras
+// vinculadas ao modelo em si através de `RuleFor<>`, essas regras serão aplicadas como
+// validador de modelo do ASP.NET automaticamente.
+// A falha em qualquer uma das regras irá gerar uma falha de validação de modelo do ASP.NET e
+// se aplica a todos os cenários de uso documentados do ASP.NET.
+public class MyViewModel : RuleValidatableObject<MyViewModel>
+{
+    // ...
+}
+
+public class MyRuleForMyViewModel : RuleFor<MyViewModel>
+{
+    public MyRuleForMyViewModel() : base("RA-001", "Regra de apresentação 1") { }
+
+    public override Task<RuleCheckResult> CheckAsync(MyViewModel target)
+    {
+        // ...
+    }
+}
+
+// Caso prefira, você pode chamar o método `Validate()` no próprio objeto para obter uma lista
+// de falhas de validação (`ValidationResult`) de forma customizada. Isso porque as regras
+// estão vinculadas ao mecanismo do componente `System.ComponentModel.Annotations`
+public class MyController
+{
+    public IActionResult Index(MyViewModel model)
+    {
+        var validationContext = new ValidationContext(model, HttpContext.RequestServices, null);
+        var validateResults = model.Validate(validationContext);
+    }
+}
+
+// Se não estiver usando uma pilha ASP.NET pode obter o mesmo resultado injetando
+// `IRuleModelValidator` para fazer esse trabalho. Neste caso um modelo nunca pode
+// ser nulo, e precisa implementar a interface `IValidatableObject`.
+public class MyController
+{
+    public MyController(IRuleModelValidator ruleModelValidator)
+    {
+        RuleModelValidator = ruleModelValidator;
+    }
+    
+    private IRuleModelValidator RuleModelValidator { get; }
+    
+    public IActionResult Index(MyViewModel model)
+    {
+        var validateResults = RuleModelValidator.Validate(model);
+    }
+}
+```
 
 ## 0.10.0
 
