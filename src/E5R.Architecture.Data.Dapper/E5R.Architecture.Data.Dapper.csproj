@@ -11,7 +11,7 @@
     <ProjectReference Include="..\E5R.Architecture.Infrastructure\E5R.Architecture.Infrastructure.csproj" />
   </ItemGroup>
   <ItemGroup>
-    <PackageReference Include="Dapper" Version="2.0.35" />
+    <PackageReference Include="Dapper" Version="2.0.123" />
   </ItemGroup>
   <ItemGroup>
     <Compile Remove="FullStorage.cs" />
