@@ -1,7 +1,5 @@
-using System.Data;
 using System.Data.Common;
 using E5R.Architecture.Data.Abstractions;
-using E5R.Architecture.Infrastructure;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Data.Sqlite;

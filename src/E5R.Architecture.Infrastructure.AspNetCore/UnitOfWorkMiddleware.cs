@@ -2,7 +2,6 @@
 // This file is a part of E5R.Architecture.
 // Licensed under the Apache version 2.0: https://github.com/e5r/manifest/blob/master/license/APACHE-2.0.txt
 
-using System;
 using System.Threading.Tasks;
 using E5R.Architecture.Core;
 using E5R.Architecture.Infrastructure.Abstractions;

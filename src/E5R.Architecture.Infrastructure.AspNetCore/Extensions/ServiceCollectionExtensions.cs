@@ -5,7 +5,6 @@
 using System;
 using E5R.Architecture.Core;
 using E5R.Architecture.Infrastructure.AspNetCore.Workers;
-using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection.Extensions;
 
 namespace Microsoft.Extensions.DependencyInjection

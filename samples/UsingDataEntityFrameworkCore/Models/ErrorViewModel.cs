@@ -1,5 +1,3 @@
-using System;
-
 namespace UsingDataEntityFrameworkCore.Models
 {
     public class ErrorViewModel

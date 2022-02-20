@@ -4,7 +4,6 @@
 
 using System;
 using System.Linq;
-using E5R.Architecture.Core.Extensions;
 
 namespace E5R.Architecture.Core
 {
