@@ -18,8 +18,7 @@ namespace E5R.Architecture.Data.Abstractions
     /// Storage of acquirable items
     /// </summary>
     /// <typeparam name="TDataModel">Type of stored data</typeparam>
-    public interface IAcquirableStorage<TDataModel> : IStorageSignature
-        where TDataModel : IIdentifiable
+    public interface IAcquirableStorage<TDataModel> where TDataModel : IIdentifiable
     {
         /// <summary>
         /// Get the first item stored according to filter entered

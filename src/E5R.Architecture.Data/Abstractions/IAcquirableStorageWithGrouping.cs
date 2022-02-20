@@ -15,8 +15,7 @@ namespace E5R.Architecture.Data.Abstractions
     {
     }
 
-    public interface IAcquirableStorageWithGrouping<TDataModel> : IStorageSignature
-        where TDataModel : IIdentifiable
+    public interface IAcquirableStorageWithGrouping<TDataModel> where TDataModel : IIdentifiable
     {
         /// <summary>
         /// Get all stored items with grouping

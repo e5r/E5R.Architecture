@@ -15,8 +15,7 @@ namespace E5R.Architecture.Data.Abstractions
     {
     }
 
-    public interface ISearchableStorageWithSelector<TDataModel> : IStorageSignature
-        where TDataModel : IIdentifiable
+    public interface ISearchableStorageWithSelector<TDataModel> where TDataModel : IIdentifiable
     {
         /// <summary>
         /// Search for items stored according to filter entered

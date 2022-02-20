@@ -12,8 +12,7 @@ namespace E5R.Architecture.Data.Abstractions
     {
     }
 
-    public interface ICountableStorage<TDataModel> : IStorageSignature
-        where TDataModel : IIdentifiable
+    public interface ICountableStorage<TDataModel> where TDataModel : IIdentifiable
     {
         /// <summary>
         /// Count all stored records

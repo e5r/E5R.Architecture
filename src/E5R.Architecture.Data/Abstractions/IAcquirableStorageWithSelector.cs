@@ -15,8 +15,7 @@ namespace E5R.Architecture.Data.Abstractions
     {
     }
 
-    public interface IAcquirableStorageWithSelector<TDataModel> : IStorageSignature
-        where TDataModel : IIdentifiable
+    public interface IAcquirableStorageWithSelector<TDataModel> where TDataModel : IIdentifiable
     {
         /// <summary>
         /// Get the first item stored according to filter entered

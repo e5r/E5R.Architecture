@@ -14,8 +14,7 @@ namespace E5R.Architecture.Data.Abstractions
     {
     }
 
-    public interface IUpdatableStorage<TDataModel> : IStorageSignature
-        where TDataModel : IIdentifiable
+    public interface IUpdatableStorage<TDataModel> where TDataModel : IIdentifiable
     {
         /// <summary>
         /// Updates data from a stored object

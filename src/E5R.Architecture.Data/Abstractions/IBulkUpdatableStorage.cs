@@ -16,8 +16,7 @@ namespace E5R.Architecture.Data.Abstractions
     {
     }
 
-    public interface IBulkUpdatableStorage<TDataModel> : IStorageSignature
-        where TDataModel : IIdentifiable
+    public interface IBulkUpdatableStorage<TDataModel> where TDataModel : IIdentifiable
     {
         /// <summary>
         /// Updates data from stored objects in bulk

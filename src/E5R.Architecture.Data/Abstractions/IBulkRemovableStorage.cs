@@ -14,8 +14,7 @@ namespace E5R.Architecture.Data.Abstractions
     {
     }
 
-    public interface IBulkRemovableStorage<TDataModel> : IStorageSignature
-        where TDataModel : IIdentifiable
+    public interface IBulkRemovableStorage<TDataModel> where TDataModel : IIdentifiable
     {
         /// <summary>
         /// Removes stored objects in bulk

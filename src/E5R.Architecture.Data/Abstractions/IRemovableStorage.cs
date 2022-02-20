@@ -12,8 +12,7 @@ namespace E5R.Architecture.Data.Abstractions
     {
     }
 
-    public interface IRemovableStorage<TDataModel> : IStorageSignature
-        where TDataModel : IIdentifiable
+    public interface IRemovableStorage<TDataModel> where TDataModel : IIdentifiable
     {
         /// <summary>
         /// Removes a stored object

@@ -12,8 +12,7 @@ namespace E5R.Architecture.Data.Abstractions
     {
     }
 
-    public interface IReplaceableStorage<TDataModel> : IStorageSignature
-        where TDataModel : IIdentifiable
+    public interface IReplaceableStorage<TDataModel> where TDataModel : IIdentifiable
     {
         /// <summary>
         /// Replaces a stored object

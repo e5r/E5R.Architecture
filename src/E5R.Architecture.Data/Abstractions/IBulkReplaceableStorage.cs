@@ -14,8 +14,7 @@ namespace E5R.Architecture.Data.Abstractions
     {
     }
 
-    public interface IBulkReplaceableStorage<TDataModel> : IStorageSignature
-        where TDataModel : IIdentifiable
+    public interface IBulkReplaceableStorage<TDataModel> where TDataModel : IIdentifiable
     {
         /// <summary>
         /// Replaces stored objects in bulk

@@ -12,8 +12,7 @@ namespace E5R.Architecture.Data.Abstractions
     {
     }
 
-    public interface IFindableStorage<TDataModel> : IStorageSignature
-        where TDataModel : IIdentifiable
+    public interface IFindableStorage<TDataModel> where TDataModel : IIdentifiable
     {
         /// <summary>
         /// Find an item stored by identifiers

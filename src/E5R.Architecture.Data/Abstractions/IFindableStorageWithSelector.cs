@@ -14,8 +14,7 @@ namespace E5R.Architecture.Data.Abstractions
     {
     }
 
-    public interface IFindableStorageWithSelector<TDataModel> : IStorageSignature
-        where TDataModel : IIdentifiable
+    public interface IFindableStorageWithSelector<TDataModel> where TDataModel : IIdentifiable
     {
         /// <summary>
         /// Find an item stored by identifiers
@@ -23,6 +22,7 @@ namespace E5R.Architecture.Data.Abstractions
         /// <param name="identifiers">Item identifiers</param>
         /// <param name="projection">Data projection</param>
         /// <returns>Instance of <typeparamref name="TSelect"/>, or null when not found</returns>
-        TSelect Find<TSelect>(object[] identifiers, IDataProjection<TDataModel, TSelect> projection);
+        TSelect Find<TSelect>(object[] identifiers,
+            IDataProjection<TDataModel, TSelect> projection);
     }
 }

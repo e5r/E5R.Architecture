@@ -12,8 +12,7 @@ namespace E5R.Architecture.Data.Abstractions
     {
     }
 
-    public interface ICreatableStorage<TDataModel> : IStorageSignature
-        where TDataModel : IIdentifiable
+    public interface ICreatableStorage<TDataModel> where TDataModel : IIdentifiable
     {
         /// <summary>
         /// Creates a new stored object

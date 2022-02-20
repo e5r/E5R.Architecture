@@ -14,8 +14,7 @@ namespace E5R.Architecture.Data.Abstractions
     {
     }
 
-    public interface IBulkCreatableStorage<TDataModel> : IStorageSignature
-        where TDataModel : IIdentifiable
+    public interface IBulkCreatableStorage<TDataModel> where TDataModel : IIdentifiable
     {
         /// <summary>
         /// Creates new stored objects in bulk

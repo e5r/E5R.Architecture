@@ -13,7 +13,7 @@ namespace E5R.Architecture.Data.Abstractions
     {
     }
 
-    public interface IStorageWriter<TDataModel> : IStorageSignature, ICreatableStorage<TDataModel>,
+    public interface IStorageWriter<TDataModel> : ICreatableStorage<TDataModel>,
         IReplaceableStorage<TDataModel>, IRemovableStorage<TDataModel>,
         IUpdatableStorage<TDataModel>
         where TDataModel : IIdentifiable
