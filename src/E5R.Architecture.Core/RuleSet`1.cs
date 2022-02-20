@@ -19,7 +19,8 @@ namespace E5R.Architecture.Core
 
             var services = serviceProvider.GetService(typeof(IEnumerable<IRuleFor<TTarget>>));
 
-            Rules = services as IEnumerable<IRuleFor<TTarget>> ?? Enumerable.Empty<IRuleFor<TTarget>>();
+            Rules = services as IEnumerable<IRuleFor<TTarget>> ??
+                    Enumerable.Empty<IRuleFor<TTarget>>();
         }
 
         private RuleSet(IEnumerable<IRuleFor<TTarget>> rules)
@@ -35,7 +36,14 @@ namespace E5R.Architecture.Core
         {
             Checker.NotEmptyOrWhiteArgument(code, nameof(code));
 
-            return ByCode(new[] { code });
+            return ByCode(new[] {code});
+        }
+
+        public IRuleSet<TTarget> OnlyCode(string code)
+        {
+            Checker.NotEmptyOrWhiteArgument(code, nameof(code));
+
+            return OnlyCode(new[] {code});
         }
 
         public IRuleSet<TTarget> ByCode(string[] codes)
@@ -71,7 +79,15 @@ namespace E5R.Architecture.Core
             return new RuleSet<TTarget>(allMatchedRules);
         }
 
+        public IRuleSet<TTarget> OnlyCode(string[] codes)
+        {
+            Checker.NotNullOrEmptyArgument(codes, nameof(codes));
+
+            return new RuleSet<TTarget>(Rules.Where(w => codes.Contains(w.Code)).ToList());
+        }
+
         public IRuleSet<TTarget> ByDefaultCategory() => ByCategory(null);
+        public IRuleSet<TTarget> OnlyDefaultCategory() => OnlyCategory(null);
 
         public IRuleSet<TTarget> ByCategory(string category)
         {
@@ -90,6 +106,15 @@ namespace E5R.Architecture.Core
             }
 
             return new RuleSet<TTarget>(matchedRules);
+        }
+
+        public IRuleSet<TTarget> OnlyCategory(string category)
+        {
+            // Não validamos se o parâmetro é nulo propositalmente porque
+            // uma categoria nula é considerada categoria padrão
+
+            return new RuleSet<TTarget>(Rules.Where(w => string.Equals(w.Category, category))
+                .ToList());
         }
 
         public async Task<RuleCheckResult> CheckAsync(TTarget target)
@@ -123,8 +148,8 @@ namespace E5R.Architecture.Core
                         {
                             unconformities.Add(
                                 rule.Code.Equals(u.Key)
-                                ? rule.Code
-                                : $"{rule.Code}:{u.Key}", u.Value);
+                                    ? rule.Code
+                                    : $"{rule.Code}:{u.Key}", u.Value);
                         });
                     }
                     else
@@ -141,7 +166,8 @@ namespace E5R.Architecture.Core
 
             if (unexpectedExceptions.Any())
             {
-                return new RuleCheckResult(new AggregateException(unexpectedExceptions), unconformities);
+                return new RuleCheckResult(new AggregateException(unexpectedExceptions),
+                    unconformities);
             }
             else
             {
