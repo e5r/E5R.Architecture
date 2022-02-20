@@ -27,23 +27,21 @@ namespace E5R.Architecture.Core
             switch (length)
             {
                 case UniqueIdentifierLength.Length32:
-                    StringId = Guid.NewGuid().ToByteArray().Md5Hex();
-                    break;
-
-                case UniqueIdentifierLength.Length40:
-                    StringId = Guid.NewGuid().ToByteArray().Sha1Hex();
+                    StringId = Guid.NewGuid().ToString("N");
                     break;
 
                 case UniqueIdentifierLength.Length64:
-                    StringId = Guid.NewGuid().ToByteArray().Sha256Hex();
+                    StringId = Guid.NewGuid().ToString("N") + Guid.NewGuid().ToString("N");
                     break;
 
                 case UniqueIdentifierLength.Length96:
-                    StringId = Guid.NewGuid().ToByteArray().Sha384Hex();
+                    StringId = Guid.NewGuid().ToString("N") + Guid.NewGuid().ToString("N") +
+                               Guid.NewGuid().ToString("N");
                     break;
 
                 case UniqueIdentifierLength.Length128:
-                    StringId = Guid.NewGuid().ToByteArray().Sha512Hex();
+                    StringId = Guid.NewGuid().ToString("N") + Guid.NewGuid().ToString("N") +
+                               Guid.NewGuid().ToString("N") + Guid.NewGuid().ToString("N");
                     break;
 
                 default:

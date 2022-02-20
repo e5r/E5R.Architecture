@@ -64,6 +64,13 @@ public class MyController
 }
 ```
 
+### Breaking changes:
+
+* O tipo `UniqueIdentifier` agora não tem mais a opção com 40 caracteres
+  - Removido `UniqueIdentifierLength.Length40`
+  - O tipo `UniqueIdentifier` agora é baseado em `UUID/GUID` e não mais em _hash de UUID_
+    o que o torna menos sucetível ainda a colisão de identificadores
+
 ## 0.10.0
 
 ### Novos recursos:

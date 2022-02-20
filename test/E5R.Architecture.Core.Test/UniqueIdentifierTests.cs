@@ -29,16 +29,12 @@ namespace E5R.Architecture.Core.Test
         public void AllowsYouTo_ChooseThe_LengthOf_TheId()
         {
             var uid32 = new UniqueIdentifier(UniqueIdentifierLength.Length32);
-            var uid40 = new UniqueIdentifier(UniqueIdentifierLength.Length40);
             var uid64 = new UniqueIdentifier(UniqueIdentifierLength.Length64);
             var uid96 = new UniqueIdentifier(UniqueIdentifierLength.Length96);
             var uid128 = new UniqueIdentifier(UniqueIdentifierLength.Length128);
             
             Assert.NotNull(uid32);
             Assert.Equal(32, uid32.ToString().Length);
-            
-            Assert.NotNull(uid40);
-            Assert.Equal(40, uid40.ToString().Length);
             
             Assert.NotNull(uid64);
             Assert.Equal(64, uid64.ToString().Length);
@@ -100,7 +96,6 @@ namespace E5R.Architecture.Core.Test
             });
 
             var ok32 = new UniqueIdentifier("00000000000000000000000000000000");
-            var ok40 = new UniqueIdentifier("0000000000000000000000000000000000000000");
             var ok64 = new UniqueIdentifier("0000000000000000000000000000000000000000111111111111111111111111");
             var ok96 = new UniqueIdentifier("000000000000000000000000000000000000000011111111111111110000000000000000000000000000000000000000");
             var ok128 = new UniqueIdentifier("00000000000000000000000000000000000000001111111111111111111111111111111111111111000000000000000000000000000000000000000011111111");
@@ -108,7 +103,6 @@ namespace E5R.Architecture.Core.Test
             Assert.Equal("The string could not be converted to a valid UniqueIdentifier", ex1.Message);
             Assert.Equal("The string could not be converted to a valid UniqueIdentifier", ex2.Message);
             Assert.NotNull(ok32);
-            Assert.NotNull(ok40);
             Assert.NotNull(ok64);
             Assert.NotNull(ok96);
             Assert.NotNull(ok128);
@@ -143,13 +137,11 @@ namespace E5R.Architecture.Core.Test
         public void Accept_AHexadecimalIdString(char c)
         {
             var ok32 = string.Concat(Enumerable.Repeat(c, 32));
-            var ok40 = string.Concat(Enumerable.Repeat(c, 40));
             var ok64 = string.Concat(Enumerable.Repeat(c, 64));
             var ok96 = string.Concat(Enumerable.Repeat(c, 96));
             var ok128 = string.Concat(Enumerable.Repeat(c, 128));
 
             Assert.NotNull(ok32);
-            Assert.NotNull(ok40);
             Assert.NotNull(ok64);
             Assert.NotNull(ok96);
             Assert.NotNull(ok128);

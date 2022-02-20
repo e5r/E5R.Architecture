@@ -10,7 +10,6 @@ namespace E5R.Architecture.Core
     public enum UniqueIdentifierLength
     {
         Length32,
-        Length40,
         Length64,
         Length96,
         Length128
