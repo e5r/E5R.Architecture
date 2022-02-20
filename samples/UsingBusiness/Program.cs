@@ -43,7 +43,7 @@ namespace UsingBusiness
 
             input.ToList().ForEach(c =>
             {
-                var bytes = new byte[(int)c];
+                var bytes = new byte[(int) c];
 
                 new Random().NextBytes(bytes);
 
@@ -134,14 +134,18 @@ namespace UsingBusiness
     /// </remarks>
     public class DadosEntradaBusinessService
     {
-        private readonly LazyTuple<ProcessStringHandler, GenerateRandomPasswordHandler> _g;
+        private readonly ILazy<ProcessStringHandler> _processStringHandler;
+        private readonly ILazy<GenerateRandomPasswordHandler> _generateRandomPasswordHandler;
 
-        public DadosEntradaBusinessService(
-            LazyTuple<ProcessStringHandler, GenerateRandomPasswordHandler> tuple)
+        public DadosEntradaBusinessService(ILazy<ProcessStringHandler> processStringHandler,
+            ILazy<GenerateRandomPasswordHandler> generateRandomPasswordHandler)
         {
-            Checker.NotNullArgument(tuple, nameof(tuple));
+            Checker.NotNullArgument(processStringHandler, nameof(processStringHandler));
+            Checker.NotNullArgument(generateRandomPasswordHandler,
+                nameof(generateRandomPasswordHandler));
 
-            _g = tuple;
+            _processStringHandler = processStringHandler;
+            _generateRandomPasswordHandler = generateRandomPasswordHandler;
         }
 
         /// <summary>
@@ -149,14 +153,14 @@ namespace UsingBusiness
         /// </summary>
         /// <param name="inputString">String de entrada</param>
         public async Task ProcessString(string inputString) =>
-            await _g.Item1.ExecAsync(inputString);
+            await _processStringHandler.Value.ExecAsync(inputString);
 
         /// <summary>
         /// Gera uma senha aleatório com base em uma tupla que informa os caracteres possíveis e o tamanho da senha pretendida
         /// </summary>
         /// <param name="input">Tupla (<see cref="Tuple{T1,T2}"/>) de string com os caracteres possíveis, e int com o tamanho da senha pretendida</param>
         public async Task<string> GenerateRandomPassword((string, int) input) =>
-            await _g.Item2.ExecAsync(input);
+            await _generateRandomPasswordHandler.Value.ExecAsync(input);
     }
 
     /// <summary>
@@ -168,27 +172,33 @@ namespace UsingBusiness
     /// </remarks>
     public class DadosSaidaBusinessService
     {
-        private readonly LazyTuple<GenerateRandomNumberHandler, ProcessStringHandler> _g;
+        private readonly ILazy<GenerateRandomNumberHandler> _generateRandomNumberHandler;
+        private readonly ILazy<ProcessStringHandler> _processStringHandler;
 
         public DadosSaidaBusinessService(
-            LazyTuple<GenerateRandomNumberHandler, ProcessStringHandler> tuple)
+            ILazy<GenerateRandomNumberHandler> generateRandomNumberHandler,
+            ILazy<ProcessStringHandler> processStringHandler)
         {
-            Checker.NotNullArgument(tuple, nameof(tuple));
+            Checker.NotNullArgument(generateRandomNumberHandler,
+                nameof(generateRandomNumberHandler));
+            Checker.NotNullArgument(processStringHandler, nameof(processStringHandler));
 
-            _g = tuple;
+            _generateRandomNumberHandler = generateRandomNumberHandler;
+            _processStringHandler = processStringHandler;
         }
 
         /// <summary>
         /// Gera um número aleatório
         /// </summary>
-        public async Task<int> GenerateRandomNumber() => await _g.Item1.ExecAsync();
+        public async Task<int> GenerateRandomNumber() =>
+            await _generateRandomNumberHandler.Value.ExecAsync();
 
         /// <summary>
         /// Processa dados aleatórios com base em uma string de entrada
         /// </summary>
         /// <param name="inputString">String de entrada</param>
         public async Task ProcessString(string inputString) =>
-            await _g.Item2.ExecAsync(inputString);
+            await _processStringHandler.Value.ExecAsync(inputString);
     }
 
     /// <summary>
@@ -200,42 +210,55 @@ namespace UsingBusiness
     /// </remarks>
     public class TudoJuntoBusinessService
     {
-        private readonly LazyTuple<GenerateRandomNumberHandler, GenerateRandomPasswordHandler,
-            ProcessStringHandler, ExecAllHandler> _g;
+        private readonly ILazy<GenerateRandomNumberHandler> _generateRandomNumberHandler;
+        private readonly ILazy<GenerateRandomPasswordHandler> _generateRandomPasswordHandler;
+        private readonly ILazy<ProcessStringHandler> _processStringHandler;
+        private readonly ILazy<ExecAllHandler> _execAllHandler;
 
         public TudoJuntoBusinessService(
-            LazyTuple<GenerateRandomNumberHandler, GenerateRandomPasswordHandler,
-                ProcessStringHandler, ExecAllHandler> tuple)
+            ILazy<GenerateRandomNumberHandler> generateRandomNumberHandler,
+            ILazy<GenerateRandomPasswordHandler> generateRandomPasswordHandler,
+            ILazy<ProcessStringHandler> processStringHandler,
+            ILazy<ExecAllHandler> execAllHandler)
         {
-            Checker.NotNullArgument(tuple, nameof(tuple));
+            Checker.NotNullArgument(generateRandomNumberHandler,
+                nameof(generateRandomNumberHandler));
+            Checker.NotNullArgument(generateRandomPasswordHandler,
+                nameof(generateRandomPasswordHandler));
+            Checker.NotNullArgument(processStringHandler, nameof(processStringHandler));
+            Checker.NotNullArgument(execAllHandler, nameof(execAllHandler));
 
-            _g = tuple;
+            _generateRandomNumberHandler = generateRandomNumberHandler;
+            _generateRandomPasswordHandler = generateRandomPasswordHandler;
+            _processStringHandler = processStringHandler;
+            _execAllHandler = execAllHandler;
         }
 
         /// <summary>
         /// Gera um número aleatório
         /// </summary>
-        public async Task<int> GenerateRandomNumber() => await _g.Item1.ExecAsync();
+        public async Task<int> GenerateRandomNumber() =>
+            await _generateRandomNumberHandler.Value.ExecAsync();
 
         /// <summary>
         /// Gera uma senha aleatório com base em uma tupla que informa os caracteres possíveis e o tamanho da senha pretendida
         /// </summary>
         /// <param name="input">Tupla (<see cref="Tuple{T1,T2}"/>) de string com os caracteres possíveis, e int com o tamanho da senha pretendida</param>
         public async Task<string> GenerateRandomPassword((string, int) input) =>
-            await _g.Item2.ExecAsync(input);
+            await _generateRandomPasswordHandler.Value.ExecAsync(input);
 
         /// <summary>
         /// Processa dados aleatórios com base em uma string de entrada
         /// </summary>
         /// <param name="inputString">String de entrada</param>
         public async Task ProcessString(string inputString) =>
-            await _g.Item3.ExecAsync(inputString);
+            await _processStringHandler.Value.ExecAsync(inputString);
 
         /// <summary>
         /// Executa todas as outras funcionalidades para exemplificar uma característica que não
         /// precisa de parâmetros de entrada, e nem produz resultado de saída.
         /// </summary>
-        public async Task ExecAll() => await _g.Item4.ExecAsync();
+        public async Task ExecAll() => await _execAllHandler.Value.ExecAsync();
     }
 
     public enum MyNotifyType
@@ -273,10 +296,10 @@ namespace UsingBusiness
             if (!(target.Body is float))
                 return RuleCheckResult.Fail;
 
-            if ((float)target.Body >= 7.5)
+            if ((float) target.Body >= 7.5)
                 return new RuleCheckResult(false, new Dictionary<string, string>
                 {
-                    { "Numero", "O número era maior que 7.5" }
+                    {"Numero", "O número era maior que 7.5"}
                 });
 
             return RuleCheckResult.Success;

@@ -134,25 +134,6 @@ namespace E5R.Architecture.Infrastructure.Extensions
             return assembly;
         }
 
-        public static Assembly AddAllLazyGroups(this Assembly assembly, IServiceCollection services)
-        {
-            Checker.NotNullArgument(assembly, nameof(assembly));
-            Checker.NotNullArgument(services, nameof(services));
-            
-            services.AddScoped(typeof(LazyTuple<>));
-            services.AddScoped(typeof(LazyTuple<,>));
-            services.AddScoped(typeof(LazyTuple<,,>));
-            services.AddScoped(typeof(LazyTuple<,,,>));
-            services.AddScoped(typeof(LazyTuple<,,,,>));
-            services.AddScoped(typeof(LazyTuple<,,,,,>));
-            services.AddScoped(typeof(LazyTuple<,,,,,,>));
-            services.AddScoped(typeof(LazyTuple<,,,,,,,>));
-            services.AddScoped(typeof(LazyTuple<,,,,,,,,>));
-            services.AddScoped(typeof(LazyTuple<,,,,,,,,,>));
-
-            return assembly;
-        }
-
         private static ICrossCuttingRegistrar Activate(Type type)
         {
             Checker.NotNullArgument(type, nameof(type));

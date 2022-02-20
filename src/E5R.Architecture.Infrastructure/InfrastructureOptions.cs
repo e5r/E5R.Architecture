@@ -23,7 +23,6 @@ namespace E5R.Architecture.Infrastructure
         public bool RegisterRulesAutomatically { get; set; } = true;
         public bool RegisterNotificationDispatchersAutomatically { get; set; } = true;
         public bool RegisterTransformersAutomatically { get; set; } = true;
-        public bool RegisterLazyGroupsAutomatically { get; set; } = true;
         public bool RegisterRuleModelValidatorAutomatically { get; set; } = true;
 
         public InfrastructureOptions EnableDeveloperMode()

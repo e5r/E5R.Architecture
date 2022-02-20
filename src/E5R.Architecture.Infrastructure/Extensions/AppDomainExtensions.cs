@@ -69,16 +69,5 @@ namespace E5R.Architecture.Infrastructure.Extensions
                 .ToList()
                 .ForEach(a => a.AddAllRules(services));
         }
-
-        public static void AddAllLazyGroups(this AppDomain appDomain, IServiceCollection services)
-        {
-            Checker.NotNullArgument(appDomain, nameof(appDomain));
-            Checker.NotNullArgument(services, nameof(services));
-
-            appDomain
-                .GetNonSystemAssemblies()
-                .ToList()
-                .ForEach(a => a.AddAllLazyGroups(services));
-        }
     }
 }

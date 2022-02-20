@@ -70,7 +70,38 @@ public class MyController
   - Removido `UniqueIdentifierLength.Length40`
   - O tipo `UniqueIdentifier` agora é baseado em `UUID/GUID` e não mais em _hash de UUID_
     o que o torna menos sucetível ainda a colisão de identificadores
-* `ITransformationManager` não tem mais os métodos para transformação com um `TOperation` 
+* `ITransformationManager` não tem mais os métodos para transformação com um `TOperation`
+* `LazyTuple<>` removido! 
+  - Este item foi criado principalmente para ajudar na composição de objetos de serviço de negócio,
+    porém este cenário se mostrou _não útil_ de fato no dia a dia.
+  - `InfrastructureOptions` agora não tem mais a propriedade `RegisterLazyGroupsAutomatically`
+  - Você continua podendo criar serviços de negócio que usam _action handlers_ normalmente
+```c#
+public class MyBusinessService
+{
+    private readonly ILazy<MyHandler1> _myHandler1;
+    private readonly ILazy<MyHandler2> _myHandler2;
+
+    public DadosEntradaBusinessService(ILazy<MyHandler1> myHandler1, ILazy<MyHandler2> myHandler2)
+    {
+        Checker.NotNullArgument(myHandler1, nameof(myHandler1));
+        Checker.NotNullArgument(myHandler2, nameof(myHandler2));
+
+        _myHandler1 = myHandler1;
+        _myHandler2 = myHandler2;
+    }
+
+    /// <summary>
+    /// Redocumenta o ActionHandler
+    /// </summary>
+    public async Task MyAction1(object input) => await _myHandler1.Value.ExecAsync(input);
+    
+    /// <summary>
+    /// Redocumenta o ActionHandler
+    /// </summary>
+    public async Task MyAction2() => await _myHandler2.Value.ExecAsync();
+}
+```
 
 ## 0.10.0
 

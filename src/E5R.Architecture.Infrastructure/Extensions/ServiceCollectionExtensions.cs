@@ -118,7 +118,6 @@ namespace Microsoft.Extensions.DependencyInjection
                 RegisterTransformersAutomatically = false,
                 RegisterCrossCuttingAutomatically = false,
                 RegisterNotificationDispatchersAutomatically = false,
-                RegisterLazyGroupsAutomatically = false,
                 RegisterRuleModelValidatorAutomatically = false
             };
 
@@ -194,11 +193,6 @@ namespace Microsoft.Extensions.DependencyInjection
             }
 
             serviceCollection.TryAddScoped(typeof(ILazy<>), options.LazyResolverType);
-
-            if (options.RegisterLazyGroupsAutomatically)
-            {
-                AppDomain.CurrentDomain.AddAllLazyGroups(serviceCollection);
-            }
 
             return serviceCollection;
         }
