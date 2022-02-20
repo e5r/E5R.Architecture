@@ -78,35 +78,5 @@ namespace E5R.Architecture.Core
         /// <param name="from">Paginated list of origin data</param>
         /// <returns>Paginated list of <typeparamref name="TTo"/></returns>
         PaginatedResult<TTo> AutoTransform<TFrom, TTo>(PaginatedResult<TFrom> from) where TTo : new();
-
-        /// <summary>
-        /// Create new instance of <typeparamref name="TTo"/> based on <typeparamref name="TFrom"/> instance
-        /// and <typeparamref name="TOperation"/> value.
-        /// </summary>
-        /// <param name="from">Origin data</param>
-        /// <param name="operation">The operation reference</param>
-        /// <returns>Instance of <see cref="TTo"/></returns>
-        TTo Transform<TFrom, TTo, TOperation>(TFrom from, TOperation operation)
-            where TTo : new() where TOperation : Enum;
-
-        /// <summary>
-        /// Create a new list of <typeparamref name="TTo"/> based on list of <typeparamref name="TFrom"/> and
-        /// <typeparamref name="TOperation"/> value.
-        /// </summary>
-        /// <param name="from">List of origin data</param>
-        /// <param name="operation">The operation reference</param>
-        /// <returns>List of <typeparamref name="TTo"/></returns>
-        IEnumerable<TTo> Transform<TFrom, TTo, TOperation>(IEnumerable<TFrom> from, TOperation operation)
-            where TTo : new() where TOperation : Enum;
-
-        /// <summary>
-        /// Create a new paginated list of <typeparamref name="TTo"/> based on list of 
-        /// <typeparamref name="TFrom"/> and <typeparamref name="TOperation"/> value.
-        /// </summary>
-        /// <param name="from">Paginated list of origin data</param>
-        /// <param name="operation">The operation reference</param>
-        /// <returns>Paginated list of <typeparamref name="TTo"/></returns>
-        PaginatedResult<TTo> Transform<TFrom, TTo, TOperation>(PaginatedResult<TFrom> from, TOperation operation)
-            where TTo : new() where TOperation : Enum;
     }
 }

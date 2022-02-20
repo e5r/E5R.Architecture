@@ -70,6 +70,7 @@ public class MyController
   - Removido `UniqueIdentifierLength.Length40`
   - O tipo `UniqueIdentifier` agora é baseado em `UUID/GUID` e não mais em _hash de UUID_
     o que o torna menos sucetível ainda a colisão de identificadores
+* `ITransformationManager` não tem mais os métodos para transformação com um `TOperation` 
 
 ## 0.10.0
 

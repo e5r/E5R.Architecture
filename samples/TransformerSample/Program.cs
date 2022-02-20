@@ -12,13 +12,6 @@ using Microsoft.Extensions.DependencyInjection;
 
 namespace TransformerSample
 {
-    public enum TransformerVariant
-    {
-        Variant1,
-        Variant2,
-        Variant3
-    }
-
     public class A
     {
         public string AMessage { get; set; }
@@ -39,7 +32,6 @@ namespace TransformerSample
         public int ValueInteger { get; set; }
         public decimal ValueDecimal { get; set; }
         public string ValueString { get; set; }
-        public TransformerVariant ValueEnum { get; set; }
         public A ValueClass { get; set; }
         public Guid ValueGuid { get; set; }
     }
@@ -49,7 +41,6 @@ namespace TransformerSample
         public int ValueInteger { get; set; }
         public decimal ValueDecimal { get; set; }
         public string ValueString { get; set; }
-        public TransformerVariant ValueEnum { get; set; }
         public A ValueClass { get; set; }
         public Guid ValueGuid { get; set; }
     }
@@ -62,8 +53,6 @@ namespace TransformerSample
         public decimal ValueDecimalNot { get; set; }
         public string ValueString { get; set; }
         public string ValueStringNot { get; set; }
-        public TransformerVariant ValueEnum { get; set; }
-        public TransformerVariant ValueEnumNot { get; set; }
         public A ValueClass { get; set; }
         public A ValueClassNot { get; set; }
         public Guid ValueGuid { get; set; }
@@ -108,12 +97,6 @@ namespace TransformerSample
             var bFromA = transformer.Transform<A, B>(a);
             var bFromC = transformer.Transform<C, B>(c);
             var cFromA = transformer.Transform<A, C>(a);
-            var cFromAv1 =
-                transformer.Transform<A, C, TransformerVariant>(a, TransformerVariant.Variant1);
-            var cFromAv2 =
-                transformer.Transform<A, C, TransformerVariant>(a, TransformerVariant.Variant2);
-            var cFromAv3 =
-                transformer.Transform<A, C, TransformerVariant>(a, TransformerVariant.Variant3);
             var cFromB = transformer.Transform<B, C>(b);
             var listOfB = transformer.Transform<A, B>(listOfA);
             var paginatedListOfB = transformer.Transform<A, B>(paginatedListOfA);
@@ -123,7 +106,6 @@ namespace TransformerSample
                     ValueInteger = 1,
                     ValueDecimal = 1.2m,
                     ValueString = "String qualquer",
-                    ValueEnum = TransformerVariant.Variant2,
                     ValueGuid = Guid.NewGuid(),
                     ValueClass = new A { AMessage = "A message from inner class" }
                 });
@@ -133,7 +115,6 @@ namespace TransformerSample
                     ValueInteger = 2,
                     ValueDecimal = 2.3m,
                     ValueString = "String que pode ser copiada",
-                    ValueEnum = TransformerVariant.Variant3,
                     ValueGuid = Guid.NewGuid(),
                     ValueClass = new A { AMessage = "A message from inner class" }
                 });
@@ -143,12 +124,6 @@ namespace TransformerSample
             Debug.Assert(bFromA.BMessage.Equals(a.AMessage), "Invalid bFromA");
             Debug.Assert(bFromC.BMessage.Equals(c.CMessage), "Invalid bFromC");
             Debug.Assert(cFromA.CMessage.Equals(a.AMessage), "Invalid cFromA");
-            Debug.Assert(cFromAv1.CMessage.Equals(a.AMessage + "/Variant1"),
-                "Invalid cFromA/Variant1");
-            Debug.Assert(cFromAv2.CMessage.Equals(a.AMessage + "/Variant2"),
-                "Invalid cFromA/Variant2");
-            Debug.Assert(cFromAv3.CMessage.Equals(a.AMessage + "/Variant3"),
-                "Invalid cFromA/Variant3");
             Debug.Assert(cFromB.CMessage.Equals(b.BMessage), "Invalid cFromB");
             Debug.Assert(listOfB != null, "List of B is null");
             Debug.Assert(listOfB.Count() == listOfA.Count, "Invalid count of list B");
@@ -224,7 +199,7 @@ namespace TransformerSample
     }
 
     public class MultTransformer : ITransformer<A, C>, ITransformer<C, A>, ITransformer<B, C>,
-        ITransformer<C, B>, ITransformer<A, C, TransformerVariant>
+        ITransformer<C, B>
     {
         C ITransformer<A, C>.Transform(A @from)
         {
@@ -232,33 +207,6 @@ namespace TransformerSample
             {
                 CMessage = @from.AMessage
             };
-        }
-
-        public C Transform(A @from, TransformerVariant operation)
-        {
-            switch (operation)
-            {
-                case TransformerVariant.Variant1:
-                    return new C
-                    {
-                        CMessage = $"{@from.AMessage}/Variant1"
-                    };
-                case TransformerVariant.Variant2:
-                    return new C
-                    {
-                        CMessage = $"{@from.AMessage}/Variant2"
-                    };
-                case TransformerVariant.Variant3:
-                    return new C
-                    {
-                        CMessage = $"{@from.AMessage}/Variant3"
-                    };
-                default:
-                    return new C
-                    {
-                        CMessage = @from.AMessage
-                    };
-            }
         }
 
         A ITransformer<C, A>.Transform(C @from)
@@ -300,7 +248,6 @@ namespace TransformerSample
                 ValueClassNot = from.ValueClass,
                 ValueDecimalNot = from.ValueDecimal,
                 ValueIntegerNot = from.ValueInteger,
-                ValueEnumNot = from.ValueEnum,
                 ValueGuidNot = from.ValueGuid,
                 ValueStringNot = from.ValueString
             };
