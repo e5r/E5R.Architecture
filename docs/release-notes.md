@@ -10,6 +10,13 @@ Notas de Lançamento
 ### Novos recursos:
 
 * `E5R.Architecture.Core` agora depende de `System.ComponentModel.Annotations >= 4.7.0`
+* `IRuleSet` ganha novos métodos para permitir a filtragem sem levantar exceção
+  - Esses métodos retornam um objeto com lista vazia de regras caso não encontre um
+    correspondente ao invés de levantar uma exceção
+  - `OnlyCode(string code)` Somente regras com código informado
+  - `OnlyCode(string[] codes)` Somente regras com códigos informados
+  - `OnlyDefaultCategory()` Somente regras da categoria padrão (`categoria = null`)
+  - `OnlyCategory(string category)` Somente regras da categoria informada
 * Novo tipo `RuleValidatableObject<>` para uso específico na validação de objetos
   - Destinado ao uso em conujunto com modelos de visão
 ```c#
