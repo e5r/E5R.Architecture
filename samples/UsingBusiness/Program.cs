@@ -16,6 +16,102 @@ using static E5R.Architecture.Core.MetaTagAttribute;
 
 namespace UsingBusiness
 {
+    public class
+        MyBusinessOperation : ActionHandler<MyBusinessOperation.Request,
+            MyBusinessOperation.Presenter>
+    {
+        private const string RulePrefix = "RNMY";
+
+        public MyBusinessOperation(IRuleSet<Request> requestRules)
+        {
+            Checker.NotNullArgument(requestRules, nameof(requestRules));
+
+            RequestRules = requestRules;
+        }
+
+        private IRuleSet<Request> RequestRules { get; }
+
+        protected override async Task<Presenter> ExecActionAsync(Request input)
+        {
+            await RequestRules.EnsureAsync(input);
+
+            return new Presenter(
+                input.Number == 1000 &&
+                input.Text.Equals("Mil", StringComparison.CurrentCultureIgnoreCase)
+                    ? "Você é um milionário"
+                    : input.Number == 1000
+                        ? "Mil é o número"
+                        : "Você usou outro número"
+            );
+        }
+
+        #region Gateway data
+
+        public class Request
+        {
+            public Request(int number, string text)
+            {
+                Checker.NotEmptyOrWhiteArgument(text, nameof(text));
+
+                Number = number;
+                Text = text;
+            }
+
+            public int Number { get; }
+            public string Text { get; }
+        }
+
+        public class Presenter
+        {
+            public Presenter(string phrase)
+            {
+                Checker.NotEmptyOrWhiteArgument(phrase, nameof(phrase));
+
+                Phrase = phrase;
+            }
+
+            public string Phrase { get; }
+        }
+
+        #endregion
+
+        #region Rules
+
+        public class NumberMustBeBigRule : RuleFor<Request>
+        {
+            public NumberMustBeBigRule() : base($"{RulePrefix}-001", "Number must be big")
+            {
+            }
+
+            public override Task<RuleCheckResult> CheckAsync(Request target)
+            {
+                Checker.NotNullArgument(target, nameof(target));
+
+                return target.Number >= 1000 ? Success() : Fail();
+            }
+        }
+
+        public class MilOuOutroNumeroRule : RuleFor<Request>
+        {
+            public MilOuOutroNumeroRule() : base($"{RulePrefix}-992",
+                "Text must be \"Mil\" or \"Outro Número\"")
+            {
+            }
+
+            public override Task<RuleCheckResult> CheckAsync(Request target)
+            {
+                Checker.NotNullArgument(target, nameof(target));
+
+                return "Mil".Equals(target.Text, StringComparison.CurrentCultureIgnoreCase) ||
+                       "Outro Número".Equals(target.Text, StringComparison.CurrentCultureIgnoreCase)
+                    ? Success()
+                    : Fail();
+            }
+        }
+
+        #endregion
+    }
+
     /// <summary>
     /// Ação que gera um número aleatório
     /// </summary>
@@ -261,6 +357,8 @@ namespace UsingBusiness
         public async Task ExecAll() => await _execAllHandler.Value.ExecAsync();
     }
 
+    #region NotificationManager
+
     public enum MyNotifyType
     {
         Type1,
@@ -314,25 +412,31 @@ namespace UsingBusiness
         }
     }
 
+    #endregion
+
     public class Program
     {
         private readonly DadosEntradaBusinessService _entradaService;
         private readonly DadosSaidaBusinessService _saidaService;
         private readonly TudoJuntoBusinessService _tudoService;
+        private readonly MyBusinessOperation _myBusinessOperation;
         private readonly NotificationManager<MyNotifyType> _notificator;
 
         public Program(DadosEntradaBusinessService entradaService,
             DadosSaidaBusinessService saidaService, TudoJuntoBusinessService tudoService,
+            MyBusinessOperation myBusinessOperation,
             NotificationManager<MyNotifyType> notificator)
         {
             Checker.NotNullArgument(entradaService, nameof(entradaService));
             Checker.NotNullArgument(saidaService, nameof(saidaService));
             Checker.NotNullArgument(tudoService, nameof(tudoService));
+            Checker.NotNullArgument(myBusinessOperation, nameof(myBusinessOperation));
             Checker.NotNullArgument(notificator, nameof(notificator));
 
             _entradaService = entradaService;
             _saidaService = saidaService;
             _tudoService = tudoService;
+            _myBusinessOperation = myBusinessOperation;
             _notificator = notificator;
         }
 
@@ -351,7 +455,57 @@ namespace UsingBusiness
             await _notificator.NotifyAsync(MyNotifyType.Type2, 6.0f);
 
             // Notificando uma mensagem com falha
-            await _notificator.NotifyAsync(MyNotifyType.Type2, 7.51f);
+            try
+            {
+                await _notificator.NotifyAsync(MyNotifyType.Type2, 7.51f);
+            }
+            catch (Exception ex)
+            {
+                PrintException(ex);
+            }
+
+            // My business operation
+            try
+            {
+                await _myBusinessOperation.ExecAsync(new MyBusinessOperation.Request(1, "Texto"));
+            }
+            catch (Exception ex)
+            {
+                PrintException(ex);
+            }
+
+            try
+            {
+                await _myBusinessOperation.ExecAsync(new MyBusinessOperation.Request(2000, null));
+            }
+            catch (Exception ex)
+            {
+                PrintException(ex);
+            }
+
+            var presenter1 =
+                await _myBusinessOperation.ExecAsync(new MyBusinessOperation.Request(3000, "Mil"));
+            var presenter2 =
+                await _myBusinessOperation.ExecAsync(
+                    new MyBusinessOperation.Request(1500, "outro número"));
+            var presenter3 =
+                await _myBusinessOperation.ExecAsync(new MyBusinessOperation.Request(1000, "mil"));
+            var presenter4 =
+                await _myBusinessOperation.ExecAsync(
+                    new MyBusinessOperation.Request(1000, "Outro número"));
+
+            Console.WriteLine(presenter1.Phrase);
+            Console.WriteLine(presenter2.Phrase);
+            Console.WriteLine(presenter3.Phrase);
+            Console.WriteLine(presenter4.Phrase);
+        }
+
+        private void PrintException(Exception ex)
+        {
+            Console.BackgroundColor = ConsoleColor.Red;
+            Console.ForegroundColor = ConsoleColor.White;
+            Console.WriteLine(ex.Message);
+            Console.ResetColor();
         }
 
         private static async Task Main()
