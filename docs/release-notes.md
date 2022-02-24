@@ -5,6 +5,10 @@ title: Notas de Lançamento
 Notas de Lançamento
 ===================
 
+## 0.10.2
+
+* Correção de bugs nos scripts de CD AppVeyor
+
 ## 0.10.1
 
 * Correção de bugs no registro de `Workers` na infraestrutura ASP.NET
