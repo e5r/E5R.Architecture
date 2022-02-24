@@ -42,7 +42,7 @@ namespace Microsoft.Extensions.DependencyInjection
         public static IServiceCollection AddHostedWorker<TWorker>(this IServiceCollection services)
             where TWorker : IWorker
         {
-            services.TryAddSingleton(typeof(TWorker));
+            services.TryAddScoped(typeof(TWorker));
 
             return services.AddHostedService<WorkManager<TWorker>>();
         }
