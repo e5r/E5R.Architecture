@@ -34,7 +34,7 @@ namespace Microsoft.Extensions.DependencyInjection
         {
             Checker.NotNullArgument(options, nameof(options));
             
-            services.TryAddScoped(typeof(WorkManagerOptions), _ => options);
+            services.TryAddSingleton(typeof(WorkManagerOptions), _ => options);
 
             return services;
         }
@@ -42,7 +42,7 @@ namespace Microsoft.Extensions.DependencyInjection
         public static IServiceCollection AddHostedWorker<TWorker>(this IServiceCollection services)
             where TWorker : IWorker
         {
-            services.TryAddScoped(typeof(TWorker));
+            services.TryAddSingleton(typeof(TWorker));
 
             return services.AddHostedService<WorkManager<TWorker>>();
         }
