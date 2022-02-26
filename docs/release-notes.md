@@ -70,6 +70,13 @@ public class MyController
     }
 }
 ```
+* Agora é possível adicionar suporte a gerenciamento de workers de forma simples
+```c#
+public void ConfigureServices(IServiceCollection services)
+{
+    services.AddWorkManager();
+}
+```
 
 ### Breaking changes:
 

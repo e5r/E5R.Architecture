@@ -39,6 +39,9 @@ namespace Microsoft.Extensions.DependencyInjection
             return services;
         }
 
+        public static IServiceCollection AddWorkManager(this IServiceCollection services)
+            => AddWorkManager(services, _ => { });
+
         public static IServiceCollection AddHostedWorker<TWorker>(this IServiceCollection services)
             where TWorker : IWorker
         {
