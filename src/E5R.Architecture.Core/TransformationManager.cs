@@ -27,8 +27,6 @@ namespace E5R.Architecture.Core
         #region Item transformer
         public TTo Transform<TFrom, TTo>(TFrom from)
         {
-            Checker.NotNullArgument(from, nameof(from));
-
             return ResolveType<ITransformer<TFrom, TTo>>().Transform(from);
         }
 
@@ -55,8 +53,6 @@ namespace E5R.Architecture.Core
         public TTo Transform<TFrom, TTo, TOperation>(TFrom from, TOperation operation)
             where TTo : new() where TOperation : Enum
         {
-            Checker.NotNullArgument(from, nameof(from));
-
             return ResolveType<ITransformer<TFrom, TTo, TOperation>>().Transform(@from, operation);
         }
         #endregion

@@ -5,6 +5,10 @@ title: Notas de Lançamento
 Notas de Lançamento
 ===================
 
+## 0.10.4
+
+* Correção de bug em `TransformationManager` que não considerava objeto nulo
+
 ## 0.10.3
 
 * Correção de bugs no registro de `Workers` na infraestrutura ASP.NET
