@@ -77,6 +77,28 @@ public void ConfigureServices(IServiceCollection services)
     services.AddWorkManager();
 }
 ```
+* Nova assinatura a método de extensão `object.CopyPropertyValuesTo()`
+```c#
+// Antes para copiar as propriedades de um objeto você faria
+// ------------------------------------------------------------------
+var fromObject = new FromObject();
+var toObject = new ToObject();
+
+var count = fromObject.CopyPropertyValuesTo(toObject);
+// Neste ponto `count` tem o total de propriedades copiadas
+// e `toObject` está com os valores copiados de `fromObject`
+
+// Caso você não precise usar o valor de `count`, pode só descartá-lo
+_ = fromObject.CopyPropertyValuesTo(toObject); 
+
+// Agora você pode usar
+// ------------------------------------------------------------------
+var fromObject = new FromObject();
+var toObject = fromObject.CopyPropertyValuesTo(new ToObject(), out int count);
+
+// Também pode descartar o valor de `count` se não precisar
+var toObject = fromObject.CopyPropertyValuesTo(new ToObject(), out int _);
+```
 
 ### Breaking changes:
 

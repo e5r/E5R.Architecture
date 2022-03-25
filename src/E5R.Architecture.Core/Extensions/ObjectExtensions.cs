@@ -19,6 +19,13 @@ namespace E5R.Architecture.Core.Extensions
             return dictionary.FillObject(@object);
         }
 
+        public static TTo CopyPropertyValuesTo<TFrom, TTo>(this TFrom from, TTo to, out int count)
+        {
+            count = CopyPropertyValuesTo(from, to);
+
+            return to;
+        }
+
         public static int CopyPropertyValuesTo<TFrom, TTo>(this TFrom from, TTo to)
         {
             Checker.NotNullArgument(from, nameof(from));
@@ -40,13 +47,15 @@ namespace E5R.Architecture.Core.Extensions
                 .ToList()
                 .ForEach(updateableProp =>
                 {
-                    var fromProp = fromProperties.FirstOrDefault(w => w.Name == updateableProp.Name);
+                    var fromProp =
+                        fromProperties.FirstOrDefault(w => w.Name == updateableProp.Name);
 
                     // Esta exceção nunca deve ocorrer, mas... "O seguro morreu de velho"
                     if (fromProp == null)
                     {
                         // TODO: Implementar i18n/l10n
-                        throw new Exception($"No matching data was found to update property {fromProp.Name}");
+                        throw new Exception(
+                            $"No matching data was found to update property {fromProp.Name}");
                     }
 
                     var fromValue = fromProp.GetValue(from);
