@@ -44,10 +44,7 @@ namespace E5R.Architecture.Core
 
             // Não encontramos um ITransformer. Então vamos criar um objeto e copiar as
             // propriedades, pois é o que dá pra fazer por agora.
-            var to = new TTo();
-            var _ = from.CopyPropertyValuesTo(to);
-
-            return to;
+            return from.CopyPropertyValuesTo(new TTo(), out _);
         }
         #endregion
 
@@ -75,13 +72,7 @@ namespace E5R.Architecture.Core
 
             // Não encontramos um ITransformer. Então vamos criar um objeto de cada
             //  e copiar as propriedades, pois é o que dá pra fazer por agora.
-            return from.Select(s =>
-            {
-                var to = new TTo();
-                var _ = s.CopyPropertyValuesTo(to);
-
-                return to;
-            });
+            return from.Select(s => s.CopyPropertyValuesTo(new TTo(), out _));
         }
 
         #endregion

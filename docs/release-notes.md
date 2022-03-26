@@ -97,7 +97,7 @@ var fromObject = new FromObject();
 var toObject = fromObject.CopyPropertyValuesTo(new ToObject(), out int count);
 
 // Também pode descartar o valor de `count` se não precisar
-var toObject = fromObject.CopyPropertyValuesTo(new ToObject(), out int _);
+var toObject = fromObject.CopyPropertyValuesTo(new ToObject(), out _);
 ```
 
 ### Breaking changes:
