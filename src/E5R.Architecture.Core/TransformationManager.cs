@@ -27,8 +27,6 @@ namespace E5R.Architecture.Core
         #region Item transformer
         public TTo Transform<TFrom, TTo>(TFrom from)
         {
-            Checker.NotNullArgument(from, nameof(from));
-
             return ResolveType<ITransformer<TFrom, TTo>>().Transform(from);
         }
 
@@ -85,6 +83,15 @@ namespace E5R.Architecture.Core
                 return to;
             });
         }
+
+        IEnumerable<TTo> ITransformationManager.Transform<TFrom, TTo, TOperation>(IEnumerable<TFrom> from, TOperation operation)
+        {
+            Checker.NotNullArgument(from, nameof(from));
+
+            var t = ResolveType<ITransformer<TFrom, TTo>>();
+
+            return from.ToList().ConvertAll(t.Transform);
+        }
         #endregion
 
         #region Paginated list transformer
@@ -102,6 +109,15 @@ namespace E5R.Architecture.Core
             Checker.NotNullArgument(from, nameof(from));
 
             var result = AutoTransform<TFrom, TTo>(from.Result);
+
+            return new PaginatedResult<TTo>(result, from.Offset, from.Limit, from.Total);
+        }
+
+        PaginatedResult<TTo> ITransformationManager.Transform<TFrom, TTo, TOperation>(PaginatedResult<TFrom> from, TOperation operation)
+        {
+            Checker.NotNullArgument(from, nameof(from));
+
+            var result = ((ITransformationManager)this).Transform<TFrom, TTo, TOperation>(from.Result, operation);
 
             return new PaginatedResult<TTo>(result, from.Offset, from.Limit, from.Total);
         }
